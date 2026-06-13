@@ -72,6 +72,8 @@ Antes de declarar un estado, hacer un plan o escribir arquitectura: lee el codig
 - **Portfolio:** `[[05 - PMO/Portfolio Proyectos]]` - todos los proyectos P1/P2/P3 con owners y estados
 - **KPIs BU:** `[[BUSINESS_UNITS]]` - KPIs por unidad de negocio
 - **Indice vault:** `[[index]]` - catalogo completo de notas
+- **Mis Tareas (Google Sheets):** https://docs.google.com/spreadsheets/d/1YljVvNxeELPr6RglypTv56FyqX-KRbjqRm9fGm56G_o — solo Carolina (18 tareas)
+- **Equipo (Google Sheets):** https://docs.google.com/spreadsheets/d/1Ta1-fJ4u2JN-7OxdI_higArTa3DN5ggyGAP4pHQYOGA — todo el equipo (33 tareas)
 
 ---
 
@@ -194,6 +196,49 @@ ai-first: true
 
 ---
 
+## Skills → Tasks Auto-Feed
+
+Cuando Claude corra cualquier skill de growth o análisis, al finalizar debe extraer las recomendaciones accionables y convertirlas en tareas del vault.
+
+**Skills que activan este protocolo:** `growth-engine`, `seo-*`, `analytics`, `competitive-ads-extractor`, `ads-*`, `benchmark`, `yt-competitive-analysis`, `competitor-profiling`, `cro`, `content-strategy`.
+
+**Protocolo (ejecutar sin que Carolina lo pida):**
+1. Extrae las recomendaciones accionables del output del skill.
+2. Por cada acción concreta: crea un archivo `Tasks/YYYY-MM-DD Responsable - Titulo.md`.
+3. Usa `source: "skill:[nombre-del-skill]"` en el frontmatter.
+4. Asigna responsable según área:
+   - Growth / Pauta / SEO → `Carolina Ramirez`
+   - Editorial / Contenido → `Ernesto Rodriguez`
+   - Plataformas / Tech → `Jeison Montero`
+   - Alianzas / Partnerships → `Paola Pantaleon`
+   - Redes sociales → persona CM correspondiente
+5. Prioridad según impacto en KPIs: alta si afecta Revenue o UAM, media si afecta Sesiones/Engagement, baja si es optimización interna.
+6. Siempre incluir `impacto-kpi` con los KPIs concretos que mueve esa acción.
+
+**Resultado esperado:** cada sesión de un skill de growth deposita 3-10 tareas en el vault listos para ver en la Vercel app.
+
+---
+
+## Git Sync Protocol
+
+El vault está conectado a un repo privado de GitHub. Claude debe mantener los commits limpios después de operaciones relevantes.
+
+**Comandos de sync (ejecutar desde `/Users/carolinaramirezvera/Documents/GammaVault`):**
+```bash
+# Después de crear/modificar tareas o reuniones
+git add Tasks/ "06 - Meetings/" _CLAUDE.md index.md
+git commit -m "tasks: [descripcion breve] — $(date +%Y-%m-%d)"
+git push origin main
+```
+
+**Qué commitear:** `Tasks/`, `06 - Meetings/`, `_CLAUDE.md`, `index.md`, `00 - Executive Layer/`, `03 - Unidades de Negocio/`.
+
+**Qué NO commitear:** `.claude/`, datos financieros específicos con nombres de clientes, credenciales.
+
+**Cuándo hacer push:** Al final de cada sesión que haya creado o modificado notas. No hace falta push por cada tarea individual — agrúpalas.
+
+---
+
 ## Auto-Save Rules
 
 Claude debe guardar automaticamente SIN PREGUNTAR:
@@ -259,6 +304,9 @@ Claude debe PREGUNTAR ANTES de guardar:
 | 2026-06-13 | Sistema tareas | Tasks.base + Mis-Tareas.base rediseñados. 28 tareas creadas desde 4 reuniones. |
 | 2026-06-13 | Informe plataforma | Mis Finanzas para Invertir mayo 2026 cargado. 3 tareas derivadas creadas. |
 | 2026-06-13 | Informe plataforma | Mis Finanzas para Mi Negocio mayo 2026 cargado. 4 tareas derivadas creadas. Alerta Spira. |
+| 2026-06-13 | Git sync | vault conectado a GitHub privado (gamma-vault). .gitignore configurado. Commit inicial 98 archivos. |
+| 2026-06-13 | Skills protocol | Protocolo Skills → Tasks Auto-Feed añadido. Growth skills depositan tareas automaticamente. |
+| 2026-06-13 | Google Sheets | Mis Tareas (Carolina, 18 tareas) y Equipo (33 tareas) creados en Google Drive via MCP. |
 
 ---
 
