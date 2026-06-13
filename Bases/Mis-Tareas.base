@@ -1,0 +1,96 @@
+filters:
+  and:
+    - file.inFolder("Tasks")
+    - file.ext == "md"
+    - note.type == "task"
+    - note.assigned-to == "Carolina Ramirez"
+formulas:
+  days_until_due: if(due, (date(due) - today()).days, "")
+  overdue: if(due, (today() - date(due)).days > 0, false)
+properties:
+  formula.days_until_due:
+    displayName: Días restantes
+  formula.overdue:
+    displayName: Vencida
+  status:
+    displayName: Estatus
+  prioridad:
+    displayName: Prioridad
+  due:
+    displayName: Fecha límite
+  unidad-de-negocio:
+    displayName: Unidad de Negocio
+  area:
+    displayName: Área
+  impacto-kpi:
+    displayName: Impacto KPI
+  source:
+    displayName: Fuente
+views:
+  - type: table
+    name: Mis pendientes
+    filters:
+      and:
+        - status != "hecho"
+        - status != "cancelada"
+    order:
+      - formula.overdue
+      - prioridad
+      - due
+      - file.basename
+    columnSize:
+      file.basename: 280
+      unidad-de-negocio: 150
+      area: 130
+      prioridad: 90
+      impacto-kpi: 160
+      status: 110
+      due: 110
+      formula.days_until_due: 110
+  - type: table
+    name: Por BU
+    filters:
+      and:
+        - status != "hecho"
+        - status != "cancelada"
+    groupBy:
+      property: unidad-de-negocio
+      direction: ASC
+    order:
+      - prioridad
+      - due
+      - file.basename
+    columnSize:
+      file.basename: 280
+      area: 130
+      prioridad: 90
+      impacto-kpi: 160
+      status: 110
+      due: 110
+  - type: table
+    name: Alta prioridad
+    filters:
+      and:
+        - status != "hecho"
+        - status != "cancelada"
+        - prioridad == "alta"
+    order:
+      - formula.overdue
+      - due
+      - file.basename
+    columnSize:
+      file.basename: 280
+      unidad-de-negocio: 150
+      area: 130
+      impacto-kpi: 160
+      status: 110
+      due: 110
+      formula.days_until_due: 110
+  - type: table
+    name: Completadas
+    filters:
+      and:
+        - status == "hecho"
+    order:
+      - updated
+      - file.basename
