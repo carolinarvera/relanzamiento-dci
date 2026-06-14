@@ -103,6 +103,7 @@ Antes de declarar un estado, hacer un plan o escribir arquitectura: lee el codig
 | [[02 - Personas/Proveedor Pauta digital Sebastian Diaz]] | Proveedor Pauta Digital | Meta Ads y AdSense para AXXIS y Diners. Reporte mensual. |
 | [[02 - Personas/Natalia Otalora]] | Cliente Davivienda — Visión | Contacto estratégico Visión Davivienda. Aprueba estrategias. Seguimiento compromisos. Recibe resultados. |
 | [[02 - Personas/Maria Angelica Navarro]] | Cliente Davivienda — Ed. Financiera | Jefe Educación Financiera. Aprueba estrategias. Seguimiento compromisos. Recibe resultados. |
+| [[02 - Personas/Natalia Castaño]] | Ejecutiva Comercial AXXIS y Diners | Comercial revistas impreso/digital. Co-operadora logística Experiencias Corredores Davivienda con Paola Pantaleon. Reporta a Carolina y Catalina. |
 
 ---
 
@@ -168,7 +169,7 @@ confidence: high | medium | stated | speculation
 ---
 ```
 
-**Cobertura actual: 42/42 notas principales con frontmatter (100% — auditado 2026-06-13). Tasks/ contiene notas tipo task con frontmatter propio.**
+**Cobertura actual: 44/44 notas principales con frontmatter (100% — auditado 2026-06-13, +Natalia Castaño +Meeting Libros). Tasks/ contiene notas tipo task con frontmatter propio.**
 
 ## Sistema de Tareas
 
@@ -307,6 +308,13 @@ Claude debe PREGUNTAR ANTES de guardar:
 | 2026-06-13 | Git sync | vault conectado a GitHub privado (gamma-vault). .gitignore configurado. Commit inicial 98 archivos. |
 | 2026-06-13 | Skills protocol | Protocolo Skills → Tasks Auto-Feed añadido. Growth skills depositan tareas automaticamente. |
 | 2026-06-13 | Google Sheets | Mis Tareas (Carolina, 18 tareas) y Equipo (33 tareas) creados en Google Drive via MCP. |
+| 2026-06-13 | Persona nueva | Natalia Castaño (Ejecutiva Comercial AXXIS/Diners + logística Experiencias) creada y enlazada |
+| 2026-06-13 | Nicolas Serna.md | Frontmatter duplicado corregido. For future Claude añadido. Wikilinks añadidos. Alianzas activas documentadas. |
+| 2026-06-13 | Libros.md | Frontmatter duplicado corregido. For future Claude añadido. Wikilinks añadidos (Nicolas, Carolina/Jason, Ernesto, Paola Gordillo). |
+| 2026-06-13 | Libros meeting | 06 - Meetings/libros/2026-06-11 estandarizada (frontmatter + For future Claude + wikilinks) |
+| 2026-06-13 | Tareas Libros | 6 tareas creadas desde reunión 2026-06-11 (Nicolas Serna × 5, Paola Gordillo × 1) |
+| 2026-06-13 | Experiencias meeting | Contenido corrupto (tabla Libros pegada por error) limpiado. PWA section header restaurado. |
+| 2026-06-13 | Conexiones Natalia Castaño | Propagada a: Organigrama, index, _CLAUDE.md, AXXIS.md, Diners.md, Experiencias.md |
 
 ---
 

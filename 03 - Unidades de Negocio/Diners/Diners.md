@@ -2,7 +2,7 @@
 date: 2026-06-12
 type: bu
 tags: [bu, diners, revista, cultura, lifestyle, gastronomia]
-related-people: [Paola Nossa, Paola Pantaleon, Ernesto Rodriguez, Carolina Ramirez]
+related-people: [Paola Nossa, Paola Pantaleon, Ernesto Rodriguez, Carolina Ramirez, Natalia Castano]
 related-projects: [Revenue-Growth, Alianzas-post-Privilegios]
 ai-first: true
 confidence: high

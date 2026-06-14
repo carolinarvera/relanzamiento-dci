@@ -2,7 +2,7 @@
 date: 2026-06-12
 type: bu
 tags: [bu, experiencias, alianzas, eventos, beneficios, suscriptores, vivir-la-revista, club-beneficios, davivienda]
-related-people: [Paola Pantaleon, Paola Nossa, Carolina Ramirez, Catalina Obregon]
+related-people: [Paola Pantaleon, Paola Nossa, Carolina Ramirez, Catalina Obregon, Natalia Castano]
 related-projects: [Alianzas-post-Privilegios, Revenue-Growth]
 sources: [06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]
 ai-first: true
@@ -10,7 +10,7 @@ confidence: high
 ---
 
 ## For future Claude
-Experiencias es la unidad de negocios de eventos, activaciones y beneficios de Ediciones Gamma — el reemplazo estratégico del programa Privilegios Davivienda (que cierra junio 2026 y representaba el 70% de ingresos de Revistas). Tiene DOS líneas activas: (1) venta de experiencias curadas para clientes Banca Privada Davivienda — 10 ya pagadas para 2026; (2) Club de Beneficios para suscriptores basado en el concepto "vivir la revista". Owner: Paola Pantaleón. La estrategia completa fue definida en la reunión del 2026-06-12 con Carolina. Hay acciones abiertas urgentes con fechas para la semana del 2026-06-16. La sesión de innovación AXXIS está programada para el 2026-06-27.
+Experiencias es la unidad de negocios de eventos, activaciones y beneficios de Ediciones Gamma — el reemplazo estratégico del programa Privilegios Davivienda (que cierra junio 2026 y representaba el 70% de ingresos de Revistas). Tiene DOS líneas activas: (1) venta de experiencias curadas para clientes Banca Privada Davivienda — 10 ya pagadas para 2026; (2) Club de Beneficios para suscriptores basado en el concepto "vivir la revista". Owner estratégico: Paola Pantaleón. Co-responsable logística y operativa: Natalia Castaño (contratos, cadena de suministro, trámites banco para Experiencias Corredores Davivienda). La estrategia completa fue definida en la reunión del 2026-06-12 con Carolina. Hay acciones abiertas urgentes con fechas para la semana del 2026-06-16. La sesión de innovación AXXIS está programada para el 2026-06-27.
 
 ---
 

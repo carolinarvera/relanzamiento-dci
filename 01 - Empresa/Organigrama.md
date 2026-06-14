@@ -2,19 +2,19 @@
 date: 2026-06-13
 type: reference
 tags: [organigrama, equipo, estructura, gamma]
-related-people: [Catalina Obregon, Carolina Ramirez, Jeison Montero, Nicolas Serna, Paola Nossa, Paola Pantaleon, Ernesto Rodriguez, Paola Gordillo]
+related-people: [Catalina Obregon, Carolina Ramirez, Jeison Montero, Nicolas Serna, Paola Nossa, Paola Pantaleon, Ernesto Rodriguez, Paola Gordillo, Natalia Castano]
 ai-first: true
 confidence: high
 ---
 
 ## For future Claude
-Organizational chart for Ediciones Gamma as of June 2026. Shows reporting lines: Catalina Obregón (CEO) → Carolina Ramírez (Head of Growth) with 5 direct reports. Note: document body says "Junio 2025" — incorrect, should be 2026.
+Organizational chart for Ediciones Gamma as of June 2026. Shows reporting lines: Catalina Obregón (CEO) → Carolina Ramírez (Head of Growth) with direct reports. Natalia Castaño is Ejecutiva Comercial AXXIS and Diners (reports to Catalina line), and also supports Experiencias logistics alongside Paola Pantaleon.
 
 ---
 
 # 🗂️ Organigrama — Ediciones Gamma
 
-> Actualizado: Junio 2025
+> Actualizado: Junio 2026
 
 ---
 
@@ -41,21 +41,23 @@ Organizational chart for Ediciones Gamma as of June 2026. Shows reporting lines:
 │
 └── ├── Lilo (Claudia Liliana) Comercial Revistas
     ├── Clara Comercial Revistas
-    ├── Natalia Cataño Comercial Revistas y Alianzas
-    └── Paola Pantaleon Comercial Revistas y Alianzas
+    ├── [[Natalia Castaño]] — Ejecutiva Comercial AXXIS y Diners · Soporte logístico Experiencias
+    └── [[Paola Pantaleon]] — Experiencias y Alianzas
+```
+
 ---
 
 ## Por Unidad de Negocio
 
 ### [[AXXIS]]
 - Editorial: Ramón Nivia (editor)
-- Comercial: Lilo · Clara · Natalia
+- Comercial: Lilo · Clara · [[Natalia Castaño]]
 - Marketing: [[Paola Nossa]]
 - Experiencias: [[Paola Pantaleon]]
 
 ### [[Diners]]
 - Editorial: [[Ernesto Rodriguez]]
-- Comercial: Lilo · Clara · Natalia Cataño · Paola 
+- Comercial: Lilo · Clara · [[Natalia Castaño]]
 - Marketing: [[Paola Nossa]]
 - Experiencias: [[Paola Pantaleon]]
 
@@ -65,7 +67,8 @@ Organizational chart for Ediciones Gamma as of June 2026. Shows reporting lines:
 - CM: [[Paola Gordillo]]
 
 ### [[Experiencias]]
-- [[Paola Pantaleon]] (líder)
+- [[Paola Pantaleon]] (líder estratégica)
+- [[Natalia Castaño]] (logística y operaciones — Corredores Davivienda)
 - [[Paola Nossa]] (colaboración)
 
 ### [[Educacion Financiera]] + [[Vision Davivienda]]

@@ -12,7 +12,7 @@ Catalogo completo del vault GammaVault generado el 2026-06-12. Lee este archivo 
 
 # GammaVault Index
 
-*Ultimo catalogo: 2026-06-13 | 42 notas — auditado y corregido (wikilinks, frontmatter 100%, alias Jason=Jeison, Estefania Ochoa, Natalia Otalora y Maria Angelica Navarro agregadas)*
+*Ultimo catalogo: 2026-06-13 | 44 notas (+Natalia Castaño) | 6 tareas nuevas Libros | task.md maestro con 46 tareas consolidadas (actualizar con Tasks/ folder para estado real)*
 
 ---
 
@@ -44,6 +44,7 @@ Catalogo completo del vault GammaVault generado el 2026-06-12. Lee este archivo 
 - [[02 - Personas/Proveedor Pauta digital Sebastian Diaz]] — Proveedor pauta META y AdSense para AXXIS y Diners. Reporte mensual.
 - [[02 - Personas/Natalia Otalora]] — Cliente estratégico de Visión Davivienda (Banco Davivienda). Aprueba estrategias, realiza seguimiento de compromisos, recibe resultados.
 - [[02 - Personas/Maria Angelica Navarro]] — Jefe Educación Financiera (Banco Davivienda). Cliente estratégico de Ed. Financiera. Aprueba estrategias, realiza seguimiento, recibe resultados.
+- [[02 - Personas/Natalia Castaño]] — Ejecutiva Comercial AXXIS y Diners. Soporte logístico Experiencias Corredores Davivienda. Co-equipa con Paola Pantaleon en operaciones.
 
 ---
 
@@ -98,6 +99,7 @@ Catalogo completo del vault GammaVault generado el 2026-06-12. Lee este archivo 
 
 ## Raiz del Vault
 
+- [[task]] - **Master task list consolidado.** 47 tareas de todo el vault, organizadas por persona y BU, con prioridad, due date y enlace a nota fuente. Escaneo completo 2026-06-13.
 - [[_CLAUDE]] - Manual operativo de Claude para este vault. Leer antes de cualquier accion.
 - [[Bases/Tasks]] - Vista equipo: todas las tareas agrupadas por persona y por BU. 5 vistas: Por Persona, Por BU, Urgentes, Completadas, Todas.
 - [[Bases/Mis-Tareas]] - Vista personal: tareas asignadas únicamente a Carolina Ramirez. 4 vistas: Mis pendientes, Por BU, Alta prioridad, Completadas.

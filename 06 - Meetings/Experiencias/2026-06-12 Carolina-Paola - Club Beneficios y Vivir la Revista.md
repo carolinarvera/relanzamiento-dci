@@ -56,46 +56,17 @@ Se explicó la creación de un modelo de negocio basado en venta de **experienci
 - **Próximo:** Galería El Dorado con la fundadora y los artistas
 
 ### Estado
-- Primera experiencia (Juan de Dios) → ✅ Ejecutada exitosamente
-- Feedback de Catalina: positivo (silencio = aprobación)
-- Rol de Carolina: vincular proveedores, contratos, confirmación asistencia, documentar
+- Primera experiencia (Juan de Dios Salud + Belleza) ya ejecutada ✅ — fue un éxito. Feedback CEO: positivo.
 
 ---
 
-## 2. Beneficios para suscriptores — Concepto Estratégico
+## 2. Club de Beneficios — Plataforma Tecnológica
 
-### La idea
-> Cada artículo de la revista conecta con un beneficio tangible para el suscriptor.
-
-**Ejemplo:** Artículo sobre restaurante Río → al final del artículo, suscriptor puede "vivir" esa experiencia con 20% de descuento presentando su credencial.
-
-### Dos tipos de beneficios
-1. **Beneficios fijos permanentes** — siempre disponibles: "20% en Bodytech", "descuento en red de restaurantes"
-2. **Beneficios temporales editoriales** — vinculados a la nota de cada edición, cambian mes a mes
-
-### Modelo de monetización para Gamma
-- El aliado NO paga a Gamma por aparecer
-- El aliado da el descuento/beneficio al suscriptor
-- Gamma cobra al aliado por visibilidad editorial adicional (digital + banner + keywords en zona premium)
-- Gamma NO pone un peso en los descuentos
-
----
-
-## Necesidades identificadas
-
-### 1. Plataforma Tecnológica Requerida
-- Identificación del suscriptor (credencial digital, QR, wallet, o cédula)
-- Trazabilidad de redenciones (¿quién redimió, qué, cuándo?)
-- Reservas online (tipo booking)
-- Reporte de ahorros al suscriptor
-- Vista 360 del comportamiento del usuario
-
-### Opciones evaluadas
-| Opción | Pros | Contras |
-|--------|------|---------|
-| Validación por cédula | Simple, bajo costo | Sin trazabilidad real, los establecimientos no llenan datos |
-| Web service (PWA) | Accessible desde celular, trazabilidad completa | Requiere desarrollo |
+| Opción | Ventajas | Desventajas |
+|--------|----------|-------------|
 | App nativa | Mejor UX, puntos, gamificación | Personas no quieren descargar más apps |
+| Web service (PWA) | Cáscara de app, se alimenta de web, misma info en celular y desktop | Menor UX nativa |
+| Microsite dedicado | Fácil de lanzar | No se siente como producto propio | Completa | Requiere desarrollo |
 
 **Conclusión:** Web service (PWA) es la opción óptima — cáscara de app, se alimenta de web, misma info en celular y desktop.
 

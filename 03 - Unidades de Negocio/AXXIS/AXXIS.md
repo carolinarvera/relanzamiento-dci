@@ -2,7 +2,7 @@
 date: 2026-06-12
 type: bu
 tags: [bu, axxis, revista, arquitectura, diseno]
-related-people: [Paola Nossa, Paola Pantaleon, Ernesto Rodriguez, Carolina Ramirez]
+related-people: [Paola Nossa, Paola Pantaleon, Ernesto Rodriguez, Carolina Ramirez, Natalia Castano]
 related-projects: [Revenue-Growth, Estrategia-Digital]
 ai-first: true
 confidence: high
