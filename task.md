@@ -103,6 +103,9 @@ Master consolidated task list for Ediciones Gamma as of 2026-06-13. Generated vi
 | 6 | Revisar tráfico internacional sospechoso Mi Negocio — EE.UU. 25%, Japón 7%, China 3% (35% total) en plataforma para PyMEs colombianas. Evaluar bot filtering | 2026-06-23 | 🟡 Media | pendiente | [[Tasks/2026-06-13 Jeison Montero - Revisar trafico internacional sospechoso Mi Negocio]] |
 | 7 | Diagnóstico técnico de las 5 plataformas Ed. Financiera (paso 1 Consolidación) | Sin fecha | 🔴 Alta | pendiente | [[05 - PMO/Portfolio Proyectos]] |
 | 8 | Mapeo de contratos y proveedores plataformas (paso 2 Consolidación) | Sin fecha | 🔴 Alta | pendiente | [[05 - PMO/Portfolio Proyectos]] |
+| 9 | Solicitar al proveedor MFxMiNegocio confirmación mensual explícita de exclusión dominio Spira del GA4 + incluir en todo informe futuro | 2026-06-20 | 🔴 Alta | pendiente | [[Tasks/2026-06-14 Jeison Montero - Excluir dominio Spira GA4 MFxMiNegocio]] |
+| 10 | Solicitar al proveedor de Mis Finanzas para Invertir mejoras en informe mensual: comparativo mes anterior, desglose Email, detalle Paid Search, fuentes Referral, Top 10 artículos | 2026-06-25 | 🟡 Media | pendiente | [[Tasks/2026-06-14 Jeison Montero - Mejoras informe mensual MFxInvertir]] |
+| 11 | Solicitar al proveedor de Mis Finanzas para Mi Negocio mejoras en informe mensual: comparativo mes anterior, claridad tráfico internacional (US 25%), detalle Paid Other, Top 10 artículos | 2026-06-25 | 🟡 Media | pendiente | [[Tasks/2026-06-14 Jeison Montero - Mejoras informe mensual MFxMiNegocio]] |
 
 ---
 

@@ -173,6 +173,30 @@ Mayo 2026 = nueva línea base. Comparar junio en adelante contra mayo (no contra
 
 ---
 
+## 📋 Solicitudes al Proveedor — Incluir desde Junio 2026
+
+> Solicitudes definidas a partir del diagnóstico de mayo. Comunicar a [[Maria Angelica Navarro]] / proveedor antes del próximo cierre de mes.
+
+### 🔴 Prioritarias (sin esto el análisis queda incompleto)
+
+| # | Solicitud | Por qué la necesitamos |
+|---|-----------|------------------------|
+| 1 | **Comparativo mes anterior para todas las métricas principales** — incluir columna con delta % real (no vs abril-cero) | Sin esto no podemos medir tendencia real mes a mes |
+| 2 | **Desglose de Email por tipo de envío** — distinguir entre: informe diario / newsletter / campañas puntuales / alertas | Email es el canal #1 (72% de usuarios) pero no sabemos qué envíos generan más tráfico |
+| 3 | **Detalle de Paid Search** — plataforma exacta, presupuesto ejecutado, CPC, y por qué tiene 100% rebote | Presupuesto pagado con cero retorno — necesitamos entender qué está pasando |
+| 4 | **Fuentes de Referral desglosadas** — ¿desde qué sitios/dominios llega este tráfico? | Referral tiene 74.82% de interacción — el mejor canal de calidad. Necesitamos saber de dónde viene para fortalecerlo |
+
+### 🟡 Importantes (mejoran análisis de contenido)
+
+| # | Solicitud | Por qué la necesitamos |
+|---|-----------|------------------------|
+| 5 | **Ampliar Top 5 a Top 10 artículos** — con sesiones + tiempo promedio por artículo | Solo con top 5 perdemos la mitad del patrón editorial |
+| 6 | **Tiempo promedio de sesión por artículo** (no solo promedio global) | Saber qué artículos retienen vs cuáles generan rebote inmediato |
+| 7 | **Métricas de redes sociales** — seguidores actuales, alcance del mes, engagement (si la plataforma tiene RRSS activas) | No están en el informe actual y son necesarias para evaluar la estrategia de distribución |
+| 8 | **Descargas de e-books por canal de origen** — ¿desde qué canal descarga la gente? ¿email? ¿orgánico? | CDT's domina el 82% de descargas — necesitamos saber desde dónde para replicar |
+
+---
+
 ## Relacionado
 
 [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Educacion Financiera]] · [[02 - Personas/Maria Angelica Navarro]] · [[02 - Personas/Jeison Montero]] · [[02 - Personas/Ernesto Rodriguez]] · [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Backlog Solicitudes Editoriales 2026]]

@@ -217,6 +217,30 @@ Monthly performance report for "Mis Finanzas para Mi Negocio" platform (SME-focu
 
 ---
 
+## 📋 Solicitudes al Proveedor — Incluir desde Junio 2026
+
+> Solicitudes definidas a partir del diagnóstico de mayo. Comunicar a [[Maria Angelica Navarro]] / proveedor antes del próximo cierre de mes.
+
+### 🔴 Prioritarias (críticas — afectan confiabilidad de los datos)
+
+| # | Solicitud | Por qué la necesitamos |
+|---|-----------|------------------------|
+| 1 | **Confirmación de exclusión de dominio Spira** — incluir cada mes una línea explícita: "Dominio `lbmisfinanzasparaminegocio.spira.co` excluido del tracking GA4" | En mayo generó 381 sesiones falsas (33% del total). Sin confirmación mensual no podemos validar que los datos son reales |
+| 2 | **Comparativo mes anterior para todas las métricas principales** — columna con delta % real | Sin esto no podemos medir tendencia ni saber si la plataforma está creciendo o cayendo |
+| 3 | **Claridad sobre tráfico internacional (US 25%, Japón 7%, China 3%)** — ¿es tráfico real o bots? Si es posible, agregar filtro de audiencia Colombia-only en el reporte | Para una plataforma de PyMEs colombianas, el 35% de tráfico internacional distorsiona todos los KPIs de cumplimiento |
+| 4 | **Detalle de "Paid Other"** — plataforma exacta, presupuesto, CPC. En mayo: 100% rebote, 0% interacción | Presupuesto pagado con cero retorno — necesitamos entender qué plataforma y por qué falla |
+
+### 🟡 Importantes (mejoran análisis de contenido)
+
+| # | Solicitud | Por qué la necesitamos |
+|---|-----------|------------------------|
+| 5 | **Ampliar Top 5 a Top 10 artículos** — con sesiones + tiempo promedio por artículo | La plataforma tiene poco volumen — ver top 10 es necesario para patrones editoriales |
+| 6 | **Desglose de Referral** — desde qué sitios/dominios llega este tráfico (Referral tiene 58.97% interacción — segundo mejor canal) | Si sabemos el origen, podemos fortalecer esas fuentes |
+| 7 | **Métricas de redes sociales** — seguidores, alcance, engagement (si tiene RRSS activas) | Organic Social tiene 63.89% interacción — mejor canal de calidad. Queremos ver su evolución |
+| 8 | **Descargas de e-books por canal de origen** — ¿desde dónde descarga la gente? | Solo 6 descargas en el mes — necesitamos saber si el problema es el e-book, el canal, o la visibilidad |
+
+---
+
 ## Relacionado
 
 [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Educacion Financiera]] · [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Invertir/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Invertir]] · [[02 - Personas/Maria Angelica Navarro]] · [[02 - Personas/Jeison Montero]] · [[02 - Personas/Ernesto Rodriguez]]

@@ -131,6 +131,20 @@ Antes de declarar un estado, hacer un plan o escribir arquitectura: lee el codig
 
 ---
 
+## ⚠️ REGLA CRÍTICA — Plataformas Davivienda (NO MEZCLAR)
+
+Estas son **tres plataformas completamente distintas** con proveedores, KPIs, contactos y datos separados:
+
+| Plataforma | Carpeta en vault | Contacto cliente | Formato de informe | Acceso datos |
+|---|---|---|---|---|
+| **Visión Davivienda** | `Plataformas/Vision Davivienda/` | [[Natalia Otalora]] | **Looker Studio** (link compartido por proveedor) | Sin acceso directo GA4 — datos vía reporte Looker |
+| **Mis Finanzas para Invertir** | `Plataformas/Educacion Financiera/Mis Finanzas para Invertir/` | [[Maria Angelica Navarro]] | **PDF mensual** | Sin acceso directo GA4 |
+| **Mis Finanzas para Mi Negocio** | `Plataformas/Educacion Financiera/Mis Finanzas para Mi Negocio/` | [[Maria Angelica Navarro]] | **PDF mensual** | Sin acceso directo GA4 |
+
+**Antes de editar cualquier nota de estas plataformas: verificar carpeta y contacto. NUNCA mezclar KPIs, métricas ni tareas entre ellas.**
+
+---
+
 ## Convenciones de Nomenclatura
 
 - Minutas: `YYYY-MM-DD Persona - Tema.md` (espacio entre fecha y nombre, no guion)
