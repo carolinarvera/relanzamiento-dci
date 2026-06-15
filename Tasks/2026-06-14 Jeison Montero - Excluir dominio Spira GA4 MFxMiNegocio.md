@@ -17,12 +17,7 @@ ai-first: true
 
 Spira es el ambiente de pruebas que usa el proveedor para desarrollar y testear la plataforma Mis Finanzas para Mi Negocio. Cuando los desarrolladores entran al sitio de pruebas para revisar cambios, esas visitas se están contando como si fueran visitas de usuarios reales en el reporte de analytics.
 
-En mayo 2026, ese ambiente de pruebas generó **381 sesiones falsas** — el 33% del total reportado.
-
-Esto significa que:
-- El informe dice 1,149 sesiones reales
-- La realidad: ~768 sesiones reales + 381 de los desarrolladores del proveedor
-- Todas las métricas del mes están distorsionadas: rebote, duración, usuarios — todo inflado o alterado por tráfico que no es nuestro
+En mayo 2026, ese ambiente de pruebas generó **38 sesiones de prueba** — el 3.3% del total reportado. No es un volumen que distorsione gravemente los KPIs, pero es incorrecto que aparezca: es tráfico interno del proveedor contando como si fuera tráfico de usuarios reales.
 
 **En resumen:** el proveedor está mezclando su propio tráfico interno con el nuestro, y eso hace que los números no sean reales.
 

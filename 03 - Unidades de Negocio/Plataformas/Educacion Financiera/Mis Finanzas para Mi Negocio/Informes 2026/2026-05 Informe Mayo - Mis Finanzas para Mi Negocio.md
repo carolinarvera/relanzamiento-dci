@@ -10,7 +10,7 @@ confidence: stated
 ---
 
 ## For future Claude
-Monthly performance report for "Mis Finanzas para Mi Negocio" platform (SME-focused, part of Davivienda's Educación Financiera ecosystem), May 2026. Platform was unmeasured in April — May is a restart/baseline month. KPIs are critically below target: Vistas 10.2%, Usuarios 7.8% — WORSE than Mis Finanzas para Invertir. Two critical technical alerts: (1) test environment Spira.co appearing in top URLs with 381 sessions, polluting analytics data; (2) Paid Other has 100% bounce rate. Organic channels show good content quality. [[Maria Angelica Navarro]] is the client contact. Compare with [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Invertir/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Invertir]].
+Monthly performance report for "Mis Finanzas para Mi Negocio" platform (SME-focused, part of Davivienda's Educación Financiera ecosystem), May 2026. Platform was unmeasured in April — May is a restart/baseline month. KPIs are critically below target: Vistas 10.2%, Usuarios 7.8% — WORSE than Mis Finanzas para Invertir. Two technical alerts: (1) test environment Spira.co appearing in top URLs with 38 sessions (3.3% of total — not critical but should be excluded); (2) Paid Other has 100% bounce rate. Organic channels show good content quality. [[Maria Angelica Navarro]] is the client contact. Compare with [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Invertir/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Invertir]].
 
 ---
 
@@ -52,13 +52,13 @@ Monthly performance report for "Mis Finanzas para Mi Negocio" platform (SME-focu
 
 | # | URL | Sesiones | Alerta |
 |---|-----|----------|--------|
-| 1 | `misfinanzasparaminegocio.com/` (Home) | 602 | |
-| 2 | `lbmisfinanzasparaminegocio.spira.co/` | 381 | 🔴 Ambiente de pruebas |
-| 3 | `/category/su-negocio-digital/` | 36 | |
-| 4 | `/herramientas/` | 34 | |
-| 5 | `/category/negocio-sostenible/` | 31 | |
+| 1 | `www.misfinanzasparaminegocio.com/` (Home) | 602 | |
+| 2 | `lbmisfinanzasparaminegocio.spira.co/` | 38 | 🔴 Ambiente de pruebas |
+| 3 | `www.misfinanzasparaminegocio.com/category/su-negocio-digital/` | 36 | |
+| 4 | `www.misfinanzasparaminegocio.com/herramientas/` | 34 | |
+| 5 | `www.misfinanzasparaminegocio.com/category/negocio-sostenible/` | 31 | |
 
-> 🔴 **ALERTA TÉCNICA:** El ambiente Spira (`lbmisfinanzasparaminegocio.spira.co`) aparece en el top de URLs con 381 sesiones — es un entorno de pruebas, no tráfico real. Estas sesiones están contaminando todos los indicadores del mes. El número real de sesiones podría ser ~768 (1,149 - 381). Escalar urgente a [[Jeison Montero]] para excluirlo del tracking.
+> 🔴 **ALERTA TÉCNICA:** El ambiente Spira (`lbmisfinanzasparaminegocio.spira.co`) aparece en el top de URLs con 38 sesiones — es un entorno de pruebas, no tráfico real. Representa el 3.3% del total de sesiones del mes. No distorsiona gravemente los KPIs pero no debería aparecer en producción. Escalar a [[Jeison Montero]] para excluirlo del tracking GA4.
 
 ---
 
@@ -192,7 +192,7 @@ Monthly performance report for "Mis Finanzas para Mi Negocio" platform (SME-focu
 
 ### 🔴 Alertas críticas
 
-1. **Ambiente Spira en producción** — `lbmisfinanzasparaminegocio.spira.co` genera 381 sesiones que contaminan todos los KPIs. El real total de sesiones podría ser ~768. Escalar urgente a [[Jeison Montero]]: excluir dominio Spira del tracking de GA4.
+1. **Ambiente Spira en producción** — `lbmisfinanzasparaminegocio.spira.co` genera 38 sesiones (3.3% del total). No distorsiona gravemente los KPIs pero es tráfico de pruebas que no debería aparecer. Escalar a [[Jeison Montero]]: excluir dominio Spira del tracking GA4.
 2. **Paid Other: 100% rebote, 0% interacción** — igual que Mis Finanzas para Invertir. Es un patrón de problema sistemático en pauta pagada en las plataformas de Ed. Financiera.
 3. **KPIs en situación más crítica que la otra plataforma** — Vistas al 2.5% anual, Usuarios al 2.6%. Sin corrección estructural, no se llegará a ninguna meta 2026.
 4. **Tráfico internacional sospechoso** — EE.UU. (25%), Japón (7%), China (3%) en una plataforma para PyMEs colombianas. Probable tráfico no calificado que infla usuarios y deprime las tasas de conversión.
@@ -225,7 +225,7 @@ Monthly performance report for "Mis Finanzas para Mi Negocio" platform (SME-focu
 
 | # | Solicitud | Por qué la necesitamos |
 |---|-----------|------------------------|
-| 1 | **Confirmación de exclusión de dominio Spira** — incluir cada mes una línea explícita: "Dominio `lbmisfinanzasparaminegocio.spira.co` excluido del tracking GA4" | En mayo generó 381 sesiones falsas (33% del total). Sin confirmación mensual no podemos validar que los datos son reales |
+| 1 | **Confirmación de exclusión de dominio Spira** — incluir cada mes una línea explícita: "Dominio `lbmisfinanzasparaminegocio.spira.co` excluido del tracking GA4" | En mayo generó 38 sesiones de prueba (3.3% del total). Sin confirmación mensual no podemos validar que los datos son reales |
 | 2 | **Comparativo mes anterior para todas las métricas principales** — columna con delta % real | Sin esto no podemos medir tendencia ni saber si la plataforma está creciendo o cayendo |
 | 3 | **Claridad sobre tráfico internacional (US 25%, Japón 7%, China 3%)** — ¿es tráfico real o bots? Si es posible, agregar filtro de audiencia Colombia-only en el reporte | Para una plataforma de PyMEs colombianas, el 35% de tráfico internacional distorsiona todos los KPIs de cumplimiento |
 | 4 | **Detalle de "Paid Other"** — plataforma exacta, presupuesto, CPC. En mayo: 100% rebote, 0% interacción | Presupuesto pagado con cero retorno — necesitamos entender qué plataforma y por qué falla |

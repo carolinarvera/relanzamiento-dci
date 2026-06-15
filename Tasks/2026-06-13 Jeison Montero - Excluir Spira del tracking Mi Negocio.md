@@ -13,4 +13,4 @@ tags: [task, educacion-financiera, analytics, spira, tracking, mi-negocio]
 ai-first: true
 ---
 
-El dominio de ambiente de pruebas `lbmisfinanzasparaminegocio.spira.co` aparece en el top de URLs de Google Analytics con 381 sesiones en mayo 2026 — contaminando todos los KPIs de la plataforma. Las sesiones reales son aprox. 768 (1,149 - 381). Excluir dominio Spira del tracking en GA4 mediante filtro de propiedad o exclusión de hostname. Confirmar con [[Carolina Ramirez]] y [[Maria Angelica Navarro]] el impacto en los reportes anteriores.
+El dominio de ambiente de pruebas `lbmisfinanzasparaminegocio.spira.co` aparece en el top de URLs de Google Analytics con **38 sesiones** en mayo 2026 (3.3% del total de 1,149 sesiones). No distorsiona gravemente los KPIs pero es tráfico del proveedor que no debería aparecer en producción. Excluir dominio Spira del tracking en GA4 mediante filtro de propiedad o exclusión de hostname. Confirmar con [[Carolina Ramirez]] y [[Maria Angelica Navarro]].
