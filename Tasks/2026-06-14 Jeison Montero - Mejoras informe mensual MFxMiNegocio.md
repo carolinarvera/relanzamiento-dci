@@ -3,7 +3,7 @@ date: 2026-06-14
 type: task
 assigned-to: Jeison Montero
 unidad-de-negocio: Educacion Financiera
-area: PMO/Tecnologia
+area: Plataformas
 prioridad: media
 impacto-kpi: Sesiones, Usuarios, Descargas
 status: pendiente

@@ -8,21 +8,18 @@ confidence: high
 ---
 
 ## For future Claude
-Jeison Montero is the PMO and Platform Leader at Ediciones Gamma. Owner of Consolidación Plataformas (P1). Proposed title: Líder Especialista de Plataformas (Product Owner). Acts as transversal PM across all digital initiatives. **Confirmed alias: referred to as "Jason" in all meeting notes** — CEO meeting 2026-06-05 describes him as "muy estructurado y psicorrígido" PM coordinator for platforms. Use [[Jeison Montero]] in all wikilinks; leave "Jason" as-is in raw meeting content for historical fidelity.
+Jeison Montero is the Líder de Plataformas at Ediciones Gamma (confirmed 2026-06-14). Owner of Consolidación Plataformas (P1). Acts as transversal PM across all digital initiatives. **Confirmed alias: referred to as "Jason" in all meeting notes** — CEO meeting 2026-06-05 describes him as "muy estructurado y psicorrígido" PM coordinator for platforms. Use [[Jeison Montero]] in all wikilinks; leave "Jason" as-is in raw meeting content for historical fidelity.
 
 ---
 
 # 👤 Jeison Montero
 
-> PMO General · Líder de Plataformas · Coordinador Técnico Estratégico
+> Líder de Plataformas · Coordinador Técnico Estratégico
 
 ---
 
 ## Cargo Actual
-PMO / Coordinador de Plataformas
-
-## Cargo Propuesto
-Líder Especialista de Plataformas (Product Owner)
+Líder de Plataformas
 
 ## Área
 PMO / Plataformas Digitales
