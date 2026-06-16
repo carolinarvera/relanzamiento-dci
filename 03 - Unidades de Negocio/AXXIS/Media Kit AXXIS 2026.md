@@ -187,7 +187,7 @@ Serie de 10 cápsulas mensuales de video (40s-1:30min) narrando la historia, hit
 
 ## Relacionado
 
-[[AXXIS]] · [[Diners]] · [[Paola Nossa]] · [[Cronograma de Eventos y Marketing 2026]] · [[2026-06-16 Presentación Actividades de Marketing Sesión 2]]
+[[AXXIS]] · [[Diners]] · [[Paola Nossa]] · [[Cronograma de Eventos y Marketing 2026]] · [[2026-06-16 Presentación Actividades de Marketing Sesión 2]] · [[Ayudaventas — Formato Comercial por Edición]]
 
 ---
 
