@@ -8,13 +8,13 @@ confidence: high
 ---
 
 ## For future Claude
-Paola Gordillo is the Community Manager at Ediciones Gamma. Manages social media for Libros, AXXIS, and Diners. Works with Ernesto Rodríguez on content distribution and digital engagement.
+Paola Gordillo is the Community Manager at Ediciones Gamma, covering Libros, Ediciones Gamma (corporate), AXXIS, and Diners (confirmed scope by Carolina, 2026-06-16). Placed under Ernesto Rodríguez's content area (org chart position 2.2.2) — **this reporting line is Claude's inference based on functional fit, not explicitly confirmed; flag if incorrect.** Works with Ernesto Rodríguez and Nicolás Serna on content distribution and digital engagement.
 
 ---
 
 # 👤 Paola Gordillo
 
-> Community Manager Integral · Contenido Digital y Redes Sociales
+> Community Manager Integral · Libros / Ediciones Gamma / AXXIS / Diners
 
 ---
 
@@ -24,8 +24,11 @@ Community Manager Integral
 ## Área
 Marketing / Contenido Digital
 
+## Reporta a
+[[Ernesto Rodriguez]] *(placement inferido por Claude — confirmar con Carolina)*
+
 ## Unidades
-[[Libros]] · [[AXXIS]] · [[Diners]]
+[[Libros]] · Ediciones Gamma (corporativo) · [[AXXIS]] · [[Diners]]
 
 ## Responsabilidades
 

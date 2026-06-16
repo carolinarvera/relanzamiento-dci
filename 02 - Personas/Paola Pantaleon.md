@@ -8,18 +8,18 @@ confidence: high
 ---
 
 ## For future Claude
-Paola Pantaleón leads Experiencias y Alianzas at Ediciones Gamma. Owner of the post-Privilegios Davivienda alliance recovery plan (P1 — most critical revenue initiative for Revistas). Also manages Podcast AXXIS. Works closely with Paola Nossa. Canonical wikilink: [[Paola Pantaleon]] (no accent).
+Paola Pantaleón leads Experiencias y Alianzas at Ediciones Gamma — official title as of 2026-06-16: "Líder de Experiencias y Segmento Banca Privada" (org chart position 2.4, reports to Carolina Ramírez). She also has a part-time dual role supporting Área Comercial (2.6.3) alongside Clara, Natalia Castaño and Lilo. Owner of the post-Privilegios Davivienda alliance recovery plan (P1 — most critical revenue initiative for Revistas). Also manages Podcast AXXIS. Works closely with Paola Nossa. Canonical wikilink: [[Paola Pantaleon]] (no accent).
 
 ---
 
 # 👤 Paola Pantaleón
 
-> Experiencias y Alianzas · Beneficios Suscriptores · Podcast AXXIS
+> Líder de Experiencias y Segmento Banca Privada · Beneficios Suscriptores · Podcast AXXIS · Apoyo medio tiempo Área Comercial
 
 ---
 
 ## Cargo
-Experiencias y Alianzas
+Líder de Experiencias y Segmento Banca Privada (rol principal) · Apoyo medio tiempo al Área Comercial
 
 ## Área
 [[Experiencias]]

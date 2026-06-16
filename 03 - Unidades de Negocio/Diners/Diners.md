@@ -9,7 +9,11 @@ confidence: high
 ---
 
 ## For future Claude
-Diners is Ediciones Gamma's culture, gastronomy, and lifestyle magazine (60+ years). Revenue (June 2026): Impreso 160% del obj. mensual, Digital 115% del obj. mensual — pero negociaciones anuales acumuladas en solo 49% ($159.8M de $329.4M), el peor gap anual de todas las revistas Gamma. Riesgo de concentración: KEVINS JOYEROS = 46% del ppto anual. Digital no existe como canal real: $3.45M COP en Meta Ads → 1 sola suscripción (CVR 0.002%). Cero presencia en TikTok, YouTube, Podcast, Newsletter. Plan H2 2026: lanzar TikTok (cara: Ernesto Rodríguez), Podcast "La Mesa de Diners", Newsletter premium y Carnet Digital antes de octubre 2026 para cerrar el gap de $169.6M sin depender de Privilegios Davivienda. Fuente: Dashboard Diners_Tabs_2026-06 (9 tabs, as of 2026-06-16).
+Diners is Ediciones Gamma's culture, gastronomy, and lifestyle magazine (60+ years). Revenue (June 2026): Impreso 160% del obj. mensual, Digital 115% del obj. mensual — pero negociaciones anuales acumuladas en solo 49% ($159.8M de $329.4M), el peor gap anual de todas las revistas Gamma. Riesgo de concentración: KEVINS JOYEROS = 46% del ppto anual. Digital no existe como canal real: $3.45M COP en Meta Ads → 1 sola suscripción (CVR 0.002%). Cero presencia en TikTok, YouTube, Podcast, Newsletter. Plan H2 2026: lanzar TikTok (cara: Ernesto Rodríguez), Podcast "La Mesa de Diners", Newsletter premium y Carnet Digital antes de octubre 2026 para cerrar el gap de $169.6M sin depender de Privilegios Davivienda.
+
+**Corrección importante (informe GA4 + Meta Business real, mayo 2026, as of 2026-06-16):** el tráfico web NO sigue cayendo — mayo 2026 cerró con 256,079 vistas (+58.4% vs abril) y 217,684 sesiones (+65.1%), mejor que el promedio 2025. El dato de "caída 44% YoY" del dashboard solo aplicaba a ene-feb 2026 (antes del acceso a GA4). Además, Instagram tiene 97,011 seguidores reales (Meta Business), no los ~40K estimados en el dashboard — corregir esa cifra donde aparezca. Ver sección "Informe Web & Redes — Mayo 2026 (datos reales)" más abajo.
+
+Fuentes: Dashboard Diners_Tabs_2026-06 (9 tabs, as of 2026-06-16) + Informe Web Mayo 2026 - Equipo Growth Marketing (Keynote, as of 2026-06-16).
 
 ---
 
@@ -158,7 +162,8 @@ Diners is Ediciones Gamma's culture, gastronomy, and lifestyle magazine (60+ yea
 - [[Paola Pantaleon]]
 
 **Contenido Editorial:**
-- [[Ernesto Rodriguez]]
+- [[Ernesto Rodriguez]] — Líder Técnico de Contenido (transversal AXXIS/Diners/Gamma)
+- Sandra Martínez — Editora de Diners (reporta a [[Ernesto Rodriguez]])
 
 ---
 
@@ -195,19 +200,24 @@ Diners is Ediciones Gamma's culture, gastronomy, and lifestyle magazine (60+ yea
 ---
 
 ## Tráfico Web — Histórico
-> Fuente: Dashboard Diners_Tabs_2026-06, tab Web & CRO (as of 2026-06-16)
+> Fuente: Dashboard Diners_Tabs_2026-06, tab Web & CRO (as of 2026-06-16) + Informe Web Mayo 2026 GA4 real (as of 2026-06-16)
 
-| Período | Páginas Vistas | Usuarios Únicos | AdSense (COP) | Estado |
-|---------|----------------|------------------|----------------|--------|
-| 2020 (Total) | 10,862,290 | — | — | 🟢 Peak histórico (boom pandemia) |
-| 2025 (Total) | 3,213,940 | 2,214,429 | $2,371,457 | 🟡 Promedio 267,828 pág/mes |
-| 2026 — Enero | 154,519 | 92,787 | $89,680 | 🔴 ↓ vs 2025 |
-| 2026 — Febrero | 144,257 | 86,918 | $97,318 | 🔴 ↓44% YoY confirmado |
-| 2026 — Mar a May | Pendiente GA4 | Pendiente GA4 | $41,756 / $92,625 / $72,108 | 🔵 Sin acceso GA4 activo |
+| Período | Páginas Vistas (Vistas) | Sesiones | Usuarios Únicos | AdSense (COP) | Estado |
+|---------|------------------------|----------|------------------|----------------|--------|
+| 2020 (Total) | 10,862,290 | — | — | — | 🟢 Peak histórico (boom pandemia) |
+| 2025 (Total) | 3,213,940 | — | 2,214,429 | $2,371,457 | 🟡 Promedio 267,828 pág/mes |
+| 2026 — Enero | 154,519 | 121,359 | 101,462 | $89,680 | 🔴 ↓ vs 2025 |
+| 2026 — Febrero | 144,257 | 114,075 | 93,846 | $97,318 | 🔴 ↓44% YoY (peor mes) |
+| 2026 — Marzo | 351,475 | 305,569 | 248,931 | $41,756 | 🟢 Mejor mes del año |
+| 2026 — Abril | 161,716 | 131,812 | 112,170 | $92,625 | 🟡 Corrección post-marzo |
+| 2026 — Mayo | 256,079 | 217,684 | 190,951 | $72,108 | 🟢 +58.4% vs abril — recuperación confirmada |
+| 2026 — Junio (1-11) | 66,946 (parcial) | — | 43,282 | — | 🔵 En curso |
+
+**⚠️ Corrección vs diagnóstico previo:** el dashboard reportaba "tráfico cayendo 44% YoY" basado solo en ene-feb 2026 (sin acceso a GA4 para mar-may). Con datos reales de GA4, **mayo 2026 muestra recuperación clara**: vistas +58.4%, sesiones +65.1%, usuarios +70.2% vs abril. El patrón real es una caída en ene-feb seguida de recuperación volátil (pico marzo, caída abril, repunte mayo) — no una caída sostenida.
 
 **AdSense YTD 2026:** $393,487 COP ($109.3 USD) acumulado a mayo. Meta anual: $600K COP (~$78K/mes necesarios para llegar).
 
-**CRO — diagnóstico:** Sin flujo de conversión a suscripción optimizado, sin GSC activo (no se sabe qué keywords posicionan), sin medición de Core Web Vitals ni auditoría mobile UX.
+**CRO — diagnóstico:** Sin flujo de conversión a suscripción optimizado, sin GSC activo (no se sabe qué keywords posicionan), sin medición de Core Web Vitals ni auditoría mobile UX. Mayo: usuarios nuevos 173,972 (+75.1%), rebote 70% (+23.2%), duración media sesión 00:00:54 (-37.3% — meta 1:20), interacciones 29.9% (-30.6%). Visitas/usuario: 1.47 (meta: 3).
 
 ### Root Cause — Por Qué 1 Sola Conversión en Meta Ads
 > Fuente: Dashboard Diners_Tabs_2026-06, tab Pauta Digital (as of 2026-06-16)
@@ -225,6 +235,47 @@ Diners is Ediciones Gamma's culture, gastronomy, and lifestyle magazine (60+ yea
 
 ---
 
+## Informe Web & Redes — Mayo 2026 (datos reales GA4 + Meta Business)
+> Fuente: Informe Web Mayo 2026 - Equipo Growth Marketing (Keynote, as of 2026-06-16)
+
+### Tráfico por Sección
+| Sección | Vistas | Crecimiento vs abril | Nota |
+|---------|--------|----------------------|------|
+| Cultura | 118,928 | +84.8% | Sección líder. Pico 13,470 vistas el 25 may. Top artículo: "Gracias Botero" (23,964 vistas) |
+| Estilo de Vida | 35,801 | +15.8% | Pico 1,868 vistas el 9 may. Top: destinos aguas termales (5,274 vistas) |
+| Gastronomía | 30,276 | +185.6% | Mayor crecimiento porcentual de todas las secciones |
+
+Foco editorial actual: viajes y gastronomía. Estrategia de cargue de contenido a secciones secundarias para posicionar el resto de la web (Tendencias se mantiene estable).
+
+### Artículos Más Leídos — Mayo 2026
+| # | Artículo | Vistas | Tema |
+|---|----------|--------|------|
+| 1 | Dear Nannies Killer: la historia del hijo de Pablo Escobar que no se había contado antes | 8,800 | Lo último |
+| 2 | Premios India Catalina 2026: lista completa de ganadores | 5,375 | Cultura |
+| 3 | El último adiós a Fernando Botero: el cortometraje Gracias Botero | 2,893 | Cultura |
+| 4 | De Roma a su pantalla: las mejores series sobre el Vaticano en streaming | 2,887 | Cultura |
+| 5 | Donde el sol también hospeda: hotel Morúa | 2,707 | Estilo de vida |
+
+### Demografía y Fuentes de Tráfico
+- **Usuarios nuevos:** 99,367 · **Dispositivos:** Mobile 81% · Desktop 17% · Tablet 0.9%
+- **Fuentes de tráfico:** Organic Search 43% · Paid Social 30% · Direct 14% · Paid Search 5% · Email 4%
+- **Audiencia:** Mujeres 64% · Hombres 36%
+
+### Redes Sociales — Datos Reales (corrige estimaciones del dashboard)
+| Plataforma | Seguidores reales | Alcance | Visualizaciones | Interacciones | Engagement | Geo top | Demo top |
+|------------|--------------------|---------|--------------------|----------------|------------|---------|----------|
+| **Instagram** | **97,011** (vs ~40K estimado en dashboard — corregir) | 1,032,561 | 1,656,118 | 65,210 | **6.3%** 🟢 Bueno (>3%) | Bogotá 24% | 35-44 años 36.7%, Mujeres 59% |
+| **Facebook** | 142,539 (consistente con dashboard: 142,704) | 1,162,190 | 2,808,671 | 12,051 | 1% | Bogotá 36.5% | 25-34 años 32.8%, Mujeres 59.8% |
+
+**Insights abril→mayo:** Instagram seguidores -4.6%, visualizaciones -23.9%, interacciones -15.7% (leve declive). Facebook +202.2% seguidores, +97.4% visualizaciones, +141.6% interacciones (crecimiento fuerte, posible pauta o evento).
+
+### Competencia en Redes — Benchmark
+Condé Nast Traveler Spain como referencia más alineada (viajes/lujo/gastronomía premium): Instagram 175,000 seguidores con 2 posts/día. Patrones ganadores observados: video-first (reels/tours), contenido de guía/servicio práctico, embudo claro (redes = descubrimiento snackable, web/YouTube = contenido largo de cierre de funnel).
+
+**Implicación directa para Diners:** confirma la tesis del dashboard — el video corto (TikTok) es el formato con mayor potencial de descubrimiento que Diners no está aprovechando.
+
+---
+
 ## Newsletter "La Mesa de Diners"
 > Fuente: Dashboard Diners_Tabs_2026-06, tab Newsletter (as of 2026-06-16)
 
@@ -234,7 +285,7 @@ Diners is Ediciones Gamma's culture, gastronomy, and lifestyle magazine (60+ yea
 
 | Variable | Valor |
 |----------|-------|
-| Audiencia objetivo | Suscriptores Diners + audiencia FB/IG (142K+ / ~40K) reconvertida a email |
+| Audiencia objetivo | Suscriptores Diners + audiencia FB/IG (142.5K Facebook / 97K Instagram) reconvertida a email |
 | Frecuencia | Semanal, domingo/lunes AM |
 | Monetización | Sponsors por bloque ($500K–$2M COP/envío) + Ofertas Premium + Carnet Digital |
 | Meta 12 meses | 5,000 → 10,000 → 25,000 suscriptores |

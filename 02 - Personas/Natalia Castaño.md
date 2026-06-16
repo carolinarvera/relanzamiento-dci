@@ -9,7 +9,7 @@ confidence: high
 ---
 
 ## For future Claude
-Natalia Castaño is Ejecutiva Comercial for AXXIS and Diners at Ediciones Gamma. She also co-leads logistics for the Experiencias unit alongside [[Paola Pantaleon]] — specifically managing the Davivienda Corredores experience chain, contracts with the bank, and operational execution. Reports to [[Carolina Ramirez]] and [[Catalina Obregon]]. Her commercial KPIs are revenue from pauta and number of alliances/experiences closed. See [[03 - Unidades de Negocio/Experiencias/Experiencias]] for the Experiencias strategy she supports.
+Natalia Castaño is Ejecutiva Comercial for AXXIS and Diners at Ediciones Gamma, part of the Área Comercial (org chart position 2.6.2) reporting to [[Carolina Ramirez]] — corrected 2026-06-16, previously listed as dual-reporting to Catalina Obregón as well. She also co-leads logistics for the Experiencias unit alongside [[Paola Pantaleon]] — specifically managing the Davivienda Corredores experience chain, contracts with the bank, and operational execution. Her commercial KPIs are revenue from pauta and number of alliances/experiences closed. See [[03 - Unidades de Negocio/Experiencias/Experiencias]] for the Experiencias strategy she supports.
 
 ---
 
@@ -19,7 +19,7 @@ Natalia Castaño is Ejecutiva Comercial for AXXIS and Diners at Ediciones Gamma.
 * **Nombre:** Natalia Castaño
 * **Cargo Oficial:** Ejecutiva Comercial AXXIS y Diners
 * **Co-Responsabilidad:** Soporte estratégico (*brainstorm*) y logístico para la Unidad de Negocios de Experiencias
-* **Reporta a:** [[Carolina Ramirez]] / [[Catalina Obregon]]
+* **Reporta a:** [[Carolina Ramirez]] (vía Área Comercial, posición 2.6.2 del organigrama)
 * **Áreas Asociadas:** Revista AXXIS (Impreso/Digital) · Revista Diners (Impreso/Digital) · Experiencias de Banca Privada
 * **Misión del Cargo:** Liderar el crecimiento del portafolio comercial de pauta e impresos en AXXIS y Diners, aportando en paralelo al diseño logístico y estratégico de la unidad de experiencias para maximizar el valor relacional con grandes marcas y aliados corporativos.
 

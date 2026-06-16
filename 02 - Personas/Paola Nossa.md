@@ -8,18 +8,18 @@ confidence: high
 ---
 
 ## For future Claude
-Paola Nossa leads Marketing at the **branding/corporate level for Ediciones Gamma and all its business units** (AXXIS, Diners, Libros, Experiencias) — not limited to Revistas. Owns the transversal events/ferias calendar ([[Cronograma de Eventos y Marketing 2026]]), promotional materials, magazine pricing/tarifario, and brand presence across units. Works collaboratively with Paola Pantaleón on subscriber community and commercial alliances. Do not confuse her tasks/scope with Paola Pantaleón's (Experiencias) — they are different people with different unit ownership.
+Paola Nossa leads Marketing at the **branding/corporate level for Ediciones Gamma and all its business units** (AXXIS, Diners, Libros, Experiencias) — not limited to Revistas. Official title as of 2026-06-16: "Líder de Marketing y Relacionamiento Bancario" (org chart position 2.5, reports to Carolina Ramírez) — the "Relacionamiento Bancario" dimension reflects her role coordinating brand/marketing touchpoints with Davivienda. Owns the transversal events/ferias calendar ([[Cronograma de Eventos y Marketing 2026]]), promotional materials, magazine pricing/tarifario, and brand presence across units. Works collaboratively with Paola Pantaleón on subscriber community and commercial alliances. Do not confuse her tasks/scope with Paola Pantaleón's (Experiencias) — they are different people with different unit ownership.
 
 ---
 
 # 👤 Paola Nossa
 
-> Marketing, Comunidad y Alianzas · Revistas
+> Líder de Marketing y Relacionamiento Bancario · Comunidad y Alianzas · Revistas
 
 ---
 
 ## Cargo
-Marketing — Branding corporativo Ediciones Gamma (transversal a unidades de negocio)
+Líder de Marketing y Relacionamiento Bancario (transversal a unidades de negocio)
 
 ## Área
 Marketing / Branding / Alianzas
