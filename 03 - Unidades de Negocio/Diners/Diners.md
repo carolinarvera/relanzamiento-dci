@@ -163,7 +163,16 @@ Fuentes: Dashboard Diners_Tabs_2026-06 (9 tabs, as of 2026-06-16) + Informe Web 
 
 **Contenido Editorial:**
 - [[Ernesto Rodriguez]] — Líder Técnico de Contenido (transversal AXXIS/Diners/Gamma)
-- Sandra Martínez — Editora de Diners (reporta a [[Ernesto Rodriguez]])
+- [[Sandra Martinez]] — Editora General de Diners (impreso + web), reporta a [[Ernesto Rodriguez]]
+- Simón Granja — Editor Web (colabora con Sandra)
+- Lina, Mateo — Diseño (apoyan también mercadeo y privilegios)
+
+### ⚠️ Capacidad Operativa Editorial (as of 2026-06-16)
+> Fuente: [[06 - Meetings/Diners/2026-06-16 Carolina-Sandra - Roles y Capacidad Operativa]]
+
+🔴 Equipo de generación de contenido reducido a 2 personas (Sandra + Simón) vs. 4 el año anterior (2 periodistas + archivo + practicante). Todo el apoyo está bajo prestación de servicios (sin poder exigir horario/inmediatez) — modelo crítico para una operación web que necesita respuesta rápida. Jornadas extendidas insostenibles.
+
+✅ Decisión: contratar 1 perfil **senior** (no junior) con presupuesto adicional de **Cocrea** (vigente hasta diciembre 2026), para Sandra y Simón.
 
 ---
 
