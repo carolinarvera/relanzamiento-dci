@@ -38,6 +38,7 @@ Transversal: [[AXXIS]] · [[Diners]] · [[Libros]] · [[Experiencias]]
 
 ## Proyectos
 - [[Cronograma de Eventos y Marketing 2026]]
+- [[Media Kit AXXIS 2026]] — envío pendiente a equipo editorial/comercial
 - Reestructuración del tarifario y formatos vendibles
 - Estrategia de comunidad revistas
 

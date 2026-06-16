@@ -53,6 +53,7 @@ Próximos pasos
 Detalles
 Documentos relacionados:
 - Cronograma de Eventos 2026 (Google Sheets, Drive): https://docs.google.com/spreadsheets/d/1UP8ZFpW1Xdz2o8CxmT1Bjdz1mKCG2vj4dKnrqQNO1Fk/edit?usp=drive_link — ver resumen estructurado en [[Cronograma de Eventos y Marketing 2026]]
+- Media Kit 2026 AXXIS (Google Slides, Drive): https://docs.google.com/presentation/d/1OT1i_7ntMkg8HSXz3vmaray_zoUGCEcfvnrDsWGyFC4/edit — ver resumen estructurado en [[Media Kit AXXIS 2026]]. Confirma las cifras de tarifario discutidas en la reunión (contraportada $29.300.000, portadas interiores $26.200.000, primera página impar $22.600.000, páginas corrientes $21.400.000, portada falsa $42.000.000).
 
 ---
 

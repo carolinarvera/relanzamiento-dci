@@ -176,6 +176,9 @@ Tarifas percibidas como altas vs competencia.
 ### Hipótesis
 Mercado compra volumen. Gamma vende valor.
 
+### Tarifario Oficial 2026
+Ver detalle completo (impreso, alto impacto, digital, display, paquetes especiales) en [[Media Kit AXXIS 2026]].
+
 ### Análisis Pendiente
 Comparativo tarifario vs: Forbes · Semana · Dinero · Portafolio
 
@@ -212,7 +215,7 @@ Comparativo tarifario vs: Forbes · Semana · Dinero · Portafolio
 
 ## Relacionado
 
-[[Diners]] · [[Libros]] · [[Experiencias]] · [[Carolina Ramirez]] · [[Ernesto Rodriguez]] · [[Paola Nossa]]
+[[Diners]] · [[Libros]] · [[Experiencias]] · [[Carolina Ramirez]] · [[Ernesto Rodriguez]] · [[Paola Nossa]] · [[Media Kit AXXIS 2026]]
 
 ---
 
