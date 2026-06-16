@@ -49,8 +49,10 @@ Experiencias y Alianzas
 |----------|--------|
 | Programa Beneficios Diners | Activo |
 | Podcast AXXIS | En desarrollo |
+| Podcast "La Mesa de Diners" (con Ernesto Rodríguez) | Concepto definido, lanzamiento Ago 2026 (P1, as of 2026-06) |
 | [[Experiencias]] | Activo |
-| Carnet Digital | Planificación |
+| Carnet Digital Diners | En desarrollo — MVP + 1,000 carnets activos meta Q3 2026 |
+| Bazar Diners (evento propio, con Paola Nossa) | Por definir, Q3-Q4 2026 |
 
 ## Tags
 #persona #experiencias #alianzas #paola-pantaeon

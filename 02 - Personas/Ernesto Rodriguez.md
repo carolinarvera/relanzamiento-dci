@@ -1,14 +1,14 @@
 ---
-date: 2026-06-12
+date: 2026-06-16
 type: person
-tags: [person, contenido, editorial, vision, plataformas]
-related-projects: [Estrategia-Digital, Consolidacion-Plataformas]
+tags: [person, contenido, editorial, vision, plataformas, diners]
+related-projects: [Estrategia-Digital, Consolidacion-Plataformas, TikTok-Diners, Podcast-La-Mesa-de-Diners]
 ai-first: true
 confidence: high
 ---
 
 ## For future Claude
-Ernesto Rodríguez leads content editorial at Ediciones Gamma (transversal to all units). Produces content for Visión Davivienda (working well) and Educación Financiera (critical backlog). Works with Estefania Ochoa (CM) and Leo Burnett agency. Reports to both Catalina Obregón and Carolina Ramírez.
+Ernesto Rodríguez leads content editorial at Ediciones Gamma (transversal to all units). Produces content for Visión Davivienda (working well) and Educación Financiera (critical backlog). Works with Estefania Ochoa (CM) and Leo Burnett agency. Reports to both Catalina Obregón and Carolina Ramírez. As of 2026-06, also identified as the key talent to lead Diners' digital expansion: he's tapped to be the on-camera face of TikTok Diners (P1, launch Jul 2026) and co-lead the podcast "La Mesa de Diners" with Paola Pantaleon (P1, launch Ago 2026) — see [[03 - Unidades de Negocio/Diners/Diners]].
 
 ---
 
@@ -43,6 +43,7 @@ Contenido Editorial (transversal a todas las unidades)
 
 - [[Educacion Financiera]] — Contenido plataformas y digital
 - [[Vision Davivienda]] — Contenido análisis financiero y digital
+- [[03 - Unidades de Negocio/Diners/Diners]] — Cara de TikTok Diners (P1, no iniciado, lanzamiento Jul 2026) y co-lead del podcast "La Mesa de Diners" con [[Paola Pantaleon]] (P1, concepto definido, lanzamiento Ago 2026)
 
 ## Colaboradores
 

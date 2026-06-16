@@ -42,6 +42,9 @@ Transversal: [[AXXIS]] · [[Diners]] · [[Libros]] · [[Experiencias]]
 - [[Ayudaventas — Formato Comercial por Edición]] — pieza mensual para enfocar prospección comercial
 - Reestructuración del tarifario y formatos vendibles
 - Estrategia de comunidad revistas
+- TikTok Diners (con Ernesto Rodríguez) — pilot 3 videos, P1, lanzamiento Jul 2026 (as of 2026-06)
+- YouTube Diners (con Ernesto Rodríguez) — P2, Oct 2026
+- Bazar Diners (evento propio, con Paola Pantaleón) — Q3-Q4 2026, por definir
 
 ## Tags
 #persona #marketing #alianzas #paola-nossa
