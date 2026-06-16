@@ -4,7 +4,7 @@ type: plan
 tags: [marketing, eventos, ferias, activaciones, presupuesto, axxis, diners, libros]
 related-projects: [Cronograma-Eventos-2026]
 related-people: [Paola Nossa]
-sources: ["Cronograma de Eventos 2026.xlsx (Downloads, compartido por Carolina 2026-06-16)"]
+sources: ["Cronograma de Eventos 2026.xlsx (Downloads, compartido por Carolina 2026-06-16)", "Google Sheets (Drive, fuente viva): https://docs.google.com/spreadsheets/d/1UP8ZFpW1Xdz2o8CxmT1Bjdz1mKCG2vj4dKnrqQNO1Fk/edit?usp=drive_link"]
 ai-first: true
 confidence: high
 ---
@@ -16,7 +16,8 @@ Cronograma maestro de ferias, eventos y activaciones de marketing para 2026, lid
 
 # 🎪 Cronograma de Eventos y Marketing 2026
 
-> Owner: [[Paola Nossa]] (Marketing y Alianzas — Revistas) · Transversal a [[AXXIS]], [[Diners]], [[Libros]]
+> Owner: [[Paola Nossa]] (Marketing — Branding corporativo) · Transversal a [[AXXIS]], [[Diners]], [[Libros]]
+> 📄 Fuente viva (Google Sheets, Drive): https://docs.google.com/spreadsheets/d/1UP8ZFpW1Xdz2o8CxmT1Bjdz1mKCG2vj4dKnrqQNO1Fk/edit?usp=drive_link
 
 ---
 

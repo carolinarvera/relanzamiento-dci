@@ -8,7 +8,7 @@ confidence: high
 ---
 
 ## For future Claude
-Paola Nossa leads Marketing and Alliances for AXXIS and Diners magazines at Ediciones Gamma. Works collaboratively with Paola Pantaleón on subscriber community and commercial alliances. Key executor for Revistas marketing campaigns.
+Paola Nossa leads Marketing at the **branding/corporate level for Ediciones Gamma and all its business units** (AXXIS, Diners, Libros, Experiencias) — not limited to Revistas. Owns the transversal events/ferias calendar ([[Cronograma de Eventos y Marketing 2026]]), promotional materials, magazine pricing/tarifario, and brand presence across units. Works collaboratively with Paola Pantaleón on subscriber community and commercial alliances. Do not confuse her tasks/scope with Paola Pantaleón's (Experiencias) — they are different people with different unit ownership.
 
 ---
 
@@ -19,22 +19,26 @@ Paola Nossa leads Marketing and Alliances for AXXIS and Diners magazines at Edic
 ---
 
 ## Cargo
-Marketing y Alianzas — Revistas
+Marketing — Branding corporativo Ediciones Gamma (transversal a unidades de negocio)
 
 ## Área
-Marketing / Experiencias y Alianzas
+Marketing / Branding / Alianzas
 
 ## Unidades
-[[AXXIS]] · [[Diners]] · [[Experiencias]]
+Transversal: [[AXXIS]] · [[Diners]] · [[Libros]] · [[Experiencias]]
 
 ## Responsabilidades
-- Planeación y ejecución de marketing para revistas
+- Marketing de marca a nivel Ediciones Gamma y sus unidades de negocio
+- Cronograma y ejecución de ferias/eventos 2026 ([[Cronograma de Eventos y Marketing 2026]])
+- Materiales promocionales y merchandising
+- Tarifario impreso de revistas y formatos comerciales de alto impacto
 - Gestión de alianzas comerciales
-- Trabajo colaborativo con [[Paola Pantaleon]]
+- Trabajo colaborativo con [[Paola Pantaleon]] (Experiencias — unidad de negocio distinta)
 - Gestión de comunidad de suscriptores
 
 ## Proyectos
-- [[Experiencias]]
+- [[Cronograma de Eventos y Marketing 2026]]
+- Reestructuración del tarifario y formatos vendibles
 - Estrategia de comunidad revistas
 
 ## Tags
