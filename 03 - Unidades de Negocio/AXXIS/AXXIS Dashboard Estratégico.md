@@ -97,7 +97,7 @@ confidence: high
 | AXXIS Impreso | [PENDIENTE] | [PENDIENTE] | 76% | → Estable | 🟡 |
 | AXXIS Digital | [PENDIENTE] | [PENDIENTE] | 66% | ↓ Bajo meta | 🟠 |
 | Anuario AXXIS | [PENDIENTE] | [PENDIENTE] | [PENDIENTE] | [PENDIENTE] | — |
-| Eventos AXXIS | [PENDIENTE] | [PENDIENTE] | [PENDIENTE] | [PENDIENTE] | — |
+| Eventos AXXIS | [PENDIENTE] | ~$38,5M COP presupuestados 2026 (sin revenue/ROI registrado) | [PENDIENTE] | [PENDIENTE] | — |
 | Alianzas AXXIS | [PENDIENTE] | [PENDIENTE] | [PENDIENTE] | [PENDIENTE] | — |
 | **TOTAL AXXIS** | **[PENDIENTE]** | **[PENDIENTE]** | **~71%** | **↓** | **🟠** |
 
@@ -774,6 +774,7 @@ BAJO IMPACTO
 | Anuario AXXIS digital premium | Producto | Alto | Medio | Alto | 90 días | Carolina |
 | Automatización suscripciones | RevOps | Medio | Medio | Medio | 90 días | Jeison |
 | Patrocinios eventos sector | Comercial | Alto | Bajo | Alto | 30 días | Equipo comercial |
+| Vender retorno de ferias (suscripciones/leads por evento) — sin medición hoy | Comercial/Eventos | Medio | Bajo | Medio | 30 días | Paola Nossa |
 | Newsletter AXXIS semanal | Directo | Medio | Bajo | Medio | 30 días | Ernesto |
 | TikTok arquitectura jóvenes | Redes | Bajo-Medio | Medio | Bajo-Medio | 60 días | Paola Gordillo |
 
@@ -1203,7 +1204,7 @@ Este dashboard es un organismo vivo. Protocolo de actualización:
 
 ## Relacionado
 
-[[AXXIS]] · [[CEO Dashboard]] · [[Portfolio Proyectos]] · [[Carolina Ramirez]] · [[Paola Nossa]] · [[Ernesto Rodriguez]] · [[Paola Pantaleon]] · [[Jeison Montero]] · [[Diners]] · [[Catalina Obregon]]
+[[AXXIS]] · [[CEO Dashboard]] · [[Portfolio Proyectos]] · [[Carolina Ramirez]] · [[Paola Nossa]] · [[Ernesto Rodriguez]] · [[Paola Pantaleon]] · [[Jeison Montero]] · [[Diners]] · [[Catalina Obregon]] · [[Cronograma de Eventos y Marketing 2026]]
 
 ---
 
