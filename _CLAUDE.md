@@ -1,5 +1,5 @@
 ---
-date: 2026-06-12
+date: 2026-06-16
 type: vault-manifest
 tags: [vault-manifest, meta]
 ai-first: true
@@ -42,7 +42,7 @@ Antes de declarar un estado, hacer un plan o escribir arquitectura: lee el codig
 - **Rol:** Head of Growth & Business
 - **Empresa:** Ediciones Gamma (Grupo Bolivar / Banco Davivienda)
 - **Proposito:** Business OS para Ediciones Gamma - gestion de unidades de negocio, proyectos estrategicos, personas del equipo y reuniones
-- **Ultimo actualizado:** 2026-06-13
+- **Ultimo actualizado:** 2026-06-16
 
 ---
 
@@ -92,7 +92,7 @@ Antes de declarar un estado, hacer un plan o escribir arquitectura: lee el codig
 |---|---|---|
 | [[02 - Personas/Catalina Obregon]] | Gerente General / CEO | Jefa directa de Carolina. +25 anos en medios. Directora Diners y AXXIS. |
 | [[02 - Personas/Carolina Ramirez]] | Head of Growth & Business | Owner de este vault. Lidera growth, digital, RevOps. |
-| [[02 - Personas/Jeison Montero]] | PMO / Lider Plataformas | Owner Consolidacion Plataformas. **Alias confirmado: "Jason"** en reuniones informales. |
+| [[02 - Personas/Jeison Montero]] | Lider de Plataformas | Owner Consolidacion Plataformas. **Alias confirmado: "Jason"** en reuniones informales. Cargo confirmado 2026-06-14 (no PMO/Coordinador). |
 | [[02 - Personas/Ernesto Rodriguez]] | Contenido Editorial | Produccion de contenido. Vision funciona bien. Ed. Financiera en rezago. |
 | [[02 - Personas/Estefania Ochoa Fonseca]] | CM Vision Davivienda | Community Manager plataformas Davivienda. Reporta a Ernesto Rodriguez. |
 | [[02 - Personas/Nicolas Serna]] | Comercial Libros | Owner Plan Comercial Libros. |
@@ -125,7 +125,7 @@ Antes de declarar un estado, hacer un plan o escribir arquitectura: lee el codig
 | [[03 - Unidades de Negocio/AXXIS/AXXIS]] | Revista Arquitectura y Diseno | 66-76% meta | Amarillo |
 | [[03 - Unidades de Negocio/Diners/Diners]] | Revista Cultura y Estilo | Digital 37% meta | Rojo |
 | [[03 - Unidades de Negocio/Libros/Libros]] | Editorial gran formato | En desarrollo | Naranja |
-| [[03 - Unidades de Negocio/Experiencias/Experiencias]] | Eventos, beneficios, alianzas | En desarrollo | Naranja |
+| [[03 - Unidades de Negocio/Experiencias/Experiencias]] | Eventos, beneficios, alianzas | En desarrollo — dashboard 8 tabs completo, 28 experiencias por categoría Diners, 32 prospectos B2B mapeados | Naranja |
 | [[03 - Unidades de Negocio/Plataformas/Vision Davivienda/Vision Davivienda]] | Plataforma digital financiera | Funciona bien | Verde |
 | [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Educacion Financiera]] | Plataforma educacion | Rezago critico | Rojo |
 
@@ -142,6 +142,20 @@ Estas son **tres plataformas completamente distintas** con proveedores, KPIs, co
 | **Mis Finanzas para Mi Negocio** | `Plataformas/Educacion Financiera/Mis Finanzas para Mi Negocio/` | [[Maria Angelica Navarro]] | **PDF mensual** | Sin acceso directo GA4 |
 
 **Antes de editar cualquier nota de estas plataformas: verificar carpeta y contacto. NUNCA mezclar KPIs, métricas ni tareas entre ellas.**
+
+---
+
+## ⚠️ REGLA CRÍTICA — Competencia Grupo Bolívar (B2B / Aliados)
+
+Ediciones Gamma es filial de Grupo Bolívar (incluye Davivienda, Seguros Bolívar, Constructora Bolívar, Fiduciaria Bolívar). Confirmado por Carolina 2026-06-14.
+
+| Tipo de empresa | ¿Es prospecto/aliado válido? |
+|---|---|
+| Bancos competidores de Davivienda (Bancolombia, BBVA, Banco de Bogotá, Itaú, Credicorp, Scotiabank, etc.) | ❌ **NUNCA** — único excluido absoluto |
+| Filiales del Grupo Bolívar (Constructora Bolívar, Fiduciaria Bolívar, Seguros Bolívar) | ★ **Prioridad alta** — relación interna facilita el acceso |
+| Seguros/constructoras/AFP que compiten con esas filiales (Sura, Liberty, Mapfre, Protección, Prodesa, Cusezar) | ✅ Válidas — marcar con (*) por contexto, no excluir |
+
+Aplica a cualquier propuesta comercial: prospectos B2B de Experiencias, aliados de Club de Beneficios, patrocinadores, anunciantes. Ver detalle completo en `Experiencias_Tabs_2026-06/Experiencias_02_PipelineCorporativo_2026-06.xlsx` (hoja "Prospectos B2B", 32 empresas, 11 sectores).
 
 ---
 
@@ -329,8 +343,17 @@ Claude debe PREGUNTAR ANTES de guardar:
 | 2026-06-13 | Tareas Libros | 6 tareas creadas desde reunión 2026-06-11 (Nicolas Serna × 5, Paola Gordillo × 1) |
 | 2026-06-13 | Experiencias meeting | Contenido corrupto (tabla Libros pegada por error) limpiado. PWA section header restaurado. |
 | 2026-06-13 | Conexiones Natalia Castaño | Propagada a: Organigrama, index, _CLAUDE.md, AXXIS.md, Diners.md, Experiencias.md |
+| 2026-06-14 | Dato corregido | Spira (MFxMiNegocio) era 381 sesiones — corregido a 38 (3.3% del total, no 33%). Corregido en informe mayo, 2 tasks y task.md. |
+| 2026-06-14 | Cargo corregido | Jeison Montero: "Líder de Plataformas" confirmado (no PMO/Coordinador). Corregido en su nota de persona y area de 2 tasks. |
+| 2026-06-14 | Dashboards generados | MFxInvertir (7 xlsx) y MFxMiNegocio (7 xlsx) en `~/Downloads/[BU]_Tabs_2026-06/`. Datos reales mayo 2026 precargados. |
+| 2026-06-14 | Experiencias dashboard | 8 tabs generados (NorthStar, Pipeline Corporativo, Log Experiencias, Red Alianzas, Club Suscriptores, Comunicaciones, Eventos Calendario, NextSteps). |
+| 2026-06-14 | Experiencias catálogo | 28 experiencias organizadas en 8 categorías Diners (Gastronomía, Arte&Cultura, Bienestar, Moda, Patrimonio, Destilados, Diseño, Deportes). Hoja "Catálogo Propuestas" en Experiencias_03. |
+| 2026-06-14 | Regla crítica nueva | Competencia Grupo Bolívar documentada — solo bancos competidores de Davivienda excluidos; filiales del grupo y sus competidoras SÍ son prospectos válidos. |
+| 2026-06-14 | Prospectos B2B | 32 empresas mapeadas en 11 sectores (hoja "Prospectos B2B" en Experiencias_02), regla Grupo Bolívar aplicada. |
+| 2026-06-16 | task.md regenerado | 73 tareas consolidadas (antes 47). Paola Pantaleón pasó de 4 a 16 tareas (Media Kit, deck, propuesta, correo B2B, aliados). Libros incorporado por primera vez (10 tareas: Nicolás Serna + Paola Gordillo). |
+| 2026-06-16 | Proveedor LEO | Archivo independiente `Proveedor_LEO_NextSteps_2026-06.xlsx` con 11 solicitudes (Procesos&Contrato, Visión, Ed. Financiera). PM: Viviana. No integrado a task.md — queda standalone para enviar directo. |
 
 ---
 
-*Ultima actualizacion manual: 2026-06-13*
+*Ultima actualizacion manual: 2026-06-16*
 *Regenerar con: "Claude, actualiza mi _CLAUDE.md"*
