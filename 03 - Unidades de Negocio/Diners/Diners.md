@@ -264,6 +264,22 @@ El usuario que llega por email es el más comprometido. Sin newsletter activo, e
 **🤖 AI Assistant — señal temprana**
 62 sesiones YTD. Diners ya aparece en respuestas de IA (ChatGPT, Perplexity, etc.). Canal emergente a optimizar con contenido estructurado y authoritative para H2 2026.
 
+### Cohorte Mayo 2026 — Adquisición por Primer Canal (Colombia)
+> Fuente: GA4 Exploración de cohortes, segmento Colombia, 1–31 mayo 2026 (as of 2026-06-17)
+
+**Total usuarios adquiridos en Colombia mayo 2026: 145,289**
+
+| Canal primer contacto | Usuarios | % total | COP/sesión (de adquisición YTD) | Diagnóstico |
+|-----------------------|----------|---------|----------------------------------|-------------|
+| **Paid Social** | **112,864** | **77.7%** | $0.16 | 🔴 8 de cada 10 usuarios nuevos vienen de Meta Ads con engagement de 6 segundos |
+| Organic Search | 21,239 | 14.6% | $0.93 | 🟢 El canal más valioso solo adquiere 1 de cada 7 usuarios |
+| Paid Search | 5,704 | 3.9% | $1.50 | 🟢 El más rentable por sesión — sin inversión propia activa |
+| Direct | 3,187 | 2.2% | $0.45 | 🟡 Marca + bookmarks |
+| Organic Social | 850 | 0.6% | $0.26 | 🟡 Bajo volumen |
+| Email | 678 | 0.5% | $1.06 | 🟢 Alta calidad, sin newsletter activo |
+
+**Conclusión estructural:** el presupuesto de Meta Ads está financiando el 77.7% de la adquisición de usuarios que no leen, no convierten y deprimen las métricas del sitio. Redirigir incluso el 20% de ese presupuesto a SEO/contenido y Google Ads cambiaría la composición del tráfico radicalmente.
+
 ---
 
 ## GA4 — Top Páginas y Diagnóstico de Contenido (YTD ene–jun 2026)
@@ -380,6 +396,49 @@ Condé Nast Traveler Spain como referencia más alineada (viajes/lujo/gastronom�
 | KPIs objetivo | Open Rate >30%, CTR >8%, Unsubscribe <0.5%, Revenue/envío $1-3M COP |
 
 **Roadmap:** Jul 2026 onboarding HubSpot + diseño template → Ago 2026 piloto (500-1,000 suscriptores) + campaña de captación (meta 2,000) → Sep 2026 primer sponsor + meta 10,000 suscriptores (con Carnet Digital como beneficio exclusivo).
+
+---
+
+## Auditoría CRO — Página de Suscripciones
+> Fuente: Auditoría manual + WebFetch revistadiners.com.co, as of 2026-06-17
+
+**Contexto:** 6,681 visitas YTD a la página de suscripciones → $0 en conversiones (GA4). Esta sección explica por qué.
+
+### 🚨 Hallazgo #1: La URL principal es un 404
+`/suscripciones/` devuelve HTTP 404. La página real está fragmentada en dos URLs:
+- `revistadiners.com.co/suscripciones-revista-diners/` — muestra 2 planes
+- `revistadiners.com.co/etiqueta-producto/suscripciones/` — muestra 3 planes
+
+Cualquier usuario que llega por el menú principal o un anuncio puede estar cayendo en un error. **Solución inmediata: redirect 301 de `/suscripciones/` a la URL canónica correcta.**
+
+### Planes y Precios Actuales
+| Plan | Precio | Incluye |
+|------|--------|---------|
+| 3 meses | $53,700 | 3 ediciones impresas |
+| 6 meses | $181,100 | 6 ediciones + libro "Cocina para el fin de semana" (20% dcto) |
+| 1 año | $214,800 | 12 ediciones + libro Panamá Country GRATIS |
+
+**Oportunidad de precio no comunicada:** Plan anual = $17,900/mes. Plan semestral = $30,183/mes. El anual es 41% más barato por mes y nadie lo ve porque no hay comparativa visible.
+
+### Diagnóstico por Elemento CRO
+| Elemento | Estado | Problema |
+|----------|--------|---------|
+| URL canónica | 🔴 Rota | `/suscripciones/` = 404. Dos URLs con contenido inconsistente |
+| Planes mostrados | 🔴 Inconsistente | 2 planes en una URL, 3 en otra |
+| CTA texto | 🟠 Genérico | "Añadir al carrito" — lenguaje de e-commerce básico para marca premium |
+| Métodos de pago | 🔴 Ausentes | No visibles en ningún paso antes del checkout |
+| Garantías | 🔴 Ausentes | Sin política de reembolso ni "satisfacción garantizada" |
+| Social proof | 🔴 Ausente | Sin testimonios, número de suscriptores, ni reseñas |
+| Urgencia / escasez | 🔴 Ausente | Sin "oferta limitada", sin fecha de corte |
+| Propuesta de valor | 🔴 Débil | No responde "¿por qué Diners?" — sin brand story ni preview de contenido |
+| Comparativa planes | 🔴 Ausente | El valor del plan anual vs semestral no se comunica visualmente |
+| Pasos del funnel | 🔴 Excesivos | 5 pasos mínimos: listado → producto → carrito → checkout → pago |
+| Mobile UX | 🔵 Sin auditar | Crítico: 81% del tráfico es mobile |
+
+### 3 Acciones que Pueden Recuperar Conversiones Esta Semana
+1. **Redirect 301 `/suscripciones/` → URL canónica** — 10 minutos de trabajo, recupera todas las visitas perdidas
+2. **Unificar en una sola URL** con los 3 planes y eliminar la duplicidad de URLs
+3. **Añadir comparativa visual de planes** que muestre el precio por mes — el anual gana obviamente si el usuario puede comparar
 
 ---
 
