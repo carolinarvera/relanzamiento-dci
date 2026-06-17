@@ -13,7 +13,9 @@ Diners is Ediciones Gamma's culture, gastronomy, and lifestyle magazine (60+ yea
 
 **Corrección importante (informe GA4 + Meta Business real, mayo 2026, as of 2026-06-16):** el tráfico web NO sigue cayendo — mayo 2026 cerró con 256,079 vistas (+58.4% vs abril) y 217,684 sesiones (+65.1%), mejor que el promedio 2025. El dato de "caída 44% YoY" del dashboard solo aplicaba a ene-feb 2026 (antes del acceso a GA4). Además, Instagram tiene 97,011 seguidores reales (Meta Business), no los ~40K estimados en el dashboard — corregir esa cifra donde aparezca. Ver sección "Informe Web & Redes — Mayo 2026 (datos reales)" más abajo.
 
-Fuentes: Dashboard Diners_Tabs_2026-06 (9 tabs, as of 2026-06-16) + Informe Web Mayo 2026 - Equipo Growth Marketing (Keynote, as of 2026-06-16).
+GA4 YTD (ene–jun 2026): 980K sesiones pero 65% viene de Paid Social con 6 segundos promedio — tráfico basura que daña el SEO. Organic Search (17% de sesiones) genera el 41% de los ingresos y 23 de 44 eventos clave. Paid Search es el canal más rentable por sesión ($1.50 COP) pero no existe como inversión propia. Página 404 es el 4° contenido más visto (25K vistas perdidas). Página de suscripciones tiene 6,681 visitas y $0 en conversiones — el funnel está roto en la landing. Contenido de guías locales/gastronomía práctica genera 3–8x más AdSense por visita que trending de cultura.
+
+Fuentes: Dashboard Diners_Tabs_2026-06 (9 tabs, as of 2026-06-16) + Informe Web Mayo 2026 - Equipo Growth Marketing (Keynote, as of 2026-06-16) + GA4 exports páginas y adquisición (as of 2026-06-17).
 
 ---
 
@@ -227,6 +229,83 @@ Fuentes: Dashboard Diners_Tabs_2026-06 (9 tabs, as of 2026-06-16) + Informe Web 
 **AdSense YTD 2026:** $393,487 COP ($109.3 USD) acumulado a mayo. Meta anual: $600K COP (~$78K/mes necesarios para llegar).
 
 **CRO — diagnóstico:** Sin flujo de conversión a suscripción optimizado, sin GSC activo (no se sabe qué keywords posicionan), sin medición de Core Web Vitals ni auditoría mobile UX. Mayo: usuarios nuevos 173,972 (+75.1%), rebote 70% (+23.2%), duración media sesión 00:00:54 (-37.3% — meta 1:20), interacciones 29.9% (-30.6%). Visitas/usuario: 1.47 (meta: 3).
+
+---
+
+## GA4 — Análisis de Canales de Adquisición (YTD ene–jun 2026)
+> Fuente: GA4 Export "Adquisición de tráfico" Revista Diners, 2026-01-01 al 2026-06-16 (as of 2026-06-17)
+
+**Total YTD:** 980,545 sesiones · $379,303 COP ingresos AdSense · 44 eventos clave
+
+| Canal | Sesiones | % Total | Interacción | Seg/sesión | Ev. clave | Ingresos COP | COP/sesión |
+|-------|----------|---------|-------------|------------|-----------|--------------|------------|
+| **Paid Social** | 638,748 | 65.1% | 20.8% 🔴 | 6.2s 🔴 | 1 🔴 | $99,929 | $0.16 |
+| **Organic Search** | 165,687 | 16.9% | 68.5% 🟢 | 56.8s 🟢 | 23 🟢 | $154,866 | $0.93 |
+| **Direct** | 86,937 | 8.9% | 44.8% | 29.5s | 12 | $39,379 | $0.45 |
+| **Email** | 29,944 | 3.1% | 58.9% | 94.8s 🟢 | 6 | $31,861 | $1.06 |
+| **Paid Search** | 26,368 | 2.7% | 66.8% | 66.2s | 0 | $39,622 | **$1.50** 🟢 |
+| **Organic Social** | 22,383 | 2.3% | 39.3% | 9.8s 🔴 | 1 | $5,931 | $0.26 |
+| **AI Assistant** | 62 | 0.006% | 54.8% | 28.2s | 0 | $49 | $0.79 |
+
+### Diagnóstico por canal
+
+**🔴 Paid Social — el problema más grande del sitio**
+638K sesiones (65% del total) con 6.2 segundos promedio y 20.8% de interacción. Solo 1 evento clave de 638K sesiones. Este volumen de tráfico basura deprime todas las métricas del sitio y le señala a Google que el contenido es irrelevante — dañando activamente el SEO orgánico, que es el canal de mayor calidad. Causa probable: audiencias de Meta Ads demasiado amplias o mal segmentadas. Requiere auditoría urgente de segmentación.
+
+**🟢 Organic Search — el canal que más valor genera**
+165K sesiones (17%) con 68.5% de interacción, 56.8 seg/sesión, 23 eventos clave y $154,866 COP = 41% de todos los ingresos. Es el canal más valioso y está siendo desatendido (sin GSC activo, sin plan SEO formal). Cada punto porcentual que gane Organic Search vale proporcionalmente más que cualquier otro canal.
+
+**🟢 Paid Search — mayor retorno por sesión ($1.50 COP)**
+El canal más rentable por sesión no existe como inversión propia de Diners — solo opera para clientes como Rolex. Activar Google Ads para captación propia es la mayor oportunidad de inversión H2 2026.
+
+**📧 Email — mayor tiempo de sesión (94.8 seg)**
+El usuario que llega por email es el más comprometido. Sin newsletter activo, este canal opera solo con lo que existe (base fragmentada). Con "La Mesa de Diners" activa, este canal debería crecer 10x.
+
+**🤖 AI Assistant — señal temprana**
+62 sesiones YTD. Diners ya aparece en respuestas de IA (ChatGPT, Perplexity, etc.). Canal emergente a optimizar con contenido estructurado y authoritative para H2 2026.
+
+---
+
+## GA4 — Top Páginas y Diagnóstico de Contenido (YTD ene–jun 2026)
+> Fuente: GA4 Export "Páginas y pantallas" Revista Diners, 2026-01-01 al 2026-06-16 (as of 2026-06-17)
+
+**Total YTD:** 1,169,574 vistas · 826,514 usuarios activos · $379,330 COP ingresos · 12,224 páginas/pantallas únicas
+
+### 🚨 Hallazgos Críticos
+
+**1. La página 404 es el 4° artículo más visto del sitio**
+25,147 vistas perdidas en "Page Not Found". Cada visita es tráfico que el SEO o los anuncios trajeron y el sitio no pudo retener. Solución: implementar página 404 con redirecciones inteligentes y recuperación de usuario. Prioridad inmediata.
+
+**2. La página de suscripciones tuvo 6,681 visitas y $0 en conversiones**
+"Suscripciones a Revista Diners | Planes y Beneficios" está en el top de páginas con alto tráfico y cero ingresos. Confirma que el funnel no falla en el anuncio ni en el clic — falla **en la página de destino**. La gente llega y no convierte.
+
+**3. El contenido que más AdSense genera no es el más visto**
+Guías locales y gastronomía práctica generan 3–8x más ingreso por visita que cultura/entretenimiento:
+
+| Artículo | Vistas | Ingresos AdSense | COP/vista |
+|----------|--------|-----------------|-----------|
+| Aguas termales cerca a Bogotá | 31,694 | $44,321 | $1.40 |
+| Restaurantes afueras de Bogotá | 16,978 | $18,691 | $1.10 |
+| Cartier Roadster/Santos-Dumont | 5,335 | $12,606 | $2.36 |
+| Karts en Bogotá | 9,656 | $7,986 | $0.83 |
+| Poemas de García Márquez | 12,006 | $8,097 | $0.67 |
+| Dear Nannies Killer (trending) | 15,176 | $176 | $0.01 |
+
+**Implicación:** el contenido viral de cultura/entretenimiento trae volumen pero no ingresos. El contenido de guías locales, gastronomía y lujo genera el RPM más alto. La estrategia de contenido H2 debe priorizar guías prácticas sobre trending topics.
+
+### Top 10 Artículos por Vistas (YTD)
+| # | Artículo | Vistas | Ingresos |
+|---|----------|--------|----------|
+| 1 | Home (Revista Diners) | 46,859 | $0 |
+| 2 | Gracias Botero: emotivo cortometraje | 32,633 | $352 |
+| 3 | Aguas termales cerca a Bogotá | 31,694 | $44,321 |
+| 4 | **Page Not Found 🔴** | 25,133 | $0 |
+| 5 | Mejores series sobre el Vaticano | 21,266 | $386 |
+| 6 | Películas de acción Netflix | 18,563 | $3,770 |
+| 7 | Calles más geniales del mundo (Time Out) | 17,800 | $1,976 |
+| 8 | Restaurantes afueras de Bogotá | 16,978 | $18,691 |
+| 9 | Dear Nannies Killer (Disney+) | 15,176 | $176 |
+| 10 | Desayuno según su edad | 14,811 | $3,474 |
 
 ### Root Cause — Por Qué 1 Sola Conversión en Meta Ads
 > Fuente: Dashboard Diners_Tabs_2026-06, tab Pauta Digital (as of 2026-06-16)
