@@ -10,7 +10,7 @@ confidence: high
 ---
 
 ## For future Claude
-Experiencias es la unidad de negocios de eventos, activaciones y beneficios de Ediciones Gamma — el reemplazo estratégico del programa Privilegios Davivienda (que cierra junio 2026 y representaba el 70% de ingresos de Revistas). Tiene DOS líneas activas: (1) venta de experiencias curadas para clientes Banca Privada Davivienda — 10 ya pagadas para 2026; (2) Club de Beneficios para suscriptores basado en el concepto "vivir la revista". Owner estratégico: Paola Pantaleón. Co-responsable logística y operativa: Natalia Castaño (contratos, cadena de suministro, trámites banco para Experiencias Corredores Davivienda). La estrategia completa fue definida en la reunión del 2026-06-12 con Carolina. Hay acciones abiertas urgentes con fechas para la semana del 2026-06-16. La sesión de innovación AXXIS está programada para el 2026-06-27.
+Experiencias es la unidad de negocios de eventos, activaciones y beneficios de Ediciones Gamma — reemplazo estratégico del programa Privilegios Davivienda (cierra junio 2026, representaba 70% de ingresos Revistas). Estructura formalizada el 2026-06-17 con 4 responsables y DOS ramas: (1) Experiencias Corporativas Exclusivas — B2B, VIP, financiadas por empresas; base Davivienda Banca Privada (10 ya pagadas 2026), expansión al ecosistema Grupo Bolívar (excluyendo banca competidora directa); (2) Experiencias Gamma / Club de Beneficios — Always On para suscriptores AXXIS y Diners, modelo aliados con niveles Básico/Premium/Plus por % de descuento. Nicolás Serna lidera el sistema de aliados; Natalia Castaño lidera contratos corporativos (modelo de contrato anual consolidado). Carolina lidera crecimiento: QR en editorial, media kit, propuestas segmentadas por industria, newsletters, benchmarking El Tiempo/Semana. Próxima experiencia: julio 2026 (J.D. Gutiérrez + Vicky Turbay). Sesión innovación AXXIS: 2026-06-27.
 
 ---
 
@@ -41,9 +41,10 @@ Experiencias es la unidad de negocios de eventos, activaciones y beneficios de E
 
 ---
 
-## Modelo de Negocio — Dos Líneas
+## Modelo de Negocio — Dos Ramas
+> Estructura formalizada 2026-06-17. Fuente: [[06 - Meetings/Experiencias/2026-06-17 Carolina-Paola-Nicolas-Natalia - Reunion Unidad Experiencias]]
 
-### Línea 1: Venta de Experiencias Davivienda ✅ (activo y funcionando)
+### Rama 1: Experiencias Corporativas Exclusivas (B2B) ✅ (activo y funcionando)
 
 **Modelo:**
 - Davivienda (Banca Privada) compra experiencias curadas a Gamma para sus mejores clientes
@@ -71,16 +72,35 @@ Experiencias es la unidad de negocios de eventos, activaciones y beneficios de E
 
 ---
 
-### Línea 2: Club de Beneficios para Suscriptores 🔄 (en construcción)
+**Expansión más allá de Davivienda:** Sectores objetivo — Seguros, Automotriz, Constructoras, Farmacéuticas del ecosistema Grupo Bolívar (excluir banca competidora directa de Davivienda → ver [[feedback_competencia_grupo_bolivar]]).
+
+**Modelo de contrato corporativo (Natalia Castaño):** Un contrato anual con múltiples eventos/fechas y valores definidos (vs. contratos individuales). Términos generales separados de anexos operativos (ej. Anexo 6). Esquema de comisiones por definir con área financiera.
+
+---
+
+### Rama 2: Experiencias Gamma / Club de Beneficios (Always On) 🔄 (en construcción)
 
 **Concepto:**
 > Cada artículo de la revista conecta con un beneficio tangible para el suscriptor.
 
 **Ejemplo:** Artículo sobre restaurante Río → suscriptor puede "vivir" esa experiencia con 20% de descuento presentando su credencial.
 
+**QR en editorial:** Códigos QR en contenido "Vive la Revista" → suscriptores acceden a beneficios directamente desde la revista (impreso + digital).
+
+**Diferenciación por suscripción:** Beneficios distintos para AXXIS vs Diners → incentiva suscripción combinada.
+
 **Dos tipos de beneficios:**
 1. **Beneficios fijos permanentes** — siempre disponibles: "20% en Bodytech", "descuento en red de restaurantes"
 2. **Beneficios temporales editoriales** — vinculados a la nota de cada edición, cambian mes a mes
+
+**Sistema de niveles de aliados (Nicolás Serna):**
+| Nivel | Descuento ofrecido | Visibilidad otorgada |
+|-------|-------------------|----------------------|
+| Básico | Menor % | Landing |
+| Premium | % medio | Landing + Mailing |
+| Plus | Mayor % | Landing + Mailing + SMS + Redes |
+
+Criterios de selección: exclusividad, descuentos y comisiones definidos. Autonomía del aliado via landings de reserva digitales. Lección de Privilegios: evitar burocracia, procesar en digital.
 
 **Modelo de monetización (Gamma no pone un peso):**
 - El aliado da el descuento/beneficio al suscriptor → sin costo para Gamma
@@ -166,12 +186,14 @@ Para operar el Club de Beneficios se necesita una plataforma que resuelva:
 
 ## Equipo
 
-| Persona | Rol |
-|---------|-----|
-| [[Paola Pantaleon]] | Líder Experiencias y Alianzas |
-| [[Carolina Ramirez]] | Coordinación estratégica, contratos, proveedores |
+| Persona | Rol en la Unidad |
+|---------|-----------------|
+| [[Paola Pantaleon]] | Directora General de la Unidad — liderazgo ambas ramas |
+| [[Carolina Ramirez]] | Growth y Estrategia de Mercado Comercial |
+| [[Nicolas Serna]] | Líder Sistema de Contratación de Aliados (Experiencias Gamma / Always On) |
+| [[Natalia Castano]] | Líder Contratos de Experiencias Corporativas |
 | [[Paola Nossa]] | Colaboración Marketing y Alianzas |
-| [[Jeison Montero]] | Investigación plataforma tecnológica 360 |
+| [[Jeison Montero]] | Plataforma tecnológica 360 / PWA |
 
 ---
 

@@ -10,7 +10,7 @@ confidence: high
 ---
 
 ## For future Claude
-Nicolas Serna leads Comercial Libros at Ediciones Gamma — owner of Plan Comercial Libros (P2). His mission is activating a $1.6B COP stagnant book inventory via B2B channels, hotel consignment, fairs, and corporate gifts. Reports to [[Carolina Ramirez]]; works with [[Jeison Montero]] on budgets and [[Ernesto Rodriguez]] on digital content. As of June 2026, he presented the first digital baseline for Libros (541 IG followers, 61K views, 596 organic sessions). Active deals: Hotel Tekendama (approved), Hotel Arde la Selva, U. Javeriana, U. Jorge Tadeo Lozano. See [[03 - Unidades de Negocio/Libros/Libros]] for full BU strategy.
+Nicolas Serna has two active roles at Ediciones Gamma as of 2026-06-17: (1) Líder Comercial Libros — activating a $1.6B COP stagnant book inventory via B2B channels, hotel consignment, fairs, corporate gifts (see [[03 - Unidades de Negocio/Libros/Libros]]); (2) Líder de Apoyo al Sistema de Contratación de Aliados para la Unidad de Experiencias — building the "Always On" aliados network with a tiered system (Básico/Premium/Plus by discount %) that gives suscriptores national benefits digitally, minimizing manual intervention (lesson from "Privilegios"). Reports to [[Carolina Ramirez]]. Works with María Claudia (Servicio al Cliente) to define subscriber identification method. See [[03 - Unidades de Negocio/Experiencias/Experiencias]] for Experiencias strategy.
 
 ---
 

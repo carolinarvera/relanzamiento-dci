@@ -9,7 +9,7 @@ confidence: high
 ---
 
 ## For future Claude
-Natalia Castaño is Ejecutiva Comercial for AXXIS and Diners at Ediciones Gamma, part of the Área Comercial (org chart position 2.6.2) reporting to [[Carolina Ramirez]] — corrected 2026-06-16, previously listed as dual-reporting to Catalina Obregón as well. She also co-leads logistics for the Experiencias unit alongside [[Paola Pantaleon]] — specifically managing the Davivienda Corredores experience chain, contracts with the bank, and operational execution. Her commercial KPIs are revenue from pauta and number of alliances/experiences closed. See [[03 - Unidades de Negocio/Experiencias/Experiencias]] for the Experiencias strategy she supports.
+Natalia Castaño has two active roles at Ediciones Gamma as of 2026-06-17: (1) Ejecutiva Comercial AXXIS y Diners (org chart position 2.6.2, reports to [[Carolina Ramirez]]); (2) Líder de Contratos de Experiencias Corporativas — her primary contribution to the Experiencias unit is contract design and optimization: consolidating multiple events into a single annual contract (vs. individual contracts per event), separating general T&Cs from operational annexes (e.g. Anexo 6), and building a commissions model for corporate experiences beyond Davivienda. Also tasked with building the initial corporate prospect list (Seguros, Automotriz, Constructoras, Farmacéuticas). See [[03 - Unidades de Negocio/Experiencias/Experiencias]].
 
 ---
 
