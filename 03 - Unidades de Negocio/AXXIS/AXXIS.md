@@ -145,8 +145,10 @@ Aquí tienes la tabla final con la columna del link directo a cada una de las re
 - [[Paola Pantaleon]]
 
 **Contenido Editorial:**
-- [[Ernesto Rodriguez]]
-- Ramón Nivia (Editor)
+- [[Ernesto Rodriguez]] — Líder Técnico de Contenido (transversal)
+- [[Ramon Nivia]] — Editor AXXIS (impreso + digital), reporta a [[Ernesto Rodriguez]]
+- Mateo — Diseño / video editorial de alta calidad (piezas especiales)
+- Videógrafo (externo) — recorridos en video con arquitectos
 
 **Holders:**
 - Maria Angélica
@@ -189,6 +191,36 @@ Comparativo tarifario vs: Forbes · Semana · Dinero · Portafolio
 - Agregar beneficios
 
 **Responsable:** [[Carolina Ramirez]]
+
+---
+
+## Estrategia Digital — Iniciativas Activas (as of 2026-06-17)
+> Fuente: [[06 - Meetings/AXXIS/2026-06-17 Carolina-Ramon - Reunion Inicial AXXIS]]
+
+### Comunidad de Suscriptores — Zona de Proyectos
+- Zona exclusiva en la web donde suscriptores publican sus propios proyectos bajo curaduría de AXXIS
+- Blog de lectura abierta → publicar restringido a suscriptores (incentiva suscripciones sin cerrar contenido)
+- Reconocimiento mensual: proyecto destacado en homepage
+- Moderación: bloque 2h cada viernes (Ramón)
+
+### Marketplace
+- Fase 1: catálogo sin pasarela de pagos (reduce complejidad técnico-legal)
+- ⚠️ Pendiente: Carolina investiga estado actual y marco legal antes de comprometer recursos
+- Moderación integrada al bloque de viernes
+
+### Modelo Impreso vs Digital
+- No migrar clientes de editorial a digital → canibaliza ticket promedio
+- Sinopsis/teaser en digital → contenido completo en premium (impreso o suscripción)
+- Contenido premium futuro: fotos extra, entrevistas, reportajes en video
+
+### Solicitud Content Creator
+- Perfil distinto al videógrafo: volumen diario redes sociales, recorridos locales orgánicos
+- ⚠️ **Pendiente aprobación presupuestal de [[Catalina Obregon]]**
+- Modelo propuesto si no hay cupo fijo: prestación de servicios + viáticos
+
+### Competencia de Referencia
+- AD México y Manera — principales referentes latinoamericanos; alto consumo Instagram
+- Plan: revisión 360° (SEO, keywords, métricas) para inspirar sin copiar
 
 ---
 
