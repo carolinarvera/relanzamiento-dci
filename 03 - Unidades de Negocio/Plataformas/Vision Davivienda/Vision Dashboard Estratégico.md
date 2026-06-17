@@ -112,6 +112,16 @@ confidence: high
 
 **Insight clave para contenido:** el Entusiasta es el arquetipo de mayor volumen pero el menos atendido en la parrilla actual. El contenido existente sirve al Decisor y al Académico. La estrategia de contenido evergreen acordada el 2026-06-16 apunta directamente a este segmento.
 
+### Demografía Confirmada por Arquetipo (as of 2026-06-17)
+> Fuente: [[06 - Meetings/Vision/2026-06-17 Carolina-Jeison-Leo - Estructura Operativa y Estrategia Vision]]
+
+| Arquetipo | Edad | Género | Estrato | Comportamiento clave |
+|-----------|------|--------|---------|----------------------|
+| **Entusiasta** | 25–44 años | 55% H / 45% M | Bajo y alto | Mayor volumen de sesiones — consumo superficial — subatendido |
+| **Decisor/Académico** | 25–54 años | 63% H / 37% M | Alto | Menor volumen — mayor engagement (descargas, tiempo en página) |
+
+**Insight comportamental por edad:** 25–34 = mayor volumen de sesiones. 55–64 = mayor % de interacciones. El especialista consume profundo — el entusiasta necesita formatos de entrada más accesibles (videos 15–20 min, cápsulas semanales).
+
 ---
 
 # 5. KPIs Y METAS 2026
@@ -302,6 +312,25 @@ Estefanía publica y modera. No hay estrategia de contenido transversal. Propues
 
 **5. Flujo de aprobación Davivienda roto**
 Natalia bloqueó propuestas 2+ meses. Causa raíz: propuestas sin datos concretos. Solución: presentar siempre con benchmarks, históricos y proyección de resultados.
+
+---
+
+# 7b. PILARES ESTRATÉGICOS (confirmados 2026-06-17)
+> Fuente: [[06 - Meetings/Vision/2026-06-17 Carolina-Jeison-Leo - Estructura Operativa y Estrategia Vision]]
+
+1. **Portal amigable y personalizado** — UX sin fricción, suscripción sin barrera, funcionalidades interactivas (notas, favoritos, compartir por categoría/informe)
+2. **Comunidad mediante contenidos compartibles** — redes como motor de distribución; evergreen + cápsulas semanales (vigencia 1–2 semanas) + videos 15–20 min para entusiastas
+3. **Marca en agenda pública** — líderes de opinión, influenciadores y medios posicionan a Visión como referente de análisis financiero en Colombia
+
+**Meta:** referente digital más confiable de Colombia para decisiones financieras. Hábito de consumo, no volumen de titulares.
+
+**Formatos de contenido aprobados:**
+- Videos 15–20 minutos explicativos (más atractivos que imágenes de stock corporativas)
+- Cápsulas de data general con vigencia 1–2 semanas (no perecedero diario)
+- Scripts con soporte de IA para agilizar producción
+- Redes primarias para entusiastas: **Instagram y LinkedIn**
+
+**Testing:** una variable a la vez (tipografía, formato, diseño) — no múltiples cambios simultáneos.
 
 ---
 

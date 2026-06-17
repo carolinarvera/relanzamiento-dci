@@ -8,7 +8,7 @@ confidence: high
 ---
 
 ## For future Claude
-Leo (Leo Burnett) is the external agency managing technical execution for Ediciones Gamma's digital platforms. PM: Viviana. 11 resources including developers, SEO specialist, data analyst, UX/UI designers, and video manager. Critical partner for platform consolidation and "Mundo D" strategy under Banco Davivienda.
+Leo (Leo Burnett / Leo Latam) is the external agency managing technical execution for Ediciones Gamma's digital platforms under Davivienda. Contract model: bolsa de horas (not closed deliverables) — gives creative versatility. PM: Viviana Reyes (viviana.reyes@col-leoburnett.com). Planner: Paola Torres (paola.torres@leo-latam.com) — note: earlier vault records listed "Jonathan" as planner; Paola Torres is the confirmed planner as of 2026-06-17. Operates within Davivienda's "distrito digital" (~160 people, Torre Central floors 7 and 9). 11 resources including developers, SEO specialist, data analyst, UX/UI designers, and video manager (Caro). Key constraint: no external payment gateways — all bank transactions must go through the official Davivienda app (security policy). Critical partner for Visión platform strategy and "Mundo D" under Banco Davivienda.
 
 ---
 
@@ -40,7 +40,7 @@ El equipo de **Leo** está configurado bajo una arquitectura transversal para cu
 |**Rol / Recurso**|**Función Estratégica en el Negocio**|
 |---|---|
 |**Project Manager** _(Viviana)_|Interfaz de control, gobernanza, asignación de capacidad, control de _briefs_ y _delivery_ hacia Mercadeo del Banco.|
-|**Planner** _(Jonathan)_|Inteligencia de mercado, _benchmarking_, definición de formatos y traducción de la estrategia macro a tácticas de plataforma.|
+|**Planner** _(Paola Torres — paola.torres@leo-latam.com)_|Inteligencia de mercado, _benchmarking_, definición de formatos y traducción de la estrategia macro a tácticas de plataforma. *(Nota: registro anterior decía "Jonathan" — Paola Torres confirmada 2026-06-17)*|
 |**Especialista SEO/GEO**|Optimización para motores de búsqueda tradicionales y algoritmos de Inteligencia Artificial. Auditoría de indexación.|
 |**Data Analyst**|Implementación del _tagging plan_, analítica web, construcción de _dashboards_ y atribución de conversión.|
 |**UX/UI Writer & QA**|Redacción digital (_microcopy_), copys de pauta/mailing, resguardo de la guía de marca y control de calidad del sitio.|
