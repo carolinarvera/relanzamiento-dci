@@ -50,11 +50,12 @@ Se definieron roles y prioridades estratégicas: Carolina se enfoca en alcance d
 
 ---
 
-## 3. Decisión de Contratación
+## 3. Solicitud de Contratación
 
-- ✅ Aprobada contratación de **1 perfil senior** (no junior)
-- Razón: alta curva de aprendizaje y necesidad de supervisión constante ("baby sitting") de un junior sería contraproducente dado el desgaste actual del equipo
-- Presupuesto: adicional de **Cocrea**, disponible hasta **diciembre 2026** — beneficia tanto a Sandra como a Simón Granja
+- ⚠️ **Pendiente aprobación presupuestal de [[Catalina Obregon]]** — toda contratación de personal requiere su aval y asignación de presupuesto
+- Perfil solicitado: **senior** (no junior) — justificación: alta curva de aprendizaje y supervisión constante de un junior sería contraproducente dado el desgaste actual
+- Fuente de presupuesto propuesta: adicional de **Cocrea**, disponible hasta **diciembre 2026**
+- Esta solicitud no está confirmada ni aprobada a la fecha de esta reunión
 
 ---
 
@@ -75,7 +76,7 @@ Proceso actual: usar la parrilla de la revista impresa como base, adaptando tema
 | Acción | Responsable | Plazo | Estado |
 |--------|-------------|-------|--------|
 | Coordinar con Simón Granja la estrategia de distribución de contenido editorial en la web; definir % de artículos que migran de impreso a digital para la parrilla mensual | Sandra Martínez | Por definir | Pendiente |
-| Iniciar proceso de contratación del perfil senior con presupuesto Cocrea | Carolina Ramirez | Antes de jul 2026 | Pendiente |
+| Elevar solicitud de contratación de perfil senior a Catalina Obregón para aprobación presupuestal (Cocrea) | Carolina Ramirez | Antes de jul 2026 | Pendiente |
 
 ---
 

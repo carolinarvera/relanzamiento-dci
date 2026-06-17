@@ -42,7 +42,7 @@ Contenido Editorial — Diners (reporta a [[Ernesto Rodriguez]], área 2.2.2 del
 - 🔴 Solo 2 personas generan contenido (Sandra + Simón) vs. 4 el año anterior (2 periodistas fijos + archivo + practicante)
 - 🔴 Todo el equipo de apoyo está bajo prestación de servicios — no se puede exigir horario ni inmediatez, crítico para operación web
 - 🔴 Intentar delegar redacción web a personal de Experiencias (Davivienda) fue ineficiente y causó una renuncia
-- 🟢 Decisión aprobada: contratar 1 perfil **senior** (no junior, para evitar curva de aprendizaje/supervisión) con presupuesto adicional de Cocrea (vigente hasta dic 2026)
+- 🟡 Solicitud pendiente: contratar 1 perfil **senior** (no junior, para evitar curva de aprendizaje/supervisión) con presupuesto adicional de Cocrea (vigente hasta dic 2026) — **requiere aprobación presupuestal de [[Catalina Obregon]]**
 - Postura sobre IA: utilidad limitada en el proceso editorial — contenido de calidad requiere ~80% trabajo humano
 
 ## Tags

@@ -172,7 +172,7 @@ Fuentes: Dashboard Diners_Tabs_2026-06 (9 tabs, as of 2026-06-16) + Informe Web 
 
 🔴 Equipo de generación de contenido reducido a 2 personas (Sandra + Simón) vs. 4 el año anterior (2 periodistas + archivo + practicante). Todo el apoyo está bajo prestación de servicios (sin poder exigir horario/inmediatez) — modelo crítico para una operación web que necesita respuesta rápida. Jornadas extendidas insostenibles.
 
-✅ Decisión: contratar 1 perfil **senior** (no junior) con presupuesto adicional de **Cocrea** (vigente hasta diciembre 2026), para Sandra y Simón.
+🟡 Solicitud pendiente: contratar 1 perfil **senior** (no junior) con presupuesto adicional de **Cocrea** (vigente hasta diciembre 2026) — **requiere aprobación presupuestal de [[Catalina Obregon]]**. Toda decisión de personal está sujeta al presupuesto que Catalina asigne.
 
 ---
 
