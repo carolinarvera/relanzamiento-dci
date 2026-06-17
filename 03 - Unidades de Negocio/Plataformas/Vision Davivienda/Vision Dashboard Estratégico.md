@@ -7,6 +7,8 @@ related-people: [Carolina Ramirez, Natalia Otalora, Estefania Ochoa, Ernesto Rod
 sources:
   - "Looker Studio: https://datastudio.google.com/u/0/reporting/193ffafb-f2c3-4e91-a824-280f9dee9dda/page/p_1k9e2dtk0d"
   - "Reporte AON Visión 2026 (Starcom)"
+accesos:
+  - "GA4 Visión Davivienda: usuario carolina.ramirez@revistadiners.com (confirmado 2026-06-16)"
   - "Presentación Natalia Otálora — Reunión alineación 2026-06-16"
 ai-first: true
 confidence: high
