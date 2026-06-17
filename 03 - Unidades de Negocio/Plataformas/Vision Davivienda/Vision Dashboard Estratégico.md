@@ -16,7 +16,7 @@ confidence: high
 
 # Visión Davivienda — Dashboard Estratégico
 
-> **For future Claude:** Dashboard de gestión Growth para Visión Davivienda (plataforma de análisis económico de Banco Davivienda + Davivienda Corredores). Actualizado 2026-06-16 con datos de la reunión con Natalia Otálora. Contiene: benchmark competitivo (Bloomberg lidera con 46.3M visitas/mes), 3 arquetipos de audiencia, KPIs reales YTD (usuarios 100% meta, vistas solo 26%), metas 2026 (2MM vistas, 210K suscripciones, posición SEO 9.4) y datos mayo por canal. Hallazgo clave: Email es el canal #1 (51% sesiones). SEO es el canal de mayor calidad pero subdesarrollado. Visión es 4° referencia para medios en Colombia (94 notas). Contacto estratégico: [[Natalia Otalora]].
+> **For future Claude:** Dashboard de gestión Growth para Visión Davivienda (plataforma de análisis económico de Banco Davivienda + Davivienda Corredores). Última actualización: 2026-06-17 (reunión revisión pauta). Contiene: benchmark competitivo (Bloomberg lidera con 46.3M visitas/mes), 3 arquetipos de audiencia, KPIs reales YTD (usuarios 100% meta, vistas solo 26%), metas 2026 (2MM vistas, 210K suscripciones, posición SEO 9.4) y datos mayo por canal. Hallazgo clave: Email es el canal #1 (51% sesiones). SEO es el canal de mayor calidad pero subdesarrollado. Visión es 4° referencia para medios en Colombia (94 notas). Contacto estratégico: [[Natalia Otalora]]. **Decisiones 2026-06-17:** campaña Instagram seguidores ELIMINADA (budget redirigido a tráfico web); KPI estandarizado a "visitas"; email A/B CTR 0.58% — próximas pruebas deben ser estructurales de contenido; Carolina lidera sesiones 1:1 SEO+pauta+contenido; pauta contribuye 22% de sesiones en H1 2026 (vs 11% en análisis parcial de 2024).
 
 ---
 
@@ -316,7 +316,13 @@ Natalia bloqueó propuestas 2+ meses. Causa raíz: propuestas sin datos concreto
 | 🔴 P0 | Gestionar acceso analista Meta Business Manager vía Alejandro Bojacá | Jeison | Esta semana | Pendiente |
 | 🔴 P0 | Coordinar reunión Carolina + Alejandro Bojacá (Performix) — presentación + accesos | Jeison | Esta semana | Pendiente |
 | 🔴 P0 | Auditoría UTMs email — 97 campañas de mayo, estandarizar nomenclatura | Estefanía | Esta semana | Pendiente |
-| 🔴 P1 | Revisar plantillas email para mejorar CTR (hoy 2%) | Grupo | Antes del 28 jun | Pendiente |
+| 🔴 P0 | ~~Campaña Instagram seguidores~~ → ELIMINADA. Budget redirigido a tráfico web | Performance (Salome) | 2026-06-17 | ✅ Decidido |
+| 🔴 P0 | Entregar creativos cuadrado y horizontal | Viviana (Leo) | 2026-06-18 | Pendiente |
+| 🔴 P0 | Ajustar dashboard Looker a métrica "visitas" (estandarizar con SEO) | [[Estefania Ochoa Fonseca]] | Esta semana | Pendiente |
+| 🔴 P0 | Sesiones 1:1 de alineación SEO + pauta + contenido (Carolina lidera) | [[Carolina Ramirez]] | Esta semana | Pendiente |
+| 🔴 P0 | Definir pruebas estructurales de contenido para email marketing (no solo subject line) | Carolina + [[Estefania Ochoa Fonseca]] | Próximo envío | Pendiente |
+| 🔴 P1 | Revisar pauta 2024 completa (ene–dic) con cifras mensuales reales — el análisis de Salome solo cubría jul–dic | [[Natalia Otalora]] / Performance | Por definir | Pendiente |
+| 🔴 P1 | Revisar plantillas email para mejorar CTR (tests estructurales, no solo asunto; CTR actual 0.58% en A/B, ~2% promedio) | Grupo | Antes del 28 jun | Pendiente |
 | 🔴 P1 | Revisar detalle campañas pauta (lookalikes + remarketing) — entender caída vs. 300K vistas antes | Natalia | — | Pendiente |
 | 🔴 P1 | Identificar variables de segmentación disponibles en base suscriptores | Natalia | — | Pendiente |
 | 🟠 P1 | Cronograma editorial con ejes de contenido (4 pilares, por canal y semana) | Estefanía | Antes reunión miércoles | Pendiente |
