@@ -20,36 +20,37 @@ confidence: high
 
 # 1. EXECUTIVE SUMMARY
 
-## Estado General — Mayo 2026
+## Estado General — Junio 2026
 
 | Dimensión | Estado | Señal |
 |-----------|--------|-------|
-| Volumen total de sesiones | 42,295 | 🟢 Saludable |
-| Canal #1: Email | 51% del tráfico | 🟢 Fortaleza estructural |
-| SEO orgánico | 18.99% YTD vs meta 138K anuales | 🔴 Crítico — sin plan evergreen |
-| YouTube | Estancado — factores políticos + formato desgastante | 🟡 Atención |
-| Pauta digital | 134% meta sessions en mayo | 🟢 Eficiente |
-| UTM tracking | "Unassigned" 3.5% — UTMs de email incompletos | 🟡 Atención |
-| Aprobaciones Davivienda | 2+ meses de bloqueo en propuestas | 🔴 Crítico — requiere datos para desatascar |
-| Contenido | Muy técnico — no conecta con público entusiasta | 🟡 Atención |
-| Fragmentación plataformas | 5 portales sin visibilidad unificada | 🔴 Riesgo operativo |
+| Tráfico histórico | 2M en 2024 → cayó a 1.2M en 2025 → meta 2M en 2026 | 🔴 Recovery urgente |
+| Vistas YTD (sumatoria) | 520,941 de 2M meta (26%) | 🔴 Muy por debajo del ritmo |
+| Usuarios YTD | 160,408 / 160K meta → ✅ 100% | 🟢 Cumple |
+| Canal #1: Email | 51% del tráfico — CTR solo 2% | 🟡 Potencial sin explotar |
+| Pauta digital | Antes 300K vistas/mes con mismo presupuesto — hoy mucho menos | 🔴 Eficiencia caída |
+| SEO orgánico | Posición 4.9 (meta 9.4) ✅ — pero volumen bajo | 🟡 Posición buena, volumen bajo |
+| Plataforma técnica | Migración a Brace en MVP — suscripciones y buscador IA pendientes | 🟡 Riesgo operativo |
+| Contenido | Solo sirve a Decisor/Académico — Entusiasta desatendido | 🔴 Brecha estratégica |
+| Agencia Performix | Alta rotación → pérdida de continuidad | 🟡 Gestionar vía Alejandro Bojacá |
+| Accesos analítica | Carolina sin acceso a Meta Business Manager | 🔴 Gestión pendiente Jeison |
 
-**Semáforo Global: 🟡 ATENCIÓN — Base sólida (email + pauta) con brechas urgentes en SEO, contenido entusiasta y aprobaciones**
+**Semáforo Global: 🔴 ATENCIÓN ALTA — Recovery de tráfico urgente. Pauta ineficiente, email CTR bajo, contenido para entusiastas inexistente.**
 
 ---
 
-## Top Hallazgos
+## Top Hallazgos (actualizado 2026-06-16)
 
 | # | Hallazgo | Impacto | Urgencia |
 |---|----------|---------|---------|
-| 1 | Email mueve el 51% del tráfico — canal más poderoso y no está siendo optimizado (UTMs incompletos) | Crítico | Inmediata |
-| 2 | SEO al 18.99% YTD — sin plan evergreen, el KPI anual de 138K sesiones es inalcanzable | Alto | Alta |
-| 3 | Contenido "muy de economistas" — Natalia pidió formatos cotidianos; no hay estrategia de contenido para entusiastas | Alto | Alta |
-| 4 | Pauta mayo: 134% meta — canal eficiente pero con inconsistencia histórica (Feb 2,742 vs May 12,778) | Medio | Media |
-| 5 | YouTube congelado — podcast en pausa por decisión de Natalia | Medio | Baja |
-| 6 | Unassigned 3.5% (1,496 sesiones) — dark social + UTMs faltantes, tráfico email no atribuido | Medio | Media |
-| 7 | Flujo aprobación Davivienda bloqueado — propuestas sin data concreta no avanzan | Crítico | Inmediata |
-| 8 | CM en rol pasivo — no genera contenido transversal, solo espeja informes técnicos del portal | Medio | Alta |
+| 1 | Tráfico cayó 40% en 2025 (2M→1.2M) — 2026 es año de recovery, no de crecimiento neto | Crítico | Inmediata |
+| 2 | Pauta rinde menos: mismo presupuesto antes daba 300K vistas/mes, hoy mucho menos — causa desconocida sin acceso a Business Manager | Crítico | Inmediata |
+| 3 | Email CTR al 2% — el canal #1 de tráfico tiene tasa de clic mínima por plantillas no optimizadas | Alto | Alta |
+| 4 | Carolina sin acceso a Meta Business Manager — toma decisiones con informes estándar, no con data real | Alto | Alta |
+| 5 | Brace en MVP — suscripciones automáticas no funcionan, 160K suscriptores registrados manualmente | Alto | Media |
+| 6 | Contenido solo para especialistas — el Entusiasta (mayor volumen) no tiene capa de contenido propia | Alto | Alta |
+| 7 | Performix con alta rotación — continuidad de pauta y SEO en riesgo sin un interlocutor estable | Medio | Media |
+| 8 | Equipo de investigaciones: resistencia a adaptar lenguaje técnico — bloqueo cultural al cambio | Medio | Media |
 
 ---
 
@@ -304,32 +305,71 @@ Natalia bloqueó propuestas 2+ meses. Causa raíz: propuestas sin datos concreto
 
 # 8. NEXT STEPS — Roadmap
 
+> ⚠️ Natalia ausente a partir del 28 de junio — alinear entregas críticas antes de esa fecha.
+
 | Prioridad | Acción | Owner | Plazo | Estado |
 |-----------|--------|-------|-------|--------|
-| 🔴 P0 | Reunión alineación con Natalia Otálora — presentar datos mayo + plan junio | Carolina | **2026-06-16 4pm** | ✅ Hecho |
+| 🔴 P0 | Reunión alineación con Natalia — ✅ realizada | Carolina | 2026-06-16 | ✅ Hecho |
 | 🔴 P0 | Enviar formato Excel de cronograma a Estefanía | **Carolina** | **Hoy** | ⚠️ PENDIENTE |
-| 🔴 P0 | Auditoría UTMs email — mapear 97 campañas de mayo y estandarizar nomenclatura | Estefanía | Esta semana | Pendiente |
-| 🔴 P1 | Cronograma editorial (por canal, semana, eje temático) — 4 pilares acordados | Estefanía | Esta semana | Pendiente |
-| 🔴 P1 | Enviar contenidos "Invertir" a Carolina para revisión | Estefanía | Esta semana | Pendiente |
-| 🔴 P1 | Pedir a Pao que cierre sesión Metricool + revisar multi-sesión | Estefanía / Jeison | Inmediato | Pendiente |
-| 🟠 P1 | Plan evergreen SEO — artículos atemporales "En qué Invertir" + "Macroeconomía cotidiana" | Ernesto + Estefanía | Jun 30 | Pendiente |
-| 🟠 P1 | Archivo centralizado de accesos y contraseñas (por pestaña/plataforma) | Estefanía | Esta semana | Pendiente |
-| 🟠 P2 | Migrar métricas orgánicas a tablero de control Growth Dashboard | Estefanía | Esta semana | Pendiente |
-| 🟠 P2 | Estrategia remarketing junio — audiencias personalizadas para retargeting | Estefanía + Starcom | Semana del 16 | Pendiente |
-| 🟡 P3 | Piloto 2 meses contenido evergreen — presentar a Natalia con métricas de éxito definidas | Carolina | Semana del 23 | Pendiente |
+| 🔴 P0 | Gestionar acceso analista Meta Business Manager vía Alejandro Bojacá | Jeison | Esta semana | Pendiente |
+| 🔴 P0 | Coordinar reunión Carolina + Alejandro Bojacá (Performix) — presentación + accesos | Jeison | Esta semana | Pendiente |
+| 🔴 P0 | Auditoría UTMs email — 97 campañas de mayo, estandarizar nomenclatura | Estefanía | Esta semana | Pendiente |
+| 🔴 P1 | Revisar plantillas email para mejorar CTR (hoy 2%) | Grupo | Antes del 28 jun | Pendiente |
+| 🔴 P1 | Revisar detalle campañas pauta (lookalikes + remarketing) — entender caída vs. 300K vistas antes | Natalia | — | Pendiente |
+| 🔴 P1 | Identificar variables de segmentación disponibles en base suscriptores | Natalia | — | Pendiente |
+| 🟠 P1 | Cronograma editorial con ejes de contenido (4 pilares, por canal y semana) | Estefanía | Antes reunión miércoles | Pendiente |
+| 🟠 P1 | Enviar contenidos "Invertir" a Carolina para revisión | Estefanía | Esta semana | Pendiente |
+| 🟠 P1 | Pedir a Pao que cierre sesión Metricool + revisar multi-sesión | Estefanía / Jeison | Inmediato | Pendiente |
+| 🟠 P1 | Justificación técnica/financiera ManyChat ($69 USD/mes) para dirección financiera | Jeison | Esta semana | Pendiente |
+| 🟠 P2 | Plan evergreen SEO — artículos atemporales "En qué Invertir" + "Macroeconomía cotidiana" | Ernesto + Estefanía | Jun 30 | Pendiente |
+| 🟠 P2 | Archivo centralizado de accesos y contraseñas (por plataforma) | Estefanía | Esta semana | Pendiente |
+| 🟠 P2 | Series temáticas basadas en informes existentes (ej. construcción) — extender vida útil del contenido | Estefanía + Ernesto | Jul | Pendiente |
+| 🟡 P3 | Piloto 2 meses contenido evergreen — presentar a Natalia con métricas de éxito | Carolina | Antes del 28 jun | Pendiente |
+| 🟡 P3 | Estrategia Libro 2026 (publicación septiembre) — plan de contenido + solicitud presupuesto | Carolina + Jeison | Julio | Pendiente |
 | 🟡 P3 | Reunión 1:1 Carolina-María Angélica Navarro | Carolina | Semana del 23 | Pendiente |
 
 ---
 
-# 9. RIESGOS
+# 9. CONTEXTO TÉCNICO Y PROVEEDORES
+
+## Migración a Brace (CMS)
+
+| Item | Estado |
+|------|--------|
+| Plataforma actual | Brace (MVP funcional) |
+| Suscripciones automatizadas | ❌ Pendiente — hoy manual |
+| Buscador con IA | ❌ Pendiente |
+| Integración calendarios y otros portales | ❌ Pendiente |
+| Registro de suscriptores | Manual — 160K clientes Davivienda con inversiones activas |
+
+Esta limitación técnica explica por qué los envíos de email son manuales y por qué la atribución de tráfico email tiene gaps (UTMs incompletos).
+
+## Performix — Agencia de Pauta y SEO
+
+- **Problema:** alta rotación de personal → pérdida de continuidad en estrategias
+- **Contacto clave:** Alejandro Bojacá — punto de acceso a analítica, SEO y pauta
+- **Acción pendiente:** Jeison coordina reunión para presentar a Carolina con Alejandro + gestionar acceso a Meta Business Manager (nivel analista)
+
+## ManyChat — Herramienta pendiente de aprobación
+
+- **Uso propuesto:** automatización de DMs en Instagram (entrega de informes, mensajes de bienvenida, flujos automatizados)
+- **Costo:** $69 USD/mes
+- **Estado:** Jeison presenta justificación técnica/financiera a dirección financiera
+- **Referente:** modelo Corficolombiana con entrega de PDFs por DM
+
+---
+
+# 11. RIESGOS
 
 | Riesgo | Nivel | Mitigación |
 |--------|-------|------------|
-| Natalia bloquea propuestas → sin avance estratégico | 🔴 Crítico | Presentar siempre con datos + benchmark + proyección. Nunca ir sin números |
-| KPI anual SEO 138K inalcanzable sin evergreen | 🔴 Crítico | Activar plan evergreen inmediatamente — renegociar meta si ya no es recuperable |
-| Inconsistencia presupuesto pauta (Feb/Mar cero) | 🟠 Medio | Garantizar presupuesto mínimo mensual operativo + plan de continuidad |
-| Leo tiempos de desarrollo 3-5 días | 🟡 Bajo | Centralizar solicitudes via Jeison como filtro — no escalar directo a Leo |
-| Fragmentación 5 plataformas | 🟠 Medio | Consolidación en curso liderada por Jeison — monitorear avance |
+| Meta 2M vistas inalcanzable al ritmo actual (26% en H1) | 🔴 Crítico | Combinar evergreen SEO + mejora CTR email + pauta correctamente segmentada |
+| Pauta sin datos reales → decisiones a ciegas | 🔴 Crítico | Acceso Business Manager es P0 — gestionar esta semana |
+| Natalia ausente desde el 28 jun — ventana corta | 🔴 Crítico | Alinear ejes, piloto y cronograma antes del 28 |
+| Brace en MVP → suscripciones manuales escalando | 🟠 Medio | Presionar timeline de desarrollo; en paralelo optimizar proceso manual |
+| Performix con rotación alta → sin continuidad | 🟠 Medio | Centralizar todo en Alejandro Bojacá como interlocutor único |
+| Equipo investigaciones resiste cambio de lenguaje | 🟠 Medio | Apoyar, no confrontar — proponer ejemplos concretos de traducción |
+| Leo tiempos de desarrollo 3-5 días | 🟡 Bajo | Centralizar solicitudes vía Jeison |
 
 ---
 
