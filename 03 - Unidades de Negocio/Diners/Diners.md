@@ -444,6 +444,119 @@ Cualquier usuario que llega por el menú principal o un anuncio puede estar caye
 
 ---
 
+## Google Ads — Auditoría YTD 2026 (ene–jun 17)
+> Fuente: 14 CSVs de Google Ads exportados 2026-06-17. Período: 2026-01-01 a 2026-06-17.
+
+**For future Claude:** Google Ads de Diners tiene inversión activa YTD de COP 2.12M y CERO conversiones registradas. La causa raíz no es la calidad de las campañas — el tracking no está configurado y la cuenta está optimizando para clics, no resultados. La estructura completa de campañas es de tráfico a artículos (AdSense), no de captación de suscripciones.
+
+### Resumen Ejecutivo
+
+| Métrica | Valor | Semáforo |
+|---------|-------|----------|
+| Inversión total YTD | COP 2,119,761 | 🟠 |
+| Clics totales | 29,278 | 🟢 |
+| CPC promedio | COP 72 | 🟢 Barato |
+| Conversiones | 0 | 🔴 CRÍTICO |
+| AdSense earned via Paid Search (GA4) | COP 39,622 | 🔴 |
+| **ROI directo** | **-98.1%** | 🔴 CRÍTICO |
+| Score de optimización (Google) | 97.6–100% | 🟢 Técnicamente bien |
+
+**Diagnóstico en una línea:** La maquinaria publicitaria funciona (CTRs excelentes, CPCs baratos) pero el objetivo está mal. Se está comprando tráfico a artículos para monetizar con AdSense, y cada peso gastado retorna 2 centavos.
+
+### Campañas Activas — Estructura y Eficiencia
+
+| Campaña | Inversión COP | Clics | CTR | CPC | Estado |
+|---------|--------------|-------|-----|-----|--------|
+| Aguas termales Bogotá | 716,472 | 12,046 | 17.1% | 59 | ✅ Habilitada |
+| Karts en Bogotá | 461,971 | 5,805 | 23.6% | 80 | ✅ Habilitada |
+| 20 restaurantes afueras Bogotá | 371,145 | 4,134 | 10.7% | 90 | ✅ Habilitada |
+| Restaurantes La Candelaria | 150,663 | 2,389 | 25.3% | 63 | ✅ Habilitada |
+| Restaurantes temáticos Bogotá | 148,806 | 1,671 | 12.0% | 89 | ✅ Habilitada |
+| 50 marcas de café colombiano | 108,610 | 1,345 | 12.8% | 81 | ⏸ Detenida |
+| 10 poemas García Márquez | 98,215 | 1,163 | 12.7% | 84 | ✅ Habilitada |
+| Brunch Bogotá | 41,908 | 504 | 19.9% | 83 | ✅ Habilitada |
+| Trabajar online (fuera de marca) | 12,081 | 95 | 12.6% | 127 | ⏸ Detenida |
+| 7 milhojas Bogotá | 7,586 | 97 | 19.7% | 78 | ✅ Habilitada |
+| Jazz en vivo | 1,841 | 23 | 23.5% | 80 | ✅ Habilitada |
+| 11 series más largas | 463 | 6 | 13.9% | 77 | ✅ Habilitada |
+| Test casa Harry Potter | 0 | 0 | — | — | ⏸ Detenida |
+
+**Patrón crítico:** 100% de las campañas son artículo-a-artículo. No existe ninguna campaña de marca ("Revista Diners"), de captación ("suscribirse a Diners"), ni de retargeting.
+
+### Diagnóstico de Conversiones: La Causa Raíz
+
+El problema no es la segmentación ni la creatividad — es que **el conversion tracking no está configurado en Google Ads**. Google lleva 6 meses optimizando para maximizar clics porque no hay ninguna señal de conversión que seguir. Resultado: excelentes CTRs, CPCs baratos, y cero suscriptores.
+
+Agravante: aunque se configurara el tracking mañana, el destino sería la página `/suscripciones/` (404). Dos problemas se anulan mutuamente.
+
+**Secuencia correcta de fix:**
+1. Fix redirect `/suscripciones/` → URL canónica (ya en CRO backlog como P0)
+2. Configurar conversion tracking en Google Ads (goal: purchase de suscripción)
+3. Crear primera campaña de captación con Smart Bidding Target CPA
+4. Dejar que la campaña de tráfico de artículos corra como siempre (el AdSense cubre parte)
+
+### Análisis de Búsquedas — Intención del Usuario
+
+Top términos por inversión (todos informacionales, ninguno comercial):
+
+| Término | Inversión COP | Clics | Conversiones |
+|---------|--------------|-------|-------------|
+| termales cerca de bogota | 130,271 | 2,152 | 0 |
+| karts bogota | 176,332 | 2,104 | 0 |
+| termales cerca a bogotá | 81,089 | 1,578 | 0 |
+| restaurantes campestres bogota | 23,572 | 273 | 0 |
+| poemas de gabriel garcía márquez | 12,230 | 187 | 0 |
+
+**Brecha de intent:** Nadie que busca "termales cerca de bogota" está en modo "quiero suscribirme a una revista." La cuenta no tiene ninguna keyword de intención comercial: "suscripción revista colombia", "revista gastronomía bogotá", "Diners Colombia."
+
+### Dispositivos
+
+| Dispositivo | Inversión COP | % | Clics |
+|-------------|--------------|---|-------|
+| Móvil | 2,036,557 | 96.1% | 28,183 |
+| Escritorio | 79,115 | 3.7% | 1,035 |
+| Tablet | 4,089 | 0.2% | 60 |
+
+97% móvil. Consistente con GA4 (81% mobile sessions). Para campañas de suscripción, vale la pena probar bid adjustment +20% en desktop — los funnel de checkout convierten mejor en pantalla grande.
+
+### Demografía
+
+| Género | % Impresiones |
+|--------|--------------|
+| Mujer | 58.5% |
+| Hombre | 41.9% |
+
+Top edades: 25-34 (28.2%) y 35-44 (27.8%). Target ideal para suscripción premium — mismo perfil que el suscriptor objetivo editorial.
+
+### Dayparting — Cuándo Impactar
+
+**Días pico:** Sábado (37,957 imp) > Domingo (34,951 imp) > Viernes (27,400 imp)
+**Horas pico:** 9am–1pm (13,000+ imp/hora), segundo pico 7–9pm (10,000+ imp/hora)
+
+Patrón de comportamiento: el usuario de Diners navega en modo "planeación de fin de semana" — busca planes y lugares en Sab/Dom por la mañana. Contenido perfectamente alineado con las campañas de termales y restaurantes. Para campañas de suscripción, el mejor slot es **Viernes tarde (7–9pm)** cuando la decisión de consumo cultural es más alta.
+
+### Serie Temporal de Inversión (Jan–Jun 2026)
+
+Tendencia: arranque lento en enero → rampa hasta pico en semana del 30 de marzo (COP 188K) → estabilización entre COP 80-145K/semana. CPC cayó de COP 90 (enero) a COP 56 (junio) — la cuenta aprendió y se volvió más eficiente, sin cambiar el resultado (0 conversiones).
+
+### ¿Qué Hacer con Google Ads en H2 2026?
+
+**No cancelar** — la maquinaria está bien afinada (score 100%, CTRs altos, CPCs bajos). El problema es de estrategia, no de ejecución técnica.
+
+| Acción | Prioridad | Esfuerzo | Impacto estimado |
+|--------|-----------|----------|-----------------|
+| Configurar conversion tracking (purchase suscripción) | P0 | 2h técnico | Habilita todo lo demás |
+| Fix redirect `/suscripciones/` | P0 | 10min | Sin esto nada convierte |
+| Crear campaña de captación (keywords "suscripción revista") | P1 | 1 día | Primer flujo de suscriptores paid |
+| Crear campaña de marca ("Revista Diners Colombia") | P1 | 2h | Protege búsquedas de marca |
+| Dayparting: concentrar presupuesto Sab-Dom 9am-1pm + Vie 7-9pm | P2 | 30min | -15% en gasto, mismo resultado |
+| Bid adjustment +20% desktop para campaña de captación | P2 | 15min | Mejora tasa de conversión del funnel |
+| Detener campaña "11 series más largas" (COP 463, 6 clics) | P3 | 5min | Limpiar la cuenta |
+
+**Budget shift recomendado H2:** Reasignar 20% del presupuesto de tráfico (≈COP 30K/semana) a la nueva campaña de captación. Mantener las campañas de artículos principales (termales, karts, restaurantes) porque son el engine de AdSense y el tráfico de interés es legítimo.
+
+---
+
 ## Oportunidades de Growth
 
 - **Carnet Digital Diners:** Diferenciador clave para suscriptores → acceso a red de aliados
@@ -481,13 +594,20 @@ Cualquier usuario que llega por el menú principal o un anuncio puede estar caye
 ## Next Steps — Backlog de Crecimiento (Hub Central)
 > Fuente: Dashboard Diners_Tabs_2026-06, tab Next Steps (as of 2026-06-16). Toda conclusión estratégica de los demás tabs aterriza aquí.
 
-### 🔴 P1 — Semana 1 (máx 21 jun 2026)
+### 🔴 P0 — Esta semana (bloqueantes técnicos que impiden toda conversión)
+| # | Acción | Owner | Plazo | Fuente |
+|---|--------|-------|-------|--------|
+| 0A | Redirect 301: `/suscripciones/` → URL canónica (`/suscripciones-revista-diners/`) | Tech | Jun 20 | CRO audit |
+| 0B | Configurar conversion tracking en Google Ads (goal: purchase suscripción) | Tech + Growth | Jun 21 | Google Ads audit — sin esto Google optimiza para clics, no ventas |
+| 0C | Unificar 2 URLs de suscripciones en 1 con los 3 planes | Tech | Jun 23 | CRO audit |
+
+### 🔴 P1 — Semana 1-2 (máx 28 jun 2026)
 | # | Acción | Owner | Plazo |
 |---|--------|-------|-------|
 | 1 | Solicitar acceso GA4 Diners (viewer) | Carolina | Jun 20 |
 | 2 | Solicitar acceso GSC Diners | Carolina | Jun 20 |
 | 3 | Auditar funnel Meta Ads → suscripción | Carolina | Jun 20 |
-| 4 | Revisar landing de suscripciones digitales | Carolina + Tech | Jun 21 |
+| 4 | Crear campaña Google Ads de captación (keywords: "suscripción revista colombia", "revista diners") | Carolina + Tech | Jun 28 |
 | 5 | Definir fecha y formato Colombia Moda 2026 | Paola Nossa + Lilo | Jun 21 |
 | 6 | Convocar sesión onboarding HubSpot (newsletter) | Carolina | Jun 21 |
 
@@ -511,7 +631,7 @@ Cualquier usuario que llega por el menú principal o un anuncio puede estar caye
 | 17 | Primer envío masivo newsletter con sponsor | Growth + Lilo | Ago 2026 |
 | 18 | Lanzamiento Carnet Digital (MVP público) | Carolina + Tech + Paola Nossa | Sep 2026 |
 | 19 | Bazar Diners Q4 — definir fecha y formato | Paola Nossa + Pantaleon | Sep 2026 |
-| 20 | Evaluar Google Ads SEM para diners.com.co | Carolina | Sep 2026 |
+| 20 | ~~Evaluar Google Ads SEM~~ ✅ Auditado 2026-06-17 — ver sección Google Ads en este doc | Carolina | Jun 2026 |
 
 ### Modelo Predictivo — ¿Qué Pasa Si No Actuamos? (Jun-Dic 2026)
 

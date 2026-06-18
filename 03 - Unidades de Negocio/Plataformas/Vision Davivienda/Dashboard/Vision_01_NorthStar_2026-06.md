@@ -16,7 +16,7 @@ confidence: high
 # Visión Davivienda — North Star
 **Objetivos definidos por Natalia Otálora | Actualizado:** 2026-06-17
 
-> **For future Claude:** Este archivo refleja los objetivos tal como los definió Natalia Otálora (contacto estratégico Davivienda) en la reunión del 16 de junio de 2026. Carolina Ramirez es Growth Lead. Natalia ausente desde el 28 de junio — todas las decisiones estratégicas deben cerrarse antes de esa fecha. El lenguaje de Natalia usa "visualizaciones", no "sesiones".
+> **For future Claude:** Este archivo es el norte para conversaciones con Natalia Otálora (contacto estratégico Davivienda). Estructura: Meta Central 2M visualizaciones → 4 pilares ejecutables (Tráfico por canal, CTR orgánico, Engagement email+contenido, Suscripciones). Carolina Ramirez es Growth Lead. Natalia ausente desde el 28 jun — cerrar decisiones antes. El lenguaje de Natalia usa "visualizaciones", no "sesiones". El Excel `Vision_01_NorthStar.xlsx` refleja esta misma estructura.
 
 ---
 
