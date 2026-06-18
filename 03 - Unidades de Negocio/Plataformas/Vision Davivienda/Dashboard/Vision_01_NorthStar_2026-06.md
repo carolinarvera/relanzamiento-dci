@@ -3,156 +3,165 @@ date: 2026-06-17
 type: dashboard-tab
 tags: [vision-davivienda, dashboard, north-star, kpis, junio-2026]
 related-projects: [vision-davivienda, growth-dashboard]
+related-people: [natalia-otalora, carolina-ramirez]
 sources:
+  - "Reunión Natalia Otálora 2026-06-16 (objetivos directos)"
   - "GA4 sumatoria 3 propiedades YTD jun 2026"
   - "GSC mar-jun 2026 (export 2026-06-17)"
   - "Braze dashboard 2026-06-16"
-  - "Reunión Natalia Otálora 2026-06-16"
 ai-first: true
 confidence: high
 ---
 
 # Visión Davivienda — North Star
-**Meta:** 2,000,000 vistas/año | **Período:** YTD junio 2026
+**Objetivos definidos por Natalia Otálora | Actualizado:** 2026-06-17
 
-> **For future Claude:** Este es el documento de métricas estratégicas de Visión Davivienda. La meta central es recuperar 2M vistas anuales (caída de 2M en 2024 a 1.2M en 2025). Hay tres palancas medibles: tráfico (volumen de sesiones), CTR orgánico (eficiencia en Google), y engagement (calidad de las visitas). Carolina Ramirez es Growth Lead desde junio 2026.
+> **For future Claude:** Este archivo refleja los objetivos tal como los definió Natalia Otálora (contacto estratégico Davivienda) en la reunión del 16 de junio de 2026. Carolina Ramirez es Growth Lead. Natalia ausente desde el 28 de junio — todas las decisiones estratégicas deben cerrarse antes de esa fecha. El lenguaje de Natalia usa "visualizaciones", no "sesiones".
 
 ---
 
-## META CENTRAL — 2,000,000 vistas/año
+## OBJETIVO CENTRAL — Recuperar 2,000,000 visualizaciones/año
+
+Natalia fue explícita: **2026 es año de recovery, no de crecimiento neto.** La caída de 2M → 1.2M en 2025 es la presión que define toda la estrategia.
 
 | | Valor | Estado |
 |--|-------|--------|
-| **Meta anual** | 2,000,000 vistas | — |
-| **YTD (ene-jun)** | 520,941 vistas | 🔴 26% completado |
-| **Ritmo actual** | ~87K vistas/mes | Necesita 2.3x para cerrar el año |
-| **Ritmo necesario** | ~246K vistas/mes (jul-dic) | Para recuperar en H2 |
-| **Proyección realista H2** | Cerrar entre 1.2M-1.5M con las 4 palancas | 🟡 |
-
-> La meta de 2M en 2026 es ambiciosa dado el YTD. El objetivo ejecutable es demostrar tracción en las métricas de las 3 palancas antes del 28 de junio (deadline Natalia) y escalar en H2.
+| **Meta anual** | 2,000,000 visualizaciones | — |
+| **YTD ene-jun** | 520,941 | 🔴 26% completado |
+| **Ritmo actual** | ~87K/mes | Necesita 2.3x para cerrar el año |
+| **Benchmark histórico pauta** | ~300K visualizaciones/mes (2024) | Referencia de Natalia |
+| **Pauta actual** | Muy por debajo de 300K | 🔴 Eficiencia caída |
 
 ---
 
-## PALANCA 1 — TRÁFICO
+## OBJETIVOS POR PALANCA (en palabras de Natalia)
 
-### Sesiones actuales vs objetivo
+### 1. Tráfico orgánico
 
-| Canal | Sesiones/mes (mayo) | Target/mes | GAP | Acción principal |
-|-------|--------------------|-----------|----|-----------------|
-| Email (boletín) | ~21,600 | 40,000 | +18,400 | CTOR 2.5% → 5% |
-| Meta Paid | ~8,580 | 18,000 | +9,420 | Reasignar $9.9M engagement → tráfico |
-| Google Organic | ~4,485 | 20,000 | +15,515 | SSR/SSG + contenido evergreen |
-| Direct | ~5,384 | 8,000 | +2,616 | Crece con marca |
-| Google CPC | ~4,292 | 8,000 | +3,708 | Mantener inversión |
-| Organic Social | ~1,846 | 6,000 | +4,154 | Piloto contenido 4 pilares |
-| **TOTAL** | **~42,295** | **~100,000** | **+57,705** | — |
+| Métrica | Baseline (2025) | Meta 2026 | Hoy (jun) | Estado |
+|---------|----------------|-----------|-----------|--------|
+| % tráfico orgánico | 17% | **20%** | 18% | 🟡 Cerca |
+| Posición media Google | 11.4 | **9.4** | 4.9 | ✅ Superada |
+| Presencia en búsquedas de IA | Sin presencia | Objetivo explícito 2026 | ❌ | 🔴 Pendiente |
 
-### Histórico anual
+> Natalia señaló "estar en búsquedas de inteligencia artificial" como objetivo 2026. Requiere: autoría verificable, NewsArticle schema, contenido estructurado para AI Overviews.
 
-| Año | Vistas | Cambio |
-|-----|--------|--------|
-| 2024 | 2,000,000 | Pico histórico |
-| 2025 | 1,200,000 | **-40%** (causa: deindexación JS) |
-| 2026 YTD | 520,941 | Recovery en curso |
+**Bloqueador técnico identificado post-reunión (GSC):** Solo el 24% del sitio está indexado (2,676 de ~11,000 páginas). Causa: JS rendering delay → Googlebot ve páginas vacías → Soft 404. El SSR/SSG es P0 absoluto.
 
 ---
 
-## PALANCA 2 — CTR ORGÁNICO
+### 2. Email — mejorar CTR desde el 2%
 
-> El sitio ya tiene 453K impresiones/trimestre en Google. El problema es que solo 1.5% se convierte en clic. Doblar el CTR es la acción de mayor ROI: no requiere presupuesto, solo fixes técnicos.
+Natalia identificó el CTR de email como problema crítico. La base es sólida (canal #1 con 51% del tráfico), el problema es diseño y plantillas.
 
-### Embudo orgánico actual vs objetivo
+| Métrica | Hoy | Meta | Impacto si se logra |
+|---------|-----|------|---------------------|
+| Suscriptores registrados | 169,000 | 210,000 | — |
+| Suscriptores activos Braze | 135,500 | 160,000 | — |
+| CTOR (clics/aperturas) | **2.5%** | **5%+** | **+3,200 visualizaciones/mes** |
+| Open rate estimado real | 47.66% | Mantener | Audiencia activa y comprometida |
 
-| Paso | Valor actual | Valor objetivo | Impacto en sesiones/mes |
-|------|-------------|----------------|------------------------|
-| Impresiones/mes | 151,000 | 151,000 (base) | — |
-| CTR | **1.5%** | **3.0%** | **+2,265/mes** |
-| Sesiones orgánicas/mes | 2,265 | 4,530 | +2,265 |
-| Sesiones orgánicas anuales | 27,180 | 54,360 | **+27,180** |
+> Cada +1 punto de CTOR = +1,355 clics por envío = +2,710 visualizaciones/mes con lista actual.
 
-### Top 5 páginas con mayor brecha CTR (fix = mayor retorno)
-
-| Página | Impresiones | CTR actual | CTR posible | Clics adicionales/mes |
-|--------|-------------|------------|-------------|----------------------|
-| Déficit fiscal Colombia 2026 | 11,245/mes | 0.31% | 3% | **+298** |
-| Colombia 2025 macro anual | 9,415/mes | 0.53% | 3% | **+232** |
-| Dividendos Ecopetrol 2026 | 7,826/mes | 1.29% | 4% | **+212** |
-| Celsia recompra (pos 3.88) | 4,117/mes | 1.29% | 6% | **+194** |
-| BanRep junta directiva | 4,443/mes | 1.46% | 4% | **+113** |
-| **TOTAL 5 páginas** | **37,046/mes** | ~0.9% avg | 3-4% | **+1,049/mes** |
-
-### Estado técnico que bloquea el CTR
-
-| Problema | Páginas afectadas | Impacto en CTR |
-|----------|------------------|----------------|
-| Soft 404 (JS rendering) | **988** | Google deindexó 76% del sitio |
-| Sin indexar (rastreadas) | **3,803** | Contenido invisible para Google |
-| Sin canonical tags | **145** | Duplicados compiten entre sí |
-| Títulos genéricos | Todo el sitio | CTR 1.5% vs benchmark 3-5% |
-| **⚠️ Regresión 8 jun** | +1,141 páginas desindexadas | Investigar hoy |
+**Acción acordada en reunión:** Revisar plantillas y diseño para hacerlas más atractivas y orientadas al clic.
 
 ---
 
-## PALANCA 3 — ENGAGEMENT DEL CONTENIDO
+### 3. Pauta — recuperar eficiencia
 
-> El engagement actual es bueno en calidad pero bajo en volumen de páginas por visita. El usuario llega, consume, y no profundiza. Hay que empujarlo a más contenido.
+Natalia dijo textualmente: *"con presupuesto similar al pasado, antes lograban 300K visualizaciones/mes — hoy están muy por debajo."* La causa no es el presupuesto, son las segmentaciones desactualizadas y la rotación en Performix.
 
-### Métricas de engagement — Mayo 2026
+| Situación | 2024 | 2026 |
+|-----------|------|------|
+| Presupuesto total | ~$23.7M COP | ~$27M COP |
+| Objetivos Meta | Visitas + Conversión (tráfico) | $9.9M en Interacción + Registros + Perfil (no tráfico) |
+| Visualizaciones pauta | ~300K/mes (referencia Natalia) | Muy por debajo |
+| Agencia | Performix / Starcom | Performix / Starcom (alta rotación) |
 
-| Métrica | Valor actual | Benchmark / Meta | Estado |
-|---------|-------------|-----------------|--------|
-| Tiempo medio en sesión | 00:03:55 | Bloomberg 00:01:47 | ✅ Mejor |
-| % Interacción | 47.82% | Meta >41% | ✅ |
-| % Rebote | 52.18% | Meta <61% | ✅ |
-| Páginas/visita | **1.36** | Bloomberg 2.6 | 🔴 Brecha real |
-| Tiempo orgánico | 00:04:46 | — | ✅ Mejor canal |
-| Tiempo El Libro | **00:06:08** | — | ✅ Formato largo funciona |
-
-### Email — Engagement boletín quincenal (Braze)
-
-| Métrica | Valor actual | Benchmark industria | Estado |
-|---------|-------------|--------------------|----|
-| Open rate estimado real | 47.66% | 20-25% | ✅ Excelente |
-| CTOR (clics/aperturas) | **2.50%** | **10-15%** | 🔴 Principal brecha |
-| Suscriptores activos Braze | 135,500 | — | 🟡 |
-| Suscriptores registrados | 169,000 | Meta 210,000 | 🟡 |
-| **Cada +1pt CTOR** | = **+1,355 clics/envío** | = +2,710 sesiones/mes | 🎯 |
-
-### Contenido — clusters con demanda comprobada (GSC)
-
-| Cluster | Tendencia GSC | Contenido actual | GAP |
-|---------|--------------|-----------------|-----|
-| Dividendos 2026 | +220% a +517% | 3-4 páginas | Faltan 8-10 artículos |
-| Macro Colombia 2026 | +700% | Disperso | Falta hub centralizado |
-| BanRep / tasas | +1,100% | 1 artículo | Falta tracker mensual |
-| Análisis compañías | Nuevo | Buena base | Falta cubrir más emisores |
+**Acciones acordadas:**
+- Natalia revisa detalle de campañas, lookalikes y remarketing
+- Carolina obtiene acceso analista a Meta Business Manager (gestiona Jeison → Alejandro Bojacá)
 
 ---
 
-## SEMÁFORO EJECUTIVO — Junio 2026
+### 4. Redes sociales — estrategia propia por canal
 
-| Palanca | Métrica clave | Hoy | Meta jun | Estado |
-|---------|--------------|-----|---------|--------|
-| **Tráfico** | Sesiones/mes | 42,295 | 50,000 | 🔴 Necesita acción |
-| **CTR orgánico** | CTR medio GSC | 1.5% | 2.5% | 🔴 Bloqueado por técnico |
-| **Engagement email** | CTOR boletín | 2.5% | 4.0% | 🔴 Fix plantilla |
-| **Engagement web** | Páginas/visita | 1.36 | 1.8 | 🟠 Fix paginación |
-| **Indexación** | Páginas indexadas | 2,676 | 4,000+ | 🔴 SSR/SSG urgente |
-| **Suscriptores** | Activos Braze | 135,500 | 160,000 | 🟡 Creciendo |
+Natalia identificó dependencia excesiva de imágenes estáticas y necesidad de estrategia diferenciada.
+
+| Canal | Problema identificado | Formato a activar | Referente |
+|-------|----------------------|-------------------|-----------|
+| Instagram | Manejado igual que X — sin identidad propia | Mini-videos 60s + carruseles | Corficolombiana |
+| X (Twitter) | — | Coyuntura económica en tiempo real | — |
+| YouTube | Subutilizado entre eventos | 60K prom. vistas/evento (4 eventos/año) | — |
+| Instagram DM | Sin automatización | ManyChat ($69 USD/mes) — aprobado en principio | Corficolombiana (PDFs por DM) |
 
 ---
 
-## DECISIONES ABIERTAS (antes del 28 jun)
+### 5. Contenido — calidad editorial
 
-| Decisión | Impacto estimado | Owner |
-|----------|-----------------|-------|
-| Reasignar $9.9M pauta engagement → tráfico | +8,000-12,000 sesiones/mes | Carolina + Natalia |
-| Aprobar SSR/SSG como P0 técnico (no títulos) | Recuperar 76% del sitio deindexado | Jeison + Leo |
-| Aprobar piloto contenido 2 meses (4 pilares) | Base para medir engagement por cluster | Natalia |
-| Rediseño plantilla email | CTOR 2.5% → 4% = +2,000 sesiones/mes | Estefanía |
+Natalia revisó contenido y señaló tres problemas específicos:
+
+| Problema | Síntoma | Acción |
+|----------|---------|--------|
+| Títulos repetitivos | Mismo formato en todos los artículos | Revisar guía editorial de títulos |
+| Incoherencia imagen/texto | La imagen no refuerza el mensaje | Alinear criterio visual en Estefanía |
+| Exceso de tecnicismos | Aleja al segmento "entusiasta" | Equipo investigaciones: traducir sin perder calidad |
+
+**Propuesta de Natalia:** series temáticas basadas en informes existentes (ej: sector construcción) para extender vida útil del contenido más allá de la coyuntura inmediata.
+
+---
+
+## 5 AUDIENCIAS OBJETIVO (framework de Natalia)
+
+| Segmento | Conexión hoy | Prioridad |
+|----------|-------------|-----------|
+| Asesor especializado | ✅ Sólida | Mantener |
+| Académico / investigador | ✅ Sólida | Mantener |
+| **Entusiasta financiero** | 🔴 Mayor desafío | **Escalar** |
+| Fuerza comercial Davivienda | 🟡 Herramienta de venta | Reforzar |
+| Prensa / medios | ✅ 4° fuente referencia | Mantener |
+
+> El segmento "entusiasta" es el de mayor oportunidad y menor atención actual. Todo el piloto de contenido de 4 pilares apunta a este segmento.
+
+---
+
+## PROTOCOLO DE REUNIONES MIÉRCOLES
+
+Natalia fue explícita: **las reuniones NO son para revisar métricas.** El foco es:
+1. Revisar planes de acción en curso
+2. Alinear propuestas nuevas
+3. Evaluar resultados de implementación
+
+Las métricas se consultan directamente en plataformas (GA4, GSC, Braze). Los miércoles son para decisiones, no para reportes.
+
+---
+
+## OPORTUNIDADES CALENDARIO 2026
+
+| Evento | Fecha | Oportunidad |
+|--------|-------|-------------|
+| Deadline alineación estratégica | **28 jun** | Natalia ausente después — cerrar todo antes |
+| Libro de Perspectivas 2026 | **Sep 2026** | Contenido de alto impacto — requiere solicitud de presupuesto |
+| Eventos virtuales (4/año) | Distribuidos | ~50K visualizaciones YouTube por evento |
+| Eventos presenciales banca privada | 4/año | Segmento patrimonial alto |
+
+---
+
+## SEMÁFORO — Objetivos de Natalia
+
+| Objetivo | Meta Natalia | Hoy | Estado |
+|----------|-------------|-----|--------|
+| Visualizaciones anuales | 2,000,000 | 520,941 YTD | 🔴 |
+| Tráfico orgánico % | 20% | 18% | 🟡 |
+| Posición media Google | 9.4 | 4.9 | ✅ |
+| Presencia búsquedas IA | Sí | No | 🔴 |
+| Email CTR | 5%+ | 2.5% | 🔴 |
+| Pauta eficiencia | ~300K views/mes | Muy por debajo | 🔴 |
+| Suscriptores registrados | 210,000 | 169,000 | 🟡 |
+| Instagram: formatos video | Activar | Sin video activo | 🔴 |
 
 ---
 
 ## RELACIONADO
 
-[[Vision_Estrategia_Growth_2026]] · [[Vision_02_SEO_2026-06]] · [[Vision_03_WebCRO_2026-06]] · [[Vision_04_Pauta_2026-06]] · [[Vision_NextSteps_2026-06]]
+[[Vision_Estrategia_Growth_2026]] · [[Vision_02_SEO_2026-06]] · [[Vision_03_WebCRO_2026-06]] · [[Vision_04_Pauta_2026-06]] · [[Vision_NextSteps_2026-06]] · [[2026-06-16 Natalia Otalora - Alineacion Estrategia Digital]]
