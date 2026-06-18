@@ -192,8 +192,8 @@ Publica contenido (bien hecho, técnico, consistente) pero no construye comunida
 
 | Acción | Impacto | Owner |
 |--------|---------|-------|
-| Piloto Reels: reformatear 2 informes/semana en video 45-60s | Alcance a nueva audiencia | Estefanía (guion) + diseño |
-| 1 carrusel/semana en IG: "X datos sobre [tema GSC trending]" | Guardados + alcance | Estefanía |
+| Piloto Reels: 3-4 Reels/semana (7-45s) — mín. para impacto de algoritmo según benchmarks Rival IQ 2026 | Alcance a nueva audiencia | Estefanía (guion) + diseño |
+| 2-3 carruseles/semana en IG: "X datos sobre [tema GSC trending]" — Financial Services: carruseles superan Reels en engagement | Guardados + alcance | Estefanía |
 | YouTube Shorts: cortar clips de los eventos existentes (ya tienen material) | Presencia continua sin nueva producción | Jeison / producción |
 | ManyChat Instagram ($69 USD/mes) | Distribución PDFs por DM (modelo Corficolombiana) | Jeison → aprobación dirección |
 
@@ -235,4 +235,4 @@ Publica contenido (bien hecho, técnico, consistente) pero no construye comunida
 
 ## RELACIONADO
 
-[[Vision_01_NorthStar_2026-06]] · [[Vision_Estrategia_Growth_2026]] · [[Vision_Brief_Natalia_2026-06]] · [[Vision_NextSteps_2026-06]] · [[2026-06-16 Natalia Otalora - Alineacion Estrategia Digital]]
+[[Vision_01_NorthStar_2026-06]] · [[Vision_Estrategia_Growth_2026]] · [[Vision_Brief_Natalia_2026-06]] · [[Vision_NextSteps_2026-06]] · [[2026-06-16 Natalia Otalora - Alineacion Estrategia Digital]] · [[Research/Deep/2026-06-18 - vision-north-star-growth-strategies]]

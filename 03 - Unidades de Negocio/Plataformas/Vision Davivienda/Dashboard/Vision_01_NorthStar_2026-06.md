@@ -65,6 +65,8 @@ Natalia identificó el CTR de email como problema crítico. La base es sólida (
 
 **Acción acordada en reunión:** Revisar plantillas y diseño para hacerlas más atractivas y orientadas al clic.
 
+> **Benchmark de referencia (beehiiv 2025):** Medios/creadores = **6.17% CTR promedio**. El target del 5% es alcanzable — no es el techo, es el piso. Las 3 palancas probadas: (1) un solo CTA por email → +371% clics, (2) botón en lugar de link de texto, (3) CTA en los primeros 3 párrafos. Ver estrategia completa en [[Research/Deep/2026-06-18 - vision-north-star-growth-strategies]].
+
 ---
 
 ### 3. Pauta — recuperar eficiencia
@@ -149,16 +151,17 @@ Las métricas se consultan directamente en plataformas (GA4, GSC, Braze). Los mi
 
 ## SEMÁFORO — Objetivos de Natalia
 
-| Objetivo | Meta Natalia | Hoy | Estado |
-|----------|-------------|-----|--------|
-| Visualizaciones anuales | 2,000,000 | 520,941 YTD | 🔴 |
-| Tráfico orgánico % | 20% | 18% | 🟡 |
-| Posición media Google | 9.4 | 4.9 | ✅ |
-| Presencia búsquedas IA | Sí | No | 🔴 |
-| Email CTR | 5%+ | 2.5% | 🔴 |
-| Pauta eficiencia | ~300K views/mes | Muy por debajo | 🔴 |
-| Suscriptores registrados | 210,000 | 169,000 | 🟡 |
-| Instagram: formatos video | Activar | Sin video activo | 🔴 |
+| Objetivo | Meta Natalia | Hoy | Estado | Acciones clave |
+|----------|-------------|-----|--------|----------------|
+| Visualizaciones anuales | 2,000,000 | 520,941 YTD | 🔴 | Suma de los 5 pilares |
+| Tráfico orgánico % | 20% | 18% | 🟡 | SSR/SSG P0 + GEO |
+| Posición media Google | 9.4 | 4.9 | ✅ | Mantener |
+| Presencia búsquedas IA | Sí | No | 🔴 | FAQPage schema + NewsArticle + llms.txt |
+| Email CTR | 5%+ | 2.5% | 🔴 | 1 CTA/email + botón + CTA arriba |
+| Pauta eficiencia | ~300K views/mes | Muy por debajo | 🔴 | Remarketing 42K + lookalikes |
+| Suscriptores registrados | 210,000 | 169,000 | 🟡 | Popup exit + referidos + content upgrades |
+| Instagram: formatos video | Activar | Sin video activo | 🔴 | 3-4 Reels/semana + 2-3 carruseles |
+| LinkedIn | Crear | Sin presencia | 🔴 | Perfiles personal equipo investigaciones primero |
 
 ---
 
