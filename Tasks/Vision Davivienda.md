@@ -15,11 +15,6 @@ Archivo consolidado de tareas activas y completadas para la unidad **Vision Davi
 
 ### Carolina Ramirez
 
-- [ ] 🟡 **Revision propuesta mailing CTR Vision** · due 2026-06-20 · Contenido · KPI: Sesiones, UAM
-  - Fecha: 2026-06-10
-  - Fuente: [[06 - Meetings/Vision/2026-06-10 Natalia Otálora Generalidades Estrategia digital]]
-  Evaluar el impacto del cambio de plantillas en los informes de apertura y cierre del mailing de Visión Davivienda para mejorar el CTR único y generar tráfico hacia el portal. Revisar con [[Ernesto Rodriguez]] y [[Estefania Ochoa Fonseca]].
-
 - [ ] 🔴 **Sesiones 1a1 alineacion SEO pauta contenido Vision** · due 2026-06-21 · Growth · KPI: Sesiones, Vistas, Tráfico web
   - Fecha: 2026-06-17
   - Fuente: [[06 - Meetings/Vision/2026-06-17 Carolina-Natalia-Salome-Viviana - Revision Pauta Vision]]

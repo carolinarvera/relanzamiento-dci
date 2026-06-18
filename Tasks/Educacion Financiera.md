@@ -24,16 +24,19 @@ Archivo consolidado de tareas activas y completadas para la unidad **Educacion F
   - Fecha: 2026-06-13
   - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Invertir/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Invertir]]
   Mis Finanzas para Invertir acumula solo 5.49% de meta anual de vistas y 4.79% de usuarios a mayo 2026. No es un problema táctico — requiere replanteo estratégico. Estructurar plan con: (1) nueva meta ajustada tomando mayo como base, (2) estrategia de contenidos coyunturales (los que más engagement generan), (3) potenciar email y referral (mejores canales), (4) suspender Paid Search hasta resolver 100% bounce. Presentar a [[Maria Angelica Navarro]].
+  ⚠️ Llevar preparado a la reunión con [[Maria Angelica Navarro]] + [[Jeison Montero]] (ver Tasks/Plataformas — Reunión MA + Jeison visión plataformas, due 2026-06-20).
 
 - [ ] 🔴 **Replanteo estrategico Mis Finanzas para Mi Negocio** · due 2026-06-27 · Estrategia · KPI: UAM, Sesiones, Revenue
   - Fecha: 2026-06-13
   - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Mi Negocio/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Mi Negocio]]
   Mis Finanzas para Mi Negocio acumula solo 2.5% de meta anual de vistas y 2.6% de usuarios a mayo 2026 — la situación más crítica del ecosistema Ed. Financiera. Dos problemas técnicos confirmados: (1) Spira en tracking, (2) Paid Other 100% rebote. Plan de acción urgente: excluir tráfico contaminado, suspender pauta inefectiva, redefinir meta base desde mayo, potenciar Organic Social (mejor canal de calidad). Incluir en la reunión con [[Maria Angelica Navarro]] como prioridad junto con Mis Finanzas para Invertir.
+  ⚠️ Llevar preparado a la reunión con [[Maria Angelica Navarro]] + [[Jeison Montero]] (ver Tasks/Plataformas — Reunión MA + Jeison visión plataformas, due 2026-06-20).
 
 - [ ] 🟡 **Reunion Maria Angelica unificacion plataformas Ed Financiera** · due 2026-06-27 · Estrategia · KPI: Eficiencia operativa, Consolidación plataformas
   - Fecha: 2026-06-17
   - Fuente: [[06 - Meetings/Vision/2026-06-17 Carolina-Jeison-Leo - Estructura Operativa y Estrategia Vision]]
   Organizar reunión con [[Maria Angelica Navarro]] para alinear la unificación de plataformas de Educación Financiera y definir lineamientos estratégicos. ⚠️ Hacerlo con preparación previa: analizar métricas de las plataformas activas (Invertir / Negocio Personal) vs las de baja actividad, y llegar con plan de acción concreto — no solo con datos. María Angélica ha gestionado sus plataformas de forma independiente; la transición requiere manejo cuidadoso. Coordinar con Jeison.
+  ⚠️ Consolidar con la reunión inicial con [[Maria Angelica Navarro]] + [[Jeison Montero]] (ver Tasks/Plataformas — Reunión MA + Jeison visión plataformas, due 2026-06-20).
 
 - [ ] 🔴 **Renegociar metas anuales plataformas Ed Financiera** · due 2026-06-30 · Estrategia · KPI: UAM, Sesiones, Revenue
   - Fecha: 2026-06-13

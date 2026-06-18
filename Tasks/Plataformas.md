@@ -20,11 +20,6 @@ Archivo consolidado de tareas activas y completadas para la unidad **Plataformas
   - Fuente: [[06 - Meetings/CEO/2026-06-05-Lineamientos Catalina Obregón y direccionamiento]]
   Programar y ejecutar reunión urgente con [[Maria Angelica Navarro]] y [[Jeison Montero]] para definir visión de futuro de las plataformas digitales Davivienda, consolidar información y estructurar estrategia de comunicación hacia "Mundo D". Pedido directo de [[Catalina Obregon]] en reunión CEO 2026-06-05.
 
-- [ ] 🔴 **Reuniones 1a1 equipo plataformas** · due 2026-06-27 · Gestión · KPI: UAM, Engagement, Revenue
-  - Fecha: 2026-06-10
-  - Fuente: [[06 - Meetings/Vision/2026-06-10 Ernesto Rodriguez - Producción de contenidos]]
-  Programar y ejecutar sesiones individuales con cada miembro del equipo de plataformas: [[Maria Angelica Navarro]], [[Natalia Otalora]], [[Ernesto Rodriguez]], [[Estefania Ochoa Fonseca]]. Objetivo: entender a fondo sus procesos, cargas de trabajo y necesidades particulares antes de proponer cambios estructurales.
-
 - [ ] 🔴 **Redisenar KPIs plataformas comite estrategico** · due 2026-06-30 · Analytics · KPI: Revenue, UAM, Leads Davivienda
   - Fecha: 2026-06-05
   - Fuente: [[06 - Meetings/CEO/2026-06-05-Lineamientos Catalina Obregón y direccionamiento]]
