@@ -15,16 +15,6 @@ Archivo consolidado de tareas activas y completadas para la unidad **Vision Davi
 
 ### Carolina Ramirez
 
-- [ ] 🔴 **Meeting alineacion Natalia Vision** · due 2026-06-16 · Cliente · KPI: Sesiones, UAM, Leads Davivienda
-  - Fecha: 2026-06-10
-  - Fuente: [[06 - Meetings/Vision/2026-06-10 Natalia Otálora Generalidades Estrategia digital]]
-  Reunión presencial/virtual con [[Natalia Otalora]] el **2026-06-16 a las 4:00 pm**. Objetivo: presentar visión completa de la marca, objetivos de negocio y planeación de contenidos a 15 días. Llevar plan estratégico de pauta y métricas históricas.
-
-- [ ] 🔴 **Plan estrategico pauta Vision Davivienda** · due 2026-06-16 · Growth/Pauta · KPI: Sesiones, UAM
-  - Fecha: 2026-06-10
-  - Fuente: [[06 - Meetings/Vision/2026-06-10 Natalia Otálora Generalidades Estrategia digital]]
-  Estructurar plan estratégico urgente para cerrar la brecha de sesiones en Visión Davivienda. En enero se lograron 14,000 sesiones ($5M presupuesto). Feb/Mar cayeron a 2,000-3,000 por ausencia de campañas de tráfico. Presupuesto junio: $6,249,212 (42% asignado a Facebook/Instagram). Presentar a [[Natalia Otalora]] el 2026-06-16 a las 4pm.
-
 - [ ] 🟡 **Revision propuesta mailing CTR Vision** · due 2026-06-20 · Contenido · KPI: Sesiones, UAM
   - Fecha: 2026-06-10
   - Fuente: [[06 - Meetings/Vision/2026-06-10 Natalia Otálora Generalidades Estrategia digital]]

@@ -15,16 +15,6 @@ Archivo consolidado de tareas activas y completadas para la unidad **Experiencia
 
 ### Carolina Ramirez
 
-- [ ] 🔴 **Acercamiento banco beneficios medios de pago** · due 2026-06-16 · Alianzas Davivienda · KPI: Revenue, Alianzas
-  - Fecha: 2026-06-12
-  - Fuente: [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]]
-  Coordinar con [[Catalina Obregon]] nuevo acercamiento al banco para propuesta de beneficios + medios de pago (descuentos adicionales al pagar con tarjeta Davivienda, financiado por Mastercard/Visa). ⚠️ Debe ser coordinado con Catalina ANTES de hablar con el banco directamente.
-
-- [ ] 🔴 **Oficializar roles Experiencias con Catalina** · due 2026-06-16 · Gestión · KPI: Revenue
-  - Fecha: 2026-06-12
-  - Fuente: [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]]
-  Hablar con [[Catalina Obregon]] para oficializar roles y liderazgo del proyecto Experiencias. Definir qué hace [[Paola Pantaleon]], qué hace Carolina y qué soporte necesitan. Base para firmar contratos y formalizar entregables.
-
 - [ ] 🔴 **Consulta legal responsabilidad civil aliados** · due 2026-06-18 · Legal · KPI: Riesgo operativo
   - Fecha: 2026-06-12
   - Fuente: [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]]
