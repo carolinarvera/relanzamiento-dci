@@ -81,14 +81,21 @@ El sitio ya tiene visibilidad en Google (453K impresiones/trimestre). El problem
 - CTR objetivo (si llega a 5%): ~7,550 clics/mes
 - **Incremento mínimo con solo corregir títulos: +2,265 sesiones/mes = +27,180/año**
 
-**Quick wins específicos identificados en GSC:**
+**Quick wins específicos identificados en GSC — páginas reales:**
 
-| Página | Impresiones/mes | CTR actual | CTR objetivo | Clics potenciales |
-|--------|----------------|------------|--------------|------------------|
-| "Dólar histórico 2021" | ~3,782 | 0.4% | 4% | +143/mes |
-| Cluster dividendos 2026 | ~2,700 total | 15-25% | 30%+ | +270/mes |
-| Cluster macro Colombia | ~1,500 | <5% | 10% | +75/mes |
-| Todo el sitio (base) | ~151K | 1.5% | 3% | +2,265/mes |
+| Página | Impresiones/mes | CTR actual | CTR objetivo | Clics adicionales/mes |
+|--------|----------------|------------|--------------|----------------------|
+| Déficit fiscal Colombia 2026 | 11,245 | 0.31% | 3% | **+298** |
+| Colombia 2025 macro anual | 9,415 | 0.53% | 3% | **+232** |
+| Dividendos Ecopetrol 2026 | 7,826 | 1.29% | 4% | **+212** |
+| BanRep junta directiva | 4,443 | 1.46% | 4% | **+113** |
+| Celsia recompra (pos 3.88!) | 4,117 | 1.29% | 6% | **+194** |
+| "Dólar: niveles no vistos 2021" | 3,782 | 0.44% | 4% | **+136** |
+| Utilidades bancos enero 2026 | 7,420 | 0.32% | 3% | **+200** |
+| BanRep sube tasas (artículo) | 3,827 | 0.71% | 4% | **+122** |
+| **TOTAL top 8 páginas** | **~52,000/mes** | ~0.8% avg | 3-4% | **+1,507/mes** |
+
+> **Celsia es el caso extremo**: pos 3.88 + CTR 1.29% = el título no responde la intención. A esa posición el CTR natural es 6-8%. Fix prioritario: cambiar de título descriptivo a título con intención de búsqueda.
 
 **Sprint técnico (Leo — P0 antes 28 jun):**
 

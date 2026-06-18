@@ -50,6 +50,63 @@ confidence: high
 
 ---
 
+## Top páginas por tráfico orgánico — GSC (mar-jun 2026)
+
+| # | URL | Clics | Impresiones | CTR | Posición | Estado |
+|---|-----|-------|-------------|-----|----------|--------|
+| 1 | / (homepage) | 1,853 | 9,169 | 20.21% | 5.13 | ✅ |
+| 2 | /en-que-invertir/acciones/calendario-asambleas-dividendos-2026 | 591 | 8,061 | 7.33% | 5.18 | ✅ |
+| 3 | /analisis-de-companias/ecopetrol/dividendos-ecopetrol-2026 | 302 | **23,477** | **1.29%** | 5.79 | 🔴 |
+| 4 | /en-que-invertir/acciones/calendario-dividendos-colombia-2026 | 220 | 2,044 | 10.76% | 4.66 | ✅ |
+| 5 | /macroeconomia/BanRep-junta-directiva-2025 | 195 | 13,330 | **1.46%** | 6.22 | 🔴 |
+| 6 | /analisis-de-companias/celsia-recompra-acciones-2026 | 159 | **12,351** | **1.29%** | **3.88** | 🔴 |
+| 7 | /macroeconomia/Colombia-2025-crecimiento-inflacion-retos-fiscales | 151 | **28,244** | **0.53%** | 7.46 | 🔴 |
+| 8 | /tendencias-sectoriales/construccion-perspectivas-2026 | 119 | 3,691 | 3.22% | 5.41 | 🟡 |
+| 9 | /macroeconomia/deficit-fiscal-colombia-2026 | 103 | **33,734** | **0.31%** | 6.67 | 🔴 |
+| 10 | /macroeconomia (sección) | 103 | 2,636 | 3.91% | 3.90 | ✅ |
+
+---
+
+## OPORTUNIDAD CRÍTICA — Top 5 páginas con brecha CTR
+
+Estas 5 páginas tienen 111,137 impresiones combinadas pero CTR promedio de 0.8%. Si se optimizan títulos y metas:
+
+| Página | Impresiones | CTR actual | CTR objetivo | Clics adicionales/mes |
+|--------|-------------|------------|--------------|----------------------|
+| Déficit fiscal Colombia 2026 | 33,734 | 0.31% | 3% | **+898** |
+| Colombia 2025 macro anual | 28,244 | 0.53% | 3% | **+697** |
+| Dividendos Ecopetrol 2026 | 23,477 | 1.29% | 4% | **+635** |
+| BanRep junta directiva | 13,330 | 1.46% | 4% | **+338** |
+| Celsia recompra (pos 3.88!) | 12,351 | 1.29% | 6% | **+581** |
+| **TOTAL** | **111,136** | — | — | **+3,149/mes** |
+
+> **Celsia es el caso más urgente**: posición 3.88 con CTR de 1.29% es imposible con un título bien optimizado. A esa posición el CTR normal es 6-8%. Algo está bloqueando el clic — probablemente el título es el literal del artículo ("Celsia Recompra Acciones 2026") en lugar de responder la intención ("Celsia recompra acciones a $9,002: lo que necesita saber el inversor").
+
+---
+
+## Dispositivos — GSC (mar-jun 2026)
+
+| Dispositivo | Clics | Impresiones | CTR | Posición |
+|-------------|-------|-------------|-----|----------|
+| Desktop | 4,415 | 318,106 | **1.39%** | 6.74 |
+| **Móvil** | **2,494** | **133,366** | **1.87%** | **5.92** |
+| Tablet | 46 | 1,191 | 3.86% | 5.99 |
+
+> **Móvil convierte mejor** (1.87% vs 1.39% desktop). Doble implicación: (1) el fix de títulos/metas va a impactar más en móvil, (2) el rediseño de plantillas email debe ser mobile-first.
+
+---
+
+## Tendencia CTR diaria — alerta
+
+El gráfico diario revela una caída de CTR en junio vs marzo:
+- **Marzo 2026**: CTR picos de 2-3.5% (16-27 mar)
+- **Abril 2026**: CTR baja a 0.8-2% — pico de impresiones por dólar/artículos virales
+- **Junio 2026**: CTR promedio 0.9-1.6% — tendencia a la baja
+
+Esto refuerza la urgencia del fix técnico: el sitio tiene más impresiones pero el CTR está bajando, no subiendo.
+
+---
+
 ## Oportunidad #1 — CTR crítico en query de alto volumen
 
 > **"dólar: alcanzó niveles no vistos desde marzo de 2021"**: 11,347 impresiones, pos 2.9, CTR 0.4% = 50 clics. El título literal del artículo está rankeando como snippet. Si se optimiza el title tag con intención de búsqueda (ej: "Dólar en Colombia 2026: niveles históricos y qué significa para el inversor"), el CTR podría subir a 3-5% = **340–570 clics adicionales por mes de esta sola página.**
