@@ -6,7 +6,7 @@ related-projects: [vision-davivienda, growth-dashboard]
 sources:
   - "Reporte AON Visión 2026 (Starcom)"
   - "Presentación pauta reunión Natalia Otálora 2026-06-16"
-  - "Google Sheets: Informes Visión Davivienda 2026 (HubSpot)"
+  - "Google Sheets: Informes Visión Davivienda 2026 (export desde Braze)"
 ai-first: true
 confidence: high
 ---
@@ -127,9 +127,10 @@ confidence: high
 
 ---
 
-## EMAIL — Boletín Quincenal (HubSpot)
+## EMAIL — Boletín Quincenal (Braze)
 
-> Fuente: Google Sheets "Informes Visión Davivienda 2026" — datos reales de HubSpot.
+> **Plataforma confirmada: Braze** (no HubSpot). URL: dashboard-05.braze.com. Segmento: `3189_IEC_NEW_BOLETÍN_QUINCENAL`. Zona horaria: Bogotá. Tipo: Scheduled. Conversion Event principal: "Clicked Email within 10 days". Frequency capping: activo.
+> Fuente: Google Sheets "Informes Visión Davivienda 2026" (export Braze) + screenshot Braze directo 2026-06-16.
 
 ### Evolución de la lista 2026
 
@@ -161,16 +162,37 @@ confidence: high
 | 28 may | 26,000 | 26.02% | 570 | **2.20%** |
 | **11 jun** | **28,600** | **23.11%** | **794** | **2.50%** |
 
+### Último envío — Braze detalle (11 jun 2026, A/B test activo)
+
+| Métrica | Variant A (100%) | Variant B (control) |
+|---------|-----------------|-------------------|
+| Unique Recipients | **135.5K** | 23.9K |
+| Deliveries | 91.26% / 123.7K | 91.63% / 21.9K |
+| Bounces | 0.02% / 27 | 0.03% / 6 |
+| Spam Reports | 0.01% / 13 | 0.00% / 0 |
+| Total Opens | 30.73% / 38K | 30.78% / 6.7K |
+| Est. Real Open Rate | **47.66%** | 0.00% (holdout) |
+| Unique Opens | 23.11% / 18.1K | 23.38% / 5.1K |
+| Total Clicks | 0.81% / 1K | 0.41% / 90 |
+| Unique Clicks | **0.58% / 714** | 0.30% / 65 |
+| **Click to Open Rate** | **2.50%** | **1.27%** |
+| Unsubscribes | 0.00% / 4 | 0.00% / 0 |
+
+> Variant A supera Variant B en CTOR (2.50% vs 1.27%). A/B test funcionando — oportunidad de escalar aprendizajes.
+
 ### Diagnóstico email
 
 | Métrica | Valor | Benchmark industria | Estado |
 |---------|-------|-------------------|--------|
-| Open rate promedio | ~30% | 20-25% financiero | ✅ Muy bueno |
-| CTOR (clics/aperturas) | 1.79-3.74% | 10-15% financiero | 🔴 Muy bajo |
-| Spam rate | 0.01-0.04% | <0.1% | ✅ OK |
-| Entrega | 97%+ | >95% | ✅ OK |
+| Open rate (total) | 30.73% | 20-25% financiero | ✅ Muy bueno |
+| Est. Real Open Rate | 47.66% | — | ✅ Excelente |
+| CTOR (clics/aperturas) | **2.50%** | 10-15% financiero | 🔴 Muy bajo |
+| Unique Clicks rate | 0.58% | 2-3% financiero | 🔴 Bajo |
+| Spam rate | 0.01% | <0.1% | ✅ OK |
+| Delivery rate | 91.26% | >95% | 🟡 Mejorable |
+| Unsubscribe rate | 0.00% | — | ✅ Excelente |
 
-**Lectura crítica:** La gente abre el email (open rate 30%+ es excelente) pero no hace clic. El problema no es relevancia del asunto — es el diseño interno del email y la propuesta de valor del CTA. El rediseño de plantillas tiene alto retorno potencial.
+**Lectura crítica:** Open rate de 47.66% estimado real es excelente — la gente abre. El CTOR de 2.50% (vs benchmark 10-15%) confirma que el problema es el diseño interno del email y el CTA, no el asunto ni la audiencia. Cada mejora de 1 punto en CTOR = ~1,800 clics adicionales por envío con la lista actual.
 
 ---
 
