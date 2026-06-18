@@ -20,11 +20,6 @@ Archivo consolidado de tareas activas y completadas para la unidad **Vision Davi
   - Fuente: [[06 - Meetings/Vision/2026-06-10 Natalia Otálora Generalidades Estrategia digital]]
   Evaluar el impacto del cambio de plantillas en los informes de apertura y cierre del mailing de Visión Davivienda para mejorar el CTR único y generar tráfico hacia el portal. Revisar con [[Ernesto Rodriguez]] y [[Estefania Ochoa Fonseca]].
 
-- [ ] 🔴 **Coordinar grabacion videos Vision con Karina** · due 2026-06-20 · Contenido · KPI: Tráfico web, Engagement entusiastas
-  - Fecha: 2026-06-17
-  - Fuente: [[06 - Meetings/Vision/2026-06-17 Carolina-Jeison-Leo - Estructura Operativa y Estrategia Vision]]
-  Coordinar con Karina la primera sesión de grabación de videos para Visión Davivienda. Plazo: finales de esta semana (2026-06-20) o principios de la próxima. Formato acordado: videos 15–20 min explicativos de conceptos clave para audiencia entusiasta (25–44 años). Scripts en preparación con soporte de IA por el equipo.
-
 - [ ] 🔴 **Sesiones 1a1 alineacion SEO pauta contenido Vision** · due 2026-06-21 · Growth · KPI: Sesiones, Vistas, Tráfico web
   - Fecha: 2026-06-17
   - Fuente: [[06 - Meetings/Vision/2026-06-17 Carolina-Natalia-Salome-Viviana - Revision Pauta Vision]]

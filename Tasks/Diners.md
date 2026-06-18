@@ -14,8 +14,3 @@ Archivo consolidado de tareas activas y completadas para la unidad **Diners**. R
 ## ⏳ Pendientes
 
 ### Carolina Ramirez
-
-- [ ] 🟡 **Contenido exclusivo suscriptores Sandra** · due 2026-06-20 · Editorial · KPI: Renovaciones, Churn
-  - Fecha: 2026-06-12
-  - Fuente: [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]]
-  Hablar con Sandra (editora Diners) para crear contenido exclusivo para suscriptores premium — contenido que no esté disponible en la web pública. Parte del modelo "vivir la revista" para reducir churn y justificar suscripción.

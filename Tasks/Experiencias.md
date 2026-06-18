@@ -15,21 +15,6 @@ Archivo consolidado de tareas activas y completadas para la unidad **Experiencia
 
 ### Carolina Ramirez
 
-- [ ] 🔴 **Consulta legal responsabilidad civil aliados** · due 2026-06-18 · Legal · KPI: Riesgo operativo
-  - Fecha: 2026-06-12
-  - Fuente: [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]]
-  Consultar con legal la responsabilidad civil de la revista ante incidentes con aliados recomendados en artículos (ej: intoxicación en restaurante recomendado). Definir qué contratos son necesarios con proveedores/aliados y cómo manejar el tratamiento de datos en la plataforma.
-
-- [ ] 🔴 **Plan de trabajo Experiencias** · due 2026-06-18 · Estrategia · KPI: Revenue, Alianzas
-  - Fecha: 2026-06-12
-  - Fuente: [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]]
-  Estructurar y entregar plan de trabajo completo para la unidad Experiencias: línea 1 (Experiencias Banca Privada Davivienda) + línea 2 (Club de Beneficios suscriptores). Incluir roadmap, responsables, plataforma PWA y timeline. Ver estrategia en [[03 - Unidades de Negocio/Experiencias/Experiencias]].
-
-- [ ] 🔴 **Cotizaciones plataforma 360 suscriptores** · due 2026-06-20 · Tecnologia · KPI: Adopcion beneficios
-  - Fecha: 2026-06-12
-  - Fuente: [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]]
-  Solicitar y comparar cotizaciones de proveedor local para plataforma PWA 360 de suscriptores. Decisión tecnológica tomada: PWA (no app nativa). Requiere: identificación suscriptor, trazabilidad redenciones, reservas online, reportes de ahorro, vista 360. [[Jeison Montero]] ya investigó proveedores españoles y locales.
-
 - [ ] 🟡 **Reunion Maria Claudia identificacion suscriptores** · due 2026-06-23 · CX/Plataforma · KPI: Adopcion beneficios
   - Fecha: 2026-06-12
   - Fuente: [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]]
@@ -78,6 +63,11 @@ Archivo consolidado de tareas activas y completadas para la unidad **Experiencia
   2. **Formalizar criterios y estructura de niveles:** Documentar condiciones de exclusividad, descuentos y comisiones para ingreso de aliados al programa (niveles Básico/Premium/Plus por % de descuento ofrecido).
 
 ### Paola Pantaleon
+
+- [ ] 🔴 **Cotizaciones plataforma 360 suscriptores** · due 2026-06-20 · Tecnologia · KPI: Adopcion beneficios
+  - Fecha: 2026-06-12
+  - Fuente: [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]]
+  Solicitar y comparar cotizaciones de proveedor local para plataforma PWA 360 de suscriptores. Decisión tecnológica tomada: PWA (no app nativa). Requiere: identificación suscriptor, trazabilidad redenciones, reservas online, reportes de ahorro, vista 360. [[Jeison Montero]] ya investigó proveedores españoles y locales.
 
 - [ ] 🔴 **Enviar encuestas preferencias aliados** · due 2026-06-13 · Alianzas · KPI: Alianzas
   - Fecha: 2026-06-12
