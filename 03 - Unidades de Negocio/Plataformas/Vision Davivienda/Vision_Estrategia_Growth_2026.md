@@ -97,14 +97,30 @@ El sitio ya tiene visibilidad en Google (453K impresiones/trimestre). El problem
 
 > **Celsia es el caso extremo**: pos 3.88 + CTR 1.29% = el título no responde la intención. A esa posición el CTR natural es 6-8%. Fix prioritario: cambiar de título descriptivo a título con intención de búsqueda.
 
-**Sprint técnico (Leo — P0 antes 28 jun):**
+**Diagnóstico completo de indexación (GSC Coverage jun 2026):**
+
+Solo **2,676 de ~11,000 páginas están indexadas = 24% del sitio.**
+
+| Problema | Páginas | Causa raíz |
+|----------|---------|------------|
+| Soft 404 | **988** | JS rendering — Googlebot ve HTML vacío |
+| Rastreada sin indexar | **3,803** | Thin content, duplicados sin canonical |
+| Descubierta sin indexar | **1,238** | Crawl budget agotado |
+| Sin canonical (duplicadas) | 145 | Canonical tags ausentes |
+
+> **Esto explica la caída de 2M → 1.2M vistas en 2025.** Google desindexó masivamente contenido que no podía renderizar. El SSR/SSG no es una mejora — es restaurar lo que existía.
+
+**⚠️ ALERTA URGENTE:** El 8 de junio 2026, +1,141 páginas fueron desindexadas en un día. Debe escalarse a Jeison/Leo hoy.
+
+**Sprint técnico (Leo — P0, en este orden):**
 
 ```
-1. Títulos dinámicos por página (artículo: "Título del artículo | Visión Davivienda")
-2. Meta descriptions dinámicas (primeros 150 chars del artículo)
-3. Canonical tags en todas las páginas
-4. Corregir sitemap 403
-5. SSR/SSG para contenido JS (semana 2-3)
+0. URGENTE: Investigar regresión 8 jun — +1,141 páginas desindexadas
+1. SSR/SSG para contenido JS-rendered (causa raíz de soft 404s)
+2. Canonical tags en todas las páginas (145 duplicadas sin canonical)
+3. Títulos dinámicos por página ("Título | Visión Davivienda")
+4. Meta descriptions dinámicas (primeros 150 chars del artículo)
+5. Corregir sitemap 403 (crawl budget)
 6. NewsArticle schema en artículos (E-E-A-T + AI Overviews)
 ```
 

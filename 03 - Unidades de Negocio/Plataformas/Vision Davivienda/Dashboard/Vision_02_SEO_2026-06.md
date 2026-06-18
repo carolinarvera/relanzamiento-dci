@@ -176,6 +176,44 @@ Natalia identificó "estar en búsquedas de IA" como objetivo explícito para 20
 
 ---
 
+## Cobertura e Indexación — GSC real (jun 2026)
+
+> **ALERTA ACTIVA:** El 8 de junio de 2026 Google desindexó 1,141 páginas en un solo día (de 2,647 a 7,428 sin indexar). **Nadie lo ha detectado todavía.**
+
+### Estado actual de indexación
+
+| Estado | Páginas | Acción |
+|--------|---------|--------|
+| ✅ Indexadas | **~2,676** | — |
+| 🔴 Soft 404 | **988** | Fix urgente — JS rendering |
+| 🔴 Rastreada: sin indexar | **3,803** | Thin content / duplicados sin canonical |
+| 🟠 Descubierta: sin indexar | **1,238** | Crawl budget agotado |
+| 🟡 Duplicada (sin canonical) | **145** | Fix canonical tags |
+| ⬛ Noindex (intencional) | 1,166 | — |
+| 🟡 Duplicada (Google eligió otra canónica) | 38 | Revisar |
+| 🟡 Redirecciones | 20 | — |
+| 🔴 4xx (acceso bloqueado) | 6 | Fix rápido |
+
+**Solo 2,676 de ~11,000 páginas están indexadas = 24% del sitio.**
+
+### La causa raíz de la caída 2M → 1.2M (2025)
+
+> Los Soft 404 (988 páginas) son causados directamente por el JavaScript rendering delay de 3 segundos. Googlebot carga la página, ve HTML vacío (el shell del SPA), determina que no hay contenido, y la trata como página sin contenido. Google desindexó en masa el contenido en 2025 por este motivo. **El fix de SSR/SSG no es una mejora — es la restauración del sitio.**
+
+### Tendencia indexación (mar-jun 2026)
+
+| Fecha | Sin indexar | Indexadas | Evento |
+|-------|-------------|-----------|--------|
+| 20 mar | 8,423 | 2,849 | Baseline |
+| 20-21 abr | 7,784 | 2,666 | Google recrawl — mejora |
+| 18-22 may | 6,956 → 6,623 | 2,772 → 2,785 | Mejora continua |
+| 1-7 jun | 6,347 | 2,647 | Mejor momento del período |
+| **8-11 jun** | **7,428** | **2,676** | **🔴 REGRESIÓN: +1,141 páginas desindexadas** |
+
+**La regresión del 8 de junio debe escalarse a Leo hoy.** Algo cambió en Brace o en la configuración del servidor que hizo que Google volviera a desindexar contenido.
+
+---
+
 ## Hallazgos técnicos SEO — Auditoría 2026-06-16
 
 | Issue | Severidad | Impacto en orgánico |
