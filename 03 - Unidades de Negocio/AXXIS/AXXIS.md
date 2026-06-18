@@ -9,7 +9,7 @@ confidence: high
 ---
 
 ## For future Claude
-AXXIS is Ediciones Gamma's architecture and interior design magazine. Revenue (June 2026): Impreso 76% meta, Digital 66% meta. For full operational dashboard see [[03 - Unidades de Negocio/AXXIS/AXXIS Dashboard Estratégico]] (score 44/100). Key risk: loss of Privilegios Davivienda program (June 2026).
+AXXIS is Ediciones Gamma's architecture and interior design magazine. Revenue (June 2026): Impreso 76% meta, Digital 66% meta. For full operational dashboard see [[03 - Unidades de Negocio/AXXIS/AXXIS Dashboard Estratégico]] (score 44/100). Key risk: loss of Privilegios Davivienda program (June 2026). **Email/CRM platform: HubSpot** (confirmed 2026-06-17) — use HubSpot MCP for newsletter and contact data.
 
 ---
 

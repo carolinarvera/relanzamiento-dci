@@ -15,6 +15,8 @@ Diners is Ediciones Gamma's culture, gastronomy, and lifestyle magazine (60+ yea
 
 GA4 YTD (ene–jun 2026): 980K sesiones pero 65% viene de Paid Social con 6 segundos promedio — tráfico basura que daña el SEO. Organic Search (17% de sesiones) genera el 41% de los ingresos y 23 de 44 eventos clave. Paid Search es el canal más rentable por sesión ($1.50 COP) pero no existe como inversión propia. Página 404 es el 4° contenido más visto (25K vistas perdidas). Página de suscripciones tiene 6,681 visitas y $0 en conversiones — el funnel está roto en la landing. Contenido de guías locales/gastronomía práctica genera 3–8x más AdSense por visita que trending de cultura.
 
+**Email/CRM platform: HubSpot** (confirmed 2026-06-17) — use HubSpot MCP for newsletter and contact data.
+
 Fuentes: Dashboard Diners_Tabs_2026-06 (9 tabs, as of 2026-06-16) + Informe Web Mayo 2026 - Equipo Growth Marketing (Keynote, as of 2026-06-16) + GA4 exports páginas y adquisición (as of 2026-06-17).
 
 ---
