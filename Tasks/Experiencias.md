@@ -25,18 +25,6 @@ Archivo consolidado de tareas activas y completadas para la unidad **Experiencia
   - Fuente: [[06 - Meetings/Experiencias/2026-06-17 Carolina-Paola-Nicolas-Natalia - Reunion Unidad Experiencias]]
   Desarrollar Media Kit Profesional para la Unidad de Experiencias. Debe incluir soporte fotográfico de experiencias ejecutadas, datos de satisfacción de clientes VIP, y alcance de la red de aliados. Objetivo: profesionalizar las interacciones comerciales con empresas del ecosistema Grupo Bolívar y nuevos sectores (Seguros, Automotriz, Constructoras, Farmacéuticas).
 
-- [ ] 🔴 **Propuestas segmentadas por industria Experiencias** · due 2026-07-04 · Growth · KPI: Ingresos experiencias corporativas, Alianzas cerradas
-  - Fecha: 2026-06-17
-  - Fuente: [[06 - Meetings/Experiencias/2026-06-17 Carolina-Paola-Nicolas-Natalia - Reunion Unidad Experiencias]]
-  Diseñar presentaciones comerciales segmentadas con datos específicos por industria para la expansión corporativa de Experiencias. Sectores prioritarios: banca (ecosistema Grupo Bolívar, no banca competidora de Davivienda), automotriz, hoteles, emprendedores. Cada propuesta debe incluir métricas de alcance, perfil de audiencia VIP, casos de éxito y formatos disponibles.
-
-- [ ] 🟡 **Newsletters segmentados y benchmarking Experiencias** · due 2026-07-11 · Growth · KPI: Retención suscriptores, Alianzas activas
-  - Fecha: 2026-06-17
-  - Fuente: [[06 - Meetings/Experiencias/2026-06-17 Carolina-Paola-Nicolas-Natalia - Reunion Unidad Experiencias]]
-  Dos acciones paralelas:
-  1. **Newsletters segmentados:** Gestionar con Claris la obtención de información y bases de datos para newsletters diferenciados por audiencia — empresas, aliados y suscriptores.
-  2. **Benchmarking competitivo:** Analizar estrategias de El Tiempo y Semana (contenidos, retención, crecimiento de audiencia) para fortalecer la estrategia de Experiencias Gamma.
-
 ### Claris
 
 - [ ] 🔴 **Investigar software Club El Tiempo** · due 2026-06-20 · Tecnologia · KPI: Adopcion beneficios
@@ -61,6 +49,13 @@ Archivo consolidado de tareas activas y completadas para la unidad **Experiencia
   Dos acciones paralelas:
   1. **Reunión con María Claudia (Servicio al Cliente):** Coordinar espacio para definir método de identificación digital de suscriptores y alinear el proyecto con los KPIs del área.
   2. **Formalizar criterios y estructura de niveles:** Documentar condiciones de exclusividad, descuentos y comisiones para ingreso de aliados al programa (niveles Básico/Premium/Plus por % de descuento ofrecido).
+
+### Paola Nossa
+
+- [ ] 🔴 **Propuestas segmentadas por industria Experiencias** · due 2026-07-04 · Growth · KPI: Ingresos experiencias corporativas, Alianzas cerradas
+  - Fecha: 2026-06-17
+  - Fuente: [[06 - Meetings/Experiencias/2026-06-17 Carolina-Paola-Nicolas-Natalia - Reunion Unidad Experiencias]]
+  Diseñar presentaciones comerciales segmentadas con datos específicos por industria para la expansión corporativa de Experiencias. Sectores prioritarios: banca (ecosistema Grupo Bolívar, no banca competidora de Davivienda), automotriz, hoteles, emprendedores. Cada propuesta debe incluir métricas de alcance, perfil de audiencia VIP, casos de éxito y formatos disponibles.
 
 ### Paola Pantaleon
 
