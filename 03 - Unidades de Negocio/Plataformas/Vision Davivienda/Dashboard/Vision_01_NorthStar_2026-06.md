@@ -22,7 +22,7 @@ confidence: high
 | **% Rebote** | <61% | 52.18% | ✅ | ✅ |
 | **Tráfico orgánico (%)** | 20% | 18% | 🟡 cerca | 🟡 |
 | **Posición media Google** | 9.4 | 4.9 | ✅ superada | ✅ |
-| **Suscripciones boletín** | 210,000 (55%) | 169,000 (jun) | En progreso | 🟡 |
+| **Suscripciones boletín** | 210,000 (55%) | 169,000 registrados / 135,500 activos Braze | En progreso | 🟡 |
 | **NPS** | 92% mantener | — | — | — |
 
 ---
@@ -58,7 +58,7 @@ confidence: high
 | Marzo | 91,000 | — |
 | Abril | 96,000 | +5,000 |
 | Mayo | 116,000 | +20,000 |
-| **Junio** | **169,000** | **+53,000** |
+| **Junio** | **169,000 registrados** (135,500 activos en Braze) | **+53,000** |
 | Meta octubre | 210,000 | 41,000 restantes |
 
 ---
