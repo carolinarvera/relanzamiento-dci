@@ -192,7 +192,7 @@ Para operar el Club de Beneficios se necesita una plataforma que resuelva:
 | [[Carolina Ramirez]] | Growth y Estrategia de Mercado Comercial |
 | [[Nicolas Serna]] | Líder Sistema de Contratación de Aliados (Experiencias Gamma / Always On) |
 | [[Natalia Castano]] | Líder Contratos de Experiencias Corporativas |
-| [[Paola Nossa]] | Colaboración Marketing y Alianzas |
+| [[Paola Nossa]] | Activación de Marca & Posicionamiento (transversal) — identidad visual, Media Kit, merchandising, fotografía VIP, landing aliados, diseño de materiales comerciales y newsletters |
 | [[Jeison Montero]] | Plataforma tecnológica 360 / PWA |
 
 ---
