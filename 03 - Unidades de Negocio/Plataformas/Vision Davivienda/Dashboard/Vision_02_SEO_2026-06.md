@@ -15,18 +15,79 @@ confidence: high
 
 ---
 
-## KPIs SEO — Mayo 2026
+## KPIs SEO — GSC Real (mar-jun 2026, 3 meses)
 
-| Métrica | Valor | Meta 2026 | Estado |
-|---------|-------|-----------|--------|
-| Sesiones orgánicas (mes) | 4,817 | — | 🟠 |
+| Métrica | Valor GSC real | Meta 2026 | Estado |
+|---------|---------------|-----------|--------|
+| Clics totales (3 meses) | **6,960** (+53% vs anterior) | — | 🟢 creciendo |
+| Impresiones totales (3 meses) | **453,000** (+83% vs anterior) | — | 🟢 fuerte |
+| CTR medio | **1.5%** | 3-5% industria | 🔴 crítico |
+| Posición media | **6.5** | 9.4 | ✅ Meta superada |
+| Sesiones orgánicas (mes mayo) | 4,817 | — | 🟠 |
 | Tráfico orgánico (% total) | 10.6% | **20%** | 🟡 vamos en 18% |
-| Posición media Google (GSC) | **4.9** | 9.4 | ✅ Meta superada |
 | % Rebote orgánico | 45.19% | <61% | ✅ |
 | Tiempo en sitio orgánico | 00:04:46 | — | ✅ mejor canal |
 | KPI sesiones anuales | — | 138,000 | 🔴 YTD: 26,195 (19%) |
 
-> SEO es el canal de **mayor calidad** del sitio (rebote 45%, tiempo 4:46) pero el más subdesarrollado en volumen. La posición ya superó la meta — el problema es falta de contenido evergreen.
+> **Hallazgo crítico:** El sitio YA genera 453K impresiones. El problema NO es visibilidad — es CTR. Con CTR del 1.5% sobre 453K impresiones se generan ~6,800 clics/mes. Si se sube a 3% (benchmark industria), son ~13,600 clics/mes = +163K sesiones/año desde SEO solo. **El gap de 2M vistas se resuelve en gran parte con el fix de títulos y meta descriptions.**
+
+---
+
+## Top consultas — GSC (mar-jun 2026)
+
+| Consulta | Clics | Impresiones | CTR | Posición | Tipo |
+|----------|-------|-------------|-----|----------|------|
+| vision davivienda | 1,174 | 1,519 | 77.3% | 1.1 | Branded |
+| visión davivienda (acento) | 113 | 146 | 77.4% | 1.0 | Branded |
+| davivienda vision | 55 | 65 | 84.6% | 1.0 | Branded |
+| vision davivienda corredores | 42 | 63 | 66.7% | 1.0 | Branded |
+| **calendario dividendos 2026 colombia** | **72** | **287** | **25.1%** | **1.7** | Evergreen |
+| dividendos davivienda 2026 | 61 | 310 | 19.7% | 1.6 | Evergreen |
+| calendario dividendos 2026 | 30 | 256 | 11.7% | 6.1 | Evergreen |
+| calendario de dividendos 2026 | 30 | 159 | 18.9% | 4.6 | Evergreen |
+| calendario dividendos colombia 2026 | 30 | 129 | 23.3% | 1.6 | Evergreen |
+| **dólar: alcanzó niveles no vistos desde 2021** | **50** | **11,347** | **0.4%** | **2.9** | ⚠️ CTR crítico |
+
+---
+
+## Oportunidad #1 — CTR crítico en query de alto volumen
+
+> **"dólar: alcanzó niveles no vistos desde marzo de 2021"**: 11,347 impresiones, pos 2.9, CTR 0.4% = 50 clics. El título literal del artículo está rankeando como snippet. Si se optimiza el title tag con intención de búsqueda (ej: "Dólar en Colombia 2026: niveles históricos y qué significa para el inversor"), el CTR podría subir a 3-5% = **340–570 clics adicionales por mes de esta sola página.**
+
+---
+
+## Clusters de demanda en crecimiento (tendencia al alza)
+
+| Cluster | Consultas representativas | Crecimiento | Potencial |
+|---------|--------------------------|-------------|-----------|
+| **Dividendos 2026** | calendario dividendos colombia, dividendos ecopetrol, dividendos davivienda | +220% a +517% | 🔴 P0 — ya tiene tracción |
+| **Macro Colombia** | como va la economía en colombia 2026 (+700%), ipc 2026, inflación colombia | +500% a +700% | 🔴 P0 |
+| **BanRep/tasas** | banrep sube tasas (+1100%), tasa interés bancos colombia 2026 | +1,100% | 🔴 P0 |
+| **Compañías Colombia** | recompra mineros, bancolombia recompra celsia, ecopetrol dividendos | Nuevo | 🟠 P1 |
+| **Índices COLCAP** | rebalanceo msci colcap (+2000%), rebalanceo colcap | +2,000% | 🟠 P1 |
+| **Construcción/sectorial** | sector construcción colombia 2026, pmi davivienda (+283%) | Nuevo | 🟠 P1 |
+
+---
+
+## Páginas top — GSC (mar-jun 2026, tendencia arriba)
+
+| Página | Clics | Crecimiento |
+|--------|-------|-------------|
+| Visión Davivienda (homepage) | 1,850 | +97% |
+| Calendario de Asambleas y propuestas de dividendos 2026 | 596 | +204% |
+| ¿Qué ha pasado con las utilidades de Ecopetrol? | 302 | Nuevo (antes 0) |
+| Calendario de dividendos 2026 | 220 | Nuevo (antes 0) |
+| 2025: ¿Cómo cambiaría la Junta Directiva del BanRep? | 195 | +1,673% |
+
+> **Señal clara:** Las páginas de contenido evergreen (calendarios, análisis de compañías, BanRep) están creciendo mucho más que la homepage. El usuario de Google llega por intención específica, no a explorar.
+
+---
+
+## Alerta: consulta en declive
+
+| Consulta | Clics | Cambio | Acción |
+|----------|-------|--------|--------|
+| investigaciones económicas davivienda | 17 | **-70%** | Revisar si la URL cambió o el contenido fue removido |
 
 ---
 
