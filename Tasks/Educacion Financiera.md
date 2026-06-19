@@ -32,10 +32,19 @@ Archivo consolidado de tareas activas y completadas para la unidad **Educacion F
   Mis Finanzas para Mi Negocio acumula solo 2.5% de meta anual de vistas y 2.6% de usuarios a mayo 2026 — la situación más crítica del ecosistema Ed. Financiera. Dos problemas técnicos confirmados: (1) Spira en tracking, (2) Paid Other 100% rebote. Plan de acción urgente: excluir tráfico contaminado, suspender pauta inefectiva, redefinir meta base desde mayo, potenciar Organic Social (mejor canal de calidad). Incluir en la reunión con [[Maria Angelica Navarro]] como prioridad junto con Mis Finanzas para Invertir.
   ⚠️ Llevar preparado a la reunión con [[Maria Angelica Navarro]] + [[Jeison Montero]] (ver Tasks/Plataformas — Reunión MA + Jeison visión plataformas, due 2026-06-20).
 
-- [ ] 🔴 **Reunión seguimiento MANC + Jeison — mapeo procesos y alcance** · due 2026-06-19 · Estrategia · KPI: Alineación de alcance, Eficiencia operativa
-  - Fecha: 2026-06-18
-  - Fuente: [[06 - Meetings/Educación financiera/2026-06-18 Carolina-MariaAngelica-Jeison - Primera reunion EF]]
-  Reunión de seguimiento acordada para mañana 19 jun. Objetivos: (1) mapear procesos existentes entre Gamma, Leo Burnett y Mercadeo, (2) definir acciones concretas, (3) alinear el alcance real de Gamma — Catalina confirmó 2026-06-18 que Gamma trabaja en **estrategia colaborativa** con MANC, no solo en generación de contenido. MANC aún cree que Gamma = solo contenido; este punto debe quedar claro en la reunión.
+- [x] ✅ **Reunión seguimiento MANC + Jeison — mapeo procesos y alcance** · ~~due 2026-06-19~~ · Completada 2026-06-19
+  - Fuente: [[06 - Meetings/Educación financiera/2026-06-19 Carolina-MariaAngelica-Jeison - Ecosistema EF y Estrategia]]
+  Ecosistema completo mapeado. MANC confirmó que rol de Gamma evoluciona post-migración hacia growth integral. Reunión estratégica con mercadeo pendiente próxima semana.
+
+- [ ] 🔴 **Reunión estratégica con equipo de mercadeo Davivienda (EF)** · due 2026-06-27 · Estrategia · KPI: Alineación de alcance, Eficiencia operativa
+  - Fecha: 2026-06-19
+  - Fuente: [[06 - Meetings/Educación financiera/2026-06-19 Carolina-MariaAngelica-Jeison - Ecosistema EF y Estrategia]]
+  Reunión con todo el equipo: Gamma + MANC + mercadeo del banco. Objetivo: definir posicionamiento y alineación estructural de plataformas EF. MANC coordina desde su lado. Semana del 23 jun.
+
+- [ ] 🔴 **Reunión revisión migración de contenidos (EF)** · due 2026-06-27 · Tecnologia · KPI: Seguridad, SEO, UX
+  - Fecha: 2026-06-19
+  - Fuente: [[06 - Meetings/Educación financiera/2026-06-19 Carolina-MariaAngelica-Jeison - Ecosistema EF y Estrategia]]
+  Reunión técnica con MANC para revisar proceso de migración de plataformas WordPress → nueva plataforma única. Objetivos de la migración: seguridad, SEO, UX, centralización de simuladores. Semana del 23 jun.
 
 - [ ] 🟡 **Reunion Maria Angelica unificacion plataformas Ed Financiera** · due 2026-06-27 · Estrategia · KPI: Eficiencia operativa, Consolidación plataformas
   - Fecha: 2026-06-17

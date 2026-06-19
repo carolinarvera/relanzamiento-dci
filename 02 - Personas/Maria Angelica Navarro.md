@@ -9,7 +9,7 @@ confidence: high
 ---
 
 ## For future Claude
-María Angélica Navarro (mnavarroc@davivienda.com) is Head of Educación Financiera at Banco Davivienda. First direct meeting with Carolina was 2026-06-18 — relationship started with tension: metrics below 10% of pre-Gamma levels, budget pressure (wants 50% cost reduction), WordPress security issues. She currently believes Gamma = content generation only, but Catalina Obregón confirmed 2026-06-18 that Gamma's real scope is **collaborative strategy with MANC**. Alignment meeting (jun 19) must resolve this. Social media for MFxInvertir/MFxMiNegocio was removed from Gamma scope and unified under "Mis Finanzas en Casa".
+María Angélica Navarro (mnavarroc@davivienda.com) is Head of Educación Financiera at Banco Davivienda. Two meetings so far: 2026-06-18 (first contact, tension) and 2026-06-19 (deep ecosystem context). Key context: MANC manages a 14-year program with 6 platforms (MFxInvertir, MFxMiNegocio, Mis Finanzas en Casa, MFxJeans, Monetarium, El Profe de Finanzas IA) + 3 external providers (Gamma, Espira, DataLab) + Leo/mercadeo for pauta. Budget pressure + 4 months of unresolved technical issues + WordPress migration in progress. Gamma's CURRENT role = written content + WordPress. MANC explicitly stated that collaboration will EVOLVE toward full digital growth vision post-migration — consistent with Catalina's directive that Gamma = strategic growth collaborator, not just content. Do NOT frame Gamma's scope as "content only" — that's the transitional state, not the goal.
 
 ---
 
@@ -59,12 +59,32 @@ Banco Davivienda / Grupo Bolívar
 - La consolidación de las 5 plataformas de Ed. Financiera requiere su aval y apoyo
 - Su área tiene **obligación legal** (Ley 1328/2009) de educar consumidores financieros → base para contratos robustos
 
+## Ecosistema EF (mapa completo — actualizado 2026-06-19)
+
+| Plataforma | Audiencia | Proveedor contenido |
+|------------|-----------|---------------------|
+| MFxInvertir | Personas con miedo a invertir | Gamma |
+| MFxMiNegocio | Tenderos, corresponsales | Gamma |
+| Mis Finanzas en Casa | RRSS unificadas (absorbe las dos anteriores) | DataLab |
+| MFxJeans | 14–30 años — YouTube/TikTok | Influencers |
+| Monetarium | Niños 6–12 años | Espira |
+| El Profe de Finanzas | Asistente IA (todos) | Espira |
+| Vivi | Asesor virtual banco — integración futura con EF | Banco |
+
+**Proveedores:** Gamma (contenido + WordPress) · Espira (e-learning + IA) · DataLab (RRSS) · Leo/Performix (pauta, via mercadeo banco) · Mercadeo banco (email, push)
+
+**Problema central:** proveedores trabajan en silos → experiencia incoherente para el cliente.
+
+**Estado técnico:** 4 meses de problemas técnicos sin resolver · WordPress en migración → nueva plataforma única (objetivos: seguridad, SEO, UX)
+
+**Métricas:** cambio de enfoque de vanidad (visitas) → impacto (cambio de comportamiento, bienestar financiero)
+
 ## Reuniones
 
 | Fecha | Reunión | Tema |
 |-------|---------|------|
 | 2026-06-18 | [[06 - Meetings/Educación financiera/2026-06-18 Carolina-MariaAngelica-Jeison - Primera reunion EF]] | Primera reunión — contexto contrato, métricas, tensiones, alcance |
-| 2026-06-19 | Pendiente | Seguimiento — mapeo de procesos, definición de acciones, alineación de alcance |
+| 2026-06-19 | [[06 - Meetings/Educación financiera/2026-06-19 Carolina-MariaAngelica-Jeison - Ecosistema EF y Estrategia]] | Ecosistema completo, proveedores, proceso de contenidos, rol de Gamma (ahora y futuro) |
 
 ## Tags
 #persona #cliente #davivienda #educacion-financiera #contacto-estrategico #aprobador #jefe
