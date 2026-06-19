@@ -15,6 +15,11 @@ Archivo consolidado de tareas activas y completadas para la unidad **Vision Davi
 
 ### Carolina Ramirez
 
+- [ ] 🔴 **Compartir listado estructura reporte SEO a Duvan** · due 2026-06-19 · SEO · KPI: Tráfico orgánico, Posicionamiento
+  - Fecha: 2026-06-19
+  - Fuente: [[06 - Meetings/Proveedores/2026-06-19 Carolina-Duvan - Estrategia SEO Vision EF]]
+  Compartir a Duvan Hernández (líder SEO Leo) el listado con la estructura de reporte SEO para comparar con el mapeo actual del dashboard. Insumo para rediseñar el tablero Looker con métricas GSC.
+
 - [ ] 🔴 **Sesiones 1a1 alineacion SEO pauta contenido Vision** · due 2026-06-21 · Growth · KPI: Sesiones, Vistas, Tráfico web
   - Fecha: 2026-06-17
   - Fuente: [[06 - Meetings/Vision/2026-06-17 Carolina-Natalia-Salome-Viviana - Revision Pauta Vision]]
