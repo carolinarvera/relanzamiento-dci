@@ -681,6 +681,63 @@ El problema de SEO de Diners no es solo CTR bajo (1.65%) — es que el sitio tie
 
 ---
 
+### Core Web Vitals — Auditoría Desktop (Jun 19, 2026)
+> Fuente: GSC Core Web Vitals export, dispositivo: **Ordenador** (desktop). Mar 20 – Jun 17, 2026. ⚠️ Datos móvil NO disponibles aún — pendiente exportar.
+
+**For future Claude:** El sitio tiene 0 páginas con LCP "Bueno" en escritorio. 100% falla CWV. El único problema reportado es LCP (tiempo de carga del elemento más grande). Hubo una mejora parcial el 29-30 mayo — páginas pasaron de "Malas" a "Necesitan mejora" — pero aún no hay ninguna página en estado "Bueno". Esto es penalización de ranking activa en todos los dispositivos.
+
+#### Estado Actual (Jun 17, 2026) — Escritorio
+
+| Estado | URLs afectadas | Umbral | Semáforo |
+|--------|---------------|--------|---------|
+| **Buenas** | **7** | LCP ≤ 2.5s | 🟢 (0.1% — irrelevante) |
+| Necesitan mejora | 2,661 | LCP 2.5–4s | 🟠 |
+| **Malas** | **2,122** | LCP > 4s | 🔴 |
+| **Total en dataset CWV** | **~4,790** | — | — |
+
+**Diagnóstico:** El único problema es LCP — no hay issues de INP (interactividad) ni CLS (estabilidad visual). El problema es velocidad de carga del contenido principal (probablemente imágenes hero sin optimizar, fonts bloqueantes, o JavaScript render-blocking). Más del 99% de las páginas con datos CWV falla el umbral mínimo de Google.
+
+#### Tendencia — Eventos Clave
+
+| Período | Malas | Necesitan mejora | Buenas | Evento |
+|---------|-------|-----------------|--------|--------|
+| Mar 20 | 3,220 | 0 | 2 | Línea base |
+| Abr 1-26 | 4,100-4,400 | 0-21 | 2-9 | Empeoramiento gradual |
+| May 4-28 | 4,400-5,050 | 0-21 | 1-32 | Pico de "malas" — máximo deterioro |
+| **May 29-30** | **~3,065** | **~1,810** | ~10 | **↑ Mejora técnica detectada** |
+| Jun 8-17 | 2,122-3,147 | 1,761-2,682 | 7-13 | Estabilización post-mejora |
+
+**Mejora de mayo 29-30:** aproximadamente 1,800 páginas pasaron de "Malas" (>4s) a "Necesitan mejora" (2.5-4s). Esto sugiere que Tech realizó algún cambio de performance — posiblemente lazy loading de imágenes, compresión, o cambio de CDN. El cambio es real pero insuficiente: sigue sin haber páginas en estado "Bueno".
+
+#### Impacto en Rankings
+
+Google usa CWV como señal de ranking (Page Experience). Con 99%+ de páginas fallando LCP en desktop:
+- Las páginas de Diners están en desventaja frente a cualquier competidor con LCP < 2.5s para las mismas queries
+- El impacto en móvil es probablemente peor (datos aún no disponibles)
+- La correlación con el Core Update de abril 2026 no es directa — CWV estaba mal antes y después del update — pero es un factor de ranking permanente que suprime el tráfico orgánico continuamente
+
+#### Causa Probable del LCP Alto
+
+Para una revista de cultura/lifestyle con imágenes grandes:
+1. **Imágenes hero sin optimizar** — formatos JPEG/PNG en lugar de WebP/AVIF, sin `width`/`height` explícitos, sin preload de imagen above-the-fold
+2. **Fonts bloqueantes** — carga de tipografías sin `font-display: swap`
+3. **JavaScript render-blocking** — scripts de terceros (publicidad, redes sociales) que retrasan el primer render
+4. **Servidor sin CDN eficiente** o TTFB alto
+
+#### Pendiente Crítico
+
+⚠️ **Los datos disponibles son solo de ESCRITORIO.** El sitio tiene 81% de tráfico móvil (GSC) y 96% de inversión publicitaria en móvil (Google Ads). Los CWV móviles son típicamente peores que desktop por conexiones más lentas y procesadores menos potentes. **El diagnóstico completo requiere el export de CWV móvil.**
+
+Para obtenerlo: GSC → Experiencia → Señales de página → cambiar filtro a "Móvil" → exportar.
+
+#### Nuevo P0 Técnico
+
+| # | Acción | Owner | Urgencia | Impacto |
+|---|--------|-------|----------|---------|
+| 0K | Optimizar LCP: convertir imágenes hero a WebP/AVIF + `loading="lazy"` + preload above-the-fold | Tech | Jun 28 | Pasar de LCP >4s a <2.5s en páginas clave = mejora de ranking directa |
+
+---
+
 ## Google Ads — Auditoría YTD 2026 (ene–jun 17)
 > Fuente: 14 CSVs de Google Ads exportados 2026-06-17. Período: 2026-01-01 a 2026-06-17.
 
@@ -844,6 +901,7 @@ Tendencia: arranque lento en enero → rampa hasta pico en semana del 30 de marz
 | 0H | Añadir `noindex` a todas las URLs `/uncategorized/` | Tech | Jun 22 | Coverage: 6+ páginas sin categoría editorial en el índice de Google |
 | 0I | Verificar/añadir `noindex` a paginación profunda (> page/2) vía Yoast/RankMath | Tech | Jun 23 | Coverage: /page/92/, /page/349/, /page/577/ indexadas sin noindex |
 | 0J | Exportar lista de 404s de GSC y crear redirecciones 301 masivas | Tech | Jun 28 | Coverage: 48,959 errores 404 drenan crawl budget — mayor fix técnico pendiente |
+| 0K | Optimizar LCP desktop: imágenes hero → WebP/AVIF + preload above-the-fold + lazy loading | Tech | Jun 28 | CWV: 99%+ páginas con LCP >2.5s (escritorio) — penalización de ranking activa |
 
 ### 🔴 P1 — Semana 1-2 (máx 28 jun 2026)
 | # | Acción | Owner | Plazo |
