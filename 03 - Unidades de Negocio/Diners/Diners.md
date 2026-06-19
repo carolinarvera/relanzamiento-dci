@@ -602,6 +602,68 @@ El término "diners" en posición 4.7 es problemático: hay 3,870 búsquedas del
 | CTR "canciones indirectas" | 0.7% | 3.5% | 5.0% |
 | Clics desde España | 3,391/3m | 5,000/3m | 8,000/3m |
 
+### Coverage / Indexación — Auditoría GSC (Jun 19, 2026)
+> Fuente: GSC Coverage-Valid export, mar 20 – jun 11, 2026. Propiedad: revistadiners.com.co (todas las páginas conocidas).
+
+**For future Claude:** El sitio tuvo un colapso de indexación del 33% entre abr 23 y may 7, 2026 — coincide con Google Core Update de abril 2026. Actualmente hay 2,474 páginas debajo del pico histórico. Además hay URLs paramétricas y `/uncategorized/` en el índice que consumen crawl budget y generan contenido duplicado.
+
+#### Tendencia de Páginas Indexadas (Válidas)
+
+| Fecha | Páginas válidas | Evento |
+|-------|----------------|--------|
+| Mar 20, 2026 | 12,989 | Línea base |
+| Abr 20-23, 2026 | **13,198** | ↑ PICO HISTÓRICO |
+| Abr 27-30, 2026 | 12,425 | Primera caída (-773) |
+| May 1-3, 2026 | 11,082 | Caída acelerada |
+| May 4-7, 2026 | **8,819** | ↓ PISO — pérdida -4,379 páginas (33.2%) |
+| May 8 – May 18 | 9,066 → 10,544 | Recuperación parcial |
+| Jun 8-11, 2026 | 10,724 | Último dato — aún -2,474 vs pico (-18.8%) |
+
+**Diagnóstico:** La caída del 33% en 2 semanas (abr 23 → may 7) coincide exactamente con el Google Broad Core Update de abril 2026 (lanzado ~abr 22-25). No hay recuperación completa. Esto explica en parte el underperformance en tráfico orgánico: se perdió un tercio del inventario de URLs indexadas.
+
+#### Problemas Técnicos Identificados en el Inventario de Válidas
+
+1. **URLs paramétricas indexadas** 🔴 — Ejemplos encontrados:
+   - `.../puig-una-marca-centenaria/?nocache=1781310669&jet_blog_ajax=1`
+   - `.../bosnia-y-la-primera-vez/?nocache=1781297638&jet_blog_ajax=1`
+   - `.../cultura/page/349/?nonamp=1`
+   - El plugin **JetBlog** genera URLs con `?jet_blog_ajax=1` que Google indexa como páginas únicas → contenido duplicado + crawl budget desperdiciado.
+
+2. **/uncategorized/ indexado** 🔴 — Al menos 6 URLs en la categoría default de WordPress:
+   - `/uncategorized/murio-james-horner-el-compositor-...`
+   - `/uncategorized/listos-para-la-guerra/`
+   - `/uncategorized/jaime-abello-la-memoria-de-gabo/2/`
+   - `/uncategorized/una-aberracion-llamada-moda-2/`
+   - `/uncategorized/tinta-club-del-libro/`
+   - Estas páginas no tienen categoría temática → señal de baja calidad editorial para Google.
+
+3. **Páginas de paginación indexadas** 🟠 — Sin noindex:
+   - `/cultura/arte-y-libros/page/92/`
+   - `/cultura/page/349/?nonamp=1`
+   - `/cultura/page/577/`
+   - `/tendencias/page/12/`
+   - Paginación profunda indexada = crawl budget desperdiciado, contenido thin.
+
+4. **/tecnologia/ como categoría activa** 🟡 — Al menos 1 URL en `/tecnologia/vuelos-baratos-estafa/` — verificar si es categoría activa o artículo huérfano.
+
+#### Hipótesis del Colapso (abr 23 → may 7)
+
+| Hipótesis | Evidencia | Probabilidad |
+|-----------|-----------|-------------|
+| Google Core Update abril 2026 (contenido thin/bajo E-E-A-T) | Timing exacto coincide con update | Alta |
+| Crawl budget agotado por URLs paramétricas | `?jet_blog_ajax=1` y `?nocache=` visibles en índice | Media |
+| Cambio técnico en el sitio (noindex masivo accidental) | No hay datos adicionales para confirmar | Baja |
+
+**Implicación:** el Core Update penalizó ~4,400 páginas de contenido. La recuperación parcial (1,905 páginas recuperadas desde el piso) sugiere que Google fue a restaurando algunas páginas, pero 2,474 páginas siguen perdidas. Sin acción, es poco probable que el sitio recupere el pico de 13,198.
+
+#### Nuevos P0 Técnicos (añadir al backlog)
+
+| # | Acción | Urgencia | Impacto |
+|---|--------|----------|---------|
+| 0G | Bloquear `?jet_blog_ajax=1` y `?nocache=` en robots.txt + canonical a URL limpia | ASAP | Eliminar contenido duplicado, recuperar crawl budget |
+| 0H | Añadir `noindex` a todas las URLs `/uncategorized/` o reclasificar artículos en categoría correcta | ASAP | Señal de calidad editorial |
+| 0I | Añadir `noindex` a paginación profunda (> page/2) o verificar que Yoast/RankMath lo gestione | Esta semana | Crawl budget |
+
 ---
 
 ## Google Ads — Auditoría YTD 2026 (ene–jun 17)
@@ -763,6 +825,9 @@ Tendencia: arranque lento en enero → rampa hasta pico en semana del 30 de marz
 | 0D | Reescribir title + meta de "Canciones indirectas" | Ernesto | Jun 21 | GSC: 95K imp · 0.7% CTR → +4K clics/trimestre solo con este cambio |
 | 0E | Revisar y reescribir title + meta de "Santorini colombiano" | Ernesto | Jun 22 | GSC: 29K imp · 0.17% CTR a pos 4.3 — intent mismatch probable |
 | 0F | Actualizar meta Homepage: mencionar "Revista Diners" explícito en title | Tech/Editorial | Jun 21 | Brand keyword "diners" en pos 4.7 — probablemente perdiendo vs Diners Club tarjeta |
+| 0G | Bloquear `?jet_blog_ajax=1` y `?nocache=` en robots.txt + canonical a URL limpia | Tech | Jun 21 | Coverage: URLs paramétricas indexadas = contenido duplicado + crawl budget perdido |
+| 0H | Añadir `noindex` a todas las URLs `/uncategorized/` | Tech | Jun 22 | Coverage: 6+ páginas sin categoría editorial en el índice de Google |
+| 0I | Verificar/añadir `noindex` a paginación profunda (> page/2) vía Yoast/RankMath | Tech | Jun 23 | Coverage: /page/92/, /page/349/, /page/577/ indexadas sin noindex |
 
 ### 🔴 P1 — Semana 1-2 (máx 28 jun 2026)
 | # | Acción | Owner | Plazo |
