@@ -7,8 +7,8 @@ related-people: [natalia-otalora, carolina-ramirez, estefania, jeison-montero]
 sources:
   - "Reunión Natalia Otálora 2026-06-16 — aprobación 4 ejes"
   - "Vision_Estrategia_Growth_2026 — regla distribución canales"
-  - "Research/Deep/2026-06-18 - vision-north-star-growth-strategies"
-  - "Vision_AuditoriaRRSS_2026-06 — datos actuales por canal"
+  - "vision.davivienda.com — artículos publicados jun 2026 (leídos directamente del sitio)"
+  - "Vision_ContenidoRedes_Articulos_2026-06 — contenido por canal basado en artículos reales"
 ai-first: true
 confidence: high
 ---
@@ -16,7 +16,7 @@ confidence: high
 # Visión Davivienda — Plan de Contenidos 360
 **Piloto 2 meses: julio–agosto 2026 | Aprobado por Natalia Otálora (ejes, jun 16)**
 
-> **For future Claude:** Plan de contenidos editorial completo para Visión Davivienda. Los 4 ejes (Autoridad/Educativo/Coyuntura/Comunidad) fueron aprobados por Natalia el 16 jun. La regla de distribución es: mismo contenido, diferentes fechas y formatos por canal — no se produce contenido nuevo por canal, se reformatea. El piloto cubre 4 semanas temáticas × 2 meses = 8 semanas en total. Estefanía ejecuta. Carolina lidera estrategia. Natalia ausente desde el 28 jun — todo debe estar alineado antes.
+> **For future Claude:** Plan de contenidos editorial completo para Visión Davivienda. Los 4 ejes (Autoridad/Educativo/Coyuntura/Comunidad) fueron aprobados por Natalia el 16 jun. **ACTUALIZACIÓN 18 jun:** las 4 semanas del piloto ahora están ancladas en artículos REALES publicados en vision.davivienda.com — no usar datos genéricos. El contenido por canal listo para copiar está en [[Vision_ContenidoRedes_Articulos_2026-06]]. La regla de distribución es: 1 artículo publicado = 1 hilo X + 1 Reel IG + 1 carrusel IG + 1 post LinkedIn + 1 Short YouTube. Estefanía ejecuta. Carolina lidera. Natalia ausente desde el 28 jun.
 
 ---
 
@@ -52,216 +52,230 @@ Un informe de investigaciones = 1 hilo en X + 1 Reel + 1 carrusel IG + 1 post Li
 
 ## ESTRUCTURA TEMÁTICA — 4 SEMANAS TIPO
 
-El piloto cubre los 4 clusters de mayor volumen GSC para Visión. Se repite el ciclo en agosto con temas del momento.
+**Regla actualizada (18 jun):** cada semana se ancla en un artículo REAL publicado en vision.davivienda.com. El contenido listo por canal está en [[Vision_ContenidoRedes_Articulos_2026-06]].
 
-| Semana | Tema ancla | Audiencia primaria |
-|--------|-----------|-------------------|
-| **S1** | Dividendos Colombia 2026 | Entusiasta financiero · Asesor |
-| **S2** | Macroeconomía / IPC / PIB Colombia | Entusiasta financiero · Académico |
-| **S3** | BanRep / Tasas de interés | Asesor · Fuerza comercial Davivienda |
-| **S4** | COLCAP / Análisis compañías / Dólar | Entusiasta financiero · Prensa |
+| Semana | Artículo ancla (publicado en el sitio) | Eje principal | Audiencia |
+|--------|---------------------------------------|---------------|-----------|
+| **S1** | "El sector público volvió a impulsar la actividad económica" (18 jun) — Juan David Jaramillo | Autoridad + Educativo | Entusiasta · Académico |
+| **S2** | "El sector vivienda continúa perdiendo dinamismo" (10 jun) — Juan David Jaramillo | Educativo + Coyuntura | Entusiasta · Asesor |
+| **S3** | "Comercio registró su mejor resultado en nueve meses" (16 jun) — Jaramillo & Acosta | Autoridad + Educativo | Entusiasta · Fuerza comercial |
+| **S4** | "Balance de finanzas públicas y elecciones presidenciales" (16 jun) — Davivienda Corredores | Autoridad + Coyuntura | Asesor · Académico · Prensa |
 
 ---
 
-## SEMANA 1 — Dividendos Colombia 2026
+## SEMANA 1 — "El sector público volvió a impulsar la actividad económica"
+**Artículo:** Juan David Jaramillo · 18 jun 2026 · URL: `/macroeconomia/tendencias-actividad-economica/sector-publico-impulso-actividad-economica-TA0626`
+**Datos reales:** PIB +3.3% abril (en línea expectativa Bloomberg) · Acumulado ene-abr: +2.5% · Terciario +4.6% · Admón pública +8.1% (temporada electoral + nómina Estado) · Primario -2.4% · Manufactura +2.0% · Carbón +18% · Petróleo +0.42% · Bienes durables en doble dígito
 
 ### Email (L–V informe diario + bisemanal)
 
 | Día | Contenido | Eje | Formato |
 |-----|-----------|-----|---------|
-| Lunes | Apertura mercados + sección especial: acciones que pagan dividendos esta semana | Coyuntura | Informe diario · 1 CTA arriba |
-| Martes | Datos dividendo Ecopetrol: monto por acción, fecha de pago, rendimiento | Coyuntura | Informe diario |
-| Miércoles | BVC: rendimiento por dividendo vs CDT — comparativa 2026 | Coyuntura | Informe diario |
-| Jueves | Bancolombia anuncia asamblea — dividendos confirmados | Coyuntura | Informe diario |
-| Viernes | **BISEMANAL EDITORIAL:** Guía completa dividendos Colombia 2026 — quiénes pagan, cuánto y cuándo | Autoridad | Email largo · CTA → artículo web |
+| Lunes | Apertura + dato ISE: Colombia creció 3.3% en abril — ¿quién jaló? | Coyuntura | Informe diario · 1 CTA → artículo |
+| Martes | La administración pública creció 8.1%: temporada electoral + nómina Estado | Coyuntura | Informe diario |
+| Miércoles | Sector primario cayó 2.4% — petróleo solo creció 0.42% | Coyuntura | Informe diario |
+| Jueves | Bienes durables (autos, motos, TV, celulares) en ventas de doble dígito | Coyuntura | Informe diario |
+| Viernes | **BISEMANAL:** Análisis sectorial completo ene-abr 2026 — perspectivas del equipo | Autoridad | Email largo · CTA → artículo web |
 
-### Instagram (3–4 Reels + 2–3 carruseles + Stories diarias)
+### Instagram
 
-| Día | Contenido | Eje | Formato | Duración/Slides |
-|-----|-----------|-----|---------|-----------------|
-| Lunes | ¿Qué son los dividendos y cómo ganar con ellos? | Educativo | **Reel** — economista en cámara + gráfica animada | 30s |
-| Martes | 5 empresas colombianas que pagan más dividendos en 2026 | Educativo | **Carrusel** — tabla con logo empresa + dato por slide | 8 slides |
-| Miércoles | ¿Tú ya inviertes en acciones colombianas? + quiz 3 preguntas | Comunidad | **Story** — poll + quiz interactivo | Stories |
-| Jueves | Ecopetrol paso a paso: cómo cobrar tus dividendos | Educativo | **Reel** — pantalla de celular + voz off · CTA suscripción | 45s |
-| Viernes | ¿Cuánto rindieron los dividendos de la BVC este año? | Comunidad | **Carrusel** — tabla comparativa + pregunta final para comentarios | 6 slides |
+| Día | Contenido | Eje | Formato | Spec |
+|-----|-----------|-----|---------|------|
+| Lunes | Colombia creció 3.3% en abril — ¿quién jaló la economía esta vez? | Educativo | **Reel 30s** — hook en pantalla, economista en cámara | Hook: "Colombia creció 3.3% en abril. Pero el motor fue el gobierno, no el petróleo." |
+| Martes | El gobierno creció 8.1%: la razón detrás del número | Educativo | **Carrusel 6 slides** — dato + causa + impacto | S1: "El sector que más creció en abril no fue el petróleo" |
+| Miércoles | ¿Sabías que el Estado colombiano es el motor de la economía este año? | Comunidad | **Story poll** — ¿Es bueno o malo que el gasto público jale el PIB? | Pregunta directa, 2 opciones |
+| Jueves | Bienes durables en doble dígito: ¿qué compran los colombianos? | Educativo | **Reel 30s** — autos, motos, TV, celulares con data visual | Dato sorpresa: ventas doble dígito a pesar de tasas altas |
+| Viernes | Construcción: licencias +23.6% pero concreto VIS -19.6% ¿Qué significa eso? | Comunidad | **Carrusel 5 slides** — señales mixtas sector construcción | Slide final: pregunta para comentarios |
 
-**Stories diarias (L–V):** Dato del día + pregunta o sticker de encuesta. Bajo esfuerzo, mantiene frecuencia con comunidad.
+**Stories L–V:** dato del día del artículo + sticker de encuesta o pregunta abierta.
 
 ### X / Twitter
 
 | Día | Contenido | Eje | Formato |
 |-----|-----------|-----|---------|
-| Lunes | Calendario completo dividendos Colombia 2026: 12 empresas, montos y fechas | Coyuntura | **Hilo 6 tweets** + imagen tabla |
-| Martes | Ecopetrol pagará $X por acción el DD/MM. Rendimiento dividendo: X%. Lo que necesitas saber → | Coyuntura | Post único + infografía |
-| Miércoles | Rentabilidad por dividendo promedio BVC 2026: X% — por encima del CDT promedio de X%. Análisis completo: | Autoridad | Post con dato propio + gráfica propia |
-| Jueves | Bancolombia confirma dividendos: $X por acción preferencial. Fecha de corte: XX | Coyuntura | Breaking + link artículo |
-| Viernes | Resumen semanal dividendos: $X billones COP repartidos. Las ganadoras de la BVC | Coyuntura | Cierre semana + resumen visual |
+| Lunes | Colombia creció 3.3% en abril. El sector público volvió a jalonar. Desglose completo 👇 | Autoridad | **Hilo 5 tweets** · ver copy completo en [[Vision_ContenidoRedes_Articulos_2026-06]] |
+| Martes | Administración pública +8.1% en abril. Dos razones: temporada electoral + aumento de nómina del Estado | Coyuntura | Post único + gráfica sectorial |
+| Miércoles | Las actividades primarias cayeron 2.4% en abril. Petróleo creció apenas 0.42%. La economía crece, pero sin el músculo extractivo. | Autoridad | Post dato + contexto |
+| Jueves | Bienes durables en doble dígito: autos, motos, televisores, celulares. El consumo privado jala aunque las tasas están altas. | Coyuntura | Post dato + análisis |
+| Viernes | Acumulado ene-abr 2026: Colombia crece 2.5%. Análisis completo sector por sector → vision.davivienda.com | Autoridad | Post cierre semana + link |
 
 ### LinkedIn (perfiles personales economistas — 3 posts/semana)
 
 | Día | Contenido | Eje | Formato |
 |-----|-----------|-----|---------|
-| Lunes | Análisis de dividendos Colombia 2026 — proyecciones equipo investigaciones Visión Davivienda | Autoridad | **Doc PDF nativo** 8 páginas · perfil economista · tono técnico |
-| Miércoles | Por qué los dividendos colombianos siguen superando al CDT en 2026 — mi lectura como analista | Autoridad | **Post personal** 800 palabras · imagen comparativa |
-| Viernes | Tendencia dividendos BVC — qué esperar en Q3 | Autoridad | **Video 90s** economista hablando a cámara · nombre y cargo en pantalla |
+| Lunes | Colombia creció 3.3% en abril. El origen del crecimiento, no tanto. | Autoridad | **Post personal** · ver copy en [[Vision_ContenidoRedes_Articulos_2026-06]] · link en comentarios |
+| Miércoles | Cuando el motor del crecimiento es el gasto público: qué significa para el segundo semestre | Autoridad | **Post análisis** · 400 palabras · pregunta al final |
+| Viernes | Sector primario -2.4%: petróleo vs. carbón en el mismo mes | Autoridad | **Post técnico** · gráfica de desempeño sectorial |
 
-### YouTube (Shorts 60s — 3/semana)
+### YouTube Shorts (3/semana)
 
-| Día | Contenido | Eje |
-|-----|-----------|-----|
-| Lunes | ¿Qué son los dividendos? Todo en 60 segundos | Educativo |
-| Miércoles | Ecopetrol 2026: ¿vale la pena por sus dividendos? | Educativo |
-| Viernes | Cómo cobrar dividendos en Colombia — paso a paso | Educativo |
+| Día | Script | Eje |
+|-----|--------|-----|
+| Lunes | "Colombia creció 3.3% en abril. Pero el motor fue el gobierno, no el petróleo." — ver script completo en [[Vision_ContenidoRedes_Articulos_2026-06]] | Educativo |
+| Miércoles | "¿Por qué el Estado colombiano está jalando la economía este año?" | Educativo |
+| Viernes | "Sector a sector: quién ganó y quién perdió en abril 2026" | Educativo |
 
 ---
 
-## SEMANA 2 — Macroeconomía / IPC / PIB Colombia
+## SEMANA 2 — "El sector vivienda continúa perdiendo dinamismo"
+**Artículo:** Juan David Jaramillo · 10 jun 2026 · URL: `/sectores/vivienda/sector-vivienda-continua-perdiendo-dinamismo-mayo-2026`
+**Datos reales:** Ventas totales -18.7% · VIS -9.5% · No VIS -23.5% · 5 meses consecutivos de contracción · Solo Cartagena creció (+41.7%) · Bogotá -35% · Medellín -21% · Lanzamientos -30.5% · Crédito hipotecario negativo · Área aprobada construcciones -7.5%
 
-### Email
-
-| Día | Contenido | Eje |
-|-----|-----------|-----|
-| Lunes | Apertura + dato IPC mayo: Colombia X% vs Latam | Coyuntura |
-| Martes | PIB Q1 2026 Colombia: creció X% — sectores ganadores y perdedores | Coyuntura |
-| Miércoles | Déficit fiscal Colombia — qué significa para tu bolsillo | Coyuntura |
-| Jueves | PMI industria Colombia: lectura junio — ¿expansión o contracción? | Coyuntura |
-| Viernes | **BISEMANAL:** Panorama macro Colombia H2 2026 — perspectivas del equipo | Autoridad |
-
-### Instagram
+### Email (L–V informe diario + bisemanal)
 
 | Día | Contenido | Eje | Formato |
 |-----|-----------|-----|---------|
-| Lunes | ¿Qué es el IPC y cómo te afecta todos los meses? | Educativo | **Reel 30s** — animación precio canasta familiar |
-| Martes | Colombia creció X% en Q1 — ¿qué sectores ganaron y perdieron? | Educativo | **Carrusel 7 slides** — icono por sector + dato |
-| Miércoles | ¿Sientes que tu plata rinde menos? Así funciona la inflación | Educativo | **Reel 45s** — storytelling personal + pregunta al final |
-| Jueves | Déficit fiscal: qué es y por qué le importa a tu inversión | Educativo | **Carrusel 5 slides** — analogía hogar vs gobierno |
-| Viernes | Quiz: ¿qué tanto entiendes la economía colombiana? [link en bio] | Comunidad | **Story + post carrusel** — CTA a quiz (modelo Bloomberg Línea) |
+| Lunes | Apertura + vivienda: ventas nuevas cayeron 18.7% en mayo | Coyuntura | Informe diario · CTA artículo |
+| Martes | VIS cae 9.5%, No VIS cae 23.5%: la crisis abarca todos los segmentos | Coyuntura | Informe diario |
+| Miércoles | Bogotá -35%, Medellín -21%, Cartagena +41.7% — el mapa de la vivienda en Colombia | Coyuntura | Informe diario |
+| Jueves | Lanzamientos -30.5%: los constructores frenan antes que los compradores | Coyuntura | Informe diario |
+| Viernes | **BISEMANAL:** 5 meses seguidos cayendo — ¿qué necesita el sector vivienda para rebotar? | Autoridad | Email largo · perspectivas del equipo |
+
+### Instagram
+
+| Día | Contenido | Eje | Formato | Spec |
+|-----|-----------|-----|---------|------|
+| Lunes | Las ventas de vivienda nueva cayeron 18.7% en mayo. Quinto mes consecutivo. | Educativo | **Reel 30s** — hook visual + economista en cámara | Hook: "5 meses seguidos cayendo. El sector vivienda en Colombia tiene un problema." |
+| Martes | VIS vs No VIS: los dos segmentos van mal, pero uno peor que el otro | Educativo | **Carrusel 6 slides** — comparativa segmentos · datos reales | S1: "¿Cuál crees que cayó más: vivienda barata o vivienda cara?" |
+| Miércoles | ¿Por qué Cartagena es la única ciudad donde se vende vivienda? | Comunidad | **Story poll** — ¿Por qué crees que Cartagena crece +41.7%? | 3 opciones + sticker opinión |
+| Jueves | Bogotá -35%, Medellín -21%, Cali -8%: el mapa de la vivienda en Colombia | Educativo | **Carrusel 7 slides** — mapa + dato por ciudad | Última slide: comparativa 2025 vs 2026 |
+| Viernes | ¿Es momento de comprar vivienda en Colombia? Lo que dicen los datos | Comunidad | **Reel 45s** — análisis express · pregunta CTA comentarios | "Déjanos tu ciudad 👇 y te decimos cómo está el mercado allá" |
+
+**Stories L–V:** Dato del día del artículo + sticker encuesta o pregunta ciudad a ciudad.
 
 ### X / Twitter
 
 | Día | Contenido | Eje | Formato |
 |-----|-----------|-----|---------|
-| Lunes | IPC Colombia mayo: X% mensual, X% anual. Tercer mes consecutivo en desaceleración | Coyuntura | Post + gráfica serie histórica |
-| Martes | PIB Q1 2026: Colombia creció X%. Construcción cae, servicios sube. Análisis sectorial: | Coyuntura | Post autoridad + link informe |
-| Miércoles | El déficit fiscal de Colombia en 2026 es el más complejo en X años. Lo que significa para los mercados → | Autoridad | Hilo 4 tweets |
-| Jueves | PMI industria Colombia junio: X puntos. Desglose por componente: | Coyuntura | Dato + gráfica |
-| Viernes | Resumen macro Colombia semana: IPC + PIB + PMI. Lo que dicen los datos → | Coyuntura | Hilo resumen semanal |
+| Lunes | Las ventas de vivienda nueva en Colombia cayeron 18.7% en mayo. Quinto mes consecutivo de contracción. El desglose por segmento: 👇 | Educativo | **Hilo 5 tweets** · ver copy en [[Vision_ContenidoRedes_Articulos_2026-06]] |
+| Martes | VIS -9.5%, No VIS -23.5%. La caída en vivienda de lujo duplica la de vivienda social. Dos razones: tasas + sobreoferta en estratos altos. | Autoridad | Post dato + análisis |
+| Miércoles | Cartagena +41.7% en ventas de vivienda. Bogotá -35%. El mismo país, realidades opuestas. ¿Qué hace diferente a Cartagena? | Coyuntura | Post pregunta + datos |
+| Jueves | Lanzamientos de vivienda nueva: -30.5%. Los constructores pararon antes que los compradores. Eso alarma más que las ventas. | Autoridad | Post análisis propio |
+| Viernes | 5 meses seguidos cayendo en vivienda nueva. Los 3 factores que necesitan cambiar para que el sector rebote → vision.davivienda.com | Autoridad | Post cierre semana + link |
 
-### LinkedIn
+### LinkedIn (perfiles personales economistas — 3 posts/semana)
 
 | Día | Contenido | Eje | Formato |
 |-----|-----------|-----|---------|
-| Lunes | Cómo leer el IPC y qué significa para tu portafolio — guía práctica para asesores financieros | Autoridad | Doc PDF · enfoque asesor · técnico |
-| Miércoles | Colombia Q1 2026: los 3 datos que más me preocupan y los 2 que me dan optimismo | Autoridad | Post personal · opinión experta |
-| Viernes | Perspectiva macro Colombia H2 2026 en 90 segundos | Autoridad | Video perfil economista · nombre/cargo visible |
+| Lunes | El sector vivienda acumula 5 meses en rojo. ¿Señal de alarma o ajuste normal del ciclo? | Autoridad | **Post personal** · ver copy en [[Vision_ContenidoRedes_Articulos_2026-06]] · link en comentarios |
+| Miércoles | Por qué el dato que más me preocupa no es la venta de vivienda sino los lanzamientos (-30.5%) | Autoridad | **Post análisis** · 400 palabras · opinión del analista |
+| Viernes | Cartagena vs Bogotá en vivienda: +41.7% vs -35%. Lecciones para entender el mercado inmobiliario colombiano | Autoridad | **Post comparativo** · gráfica por ciudades |
 
-### YouTube Shorts
+### YouTube Shorts (3/semana)
 
-| Día | Contenido |
-|-----|-----------|
-| Lunes | ¿Qué es el IPC y por qué importa? En 60 segundos |
-| Miércoles | Economía colombiana Q1: los ganadores y perdedores en 60s |
-| Viernes | ¿Qué es el déficit fiscal? La explicación más sencilla |
+| Día | Script | Eje |
+|-----|--------|-----|
+| Lunes | "Las ventas de vivienda en Colombia llevan 5 meses cayendo. Te explico qué está pasando." — ver script en [[Vision_ContenidoRedes_Articulos_2026-06]] | Educativo |
+| Miércoles | "¿Es momento de comprar vivienda en Colombia? Lo que dicen los datos en 60 segundos" | Educativo |
+| Viernes | "Bogotá -35%, Cartagena +41.7%: el mapa de la vivienda en Colombia" | Educativo |
 
 ---
 
-## SEMANA 3 — BanRep / Tasas de interés
+## SEMANA 3 — "Comercio registró su mejor resultado en nueve meses"
+**Artículo:** Juan David Jaramillo & Mario Acosta · 16 jun 2026 · URL: `/sectores/comercio/comercio-mejor-resultado-nueve-meses-abril-2026`
+**Datos reales:** Comercio minorista +14.9% (mejor en 9 meses) · Vehículos líder: +3.71pp en la variación · 18 de 19 categorías crecieron · Manufactura +2% (bajo expectativa) · Textiles y prendas de vestir cayeron · Resultado comercio vs manufactura: señal de demanda sin tracción productiva
 
-### Email
-
-| Día | Contenido | Eje |
-|-----|-----------|-----|
-| Lunes | Apertura + contexto próxima reunión JDBR — qué espera el mercado | Coyuntura |
-| Martes | Tasa de usura junio 2026: X% — impacto en crédito y CDT | Coyuntura |
-| Miércoles | JDBR decide: ¿sube, baja o mantiene? Análisis previo del equipo | Autoridad |
-| Jueves | Resultado JDBR: tasa en X% — reacción del mercado y qué sigue | Coyuntura |
-| Viernes | **BISEMANAL:** BanRep 2026 — cronograma completo y proyecciones | Autoridad |
-
-### Instagram
+### Email (L–V informe diario + bisemanal)
 
 | Día | Contenido | Eje | Formato |
 |-----|-----------|-----|---------|
-| Lunes | ¿Qué es el BanRep y por qué sus decisiones te afectan? | Educativo | **Reel 30s** — formato pregunta + respuesta visual |
-| Martes | Tasa de usura junio: X%. ¿Qué significa para tu crédito? | Educativo | **Carrusel 6 slides** — comparativa CDT vs crédito |
-| Miércoles | Esta semana el BanRep decide. ¿Qué crees que hará? | Comunidad | **Story poll** baja / sube / mantiene — genera anticipación |
-| Jueves | BanRep bajó/subió la tasa a X%. Así impacta tu dinero | Educativo | **Reel 60s** — breaking · gráfica + voz off urgente |
-| Viernes | ¿Cómo afectan las tasas de interés a tus inversiones? | Educativo | **Carrusel 7 slides** — guía educativa · CTA suscripción |
+| Lunes | Apertura + comercio: ventas minoristas +14.9% en abril — mejor dato en 9 meses | Coyuntura | Informe diario · CTA artículo |
+| Martes | Vehículos jalaron el comercio en +3.71pp — ¿una temporada o un rebote sostenido? | Coyuntura | Informe diario |
+| Miércoles | 18 de 19 categorías de comercio crecieron: la única que cayó fue textiles | Coyuntura | Informe diario |
+| Jueves | Manufactura +2%: el comercio crece pero la producción no sigue el ritmo | Autoridad | Informe diario · señal de alerta |
+| Viernes | **BISEMANAL:** Comercio en alza, manufactura rezagada — ¿qué dice eso del consumo colombiano? | Autoridad | Email largo · perspectivas del equipo |
+
+### Instagram
+
+| Día | Contenido | Eje | Formato | Spec |
+|-----|-----------|-----|---------|------|
+| Lunes | El comercio creció 14.9% en abril. El mejor dato en 9 meses. | Educativo | **Reel 30s** — economista en cámara + dato visual | Hook: "Nueve meses. Eso tardó el comercio en tener un buen dato." |
+| Martes | ¿Qué se compró más en Colombia en abril? Los 5 líderes del comercio | Educativo | **Carrusel 7 slides** — ranking categorías + dato por slide | S1: "Vehículos fueron los que más jalaron el comercio en abril" |
+| Miércoles | 18 de 19 categorías crecieron. Solo una cayó. ¿Adivinas cuál? | Comunidad | **Story poll** — opciones: textiles / comida / electrónico / muebles | Respuesta en siguiente story |
+| Jueves | Comercio +14.9% pero manufactura solo +2%. ¿Qué significa esa brecha? | Educativo | **Carrusel 5 slides** — demanda vs producción · análisis simple | Slide final: implicación para consumidores |
+| Viernes | ¿El rebote del comercio en Colombia es sostenible? Lo que dicen los datos | Comunidad | **Reel 45s** — análisis del analista + CTA comentarios | "¿Tú has sentido ese rebote en tu negocio o en tus compras? 👇" |
+
+**Stories L–V:** dato del día + encuesta sobre hábitos de consumo o pregunta de opinión.
 
 ### X / Twitter
 
 | Día | Contenido | Eje | Formato |
 |-----|-----------|-----|---------|
-| Lunes | El mercado espera que el BanRep baje la tasa X pb esta semana. Nuestro análisis previo → | Autoridad | Pre-análisis + link nota |
-| Martes | Tasa de usura Colombia junio 2026: X%. Sube/Baja X pb vs mayo. Impacto en crédito: | Coyuntura | Dato + contexto |
-| Miércoles | Hoy decide la JDBR. Consenso: X%. Nuestra posición: esperamos X pb de recorte porque → | Autoridad | Hilo 3 tweets · posición propia |
-| Jueves | BREAKING: BanRep mantiene/baja/sube tasa a X%. Lo que implica para el mercado → | Coyuntura | Breaking inmediato · primer tweet en minutos |
-| Viernes | Análisis post-JDBR: ¿hizo bien el BanRep? Argumentos a favor y en contra → | Autoridad | Análisis posterior · más profundidad |
+| Lunes | Comercio minorista Colombia abril: +14.9%. El mejor dato en nueve meses. 18 de 19 líneas crecieron. Desglose: 👇 | Educativo | **Hilo 5 tweets** · ver copy en [[Vision_ContenidoRedes_Articulos_2026-06]] |
+| Martes | Los vehículos jalaron el comercio con +3.71pp en la variación. El consumo de bienes durables sigue sorprendiendo a pesar de las tasas. | Coyuntura | Post dato + contexto |
+| Miércoles | Solo una categoría cayó en el comercio de abril: textiles y prendas. Cuatro trimestres seguidos en negativo. ¿Cambio estructural o efecto importaciones? | Autoridad | Post análisis propio |
+| Jueves | Comercio +14.9% pero manufactura +2%. La demanda llegó más rápido que la producción. Eso es señal mixta, no señal de recuperación completa. | Autoridad | Post análisis propio |
+| Viernes | El mejor mes del comercio en 9 meses, pero manufactura rezagada. Resumen completo → vision.davivienda.com | Autoridad | Post cierre semana + link |
 
-### LinkedIn
+### LinkedIn (perfiles personales economistas — 3 posts/semana)
 
 | Día | Contenido | Eje | Formato |
 |-----|-----------|-----|---------|
-| Lunes | Guía para asesores: cómo explicarle la política monetaria a tu cliente antes de la JDBR | Autoridad | Doc PDF · enfoque B2B asesor |
-| Miércoles | Por qué creo que el BanRep debería bajar X pb esta semana — mi análisis | Autoridad | Post opinión · economista con nombre |
-| Viernes | Qué significa la decisión del BanRep para portafolios 2026 | Autoridad | Video análisis post-JDBR · 90s |
+| Lunes | El comercio tuvo su mejor mes en 9 meses. Pero hay matices. | Autoridad | **Post personal** · ver copy en [[Vision_ContenidoRedes_Articulos_2026-06]] · link en comentarios |
+| Miércoles | Por qué me preocupa más el +2% de manufactura que me alegra el +14.9% de comercio | Autoridad | **Post análisis** · 400 palabras · perspectiva de analista |
+| Viernes | Vehículos liderando el comercio: ¿señal de confianza del consumidor o factor estacional? | Autoridad | **Post técnico** · gráfica histórica · conclusión propia |
 
-### YouTube Shorts
+### YouTube Shorts (3/semana)
 
-| Día | Contenido |
-|-----|-----------|
-| Lunes | ¿Qué hace el BanRep y por qué importa? 60 segundos |
-| Miércoles | Antes de la JDBR: lo que espera el mercado en 60s |
-| Viernes | El BanRep decidió. ¿Y ahora qué? En 60 segundos |
+| Día | Script | Eje |
+|-----|--------|-----|
+| Lunes | "El comercio creció 14.9% en abril. El mejor dato en 9 meses. Te explico qué pasó." — ver script en [[Vision_ContenidoRedes_Articulos_2026-06]] | Educativo |
+| Miércoles | "18 de 19 categorías de comercio crecieron en Colombia. ¿Cuál fue la única que cayó?" | Educativo |
+| Viernes | "Comercio +14.9%, manufactura +2%. La diferencia importa. En 60 segundos." | Educativo |
 
 ---
 
-## SEMANA 4 — COLCAP / Análisis compañías / Dólar
+## SEMANA 4 — "Balance de finanzas públicas y elecciones presidenciales"
+**Artículo:** Davivienda Corredores · 16 jun 2026 · URL: `/macroeconomia/perspectivas-semanales/balance-finanzas-publicas-elecciones-presidenciales-jun-2026`
+**Datos reales:** TRM $3,495 (cierre viernes) · Peso colombiano +16.9% en el año · Roll-over deuda pública: 19.5x→6.1x (2026 vs 2027) · Curva TES se aplanó · S&P 500 post-IPO +3% vs promedio histórico +10% al primer año · Contexto político: pre-electoral impacta expectativas fiscales · Petróleo: señales mixtas precio
 
-### Email
-
-| Día | Contenido | Eje |
-|-----|-----------|-----|
-| Lunes | Apertura + TRM del día + contexto macro que mueve el dólar | Coyuntura |
-| Martes | Rebalanceo MSCI COLCAP: qué cambia y qué acciones entran/salen | Coyuntura |
-| Miércoles | Ecopetrol análisis fundamental Q2 2026 — perspectivas del equipo | Autoridad |
-| Jueves | Dólar en Colombia: ¿por qué se mueve así? Factores de la semana | Coyuntura |
-| Viernes | **BISEMANAL:** Perspectivas COLCAP H2 2026 — acciones a seguir | Autoridad |
-
-### Instagram
+### Email (L–V informe diario + bisemanal)
 
 | Día | Contenido | Eje | Formato |
 |-----|-----------|-----|---------|
-| Lunes | ¿Por qué sube y baja el dólar en Colombia? | Educativo | **Reel 45s** — animación factores + dato histórico del día |
-| Martes | COLCAP rebalanceo: las acciones que entran y las que salen | Educativo | **Carrusel 8 slides** — tabla antes/después · icono por empresa |
-| Miércoles | Ecopetrol en 2026: ¿compras o esperas? | Educativo | **Reel 60s** — análisis express · economista en cámara |
-| Jueves | El dólar tocó $X hoy. ¿Cuánto más puede subir? | Comunidad | **Post estático + Story** — dato récord + pregunta |
-| Viernes | Quiz: ¿cuánto sabes del mercado accionario colombiano? [link en bio] | Comunidad | **Carrusel quiz 5 preguntas** — CTA link bio |
+| Lunes | Apertura + TRM $3,495 · peso +16.9% en el año · qué sigue | Coyuntura | Informe diario · CTA artículo |
+| Martes | Roll-over deuda Colombia: el riesgo que pasa de 2026 a 2027 (19.5x→6.1x) | Autoridad | Informe diario · contexto técnico |
+| Miércoles | La curva TES se aplanó: qué significa para los portafolios de renta fija | Autoridad | Informe diario |
+| Jueves | Elecciones presidenciales y finanzas públicas: los 3 escenarios del equipo | Coyuntura | Informe diario |
+| Viernes | **BISEMANAL:** S&P 500, TRM y TES — perspectivas para la semana del 23 jun | Autoridad | Email largo · expectativa de la siguiente semana |
+
+### Instagram
+
+| Día | Contenido | Eje | Formato | Spec |
+|-----|-----------|-----|---------|------|
+| Lunes | El peso colombiano subió 16.9% en lo que va del año. ¿Por qué? | Educativo | **Reel 30s** — economista en cámara + gráfica TRM | Hook: "El dólar cerró a $3,495. Pero el peso es una de las monedas que más ha subido en el mundo este año." |
+| Martes | ¿Qué es el roll-over de deuda y por qué Colombia tiene un reto en 2027? | Educativo | **Carrusel 6 slides** — explicación visual deuda + número clave | S1: "Colombia tiene que refinanciar menos deuda en 2026, pero mucho más en 2027." |
+| Miércoles | ¿Qué pasa con las finanzas públicas en un año electoral? | Educativo | **Reel 45s** — análisis coyuntural · 3 puntos clave · economista | Coyuntura electoral + impacto mercados |
+| Jueves | TES Colombia: la curva se aplanó esta semana. ¿Es bueno o malo? | Educativo | **Carrusel 5 slides** — curva de rendimientos · explicación simple | S1: "La curva de TES te dice qué espera el mercado del futuro de Colombia." |
+| Viernes | S&P 500 post-IPO: rinde 3% al primer año en promedio. El histórico dice +10%. ¿Qué cambia? | Comunidad | **Reel 30s** — dato sorpresa + pregunta CTA comentarios | "¿Invertirías en una empresa el día de su IPO? 👇" |
+
+**Stories L–V:** TRM del día + contexto de una línea · encuesta sobre expectativa de tasa de cambio.
 
 ### X / Twitter
 
 | Día | Contenido | Eje | Formato |
 |-----|-----------|-----|---------|
-| Lunes | TRM apertura: $X COP. El peso colombiano sube/cae X% vs ayer. Factores: → | Coyuntura | Post diario primera hora |
-| Martes | Rebalanceo MSCI COLCAP: qué entra, qué sale y qué significa → | Coyuntura | Hilo 5 tweets + gráfica |
-| Miércoles | Ecopetrol Q2 2026: precio objetivo, dividendos esperados y riesgos. Equipo investigaciones Visión → | Autoridad | Post autoridad + link informe |
-| Jueves | El peso colombiano cae/sube X% en lo corrido de la semana. Los 3 factores que más pesan → | Autoridad | Análisis propio |
-| Viernes | Cierre semanal COLCAP: X puntos, variación X%. Las 5 acciones más activas: | Coyuntura | Resumen visual |
+| Lunes | TRM cierre: $3,495. El peso colombiano sube 16.9% en lo corrido del año. Una de las monedas más fuertes de LatAm en 2026. Lo que hay detrás 👇 | Coyuntura | **Hilo 5 tweets** · ver copy en [[Vision_ContenidoRedes_Articulos_2026-06]] |
+| Martes | Roll-over de deuda Colombia: en 2026 fue 19.5x el saldo. En 2027 baja a 6.1x. ¿Por qué importa esa diferencia? Porque el mercado tiene que absorber mucho menos papel. Eso mueve la curva. | Autoridad | Post análisis técnico |
+| Miércoles | Año electoral + finanzas públicas = presión sobre el gasto. Los mercados ya lo están descontando. Curva de TES se aplanó esta semana. | Autoridad | Post análisis coyuntural |
+| Jueves | El S&P 500 sube 3% en promedio durante el primer año post-IPO. El histórico de largo plazo: +10%. ¿Qué explica la brecha? | Educativo | Post dato curioso + análisis |
+| Viernes | Semana financiera en 5 datos: TRM $3,495 · Peso +16.9% YTD · Roll-over 6.1x en 2027 · TES aplanados · S&P post-IPO +3%. Resumen completo → vision.davivienda.com | Coyuntura | Post cierre semana + link |
 
-### LinkedIn
+### LinkedIn (perfiles personales economistas — 3 posts/semana)
 
 | Día | Contenido | Eje | Formato |
 |-----|-----------|-----|---------|
-| Lunes | Cómo leer el mercado cambiario colombiano — guía para asesores que explican el dólar a sus clientes | Autoridad | Doc PDF · enfoque práctico asesor |
-| Miércoles | Mi análisis de Ecopetrol en el corto plazo: ¿oportunidad o trampa? | Autoridad | Post opinión economista · 600 palabras |
-| Viernes | Perspectivas COLCAP H2: qué sectores lideran en 90 segundos | Autoridad | Video análisis · nombre cargo visible |
+| Lunes | El peso colombiano +16.9% en el año. Esto es lo que hay detrás. | Autoridad | **Post personal** · ver copy en [[Vision_ContenidoRedes_Articulos_2026-06]] · link en comentarios |
+| Miércoles | Por qué el roll-over de deuda es el dato que más le importa al mercado de renta fija colombiano en 2027 | Autoridad | **Post técnico** · 500 palabras · gráfica 19.5x→6.1x |
+| Viernes | Finanzas públicas y elecciones: los 3 escenarios que el mercado está descontando en Colombia | Autoridad | **Post análisis político-económico** · tono de investigaciones |
 
-### YouTube Shorts
+### YouTube Shorts (3/semana)
 
-| Día | Contenido |
-|-----|-----------|
-| Lunes | ¿Por qué el dólar sube y baja? Lo esencial en 60s |
-| Miércoles | Ecopetrol 2026: ¿está cara o barata la acción? |
-| Viernes | COLCAP H2 2026: lo que debes saber en 60 segundos |
+| Día | Script | Eje |
+|-----|--------|-----|
+| Lunes | "El peso colombiano +16.9% en el año. ¿Cómo y por qué? En 60 segundos." — ver script en [[Vision_ContenidoRedes_Articulos_2026-06]] | Educativo |
+| Miércoles | "¿Qué es el roll-over de deuda y por qué Colombia tiene un reto en 2027?" | Educativo |
+| Viernes | "Año electoral + finanzas públicas: lo que los mercados ya están descontando" | Educativo |
 
 ---
 
