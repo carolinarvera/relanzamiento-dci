@@ -1,5 +1,5 @@
 ---
-date: 2026-06-18
+date: 2026-06-19
 type: research
 tags: [experiencias, competencia, b2b, vip, colombia, analisis-mercado]
 related-projects: [Experiencias-Corporativas-B2B, Vive-Beneficios]
@@ -167,6 +167,89 @@ Davivienda ya lo validó: su banca privada quiere experiencias curadas para sus 
 
 ---
 
+---
+
+## Capa 2 — Datos Globales (actualización 2026-06-19)
+
+### Mercado de Eventos Corporativos de Lujo (segmento específico)
+
+El segmento **Corporate Luxury Events** es distinto del experiential luxury general y más relevante para Línea 1:
+
+| Indicador | Dato |
+|---|---|
+| Valor de mercado 2025 | **USD 343.22B** |
+| Proyección 2035 | **USD 539.78B** |
+| CAGR | **4.63%** (más conservador que el 10.4% del experiential luxury total) |
+
+Fuente: [Emergen Research - Corporate Luxury Event Market](https://www.emergenresearch.com/industry-report/corporate-luxury-event-market) (as of 2026-06)
+
+**Insight clave para pricing:** Proveedores que ofrecen experiencias únicas, compartibles y profundamente personalizadas están capturando **premios de precio del 40% al 150%** sobre ofertas de lujo estándar. El mercado premia la personalización, no la escala. ([OpenPR, 2026](https://www.openpr.com/news/4470627/corporate-luxury-events-industry-analysis-investment))
+
+**Drivers de demanda B2B:**
+- Inversión corporativa creciente en programas de employee engagement
+- Expansión de presupuestos de marketing experiencial B2B post-pandemia
+- Énfasis en experiencias presenciales premium de alta calidad
+- Destinos basados en experiencias culturales inmersivas ganan sobre los eventos genéricos
+
+---
+
+### Jugadores Locales Colombia — Detalle Adicional
+
+#### Colombia Luxury Services
+- Primera agencia boutique de lujo en Colombia (autodescripción)
+- Modelo: experiencias personalizadas a medida, sin paquetes estándar — "meticulous precision"
+- Perfil: viajeros individuales de alto poder adquisitivo, orientación turística (no B2B corporativo)
+- **No son competidores directos** de Línea 1 — sirven al viajero VIP individual, no a la empresa que quiere experiencias para sus clientes
+- [Colombia Luxury Services — Nosotros](https://www.colombialuxuryservices.com/en/nosotros)
+
+#### Cassa Luxury Homes (Bogotá)
+- Hotel boutique con suites estilo apartamento + salas de reuniones corporativas + espacios para eventos privados
+- Zona El Virrey — perfil alto
+- Combina coworking sofisticado con alojamiento de larga estadía y logística VIP (transporte a ferias)
+- **Oportunidad:** Cassa puede ser **aliado de venue** para Gamma — el espacio sin el contenido. Gamma aporta la curaduría; Cassa el entorno físico.
+- [Cassa Luxury — Eventos Privados Bogotá](https://www.cassaluxury.com/eventos-privados-en-bogota-como-un-espacio-de-lujo-cambia-la-experiencia-de-marca/)
+
+---
+
+### Benchmark Línea 2 — Club La Nación (Argentina)
+
+**Por qué importa:** Club La Nación es el referente más maduro de un modelo de beneficios para suscriptores de medios en Latinoamérica. Operan hace décadas, con escala real. Esto valida el concepto de Vive Beneficios antes de que Gamma lo construya.
+
+**Modelo:**
+- B2C puro — programa de beneficios para suscriptores de La Nación y revistas del grupo
+- Aliados en todo el país: descuentos hasta 50% en gastronomía, bienestar, turismo, cultura, moda, hogar
+- 2x1 en cine y teatro, 20% off en aerolíneas (Flybondi), 50+ hoteles
+- Sistema de puntos acumulables
+- Expansión geográfica activa (recientemente en Córdoba)
+
+**Diferencias clave con Vive Beneficios:**
+| Dimensión | Club La Nación | Vive Beneficios (Gamma) |
+|---|---|---|
+| Perfil suscriptor | Mass premium | Ultra premium (AXXIS/Diners) |
+| Tipo de beneficio | Descuentos y 2x1 | Acceso exclusivo + experiencias curadas |
+| Aliados | 150+ establecimientos | 20-30 curados por calidad |
+| Escala | Masiva, nacional | Íntima, selectiva |
+| Diferenciador | Ahorro | Exclusividad y acceso |
+
+**Aprendizaje táctico:** El sistema de verificación por cédula, el programa de puntos, y el reporte de ahorros de Club La Nación son estándares de UX que Vive Beneficios debería adoptar. El modelo funciona — Gamma solo necesita ejecutarlo en el segmento premium con mayor exclusividad.
+
+Fuente: [Club LA NACION](https://club.lanacion.com.ar/) / [Guía BizTech23](https://sales.biztech23.com/2024/10/15/club-la-nacion-guia-completa-para-aprovechar-al-maximo-sus-beneficios/)
+
+---
+
+### Actualización al Gap de Precios
+
+Confirmado: **ningún competidor en Colombia publica precios para experiencias VIP B2B íntimas.** Incluso Colombia Luxury Services opera bajo cotización directa.
+
+Lo que sí podemos inferir del mercado global:
+- El premium de personalización es **40-150% sobre el precio base de lujo**
+- En Colombia, una experiencia íntima de gastronomía + arte para 10-15 personas en venue premium debería escalar a **$18M-$45M COP por sesión** (estimado basado en benchmarks internacionales ajustados a PPP Colombia)
+- El punto de entrada más conservador para testear sensibilidad de precio: **$20M COP / sesión**, equivalente a ~$2M COP por persona (grupo 10)
+
+**Este gap es la mayor ventaja competitiva de Gamma: llega primero, define el precio estándar del mercado.**
+
+---
+
 ## Relacionado
 
 [[03 - Unidades de Negocio/Experiencias/Experiencias]] · [[Carolina Ramirez]] · [[Paola Pantaleon]] · [[03 - Unidades de Negocio/Experiencias/Competencia B2B Experiencias 2026]]
@@ -174,4 +257,4 @@ Davivienda ya lo validó: su banca privada quiere experiencias curadas para sus 
 ---
 
 ## Tags
-#experiencias #competencia #b2b #vip #colombia #mercado #analisis #cielo-travel #club-el-tiempo #bogota-autentica
+#experiencias #competencia #b2b #vip #colombia #mercado #analisis #cielo-travel #club-el-tiempo #bogota-autentica #pricing #vive-beneficios
