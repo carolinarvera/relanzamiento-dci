@@ -15,6 +15,8 @@ Diners is Ediciones Gamma's culture, gastronomy, and lifestyle magazine (60+ yea
 
 GA4 YTD (ene–jun 2026): 980K sesiones pero 65% viene de Paid Social con 6 segundos promedio — tráfico basura que daña el SEO. Organic Search (17% de sesiones) genera el 41% de los ingresos y 23 de 44 eventos clave. Paid Search es el canal más rentable por sesión ($1.50 COP) pero no existe como inversión propia. Página 404 es el 4° contenido más visto (25K vistas perdidas). Página de suscripciones tiene 6,681 visitas y $0 en conversiones — el funnel está roto en la landing. Contenido de guías locales/gastronomía práctica genera 3–8x más AdSense por visita que trending de cultura.
 
+**ALERTA SEO ESTRUCTURAL (Coverage GSC, jun 2026):** El sitio tiene ~787K URLs conocidas pero solo 10,724 indexadas (1.4%). Google crawleó 383,067 páginas y eligió activamente no indexarlas — thin content masivo. Hay 48,959 errores 404 que drenan crawl budget. Core Update abr 2026 deindexó 4,379 páginas. La tasa de indexación del 1.4% es críticamente baja. Sin limpiar el inventario de contenido de baja calidad, publicar artículos nuevos no mejora el SEO — los agrava.
+
 **Email/CRM platform: HubSpot** (confirmed 2026-06-17) — use HubSpot MCP for newsletter and contact data.
 
 Fuentes: Dashboard Diners_Tabs_2026-06 (9 tabs, as of 2026-06-16) + Informe Web Mayo 2026 - Equipo Growth Marketing (Keynote, as of 2026-06-16) + GA4 exports páginas y adquisición (as of 2026-06-17).
@@ -603,66 +605,79 @@ El término "diners" en posición 4.7 es problemático: hay 3,870 búsquedas del
 | Clics desde España | 3,391/3m | 5,000/3m | 8,000/3m |
 
 ### Coverage / Indexación — Auditoría GSC (Jun 19, 2026)
-> Fuente: GSC Coverage-Valid export, mar 20 – jun 11, 2026. Propiedad: revistadiners.com.co (todas las páginas conocidas).
+> Fuente: GSC Coverage export completo (todas las páginas conocidas), mar 20 – jun 11, 2026.
 
-**For future Claude:** El sitio tuvo un colapso de indexación del 33% entre abr 23 y may 7, 2026 — coincide con Google Core Update de abril 2026. Actualmente hay 2,474 páginas debajo del pico histórico. Además hay URLs paramétricas y `/uncategorized/` en el índice que consumen crawl budget y generan contenido duplicado.
+**For future Claude:** Diagnóstico severísimo. El sitio tiene ~787K URLs conocidas por Google pero solo 10,724 están indexadas (1.4% de indexación). Google crawleó 383,067 páginas y decidió activamente no indexarlas — señal masiva de thin content. Hay 48,959 errores 404 drenando crawl budget. El Core Update de abril 2026 deindexó 4,379 páginas adicionales. La recuperación es incompleta y sin corrección técnica urgente, el sitio seguirá perdiendo cobertura.
 
-#### Tendencia de Páginas Indexadas (Válidas)
+#### Cuadro Resumen — Estado del Inventario Total (jun 2026)
 
-| Fecha | Páginas válidas | Evento |
-|-------|----------------|--------|
-| Mar 20, 2026 | 12,989 | Línea base |
-| Abr 20-23, 2026 | **13,198** | ↑ PICO HISTÓRICO |
-| Abr 27-30, 2026 | 12,425 | Primera caída (-773) |
-| May 1-3, 2026 | 11,082 | Caída acelerada |
-| May 4-7, 2026 | **8,819** | ↓ PISO — pérdida -4,379 páginas (33.2%) |
-| May 8 – May 18 | 9,066 → 10,544 | Recuperación parcial |
-| Jun 8-11, 2026 | 10,724 | Último dato — aún -2,474 vs pico (-18.8%) |
+| Estado | Páginas | % del total | Semáforo |
+|--------|---------|-------------|---------|
+| **Indexadas (válidas)** | **10,724** | **1.4%** | 🟠 |
+| Rastreadas: sin indexar (Google eligió no indexar) | 383,067 | 48.7% | 🔴 CRÍTICO |
+| Canónica alternativa adecuada | 246,221 | 31.3% | 🟡 |
+| Excluidas por `noindex` | 94,007 | 11.9% | 🟡 |
+| **Errores 404** | **48,959** | **6.2%** | 🔴 CRÍTICO |
+| Errores de servidor (5xx) | 2,521 | 0.3% | 🔴 |
+| Páginas con redirección | 861 | 0.1% | 🟠 |
+| Bloqueadas (robots.txt, 403, 4xx) | 26 | <0.1% | 🟢 |
+| **TOTAL CONOCIDAS** | **~787,000** | — | — |
 
-**Diagnóstico:** La caída del 33% en 2 semanas (abr 23 → may 7) coincide exactamente con el Google Broad Core Update de abril 2026 (lanzado ~abr 22-25). No hay recuperación completa. Esto explica en parte el underperformance en tráfico orgánico: se perdió un tercio del inventario de URLs indexadas.
+#### Tendencia Indexadas + Sin Indexar (mar–jun 2026)
 
-#### Problemas Técnicos Identificados en el Inventario de Válidas
+| Fecha | Indexadas | Sin indexar | Total conocidas | Impresiones/día |
+|-------|-----------|-------------|-----------------|-----------------|
+| Mar 20 | 12,989 | 853,224 | 866,213 | 40,730 |
+| Abr 20-23 | **13,198** ↑ PICO | 836,758 | 849,956 | ~57,000 |
+| May 4-7 | **8,819** ↓ PISO | 797,755 | 806,574 | ~51,000 |
+| Jun 8-11 | 10,724 | 776,542 | **787,266** | ~66,000 |
 
-1. **URLs paramétricas indexadas** 🔴 — Ejemplos encontrados:
-   - `.../puig-una-marca-centenaria/?nocache=1781310669&jet_blog_ajax=1`
-   - `.../bosnia-y-la-primera-vez/?nocache=1781297638&jet_blog_ajax=1`
-   - `.../cultura/page/349/?nonamp=1`
-   - El plugin **JetBlog** genera URLs con `?jet_blog_ajax=1` que Google indexa como páginas únicas → contenido duplicado + crawl budget desperdiciado.
+**Nota crítica sobre las cifras:** el total de páginas conocidas cayó de 866K (mar) a 787K (jun) — Google "olvidó" 79K URLs. No se movieron a "sin indexar"; desaparecieron del radar de Google. Causa probable: 404s acumulados que Google dejó de rastrear.
 
-2. **/uncategorized/ indexado** 🔴 — Al menos 6 URLs en la categoría default de WordPress:
-   - `/uncategorized/murio-james-horner-el-compositor-...`
-   - `/uncategorized/listos-para-la-guerra/`
-   - `/uncategorized/jaime-abello-la-memoria-de-gabo/2/`
-   - `/uncategorized/una-aberracion-llamada-moda-2/`
-   - `/uncategorized/tinta-club-del-libro/`
-   - Estas páginas no tienen categoría temática → señal de baja calidad editorial para Google.
+#### Diagnóstico de los 3 Problemas Críticos
 
-3. **Páginas de paginación indexadas** 🟠 — Sin noindex:
-   - `/cultura/arte-y-libros/page/92/`
-   - `/cultura/page/349/?nonamp=1`
-   - `/cultura/page/577/`
-   - `/tendencias/page/12/`
-   - Paginación profunda indexada = crawl budget desperdiciado, contenido thin.
+**Problema #1 — 383,067 páginas "rastreadas: sin indexar"** 🔴
+Esta es la señal más grave del sitio. Google llegó a estas páginas, las leyó, y decidió conscientemente no indexarlas. Eso significa que Google evaluó el contenido y lo encontró insuficiente: thin content, contenido duplicado interno, o baja autoridad temática. No es un problema técnico de acceso — es un problema de calidad de contenido a escala masiva. Cada nueva pieza de contenido publicada entra a competir contra este inventario de ~383K páginas que Google ya etiquetó como no merecedoras de aparecer en resultados.
 
-4. **/tecnologia/ como categoría activa** 🟡 — Al menos 1 URL en `/tecnologia/vuelos-baratos-estafa/` — verificar si es categoría activa o artículo huérfano.
+**Posibles fuentes de estas 383K páginas:**
+- Páginas de tags/categorías/autor generadas automáticamente por WordPress
+- Paginación profunda (/page/2/ hasta /page/577/ y más)
+- URLs paramétricas de JetBlog (`?jet_blog_ajax=1`, `?nocache=`)
+- Artículos muy cortos o de baja densidad informativa
+- Páginas de búsqueda interna (`?s=...`)
 
-#### Hipótesis del Colapso (abr 23 → may 7)
+**Problema #2 — 48,959 errores 404** 🔴
+Casi 49K URLs que Google sigue intentando rastrear pero reciben respuesta 404. Cada rastreo fallido desperdicia crawl budget que podría estar descubriendo o re-indexando contenido bueno. La `/suscripciones/` 404 ya identificada en CRO audit es solo uno de estos. Hay un problema sistémico de URLs rotas — posiblemente artículos eliminados sin redirección, taxonomías cambiadas, o reestructuraciones históricas del sitio.
 
-| Hipótesis | Evidencia | Probabilidad |
-|-----------|-----------|-------------|
-| Google Core Update abril 2026 (contenido thin/bajo E-E-A-T) | Timing exacto coincide con update | Alta |
-| Crawl budget agotado por URLs paramétricas | `?jet_blog_ajax=1` y `?nocache=` visibles en índice | Media |
-| Cambio técnico en el sitio (noindex masivo accidental) | No hay datos adicionales para confirmar | Baja |
+**Problema #3 — Google Core Update abr 2026 (-4,379 páginas)** 🔴
+Caída de 13,198 → 8,819 indexadas en 2 semanas (abr 23 → may 7). Recovery parcial a 10,724. El update penalizó páginas que estaban en el límite de calidad. Las impresiones no cayeron proporcionalmente (de ~57K/día a ~51K/día), lo que confirma que Google eliminó páginas de baja visibilidad, no las de alto tráfico. La recuperación hasta ~66K impresiones/día en junio indica que las páginas que quedaron son más relevantes — pero faltan 2,474 páginas vs. el pico.
 
-**Implicación:** el Core Update penalizó ~4,400 páginas de contenido. La recuperación parcial (1,905 páginas recuperadas desde el piso) sugiere que Google fue a restaurando algunas páginas, pero 2,474 páginas siguen perdidas. Sin acción, es poco probable que el sitio recupere el pico de 13,198.
+#### Problemas Técnicos Adicionales (del inventario de válidas)
 
-#### Nuevos P0 Técnicos (añadir al backlog)
+| Problema | Evidencia | Fix |
+|----------|-----------|-----|
+| URLs `?jet_blog_ajax=1` y `?nocache=` indexadas | Vistas en Tabla.csv de páginas válidas | `robots.txt` Disallow + canonical a URL limpia |
+| `/uncategorized/` indexado (6+ URLs) | `/uncategorized/murio-james-horner/`, etc. | `noindex` en todas las páginas sin categoría |
+| Paginación profunda indexada | `/page/92/`, `/page/349/`, `/page/577/` | Verificar Yoast/RankMath: `noindex` en page/2+ |
+| Categoría `/tecnologia/` huérfana | 1+ URL en `/tecnologia/` | Verificar si es categoría activa o artículo perdido |
 
-| # | Acción | Urgencia | Impacto |
-|---|--------|----------|---------|
-| 0G | Bloquear `?jet_blog_ajax=1` y `?nocache=` en robots.txt + canonical a URL limpia | ASAP | Eliminar contenido duplicado, recuperar crawl budget |
-| 0H | Añadir `noindex` a todas las URLs `/uncategorized/` o reclasificar artículos en categoría correcta | ASAP | Señal de calidad editorial |
-| 0I | Añadir `noindex` a paginación profunda (> page/2) o verificar que Yoast/RankMath lo gestione | Esta semana | Crawl budget |
+#### Implicación Estratégica
+
+El problema de SEO de Diners no es solo CTR bajo (1.65%) — es que el sitio tiene una crisis estructural de calidad de contenido a escala:
+- **1.4% de indexación** sobre el inventario conocido es excepcionalmente bajo para un sitio de +60 años
+- Los 383K "rastreados sin indexar" son el problema más urgente: cada artículo nuevo que entra al sitio enfrenta este mismo veredicto de Google si no supera un umbral mínimo de calidad
+- Publicar más contenido thin solo empeora la situación; Google penaliza sitios con alta proporción de contenido no indexable
+
+**La narrativa correcta para el equipo editorial:** no se trata de publicar más artículos, sino de subir la calidad del inventario existente. Los Sprint 2 y 3 del plan SEO solo funcionan si primero se resuelven los problemas técnicos (P0 G/H/I) que envenenan la señal de calidad del dominio.
+
+#### Nuevos P0 Técnicos
+
+| # | Acción | Owner | Urgencia | Impacto |
+|---|--------|-------|----------|---------|
+| 0G | Auditar y bloquear URLs paramétricas: `?jet_blog_ajax=1`, `?nocache=`, `?nonamp=1` en robots.txt + canonical | Tech | Jun 21 | Eliminar contenido duplicado, recuperar crawl budget |
+| 0H | `noindex` en todas las URLs `/uncategorized/` + reclasificar artículos en categoría correcta | Tech + Editorial | Jun 22 | Señal de calidad editorial del dominio |
+| 0I | Verificar que Yoast/RankMath tenga `noindex` en `/page/2/` en adelante | Tech | Jun 23 | Crawl budget: paginación profunda hasta /page/577/ actualmente indexada |
+| 0J | Exportar lista de 404s de GSC y crear redirecciones 301 masivas | Tech | Jun 28 | 48,959 errores 404 drenan crawl budget — fix masivo necesario |
 
 ---
 
@@ -828,6 +843,7 @@ Tendencia: arranque lento en enero → rampa hasta pico en semana del 30 de marz
 | 0G | Bloquear `?jet_blog_ajax=1` y `?nocache=` en robots.txt + canonical a URL limpia | Tech | Jun 21 | Coverage: URLs paramétricas indexadas = contenido duplicado + crawl budget perdido |
 | 0H | Añadir `noindex` a todas las URLs `/uncategorized/` | Tech | Jun 22 | Coverage: 6+ páginas sin categoría editorial en el índice de Google |
 | 0I | Verificar/añadir `noindex` a paginación profunda (> page/2) vía Yoast/RankMath | Tech | Jun 23 | Coverage: /page/92/, /page/349/, /page/577/ indexadas sin noindex |
+| 0J | Exportar lista de 404s de GSC y crear redirecciones 301 masivas | Tech | Jun 28 | Coverage: 48,959 errores 404 drenan crawl budget — mayor fix técnico pendiente |
 
 ### 🔴 P1 — Semana 1-2 (máx 28 jun 2026)
 | # | Acción | Owner | Plazo |
