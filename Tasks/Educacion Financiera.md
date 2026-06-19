@@ -32,10 +32,15 @@ Archivo consolidado de tareas activas y completadas para la unidad **Educacion F
   Mis Finanzas para Mi Negocio acumula solo 2.5% de meta anual de vistas y 2.6% de usuarios a mayo 2026 — la situación más crítica del ecosistema Ed. Financiera. Dos problemas técnicos confirmados: (1) Spira en tracking, (2) Paid Other 100% rebote. Plan de acción urgente: excluir tráfico contaminado, suspender pauta inefectiva, redefinir meta base desde mayo, potenciar Organic Social (mejor canal de calidad). Incluir en la reunión con [[Maria Angelica Navarro]] como prioridad junto con Mis Finanzas para Invertir.
   ⚠️ Llevar preparado a la reunión con [[Maria Angelica Navarro]] + [[Jeison Montero]] (ver Tasks/Plataformas — Reunión MA + Jeison visión plataformas, due 2026-06-20).
 
+- [ ] 🔴 **Reunión seguimiento MANC + Jeison — mapeo procesos y alcance** · due 2026-06-19 · Estrategia · KPI: Alineación de alcance, Eficiencia operativa
+  - Fecha: 2026-06-18
+  - Fuente: [[06 - Meetings/Educación financiera/2026-06-18 Carolina-MariaAngelica-Jeison - Primera reunion EF]]
+  Reunión de seguimiento acordada para mañana 19 jun. Objetivos: (1) mapear procesos existentes entre Gamma, Leo Burnett y Mercadeo, (2) definir acciones concretas, (3) alinear el alcance real de Gamma — Catalina confirmó 2026-06-18 que Gamma trabaja en **estrategia colaborativa** con MANC, no solo en generación de contenido. MANC aún cree que Gamma = solo contenido; este punto debe quedar claro en la reunión.
+
 - [ ] 🟡 **Reunion Maria Angelica unificacion plataformas Ed Financiera** · due 2026-06-27 · Estrategia · KPI: Eficiencia operativa, Consolidación plataformas
   - Fecha: 2026-06-17
   - Fuente: [[06 - Meetings/Vision/2026-06-17 Carolina-Jeison-Leo - Estructura Operativa y Estrategia Vision]]
-  Organizar reunión con [[Maria Angelica Navarro]] para alinear la unificación de plataformas de Educación Financiera y definir lineamientos estratégicos. ⚠️ Hacerlo con preparación previa: analizar métricas de las plataformas activas (Invertir / Negocio Personal) vs las de baja actividad, y llegar con plan de acción concreto — no solo con datos. María Angélica ha gestionado sus plataformas de forma independiente; la transición requiere manejo cuidadoso. Coordinar con Jeison.
+  Primera reunión realizada 2026-06-18 — ver [[06 - Meetings/Educación financiera/2026-06-18 Carolina-MariaAngelica-Jeison - Primera reunion EF]]. Reunión de seguimiento pendiente jun 19. La reunión formal de unificación de plataformas debe ocurrir después de resolver la desalineación de alcance y procesos.
   ⚠️ Consolidar con la reunión inicial con [[Maria Angelica Navarro]] + [[Jeison Montero]] (ver Tasks/Plataformas — Reunión MA + Jeison visión plataformas, due 2026-06-20).
 
 - [ ] 🔴 **Renegociar metas anuales plataformas Ed Financiera** · due 2026-06-30 · Estrategia · KPI: UAM, Sesiones, Revenue

@@ -9,7 +9,7 @@ confidence: high
 ---
 
 ## For future Claude
-María Angélica Navarro is the Head of Educación Financiera at Banco Davivienda and the strategic client contact for that platform on the bank's side. She is the decision-maker and approver for all strategies, content, and platform actions related to Educación Financiera. Gamma reports results to her and requires her approval to advance any initiative. High-priority relationship — she tracks commitments and expects measurable results. Mentioned in CEO meeting 2026-06-05 as a key person for "Mundo D" alignment.
+María Angélica Navarro (mnavarroc@davivienda.com) is Head of Educación Financiera at Banco Davivienda. First direct meeting with Carolina was 2026-06-18 — relationship started with tension: metrics below 10% of pre-Gamma levels, budget pressure (wants 50% cost reduction), WordPress security issues. She currently believes Gamma = content generation only, but Catalina Obregón confirmed 2026-06-18 that Gamma's real scope is **collaborative strategy with MANC**. Alignment meeting (jun 19) must resolve this. Social media for MFxInvertir/MFxMiNegocio was removed from Gamma scope and unified under "Mis Finanzas en Casa".
 
 ---
 
@@ -63,7 +63,8 @@ Banco Davivienda / Grupo Bolívar
 
 | Fecha | Reunión | Tema |
 |-------|---------|------|
-| Pendiente | — | Alineación visión "Mundo D" (acordado en CEO meeting 2026-06-05) |
+| 2026-06-18 | [[06 - Meetings/Educación financiera/2026-06-18 Carolina-MariaAngelica-Jeison - Primera reunion EF]] | Primera reunión — contexto contrato, métricas, tensiones, alcance |
+| 2026-06-19 | Pendiente | Seguimiento — mapeo de procesos, definición de acciones, alineación de alcance |
 
 ## Tags
 #persona #cliente #davivienda #educacion-financiera #contacto-estrategico #aprobador #jefe
