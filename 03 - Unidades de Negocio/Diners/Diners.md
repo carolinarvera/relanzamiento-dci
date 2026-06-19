@@ -444,6 +444,166 @@ Cualquier usuario que llega por el menú principal o un anuncio puede estar caye
 
 ---
 
+## SEO — Auditoría GSC (últimos 3 meses, datos al 2026-06-19)
+> Fuente: Google Search Console exportado 2026-06-19. Rango: últimos 3 meses (mar–jun 2026).
+
+**For future Claude:** Diners tiene 5.15M impresiones orgánicas por trimestre con CTR del 1.65% — el promedio de la industria editorial es 3-5%. El canal orgánico está **muy desaprovechado**. El 90% del potencial perdido se concentra en 3 artículos con impresiones masivas y CTR roto. Sin inversión en contenido nuevo, solo arreglando meta titles y consolidando clusters existentes, se puede duplicar el tráfico orgánico en 60 días.
+
+### Resumen Global GSC
+
+| Métrica | Valor | Benchmark editorial |
+|---------|-------|---------------------|
+| Clics orgánicos (3m) | 84,942 | — |
+| Impresiones totales | 5,149,548 | — |
+| CTR promedio | 1.65% | 3–5% 🔴 muy bajo |
+| Posición promedio | 7.7 | objetivo: <5 |
+| Clics/día promedio | ~950 | |
+| Pico diario (India Catalina) | 1,991 (20 abr) | |
+| Tendencia jun 2026 | ↗ creciendo | 1,468→1,590 (jun 13-14) |
+| Dispositivo dominante | Móvil 74.5% | |
+
+**El CTR del 1.65% es el problema central.** Con 5.15M impresiones, un CTR del 3% (realista para guías y contenido editorial) generaría 154,485 clics — el doble del actual. No hay que rankear mejor: hay que hacer que los que ya rankean hagan click.
+
+### Top 10 Páginas por Tráfico
+
+| # | Página | Clics | Impresiones | CTR | Posición |
+|---|--------|-------|-------------|-----|----------|
+| 1 | Restaurantes afueras de Bogotá | 7,388 | 152,148 | 4.86% | 5.88 |
+| 2 | Poemas de amor García Márquez | 4,647 | 37,878 | 12.27% | 5.29 |
+| 3 | Aguas termales cerca de Bogotá | 4,559 | 73,328 | 6.22% | 4.65 |
+| 4 | Series más largas del mundo | 2,998 | 93,292 | 3.21% | 3.78 |
+| 5 | Restaurantes temáticos Bogotá | 2,933 | 46,017 | 6.37% | 6.5 |
+| 6 | Homepage | 2,739 | 21,685 | 12.63% | 6.01 |
+| 7 | India Catalina 2026 (ganadores) | 2,357 | 28,165 | 8.37% | 4.58 |
+| 8 | Restaurantes pescado Bogotá | 2,353 | 37,001 | 6.36% | 5.57 |
+| 9 | Camisas colombianas | 1,312 | 27,713 | 4.73% | 6.77 |
+| 10 | Brunch Bogotá 2026 | 1,227 | 66,110 | 1.86% | 6.36 |
+
+### 🚨 Las 3 Oportunidades de CTR — Impacto Inmediato
+
+Estas páginas ya rankean bien. Google ya las muestra. El problema es que nadie hace click. Son las de mayor ROI porque no requieren contenido nuevo, solo optimización de metadata.
+
+#### #1 — "Canciones indirectas" (95,161 imp · 0.7% CTR · pos 4.4)
+**El caso más crítico.** La página con más impresiones del sitio (95K) tiene un CTR del 0.7% cuando debería ser 5-8% a esa posición. Eso son **+4,000 clics/trimestre perdidos** en una sola página. Causas probables: el `<title>` no coincide con lo que el usuario busca, o el snippet no tiene un gancho claro. Acción: reescribir title + meta description con urgencia/promesa clara ("Las mejores canciones con indirectas para [situación específica]"). **Esfuerzo: 30 minutos. Impacto estimado: +3,000-4,000 clics/trimestre.**
+
+#### #2 — "Santorini colombiano" (28,953 imp · 0.17% CTR · pos 4.3)
+28,953 impresiones por trimestre con 0.17% de CTR es una anomalía. Alguien busca "santorini colombiano" → Google muestra a Diners → nadie entra. Posible causa: el artículo habla de "Santorini colombiano" como concepto pero el buscador quiere un destino concreto con dirección, fotos, cómo llegar. Acción: revisar el artículo vs. intent del buscador. Si el intent es "destino turístico", el título debe ser geográficamente específico. **Esfuerzo: 1h. Impacto estimado: +2,000-2,500 clics/trimestre.**
+
+#### #3 — "Brunch Bogotá 2026" (66,110 imp · 1.86% CTR · pos 6.4)
+Esta es la guía de brunch pero está en posición 6.4 con CTR de 1.86%. El mismo artículo en posición 3 tendría CTR del 8-10% → 5,000+ clics (actualmente 1,227). Acciones combinadas: (a) actualizar el título con el año 2026 y "los mejores", (b) agregar 5+ restaurantes nuevos para aumentar autoridad y señales de frescura, (c) conseguir 2-3 links internos desde artículos relacionados. **Esfuerzo: 2h editorial. Impacto estimado: +2,000-3,500 clics/trimestre.**
+
+### Clusters de Contenido — Estado Actual
+
+Diners ya tiene los ingredientes de 4 clusters fuertes. El problema es que están fragmentados: múltiples artículos compiten entre sí en lugar de consolidarse.
+
+#### Cluster 1 — Planes de fin de semana / Escapadas Bogotá [PRIORITARIO]
+El cluster más valioso. Ya rankea para las queries de mayor volumen.
+
+| Artículo (hub/satélite) | Clics | Imp | CTR | Pos |
+|------------------------|-------|-----|-----|-----|
+| Restaurantes afueras de Bogotá | 7,388 | 152,148 | 4.86% | 5.88 |
+| Aguas termales cerca de Bogotá | 4,559 | 73,328 | 6.22% | 4.65 |
+| Restaurantes temáticos Bogotá | 2,933 | 46,017 | 6.37% | 6.5 |
+| Karts en Bogotá | 721 | 30,379 | 2.37% | 6.96 |
+| Restaurantes La Candelaria | 886 | 18,812 | 4.71% | 5.2 |
+| Mini golf Bogotá | 414 | 14,265 | 2.90% | 5.71 |
+| Cerámica Bogotá | 340 | 8,052 | 4.22% | 7.16 |
+
+**Falta:** un hub page que vincule todos estos artículos bajo "Planes de fin de semana en Bogotá" o "Qué hacer en Bogotá". Cada artículo satélite debería enlazar a los demás. Actualmente son páginas aisladas.
+
+#### Cluster 2 — Series / Entretenimiento
+| Artículo | Clics | Imp | CTR | Pos |
+|---------|-------|-----|-----|-----|
+| Series más largas del mundo | 2,998 | 93,292 | 3.21% | 3.78 |
+| 10 series colombianas | 993 | 78,875 | 1.26% | 6.85 |
+| Quiz casa de Hogwarts | 703 | 31,866 | 2.21% | 10.66 |
+| Bolos en Bogotá | 308 | 32,660 | 0.94% | 8.74 |
+
+"10 series colombianas" tiene 78K impresiones a pos 6.85 con CTR de 1.26%. Actualizar el artículo a 2026, mejorar meta, y linkear desde "series más largas" puede empujar ambos arriba.
+
+#### Cluster 3 — Literatura / Cultura colombiana
+| Artículo | Clics | Imp | CTR | Pos |
+|---------|-------|-----|-----|-----|
+| Poemas GGM (amor) | 4,647 | 37,878 | 12.27% | 5.29 |
+| Canciones indirectas | 667 | 95,161 | 0.70% | 4.39 |
+| 100 mujeres importantes | 142 | 13,499 | 1.05% | 10.39 |
+| Escritoras colombianas | ~20 | 2,878 | 0.69% | 5.18 |
+
+GGM ya funciona muy bien. El problema es "canciones indirectas" que tiene el mayor volumen de impresiones del sitio entero a posición 4.4 pero CTR de 0.7%. Estas páginas no están linkeadas entre sí.
+
+#### Cluster 4 — Gastronomía Premium (Bogotá + ciudades)
+Ya hay artículos de restaurantes para: Bogotá, Pereira, Tunja, Santa Fe de Antioquia, Bucaramanga, Candelaria, Usaquén, La Calera, La Mesa, Armenia, Montería, Buga. Son páginas sin pillar, sin estructura de links internos, sin "guía definitiva" que las ancle.
+
+### Problema de Marca — "diners" en Posición 4.7
+
+| Query | Clics | Imp | CTR | Posición |
+|-------|-------|-----|-----|----------|
+| revista diners | 1,392 | 2,231 | 62.4% | 1.97 ✅ |
+| diners | 393 | 3,870 | 10.2% | 4.70 ⚠️ |
+| revista diners colombia | 184 | 255 | 72.2% | 1.0 ✅ |
+| diners colombia | 12 | 98 | 12.2% | 8.30 🔴 |
+| diners club colombia | 10 | 620 | 1.6% | 7.56 🔴 |
+
+El término "diners" en posición 4.7 es problemático: hay 3,870 búsquedas del nombre donde Diners aparece en la cuarta posición. Probable causa: Google confunde la marca con "Diners Club" (la tarjeta de crédito). Acciones: homepage necesita mencionar explícitamente "Revista Diners" en H1 y metadata, no solo "Diners". Añadir Schema `Organization` + `Logo`. Crear Google Business Profile como editorial.
+
+### Geografía — Oportunidad Internacional
+
+| País | Clics | % | Posición |
+|------|-------|---|----------|
+| Colombia | 64,937 | 76.5% | 7.71 |
+| México | 4,978 | 5.9% | 8.88 |
+| España | 3,391 | 4.0% | **14.71** 🔴 |
+| Argentina | 1,686 | 2.0% | 8.88 |
+| USA | 1,461 | 1.7% | 10.71 |
+
+**España en posición 14.71** es el hallazgo geográfico más importante. España ya llega en 3er país por clics pero Google España los posiciona muy mal (página 2). Contenido cultural (GGM, series, cine latinoamericano) tiene demanda real en España. Probable causa: el TLD `.co` se interpreta como Colombia-only. Solución: añadir hreflang `es-ES` para artículos de cultura general. Potencial: triplicar tráfico desde España.
+
+### Plan de Acción SEO — 3 Sprints
+
+#### Sprint 1 — Jun 20 - Jul 4 (sin contenido nuevo, solo optimización)
+
+| Acción | Artículo | Esfuerzo | Ganancia estimada |
+|--------|----------|----------|------------------|
+| Reescribir title + meta | "Canciones indirectas" | 30min | +3,000-4,000 clics/3m |
+| Reescribir title + meta | "Santorini colombiano" | 1h | +2,000-2,500 clics/3m |
+| Actualizar + reforzar internal links | "Brunch Bogotá 2026" | 2h | +2,000-3,500 clics/3m |
+| Fix homepage meta ("Revista Diners" explícito) | Homepage | 30min | Recuperar brand "diners" pos 4.7 |
+| Añadir Schema Organization + Logo | Homepage | 1h técnico | Mejora SERP para marca |
+| Linkear artículos de restaurantes entre sí | Cluster Gastronomía | 2h | Consolidar cluster |
+
+**Total estimado Sprint 1:** +7,000-10,000 clics/trimestre adicionales. Sin un solo artículo nuevo.
+
+#### Sprint 2 — Jul 5-25 (mínimo contenido)
+
+| Acción | Descripción | Owner |
+|--------|-------------|-------|
+| Crear hub "Planes de fin de semana en Bogotá" | Página pilar que linkea termales + karts + restaurantes + mini golf + cerámica | Ernesto |
+| Actualizar "10 series colombianas" a 2026 | Agregar series nuevas, mejorar meta, linkear desde "series más largas" | Ernesto |
+| Crear hub "Rooftops Bogotá" definitivo | Consolidar rooftop bogota (pos 6.97, 31K imp) + queries relacionadas | Editorial |
+| Añadir hreflang `es-ES` para artículos culturales | Tech | Tech | 
+
+#### Sprint 3 — Ago-Sep (contenido nuevo, alto potencial)
+
+| Artículo nuevo | Query objetivo | Volumen estimado | Justificación |
+|----------------|---------------|-----------------|---------------|
+| Guía Pereira restaurantes definitiva | "restaurantes pereira" | 6,618 imp/3m | Actualmente pos 6.87 con artículo débil |
+| Guía restaurantes Tunja | "restaurantes tunja" | 3,759 imp/3m | Pos 7.2, oportunidad clara |
+| Hub literatura colombiana | "escritoras colombianas", "poetas colombianos" | 2,878+ imp | Extender cluster GGM |
+| Actualizar aguas termales con nuevos destinos | "termales cerca de bogota" | 73,328 imp/3m | Ya #1, mantener liderazgo |
+
+### Métricas de Seguimiento — Revisión Mensual
+
+| Métrica | Jun 2026 (base) | Meta Sep 2026 | Meta Dic 2026 |
+|---------|-----------------|---------------|---------------|
+| Clics orgánicos/día promedio | 950 | 1,400 | 2,000 |
+| CTR global | 1.65% | 2.2% | 3.0% |
+| Posición promedio | 7.7 | 6.5 | 5.5 |
+| Posición "diners" (brand) | 4.7 | 2.0 | 1.5 |
+| CTR "canciones indirectas" | 0.7% | 3.5% | 5.0% |
+| Clics desde España | 3,391/3m | 5,000/3m | 8,000/3m |
+
+---
+
 ## Google Ads — Auditoría YTD 2026 (ene–jun 17)
 > Fuente: 14 CSVs de Google Ads exportados 2026-06-17. Período: 2026-01-01 a 2026-06-17.
 
@@ -594,12 +754,15 @@ Tendencia: arranque lento en enero → rampa hasta pico en semana del 30 de marz
 ## Next Steps — Backlog de Crecimiento (Hub Central)
 > Fuente: Dashboard Diners_Tabs_2026-06, tab Next Steps (as of 2026-06-16). Toda conclusión estratégica de los demás tabs aterriza aquí.
 
-### 🔴 P0 — Esta semana (bloqueantes técnicos que impiden toda conversión)
+### 🔴 P0 — Esta semana (bloqueantes técnicos + SEO quick wins de mayor ROI)
 | # | Acción | Owner | Plazo | Fuente |
 |---|--------|-------|-------|--------|
 | 0A | Redirect 301: `/suscripciones/` → URL canónica (`/suscripciones-revista-diners/`) | Tech | Jun 20 | CRO audit |
 | 0B | Configurar conversion tracking en Google Ads (goal: purchase suscripción) | Tech + Growth | Jun 21 | Google Ads audit — sin esto Google optimiza para clics, no ventas |
 | 0C | Unificar 2 URLs de suscripciones en 1 con los 3 planes | Tech | Jun 23 | CRO audit |
+| 0D | Reescribir title + meta de "Canciones indirectas" | Ernesto | Jun 21 | GSC: 95K imp · 0.7% CTR → +4K clics/trimestre solo con este cambio |
+| 0E | Revisar y reescribir title + meta de "Santorini colombiano" | Ernesto | Jun 22 | GSC: 29K imp · 0.17% CTR a pos 4.3 — intent mismatch probable |
+| 0F | Actualizar meta Homepage: mencionar "Revista Diners" explícito en title | Tech/Editorial | Jun 21 | Brand keyword "diners" en pos 4.7 — probablemente perdiendo vs Diners Club tarjeta |
 
 ### 🔴 P1 — Semana 1-2 (máx 28 jun 2026)
 | # | Acción | Owner | Plazo |
