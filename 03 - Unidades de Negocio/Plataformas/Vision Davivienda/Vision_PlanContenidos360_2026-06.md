@@ -1,13 +1,13 @@
 ---
-date: 2026-06-18
+date: 2026-06-19
 type: plan-contenidos
-tags: [vision-davivienda, contenido, redes-sociales, ejes-comunicacion, instagram, linkedin, youtube, twitter, email, piloto-2-meses]
+tags: [vision-davivienda, contenido, redes-sociales, ejes-comunicacion, instagram, linkedin, youtube, twitter, email, piloto-2-meses, evergreen]
 related-projects: [vision-davivienda, growth-dashboard]
-related-people: [natalia-otalora, carolina-ramirez, estefania, jeison-montero]
+related-people: [natalia-otalora, carolina-ramirez, estefania, jeison-montero, ernesto]
 sources:
   - "Reunión Natalia Otálora 2026-06-16 — aprobación 4 ejes"
   - "Vision_Estrategia_Growth_2026 — regla distribución canales"
-  - "vision.davivienda.com — artículos publicados jun 2026 (leídos directamente del sitio)"
+  - "vision.davivienda.com — artículos y conceptos publicados (leídos directamente del sitio)"
   - "Vision_ContenidoRedes_Articulos_2026-06 — contenido por canal basado en artículos reales"
 ai-first: true
 confidence: high
@@ -16,48 +16,76 @@ confidence: high
 # Visión Davivienda — Plan de Contenidos 360
 **Piloto 2 meses: julio–agosto 2026 | Aprobado por Natalia Otálora (ejes, jun 16)**
 
-> **For future Claude:** Plan de contenidos editorial completo para Visión Davivienda. Los 4 ejes (Autoridad/Educativo/Coyuntura/Comunidad) fueron aprobados por Natalia el 16 jun. **ACTUALIZACIÓN 18 jun:** las 4 semanas del piloto ahora están ancladas en artículos REALES publicados en vision.davivienda.com — no usar datos genéricos. El contenido por canal listo para copiar está en [[Vision_ContenidoRedes_Articulos_2026-06]]. La regla de distribución es: 1 artículo publicado = 1 hilo X + 1 Reel IG + 1 carrusel IG + 1 post LinkedIn + 1 Short YouTube. Estefanía ejecuta. Carolina lidera. Natalia ausente desde el 28 jun.
+> **For future Claude:** Plan de contenidos de dos pistas para Visión Davivienda. **PISTA A (Informe-Ernesto):** contenido curado profesional que sale cuando Ernesto publica un informe — urgente, especializado, reactivo. **PISTA B (Evergreen-Entusiasta):** banco de contenido atemporal basado en conceptos y datos permanentes del sitio, calendarizable con anticipación, pensado para generar tráfico orgánico. Los 4 ejes aplican a ambas pistas. Toda la data debe ser real y extraída de vision.davivienda.com. Estefanía ejecuta. Carolina lidera. Natalia ausente desde el 28 jun.
 
 ---
 
 ## EJES DE COMUNICACIÓN — Definición operativa
 
-Aprobados por Natalia Otálora en reunión del 16 jun 2026.
+Aprobados por Natalia Otálora en reunión del 16 jun 2026. Aplican a ambas pistas.
 
 | Eje | Definición | Canal primario | Tono |
 |-----|-----------|----------------|------|
-| **Autoridad** | Datos propios, proyecciones e informes del equipo de investigaciones. Posiciona a Visión como fuente original, no agregador. | LinkedIn, YouTube | Experto, riguroso, citable |
-| **Educativo** | Explica qué significa un concepto para tu bolsillo o tu inversión. Sin jerga. Para el segmento "entusiasta financiero". | Instagram, YouTube Shorts | Accesible, visual, directo |
-| **Coyuntura** | Análisis inmediato de noticias del día: TRM, BanRep, datos macro, mercados. Primeros en publicar. | X/Twitter, Email diario | Urgente, preciso, en tiempo real |
-| **Comunidad** | Genera participación: preguntas, encuestas, debates. Construye relación con la audiencia existente. | Instagram Stories, LinkedIn | Conversacional, inclusivo |
+| **Autoridad** | Datos propios, proyecciones e informes del equipo de investigaciones. Fuente original, no agregador. | LinkedIn, YouTube | Experto, riguroso, citable |
+| **Educativo** | Explica qué significa un concepto para tu bolsillo o inversión. Sin jerga. | Instagram, YouTube Shorts | Accesible, visual, directo |
+| **Coyuntura** | Análisis inmediato de noticias del día: TRM, BanRep, datos macro, mercados. | X/Twitter, Email diario | Urgente, preciso, tiempo real |
+| **Comunidad** | Genera participación: preguntas, encuestas, debates. | Instagram Stories, LinkedIn | Conversacional, inclusivo |
 
-### Regla de distribución (no negociable)
-Un informe de investigaciones = 1 hilo en X + 1 Reel + 1 carrusel IG + 1 post LinkedIn + CTA email bisemanal. La producción no se multiplica — se reformatea.
+---
+
+## DOS PISTAS DE CONTENIDO
+
+### Pista A — Informe (curado por Ernesto)
+- **Trigger:** publicación de un informe o artículo en vision.davivienda.com
+- **Responsable:** Ernesto (curaduría y adaptación) · Estefanía (publicación)
+- **Tono:** especializado, profesional, técnico con datos propios
+- **Regla de distribución:** 1 informe = 1 hilo X + 1 Reel IG + 1 carrusel IG + 1 post LinkedIn + mención en email bisemanal
+- **Ventana de publicación:** dentro de las 48h siguientes a la publicación del artículo
+- **Eje dominante:** Autoridad + Coyuntura
+
+### Pista B — Evergreen (entusiasta / tráfico orgánico)
+- **Trigger:** calendario editorial fijo, independiente de la publicación de informes
+- **Responsable:** Estefanía (producción) con banco de contenido pre-aprobado
+- **Tono:** accesible, educativo, sin fecha de expiración
+- **Característica clave:** puede publicarse en cualquier momento del año sin perder relevancia
+- **Data:** basada en conceptos y series históricas permanentes de vision.davivienda.com
+- **Eje dominante:** Educativo + Comunidad
+- **Objetivo de negocio:** generar tráfico orgánico sostenido y construir audiencia nueva
+
+### Proporción semanal recomendada
+
+| Canal | Pista A (Informe) | Pista B (Evergreen) |
+|-------|------------------|---------------------|
+| Instagram (Reels) | 1–2 cuando hay informe | 2–3 siempre |
+| Instagram (Carrusel) | 1 cuando hay informe | 1–2 siempre |
+| X / Twitter | Reactivo (sin límite) | 1–2 posts/día |
+| LinkedIn | 1–2 cuando hay informe | 1 siempre |
+| YouTube Shorts | 1 cuando hay informe | 2 siempre |
 
 ---
 
 ## ROLES POR CANAL
 
-| Canal | Rol | Frecuencia | Formato prioritario |
-|-------|-----|------------|---------------------|
-| **Email** | Canal #1 tráfico (51%). Informe diario + bisemanal editorial | L–V diario + bisemanal | Informe con 1 solo CTA |
-| **X / Twitter** | Coyuntura en tiempo real. Canal más fuerte (25.5K seg). | 3–5 posts/día | Hilo + post único + imagen dato |
-| **Instagram** | Educación financiera visual. 6K seg — crecimiento urgente. | 3–4 Reels/sem + 2–3 carruseles/sem + Stories diarias | Reel 30–60s · carrusel 6–8 slides |
-| **LinkedIn** | Autoridad B2B: asesores + academia. Sin presencia aún. | 3 posts/semana por perfil economista | Post personal + doc PDF nativo + video 90s |
-| **YouTube** | Largo plazo + Shorts entre eventos. | 3 Shorts/semana (entre eventos) | Short 60s · video análisis mensual |
+| Canal | Rol | Frecuencia total | Pista A | Pista B |
+|-------|-----|-----------------|---------|---------|
+| **Email** | Canal #1 tráfico (51%). Informe diario + bisemanal editorial | L–V diario + bisemanal | Todos los informes nuevos | Temas evergreen en bisemanal |
+| **X / Twitter** | Coyuntura en tiempo real. Canal más fuerte (25.5K seg). | 3–5 posts/día | Breaking + hilos informe | Conceptos + preguntas + datos históricos |
+| **Instagram** | Educación financiera visual. 6K seg — crecimiento urgente. | 3–4 Reels + 2–3 carruseles/sem | Reel del informe | Reels y carruseles evergreen calendarizados |
+| **LinkedIn** | Autoridad B2B: asesores + academia. | 3 posts/semana por economista | Post informe + análisis | Guías y explicaciones atemporales |
+| **YouTube** | Shorts entre eventos, largo plazo. | 3 Shorts/semana | Short del informe | Shorts conceptuales y educativos |
 
-> Podcast: **congelado** (decisión Natalia, 16 jun). No incluir en este piloto.
+> Podcast: **congelado** (decisión Natalia, 16 jun).
 
 ---
 
-## ESTRUCTURA TEMÁTICA — 4 SEMANAS TIPO
+## PISTA A — INFORME CURADO ERNESTO
 
-**Regla actualizada (18 jun):** cada semana se ancla en un artículo REAL publicado en vision.davivienda.com. El contenido listo por canal está en [[Vision_ContenidoRedes_Articulos_2026-06]].
+**Regla:** cada semana se ancla en un artículo REAL publicado en vision.davivienda.com. El contenido listo por canal está en [[Vision_ContenidoRedes_Articulos_2026-06]].
 
-| Semana | Artículo ancla (publicado en el sitio) | Eje principal | Audiencia |
-|--------|---------------------------------------|---------------|-----------|
-| **S1** | "El sector público volvió a impulsar la actividad económica" (18 jun) — Juan David Jaramillo | Autoridad + Educativo | Entusiasta · Académico |
-| **S2** | "El sector vivienda continúa perdiendo dinamismo" (10 jun) — Juan David Jaramillo | Educativo + Coyuntura | Entusiasta · Asesor |
+| Semana | Artículo ancla | Eje principal | Audiencia |
+|--------|---------------|---------------|-----------|
+| **S1** | "El sector público volvió a impulsar la actividad económica" (18 jun) — J.D. Jaramillo | Autoridad + Educativo | Entusiasta · Académico |
+| **S2** | "El sector vivienda continúa perdiendo dinamismo" (10 jun) — J.D. Jaramillo | Educativo + Coyuntura | Entusiasta · Asesor |
 | **S3** | "Comercio registró su mejor resultado en nueve meses" (16 jun) — Jaramillo & Acosta | Autoridad + Educativo | Entusiasta · Fuerza comercial |
 | **S4** | "Balance de finanzas públicas y elecciones presidenciales" (16 jun) — Davivienda Corredores | Autoridad + Coyuntura | Asesor · Académico · Prensa |
 
@@ -276,6 +304,91 @@ Un informe de investigaciones = 1 hilo en X + 1 Reel + 1 carrusel IG + 1 post Li
 | Lunes | "El peso colombiano +16.9% en el año. ¿Cómo y por qué? En 60 segundos." — ver script en [[Vision_ContenidoRedes_Articulos_2026-06]] | Educativo |
 | Miércoles | "¿Qué es el roll-over de deuda y por qué Colombia tiene un reto en 2027?" | Educativo |
 | Viernes | "Año electoral + finanzas públicas: lo que los mercados ya están descontando" | Educativo |
+
+---
+
+## PISTA B — BANCO EVERGREEN (entusiasta / tráfico orgánico)
+
+> Contenido atemporal basado en conceptos y datos permanentes publicados en vision.davivienda.com. No tiene fecha de expiración. Se calendariza con anticipación. El objetivo es generar tráfico orgánico y atraer audiencia nueva que no conoce Visión.
+
+**Regla de producción:** todo contenido evergreen debe tener un artículo o sección del sitio como respaldo. No se inventa — se explica lo que ya está publicado.
+
+---
+
+### Bloque 1 — Conceptos fundamentales ("¿Qué es X?")
+
+Explican términos que el entusiasta financiero busca constantemente en Google. Alta intención de búsqueda, tráfico orgánico sostenido.
+
+| # | Tema | Eje | Canal | Formato | Hook | Dato ancla (del sitio) |
+|---|------|-----|-------|---------|------|----------------------|
+| EV-01 | ¿Qué es el ISE y por qué importa? | Educativo | IG Reel + X hilo | Reel 45s + hilo 5t | "Colombia tiene un termómetro mensual de la economía. Se llama ISE. ¿Lo conoces?" | Visión publica el ISE mensual con análisis sectorial |
+| EV-02 | ¿Cómo funciona el BanRep y qué decide en cada JDBR? | Educativo | IG Carrusel + YT Short | Carrusel 8 slides + Short 60s | "8 personas deciden cuánto te cuesta tu crédito en Colombia. Así funciona el BanRep." | Informe JDBR publicado regularmente en Visión |
+| EV-03 | ¿Qué son los TES y cómo el Estado colombiano financia su gasto? | Educativo | IG Carrusel + LinkedIn | Carrusel 7 slides + post 400p | "El gobierno colombiano tiene deuda. Tú puedes ser su acreedor. ¿Sabes cómo?" | Informes de deuda pública y curva TES en Visión |
+| EV-04 | ¿Qué es la tasa de cambio y quién mueve el dólar en Colombia? | Educativo | IG Reel + X | Reel 30s + post X | "El dólar no sube solo. Hay 5 factores que lo mueven en Colombia cada día." | Perspectivas semanales TRM — serie permanente de Visión |
+| EV-05 | ¿Qué es la inflación y cómo el IPC mide tu poder de compra? | Educativo | IG Carrusel + YT Short | Carrusel 6 slides + Short 60s | "¿Por qué tu plata rinde menos? El IPC tiene la respuesta." | Informes de inflación y perspectivas de precios en Visión |
+| EV-06 | ¿Qué es el déficit fiscal y por qué afecta tus inversiones? | Educativo | IG Reel + LinkedIn | Reel 45s + post análisis | "Cuando el gobierno gasta más de lo que recibe, los mercados lo sienten." | Balance fiscal — reportes Davivienda Corredores en Visión |
+| EV-07 | ¿Qué es el COLCAP y cómo leer la bolsa colombiana? | Educativo | IG Carrusel + YT Short | Carrusel 7 slides + Short 60s | "Hay un número que resume el mercado accionario de Colombia. Se llama COLCAP." | Informes de renta variable y mercados en Visión |
+
+---
+
+### Bloque 2 — Guías prácticas ("Cómo leer / entender X")
+
+Más profundas que los conceptos. El entusiasta ya sabe qué es X, ahora quiere saber cómo usarlo.
+
+| # | Tema | Eje | Canal | Formato | Hook | Dato ancla (del sitio) |
+|---|------|-----|-------|---------|------|----------------------|
+| EV-08 | Cómo leer un informe de sector económico en 3 minutos | Educativo | IG Carrusel + LinkedIn doc | Carrusel 8 slides + PDF LinkedIn | "Los informes de Visión tienen estructura. Si la conoces, lees uno en 3 minutos." | Estructura estándar de informes sectoriales ISE/comercio/vivienda |
+| EV-09 | Cómo interpretar la curva de TES colombiana | Autoridad | LinkedIn + X hilo | Post análisis 500p + hilo 4t | "Una curva plana no es una curva normal. Te explico qué le dice al mercado." | Perspectivas semanales con análisis de curva TES |
+| EV-10 | Cómo comparar el rendimiento de un CDT vs TES vs dólar | Educativo | IG Carrusel + YT Short | Carrusel 6 slides + Short 60s | "¿Dónde poner los ahorros en Colombia? La comparativa que nadie te explica sencillo." | Datos de tasas, TRM y rendimientos en perspectivas de Visión |
+| EV-11 | Cómo entender los datos de vivienda nueva en Colombia | Educativo | IG Carrusel + X | Carrusel 7 slides + hilo 4t | "VIS, No VIS, lanzamientos, ventas… El informe de vivienda tiene su propio idioma." | Serie de informes sectoriales vivienda |
+| EV-12 | Cómo leer el dato de comercio minorista y qué dice del consumo | Educativo | IG Reel + LinkedIn | Reel 45s + post análisis | "El comercio minorista es el termómetro del bolsillo colombiano. Así se lee." | Serie de informes comercio — Visión publica mensualmente |
+
+---
+
+### Bloque 3 — Datos históricos en perspectiva ("X en perspectiva histórica")
+
+El dato del momento cobra sentido cuando se compara con la historia. Contenido de autoridad que solo puede hacer Visión porque tiene los datos longitudinales.
+
+| # | Tema | Eje | Canal | Formato | Hook | Dato ancla (del sitio) |
+|---|------|-----|-------|---------|------|----------------------|
+| EV-13 | Cómo ha evolucionado la tasa de intervención del BanRep en los últimos 10 años | Autoridad | LinkedIn + X | Post gráfica histórica + hilo | "En 2016 el BanRep subió la tasa al 7.75%. En 2020 la bajó al 1.75%. La historia importa." | Series históricas JDBR disponibles en Visión |
+| EV-14 | TRM histórica: los momentos que más movieron el dólar en Colombia | Autoridad | IG Carrusel + LinkedIn | Carrusel 8 slides + post | "El dólar llegó a $5,000 en oct 2023. Y a $1,700 en 2014. ¿Qué los explica?" | Datos históricos TRM en perspectivas semanales |
+| EV-15 | El PIB colombiano en los últimos 20 años: ciclos, crisis y rebotes | Autoridad | LinkedIn + YT Short | Doc PDF LinkedIn + Short 60s | "Colombia ha crecido 20 años seguidos. Solo ha caído dos veces. ¿Cuándo y por qué?" | Series de actividad económica ISE/PIB en Visión |
+| EV-16 | Inflación en Colombia: el ciclo 2021–2026 explicado | Autoridad | IG Carrusel + X | Carrusel 8 slides + hilo | "En dic 2022 la inflación tocó 13.1%. En 2026 bajó a X%. El ciclo más agudo en 30 años." | Informes de inflación histórica en Visión |
+
+---
+
+### Bloque 4 — Comunidad y conversación ("¿Tú qué opinas?")
+
+No explica, pregunta. Genera shares y comentarios. Bajo costo de producción, alto engagement.
+
+| # | Tema | Eje | Canal | Formato | Hook |
+|---|------|-----|-------|---------|------|
+| EV-17 | ¿Comprarías vivienda nueva hoy en Colombia? | Comunidad | IG Story + X | Poll IG + tweet con opciones | "Tasas altas, precios que no caen. ¿Comprarías vivienda hoy? [Sí / No / Esperaría]" |
+| EV-18 | ¿Cuánto crees que debería costar el dólar en Colombia? | Comunidad | X + IG Story | Tweet de debate + Story poll | "El MHCP dice que el dólar está 'en línea'. El mercado no siempre está de acuerdo." |
+| EV-19 | ¿En qué pondrías $1M de pesos hoy: CDT, TES, acciones o dólares? | Comunidad | IG Story + LinkedIn | Story poll 4 opciones + post LinkedIn | "Sin trampa. ¿Qué harías con $1M? Elige y te explicamos el argumento de cada opción." |
+| EV-20 | ¿El BanRep debería bajar la tasa más rápido? | Comunidad | X + LinkedIn | Tweet de debate + post opinión | "El consenso en Colombia es: el BanRep va despacio. ¿Estás de acuerdo?" |
+
+---
+
+### Calendario evergreen recomendado
+
+Estructura semanal tipo cuando no hay informe nuevo (Pista A):
+
+| Día | Canal | Tipo | Pieza sugerida |
+|-----|-------|------|---------------|
+| Lunes | Instagram | Reel | EV-01 a EV-07 (concepto) — rotación cada semana |
+| Lunes | X | Post + imagen | Dato histórico del bloque 3 |
+| Martes | Instagram | Carrusel | EV-08 a EV-12 (guía práctica) |
+| Martes | LinkedIn | Post personal | Bloque 2 o 3 (guía o perspectiva histórica) |
+| Miércoles | Instagram | Story poll | Bloque 4 (comunidad) — rotación semanal |
+| Miércoles | X | Post de conversación | Bloque 4 adaptado a X |
+| Jueves | YouTube | Short 60s | Concepto del bloque 1 — guión del Reel del lunes |
+| Jueves | X | Hilo educativo | Bloque 1 o 2 — extensión del concepto del lunes |
+| Viernes | LinkedIn | Doc PDF o video | Bloque 3 (historia + perspectiva) |
+| Viernes | X | Pregunta de cierre | Bloque 4 — debate del fin de semana |
+
+> Cuando llega un informe (Pista A), se intercala sin reemplazar todo el calendario. El informe toma el slot de mayor audiencia (lunes o miércoles) y el evergreen se corre al día siguiente.
 
 ---
 
