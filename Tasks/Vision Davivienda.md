@@ -15,6 +15,16 @@ Archivo consolidado de tareas activas y completadas para la unidad **Vision Davi
 
 ### Carolina Ramirez
 
+- [ ] 🔴 **Solicitar accesos plataformas a Viviana → conectar a Metricul** · due 2026-06-20 · Analytics · KPI: Visibilidad unificada de data
+  - Fecha: 2026-06-19
+  - Fuente: [[06 - Meetings/Vision/2026-06-19 Carolina-Performix-Jeison - Pauta Performance Vision]]
+  Solicitar a Viviana Reyes (PM Leo) acceso a las plataformas de pauta (Meta, Google, etc.) para conectarlas a Metricul y centralizar la gestión y análisis de datos de Visión Davivienda.
+
+- [ ] 🔴 **Plan de acción con métricas para reunión lunes (Jun 23)** · due 2026-06-23 · Estrategia · KPI: Sesiones, Vistas, Revenue
+  - Fecha: 2026-06-19
+  - Fuente: [[06 - Meetings/Vision/2026-06-19 Carolina-Performix-Jeison - Pauta Performance Vision]]
+  Preparar plan de acción basado en métricas actuales de Visión Davivienda para la reunión del lunes con equipo completo (contenido + SEO + redes sociales + performance). Objetivo: evolucionar de reporte de métricas a decisiones estratégicas concretas.
+
 - [ ] 🔴 **Compartir listado estructura reporte SEO a Duvan** · due 2026-06-19 · SEO · KPI: Tráfico orgánico, Posicionamiento
   - Fecha: 2026-06-19
   - Fuente: [[06 - Meetings/Proveedores/2026-06-19 Carolina-Duvan - Estrategia SEO Vision EF]]

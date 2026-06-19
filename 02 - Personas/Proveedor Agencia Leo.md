@@ -39,8 +39,11 @@ El equipo de **Leo** está configurado bajo una arquitectura transversal para cu
 
 |**Rol / Recurso**|**Función Estratégica en el Negocio**|
 |---|---|
-|**Project Manager** _(Viviana)_|Interfaz de control, gobernanza, asignación de capacidad, control de _briefs_ y _delivery_ hacia Mercadeo del Banco.|
+|**Project Manager** _(Viviana Reyes — viviana.reyes@col-leoburnett.com)_|Interfaz de control, gobernanza, asignación de capacidad, control de _briefs_ y _delivery_ hacia Mercadeo del Banco. Punto de contacto para solicitar accesos a plataformas.|
 |**Planner** _(Paola Torres — paola.torres@leo-latam.com)_|Inteligencia de mercado, _benchmarking_, definición de formatos y traducción de la estrategia macro a tácticas de plataforma. *(Nota: registro anterior decía "Jonathan" — Paola Torres confirmada 2026-06-17)*|
+|**Líder Performance/Media** _(Alejandro Bojacá — alejandro.bojaca@leo-latam.com)_|Estrategia de pauta performance. Punto de contacto para alineación de campañas. Confirmado 2026-06-19.|
+|**Media Specialist** _(Salomé González)_|Gestiona campañas Meta y Google Search de Visión Davivienda. Implementa audiencias, optimización y reportes. Coordina con Duvan (SEO) para keywords.|
+|**Líder SEO** _(Duvan Hernández)_|Estrategia SEO Visión + portales Ed. Financiera. Tracker SEO interno — integrando a Looker vía GSC. Ver [[Duvan Hernandez]].|
 |**Especialista SEO/GEO**|Optimización para motores de búsqueda tradicionales y algoritmos de Inteligencia Artificial. Auditoría de indexación.|
 |**Data Analyst**|Implementación del _tagging plan_, analítica web, construcción de _dashboards_ y atribución de conversión.|
 |**UX/UI Writer & QA**|Redacción digital (_microcopy_), copys de pauta/mailing, resguardo de la guía de marca y control de calidad del sitio.|
