@@ -270,9 +270,81 @@ Se detectaron **múltiples URLs que sirven el mismo contenido**, compitiendo ent
 
 ---
 
+## 12. Auditoría técnica — Screaming Frog (junio 2026)
+
+**Fuente:** `Diners_issues_overview_report.csv` — rastreo Screaming Frog SEO Spider, ~85 páginas HTML rastreadas.
+**Leído:** 2026-06-19
+
+### Problemas críticos (bloquean ranking)
+
+| # | Problema | Páginas | % sitio | Prioridad |
+|---|---|---|---|---|
+| 1 | **H1 faltante** — 88% de páginas sin encabezado principal | 75 | 88.24% | 🔴 CRÍTICO |
+| 2 | **Meta description múltiple** — plugins en conflicto; Google ignora ambas | 61 | 71.76% | 🔴 Alta |
+| 3 | **Error 4xx internos** — enlaces rotos que pierden PageRank | 2 | — | 🔴 Alta |
+| 4 | **Paginación sin enlace `<a>`** — Google no puede pasar PageRank entre páginas paginadas | 4 | — | 🔴 Alta |
+| 5 | **URLs Noindex** — 4 páginas excluidas del índice (verificar si es intencional) | 4 | — | 🟠 Revisar |
+
+> ⚠️ **El dato más alarmante:** 75 de ~85 páginas rastreadas no tienen H1. Esto confirma el problema de plantilla/template que ya señalaba GSC (383K páginas rechazadas por Google). Si el H1 falta en el 88% de páginas, Google no tiene señal de tema principal en casi ninguna página — el impacto en ranking es directo.
+
+### Oportunidades de on-page (CTR y experiencia)
+
+| Problema | Páginas | Impacto | Acción |
+|---|---|---|---|
+| Títulos >60 caracteres (truncados en SERPs) | 53 | 🟠 CTR | Acortar a ≤60 chars con keyword al inicio |
+| Títulos >561px (misma causa, medido en píxeles) | 52 | 🟠 CTR | Revisar junto con el punto anterior |
+| Meta descriptions duplicadas | 47 | 🟡 CTR | Escribir description única por página |
+| Meta descriptions >155 chars | 45 | 🟡 CTR | Acortar + CTA al inicio |
+| H2 duplicados entre páginas | 70 | 🟡 Diferenciación | Reescribir H2 únicos |
+| H2 >70 chars | 50 | 🟡 UX | Acortar subheadings |
+| Contenido difícil de leer (Flesch) | 62 | 🟡 Engagement | Oraciones más cortas, menos tecnicismos |
+| Contenido muy difícil de leer | 10 | 🟡 Engagement | Prioridad en artículos de alto tráfico |
+| Páginas con <200 palabras | 9 | 🟠 Indexación | Ampliar o consolidar con canonical |
+| Títulos <30 chars (subaprovechados) | 8 | 🟡 Keywords | Completar con keyword secondary |
+| Imágenes >100KB | 7 | 🟠 Core Web Vitals | Comprimir con WebP/AVIF |
+| Meta descriptions faltantes | 5 | 🟡 CTR | Escribir descriptions en páginas clave |
+
+### Seguridad — infraestructura (1 fix, 5 issues resueltos)
+
+Todos los headers de seguridad faltan en las mismas 120 URLs. Un único cambio en `.htaccess` o en la configuración del servidor los resuelve todos:
+
+| Header faltante | Riesgo |
+|---|---|
+| `Strict-Transport-Security` (HSTS) | Usuarios HTTP expuestos |
+| `X-Frame-Options: DENY` | Clickjacking |
+| `X-Content-Type-Options: nosniff` | MIME sniffing attacks |
+| `Content-Security-Policy` | XSS |
+| `Referrer-Policy: strict-origin-when-cross-origin` | Data leakage |
+
+> Escalar a Jeison + proveedor web como un solo ticket: "Agregar security headers en servidor." No requiere cambios en WordPress.
+
+### Adicionales de baja prioridad
+
+| Issue | URLs | Acción |
+|---|---|---|
+| 3xx internas (redirecciones) | 82 | Actualizar links directos a URL final |
+| Links externos sin `rel="noopener"` | 78 | Fix en plantilla WordPress |
+| Links internos sin texto de anclaje | 85 | Revisar widgets y menús |
+| Links internos con `nofollow` | 4 | Eliminar nofollow si son páginas propias importantes |
+| URLs con path repetido | 3 | Investigar links relativos incorrectos |
+
+### Plan de acción técnica — Screaming Frog
+
+| Acción | Owner | Plazo | Prioridad |
+|---|---|---|---|
+| Investigar por qué el 88% de páginas no tiene H1 — ¿plantilla? ¿render JS? | Proveedor web | 7 días | 🔴 CRÍTICO |
+| Identificar qué plugins generan meta descriptions múltiples y desactivar el duplicado | Proveedor web | 7 días | 🔴 Alta |
+| Resolver 2 errores 4xx internos | Proveedor web | 7 días | 🔴 Alta |
+| Corregir paginación sin enlace `<a>` (4 casos) | Proveedor web | 7 días | 🔴 Alta |
+| Agregar security headers en servidor (1 ticket = 5 issues) | Jeison / Proveedor web | 15 días | 🟠 Media |
+| Auditar y acortar títulos >60 chars (53 páginas, priorizar las de mayor tráfico) | Editorial / SEO | 30 días | 🟠 Media |
+| Comprimir imágenes >100KB a WebP | Proveedor web | 15 días | 🟠 Media |
+
+---
+
 ## Relacionado
 
 [[Diners]] · [[2026-06 Auditoría SEO - AXXIS]]
 
 ## Tags
-#diners #seo #auditoria #gsc #junio-2026
+#diners #seo #auditoria #gsc #screaming-frog #junio-2026
