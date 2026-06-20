@@ -80,14 +80,25 @@ FLYWHEEL AXXIS
 
 ## El problema más urgente: 21.100 páginas no indexadas
 
-Este es el hallazgo más crítico. AXXIS tiene años de contenido editorial de calidad, y Google no puede ver el 82.5% de él. Antes de crear una sola página nueva, hay que desbloquear lo que ya existe.
+> **Actualización jun 2026:** Screaming Frog confirmó las causas raíz. Ya no son hipótesis — son hechos verificados. Ver auditoría SF: `axxis issues_overview_report.csv`
 
-**Causas más probables (verificar en GSC → Cobertura):**
-- Páginas bloqueadas en `robots.txt`
-- Etiquetas `noindex` mal aplicadas (ej. en el CMS por defecto)
-- URLs duplicadas sin canonical correcto
-- Paginación sin manejo de parámetros
-- Páginas de categoría / archivo / etiqueta bloqueadas
+Este es el hallazgo más crítico. AXXIS tiene años de contenido editorial de calidad, y Google no puede ver el 82.5% de él. Screaming Frog auditó el sitio y encontró las causas exactas:
+
+**Causas CONFIRMADAS por Screaming Frog:**
+
+| Causa | Páginas afectadas | Impacto |
+|-------|-----------------|---------|
+| **H1 faltante** | **~75% del sitio** | 🔴 Sin H1, Google no sabe de qué trata la página |
+| **Meta descriptions duplicadas** | **~61% del sitio** | 🔴 Conflicto de plugins CMS — Google las ignora |
+| **Paginación sin etiqueta `<a>`** | ~4.710 URLs | 🟠 Google no puede seguir páginas 2, 3, 4... |
+| **Redirecciones 3xx internas** | ~35.810 URLs | 🟠 Presupuesto de rastreo desperdiciado |
+| **Errores 4xx internos** | ~870 URLs | 🟠 Enlaces rotos — señal negativa |
+| **Directivas noindex** | ~3.330 URLs | ⚠️ Revisar si son intencionales |
+
+**El diagnóstico real:** No es robots.txt. Es H1 faltante en 75% de páginas + meta descriptions duplicadas (casi seguro por dos plugins SEO activos en simultáneo — ej. Yoast + RankMath). Google ve el sitio como contenido mal estructurado y duplicado → no indexa.
+
+**Fix de mayor impacto (puede hacerse en 1 día):**
+Si el problema de meta descriptions duplicadas es un plugin duplicado, desactivar uno de los plugins resuelve el 61% de las páginas con ese problema en una sola acción. Verificar en: WP Admin → Plugins → buscar plugins activos con "SEO" en el nombre.
 
 **Impacto de resolverlo:** Si se indexa un 30% de esas páginas (6.330 páginas extra), con el CTR actual de 1.9% y posición media 10 → estimado conservador de +15.000 clics orgánicos adicionales/mes sin crear nada nuevo.
 
@@ -95,28 +106,51 @@ Este es el hallazgo más crítico. AXXIS tiene años de contenido editorial de c
 
 ## Tus Acciones — Sprint 30 días (Jun 20 – Jul 20)
 
-### ACCIÓN 1 — Auditar indexación: encontrar por qué 21.100 páginas están fuera de Google
-**Plazo:** Jun 27 | **Prioridad:** 🔴 Crítica
+### ACCIÓN 1 — Resolver meta descriptions duplicadas: identificar y desactivar plugin SEO duplicado
+**Plazo:** Jun 23 | **Prioridad:** 🔴 Crítica — fix global posible en 1 hora
 
-- Ir a Google Search Console → Índice → Páginas
-- Documentar distribución de razones: "Excluida por etiqueta noindex", "Bloqueada por robots.txt", "URL duplicada", "Rastreada pero no indexada"
-- Revisar el archivo `robots.txt` del sitio y listar qué rutas están bloqueadas
-- Revisar si el CMS tiene configuración de "noindex" para categorías, etiquetas, páginas de autor o archivo
+SF confirmó: 61% de páginas tienen múltiples meta descriptions. Causa más común: dos plugins SEO activos al mismo tiempo.
 
-**Entregable:** Un listado de las 5 causas principales de exclusión con cantidad de páginas afectadas. Compartir con Carolina antes del Jun 27.
+Pasos:
+1. WP Admin → Plugins → Plugins activos
+2. Buscar plugins con "SEO", "Yoast", "RankMath", "All in One SEO" en el nombre
+3. Si hay más de uno activo → desactivar el que no es el principal (no eliminar, solo desactivar primero)
+4. Verificar en 10 URLs con View Source que ya no aparezca `<meta name="description"` dos veces
+5. Reportar a Carolina cuál era el plugin duplicado
+
+**Métrica:** Meta descriptions duplicadas bajar de 61% a <5%
 
 ---
 
-### ACCIÓN 2 — Corregir los blockers más simples de indexación
-**Plazo:** Jul 7 | **Prioridad:** 🔴 Crítica
+### ACCIÓN 2 — Resolver H1 faltante: auditar plantillas del CMS
+**Plazo:** Jun 27 | **Prioridad:** 🔴 Crítica — 1 fix en plantilla = resuelve 75% de páginas
 
-Con la lista de causas (Acción 1), priorizar las correcciones de mayor volumen:
-- Si hay rutas bloqueadas en robots.txt que no deberían estarlo → remover
-- Si hay noindex en categorías/archivo → evaluar si se deben indexar o consolidar con canonical
-- Si hay paginación duplicada → implementar rel=next/prev o canonical a primera página
-- Enviar sitemap actualizado a GSC después de cada cambio
+75% de páginas sin H1 es casi siempre un problema de plantilla, no de contenido individual.
 
-**Métrica:** Páginas indexadas pasar de 4.490 → meta de 8.000+ en 45 días
+Pasos:
+1. Verificar qué tipos de página están afectadas: artículos, categorías, páginas de autor, páginas estáticas
+2. Revisar el archivo de plantilla de artículos (`single.php` en WordPress): ¿hay un `<h1>` que incluya el título del artículo?
+3. Si no existe: agregar `<h1><?php the_title(); ?></h1>` en el lugar correcto del template
+4. Verificar con View Source en 10 artículos que el H1 aparezca en el HTML (no generado por JS)
+5. Si está generado por JS: reportar a Carolina — requiere solución diferente (SSR o prerender)
+
+**Métrica:** H1 faltante bajar de 75% a <5%
+
+---
+
+### ACCIÓN 3 — Corregir errores 4xx y paginación rota
+**Plazo:** Jul 7 | **Prioridad:** 🟠 Alta
+
+**Errores 4xx (~870 URLs):**
+- Exportar desde SF: Bulk Export → Response Codes → 4xx → columna "Inlinks"
+- Priorizar las URLs con más enlaces entrantes
+- Para cada una: redirigir con 301 a la URL correcta o marcar noindex si no tiene reemplazo
+
+**Paginación sin `<a>` (4.710 URLs):**
+- Los botones "Siguiente / Anterior" deben ser `<a href="...">` no `<button>` ni `<span>`
+- Verificar en el tema del CMS — generalmente es un ajuste en el loop de paginación
+
+**Métrica:** 4xx internos → 0 | Páginas paginadas correctamente enlazadas → 100%
 
 ---
 
