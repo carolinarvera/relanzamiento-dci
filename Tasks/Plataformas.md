@@ -15,10 +15,9 @@ Archivo consolidado de tareas activas y completadas para la unidad **Plataformas
 
 ### Carolina Ramirez
 
-- [ ] 🔴 **Reunion Maria Angelica y Jeison vision plataformas** · due 2026-06-20 · Estrategia · KPI: UAM, Revenue, Leads Davivienda
-  - Fecha: 2026-06-05
-  - Fuente: [[06 - Meetings/CEO/2026-06-05-Lineamientos Catalina Obregón y direccionamiento]]
-  Programar y ejecutar reunión urgente con [[Maria Angelica Navarro]] y [[Jeison Montero]] para definir visión de futuro de las plataformas digitales Davivienda, consolidar información y estructurar estrategia de comunicación hacia "Mundo D". Pedido directo de [[Catalina Obregon]] en reunión CEO 2026-06-05.
+- [x] ✅ **Reunion Maria Angelica y Jeison vision plataformas** · ~~due 2026-06-20~~ · Completada 2026-06-19
+  - Fuente: [[06 - Meetings/Educación financiera/2026-06-18 Carolina-MariaAngelica-Jeison - Primera reunion EF]] · [[06 - Meetings/Educación financiera/2026-06-19 Carolina-MariaAngelica-Jeison - Ecosistema EF y Estrategia]]
+  Dos sesiones completadas (Jun 18 + Jun 19). Ecosistema EF mapeado completo. Rol de Gamma en transición hacia growth integral. Pendiente: reunión con equipo de mercadeo semana 23 jun (ver Tasks/Educacion Financiera).
 
 - [ ] 🔴 **Redisenar KPIs plataformas comite estrategico** · due 2026-06-30 · Analytics · KPI: Revenue, UAM, Leads Davivienda
   - Fecha: 2026-06-05
