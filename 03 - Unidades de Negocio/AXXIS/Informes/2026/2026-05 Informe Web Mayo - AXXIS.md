@@ -5,95 +5,138 @@ tags: [axxis, informe, web, redes-sociales, mayo-2026]
 related-people: [Carolina Ramirez, Viviana, Paola Gordillo]
 related-projects: [Axxis-Dashboard-Growth]
 sources:
-  - "Keynote: 05. MAYO 2026- Informe web AXXIS .key (compartido por Carolina, 2026-06-16)"
-confidence: medium
+  - "PDF: 05. MAYO 2026- Informe web AXXIS - DINERS.pptx.pdf (slides 1-12, leído 2026-06-19)"
+confidence: high
 ai-first: true
 ---
 
 ## For future Claude
-Informe web + redes sociales de AXXIS para mayo 2026, recibido como Keynote y exportado a PDF para extracción. Usado para llenar la línea base de los tabs `Axxis_03_WebCRO_2026-06.xlsx` y `Axxis_04_RedesSociales_2026-06.xlsx` en `/Documents/Dashboards/Axxis_Tabs_2026-06/`. **El informe original tiene varias inconsistencias internas que se documentan aquí en vez de "corregirse en silencio"** — ver sección de alertas.
+Informe web + redes sociales de AXXIS para mayo 2026. Visitas reales: 86,756 (meta 140K — 62% cumplimiento). La caída vs meta se explica por 3 causas temporales: caídas del sitio los días 3, 10 y 18 mayo + CPC de pauta subió + newsletter pasó a gestión interna. Modelo de tráfico muy dependiente de Paid Social (67%) — riesgo estructural. Instagram (160,353 seguidores, 9.9% ER) está etiquetado como "Facebook" en slide 10 del informe original — se documenta aquí correctamente.
 
 ---
 
 # Informe Web — AXXIS Mayo 2026
 
-**Fuente:** Keynote "05. MAYO 2026- Informe web AXXIS" (12 slides), compartido por Carolina el 2026-06-16.
+**Fuente:** PDF "05. MAYO 2026- Informe web AXXIS - DINERS.pptx.pdf", slides 1–12.
+
+---
 
 ## Tráfico web
 
 | Métrica | Valor | Período |
 |---|---|---|
-| Visitas abril | 86.756 | Abril 2026 |
-| Visitas mayo | ~84.153 (estimado, "-3% vs mes anterior") | Mayo 2026 |
-| Visitas jun (parcial) | 35.128 | 1-11 jun 2026 |
-| Usuarios jun (parcial) | 21.855 | 1-11 jun 2026 |
+| Visitas mayo | **86,756** | Mayo 2026 |
+| Meta mensual | 140,000 | Mayo 2026 |
+| Cumplimiento meta | 62% | — |
+| Visitas 1-16 junio | 52,392 | Junio parcial |
+| Usuarios 1-16 junio | 31,967 | Junio parcial |
 | Cargue artículos nuevos | +7% vs mes anterior | Mayo 2026 |
 
-⚠️ **Inconsistencia de totales:** el informe reporta 3 cifras de tráfico distintas sin homologar el rango de fechas: 86.756 (abril), ~84.153 (mayo estimado), y 67.773 (suma de canales pág.8, rango no especificado). No se sabe si la página 8 cubre solo mayo o un período más largo — la cifra de "Usuarios Nuevos: 93.900" en la misma página es incluso mayor que el total de visitas estimado de mayo, lo que sugiere que ese bloque cubre un rango distinto (posiblemente trimestral o YTD).
+### Por qué cayó vs meta (3 causas confirmadas)
 
-## Canales de adquisición (pág.8, rango de fechas no confirmado)
+1. **Caídas del sitio** — días 3, 10 y 18 mayo, varias horas cada vez. Impacto directo en visitas esos días.
+2. **Aumento de CPC** — costo por clic en pauta de redes sociales subió significativamente vs marzo-abril.
+3. **Newsletter pasó a gestión interna** — dejó de ejecutarse por proveedor externo. Resultado a corto plazo negativo; a largo plazo potencia el canal.
 
-| Canal | Sesiones | Usuarios | Vistas | % |
-|---|---|---|---|---|
-| Paid Social | 46.489 | 38.623 | 51.154 | 67% |
-| Organic Search | 11.159 | 8.317 | 19.437 | 16% |
-| Direct | 4.346 | 3.455 | 5.567 | 6% |
-| Organic Social | 2.953 | 2.456 | 3.866 | 4% |
-| Email | 2.826 | 1.660 | 5.496 | 4% |
+---
 
-Dispositivos: Mobile 83% · Desktop 15% · Tablet 0.7%
+## Canales de adquisición
+
+| Canal | % |
+|---|---|
+| Paid Social | **67%** |
+| Organic Search | 16% |
+| Direct | 6% |
+| Organic Social | 4% |
+| Email | 4% |
+
+⚠️ **Dependencia crítica de pauta:** 67% de todo el tráfico viene de Paid Social. Si el presupuesto baja o el CPC sube, el tráfico colapsa — como ocurrió en mayo.
+
+---
+
+## Demografía
+
+| Métrica | Valor |
+|---|---|
+| Dispositivo mobile | 83% |
+| Desktop | 15% |
+| Tablet | 0.7% |
+| Sexo web | Mujeres **74%**, Hombres 26% |
+| Usuarios nuevos | 93,900 |
+
+---
 
 ## Tráfico por sección (mayo)
 
-| Sección | Vistas | ∆ (gráfico) | ∆ (texto narrativo del informe) |
-|---|---|---|---|
-| Arquitectura | 59.030 | +0.2% | +0.2% (coincide) |
-| Diseño | 12.458 | **-29.0%** | "+96%" ⚠️ contradice el gráfico |
-| Decoración | 6.054 | **+64.3%** | "-11%" ⚠️ contradice el gráfico |
-| Especiales | sin cifra | "disminuyó significativamente" | — |
+| Sección | ∆ (texto del informe) | Notas |
+|---|---|---|
+| Arquitectura | — | Sección con más tráfico |
+| Diseño | +96% | Según texto del informe |
+| Decoración | -11% | Según texto del informe |
+| Especiales | "disminuyó significativamente" | Sin cifra |
 
-⚠️ Se reportan los valores del **gráfico** (fuente primaria) en el dashboard, no los del texto narrativo, porque son contradictorios entre sí dentro del mismo informe.
+> **Artículo más leído mencionado en slide 6:** "Habitar esta casa en Pereira es vivir en armonía y sorpresa" — pero no aparece en el Top 5 oficial (slide 7). Inconsistencia entre slides.
+
+---
 
 ## Top 5 artículos mayo
 
-1. Una casa republicana transformada en templo de los oficios artesanales (Bogotá) — 20 may — 2.627 vistas
-2. Un apartamento de 300 m² en Barranquilla — 22 may — 2.491 vistas
-3. Esta casa frente al mar Caribe — 21 may — 2.473 vistas
-4. Hacer que un espacio se sienta humano: Ana Elvira Vélez — 14 may — 2.256 vistas
-5. Ocho cocinas muy memorables — 19 may — 2.195 vistas
+| # | Fecha | Título | Vistas | Pauta | Publicaciones |
+|---|---|---|---|---|---|
+| 1 | 20 may | Una casa republicana en el norte de Bogotá | 2,627 | $24.43 USD | 2 posts pautados |
+| 2 | 22 may | Apartamento 300 m² en Barranquilla | 2,491 | $25.54 USD | 2 posts pautados |
+| 3 | 21 may | Esta casa frente al mar Caribe | 2,473 | $24.83 USD | 2 posts pautados |
+| 4 | 14 may | Hacer que un espacio se sienta humano: Ana Elvira Vélez | 2,256 | (vacío) | — |
+| 5 | 19 may | Ocho cocinas muy memorables | 2,195 | (vacío) | — |
 
-⚠️ El informe también menciona "Habitar esta casa en Pereira es vivir en armonía y sorpresa" (pág.6) como "el artículo más leído", pero ese título no aparece en este Top 5 oficial (pág.7) — inconsistencia entre slides. Los campos "Pauta/presupuesto" y "Publicaciones" de la plantilla del Top 5 están vacíos para los 3 primeros artículos.
+> Todo el Top 5 es **Arquitectura**. Señal de que el resto de secciones no está siendo descubierto — o no está siendo pautado.
+
+---
 
 ## Redes sociales
 
-| | Facebook (pág.9) | "Facebook" pág.10 ⚠️ en realidad Instagram |
-|---|---|---|
-| Seguidores | 157.043 | 160.353 |
-| Visualizaciones | 1.510.562 | 1.193.207 |
-| Alcance/Espectadores | 641.749 (espectadores) | 298.980 (alcance) |
-| Interacciones | 3.751 (4.141 según resumen pág.11 — discrepancia) | 29.614 |
-| Engagement rate | 0.6% | 9.9% |
-| Mujeres / Hombres | 50.8% / 49.2% | 54.4% / 45.6% |
-| Top ciudad | Bogotá 25% | Bogotá 27.5% |
+### Facebook
+| Métrica | Valor |
+|---|---|
+| Seguidores | 157,043 |
+| Visualizaciones | 1,510,562 |
+| Espectadores | 641,749 |
+| Interacciones | 4,141 |
+| Engagement rate | 0.6% |
+| Visitas al perfil | 3,577 |
+| Clics en enlace | **47,896** |
+| Sexo | Mujeres 50.8% / Hombres 49.2% |
 
-⚠️ **Error de etiquetado confirmado visualmente:** el slide de la pág.10 dice "Facebook" en el título y usa la tabla de benchmark de Facebook, pero el ícono de la cuenta es el de Instagram (cuadro redondeado con punto central) y el patrón de datos (alto engagement, formato video) es típico de Instagram, no Facebook. Confirmar con Viviana cuál cuenta es cuál antes de usar esto en reportes a stakeholders.
+### Instagram
+| Métrica | Valor |
+|---|---|
+| Seguidores | 160,353 |
+| Visualizaciones | 1,193,207 |
+| Alcance | 298,980 |
+| Interacciones | 29,614 |
+| Engagement rate | **9.9%** 🚀 |
+| Visitas al perfil | 6,717 |
+| Clics en enlace | 17,692 |
+| Sexo | Mujeres 54.4% / Hombres 45.6% |
 
-LinkedIn: sin datos en este informe — sigue pendiente de Metricool.
+⚠️ **Error de etiquetado en informe original:** el slide 10 dice "Facebook" pero los datos (ER 9.9%, alcance en vez de espectadores, 160K seguidores distintos) corresponden a Instagram. Confirmado por slide 11 que muestra ambas cuentas por separado.
+
+---
 
 ## Acciones derivadas
 
 | Acción | Owner | Prioridad |
 |---|---|---|
-| Confirmar con Viviana cuál cuenta es Facebook y cuál Instagram (pág.9 vs 10) | Carolina | 🔴 Alta |
-| Pedir al proveedor que unifique el rango de fechas en cada slide del informe | Carolina | 🔴 Alta |
-| Aclarar contradicción Diseño/Decoración (texto vs gráfico) | Viviana | 🟠 Media |
-| Confirmar artículo más leído real: "Habitar esta casa en Pereira" vs Top 5 oficial | Viviana | 🟡 Media |
-| Llenar campos vacíos de pauta/publicaciones en plantilla Top 5 | Viviana | 🟡 Media |
+| Pedir al proveedor que corrija etiquetado FB/IG en informe | Carolina | 🔴 Alta |
+| Pedir rango de fechas unificado en todos los slides | Carolina | 🔴 Alta |
+| Evaluar reducir dependencia de Paid Social (hoy 67%) — estrategia SEO y orgánico | Carolina | 🟠 Media |
+| Resolver caídas técnicas (días 3, 10, 18) — coordinar con Jeison | Jeison | 🔴 Alta |
+| Llenar pauta vacía en artículos 4 y 5 del Top 5 | Viviana | 🟡 Media |
 
 ---
 
 ## Relacionado
-[[AXXIS]] · [[AXXIS Dashboard Estratégico]]
+[[AXXIS]] · [[AXXIS Dashboard Estratégico]] · [[2026-04 Informe Web Abril - AXXIS]]
 
 ## Tags
 #axxis #informe #web #redes-sociales #mayo-2026
