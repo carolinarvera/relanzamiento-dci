@@ -94,100 +94,235 @@ Las redes hoy traen 20 segundos de engagement — eso significa que el contenido
 
 ---
 
+## Auditoría de perfiles — estado jun 2026
+
+> Auditoría realizada jun 21, 2026. Hallazgos confirmados visualmente.
+
+### Instagram — @revistaaxxis
+**Fortaleza crítica:** ER 9.9% (benchmark sector: 1.5–3%). La audiencia ama el contenido. El problema es que lo consume sin salir de Instagram — 20 seg de tiempo en sitio desde redes vs 83 seg desde SEO.
+
+| Elemento | Estado | Acción |
+|----------|--------|--------|
+| Bio | Revisar | Debe incluir: qué es + a quién sirve + CTA suscripción + "link en bio" |
+| Link en bio | Desactualizado | Actualizar cada lunes al artículo del Reel. Usar Beacons/Later para mostrar: artículo + suscripción + newsletter |
+| Highlights | Incompleto | Crear carpetas: "Proyectos" / "Suscríbete" / "Anuario" / "Detrás de cámaras" con covers de marca |
+| Cuenta profesional | Verificar | Confirmar modo "Medios de comunicación" — activa métricas de edad/género |
+| CTA en cada post | Ausente | Todo Reel y carrusel debe terminar con "artículo completo → link en la bio" |
+| Stories post-publicación | Ausente | Cada post → story inmediata con sticker de link al artículo |
+
+### Facebook — Revista AXXIS
+**Realidad 2026:** Meta limita el alcance orgánico de páginas al 1–5% de los seguidores. 157K seguidores = ~2.000–8.000 personas por post. No invertir tiempo en crecer Facebook orgánico.
+
+**Estrategia:** Mantener activa (favorece el algoritmo de Meta Ads) + publicar links a artículos (FB sí permite links en posts; IG no) + cross-post de lo de Instagram.
+
+| Elemento | Acción |
+|----------|--------|
+| Foto de portada | Actualizar mensualmente con proyecto destacado |
+| Sección "Acerca de" | Completar: sitio web, email comercial, descripción |
+| Botón de acción | Configurar → "Suscribirse" → URL /suscribirse/ |
+| Contenido | 3 posts/semana: cross-post IG + link a artículo del día |
+
+### LinkedIn — sin cuenta activa
+**Oportunidad:** LinkedIn tiene la audiencia B2B que AXXIS necesita — arquitectos, directores de diseño, gerentes de proyecto, desarrolladores inmobiliarios. Es también el perfil de potencial anunciante.
+
+**Setup inicial (Jun 27):**
+1. Crear página de empresa "Revista AXXIS" → categoría: Medios de comunicación
+2. Descripción (150 palabras): 35 años cubriendo arquitectura colombiana + qué cubre + a quién sirve + CTA suscripción
+3. Botón → "Visitar sitio web" → revistaaxxis.com.co
+4. Hashtags de la página: #arquitectura #diseño #decoracion #arquitecturacolombiana
+
+**Contenido LinkedIn (3 posts/semana):**
+- Tendencias en arquitectura colombiana con datos del Anuario AXXIS
+- Entrevistas breves a arquitectos destacados (formato autoridad editorial)
+- "El proyecto más importante de Colombia en [año] fue..." — contenido de posicionamiento
+
+### Pinterest — no existe
+**Canal más subestimado:** Pinterest Colombia tiene 8M+ usuarios activos. Arquitectura y decoración = categorías #1. Un pin publicado hoy genera tráfico durante 2+ años. Costo: $0.
+
+**Setup semana 1 (Jun 27):**
+1. Crear cuenta Pinterest Business en pinterest.com/business
+2. Verificar dominio revistaaxxis.com.co → activa Rich Pins (el pin muestra automáticamente el título y descripción del artículo)
+3. Crear 5 tableros: "Arquitectura Colombiana" / "Diseño de Interiores" / "Cocinas y Baños" / "Fachadas y Exteriores" / "Anuario AXXIS"
+4. Cargar 20 pines/día la primera semana (100 pines de contenido histórico del sitio)
+5. Cada pin: imagen 2:3 vertical (1.000×1.500 px) + link obligatorio al artículo + descripción con keywords
+
+---
+
+## Ejes de contenido — Marco EEAT
+
+> EEAT (Experience, Expertise, Authoritativeness, Trustworthiness) es el marco de Google para evaluar contenido de calidad. Aplicado a redes: cada post construye la percepción de AXXIS como la fuente más creíble de arquitectura y diseño en Colombia — lo que convierte seguidores en lectores y lectores en suscriptores.
+
+### Eje E1 — Experiencia
+*Contenido que demuestra que AXXIS ha estado ahí.*
+
+| Serie | Formato | Frecuencia |
+|-------|---------|-----------|
+| "Proyecto de la semana" — tour del proyecto en producción | Reel 30-45s | Lunes |
+| "Así se ve en persona" — making of de la sesión fotográfica | Stories 3-5 | Miércoles |
+| Cobertura en tiempo real de Habitart / premios Lápiz de Acero | Stories + Reel | Eventos |
+| Making of del Anuario AXXIS — el proceso curatorial | Reel o carrusel | 1x/mes |
+
+### Eje E2 — Expertise (Conocimiento)
+*Contenido que demuestra que AXXIS sabe de qué habla.*
+
+| Serie | Formato | Frecuencia |
+|-------|---------|-----------|
+| "Material del mes" — guadua, concreto expuesto, piedra, teca | Carrusel 5-8 slides | Martes |
+| "¿Qué es [concepto]?" — arquitectura explicada para no arquitectos | Post estático | 1x/semana |
+| Tendencias arquitectónicas con ejemplos colombianos | Carrusel | 1x/semana |
+| "Diferencia entre X e Y" — arquitecto vs diseñador de interiores, etc. | Reel educativo | 1x/mes |
+
+### Eje A — Autoridad
+*Contenido que solo AXXIS puede publicar.*
+
+| Serie | Formato | Frecuencia |
+|-------|---------|-----------|
+| "Los proyectos del Anuario [año]" — el ranking editorial | Carrusel | 1x/mes |
+| "Arquitecto destacado" — entrevista exclusiva | Reel 30s | Jueves |
+| "35 años cubriendo arquitectura colombiana" — hitos históricos | Post estático | Ocasional |
+| Proyectos que AXXIS publicó antes de que ganaran premios | Post estático | Ocasional |
+
+### Eje T — Confianza
+*Contenido que construye la relación con la comunidad.*
+
+| Serie | Formato | Frecuencia |
+|-------|---------|-----------|
+| "Top proyectos del mes" con CTA a suscripción | Carrusel | Viernes |
+| Testimonial de suscriptor: "Por qué me suscribí a AXXIS" | Story o Reel corto | 1x/mes |
+| Datos reales del proyecto: m², materiales, costo estimado | Post o carrusel | 1x/semana |
+| Comunidad: repostear proyectos de arquitectos que siguen AXXIS | Stories | 2x/semana |
+
+---
+
 ## Tus Acciones — Sprint 30 días (Jun 20 – Jul 20)
 
 ### ACCIÓN 1 — Conseguir acceso a Metricool y hacer baseline completo
-**Plazo:** Jun 23 | **Prioridad:** 🔴 Crítica (bloquea todo lo demás)
+**Plazo:** Jun 23 | **Prioridad:** 🔴 Crítica — bloquea todo lo demás
 
-Sin datos de Metricool no puedes medir nada. Esta acción desbloquea las demás.
+Sin datos de Metricool no puedes medir nada: no sabes qué formato funciona, qué frecuencia tienes, ni cuánto tráfico generan las redes al sitio.
 
-- Solicitar acceso al workspace de Metricool a Carolina o a quien lo administra
-- Una vez dentro: exportar reporte de mayo 2026 de Instagram y Facebook
-- Registrar en el tab 04 (Redes Sociales) del dashboard: posts publicados, stories, reels, nuevos seguidores, clics al sitio
-- Documentar también la frecuencia actual de publicación (¿cuántos posts/semana salieron en mayo?)
+Pasos:
+1. Solicitar acceso al workspace de Metricool a Carolina esta semana
+2. Una vez dentro: exportar reporte de mayo 2026 de Instagram y Facebook
+3. Registrar: posts publicados por tipo (Reel / carrusel / estático / story), nuevos seguidores, alcance, clics al sitio
+4. Identificar los 3 posts con más alcance de mayo — son la señal de qué tipo de contenido amplifica más
 
-**Por qué es urgente:** Hoy sabemos que IG tiene ER 9.9% pero no sabemos cuántas veces publicamos ni qué tipo de contenido tiene mejor performance. Sin eso, no podemos mejorar.
+**Métrica:** Reporte de mayo entregado a Carolina antes del Jun 25.
 
 ---
 
-### ACCIÓN 2 — Definir y activar el calendario editorial de Instagram (5 posts/semana)
+### ACCIÓN 2 — Optimizar perfiles en las 4 redes
 **Plazo:** Jun 27 | **Prioridad:** 🔴 Crítica
 
-Con ER del 9.9%, Instagram está listo para escalar. La clave es consistencia y mix de formatos.
+Ver tabla de auditoría de perfiles arriba. Resumen de lo más urgente:
 
-**Estructura semanal propuesta:**
+1. **Instagram:** actualizar bio + link en bio (Beacons/Later con artículo + suscripción + newsletter) + crear Highlights
+2. **Facebook:** actualizar portada + completar "Acerca de" + configurar botón "Suscribirse"
+3. **LinkedIn:** crear página de empresa desde cero (ver instrucciones arriba)
+4. **Pinterest:** crear cuenta Business + verificar dominio + 5 tableros + primeros 100 pines
 
-| Día | Formato | Serie / Tema |
-|-----|---------|-------------|
-| Lunes | Reel | "Proyecto de la semana" — tour de 30-45s de un proyecto destacado |
-| Martes | Post estático | Detalle constructivo / material / acabado |
-| Miércoles | Stories (3-5) | Detrás de cámaras editorial, proceso de diseño |
-| Jueves | Reel | "Arquitecto destacado" — entrevista corta o quote con fondo visual |
-| Viernes | Carrusel | Top 5 proyectos del mes / ranking temático |
-
-**Reglas de formato:**
-- Relación 9:16 para Reels y Stories (mobile first)
-- Primer frame del Reel: imagen o frase que pare el scroll en menos de 1 segundo
-- Siempre etiquetar al arquitecto o estudio → amplificación orgánica garantizada
-- Siempre incluir ubicación (Bogotá, Medellín, etc.)
-- Hashtags: 5-8 específicos de arquitectura colombiana (#arquitecturacolombiana #diseñodeinteriores #revistaAXXIS + 2-3 locales)
+**Métrica:** 4 perfiles listos antes del Jun 27. Screenshot de cada uno compartido con Carolina.
 
 ---
 
-### ACCIÓN 3 — Crear 5 Reels piloto del "Proyecto de la semana"
+### ACCIÓN 3 — Activar calendario editorial Instagram (5 posts/semana)
+**Plazo:** Jun 27 | **Prioridad:** 🔴 Crítica
+
+La estructura semanal por eje EEAT:
+
+| Día | Formato | Eje | CTA obligatorio |
+|-----|---------|-----|----------------|
+| Lunes | Reel 30-45s | Experiencia | "Artículo completo → link en bio" |
+| Martes | Carrusel 5-8 slides | Expertise | "Lee más en revistaaxxis.com.co" |
+| Miércoles | Stories 3-5 | Experiencia | Sticker de link al artículo |
+| Jueves | Reel 30s | Autoridad | "Solo en AXXIS → link en bio" |
+| Viernes | Carrusel o post | Confianza | "Suscríbete desde $59.700 → link en bio" |
+
+**Reglas sin excepción:**
+- Todo Reel termina en CTA verbal + texto en pantalla apuntando al link en bio
+- Cada publicación tiene su story inmediata con sticker de link al artículo
+- Última slide de todo carrusel = "Lee el artículo completo → revistaaxxis.com.co"
+- Siempre etiquetar al arquitecto/estudio en el post — genera amplificación orgánica gratuita
+- Siempre incluir ubicación del proyecto
+- Hashtags: 5-8 por post (#arquitecturacolombiana #diseñodeinteriores #revistaAXXIS + ciudad)
+
+---
+
+### ACCIÓN 4 — Crear los primeros 5 Reels "Proyecto de la semana"
 **Plazo:** Jul 10 | **Prioridad:** 🔴 Crítica
 
-Los Reels son el formato con mayor alcance orgánico en Instagram hoy. Con ER 9.9% ya probado, la expansión viene de Reels que lleguen a gente que aún no nos sigue.
+Los Reels son el formato con mayor alcance orgánico en Instagram. Con ER 9.9% ya probado, la expansión viene de Reels que lleguen a gente que aún no sigue AXXIS.
 
-**Estructura de Reel que funciona (30-45 segundos):**
-1. **0-3s (hook):** plano de la habitación más impactante del proyecto + texto en pantalla: "Esta casa en [ciudad] tiene algo que no vas a ver en otro lugar"
-2. **3-20s:** recorrido rápido con cortes cada 2-3 segundos — mantener ritmo
-3. **20-35s:** detalle constructivo o material especial + nombre del arquitecto
-4. **35-45s (CTA):** "Descubre más proyectos en revistaaxxis.com.co" o "Link en bio → suscríbete"
+**Estructura de Reel que convierte (30-45 segundos):**
+1. **0-3s (hook):** el plano más impactante del proyecto + texto: "Esta casa en [ciudad] tiene algo que no vas a ver en otro lugar"
+2. **3-20s:** recorrido con cortes cada 2-3 segundos — mantener ritmo visual
+3. **20-35s:** detalle constructivo clave + nombre del arquitecto y estudio
+4. **35-45s (CTA):** narrador: "Descubre el proyecto completo en revistaaxxis.com.co — link en la bio"
 
-**Proyectos sugeridos para los primeros 5 Reels** (ya publicados en mayo — contenido listo):
+**5 proyectos para los primeros Reels** (contenido publicado en mayo — listo para usar):
 1. Casa republicana transformada en templo artesanal, Bogotá
 2. Apartamento 300 m², Barranquilla
 3. Casa frente al mar Caribe
 4. Ana Elvira Vélez — hacer un espacio humano
 5. Ocho cocinas memorables
 
-**Métrica de éxito:** cada Reel debe alcanzar mínimo 3x los seguidores actuales en views (>480.000 views promedio)
+**Métrica:** Cada Reel debe alcanzar >3x los seguidores actuales en views (meta: >480.000 views).
 
 ---
 
-### ACCIÓN 4 — Activar Pinterest con contenido histórico
+### ACCIÓN 5 — Arrancar Pinterest: 100 pines en la primera semana
 **Plazo:** Jul 7 | **Prioridad:** 🟠 Alta
 
-Pinterest es el canal más subestimado para AXXIS. Arquitectura y decoración son las categorías con mayor volumen orgánico en Pinterest en Colombia. Y el contenido no requiere producción nueva — solo reutilizar lo que ya existe.
+Cada artículo del sitio tiene imágenes de alta calidad que pueden convertirse en pines. Este es tráfico de referral gratuito y acumulativo — no requiere presupuesto ni producción nueva.
 
-**Pasos:**
-1. Crear cuenta Pinterest Business (pinterest.com/business)
-2. Verificar el dominio revistaaxxis.com.co → activa Rich Pins (muestra título y descripción del artículo automáticamente)
-3. Crear 5 tableros iniciales: "Arquitectura colombiana", "Diseño interior", "Cocinas de ensueño", "Fachadas y exteriores", "Anuario AXXIS"
-4. Subir 20 pines/día durante la primera semana (100 pines en 5 días) — usar imágenes de proyectos publicados en la revista
-5. Cada pin debe llevar link al artículo correspondiente en el sitio
+Pasos:
+1. Crear cuenta Pinterest Business y verificar dominio (ver Auditoría de perfiles arriba)
+2. Crear los 5 tableros iniciales
+3. Cargar 20 pines/día durante 5 días → 100 pines en la primera semana
+4. Cada pin: imagen 2:3 (1.000×1.500 px) + título = título del artículo + link obligatorio al artículo + descripción con keywords de arquitectura
+5. Activar Rich Pins — Pinterest mostrará automáticamente el título y descripción de cada artículo vinculado
 
-**Formato de pin que convierte:**
-- Relación 2:3 vertical (ideal 1.000 x 1.500 px)
-- Texto en la imagen: título del proyecto + ciudad
-- No subir imágenes sueltas — siempre vincular al artículo
-
-**Proyección conservadora:** 10.000 impresiones orgánicas/mes en 60 días, tráfico al sitio desde semana 4.
+**Métrica:** 100 pines publicados + Rich Pins activos + primeras 10.000 impresiones orgánicas.
 
 ---
 
-### ACCIÓN 5 — Arrancar HubSpot: diagnóstico base de newsletter
+### ACCIÓN 6 — Funnel redes → tráfico → suscripción
+**Plazo:** Jul 15 | **Prioridad:** 🟠 Alta
+
+El problema central: 160K seguidores pero 20 segundos de tiempo en sitio desde redes. El contenido se consume sin salir de Instagram. Para que una persona se suscriba, DEBE pasar por el artículo primero.
+
+**Protocolo de link en bio:**
+- Cada lunes: actualizar link en bio al artículo del Reel del lunes
+- Beacons/Later: configurar landing con 3 destinos: (1) Artículo destacado, (2) /suscribirse/, (3) Newsletter
+- Semana de suscripción (última semana de cada mes): link en bio apunta SOLO a /suscribirse/ toda la semana
+
+**Serie mensual de suscripción — última semana de cada mes:**
+
+| Día | Contenido | Objetivo |
+|-----|-----------|---------|
+| Lunes | Reel: "Esto es lo que ves como suscriptor" — preview de contenido exclusivo | Awareness del beneficio |
+| Miércoles | Story: Testimonial real de un suscriptor (arquitecto o diseñador) | Confianza EEAT-T |
+| Jueves | Carrusel: "5 razones para suscribirte a AXXIS" + imágenes de proyectos exclusivos | Consideración |
+| Viernes | Post + story: Precio + plan + link directo a /suscribirse/ | Conversión |
+
+**UTMs para tracking:** Todos los links de redes deben incluir UTM para identificar en GA4 cuánto tráfico y cuántas suscripciones vienen de cada red:
+- Instagram: `?utm_source=instagram&utm_medium=social&utm_campaign=organico`
+- Pinterest: `?utm_source=pinterest&utm_medium=social&utm_campaign=pines`
+- LinkedIn: `?utm_source=linkedin&utm_medium=social&utm_campaign=organico`
+
+---
+
+### ACCIÓN 7 — Diagnóstico base de newsletter
 **Plazo:** Jun 27 | **Prioridad:** 🟠 Alta
 
-Hoy no tenemos ni un solo dato del newsletter. Para construir un flywheel necesitamos esta base.
+El newsletter es el canal con mayor calidad de tráfico (103 seg en sitio). Antes de lanzar nuevos envíos, entender con qué base se cuenta.
 
-- Solicitar sesión de onboarding con quien administra HubSpot (o acceso directo)
-- Documentar: ¿cuántos contactos hay en la lista? ¿cuántos están activos? ¿se ha enviado algún email en los últimos 3 meses?
-- Si hay lista existente: segmentar por perfil (arquitecto / diseñador / lector general / anunciante)
-- Si no hay lista o está vacía: identificar dónde capturar emails (formularios en el sitio, base de suscriptores revista impresa, asistentes a eventos)
+1. Solicitar acceso a HubSpot (o sesión con Paola Nossa)
+2. Documentar: ¿cuántos contactos hay en la lista? ¿cuántos con email activo? ¿cuándo fue el último envío?
+3. Segmentar la lista existente: arquitecto / diseñador / lector general / lead potencial
+4. Si la lista está vacía: identificar fuentes de captación (formularios del sitio, base de suscriptores impresos, asistentes a eventos)
 
-**Meta inmediata:** saber con cuántos suscriptores de email empezamos (el número que sea, sin importar el tamaño).
+**Meta:** saber el número de suscriptores de email antes del Jun 27 (el número que sea).
 
 ---
 
@@ -195,12 +330,13 @@ Hoy no tenemos ni un solo dato del newsletter. Para construir un flywheel necesi
 
 | Acción | Plazo | Métrica |
 |--------|-------|---------|
-| Lanzar newsletter mensual AXXIS (primer envío) | Jul 31 | Open rate >25%, >200 suscriptores |
-| Configurar email de bienvenida automático para nuevos suscriptores | Jul 31 | Open rate bienvenida >40% |
-| Crear comunidad WhatsApp para arquitectos suscriptores | Ago 15 | 50+ miembros activos |
-| Activar LinkedIn 3x/semana — contenido B2B tendencias arquitectura | Jul 15 | +200 seguidores nuevos |
-| Pinterest: 100 pines publicados + Rich Pins activos | Jul 15 | 10.000 impresiones/mes |
-| Sistematizar reporte mensual de redes (Metricool export) | Jul 5 | Reporte entregado el día 5 de cada mes |
+| Lanzar newsletter mensual "El Briefing de AXXIS" (primer envío) | Jul 31 | Open rate >25% · >200 suscriptores |
+| Email de bienvenida automático para nuevos suscriptores | Jul 31 | Open rate >40% |
+| LinkedIn activo 3x/semana | Jul 15 | +200 seguidores nuevos |
+| Pinterest: 300 pines publicados + Rich Pins activos | Ago 1 | 30.000 impresiones/mes |
+| Activar UTMs en todos los links de redes + verificar en GA4 | Jul 7 | Tráfico por red identificado en GA4 |
+| Reporte mensual de redes (Metricool) entregado el día 5 de cada mes | Jul 5 | Reporte mensual sistematizado |
+| Comunidad WhatsApp de suscriptores arquitectos | Ago 15 | 50+ miembros activos |
 
 ---
 
