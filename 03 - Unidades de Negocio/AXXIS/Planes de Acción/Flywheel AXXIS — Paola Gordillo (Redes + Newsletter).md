@@ -75,7 +75,95 @@ Las redes hoy traen 20 segundos de engagement — eso significa que el contenido
 
 **Facebook tiene un problema estructural.** ER del 0.6% con 157K seguidores y solo 3.751 interacciones indica que Meta ha reducido el alcance orgánico de Facebook al mínimo. La estrategia en Facebook debe cambiar: no publicar para crecer, sino publicar como soporte de los Meta Ads (el algoritmo favorece páginas activas).
 
-**Newsletter está en cero.** No hay datos de HubSpot disponibles todavía — primer paso es entender cuántos suscriptores hay y qué tan activos están.
+**Newsletter tiene datos reales.** Dos envíos recientes en HubSpot revelan una lista activa de ~29.400 contactos con métricas mixtas — ver auditoría completa abajo.
+
+### Auditoría Newsletter — Datos Reales HubSpot (jun 17 y jun 20, 2026)
+
+> Datos extraídos de los dos últimos envíos. Auditado jun 21, 2026.
+
+#### Comparativo de los dos últimos envíos
+
+| Métrica | Email 1 — Jun 17 | Email 2 — Jun 20 | Delta | Benchmark |
+|---------|-------------------|-------------------|-------|-----------|
+| Enviados | 29.471 | 29.446 | — | — |
+| Entregados | 29.351 (99.59%) | 29.311 (99.54%) | — | >98% ✅ |
+| Open rate | **26.52%** | **19.3%** | -7.2pp 🔴 | 20-25% |
+| Click rate | **2.23%** | **0.31%** | -87% 🔴 | 2-3% |
+| CTR (click/open) | **8.41%** | **1.63%** | -81% 🔴 | 2-5% |
+| Bounces | 120 (0.41%) | 60 (0.20%) | — | <2% ✅ |
+| Unsubscribes | 18 (0.06%) | 12 (0.04%) | — | <0.5% ✅ |
+| Spam reports | 0 | 0 | — | <0.1% ✅ |
+| Tiempo de lectura | Read 65.5% / Glanced 28.3% | Read 64.7% / Glanced 30.5% | — | Read >50% ✅ |
+| Top link #1 clics | 224 (Casa James Rodríguez) | 65 (Bauum residencial) | -71% 🔴 | — |
+| Clics a /suscribirse/ | — | 27 (#3 en ranking) | — | — |
+
+**Segmentos activos en ambos envíos:** Fans y Corredor Revista Axxis + Suscripciones Revista Axxis + Suscriptores Newsletter Revista Axxis. Lista total estimada de ~29.400 contactos únicos.
+
+#### Los 3 hallazgos que explican el colapso del email 2
+
+**Hallazgo 1: Sobre-frecuencia — causa principal del crash**
+
+3 días entre el email 1 (jun 17) y el email 2 (jun 20) con la misma lista de 29.400 personas. La segunda apertura requiere mucha más motivación que la primera.
+
+- Open rate cayó 7.2pp = -27% en tasa de apertura
+- Click rate cayó del 2.23% al 0.31% = **-87%**
+- Resultado: el email 2 llegó a gente que aun no terminó de procesar el email 1
+
+Frecuencia correcta: **máximo 1 email/semana**. El canal de newsletter en LatAm sattura rápido.
+
+**Hallazgo 2: El contenido de celebrity multiplica el tráfico por 3x**
+
+Email 1: artículo "Casa James Rodríguez" generó 224 clics = **44% de todos los clics del email**. Tres veces más que cualquier artículo del email 2. James Rodríguez no es arquitecto — es un aspirational hook que lleva al sitio a gente que normalmente no lee sobre arquitectura.
+
+Esto es el insight más importante del análisis: **el primer artículo del newsletter debe ser el más aspiracional o con mayor reconocimiento público**, aunque no sea el más profundo editorialmente. La calidad editorial va en segundo y tercer lugar.
+
+Distribución de clics email 1:
+- "Casa James Rodríguez" → 224 clics (44%)
+- Artículo 2 → 118 clics (23%)
+- Artículo 3 → 87 clics (17%)
+- Artículo 4 → 80 clics (16%)
+
+Total: ~509 clics concentrados. La jerarquía funciona.
+
+**Hallazgo 3: El segmento "Fans y Corredor" contamina la relevancia**
+
+Unsubscribe reasons email 2:
+- 50% "No longer interested" — cansancio normal
+- **50% "The emails are not relevant to me"** — señal de segmentación incorrecta
+
+"Fans y Corredor Revista Axxis" probablemente incluye contactos que nunca pidieron recibir un newsletter editorial de arquitectura. Cuando reciben 2 emails en 3 días, la percepción de irrelevancia dispara los unsubscribes.
+
+**Solución inmediata:** el próximo envío debe ir SOLO al segmento "Suscriptores Newsletter Revista Axxis" — las personas que explícitamente pidieron recibir el email. El segmento "Fans" debe recibir un email distinto con contenido diferente (o ser suprimido hasta que se segmente correctamente).
+
+#### Lo que sí está funcionando (no tocar)
+
+- **Read rate 65% es excepcional** — benchmark industria: 40-50%. Las personas que abren el email se quedan leyendo. El contenido es bueno y el diseño funciona.
+- **0 spam reports en ambos envíos** — la lista está limpia y los envíos tienen buena reputación de dominio.
+- **CTR 8.41% en email 1** — benchmark: 2-5%. Quien abre, hace clic. El email 1 convierte bien.
+- **/suscribirse/ en el 3er lugar de email 2 con 27 clics** — el newsletter SÍ puede llevar tráfico a la landing de suscripción. Si el CTA de suscripción sube al 2do o 3er posición del email, puede convertir más.
+- **Bounces <0.5% y spam 0** — la higiene de lista es buena.
+
+#### Advertencia técnica: Apple Mail infla el open rate
+
+Email clients email 2: **Email client Mac/iPad ~40%, Gmail ~25%, Apple Mail iOS ~8%**. Total Apple Mail = ~48%.
+
+Apple Mail tiene Mail Privacy Protection (MPP) desde iOS 15: precarga todos los emails en sus servidores independientemente de si el usuario los abre realmente. Esto **infla el open rate entre 20-30pp** en cuentas con alta penetración de Apple Mail.
+
+Consecuencia: el "open rate real" puede ser significativamente más bajo de lo que HubSpot reporta. **No usar open rate como métrica principal.** Las métricas confiables son:
+- **CTR (click/open)** — no se puede falsificar un clic
+- **Clics totales al sitio** — medidos en GA4 con UTM
+- **Suscripciones atribuidas a email** — requiere UTM + configuración en Triario
+
+#### Razón de unsubscribes email 2
+
+| Razón | % |
+|-------|---|
+| No longer interested | 50% |
+| The emails are not relevant to me | 50% |
+
+El 50% de irrelevancia es la señal de segmentación. No es el contenido editorial el problema — es que parte de la lista nunca pidió este tipo de contenido.
+
+---
 
 ### Perfil de audiencia (mayo 2026)
 
@@ -312,17 +400,133 @@ El problema central: 160K seguidores pero 20 segundos de tiempo en sitio desde r
 
 ---
 
-### ACCIÓN 7 — Diagnóstico base de newsletter
-**Plazo:** Jun 27 | **Prioridad:** 🟠 Alta
+### ACCIÓN 7 — Separar segmentos en HubSpot antes del próximo envío
+**Plazo:** Jun 27 | **Prioridad:** 🔴 Crítica — bloquea los próximos envíos
 
-El newsletter es el canal con mayor calidad de tráfico (103 seg en sitio). Antes de lanzar nuevos envíos, entender con qué base se cuenta.
+> Actualización jun 21: La auditoría de los dos últimos envíos confirma que la lista tiene un problema de segmentación. El 50% de los unsubscribes del email 2 dicen "no me es relevante" — señal de que "Fans y Corredor" recibe contenido que no pidió.
 
-1. Solicitar acceso a HubSpot (o sesión con Paola Nossa)
-2. Documentar: ¿cuántos contactos hay en la lista? ¿cuántos con email activo? ¿cuándo fue el último envío?
-3. Segmentar la lista existente: arquitecto / diseñador / lector general / lead potencial
-4. Si la lista está vacía: identificar fuentes de captación (formularios del sitio, base de suscriptores impresos, asistentes a eventos)
+El próximo envío debe ir SOLO a "Suscriptores Newsletter Revista Axxis". Los segmentos "Fans y Corredor" y "Suscripciones" necesitan tratamiento diferente.
 
-**Meta:** saber el número de suscriptores de email antes del Jun 27 (el número que sea).
+Pasos con Paola Nossa en HubSpot:
+
+1. **Mapear los 3 segmentos actuales:**
+   - ¿Cuántos contactos tiene cada uno?
+   - ¿Cómo llegaron a cada segmento? (formulario web vs importación manual vs suscripción paga)
+   - ¿Cuántos están en más de un segmento a la vez?
+
+2. **Crear segmento limpio para newsletters editoriales:**
+   - Nuevo smart list: contactos que (a) abrieron al menos 1 de los últimos 3 emails OR (b) hicieron clic en al menos 1 de los últimos 6 emails
+   - Este es el "engageable core" — los más propensos a abrir y leer
+   - Estimado aprox: 7.000-8.000 personas (basado en opens reales vs bots)
+
+3. **Suprimir "Fans y Corredor" de envíos editoriales:**
+   - No borrarlos — solo excluirlos del próximo envío
+   - Crear un email separado para este segmento: solo contenido de bienvenida/reactivación, no editorial semanal
+
+4. **Documentar lista de suscriptores de newsletter activos:**
+   - Total contactos activos (email válido + abrieron algún envío en los últimos 90 días)
+   - Esto es el número real con el que trabajan los próximos planes
+
+**Meta:** Lista segmentada documentada antes del Jun 27. Próximo envío va solo al segmento de suscriptores activos.
+
+---
+
+### ACCIÓN 8 — Establecer frecuencia y estructura definitiva del newsletter
+**Plazo:** Jun 27 | **Prioridad:** 🔴 Crítica
+
+> Auditoría jun 21 confirma que 2 emails en 3 días colapsó el click rate en -87%. La frecuencia es la palanca más importante.
+
+**Regla de frecuencia:**
+- **1 email por semana como máximo.** No 2.
+- **Día y hora fijos:** Martes entre 7-8 AM (mejor ventana de apertura para Colombia según datos de HubSpot LatAm)
+- Si hay urgencia de comunicar algo antes del martes, usar Story de Instagram — no un email adicional
+
+**Estructura definitiva del email (basada en lo que funcionó):**
+
+```
+ASUNTO: [Artículo más aspiracional/celebrity del semana] — siempre el más visual
+
+HERO (arriba del fold):
+  Imagen grande del proyecto más impactante
+  Título del artículo → ENLACE CON UTM
+  1 frase de gancho editorial (no descriptiva — debe generar curiosidad)
+  Botón CTA: "Leer el proyecto completo →"
+
+ARTÍCULO 2:
+  Thumbnail + título + 1 línea + "Leer más →"
+
+ARTÍCULO 3:
+  Thumbnail + título + 1 línea + "Leer más →"
+
+ARTÍCULO 4 (opcional, no siempre):
+  Solo si es de temporada o hay novedad relevante
+
+BLOQUE DE SUSCRIPCIÓN (antes del footer):
+  "¿Aún no eres suscriptor de la revista?" → imagen del número más reciente
+  Beneficios en 3 bullets cortos
+  Botón: "Ver planes desde $59.700 →" → /suscribirse/ CON UTM
+
+FOOTER:
+  Firma editorial + redes + opción de unsubscribe
+```
+
+**Criterio para elegir el artículo hero:**
+- Primero: ¿hay algún proyecto con persona pública o reconocida? → siempre va primero
+- Segundo: ¿hay algún proyecto con nombre de firma o ciudad de alta aspiración? → segunda opción
+- Tercero: el proyecto visualmente más impactante de los publicados esa semana
+
+**UTMs obligatorios en todos los links:**
+- Artículos: `?utm_source=newsletter&utm_medium=email&utm_campaign=semanal_axxis&utm_content=articulo1`
+- CTA suscripción: `?utm_source=newsletter&utm_medium=email&utm_campaign=suscripcion_axxis`
+
+**Meta:** Primer envío con nueva estructura: martes Jul 7 a las 7 AM, solo al segmento limpio.
+
+---
+
+### ACCIÓN 9 — Crear email de bienvenida automático para nuevos suscriptores
+**Plazo:** Jul 15 | **Prioridad:** 🟠 Alta
+
+El email de bienvenida es el email con mayor open rate posible (benchmark: 50-60%+). Es el momento en que el suscriptor más está dispuesto a interactuar.
+
+**Flujo en HubSpot (Workflows):**
+
+**Trigger:** Contacto se une al segmento "Suscriptores Newsletter"
+
+**Email 1 — Inmediato (mismo día):**
+- Asunto: "Bienvenido a AXXIS — esto es lo primero que debes ver"
+- Contenido: Los 3 proyectos más vistos del mes + CTA a /suscribirse/ como upgrade
+- Objetivo: primer clic al sitio → primer impresión de la calidad editorial
+
+**Email 2 — Día 3:**
+- Asunto: "¿Ya conoces el Anuario AXXIS?"
+- Contenido: Explicar qué es el Anuario + 2 proyectos ganadores + CTA suscripción
+
+**Email 3 — Día 7:**
+- Asunto: "Esta semana en AXXIS: [artículo del momento]"
+- Se integra al newsletter semanal regular
+
+Este flujo no requiere producción nueva — usa contenido del sitio ya existente.
+
+**Meta:** Secuencia de 3 emails activa antes del Jul 15. Open rate del email 1 > 40%.
+
+---
+
+### ACCIÓN 10 — Conectar atribución newsletter → suscripciones en GA4
+**Plazo:** Jul 15 | **Prioridad:** 🟠 Alta
+
+HubSpot muestra "0% conversion from email delivery to order placement" en ambos envíos. Esto no significa que nadie compra desde el newsletter — significa que no hay tracking configurado.
+
+La cadena de atribución actual está rota: newsletter → /suscribirse/ (con UTM) → Triario (plataforma externa) → compra. Triario procesa el pago en su propio dominio y no pasa los UTMs de vuelta a GA4.
+
+Pasos para corregirlo:
+1. **Verificar con Juan David** que GA4 está capturando el tráfico UTM desde el newsletter (Acquisition → Traffic Acquisition → Filtrar por utm_source = newsletter)
+2. **Solicitar a Triario** que preserven el parámetro UTM en el checkout — igual que se pidió para Meta Ads (CAPI)
+3. **Alternativa sin Triario:** Crear un goal en GA4 "Llegó a /suscribirse/" como micro-conversión — aunque no confirma la compra, confirma el intento
+4. **Crear reporte mensual en GA4:** Acquisition → Source/Medium → newsletter/email → Sesiones + Engagement time + Micro-conversiones
+
+Sin esto, el trabajo de newsletter es invisible en los reportes de growth.
+
+**Meta:** Primer reporte de tráfico atribuido a newsletter en GA4 antes del Jul 15.
 
 ---
 
@@ -362,16 +566,21 @@ El newsletter es el canal con mayor calidad de tráfico (103 seg en sitio). Ante
 
 ## KPIs que reportas mensualmente
 
-| KPI | Baseline (mayo 2026) | Meta jul | Meta sep |
-|-----|---------------------|---------|---------|
+| KPI | Baseline real (jun 2026) | Meta jul | Meta sep |
+|-----|-------------------------|---------|---------|
 | IG seguidores | 160.353 | 168.000 | 180.000 |
 | IG ER% | 9.9% | >8% (mantener) | >8% |
-| IG Reels publicados/mes | Sin dato | 8 | 12 |
+| IG Reels publicados/mes | Sin dato (pendiente Metricool) | 8 | 12 |
 | IG Clics al sitio | Sin dato | Baseline jul | +30% vs jul |
 | FB posts/mes | Sin dato | Baseline jul | — |
-| Pinterest impresiones | 0 | 10.000 | 30.000 |
-| Suscriptores newsletter | Sin dato | Baseline jun | +50 nuevos |
-| Open rate newsletter | Sin dato | >25% primer envío | >28% |
+| Pinterest impresiones | 0 (sin cuenta) | 10.000 | 30.000 |
+| Lista newsletter (entregados) | ~29.400 | Segmento limpio documentado | +200 suscriptores activos |
+| Newsletter open rate | 26.52% (email 1) / 19.3% (email 2) | >25% (1 email/semana) | >28% |
+| Newsletter CTR (click/open) | 8.41% (email 1) / 1.63% (email 2) | >5% consistente | >7% |
+| Newsletter clics totales al sitio | ~509 (email 1) / ~91 (email 2) | >400/envío | >600/envío |
+| Clics a /suscribirse/ desde email | 27 (email 2, posición #3) | >50/envío | >80/envío |
+| Tráfico GA4 atribuido a newsletter | Sin UTMs (no medible aún) | Baseline configurado | +20% vs jul |
+| Suscripciones atribuidas a email | 0 (sin tracking) | Tracking configurado | ≥3/mes |
 
 ---
 
