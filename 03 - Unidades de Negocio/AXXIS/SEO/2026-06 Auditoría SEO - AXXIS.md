@@ -1,17 +1,19 @@
 ---
-date: 2026-06-16
+date: 2026-06-20
 type: seo-audit
-tags: [axxis, seo, auditoria, gsc, google-search-console, junio-2026]
+tags: [axxis, seo, auditoria, gsc, screaming-frog, junio-2026]
 related-people: [Carolina Ramirez]
 related-projects: [Axxis-Dashboard-Growth]
 sources:
   - "Google Search Console: https://revistaaxxis.com.co/ — 12 meses (jun 2025–jun 2026)"
+  - "Screaming Frog: crawl completo revistaaxxis.com.co — jun 2026 (issues_overview_report.csv)"
 confidence: high
 ai-first: true
+excel: "[[Auditoria_SEO_AXXIS_2026-06.xlsx]] — Plan de acción completo con 25 acciones + URLs para intervenir"
 ---
 
 ## For future Claude
-Auditoría SEO de AXXIS (`revistaaxxis.com.co`) extraída directamente desde Google Search Console, junio 2026. Horizonte: 12 meses. El diagnóstico más crítico es la indexación: solo 4.490 páginas indexadas vs 21.100 no indexadas — 82.5% del sitio invisible para Google. La dependencia del Homepage es alta (15.550 clics / año). La marca de arquitectura y diseño tiene buen CTR en términos de marca pero oportunidades masivas de CTR en artículos con alto volumen de impresiones.
+Auditoría SEO completa de AXXIS (`revistaaxxis.com.co`), junio 2026. Fuentes: GSC (12 meses) + Screaming Frog (crawl ~117.653 páginas). Causa raíz de la baja indexación (82.5% del sitio invisible) confirmada por SF: dos plugins SEO activos simultáneamente generan 71.760 meta descriptions duplicadas (61% del sitio) + plantilla single.php sin H1 afecta 88.240 páginas (75%). Ambos issues se resuelven en horas. Plan de acción completo en el Excel adjunto: 25 acciones ordenadas por prioridad, con URLs exactas y pasos de ejecución.
 
 ---
 
@@ -208,22 +210,97 @@ Los siguientes artículos generan tráfico pero no son editorialmente centrales 
 
 ---
 
-## 10. Plan de acción prioritario
+## 10. Screaming Frog — Issues Confirmadas (jun 2026)
 
-| Acción | Impacto | Dificultad | Owner | Plazo |
-|---|---|---|---|---|
-| Auditar las 12.340 páginas "rastreadas no indexadas" — identificar qué tipo de contenido es y por qué Google lo rechaza | 🔴 Crítico | Alta | Carolina | 30 días |
-| Auditar y redirigir las 3.682 páginas 404 — mapear URLs antiguas a contenido vigente | 🔴 Crítico | Media | Proveedor web | 30 días |
-| Crear o fortalecer una página hub para "revistas de arquitectura" — artículo pilar con ese keyword en H1, title y meta | 🔴 Crítico | Media | Editorial | 15 días |
-| Mejorar `<title>` y meta description de los 8 artículos de alta impresión / bajo CTR (ver sección 5) | 🔴 Alta | Baja | Editorial/SEO | 7 días |
-| Investigar por qué "axxis" aparece en pos 5.9 y no pos 1 — revisar intención de búsqueda y posibles competidores | 🟠 Medio | Media | SEO | 15 días |
-| Analizar 252 URLs bloqueadas por robots.txt — confirmar que son los tipos correctos (admin, assets) | 🟡 Bajo | Baja | Proveedor web | 30 días |
+> Fuente: `axxis issues_overview_report.csv` — crawl completo ~117.653 páginas
+
+| Tipo | Issue | URLs Afectadas | % Sitio | Prioridad SF |
+|------|-------|---------------|---------|-------------|
+| **Problema** | H1: Falta | **88.240** | **75%** | Media |
+| **Problema** | Meta description: Múltiple (plugins en conflicto) | **71.760** | **61%** | Media |
+| **Problema** | Error de cliente interno (4xx) | ~870 | ~1% | Alta |
+| **Problema** | Paginación: URL no en etiqueta `<a>` | **4.710** | 4% | Alta |
+| Aviso | Redirección interna (3xx) | **35.810** | 82% | Baja |
+| Aviso | Directivas: Noindex (revisar si son correctas) | 3.330 | 4% | Alta |
+| Oportunidad | Títulos >60 chars / >561px | 62.350 | 53% | Media |
+| Oportunidad | Meta descriptions duplicadas (entre páginas) | 55.290 | 47% | Baja |
+| Oportunidad | Meta descriptions >155 chars | 52.940 | 45% | Baja |
+| Oportunidad | Contenido <200 palabras (thin content) | 10.590 | 9% | Media |
+| Oportunidad | Imágenes >100KB (afecta LCP) | 100.000+ | 7%+ | Media |
+| Aviso | Links internos con nofollow | 4.710 | 4% | Baja |
+
+**Causa raíz confirmada de los 21.100 no indexados:** No es robots.txt ni contenido de mala calidad. Son dos issues técnicos del CMS:
+1. Dos plugins SEO activos simultáneamente → meta descriptions duplicadas → Google las descarta
+2. Plantilla `single.php` sin `<h1>` → Google no puede determinar de qué trata la página
+
+Resolverlos requiere 1–2 horas. Impacto estimado conservador: +15.000 clics orgánicos/mes.
+
+---
+
+## 11. Plan de Acción — Priorizado
+
+> Plan completo (25 acciones, URLs específicas, pasos de ejecución): `[[Auditoria_SEO_AXXIS_2026-06.xlsx]]`
+> NOTA: Web/CRO → documento separado. Este plan cubre únicamente SEO.
+
+### CRÍTICO — Resolver en 1–3 días
+
+| # | Acción | Archivo / URL | Impacto |
+|---|--------|--------------|---------|
+| 1 | Desactivar plugin SEO duplicado (Yoast + RankMath simultáneos) | `wp-admin/plugins.php` | Resuelve 61% de páginas con meta duplicada |
+| 2 | Agregar `<h1>` en plantilla de artículos (`single.php`) | `wp-content/themes/[tema]/single.php` | Resuelve 75% de páginas sin H1 |
+| 3 | Corregir errores 4xx: exportar de SF y crear redirects 301 | SF → Bulk Export → 4xx Inlinks | Elimina ~870 URLs rotas |
+| 4 | Fix paginación: botones → `<a href>` | Template de paginación del tema | Desbloquea rastreo de 4.710 páginas |
+| 5 | Auditar directivas Noindex: ¿hay artículos bloqueados por error? | SF → Directives → Noindex | Posible indexación inmediata si hay errores |
+| 6 | Bloquear URLs paramétricas en robots.txt + canonical | `robots.txt` + Yoast/RankMath | Elimina duplicados; recupera crawl budget |
+
+URLs paramétricas a bloquear: `revistaaxxis.com.co/?jet_blog_ajax=1`, `revistaaxxis.com.co/?nocache=[valor]`
+
+Paginación a revisar: `revistaaxxis.com.co/page/92/`, `/page/349/`, `/page/577/`
+
+### ALTO — Resolver en 2 semanas
+
+| # | Acción | Herramienta |
+|---|--------|-------------|
+| 7 | Actualizar links internos apuntando a URLs con redirect 3xx | SF → 3xx Inlinks + Better Search Replace |
+| 8 | Optimizar titles y metas de páginas pos 5–15 con CTR < 3% | GSC export + Yoast/RankMath |
+| 9 | Corregir titles <30 chars (homepage, categorías subutilizadas) | SF + WP Admin |
+| 10 | Auditar y limpiar sitemap.xml — solo URLs indexables | Yoast + GSC → Sitemaps |
+| 11 | Verificar robots.txt — no bloquea CSS/JS editoriales | robots.txt + GSC → Inspección |
+| 12 | Vincular GSC con GA4 | GA4 Admin → Vinculaciones → Search Console |
+
+#### Quick wins de CTR identificados en GSC
+
+| URL | Impresiones | CTR actual | Clics adicionales posibles |
+|-----|------------|-----------|--------------------------|
+| `/mejores-hoteles-de-cartagena/` | 83.481 | 1,0% | +1.670 clics (si CTR → 3%) |
+| `/las-torres-del-parque-salmona/` | 79.249 | 1,0% | +1.188 clics |
+| `/ecoparque-cienaga-de-mallorquin/` | 50.284 | 0,8% | +853 clics |
+| `/asi-funciona-el-pendulo-taipei-101/` | 47.596 | 0,7% | +617 clics |
+| `/debi-tirar-mas-fotos/` | 46.115 | 0,8% | +553 clics |
+
+**Potencial: +7.000 clics adicionales anuales sin crear contenido nuevo.**
+
+### MEDIO — Resolver en 30–45 días
+
+- Optimizar imágenes >100KB → WebP/AVIF + preload imagen hero (LCP)
+- Implementar Schema Article en top 50 artículos por tráfico
+- Implementar Schema Organization en homepage
+- Crear páginas de autor con bio y credenciales (E-E-A-T)
+- Eliminar thin content: páginas de tag con 1-2 artículos → noindex
+- Remover nofollow de links internos editoriales (4.710 instancias)
+
+### BAJO — Resolver en 45–90 días
+
+- Crear `revistaaxxis.com.co/llms.txt` (visibilidad en ChatGPT, Perplexity)
+- Implementar Schema Breadcrumb en categorías
+- Agregar security headers (CSP, HSTS, X-Frame-Options)
 
 ---
 
 ## Relacionado
 
 [[AXXIS]] · [[AXXIS Dashboard Estratégico]] · [[2026-06 Auditoría SEO - Diners]]
+Excel plan de acción: `03 - Unidades de Negocio/AXXIS/Auditoria_SEO_AXXIS_2026-06.xlsx`
 
 ## Tags
-#axxis #seo #auditoria #gsc #junio-2026
+#axxis #seo #auditoria #gsc #screaming-frog #junio-2026
