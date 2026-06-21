@@ -90,29 +90,38 @@ El billboard digital de Colchones Eldorado tiene un CTR de 0.15% con 800K impres
 
 ## Tus Acciones — Sprint 30 días (Jun 20 – Jul 20)
 
-### ACCIÓN 1 — Diagnosticar por qué 702 clics no generaron ninguna compra
-**Plazo:** Jun 25 | **Prioridad:** 🔴 Crítica (bloquea todo lo demás)
+> **Actualización jun 21, 2026:** Auditoría visual de `revistaaxxis.com.co/suscribirse-2/` realizada. Los problemas de la landing están confirmados. Las acciones 1-2 se actualizaron con los hallazgos reales.
 
-Esta acción no depende de pauta — depende de entender el flujo técnico. Necesitas responder:
+### REGLA ANTES DE EMPEZAR: no tocar presupuesto hasta que Juan David corrija la landing
 
-1. **¿El evento Purchase está configurado en Meta Events Manager?**
-   - Ir a Meta Business Manager → Events Manager → Pixel de AXXIS → Events
-   - ¿Aparece el evento "Purchase" o "Subscribe"? ¿Ha disparado alguna vez?
-   - Si no aparece: el Pixel no está midiendo conversiones → todas las compras que haya habido son invisibles para Meta
+La landing tiene 4 problemas estructurales confirmados visualmente (jun 21):
+- URL `/suscribirse-2/` (WordPress duplicó la página — Juan David debe corregirlo antes del Jun 23)
+- Sin H1 — Google y el Pixel no identifican de qué trata la página
+- Sin propuesta de valor encima de los precios — usuario llega sin contexto
+- Banner sticky muestra $181.100 — precio que no corresponde a ningún plan vigente
 
-2. **¿El evento ViewContent dispara en la landing de suscripción?**
-   - Instalar Meta Pixel Helper (extensión de Chrome) y visitar la URL de suscripción
-   - ¿El evento ViewContent aparece? Si no → no se puede hacer retargeting de visitantes
+**No activar retargeting ni LAL hasta que Juan David confirme que la URL es `/suscribirse/` y el H1 está presente.**
 
-3. **¿El dominio está verificado en Business Manager?**
-   - BM → Brand Safety → Dominios → verificar si revistaaxxis.com.co aparece verificado
-   - Sin verificación: Aggregated Event Measurement (AEM) no funciona → pérdida de datos en iOS
+---
 
-4. **¿Hay CAPI (Conversions API) activo?**
-   - Sin CAPI se pierde hasta un 40% de conversiones por la privacidad de iOS 14.5+
-   - Verificar en Events Manager si hay eventos server-side además de los de Pixel
+### ACCIÓN 1 — Verificar Pixel + CAPI en la URL correcta
+**Plazo:** Jun 25 | **Prioridad:** 🔴 Crítica (bloquea el retargeting)
 
-**Entregable:** Respuesta a las 4 preguntas anteriores en un documento de 1 página. Compartir con Carolina el Jun 25.
+> HubSpot muestra 10 suscripciones reales en mayo (vía Triario). El checkout funciona. El problema es que esas compras son invisibles para Meta — confirma que el Pixel no está disparando Purchase en el flujo de Triario.
+
+Pasos en orden:
+
+1. **Instalar Meta Pixel Helper** (extensión gratuita de Chrome) y navegar a la URL de suscripción (cuando Juan David confirme que es `/suscribirse/`)
+2. **Verificar ViewContent:** ¿aparece en la landing? Si no → el retargeting de visitantes es imposible
+3. **Verificar Purchase:** navegar hasta la confirmación de compra en Triario → ¿dispara el evento? Si no → Meta nunca supo de las 10 compras de mayo
+4. **Si Triario no acepta Pixel en su dominio:** solicitar a Triario la activación de CAPI (Conversions API) server-side — sin esto se pierde 40% de conversiones por iOS 14.5+
+5. **Verificar dominio en BM:** Business Manager → Brand Safety → Dominios → `revistaaxxis.com.co` debe aparecer como verificado (necesario para AEM en iOS)
+
+**Entregable:** Screenshot de Meta Pixel Helper mostrando los eventos que disparan (o no). Compartir con Carolina el Jun 25.
+
+---
+
+### ACCIÓN 2 — Activar retargeting de visitantes web
 
 ---
 
