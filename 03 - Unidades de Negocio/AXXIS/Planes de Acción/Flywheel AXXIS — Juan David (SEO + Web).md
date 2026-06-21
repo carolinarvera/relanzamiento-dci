@@ -154,20 +154,197 @@ Pasos:
 
 ---
 
-### ACCIÓN 3 — Auditar la landing de suscripción (flujo de conversión)
-**Plazo:** Jun 25 | **Prioridad:** 🔴 Crítica
+### ACCIÓN 3 — SEO + fix de la landing de suscripción
+**Plazo:** Jun 27 | **Prioridad:** 🔴 Crítica
+**URL auditada:** `revistaaxxis.com.co/suscribirse-2/` (jun 21, 2026)
 
-Este punto te involucra aunque no seas de "pauta". El dato es: **702 personas llegaron a la página de suscripción desde Meta Ads en mayo y cero compraron.** Pero el mismo problema aplica a los usuarios de SEO.
+> Auditoría visual realizada. Los problemas están confirmados — no son hipótesis. Ejecutar en el orden exacto listado abajo.
 
-Revisar `/suscripcion` (o la ruta que corresponda) en el sitio:
-- ¿Cuántos pasos tiene el proceso de compra?
-- ¿El formulario funciona en mobile? (83% del tráfico es mobile)
-- ¿Los precios están visibles sin necesidad de scroll?
-- ¿Hay mensaje de valor claro antes del precio?
-- ¿Hay algún error de carga o de pasarela de pago?
-- Probar el proceso completo desde un teléfono Android y uno iOS
+---
 
-**Entregable:** Lista de fricción (cada punto donde el usuario podría abandonar) + pantallazos. Compartir con Carolina el Jun 25.
+#### 3A — Corregir el URL: eliminar el `/suscribirse-2/`
+**Plazo:** Jun 23 | 30 minutos
+
+La URL actual es `/suscribirse-2/`. El `-2` significa que WordPress creó esta página cuando ya existía `/suscribirse/`. Hay dos páginas competiendo por el mismo tráfico y autoridad SEO.
+
+Pasos:
+1. WP Admin → Páginas → buscar "suscrib" → identificar si `/suscribirse/` existe
+2. Si `/suscribirse/` existe y está vacía o rota:
+   - Eliminarla → luego editar el slug de `/suscribirse-2/` a `suscribirse`
+3. Si `/suscribirse/` tiene contenido diferente:
+   - Configurar un redirect 301 desde `/suscribirse/` hacia `/suscribirse-2/` en tanto se consolida
+   - Reportar a Carolina qué contenido tiene la versión original
+4. Actualizar el botón del nav ("Suscribirse") para que apunte a la URL definitiva
+5. Verificar en GSC → Cobertura → que no aparezca la URL antigua indexada
+
+**Métrica:** Solo 1 URL de suscripción indexada. Redirect 301 confirmado en Screaming Frog.
+
+---
+
+#### 3B — Agregar H1 a la página de suscripción
+**Plazo:** Jun 23 | 15 minutos
+
+La página muestra "SUSCRIPCIÓN REVISTA AXXIS" en mayúsculas pero probablemente es un H2 o un `<div>` con CSS `text-transform: uppercase`. Sin H1 Google no entiende de qué trata la página.
+
+Pasos:
+1. Ver código fuente de `revistaaxxis.com.co/suscribirse-2/` (Cmd+U en Chrome)
+2. Buscar `<h1>` — si no aparece o aparece vacío, el problema está confirmado
+3. En WP: editar la página de suscripción → agregar un bloque de Encabezado H1 con el texto:
+   `Suscríbete a Revista AXXIS — Arquitectura, Diseño y Decoración`
+4. Si el tema usa un page builder (Elementor, Divi, etc.): buscar el widget de "Título de página" y verificar que esté marcado como H1
+5. Confirmar con View Source que `<h1>` aparece en el HTML
+
+**Métrica:** H1 presente en el HTML de la página. Visible en Screaming Frog columna "H1".
+
+---
+
+#### 3C — Reescribir el title tag y la meta description
+**Plazo:** Jun 24 | 20 minutos
+
+El title actual es probablemente auto-generado. La meta description muy probablemente está vacía o copiada de otra página (SF confirmó 61% de metas duplicadas en el sitio).
+
+En Yoast / RankMath (el plugin que quede activo después de la Acción 1):
+
+**Title tag:**
+```
+Suscríbete a Revista AXXIS | Arquitectura, Diseño y Decoración Colombia
+```
+(58 caracteres — dentro del límite de 60)
+
+**Meta description:**
+```
+Lee los mejores proyectos de arquitectura y diseño de Colombia. Planes desde $59.700. Edición digital. Cancela cuando quieras.
+```
+(127 caracteres — dentro del límite de 155)
+
+Por qué funciona: incluye la keyword principal "suscripción revista AXXIS", el precio como gancho de clic, y un argumento de objeción ("cancela cuando quieras").
+
+**Métrica:** Title y meta únicos en GSC → página deja de aparecer en el reporte de "meta descriptions duplicadas".
+
+---
+
+#### 3D — Agregar contenido de texto a la página (SEO + conversión)
+**Plazo:** Jun 27 | 1-2 horas (coordinado con Ernesto para el copy)
+
+La página tiene casi cero texto. Google ve: 3 precios, un nombre de producto, y una imagen. No hay suficiente contenido para indexar bien, y tampoco para convencer al usuario de comprar.
+
+Secciones a agregar (en ese orden en la página):
+
+**Sección 1 — Encima de los planes (propuesta de valor):**
+```
+¿Qué incluye tu suscripción?
+- Acceso digital ilimitado a todos los números de AXXIS
+- Proyectos de arquitectura y diseño colombiano e internacional
+- Contenido exclusivo para suscriptores
+- Acceso desde cualquier dispositivo
+```
+
+**Sección 2 — Debajo de los planes (preguntas frecuentes / FAQ):**
+Esto captura búsquedas de long-tail en Google.
+```
+¿La suscripción es digital o impresa?
+¿Puedo cancelar en cualquier momento?
+¿Cómo accedo al contenido después de suscribirme?
+¿En qué países está disponible?
+¿El Anuario AXXIS está incluido en todos los planes?
+```
+
+El FAQ con respuestas cortas (2-3 líneas) puede agregar 200-300 palabras de contenido relevante que Google sí indexa y que responde objeciones de compra.
+
+**Métrica:** Página de suscripción deja de aparecer en reporte de "thin content" de Screaming Frog (actualmente tiene 10.590 URLs con thin content — esta debe salir).
+
+---
+
+#### 3E — Agregar Schema.org de Producto con precios
+**Plazo:** Jun 27 | 45 minutos
+
+Google puede mostrar los precios directamente en los resultados de búsqueda si la página tiene schema de Product + Offer. Sin esto, Google no sabe que hay precios en la página.
+
+Agregar este JSON-LD en el `<head>` de la página (en WP: usar el campo de "Custom HTML" del plugin SEO o un plugin como "Schema & Structured Data"):
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Suscripción Revista AXXIS",
+  "description": "Acceso digital a la revista de arquitectura, diseño y decoración más importante de Colombia.",
+  "brand": {"@type": "Brand", "name": "Revista AXXIS"},
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Plan 3 meses",
+      "price": "59700",
+      "priceCurrency": "COP",
+      "availability": "https://schema.org/InStock"
+    },
+    {
+      "@type": "Offer",
+      "name": "Plan Anual",
+      "price": "208000",
+      "priceCurrency": "COP",
+      "availability": "https://schema.org/InStock"
+    },
+    {
+      "@type": "Offer",
+      "name": "Plan Semestral + Anuario 2026",
+      "price": "263900",
+      "priceCurrency": "COP",
+      "availability": "https://schema.org/InStock"
+    }
+  ]
+}
+```
+
+Validar en: [Rich Results Test de Google](https://search.google.com/test/rich-results)
+
+**Métrica:** Schema válido sin errores en el Rich Results Test.
+
+---
+
+#### 3F — Agregar links internos hacia la página de suscripción
+**Plazo:** Jul 7 | 1 hora
+
+Actualmente los artículos no enlazan a la página de suscripción. Google usa los links internos para entender qué páginas son importantes. La página de suscripción recibe cero link juice del contenido editorial.
+
+Acciones:
+1. Identificar los 10 artículos con más tráfico orgánico (en GSC: Rendimiento → Páginas → ordenar por Clics)
+2. En cada uno: agregar al final del artículo un párrafo o widget con CTA:
+   > "¿Te gustó este proyecto? Como suscriptor AXXIS tienes acceso a todos los números digitales. [Suscríbete aquí →](https://revistaaxxis.com.co/suscribirse/)"
+3. Verificar que el link use el texto ancla "suscripción AXXIS" o "suscríbete a AXXIS" (no "haz clic aquí")
+4. Si el tema tiene sidebar: agregar widget de suscripción en artículos de arquitectura y diseño
+
+**Métrica:** La página de suscripción aparece con al menos 10 links internos en Screaming Frog (columna "Inlinks").
+
+---
+
+#### 3G — Corregir el banner de $181.100 en el footer
+**Plazo:** Jun 23 | 15 minutos
+
+Hay un banner sticky en la parte inferior de la pantalla que muestra **$181.100** — un precio que no corresponde a ninguno de los 3 planes actuales ($59.700 / $208.000 / $263.900). Esto genera confusión y desconfianza.
+
+Pasos:
+1. Identificar qué elemento HTML o plugin genera ese banner (clic derecho → Inspeccionar en Chrome)
+2. Si es un plugin de "sticky bar" o "popup": actualizar el precio o desactivar el banner
+3. Si es un widget del tema: actualizar desde Apariencia → Widgets o Personalizar
+4. Verificar en mobile (83% del tráfico es mobile) que el banner no tape el botón de compra
+
+**Métrica:** El precio mostrado en el banner coincide con uno de los planes vigentes.
+
+---
+
+**Resumen de la Acción 3 — entregables y fechas:**
+
+| Sub-acción | Qué hacer | Plazo | Tiempo estimado |
+|-----------|-----------|-------|----------------|
+| 3A | Corregir URL (`/suscribirse-2/` → `/suscribirse/`) | Jun 23 | 30 min |
+| 3B | Agregar H1 a la página | Jun 23 | 15 min |
+| 3G | Corregir precio $181.100 en banner | Jun 23 | 15 min |
+| 3C | Reescribir title tag y meta description | Jun 24 | 20 min |
+| 3D | Agregar copy de valor + FAQ | Jun 27 | 1-2 h |
+| 3E | Schema.org Product + Offer | Jun 27 | 45 min |
+| 3F | Links internos desde artículos top | Jul 7 | 1 h |
+
+**Entregable final:** captura de pantalla de la página con el H1 visible + Rich Results Test con schema válido + Screaming Frog mostrando 1 sola URL de suscripción indexada. Compartir con Carolina el Jun 27.
 
 ---
 
