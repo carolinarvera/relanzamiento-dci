@@ -72,19 +72,9 @@ FLYWHEEL AXXIS
 
 **Solución no es bajar el presupuesto — es abrir nuevas audiencias** (retargeting + lookalike).
 
-### Estado de anunciantes activos (pauta de terceros — junio 2026)
+### Nota: campañas de clientes — fuera del scope de este documento
 
-| Anunciante | Formato | Revenue mensual | Renovación jul |
-|-----------|---------|----------------|---------------|
-| COLCHONES ELDORADO | Billboard Digital (800K impresiones) | $3.500.000 COP | Por confirmar |
-| AMARILO | Video AXXIS Shorts | $3.200.000 COP | Por confirmar |
-| PIANETA LEGNO | Video Tour AXXIS | $6.350.400 COP | Por confirmar |
-| ACESCO | Patrocinio Evento Medellín | $12.000.000 COP | Por confirmar |
-| CORONA | Contenido web + nota Habitart | $8.000.000 COP | Por confirmar |
-| **TOTAL** | | **~$33.050.400 COP** | |
-
-**Datos técnicos del formato más rentable:**
-El billboard digital de Colchones Eldorado tiene un CTR de 0.15% con 800K impresiones contratadas. Ese número es el argumento de venta más poderoso que tienes: **0.15% de CTR en billboard es la mejor posición disponible en el sitio.** Úsalo en propuestas a nuevos anunciantes.
+Este plan cubre exclusivamente la **pauta propia de la revista** (presupuesto de AXXIS/Gamma para conseguir suscriptores). Las campañas que los anunciantes contratan y AXXIS ejecuta con su propio presupuesto (ACESCO, CORONA, Amarilo, Pianeta Legno, Colchones Eldorado, etc.) son **ingresos comerciales** — se gestionan en un documento separado y sus métricas no deben mezclarse con las de la pauta de suscripción.
 
 ---
 
@@ -181,72 +171,18 @@ CPC subiendo 3 meses = señal clásica de fatiga creativa. El mismo creativo se 
 
 ---
 
-### ACCIÓN 5 — Confirmar renovaciones de anunciantes para julio y crear reporte mensual
-**Plazo:** Jun 27 | **Prioridad:** 🟠 Alta
-
-Los 5 anunciantes activos tienen pauta que vence en junio 2026. La renovación no es automática.
-
-**Para cada anunciante (Colchones Eldorado, Amarilo, Pianeta Legno, Acesco, Corona):**
-1. Confirmar si la pauta continúa en julio o no
-2. Preparar un reporte de resultados de junio — 1 página por anunciante con:
-   - Impresiones entregadas vs contratadas
-   - CTR logrado vs benchmark
-   - Alcance de la campaña
-   - Comparativo vs promedio del sector
-3. En la conversación de renovación, mostrar el reporte como argumento — no pedir renovación "en base a la relación", sino en base a resultados medibles
-
-**Template de reporte (1 página):**
-```
-COLCHONES ELDORADO — Resultados junio 2026
-Billboard Digital revistaaxxis.com.co
-
-Impresiones:     800.000 (100% del contrato)
-CTR:             0.15% (benchmark sector: 0.10%)
-Alcance:         [Dato de Analytics]
-Audiencia:       Arquitectos y diseñadores, 25-54 años
-                 74% mujeres · 83% mobile · Bogotá 27%
-
-→ Resultado: 0.15% CTR = 50% por encima del benchmark
-→ Recomendación: renovar con 1.000.000 impresiones en julio
-```
-
----
-
-## Tus Acciones — Sprint 60–90 días (Jul 20 – Sep 20)
-
-| Acción | Plazo | Métrica |
-|--------|-------|---------|
-| Prospectar 5 anunciantes nuevos — categoría materiales/acabados | Ago 15 | 2 cierres nuevos |
-| Activar Google Ads SEM para "suscripción revista arquitectura colombia" | Jul 31 | CPL SEM < $15.000 COP |
-| Crear propuesta de bundles (impreso + digital + redes) | Jul 15 | 3 propuestas enviadas |
-| Medir ROAS por canal (SEO vs Paid Social vs Email) con GA4 | Ago 1 | Dashboard de atribución |
-| Evaluar LinkedIn Ads para pauta B2B (anunciantes del sector) | Ago 31 | Recomendación documentada |
-
----
-
-### Propuesta de bundles — estructura (para preparar en las próximas 2 semanas)
-
-| Bundle | Incluye | Precio referencia |
-|--------|---------|-----------------|
-| **Básico** | 1 página interior impresa + banner web 1 mes (200K impresiones) | Desde $8M COP |
-| **Estándar** | Doble página impresa + billboard 1 mes (800K imp.) + 2 posts en IG Stories | Desde $18M COP |
-| **Premium** | Contraportada + billboard 3 meses + tour en video AXXIS + nota editorial + 4 Reels en IG | Desde $40M COP |
-
-Argumento de venta del bundle: el anunciante compra una audiencia, no un formato. Arquitectos, diseñadores y constructores con poder de decisión de compra en materiales, acabados, muebles, equipos. Mostrar el perfil demográfico (74% mujeres, 35-44 años mayoritarios, Bogotá) como el segmento exacto que necesitan impactar.
-
----
-
 ## KPIs que reportas mensualmente
+> Solo métricas de pauta propia de suscripción — las campañas de clientes van en reporte comercial separado.
 
 | KPI | Baseline (mayo 2026) | Meta jul | Meta sep |
 |-----|---------------------|---------|---------|
-| CPC Meta Ads | $108 COP | <$90 | <$75 |
+| CPC Meta Ads (pauta propia) | $108 COP | <$90 | <$75 |
 | Conversiones suscripción/mes | 0 | ≥10 | ≥25 |
 | CPL suscripción | ∞ | <$15.000 COP | <$10.000 COP |
-| Frecuencia Meta | 2.2 | <2.0 | <1.8 |
-| Anunciantes activos | 5 | 6 | 8 |
-| Revenue digital pauta/mes | ~$33M COP | Confirmar renovaciones | +2 cuentas nuevas |
+| Frecuencia Meta prospecting | 2.2 | <2.0 | <1.8 |
 | ROAS campaña suscripción | 0 | >1.0 | >3.0 |
+| Pixel activo en landing | No | Sí | Sí |
+| CAPI configurado (Triario) | No | Sí | Sí |
 
 ---
 
@@ -256,7 +192,7 @@ Argumento de venta del bundle: el anunciante compra una audiencia, no un formato
 |-----------------|---------------------|------------------------|
 | Activas retargeting con evento ViewContent | Optimizar la landing para esa audiencia caliente | Crear contenido de IG específico para quienes visitaron la landing |
 | Creas LAL de suscriptores | — | Usar el perfil del LAL para entender qué tipo de persona es suscriptor y hacer contenido dirigido a ellos |
-| Produces reportes de anunciantes con métricas | — | Usar el perfil de audiencia del reporte en propuestas a nuevos anunciantes |
+| Logras datos de conversión atribuibles | — | Entender qué perfil de seguidor termina comprando |
 | Logras primeras conversiones | Juan David tiene datos de qué artículos SEO convierten mejor | Paola sabe qué contenido de IG lleva a gente que compra |
 
 ---
