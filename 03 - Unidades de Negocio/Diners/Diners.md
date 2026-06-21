@@ -886,64 +886,114 @@ Tendencia: arranque lento en enero → rampa hasta pico en semana del 30 de marz
 ---
 
 ## Next Steps — Backlog de Crecimiento (Hub Central)
-> Fuente: Dashboard Diners_Tabs_2026-06, tab Next Steps (as of 2026-06-16). Toda conclusión estratégica de los demás tabs aterriza aquí.
+> Actualizado 2026-06-20. Consolida: CRO audit + SEO audit (GSC/CWV) + Google Ads audit + Pauta Fase 1 + RRSS audit + Newsletter HubSpot + análisis datos reales HubSpot (jun 14 y jun 19). Toda conclusión estratégica aterriza aquí.
 
-### 🔴 P0 — Esta semana (bloqueantes técnicos + SEO quick wins de mayor ROI)
-| # | Acción | Owner | Plazo | Fuente |
-|---|--------|-------|-------|--------|
-| 0A | Redirect 301: `/suscripciones/` → URL canónica (`/suscripciones-revista-diners/`) | Tech | Jun 20 | CRO audit |
-| 0B | Configurar conversion tracking en Google Ads (goal: purchase suscripción) | Tech + Growth | Jun 21 | Google Ads audit — sin esto Google optimiza para clics, no ventas |
-| 0C | Unificar 2 URLs de suscripciones en 1 con los 3 planes | Tech | Jun 23 | CRO audit |
-| 0D | Reescribir title + meta de "Canciones indirectas" | Ernesto | Jun 21 | GSC: 95K imp · 0.7% CTR → +4K clics/trimestre solo con este cambio |
-| 0E | Revisar y reescribir title + meta de "Santorini colombiano" | Ernesto | Jun 22 | GSC: 29K imp · 0.17% CTR a pos 4.3 — intent mismatch probable |
-| 0F | Actualizar meta Homepage: mencionar "Revista Diners" explícito en title | Tech/Editorial | Jun 21 | Brand keyword "diners" en pos 4.7 — probablemente perdiendo vs Diners Club tarjeta |
-| 0G | Bloquear `?jet_blog_ajax=1` y `?nocache=` en robots.txt + canonical a URL limpia | Tech | Jun 21 | Coverage: URLs paramétricas indexadas = contenido duplicado + crawl budget perdido |
-| 0H | Añadir `noindex` a todas las URLs `/uncategorized/` | Tech | Jun 22 | Coverage: 6+ páginas sin categoría editorial en el índice de Google |
-| 0I | Verificar/añadir `noindex` a paginación profunda (> page/2) vía Yoast/RankMath | Tech | Jun 23 | Coverage: /page/92/, /page/349/, /page/577/ indexadas sin noindex |
-| 0J | Exportar lista de 404s de GSC y crear redirecciones 301 masivas | Tech | Jun 28 | Coverage: 48,959 errores 404 drenan crawl budget — mayor fix técnico pendiente |
-| 0K | Optimizar LCP desktop: imágenes hero → WebP/AVIF + preload above-the-fold + lazy loading | Tech | Jun 28 | CWV: 99%+ páginas con LCP >2.5s (escritorio) — penalización de ranking activa |
+**Responsables:**
+- **Juan David** — WordPress técnico: redirects, plugins, pixel, checkout, formularios, código
+- **Paola Gordillo** — HubSpot: email, listas, workflows, templates · RRSS Diners (ejecutora)
+- **Simon Granja** — Copy y contenido editorial: titles, metas, textos, briefs · NO implementación técnica
+- **Sebastián Díaz** — Meta Ads + Google Ads
+- **Carolina** — Decisiones estratégicas, accesos, aprobaciones
 
-### 🔴 P1 — Semana 1-2 (máx 28 jun 2026)
-| # | Acción | Owner | Plazo |
-|---|--------|-------|-------|
-| 1 | Solicitar acceso GA4 Diners (viewer) | Carolina | Jun 20 |
-| 2 | Solicitar acceso GSC Diners | Carolina | Jun 20 |
-| 3 | Auditar funnel Meta Ads → suscripción | Carolina | Jun 20 |
-| 4 | Crear campaña Google Ads de captación (keywords: "suscripción revista colombia", "revista diners") | Carolina + Tech | Jun 28 |
-| 5 | Definir fecha y formato Colombia Moda 2026 | Paola Nossa + Lilo | Jun 21 |
-| 6 | Convocar sesión onboarding HubSpot (newsletter) | Carolina | Jun 21 |
+---
+
+### 🔴 P0 — Esta semana (bloqueantes del funnel + newsletter urgente + SEO quick wins)
+
+| # | Acción | Owner | Plazo | Por qué es P0 |
+|---|--------|-------|-------|---------------|
+| 0A | Redirect 301: `/suscripciones/` → `/suscripciones-revista-diners/` | Juan David | Jun 20 | 6,681 visitas YTD a una página 404 = funnel muerto |
+| 0B | Arreglar checkout WooCommerce end-to-end (carrito → pago → confirmación) | Juan David | Jun 21 | 47,971 clics de pauta y 136 clics de newsletter → 0 suscripciones. Raíz de todos los canales |
+| 0C | Instalar Meta Pixel con 4 eventos: ViewContent · AddToCart · InitiateCheckout · Purchase | Juan David | Jun 22 | Sin Pixel el Track 2 de pauta (conversión) no puede optimizar bids |
+| 0D | Configurar conversion tracking en Google Ads (goal: purchase suscripción) | Juan David + Sebastián | Jun 21 | 6 meses y COP 2.1M invertidos con 0 conversiones. Google optimiza para clics porque no hay señal |
+| 0E | Unificar 2 URLs de suscripciones en 1 con los 3 planes + eliminar URL duplicada | Juan David | Jun 23 | Dos páginas con planes inconsistentes (una muestra 2, otra muestra 3) |
+| 0F | Segmentar lista newsletter en HubSpot: 4 listas (Activos · Tibios · Inactivos · Suscriptores pago) | Paola Gordillo | Jun 21 | Jun 14 → 11K activos → 55.1% OR. Jun 19 → 22K full list → 21.86% OR. Nunca más enviar al total |
+| 0G | Activar UTMs en HubSpot: Settings → Email → Tracking → UTM parameters | Paola Gordillo | Jun 21 | Revenue Attribution = COP 0 en ambos envíos. Sin UTMs el tráfico email aparece como "directo" en GA4 |
+| 0H | Reescribir title + meta de "Canciones indirectas" | Simon Granja | Jun 21 | 95K impresiones · CTR 0.7% en pos 4.4 → +4,000 clics/trimestre con solo este cambio |
+| 0I | Revisar intent y reescribir title + meta de "Santorini colombiano" | Simon Granja | Jun 22 | 29K impresiones · CTR 0.17% en pos 4.3 — el artículo no resuelve lo que busca el usuario |
+| 0J | Actualizar meta Homepage: "Revista Diners Colombia" explícito en title + H1 | Simon Granja | Jun 21 | Brand keyword "diners" en posición 4.7 — probablemente perdiendo tráfico de marca vs Diners Club |
+| 0K | Bloquear URLs paramétricas (`?jet_blog_ajax=1`, `?nocache=`) en robots.txt + canonical | Juan David | Jun 21 | URLs duplicadas indexadas = crawl budget perdido + señal de baja calidad de dominio |
+| 0L | `noindex` en todas las URLs `/uncategorized/` | Juan David | Jun 22 | 6+ páginas sin categoría editorial contaminando el índice de Google |
+| 0M | Verificar `noindex` en paginación > page/2 vía Yoast/RankMath | Juan David | Jun 23 | /page/349/, /page/577/ indexadas — Google rastreando páginas sin valor editorial |
+
+---
+
+### 🔴 P1 — Semana 1-2 (antes 28 jun 2026)
+
+| # | Acción | Owner | Plazo | Descripción |
+|---|--------|-------|-------|-------------|
+| 1 | Decidir precio plan 6 meses (actualmente $181,100 COP = $30,183/mes) | Carolina | Jun 23 | Bloqueante para diseñar tabla comparativa de la landing. El plan anual cuesta $17,900/mes (41% más barato) — si se comunica visualmente, el anual gana solo |
+| 2 | Solicitar baseline RRSS a Paola Gordillo: seguidores · engagement · alcance · top 5 posts últimos 90 días por plataforma | Carolina | Jun 21 | Sin baseline no hay punto de partida para medir el plan de contenidos |
+| 3 | Solicitar acceso GA4 Diners (viewer) | Carolina | Jun 20 | |
+| 4 | Solicitar acceso GSC Diners | Carolina | Jun 20 | |
+| 5 | Lanzar Track 1 Meta Ads — Consideración ($520K COP/sem · audiencias frías · contenido editorial) | Sebastián Díaz | Jun 28 | Depende de: Pixel instalado (0C) |
+| 6 | Lanzar Track 2 Meta Ads — Conversión ($780K COP/sem · audiencia caliente · CTA suscripción) | Sebastián Díaz | Jun 28 | Depende de: checkout reparado (0B) + Pixel instalado (0C) |
+| 7 | Crear campaña Google Ads de captación (keywords: "suscripción revista colombia", "revista diners colombia") | Sebastián Díaz | Jun 28 | Canal más rentable por sesión ($1.50 COP) sin campaña propia activa |
+| 8 | Exportar lista de 404s de GSC y crear redirecciones 301 masivas | Juan David | Jun 28 | 48,959 errores 404 drenan crawl budget — mayor fix técnico pendiente |
+| 9 | Optimizar LCP: imágenes hero → WebP/AVIF + preload above-the-fold + lazy loading | Juan David | Jun 28 | 99%+ páginas con LCP >2.5s en desktop = penalización de ranking activa |
+
+---
 
 ### 🟠 P2 — Semana 2-4 (antes 15 jul 2026)
-| # | Acción | Owner | Plazo |
-|---|--------|-------|-------|
-| 7 | Crear cuenta TikTok Diners + 3 videos piloto con Ernesto Rodríguez | Paola Nossa + Ernesto | Jul 7 |
-| 8 | Diseñar template "La Mesa de Diners" en HubSpot | Paola Nossa + Growth | Jul 7 |
-| 9 | Captar primeros 500 suscriptores newsletter | Carolina | Jul 15 |
-| 10 | Instalar Hotjar/MS Clarity en diners.com.co | Tech + Growth | Jul 7 |
-| 11 | Plan SEO básico: 10 artículos optimizados Q3 | Ernesto + Growth | Jul 15 |
-| 12 | Definir MVP Carnet Digital + fecha de lanzamiento | Carolina + Tech | Jul 15 |
-| 13 | Identificar 5 nuevos prospectos anunciantes digitales H2 | Lilo + Natalia + Clara | Jul 15 |
-| 14 | Cerrar 2+ sponsors Colombia Moda (paquete digital) | Paola Nossa + Lilo | Jul 15 |
+
+| # | Acción | Owner | Plazo | Descripción |
+|---|--------|-------|-------|-------------|
+| 10 | Rediseñar copy landing suscripciones: tabla comparativa precio/mes · propuesta de valor · social proof · FAQ | Simon Granja (copy) + Juan David (implementar) | Jul 7 | CVR actual ~0%. Objetivo: 2%+. Simon escribe, Juan David sube a WordPress |
+| 11 | Crear propiedad personalizada `suscriptor_activo` en HubSpot + conectar con WooCommerce via Zapier/Make | Juan David | Jul 7 | Permite segmentar suscriptores de pago y excluirlos de campañas de conversión |
+| 12 | Crear workflow Bienvenida (3 emails): inmediato · día 3 · día 7 | Paola Gordillo | Jul 7 | Todo suscriptor nuevo debe recibir secuencia de onboarding |
+| 13 | Crear workflow Conversión (3 emails): para lista Tibios con CTA suscripción | Paola Gordillo | Jul 10 | Lanzar solo después que checkout esté reparado (0B) |
+| 14 | Template newsletter estándar + pop-up exit-intent en el sitio | Paola Gordillo + Juan David | Jul 7 | Estandariza look del newsletter y activa captación pasiva de leads |
+| 15 | Actualizar perfiles RRSS críticos: Instagram Highlights · TikTok cuenta empresa · Pinterest business + tableros + Rich Pins | Paola Gordillo | Jul 7 | Frutos bajos del audit de perfiles — todos ejecutables sin agencia ni presupuesto |
+| 16 | Linkear artículos del Cluster Gastronomía entre sí (termales + restaurantes + karts + mini golf + cerámica) | Simon Granja | Jul 10 | Internal links consolidando el cluster de mayor tráfico orgánico — sin escribir contenido nuevo |
+| 17 | Actualizar "10 series colombianas" a 2026 + linkear desde "series más largas del mundo" | Simon Granja | Jul 10 | 78K impresiones · pos 6.85 · CTR 1.26% → arreglable con actualización + link interno |
+| 18 | Instalar Hotjar o MS Clarity para mapas de calor del funnel de suscripción | Juan David | Jul 7 | Sin datos de comportamiento post-clic no se puede optimizar la conversión |
+| 19 | Crear `/llms.txt` en la raíz del dominio con estructura editorial y URLs canónicas principales | Juan David | Jul 7 | Diners ya aparece en ChatGPT/Perplexity (62 sesiones YTD via "AI Assistant"). llms.txt ayuda a los crawlers de IA a indexar correctamente el contenido |
+| 20 | Añadir Schema `Organization` + `Logo` + `Article` con authorship (autor, fecha, experto citado) en top 10 artículos orgánicos | Juan David | Jul 10 | Sin schema de entidad, Google AI Overviews y ChatGPT no pueden atribuir el contenido a Diners como fuente autoritativa |
+| 21 | Para los 3 artículos de mayor CTR orgánico: agregar bloque de respuesta directa ("En resumen...") al inicio de cada artículo | Simon Granja | Jul 10 | Los AI Overviews de Google privilegian contenido con respuesta explícita en los primeros 100 palabras — aumenta citabilidad sin cambiar el artículo |
+| 22 | Definir MVP Carnet Digital + fecha de lanzamiento | Carolina | Jul 15 | Diferenciador clave — beneficio que justifica precio premium de suscripción |
+| 23 | Identificar 5 nuevos prospectos anunciantes digitales H2 | Lilo + Natalia + Clara | Jul 15 | Pipeline digital = 0 clientes propios activos |
+| 24 | Definir fecha y formato Colombia Moda 2026 + cerrar 2+ sponsors paquete digital | Paola Nossa + Lilo | Jul 15 | |
+
+---
 
 ### 🟡 P3 — Q3 2026 (Ago-Sep)
-| # | Acción | Owner | Plazo |
-|---|--------|-------|-------|
-| 15 | Lanzar podcast "La Mesa de Diners" (episodio piloto) | Paola Pantaleon + Ernesto | Ago 2026 |
-| 16 | Lanzar canal YouTube Diners | Paola Nossa + Ernesto | Sep 2026 |
-| 17 | Primer envío masivo newsletter con sponsor | Growth + Lilo | Ago 2026 |
-| 18 | Lanzamiento Carnet Digital (MVP público) | Carolina + Tech + Paola Nossa | Sep 2026 |
-| 19 | Bazar Diners Q4 — definir fecha y formato | Paola Nossa + Pantaleon | Sep 2026 |
-| 20 | ~~Evaluar Google Ads SEM~~ ✅ Auditado 2026-06-17 — ver sección Google Ads en este doc | Carolina | Jun 2026 |
+
+| # | Acción | Owner | Plazo | Descripción |
+|---|--------|-------|-------|-------------|
+| 22 | Primer envío newsletter segmentado (lista activos ~11K) con CTA suscripción + sponsor | Paola Gordillo | Ago 2026 | Solo después que checkout esté reparado y UTMs activos |
+| 23 | Crear hub page "Planes de fin de semana en Bogotá" (página pilar del cluster) | Simon Granja (copy) + Juan David (implementar) | Ago 2026 | Ancla el cluster de mayor tráfico orgánico del sitio |
+| 24 | Lanzar podcast "La Mesa de Diners" (episodio piloto) | Paola Pantaleon + Ernesto | Ago 2026 | |
+| 25 | Lanzar cuenta TikTok Diners + 3 videos piloto con Ernesto Rodríguez | Paola Nossa + Ernesto | Ago 2026 | |
+| 26 | Añadir hreflang `es-ES` en artículos de cultura general | Juan David | Ago 2026 | España = 3er país por clics pero posición 14.71 — TLD .co interpretado como Colombia-only |
+| 27 | Lanzar canal YouTube Diners | Paola Nossa + Ernesto | Sep 2026 | |
+| 28 | Lanzamiento Carnet Digital (MVP público) | Carolina + Juan David + Paola Nossa | Sep 2026 | |
+| 29 | Bazar Diners Q4 — definir fecha y formato | Paola Nossa + Pantaleon | Sep 2026 | |
+
+---
+
+### Completados ✅
+
+| Entregable | Fecha |
+|-----------|-------|
+| Auditoría funnel Meta Ads → suscripción | Jun 2026 |
+| Auditoría Google Ads YTD (14 CSVs exportados) | Jun 17, 2026 |
+| Auditoría GSC: cobertura + CWV desktop | Jun 19, 2026 |
+| Auditoría CRO página suscripciones | Jun 17, 2026 |
+| Estrategia SEO 90 días (3 sprints) | Jun 20, 2026 |
+| Pauta Fase 1 — plan completo (`Diners_05_PautaDigital_2026-06.xlsx`) | Jun 20, 2026 |
+| Auditoría RRSS + plan de contenidos E-E-A-T (`Diners_RRSS_2026-06.xlsx`) | Jun 20, 2026 |
+| Estrategia Newsletter HubSpot + análisis datos reales (`Diners_Newsletter_2026-06.xlsx`) | Jun 20, 2026 |
+
+---
 
 ### Modelo Predictivo — ¿Qué Pasa Si No Actuamos? (Jun-Dic 2026)
 
 | Escenario | Predicción |
 |-----------|-----------|
-| **A — Sin cambios** | Revenue anual cierra ~$240-260M (gap $70-90M sin resolver). Tráfico baja a 120K pág/mes Q4 (↓55% vs 2025). 0 suscripciones digitales nuevas. Dependencia de KEVINS aumenta. Ningún canal nuevo lanzado. |
-| **B — Con P1+P2** | Revenue $290-310M (gap $20-40M, recuperable). TikTok + Newsletter → 5K suscriptores, ROAS newsletter >4x. Tráfico se estabiliza en 200K pág/mes Q4. Carnet Digital lanzado (1K carnets). 5+ nuevos anunciantes digitales vs 1 actual (Rolex). |
-| **C — Ejecución perfecta** | Revenue $329M = 100% ppto, gap Davivienda compensado. Newsletter: 10K suscriptores, $4M COP/mes directo. TikTok: 50K+ followers. Podcast: 3K listens/episodio con sponsors. Carnet Digital: 5K carnets activos. |
+| **A — Sin cambios** | Revenue anual cierra ~$240-260M (gap $70-90M sin resolver). Tráfico baja a 120K pág/mes Q4. 0 suscripciones digitales nuevas. Dependencia de KEVINS aumenta. Ningún canal nuevo lanzado. |
+| **B — Con P0+P1+P2** | Revenue $290-310M (gap $20-40M, recuperable). Newsletter: 5K suscriptores activos, ROAS >4x. TikTok lanzado. Tráfico orgánico +50% vs base. Carnet Digital en MVP. 5+ nuevos anunciantes digitales. |
+| **C — Ejecución perfecta** | Revenue $329M = 100% ppto. Newsletter: 10K suscriptores, $4M COP/mes. TikTok: 50K+ followers. Podcast: 3K listens/episodio con sponsors. Carnet Digital: 5K carnets activos. |
 
-**Diagnóstico sin humo (junio 2026):** Diners es una marca premium con un modelo de negocio frágil. Los ingresos de junio (+147% del objetivo mensual) ocultan un gap anual del 51% y una dependencia absurda en KEVINS JOYEROS (46% del ppto). El digital no existe como canal de ingresos. La buena noticia: Diners tiene el activo editorial más valioso del portafolio Gamma (Ernesto Rodríguez, 60+ años de marca, audiencia premium) para construir un ecosistema digital — el problema no es el activo, es que nadie lo está convirtiendo en canal digital todavía.
+**Diagnóstico (jun 2026):** La raíz de todos los problemas digitales de Diners es una sola: el funnel de conversión está roto. La misma falla — checkout 404, sin Pixel, sin tracking — explica los 47,971 clics de pauta sin conversiones, los 0 pedidos en el newsletter con 55% de open rate, y los COP 0 en Google Ads con 6 meses de inversión. Arreglar el funnel (0A-0E, todos de Juan David) desbloquea simultáneamente pauta, newsletter y SEO. Todo lo demás es optimización sobre una base que ya funciona.
 
 ---
 
