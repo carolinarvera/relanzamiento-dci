@@ -185,6 +185,85 @@ Serie de 10 cápsulas mensuales de video (40s-1:30min) narrando la historia, hit
 
 ---
 
+## 10. Auditoría Comercial — Diagnóstico Sales Enablement (2026-06-21)
+
+> Análisis completo del kit (33 páginas) realizado por Carolina Ramirez — insumo para sesión de marketing con Paola Nossa.
+
+### Lo que el kit tiene bien
+
+- **Portfolio sin huecos de funnel.** Desde cintillo/portada falsa (awareness) hasta AXXIS Invita y cubrimiento (relacionamiento real). Un cliente puede entrar por cualquier presupuesto.
+- **Newsletter como activo diferenciador.** 47k contactos con 25% de apertura es el número más potente del kit y el que más diferencia a AXXIS de competidores digitales. Aparece bien en el slide de contenido web pero no se destaca suficientemente en el resto.
+- **Paquetes de video con 8 salidas.** Tour AXXIS (video + nota web + newsletter + historias + Facebook) es fácil de vender porque el cliente ve alcance agregado, no formato aislado.
+- **Formatos con personaje son el producto premium correcto.** $9.5M-$10.5M justificados — es el único formato donde AXXIS pone su red de influencia al servicio del cliente.
+- **AXXIS Invita y Cubrimiento.** Formatos de alto valor para marcas que buscan relacionamiento real con la comunidad arquitectura/diseño.
+- **"En la historia de..."** Caso Mazda con 15.500 views en reel. Único formato de brand building de largo plazo.
+- **Diseño visual sólido.** Coherente, fotografías de calidad, identidad consistente.
+
+### Gaps que frenan ventas
+
+**1. Precios ausentes en todos los formatos impresos especiales (CRÍTICO)**
+Portada falsa, cintillo, postal, página dura, gatefolds y cuadernillo no tienen precio visible — solo "TARIFAS SUJETAS A COTIZACIÓN". Un cliente que evalúa presupuesto no puede avanzar sin llamar. Alarga el ciclo innecesariamente.
+*Acción: agregar rangos o tarifario unificado al final del kit.*
+
+**2. El placeholder de la ejecutiva comercial no fue completado**
+La página de contacto dice literalmente "(Nombre del ejecutivo)". Error de producción que daña credibilidad en el primer punto de contacto.
+*Acción: completar nombre antes del próximo envío.*
+
+**3. Cero paquetes prearmados**
+El kit lista 15+ formatos como menú. El cliente tiene que armar su propia combinación. Resultado: propuestas hechas desde cero en cada caso, sin oferta ancla.
+*Acción: crear 3 bundles con precio único — Starter (~$8M), Growth (~$15M), Premium (~$25M+).*
+
+**4. Sin caso de éxito completo con ROI**
+Mazda aparece con 15.500 views pero sin cifras de negocio (tráfico, leads, ventas). Para clientes de construcción/materiales que justifican inversión ante un CMO, esto es lo que cierra.
+*Acción: desarrollar 1 caso completo con métricas de entrada y salida.*
+
+**5. Engagement de redes ausente**
+154k IG, 157k FB — pero sin tasa de engagement ni alcance promedio de post propio. Los media buyers de clientes grandes ya aprendieron a preguntar por esto.
+*Acción: agregar engagement promedio (%) e impresiones reales de posts propios.*
+
+**6. "AXXIS En la historia de..." sin precio**
+Es probablemente el formato de mayor ticket (10 cápsulas = contrato largo). No tiene precio visible.
+*Acción: definir y publicar el precio en el kit.*
+
+**7. Podcast sin métricas de audiencia**
+El slide no incluye oyentes actuales en Spotify. Sin ese número, el precio de $5.5M/episodio es difícil de defender solo con distribución en redes propias.
+*Acción: incluir oyentes/escuchas por episodio (si el podcast ya tiene historial).*
+
+**8. Fuente de datos digitales no especificada**
+"248k usuarios únicos promedio" no indica GA4 ni período de medición. Un media buyer lo preguntará.
+*Acción: agregar "(Fuente: GA4, promedio ene-dic 2025)" o el período real.*
+
+**9. Circulación impresa sin número certificado**
+"Solo suscriptores" y "circulación total" aparecen como descriptores pero no hay tiraje total visible.
+*Acción: agregar tiraje actual (estimado 5.000-7.000 según Sesión 2) con aclaración de metodología.*
+
+**10. Sin slide "¿por qué AXXIS?"**
+El kit asume que el cliente ya decidió pautar aquí. En realidad AXXIS compite contra Google Ads, Meta y presupuesto cero. Falta un slide de cierre de decisión antes de llegar a formatos.
+*Acción: agregar 1 slide de diferenciadores con comparativo simple.*
+
+### Prioridades por impacto en revenue
+
+| Acción | Impacto | Esfuerzo |
+|--------|---------|----------|
+| Completar nombre ejecutiva en contacto | Elimina error que daña credibilidad | 5 min |
+| Agregar rangos de precio a formatos impresos especiales | Elimina fricción en ciclo de venta | 1 hora |
+| Crear 3 paquetes ancla con precio | Facilita primer ticket y conversación | 2-3 horas |
+| Desarrollar 1 caso de éxito completo con ROI | Cierra objeción de inversión | 1 semana |
+| Agregar engagement promedio de redes | Defensivo ante media buyers | 30 min |
+| Publicar precio "En la historia de..." | Activa venta de formato de mayor ticket | 1 hora |
+
+### Qué formato ofrecer según segmento del CRM
+
+| Segmento | Formato ancla recomendado | Ticket aprox. |
+|----------|--------------------------|---------------|
+| Construcción / materiales (Acesco, Corona, Amarilo) | Tour AXXIS o Cubrimiento | $6.4M-$12.3M |
+| Diseño de interiores / mueblería / iluminación | Content web + Newsletter | $5.3M-$6.1M |
+| Real estate / constructoras premium | AXXIS Invita | $14.5M |
+| Aerolíneas / retail de lujo | Página impresa + display web | $3M-$6M |
+| Marcas con historia (aniversarios, hitos) | AXXIS En la historia de... | Por definir |
+
+---
+
 ## Relacionado
 
 [[AXXIS]] · [[Diners]] · [[Paola Nossa]] · [[Cronograma de Eventos y Marketing 2026]] · [[2026-06-16 Presentación Actividades de Marketing Sesión 2]] · [[Ayudaventas — Formato Comercial por Edición]]
@@ -192,3 +271,4 @@ Serie de 10 cápsulas mensuales de video (40s-1:30min) narrando la historia, hit
 ---
 
 *Generado por Claude — 2026-06-16, a partir de "Media kit 2026 AXXIS_V1.pptx" compartido por Carolina Ramirez.*
+*Auditoría comercial añadida por Claude — 2026-06-21, revisión completa del kit (33 páginas).*
