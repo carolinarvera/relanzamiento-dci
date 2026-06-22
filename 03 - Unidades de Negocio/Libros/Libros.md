@@ -52,8 +52,10 @@ Ediciones Gamma es la unidad editorial de **gran formato y lujo (*Coffee Table B
 ## ⚙️ Procesos Clave de la Operación Comercial
 
 ### 1. Captación B2B y Proyectos Corporativos
-* **Caza de Aniversarios:** Identificación proactiva de empresas de gran tamaño próximas a cumplir aniversarios significativos (ej. alianza estructurada con la financiera *PEI* por sus 20 años).
-* **Financiación a la Medida:** Venta de proyectos editoriales financiados o patrocinados por el cliente corporativo para distribución interna, branding de lujo o regalos institucionales premium.
+Estrategia dedicada: [[Estrategia-Libros-Conmemorativos-2026]]
+
+* **Caza de Aniversarios:** Identificación proactiva de empresas de gran tamaño próximas a cumplir aniversarios significativos (ej. alianza estructurada con la financiera *PEI* por sus 20 años). Prioridad: Grupo Bolívar, sector financiero, constructoras, universidades.
+* **Financiación a la Medida:** Venta de proyectos editoriales financiados o patrocinados por el cliente corporativo para distribución interna, branding de lujo o regalos institucionales premium. Ticket: $80M–$300M COP por proyecto.
 
 ### 2. Canales de Distribución y Comercialización
 * **Librerías Tradicionales (Venta Pasiva):** Distribución en puntos permanentes como Librería Nacional y Panamericana. Presenta una rotación baja (1 a 4 libros al mes por título) debido a su naturaleza de nicho.
@@ -142,4 +144,4 @@ De acuerdo con el primer informe métrico unificado de la página e-commerce, el
 
 ## Relacionado
 
-[[Nicolas Serna]] · [[Ernesto Rodriguez]] · [[Paola Gordillo]] · [[Carolina Ramirez]] · [[Jeison Montero]] · [[03 - Unidades de Negocio/AXXIS/AXXIS]] · [[03 - Unidades de Negocio/Diners/Diners]]
+[[Nicolas Serna]] · [[Ernesto Rodriguez]] · [[Paola Gordillo]] · [[Carolina Ramirez]] · [[Jeison Montero]] · [[03 - Unidades de Negocio/AXXIS/AXXIS]] · [[03 - Unidades de Negocio/Diners/Diners]] · [[Estrategia-Libros-Conmemorativos-2026]]
