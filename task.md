@@ -1,317 +1,432 @@
 ---
-date: 2026-06-16
+date: 2026-06-21
 type: task-master
 tags: [tasks, pmo, consolidado, team, equipo]
-related-people: [Carolina Ramirez, Jeison Montero, Ernesto Rodriguez, Estefania Ochoa Fonseca, Paola Pantaleon, Nicolas Serna, Paola Gordillo, Claris]
-related-projects: [Consolidacion-Plataformas, Alianzas-post-Privilegios, HubSpot, Revenue-Growth, Experiencias-B2B]
+related-people: [Carolina Ramirez, Jeison Montero, Ernesto Rodriguez, Estefania Ochoa Fonseca, Paola Pantaleon, Nicolas Serna, Paola Gordillo, Paola Nossa, Sandra Martinez, Juan David, Sebastian Diaz]
+related-projects: [Consolidacion-Plataformas, Alianzas-post-Privilegios, HubSpot, Revenue-Growth, Experiencias-B2B, Flywheel-AXXIS, EF-Davivienda]
 ai-first: true
 confidence: high
 ---
 
 ## For future Claude
-Master consolidated task list for Ediciones Gamma, last refreshed 2026-06-16. Contains ALL active tasks organized by owner and BU. Each task links to its source note. Statuses: pendiente / en-proceso / programada / completada. Update this file when tasks change status or new ones are created. Companion files: individual task cards in `Tasks/` folder (atomic, one per task) and the `Experiencias_NextSteps_2026-06.xlsx` hub for the Experiencias BU specifically. Decisions log in [[00 - Executive Layer/CEO Dashboard]]. Portfolio in [[05 - PMO/Portfolio Proyectos]]. **Critical business rule**: Gamma is a Grupo Bolívar subsidiary — only banks competing with Davivienda are excluded from B2B prospecting; the group's own affiliates (Constructora Bolívar, Fiduciaria Bolívar, Seguros Bolívar) ARE valid and prioritized prospects, and insurers/constructoras competing with those affiliates are also valid (marked with *). See memory `feedback_competencia_grupo_bolivar`.
+Master consolidated task list for Ediciones Gamma, refreshed 2026-06-21. Reorganized by BU → person → priority. Incorporates flywheel plans AXXIS (Juan David / Paola Gordillo / Sebastián), plan EF alineado a objetivos MANC, y plan de acción media kits. Statuses: pendiente / en-proceso / programada / completada. Critical business rule: Gamma is a Grupo Bolívar subsidiary — only banks competing with Davivienda are excluded from B2B prospecting; affiliates (Constructora Bolívar, Fiduciaria Bolívar, Seguros Bolívar) ARE valid and prioritized prospects. Source files: flywheel AXXIS en `03 - Unidades de Negocio/AXXIS/Planes de Acción/`, plan EF en `03 - Unidades de Negocio/Plataformas/Educacion Financiera/Plan-Accion-EF-2026.md`, media kits en `07 - Marketing y Eventos/Plan de Accion Media Kits 2026.md`.
 
 ---
 
 # Task Master — Ediciones Gamma
 
-> Escaneo completo del vault · Actualizado 2026-06-16 · 73 tareas consolidadas
+> Escaneo completo del vault · Actualizado **2026-06-21** · Organizado por BU + Persona + Prioridad
 
 ---
 
-## 🔴 Urgentes — Vencidas o vencen estos días
+## 🔴 Urgentes — Vencidas o vencen esta semana
 
 | Tarea | Responsable | Due | BU | Fuente |
 |-------|-------------|-----|----|--------|
-| Enviar resultados encuestas preferencias aliados a Carolina ⚠️ **VENCIDA** (debía 13-jun) | Paola Pantaleon | 2026-06-13 | Experiencias | [[Tasks/2026-06-12 Paola Pantaleon - Enviar encuestas preferencias aliados]] |
-| Reunión de alineación con Natalia Otálora | Carolina | 2026-06-16 | Visión | [[06 - Meetings/Vision/2026-06-10 Natalia Otálora Generalidades Estrategia digital]] |
-| Plan estratégico pauta Visión Davivienda (presentar hoy) | Carolina | 2026-06-16 | Visión | [[06 - Meetings/Vision/2026-06-10 Natalia Otálora Generalidades Estrategia digital]] |
-| Oficializar roles Experiencias con Catalina | Carolina | 2026-06-16 | Experiencias | [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]] |
-| Acercamiento banco beneficios + medios de pago (coordinar con Catalina ANTES) | Carolina | 2026-06-16 | Experiencias | [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]] |
-| Crear archivo Drive compartido contraseñas/accesos plataformas | Estefanía | 2026-06-16 | Visión | [[06 - Meetings/Vision/2026-06-12 Sesion Plataformas Davivienda - Carolina Estefania]] |
-| Ejes de comunicación + calendario mensual Vision Davivienda | Estefanía | 2026-06-16 | Visión | [[06 - Meetings/Vision/2026-06-12 Sesion Plataformas Davivienda - Carolina Estefania]] |
-| Suspender pauta pagada Ed. Financiera (Paid Search + Paid Other — 100% bounce) | Jeison | 2026-06-18 | Ed. Financiera | [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Invertir/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Invertir]] |
-| Excluir dominio Spira del tracking GA4 en Mi Negocio (38 sesiones de prueba en mayo) | Jeison | 2026-06-20 | Ed. Financiera | [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Mi Negocio/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Mi Negocio]] |
-| Consultar con legal responsabilidad civil aliados Experiencias | Carolina | 2026-06-18 | Experiencias | [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]] |
-| Plan de trabajo completo unidad Experiencias (Banca Privada + Club Beneficios) | Carolina | 2026-06-18 | Experiencias | [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]] |
-| Incluir a Carolina en reunión recurrente Vision los miércoles | Estefanía | 2026-06-18 | Visión | [[06 - Meetings/Vision/2026-06-12 Sesion Plataformas Davivienda - Carolina Estefania]] |
-| Revisar presupuesto anual Libros con Jeison ($500M meta sugerida) | Nicolas Serna | 2026-06-20 | Libros | [[Tasks/2026-06-13 Nicolas Serna - Revisar presupuesto anual Libros]] |
-| Grabar video expertos Ethel Gilmour / Manolo Bello para IG Libros | Nicolas Serna | 2026-06-20 | Libros | [[Tasks/2026-06-13 Nicolas Serna - Grabar video expertos Ethel Gilmour]] |
-| Alinear calendario editorial Libros (parrilla 15 días + 3 pub/semana) | Paola Gordillo | 2026-06-20 | Libros | [[Tasks/2026-06-13 Paola Gordillo - Alinear calendario editorial Libros]] |
+| Desactivar plugin SEO duplicado (meta descriptions 61% del sitio) | Juan David | 2026-06-23 | AXXIS | [[03 - Unidades de Negocio/AXXIS/Planes de Acción/Flywheel AXXIS — Juan David (SEO + Web)]] |
+| Corregir URL `/suscribirse-2/` → `/suscribirse/` | Juan David | 2026-06-23 | AXXIS | [[03 - Unidades de Negocio/AXXIS/Planes de Acción/Flywheel AXXIS — Juan David (SEO + Web)]] |
+| Agregar H1 a landing suscripción AXXIS | Juan David | 2026-06-23 | AXXIS | [[03 - Unidades de Negocio/AXXIS/Planes de Acción/Flywheel AXXIS — Juan David (SEO + Web)]] |
+| Corregir banner footer $181.100 (precio incorrecto) | Juan David | 2026-06-23 | AXXIS | [[03 - Unidades de Negocio/AXXIS/Planes de Acción/Flywheel AXXIS — Juan David (SEO + Web)]] |
+| Conseguir acceso Metricool AXXIS + exportar baseline mayo | Paola Gordillo | 2026-06-23 | AXXIS | [[03 - Unidades de Negocio/AXXIS/Planes de Acción/Flywheel AXXIS — Paola Gordillo (Redes + Newsletter)]] |
+| Verificar Pixel + CAPI en URL de suscripción (bloqueado hasta que Juan David corrija landing) | Sebastián | 2026-06-25 | AXXIS | [[03 - Unidades de Negocio/AXXIS/Planes de Acción/Flywheel AXXIS — Sebastián (Pauta Digital)]] |
+| Alertar MANC sobre 100% rebote en pauta EF (Leo debe revisarla) | Carolina | 2026-06-24 | Ed. Financiera | [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Plan-Accion-EF-2026]] |
+| Excluir dominio Spira de GA4 MFN (paso previo a reunión mercadeo) | Jeison | 2026-06-24 | Ed. Financiera | [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Plan-Accion-EF-2026]] |
+| Preparar ejemplo real flujo IA + curaduría (1 artículo piloto para MANC) | Ernesto | 2026-06-25 | Ed. Financiera | [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Plan-Accion-EF-2026]] |
+| Preparar 1 infografía piloto MFN (formato nuevo para MANC) | Ernesto | 2026-06-25 | Ed. Financiera | [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Plan-Accion-EF-2026]] |
+| Inventario completo contenidos MFI + MFN para reunión de migración técnica | Jeison | 2026-06-25 | Ed. Financiera | [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Plan-Accion-EF-2026]] |
+| Reunión estratégica mercadeo Davivienda — llevar propuestas 1-5 alineadas a objetivos MANC | Carolina + Jeison + Ernesto | Semana 23-jun | Ed. Financiera | [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Plan-Accion-EF-2026]] |
+| Completar métricas web reales AXXIS para media kit V2 | Paola Nossa | 2026-06-28 | AXXIS | [[07 - Marketing y Eventos/Plan de Accion Media Kits 2026]] |
+| Contactar 2-3 anunciantes para casos de éxito media kit AXXIS | Paola Nossa | 2026-06-28 | AXXIS | [[07 - Marketing y Eventos/Plan de Accion Media Kits 2026]] |
+| Revisar presupuesto anual Libros con Jeison ($500M meta sugerida) ⚠️ vencida | Nicolas Serna | 2026-06-20 | Libros | [[Tasks/2026-06-13 Nicolas Serna - Revisar presupuesto anual Libros]] |
+| Enviar resultados encuestas preferencias aliados a Carolina ⚠️ **VENCIDA** | Paola Pantaleon | 2026-06-13 | Experiencias | [[Tasks/2026-06-12 Paola Pantaleon - Enviar encuestas preferencias aliados]] |
 
 ---
 
-## 📋 Por Persona
+## 📋 Por Unidad de Negocio
 
 ---
 
-### 👤 Carolina Ramirez
+## 🏛️ AXXIS
 
-#### Educación Financiera
+### Juan David — SEO + Web
 
-| # | Tarea | Due | Prioridad | Status | Fuente |
-|---|-------|-----|-----------|--------|--------|
-| 1 | Preparar y presentar informe consolidado mayo 2026 a María Angélica Navarro (Mis Finanzas para Invertir + Mi Negocio) | 2026-06-20 | 🔴 Alta | pendiente | [[Tasks/2026-06-13 Carolina - Informe consolidado plataformas Ed Financiera]] |
-| 2 | Reunión urgente María Angélica + Jeison: visión de futuro plataformas digitales y estrategia "Mundo D" | 2026-06-20 | 🔴 Alta | pendiente | [[Tasks/2026-06-05 Carolina - Reunion Maria Angelica y Jeison vision plataformas]] |
-| 3 | Replanteo estratégico Mis Finanzas para Invertir: nueva meta desde mayo, potenciar email + referral, suspender Paid Search | 2026-06-27 | 🔴 Alta | pendiente | [[Tasks/2026-06-13 Carolina - Replanteo estrategico Mis Finanzas para Invertir]] |
-| 4 | Replanteo estratégico Mis Finanzas para Mi Negocio: excluir tráfico contaminado, suspender pauta inefectiva, redefinir meta base mayo | 2026-06-27 | 🔴 Alta | pendiente | [[Tasks/2026-06-13 Carolina - Replanteo estrategico Mis Finanzas para Mi Negocio]] |
-| 5 | Renegociar metas anuales 2026 con María Angélica (mayo como nueva línea base) | 2026-06-30 | 🔴 Alta | pendiente | [[Tasks/2026-06-13 Carolina - Renegociar metas anuales plataformas Ed Financiera]] |
-| 6 | Rediseñar KPIs slides comité estratégico: métricas de conversión real, no vanidad | 2026-06-30 | 🔴 Alta | pendiente | [[Tasks/2026-06-05 Carolina - Redisenar KPIs plataformas comite estrategico]] |
+> Fuente: [[03 - Unidades de Negocio/AXXIS/Planes de Acción/Flywheel AXXIS — Juan David (SEO + Web)]]
+> Contexto: 82.5% del sitio no indexado (21.100 páginas). SEO es el canal de mayor calidad (83s tiempo en sitio, $0 costo). Resolverlo desbloquea el flywheel completo.
 
-#### Visión Davivienda
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Desactivar plugin SEO duplicado — causa del 61% de meta descriptions duplicadas (Yoast + RankMath activos simultáneamente) | Jun 23 | 🔴 Crítica | pendiente |
+| 2 | Corregir URL landing suscripción: eliminar `/suscribirse-2/` → consolidar en `/suscribirse/` con 301 redirect | Jun 23 | 🔴 Crítica | pendiente |
+| 3 | Agregar H1 a la landing de suscripción AXXIS (actualmente ausente) | Jun 23 | 🔴 Crítica | pendiente |
+| 4 | Corregir banner footer con precio $181.100 (no corresponde a ningún plan vigente) | Jun 23 | 🔴 Crítica | pendiente |
+| 5 | Reescribir title tag + meta description landing suscripción (copy provisto en plan) | Jun 24 | 🔴 Crítica | pendiente |
+| 6 | Resolver H1 faltante en plantilla CMS (75% del sitio sin H1 — fix en `single.php` resuelve masivo) | Jun 27 | 🔴 Crítica | pendiente |
+| 7 | Agregar copy de valor + FAQ a landing suscripción (propuesta de valor + 5 preguntas frecuentes) | Jun 27 | 🟠 Alta | pendiente |
+| 8 | Implementar Schema.org Product + Offer en landing suscripción (3 planes con precios) | Jun 27 | 🟠 Alta | pendiente |
+| 9 | Corregir errores 4xx (~870 URLs) y paginación rota (4.710 URLs sin `<a>`) | Jul 7 | 🟠 Alta | pendiente |
+| 10 | Agregar links internos hacia landing suscripción desde 10 artículos con más tráfico orgánico | Jul 7 | 🟠 Alta | pendiente |
+| 11 | Configurar eventos GA4: purchase/subscribe + page_view /suscripcion + scroll 75% en artículos + vincular con GSC | Jul 7 | 🟠 Alta | pendiente |
+| 12 | Optimizar title tag + meta description de 10 artículos con mayor potencial CTR (posición 5-15, impresiones >1.000) | Jul 15 | 🟠 Alta | pendiente |
+| 13 | Crear 2 artículos pilar SEO: "30 proyectos de arquitectura más importantes de Colombia" + "Cómo diseñar un apartamento" | Jul 31 | 🟠 Alta | pendiente |
+| 14 | Reportar a Carolina: entregables Jun 27 (screenshot H1 + Rich Results Test + 1 sola URL /suscribirse/) | Jun 27 | 🔴 Crítica | pendiente |
 
-| # | Tarea | Due | Prioridad | Status | Fuente |
-|---|-------|-----|-----------|--------|--------|
-| 7 | Reunión alineación con Natalia Otálora — presentar visión marca, objetivos y plan de contenidos a 15 días | 2026-06-16 | 🔴 Alta | programada | [[Tasks/2026-06-10 Carolina - Meeting alineacion Natalia Vision]] |
-| 8 | Plan estratégico pauta Visión Davivienda — cerrar brecha de sesiones | 2026-06-16 | 🔴 Alta | pendiente | [[Tasks/2026-06-10 Carolina - Plan estrategico pauta Vision Davivienda]] |
-| 9 | Reuniones 1a1 con todo el equipo de plataformas | 2026-06-27 | 🔴 Alta | en-proceso | [[Tasks/2026-06-10 Carolina - Reuniones 1a1 equipo plataformas]] |
-| 10 | Revisar propuesta de mailing CTR Visión | 2026-06-20 | 🟡 Media | pendiente | [[Tasks/2026-06-10 Carolina - Revision propuesta mailing CTR Vision]] |
-
-#### Experiencias
-
-| # | Tarea | Due | Prioridad | Status | Fuente |
-|---|-------|-----|-----------|--------|--------|
-| 11 | Oficializar roles y liderazgo Experiencias con Catalina Obregón | 2026-06-16 | 🔴 Alta | pendiente | [[Tasks/2026-06-12 Carolina - Oficializar roles Experiencias con Catalina]] |
-| 12 | Coordinar con Catalina nuevo acercamiento al banco para propuesta de beneficios + medios de pago ⚠️ NO contactar banco directamente | 2026-06-16 | 🔴 Alta | pendiente | [[Tasks/2026-06-12 Carolina - Acercamiento banco beneficios medios de pago]] |
-| 13 | Consultar con legal: responsabilidad civil de la revista ante incidentes con aliados | 2026-06-18 | 🔴 Alta | pendiente | [[Tasks/2026-06-12 Carolina - Consulta legal responsabilidad civil aliados]] |
-| 14 | Estructurar y entregar plan de trabajo completo Experiencias (Línea 1 + Línea 2) | 2026-06-18 | 🔴 Alta | pendiente | [[Tasks/2026-06-12 Carolina - Plan de trabajo Experiencias]] |
-| 15 | Solicitar y comparar cotizaciones plataforma PWA 360 suscriptores | 2026-06-20 | 🔴 Alta | en-proceso | [[Tasks/2026-06-12 Carolina - Cotizaciones plataforma 360 suscriptores]] |
-| 16 | Reunión con María Claudia (Servicio al Cliente) para definir método de identificación suscriptores | 2026-06-23 | 🟡 Media | pendiente | [[Tasks/2026-06-12 Carolina - Reunion Maria Claudia identificacion suscriptores]] |
-| 17 | Hablar con Sandra (editora Diners) para crear contenido exclusivo suscriptores premium | 2026-06-20 | 🟡 Media | pendiente | [[Tasks/2026-06-12 Carolina - Contenido exclusivo suscriptores Sandra]] |
-| 18 | Revisar y aprobar correo de presentación B2B antes de envío (Paola lo redacta) | 2026-07-31 | 🔴 Alta | pendiente | [[Experiencias_Tabs_2026-06/Experiencias_NextSteps_2026-06.xlsx]] |
-
-#### AXXIS
-
-| # | Tarea | Due | Prioridad | Status | Fuente |
-|---|-------|-----|-----------|--------|--------|
-| 19 | Liderar sesión innovación AXXIS — misma metodología sesión Diners | 2026-06-27 | 🔴 Alta | programada | [[Tasks/2026-06-12 Carolina - Sesion innovacion AXXIS]] |
-
-#### Revistas / Comercial
-
-| # | Tarea | Due | Prioridad | Status | Fuente |
-|---|-------|-----|-----------|--------|--------|
-| 20 | Estrategia Macropauta y Alianzas banco — compensar cierre Privilegios Davivienda | 2026-07-15 | 🔴 Alta | pendiente | [[Tasks/2026-06-05 Carolina - Estrategia Macropauta y Alianzas banco]] |
-| 21 | Revisión tarifaria y kits de venta — combos pauta física + digital | 2026-06-30 | 🟡 Media | pendiente | [[Tasks/2026-06-05 Carolina - Revision tarifaria y kits de venta]] |
-
-#### Libros
-
-| # | Tarea | Due | Prioridad | Status | Fuente |
-|---|-------|-----|-----------|--------|--------|
-| 22 | Definir cifra oficial de meta anual Libros con Nicolás y Jeison (insumo para plan comercial P2) | 2026-06-20 | 🔴 Alta | pendiente | [[Tasks/2026-06-13 Nicolas Serna - Revisar presupuesto anual Libros]] |
+**KPIs meta:** páginas indexadas 4.490 → 8.000 (jul) → 12.000 (sep) · % tráfico orgánico 16% → 22% → 30%
 
 ---
 
-### 👤 Jeison Montero — Líder de Plataformas
+### Paola Gordillo — Redes + Newsletter AXXIS
 
-| # | Tarea | Due | Prioridad | Status | Fuente |
-|---|-------|-----|-----------|--------|--------|
-| 1 | Suspender/pausar campañas pauta pagada Ed. Financiera (Paid Search + Paid Other — ambas 100% bounce) | 2026-06-18 | 🔴 Alta | pendiente | [[Tasks/2026-06-13 Jeison Montero - Suspender pauta pagada plataformas Ed Financiera]] |
-| 2 | Excluir dominio Spira (`lbmisfinanzasparaminegocio.spira.co`) del tracking GA4 en Mi Negocio — 38 sesiones de prueba | 2026-06-20 | 🔴 Alta | pendiente | [[Tasks/2026-06-14 Jeison Montero - Excluir dominio Spira GA4 MFxMiNegocio]] |
-| 3 | Centralizar requerimientos técnicos Leo — rol formal de filtro único | 2026-06-20 | 🔴 Alta | pendiente | [[Tasks/2026-06-10 Jeison Montero - Centralizar requerimientos tecnicos Leo]] |
-| 4 | Revisar Paid Search Mis Finanzas para Invertir con proveedor — 100% rebote, 0% interacción | 2026-06-20 | 🔴 Alta | pendiente | [[Tasks/2026-06-13 Jeison Montero - Revisar Paid Search Mis Finanzas para Invertir]] |
-| 5 | Investigar caída de medición abril 2026 en ambas plataformas Ed. Financiera | 2026-06-23 | 🟡 Media | pendiente | [[Tasks/2026-06-13 Jeison Montero - Investigar caida medicion abril plataformas]] |
-| 6 | Revisar tráfico internacional sospechoso Mi Negocio (US 25%, Japón 7%, China 3%) | 2026-06-23 | 🟡 Media | pendiente | [[Tasks/2026-06-13 Jeison Montero - Revisar trafico internacional sospechoso Mi Negocio]] |
-| 7 | Diagnóstico técnico de las 5 plataformas Ed. Financiera (paso 1 Consolidación) | Sin fecha | 🔴 Alta | pendiente | [[05 - PMO/Portfolio Proyectos]] |
-| 8 | Mapeo de contratos y proveedores plataformas (paso 2 Consolidación) | Sin fecha | 🔴 Alta | pendiente | [[05 - PMO/Portfolio Proyectos]] |
-| 9 | Solicitar al proveedor MFxMiNegocio confirmación mensual explícita de exclusión dominio Spira + incluir en todo informe futuro | 2026-06-20 | 🔴 Alta | pendiente | [[Tasks/2026-06-14 Jeison Montero - Excluir dominio Spira GA4 MFxMiNegocio]] |
-| 10 | Solicitar al proveedor de Mis Finanzas para Invertir mejoras en informe mensual (comparativo, desglose Email, Paid Search, Referral, Top 10) | 2026-06-25 | 🟡 Media | pendiente | [[Tasks/2026-06-14 Jeison Montero - Mejoras informe mensual MFxInvertir]] |
-| 11 | Solicitar al proveedor de Mis Finanzas para Mi Negocio mejoras en informe mensual (comparativo, tráfico internacional, Paid Other, Top 10) | 2026-06-25 | 🟡 Media | pendiente | [[Tasks/2026-06-14 Jeison Montero - Mejoras informe mensual MFxMiNegocio]] |
-| 12 | Definir cifra oficial de meta anual Libros junto con Nicolás Serna | 2026-06-20 | 🔴 Alta | pendiente | [[Tasks/2026-06-13 Nicolas Serna - Revisar presupuesto anual Libros]] |
+> Fuente: [[03 - Unidades de Negocio/AXXIS/Planes de Acción/Flywheel AXXIS — Paola Gordillo (Redes + Newsletter)]]
+> Contexto: IG ER 9.9% (excepcional, benchmark sector 1.5-3%). Lista HubSpot ~29.400 contactos. Problema: sobre-frecuencia emails (2 en 3 días → CTR colapsó -87%). Segmentación incorrecta (50% unsubscribes dicen "no relevante").
 
----
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Conseguir acceso a Metricool + exportar reporte mayo 2026 IG + FB | Jun 23 | 🔴 Crítica | pendiente |
+| 2 | Separar segmentos HubSpot — próximo envío SOLO a "Suscriptores Newsletter Revista Axxis" (excluir "Fans y Corredor") | Jun 27 | 🔴 Crítica | pendiente |
+| 3 | Establecer frecuencia 1 email/semana máx (martes 7-8 AM fijo) + aplicar estructura definitiva de email | Jun 27 | 🔴 Crítica | pendiente |
+| 4 | Optimizar perfiles 4 redes: IG (bio + highlights + link en bio), FB (portada + botón "Suscribirse"), LinkedIn (crear página empresa), Pinterest (crear cuenta Business + 5 tableros) | Jun 27 | 🔴 Crítica | pendiente |
+| 5 | Activar calendario editorial IG — 5 posts/semana con eje EEAT (Lun:Reel/Exp · Mar:Carrusel/Know · Mié:Stories · Jue:Reel/Auth · Vie:Confianza) | Jun 27 | 🔴 Crítica | pendiente |
+| 6 | Crear primeros 5 Reels "Proyecto de la semana" (contenido mayo disponible en sitio) | Jul 10 | 🔴 Alta | pendiente |
+| 7 | Pinterest: lanzar cuenta + 100 pines en primera semana (imágenes artículos existentes, formato 2:3) | Jul 7 | 🟠 Alta | pendiente |
+| 8 | Activar UTMs en todos los links de redes hacia el sitio (por red + campaña) | Jul 7 | 🟠 Alta | pendiente |
+| 9 | Implementar funnel redes → suscripción: protocolo link en bio semanal + serie mensual "semana de suscripción" | Jul 15 | 🟠 Alta | pendiente |
+| 10 | Crear secuencia email de bienvenida en HubSpot (3 emails: día 0, día 3, día 7) | Jul 15 | 🟠 Alta | pendiente |
+| 11 | Coordinar con Juan David atribución GA4 newsletter → suscripciones (UTMs + solicitud a Triario) | Jul 15 | 🟠 Alta | pendiente |
+| 12 | Documentar lista segmentada de suscriptores newsletter activos (engageable core ~7.000-8.000 contactos) | Jun 27 | 🔴 Crítica | pendiente |
+| 13 | Entregar reporte Metricool mensual el día 5 de cada mes (primer reporte: Jul 5) | Jul 5 | 🟠 Media | pendiente |
 
-### 👤 Ernesto Rodriguez
-
-| # | Tarea | Due | Prioridad | Status | Fuente |
-|---|-------|-----|-----------|--------|--------|
-| 1 | Preparar y presentar estrategia robusta para reactivar canal YouTube Visión Davivienda | 2026-06-20 | 🟡 Media | pendiente | [[Tasks/2026-06-10 Ernesto Rodriguez - Estrategia YouTube Vision]] |
-| 2 | Evaluar disponibilidad Metricool o Hitzfield para automatizar plantillas y programación | 2026-06-27 | 🟡 Media | pendiente | [[Tasks/2026-06-10 Ernesto Rodriguez - Evaluar herramientas diseño Metricool]] |
-| 3 | Proponer nuevos e-books Mi Negocio alineados a demanda real PyME | 2026-06-30 | 🟡 Media | pendiente | [[Tasks/2026-06-13 Ernesto Rodriguez - Nuevo plan ebooks Mi Negocio]] |
-| 4 | Ampliar cobertura editorial Bre-B en Mi Negocio | 2026-06-30 | 🟡 Media | pendiente | [[Tasks/2026-06-13 Ernesto Rodriguez - Serie contenidos Bre-B Mi Negocio]] |
-| 5 | Proponer serie editorial renta fija en Mis Finanzas para Invertir (CDTs, TES, fondos de deuda) | 2026-06-30 | 🟡 Media | pendiente | [[Tasks/2026-06-13 Ernesto Rodriguez - Serie contenidos CDTs Mis Finanzas]] |
-| 6 | Coordinar con Paola Gordillo el contenido SEO de la parrilla editorial Libros | 2026-06-20 | 🟡 Media | pendiente | [[Tasks/2026-06-13 Paola Gordillo - Alinear calendario editorial Libros]] |
+**KPIs meta:** IG seguidores 160K → 168K (jul) · newsletter CTR >5% consistente · clics/envío >400 · suscripciones atribuidas a email ≥3/mes (sep)
 
 ---
 
-### 👤 Estefanía Ochoa Fonseca
+### Sebastián Díaz — Pauta Digital AXXIS
 
-| # | Tarea | Due | Prioridad | Status | Fuente |
-|---|-------|-----|-----------|--------|--------|
-| 1 | Crear archivo Google Drive compartido con contraseñas y accesos a todas las plataformas y redes | 2026-06-16 | 🔴 Alta | pendiente | [[Tasks/2026-06-12 Estefania - Archivo Drive accesos plataformas]] |
-| 2 | Desarrollar ejes de comunicación + calendario mensual redes Visión Davivienda (con datos) | 2026-06-16 | 🔴 Alta | pendiente | [[Tasks/2026-06-12 Estefania - Ejes comunicacion calendario Vision]] |
-| 3 | Incluir a Carolina en la reunión recurrente de Visión los miércoles | 2026-06-18 | 🟡 Media | pendiente | [[Tasks/2026-06-12 Estefania - Incluir Carolina reunion miercoles Vision]] |
-| 4 | Optimizar perfiles de Instagram Visión Davivienda | Sin fecha | 🟡 Media | pendiente | [[06 - Meetings/Vision/2026-06-12 - estefania - cm Visión]] |
-| 5 | Migrar métricas orgánicas de redes sociales al dashboard de Looker/Data Studio | 2026-06-23 | 🟡 Media | pendiente | [[Tasks/2026-06-12 Estefania - Migrar metricas organicas al dashboard]] |
-| 6 | Implementar ManyChat para automatización de mensajes Visión Davivienda | 2026-06-30 | 🟡 Media | pendiente | [[Tasks/2026-06-12 Estefania - Implementar ManyChat Vision]] |
+> Fuente: [[03 - Unidades de Negocio/AXXIS/Planes de Acción/Flywheel AXXIS — Sebastián (Pauta Digital)]]
+> Contexto: 702 clics a landing en mayo, 0 conversiones. El anuncio funciona (CTR 1.14%), la landing no. CPC subiendo 3 meses consecutivos ($76→$92→$108 COP). BLOQUEADO en retargeting hasta que Juan David corrija la landing.
 
----
+| # | Tarea | Due | Prioridad | Status | Bloqueado por |
+|---|-------|-----|-----------|--------|--------------|
+| 1 | Instalar Meta Pixel Helper + verificar eventos ViewContent y Purchase en landing y checkout Triario | Jun 25 | 🔴 Crítica | pendiente | Requiere landing corregida (Juan David) |
+| 2 | Activar retargeting visitantes web (audiencia: visitaron /suscripcion/ últimos 30 días, no compraron) $36K COP/día | Jun 27 | 🔴 Crítica | pendiente | Requiere Pixel funcionando |
+| 3 | Crear LAL suscriptores actuales — solicitar lista CSV a Paola Nossa + crear Custom Audience + LAL 1%, 2%, 5% | Jun 30 | 🔴 Crítica | pendiente | Requiere lista suscriptores |
+| 4 | Auditar creativos actuales (diagnóstico fatiga) + crear 3 variantes con ángulos distintos | Jul 7 | 🟠 Alta | pendiente | — |
+| 5 | Verificar dominio revistaaxxis.com.co en Meta Business Manager (Brand Safety → Dominios) | Jun 25 | 🟠 Alta | pendiente | — |
 
-### 👤 Paola Pantaleón — Experiencias, Beneficios y Alianzas
-
-| # | Tarea | Due | Prioridad | Status | Fuente |
-|---|-------|-----|-----------|--------|--------|
-| 1 | Enviar resultados encuestas de preferencias suscriptores a Carolina ⚠️ **VENCIDA** (debía 13-jun) | 2026-06-13 | 🔴 Alta | pendiente | [[Tasks/2026-06-12 Paola Pantaleon - Enviar encuestas preferencias aliados]] |
-| 2 | Preparar experiencia julio — Colección JD Gutiérrez + Vicky Turbay (logística, invitados, confirmación) | 2026-06-25 | 🔴 Alta | pendiente | [[Experiencias_Tabs_2026-06/Experiencias_NextSteps_2026-06.xlsx]] |
-| 3 | Definir herramienta de newsletters (Mailchimp vs HubSpot) | 2026-06-30 | 🟡 Media | pendiente | [[Experiencias_Tabs_2026-06/Experiencias_NextSteps_2026-06.xlsx]] |
-| 4 | Iniciar prospección de aliados — priorizar gastronomía y bienestar (meta: 30 aliados julio) | 2026-07-15 | 🔴 Alta | pendiente | [[Experiencias_Tabs_2026-06/Experiencias_NextSteps_2026-06.xlsx]] |
-| 5 | Armar lista de empresas target Línea 1 B2B — ✅ avance: 32 empresas mapeadas en 11 sectores (excluida banca competidora Davivienda) | 2026-07-15 | 🔴 Alta | en-proceso | [[Experiencias_Tabs_2026-06/Experiencias_02_PipelineCorporativo_2026-06.xlsx]] |
-| 6 | Desarrollar Media Kit para clientes B2B — portafolio, casos de éxito (Juan de Dios), tarifas, propuesta de valor | 2026-07-20 | 🔴 Alta | pendiente | [[Experiencias_Tabs_2026-06/Experiencias_NextSteps_2026-06.xlsx]] |
-| 7 | Crear presentación comercial / deck de ventas para cliente B2B (adaptable por sector) | 2026-07-25 | 🔴 Alta | pendiente | [[Experiencias_Tabs_2026-06/Experiencias_NextSteps_2026-06.xlsx]] |
-| 8 | Diseñar propuesta comercial tipo — pricing, alcance, categorías y casos de éxito | 2026-07-31 | 🔴 Alta | pendiente | [[Experiencias_Tabs_2026-06/Experiencias_NextSteps_2026-06.xlsx]] |
-| 9 | Redactar correo de presentación para empresas B2B prospectadas (primer contacto). Priorizar ★ filiales Grupo Bolívar y 🔴 Alta del listado | 2026-07-31 | 🔴 Alta | pendiente | [[Experiencias_Tabs_2026-06/Experiencias_NextSteps_2026-06.xlsx]] |
-| 10 | Preparar portafolio de experiencias (PDF de ventas) para nuevas empresas cliente | 2026-07-15 | 🟡 Media | pendiente | [[Experiencias_Tabs_2026-06/Experiencias_NextSteps_2026-06.xlsx]] |
-| 11 | Crear lista de contactos para newsletter Empresas Cliente y hacer primer envío (mínimo 30 contactos B2B) | 2026-07-31 | 🟡 Media | pendiente | [[Experiencias_Tabs_2026-06/Experiencias_NextSteps_2026-06.xlsx]] |
-| 12 | Definir estrategia de aliados — criterios de selección, modelo de alianza, onboarding y acuerdo tipo | 2026-08-01 | 🟡 Media | pendiente | [[Experiencias_Tabs_2026-06/Experiencias_NextSteps_2026-06.xlsx]] |
-| 13 | Crear plantillas de email para seguimiento de aliados (primer contacto → propuesta → bienvenida) | 2026-08-10 | 🟡 Media | pendiente | [[Experiencias_Tabs_2026-06/Experiencias_NextSteps_2026-06.xlsx]] |
-| 14 | Mapear marcas potenciales para nuevas alianzas post-Privilegios Davivienda | Sin fecha | 🔴 Alta | pendiente | [[05 - PMO/Portfolio Proyectos]] |
-| 15 | Diseñar nuevo modelo de beneficios suscriptores (Club Beneficios) | Sin fecha | 🔴 Alta | pendiente | [[05 - PMO/Portfolio Proyectos]] |
-| 16 | Lanzar Carnet Digital Diners (dependencia: alianzas activas + plataforma tecnológica) | Sin fecha | 🟠 Media | pendiente | [[05 - PMO/Portfolio Proyectos]] |
+**KPIs meta:** CPC $108 → <$90 (jul) → <$75 (sep) · conversiones 0 → ≥10 (jul) → ≥25 (sep) · ROAS 0 → >3.0 (sep)
 
 ---
 
-### 👤 Claris
+### Paola Nossa — Media Kits AXXIS + Diners
 
-| # | Tarea | Due | Prioridad | Status | Fuente |
-|---|-------|-----|-----------|--------|--------|
-| 1 | Investigar proveedor/software que usa Club El Tiempo para validación de suscriptores y trazabilidad de redenciones | 2026-06-20 | 🔴 Alta | en-proceso | [[Tasks/2026-06-12 Claris - Investigar software Club El Tiempo]] |
+> Fuente: [[07 - Marketing y Eventos/Plan de Accion Media Kits 2026]]
+> Contexto: Media kit AXXIS V1 existe pero incompleto (faltan casos de éxito, bundles, métricas web). Media kit Diners NO EXISTE — brecha urgente para equipo comercial.
 
----
-
-### 👤 Nicolas Serna — Libros
-
-| # | Tarea | Due | Prioridad | Status | Fuente |
-|---|-------|-----|-----------|--------|--------|
-| 1 | Revisar con Jeison el presupuesto anual Libros — meta sugerida $500M COP, definir cifra oficial para plan comercial P2 | 2026-06-20 | 🔴 Alta | pendiente | [[Tasks/2026-06-13 Nicolas Serna - Revisar presupuesto anual Libros]] |
-| 2 | Grabar video con expertos Ethel Gilmour y Manolo Bello — contenido de autor para IG Libros | 2026-06-20 | 🔴 Alta | pendiente | [[Tasks/2026-06-13 Nicolas Serna - Grabar video expertos Ethel Gilmour]] |
-| 3 | Ejecutar Plan Canguro de empalme con Nancy — transferencia de conocimiento de cuentas y negociaciones activas | 2026-06-30 | 🔴 Alta | en-proceso | [[Tasks/2026-06-13 Nicolas Serna - Plan Canguro empalme Nancy]] |
-| 4 | Reestructurar propuestas de consignación hoteles/librerías (compra mínima 3 libros, pago diferido, margen 30%) — Tekendama, Arde la Selva, U. Javeriana, Decameron | 2026-06-27 | 🟡 Media | pendiente | [[Tasks/2026-06-13 Nicolas Serna - Reestructurar propuestas consignacion hoteles]] |
-| 5 | Evaluar con Paola Gordillo creación de "Dumis" (portadas QR a escala real) para salas de venta de constructoras | 2026-06-30 | 🟡 Media | pendiente | [[Tasks/2026-06-13 Nicolas Serna - Elaborar Dumis libros falsos QR]] |
-| 6 | Mapa de canales actuales de comercialización Libros | Sin fecha | 🟠 Media | pendiente | [[05 - PMO/Portfolio Proyectos]] |
-| 7 | Plan de ferias 2025-2026 para unidad Libros | Sin fecha | 🟠 Media | pendiente | [[05 - PMO/Portfolio Proyectos]] |
-| 8 | Gestionar convenios corporativos Libros | Sin fecha | 🟠 Media | pendiente | [[05 - PMO/Portfolio Proyectos]] |
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Completar métricas web reales AXXIS (sesiones/mes, usuarios únicos, tiempo en página — fuente GA4) | Jun 28 | 🔴 Alta | pendiente |
+| 2 | Contactar 2-3 anunciantes actuales para conseguir autorización casos de éxito (candidatos: KEVINS JOYEROS, LAMITECH, TECNOGLASS) | Jun 28 | 🔴 Alta | pendiente |
+| 3 | Coordinar precios paquetes bundle con equipo comercial: Bundle Presencia / Autoridad / Impacto (impreso + digital + redes) | Jul 5 | 🔴 Alta | pendiente |
+| 4 | Producir Media Kit AXXIS V2 (agregar: casos éxito + bundles + métricas web + propuesta de valor mejorada + precios AXXIS Invita) | Jul 5 | 🔴 Alta | pendiente |
+| 5 | Recopilar datos completos Diners: audiencia impresa, digital, tarifario, formatos, tiraje, eventos 2026 | Jul 12 | 🔴 Alta | pendiente |
+| 6 | Producir Media Kit Diners V1 (estructura 16 slides — ver plan) | Jul 19 | 🔴 Alta | pendiente |
+| 7 | Diseñar one-pager ejecutivo AXXIS + Diners (1 página A4 para enviar antes de reuniones) | Jul 31 | 🟠 Media | pendiente |
+| 8 | Actualización semestral media kits (próxima revisión: diciembre 2026) | Dic 2026 | 🟡 Baja | programada |
 
 ---
 
-### 👤 Paola Gordillo — Libros
+### Ernesto Rodriguez — Contenido + Diners H2 2026
 
-| # | Tarea | Due | Prioridad | Status | Fuente |
-|---|-------|-----|-----------|--------|--------|
-| 1 | Alinear calendario editorial Libros — parrilla 15 días, mínimo 3 publicaciones semanales, línea gráfica unificada | 2026-06-20 | 🟡 Media | en-proceso | [[Tasks/2026-06-13 Paola Gordillo - Alinear calendario editorial Libros]] |
-| 2 | Evaluar con Nicolás Serna creación de "Dumis" para constructoras (Amarilo, Bolívar) | 2026-06-30 | 🟡 Media | pendiente | [[Tasks/2026-06-13 Nicolas Serna - Elaborar Dumis libros falsos QR]] |
-
----
-
-## 🧠 Backlog Estratégico — Decisiones y Proyectos PMO
-
-### Decisiones Pendientes (nivel CEO / Catalina Obregón)
-
-| Decisión | Owner Decisión | Urgencia | Fuente |
-|---------|----------------|---------|--------|
-| Aprobar formalización de Jeison como Líder de Plataformas con autoridad real | Catalina Obregón | 🔴 Alta | [[00 - Executive Layer/CEO Dashboard]] |
-| Definir estrategia de pricing revistas: mantener premium vs bundles | Carolina | 🟠 Media | [[00 - Executive Layer/CEO Dashboard]] |
-| Decisión sobre consolidación de proveedores plataformas | Carolina + Jeison | 🟠 Media | [[00 - Executive Layer/CEO Dashboard]] |
-| Aprobar plan de nuevas alianzas para compensar Privilegios Davivienda | Catalina + Paola | 🔴 Alta | [[00 - Executive Layer/CEO Dashboard]] |
-| Aprobar meta anual oficial de Libros ($500M COP sugerido) | Catalina + Carolina | 🟡 Media | [[Tasks/2026-06-13 Nicolas Serna - Revisar presupuesto anual Libros]] |
-
-### Proyectos PMO — Próximos Pasos
-
-#### P1 — Consolidación de Plataformas (Owner: Jeison / Sponsor: Carolina)
-
-| Paso | Responsable | Estado | Fuente |
-|------|-------------|--------|--------|
-| Diagnóstico técnico de las 5 plataformas | Jeison | pendiente | [[05 - PMO/Portfolio Proyectos]] |
-| Mapeo de contratos y proveedores | Jeison | pendiente | [[05 - PMO/Portfolio Proyectos]] |
-| Definir arquitectura unificada | Jeison + Carolina | pendiente | [[05 - PMO/Portfolio Proyectos]] |
-| Formalizar rol de Jeison como Líder de Plataformas (requiere Catalina) | Catalina | pendiente | [[05 - PMO/Portfolio Proyectos]] |
-
-#### P1 — HubSpot como CRM Central (Owner: Carolina)
-
-| Paso | Responsable | Estado | Fuente |
-|------|-------------|--------|--------|
-| Configurar pipeline por unidad de negocio | Carolina | pendiente | [[05 - PMO/Portfolio Proyectos]] |
-| Migrar datos comerciales actuales | Carolina | pendiente | [[05 - PMO/Portfolio Proyectos]] |
-| Training equipo comercial | Carolina | pendiente | [[05 - PMO/Portfolio Proyectos]] |
-
-#### P1 — Definición de roles y contratos equipo Gamma/Leo
-
-| Paso | Responsable | Estado | Fuente |
-|------|-------------|--------|--------|
-| Clarificar y formalizar en contratos vigentes (Leo + Gamma) las funciones exactas de Ernesto y Jeison | Carolina | pendiente | [[06 - Meetings/CEO/2026-06-05-Lineamientos Catalina Obregón y direccionamiento]] |
-
-#### P2 — Experiencias B2B + Club de Beneficios (Owner: Paola Pantaleón / Sponsor: Carolina)
-
-| Paso | Responsable | Estado | Fuente |
-|------|-------------|--------|--------|
-| Portafolio de experiencias por categoría Diners (28 experiencias, 8 categorías) | Carolina + Paola | ✅ completado | [[Experiencias_Tabs_2026-06/Experiencias_03_LogExperiencias_2026-06.xlsx]] |
-| Mapeo de prospectos B2B (32 empresas, 11 sectores, regla Grupo Bolívar aplicada) | Carolina + Paola | ✅ completado | [[Experiencias_Tabs_2026-06/Experiencias_02_PipelineCorporativo_2026-06.xlsx]] |
-| Media Kit, deck de ventas y propuesta comercial tipo | Paola | pendiente | [[Experiencias_Tabs_2026-06/Experiencias_NextSteps_2026-06.xlsx]] |
-| Correo de presentación + outreach a prospectos prioritarios | Paola | pendiente | [[Experiencias_Tabs_2026-06/Experiencias_NextSteps_2026-06.xlsx]] |
-| Estrategia y plantillas de aliados | Paola | pendiente | [[Experiencias_Tabs_2026-06/Experiencias_NextSteps_2026-06.xlsx]] |
-
-#### P2 — Plan Comercial Libros (Owner: Nicolás Serna)
-
-| Paso | Responsable | Estado | Fuente |
-|------|-------------|--------|--------|
-| Definir meta anual oficial (con Jeison) | Nicolás | pendiente | [[Tasks/2026-06-13 Nicolas Serna - Revisar presupuesto anual Libros]] |
-| Empalme completo con Nancy (Plan Canguro) | Nicolás | en-proceso | [[Tasks/2026-06-13 Nicolas Serna - Plan Canguro empalme Nancy]] |
-| Reestructurar consignación hoteles/librerías | Nicolás | pendiente | [[Tasks/2026-06-13 Nicolas Serna - Reestructurar propuestas consignacion hoteles]] |
+| # | Tarea | Due | Prioridad | Status | BU |
+|---|-------|-----|-----------|--------|----|
+| 1 | Coordinar con Juan David artículos pilar SEO: proveer proyectos + edición (clusters arquitectura colombiana + diseño interior) | Jul 31 | 🟠 Alta | pendiente | AXXIS |
+| 2 | Evaluar herramientas diseño: Metricool o Hitzfield para plantillas y programación | Jun 27 | 🟡 Media | pendiente | AXXIS |
+| 3 | Preparar ejemplo flujo IA + curaduría (1 artículo piloto para MANC) | Jun 25 | 🔴 Crítica | pendiente | Ed. Financiera |
+| 4 | Preparar 1 infografía piloto MFN (tenderos/corresponsales) | Jun 25 | 🔴 Crítica | pendiente | Ed. Financiera |
+| 5 | Proponer nuevos e-books Mi Negocio alineados a demanda real PyME | Jun 30 | 🟡 Media | pendiente | Ed. Financiera |
+| 6 | Ampliar cobertura editorial Bre-B en Mi Negocio | Jun 30 | 🟡 Media | pendiente | Ed. Financiera |
+| 7 | Proponer serie editorial renta fija en MFxInvertir (CDTs, TES, fondos de deuda) | Jun 30 | 🟡 Media | pendiente | Ed. Financiera |
+| 8 | Cara de TikTok Diners — lanzamiento P1 Jul 2026 (con Paola Nossa) | Jul 2026 | 🔴 P1 | pendiente | Diners |
+| 9 | Podcast "La Mesa de Diners" — lanzamiento antes Ago 2026 | Ago 2026 | 🔴 P1 | pendiente | Diners |
 
 ---
 
-## ⚠️ Alertas de Pauta — Pendientes de Asignación Formal
+## 🍽️ DINERS
 
-> Hallazgos del informe de pauta mayo 2026 ([[06 - Meetings/Proveedores/2026-05-31 Informe Pauta Mayo 2026 - Sebastian Diaz]]). Requieren decisión y asignación formal.
+### Sandra Martínez — Editorial Diners
 
-| Alerta | Magnitud | Acción Sugerida | Responsable Propuesto |
-|--------|---------|----------------|----------------------|
-| Campaña suscriptores AXXIS: **0 compras** con $122K COP invertidos | 🔴 Crítico | Optimizar landing + retargeting + revisar propuesta de valor (CTR aceptable: 1.14%) | Carolina + Sebastián Díaz |
-| Campaña suscriptores Diners: **1 compra** con $121K COP | 🔴 Crítico | Misma acción que AXXIS | Carolina + Sebastián Díaz |
-| CPC AXXIS subiendo 3 meses consecutivos: $76 → $92 → $108 | 🔴 Crítico | Revisar audiencias, creative fatiga (frecuencia 2.20), ajustar targeting | Carolina + Sebastián Díaz |
+> Fuente: [[06 - Meetings/Diners/2026-06-16 Carolina-Sandra - Roles y Capacidad Operativa]]
+> Contexto: Equipo reducido a 2 personas (Sandra + Simón) vs. 4 el año anterior. Aprobada contratación perfil senior con Cocrea (vigente hasta dic 2026).
+
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Coordinar con Simón Granja estrategia distribución contenido web — definir % artículos revista impresa que migran a digital para parrilla mensual | Por definir | 🟠 Alta | pendiente |
+| 2 | Iniciar proceso de contratación perfil **senior** editorial con presupuesto Cocrea | Antes Jul 2026 | 🔴 Alta | pendiente |
+
+### Carolina Ramirez — Diners Estrategia H2 2026
+
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Definir owner + timeline para TikTok Diners (cara: Ernesto, lanzamiento Jul 2026) | Jun 27 | 🔴 P1 | pendiente |
+| 2 | Definir owner + timeline para Podcast "La Mesa de Diners" (lanzamiento Ago 2026) | Jun 27 | 🔴 P1 | pendiente |
+| 3 | Definir owner + timeline para Newsletter premium Diners (antes Oct 2026) | Jun 27 | 🔴 P1 | pendiente |
+| 4 | Carnet Digital Diners — MVP + 1.000 carnets activos meta Q3 2026 (depende: alianzas + plataforma) | Sep 2026 | 🟠 P2 | pendiente |
+| 5 | Revisar y aprobar Media Kit Diners V1 antes de distribución | Jul 19 | 🔴 Alta | pendiente |
+| 6 | Liderar sesión innovación AXXIS — misma metodología sesión Diners | Jun 27 | 🔴 Alta | programada |
+
+---
+
+## 📚 LIBROS
+
+### Nicolas Serna — Libros
+
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Revisar con Jeison el presupuesto anual Libros — meta sugerida $500M COP, definir cifra oficial ⚠️ vencida | Jun 20 | 🔴 Alta | pendiente |
+| 2 | Grabar video con expertos Ethel Gilmour y Manolo Bello para IG Libros ⚠️ vencida | Jun 20 | 🔴 Alta | pendiente |
+| 3 | Ejecutar Plan Canguro de empalme con Nancy — transferencia de conocimiento cuentas y negociaciones activas | Jun 30 | 🔴 Alta | en-proceso |
+| 4 | Reestructurar propuestas consignación hoteles/librerías (mínimo 3 libros, pago diferido, margen 30%) — Tekendama, Arde la Selva, U. Javeriana, Decameron | Jun 27 | 🟡 Media | pendiente |
+| 5 | Evaluar con Paola Gordillo creación de "Dumis" (portadas QR a escala real) para salas de venta constructoras | Jun 30 | 🟡 Media | pendiente |
+| 6 | Mapa de canales actuales de comercialización Libros | Sin fecha | 🟠 Media | pendiente |
+| 7 | Plan de ferias 2025-2026 para unidad Libros | Sin fecha | 🟠 Media | pendiente |
+| 8 | Gestionar convenios corporativos Libros | Sin fecha | 🟠 Media | pendiente |
+
+### Paola Gordillo — Redes Libros
+
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Alinear calendario editorial Libros — parrilla 15 días, 3 pub/semana, línea gráfica unificada ⚠️ vencida | Jun 20 | 🟡 Media | en-proceso |
+| 2 | Evaluar con Nicolás creación de "Dumis" para constructoras (Amarilo, Bolívar) | Jun 30 | 🟡 Media | pendiente |
+
+---
+
+## 🎯 EXPERIENCIAS
+
+### Paola Pantaleón — Experiencias, Banca Privada + Apoyo Comercial
+
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Enviar resultados encuestas preferencias suscriptores a Carolina ⚠️ **VENCIDA** (debía 13-jun) | Jun 13 | 🔴 Alta | pendiente |
+| 2 | Preparar experiencia julio — Colección JD Gutiérrez + Vicky Turbay (logística, invitados, confirmación) | Jun 25 | 🔴 Alta | pendiente |
+| 3 | Iniciar prospección de aliados — priorizar gastronomía y bienestar (meta: 30 aliados julio) | Jul 15 | 🔴 Alta | pendiente |
+| 4 | Armar lista target B2B — ✅ avance: 32 empresas mapeadas en 11 sectores (excluida banca competidora Davivienda) | Jul 15 | 🔴 Alta | en-proceso |
+| 5 | Desarrollar Media Kit para clientes B2B — portafolio, casos de éxito (Juan de Dios), tarifas | Jul 20 | 🔴 Alta | pendiente |
+| 6 | Crear presentación comercial / deck de ventas B2B (adaptable por sector) | Jul 25 | 🔴 Alta | pendiente |
+| 7 | Diseñar propuesta comercial tipo — pricing, alcance, categorías, casos de éxito | Jul 31 | 🔴 Alta | pendiente |
+| 8 | Redactar correo presentación empresas B2B (priorizar ★ filiales Grupo Bolívar) | Jul 31 | 🔴 Alta | pendiente |
+| 9 | Definir herramienta newsletters Experiencias (Mailchimp vs HubSpot) | Jun 30 | 🟡 Media | pendiente |
+| 10 | Preparar portafolio de experiencias PDF para nuevas empresas cliente | Jul 15 | 🟡 Media | pendiente |
+| 11 | Crear lista contactos newsletter B2B + primer envío (mínimo 30 contactos) | Jul 31 | 🟡 Media | pendiente |
+| 12 | Definir estrategia aliados — criterios selección, modelo alianza, onboarding, acuerdo tipo | Ago 1 | 🟡 Media | pendiente |
+| 13 | Crear plantillas email seguimiento aliados (primer contacto → propuesta → bienvenida) | Ago 10 | 🟡 Media | pendiente |
+| 14 | Diseñar nuevo modelo beneficios suscriptores (Club Beneficios / Línea 2) | Sin fecha | 🔴 Alta | pendiente |
+| 15 | Lanzar Carnet Digital Diners (dependencia: alianzas activas + plataforma tecnológica) | Sep 2026 | 🟠 Media | pendiente |
+
+### Claris — Investigación Tech Experiencias
+
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Investigar software Club El Tiempo para validación suscriptores y trazabilidad redenciones | Jun 20 | 🔴 Alta | en-proceso |
+
+---
+
+## 👁️ VISIÓN DAVIVIENDA
+
+### Estefanía Ochoa Fonseca — CM Visión
+
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Crear archivo Google Drive compartido con contraseñas y accesos plataformas Visión ⚠️ vencida | Jun 16 | 🔴 Alta | pendiente |
+| 2 | Desarrollar ejes de comunicación + calendario mensual redes Visión Davivienda ⚠️ vencida | Jun 16 | 🔴 Alta | pendiente |
+| 3 | Incluir a Carolina en reunión recurrente Visión los miércoles ⚠️ vencida | Jun 18 | 🟡 Media | pendiente |
+| 4 | Auditoría UTMs email — mapear 97 campañas mayo y estandarizar nomenclatura | Jun 23 | 🔴 Alta | pendiente |
+| 5 | Plan evergreen SEO — 8-10 artículos atemporales "En qué Invertir" + "Macroeconomía cotidiana" | Jun 30 | 🔴 P1 | pendiente |
+| 6 | Migrar métricas orgánicas de redes al dashboard Looker/Data Studio | Jun 23 | 🟡 Media | pendiente |
+| 7 | Estrategia remarketing junio — audiencias personalizadas para retargeting | Jun 23 | 🟠 Media | pendiente |
+| 8 | Implementar ManyChat para automatización de mensajes Visión | Jun 30 | 🟡 Media | pendiente |
+| 9 | Reels 60s tips financieros cotidianos — primer batch de 4 piezas piloto | Jun 30 | 🟡 Media | pendiente |
+
+### Carolina — Visión Davivienda
+
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Reunión alineación con Natalia Otálora — presentar visión + plan contenidos 15 días ⚠️ vencida | Jun 16 | 🔴 Alta | programada |
+| 2 | Plan estratégico pauta Visión Davivienda — cerrar brecha de sesiones ⚠️ vencida | Jun 16 | 🔴 Alta | pendiente |
+| 3 | Revisar propuesta de mailing CTR Visión | Jun 20 | 🟡 Media | pendiente |
+| 4 | Reunión 1:1 Carolina-María Angélica Navarro | Jun 23 | 🟡 Media | pendiente |
+| 5 | Reuniones 1a1 con todo el equipo de plataformas | Jun 27 | 🔴 Alta | en-proceso |
+
+---
+
+## 🏦 EDUCACIÓN FINANCIERA (MFxInvertir + MFxMiNegocio)
+
+> Contexto: Plan alineado a 5 objetivos de María Angélica Navarro (MANC). Restricción: pauta/email/RRSS NO son scope de Gamma — Gamma = curaduría experta de contenido.
+
+### Jeison Montero — Plataformas EF
+
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Excluir dominio Spira de GA4 MFN (ambiente pruebas en producción — 38 sesiones contaminadas) | Jun 24 | 🔴 Crítica | pendiente |
+| 2 | Inventario completo contenidos MFI + MFN (URL, título, estado, tráfico) para reunión migración técnica | Jun 25 | 🔴 Crítica | pendiente |
+| 3 | Identificar Top 20 artículos por tráfico orgánico — los que NO se pueden perder en la migración | Jun 25 | 🔴 Crítica | pendiente |
+| 4 | Suspender/pausar campañas pauta pagada EF (Paid Search + Paid Other — 100% bounce) | Jun 18 | 🔴 Alta | pendiente |
+| 5 | Revisar Paid Search MFxInvertir con proveedor — 100% rebote, 0% interacción | Jun 20 | 🔴 Alta | pendiente |
+| 6 | Centralizar requerimientos técnicos Leo — rol formal de filtro único | Jun 20 | 🔴 Alta | pendiente |
+| 7 | Solicitar a proveedor MFN confirmación mensual explícita de exclusión dominio Spira | Jun 20 | 🔴 Alta | pendiente |
+| 8 | Solicitar mejoras informe mensual MFxInvertir (comparativo, desglose Email/Paid/Referral, Top 10) | Jun 25 | 🟡 Media | pendiente |
+| 9 | Solicitar mejoras informe mensual MFxMiNegocio (comparativo, tráfico internacional, Paid Other, Top 10) | Jun 25 | 🟡 Media | pendiente |
+| 10 | Investigar caída medición abril 2026 en ambas plataformas EF | Jun 23 | 🟡 Media | pendiente |
+| 11 | Revisar tráfico internacional sospechoso MFN (US 25%, Japón 7%, China 3%) | Jun 23 | 🟡 Media | pendiente |
+| 12 | Confirmar cumplimiento SLA junio (entregables ≥95% + uptime ≥85%) | Jul 1 | 🔴 Alta | pendiente |
+| 13 | Diagnóstico técnico 5 plataformas EF (paso 1 Consolidación) | Sin fecha | 🔴 Alta | pendiente |
+| 14 | Mapeo contratos y proveedores plataformas (paso 2 Consolidación) | Sin fecha | 🔴 Alta | pendiente |
+
+### Ernesto Rodriguez — Contenido EF
+
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Preparar ejemplo flujo IA + curaduría: 1 artículo piloto con borrador IA → resultado curado (para MANC) | Jun 25 | 🔴 Crítica | pendiente |
+| 2 | Preparar 1 infografía piloto MFN (tenderos/corresponsales — nuevo formato) | Jun 25 | 🔴 Crítica | pendiente |
+| 3 | Proponer nuevos e-books Mi Negocio alineados a demanda real PyME | Jun 30 | 🟡 Media | pendiente |
+| 4 | Ampliar cobertura editorial Bre-B en Mi Negocio | Jun 30 | 🟡 Media | pendiente |
+| 5 | Proponer serie editorial renta fija en MFxInvertir (CDTs, TES, fondos de deuda) | Jun 30 | 🟡 Media | pendiente |
+
+### Carolina — Ed. Financiera
+
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Alertar MANC sobre 100% rebote en pauta EF — Leo debe revisarla (no es scope Gamma pero sí responsabilidad alertar) | Jun 24 | 🔴 Crítica | pendiente |
+| 2 | Reunión estratégica con mercadeo Davivienda — presentar propuestas 1-5 alineadas a objetivos MANC | Semana 23-jun | 🔴 Crítica | pendiente |
+| 3 | Informe mensual junio al proveedor EF — incluir solicitudes de datos P0 | **Jul 3** | 🔴 Contractual | pendiente |
+| 4 | Preparar y presentar informe consolidado mayo 2026 a MANC (MFxInvertir + MFxMiNegocio) | Jun 20 | 🔴 Alta | pendiente |
+| 5 | Replanteo estratégico MFxInvertir: nueva meta desde mayo, potenciar email + referral | Jun 27 | 🔴 Alta | pendiente |
+| 6 | Replanteo estratégico MFxMiNegocio: excluir tráfico contaminado, redefinir meta base mayo | Jun 27 | 🔴 Alta | pendiente |
+| 7 | Renegociar metas anuales 2026 con MANC (mayo como nueva línea base) | Jun 30 | 🔴 Alta | pendiente |
+| 8 | Rediseñar KPIs slides comité estratégico: métricas conversión real, no vanidad | Jun 30 | 🔴 Alta | pendiente |
+
+---
+
+## 🔄 TRANSVERSAL / REVISTAS
+
+### Carolina — Transversal
+
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Estrategia Macropauta y Alianzas banco — compensar cierre Privilegios Davivienda | Jul 15 | 🔴 Alta | pendiente |
+| 2 | Revisar y aprobar media kit Diners V1 antes de distribución | Jul 19 | 🔴 Alta | pendiente |
+| 3 | Aprobar precios paquetes bundle impreso + digital + redes | Jun 28 | 🔴 Alta | pendiente |
+| 4 | Definir meta anual oficial Libros con Nicolás y Jeison | Jun 20 | 🔴 Alta | pendiente |
+| 5 | Oficializar roles y liderazgo Experiencias con Catalina Obregón ⚠️ vencida | Jun 16 | 🔴 Alta | pendiente |
+| 6 | Consultar con legal: responsabilidad civil de la revista ante incidentes con aliados ⚠️ vencida | Jun 18 | 🔴 Alta | pendiente |
+| 7 | Coordinar con Catalina acercamiento banco para propuesta beneficios + medios de pago ⚠️ NO contactar banco directamente | Jun 16 | 🔴 Alta | pendiente |
+| 8 | Solicitar cotizaciones plataforma PWA 360 suscriptores | Jun 20 | 🔴 Alta | en-proceso |
+| 9 | Hablar con Sandra (editora Diners) para crear contenido exclusivo suscriptores premium | Jun 20 | 🟡 Media | pendiente |
+| 10 | Revisar tarifario y kits de venta — combos pauta física + digital | Jun 30 | 🟡 Media | pendiente |
+| 11 | Reunión con María Claudia (Servicio al Cliente) para definir método de identificación suscriptores | Jun 23 | 🟡 Media | pendiente |
+
+### Paola Nossa — Marketing transversal
+
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Completar métricas web reales AXXIS V2 | Jun 28 | 🔴 Alta | pendiente |
+| 2 | Contactar anunciantes para casos de éxito media kit | Jun 28 | 🔴 Alta | pendiente |
+| 3 | Producir Media Kit AXXIS V2 con bundles + casos de éxito | Jul 5 | 🔴 Alta | pendiente |
+| 4 | Recopilar datos audiencia y tarifario Diners | Jul 12 | 🔴 Alta | pendiente |
+| 5 | Producir Media Kit Diners V1 | Jul 19 | 🔴 Alta | pendiente |
+| 6 | Diseñar one-pager ejecutivo AXXIS + Diners | Jul 31 | 🟠 Media | pendiente |
+| 7 | TikTok Diners con Ernesto Rodríguez — pilot 3 videos, lanzamiento Jul 2026 | Jul 2026 | 🔴 P1 | pendiente |
+| 8 | Bazar Diners (evento propio, con Paola Pantaleón) — Q3-Q4 2026 | Q3-Q4 2026 | 🟠 P2 | pendiente |
+
+---
+
+## 🧠 Backlog Estratégico — Decisiones CEO / PMO
+
+### Decisiones Pendientes (nivel Catalina Obregón)
+
+| Decisión | Urgencia | Fuente |
+|---------|---------|--------|
+| Aprobar formalización de Jeison como Líder de Plataformas con autoridad real | 🔴 Alta | [[00 - Executive Layer/CEO Dashboard]] |
+| Aprobar plan de nuevas alianzas para compensar Privilegios Davivienda | 🔴 Alta | [[00 - Executive Layer/CEO Dashboard]] |
+| Aprobar meta anual oficial Libros ($500M COP sugerido) | 🟡 Media | [[Tasks/2026-06-13 Nicolas Serna - Revisar presupuesto anual Libros]] |
+| Definir estrategia pricing revistas: mantener premium vs bundles | 🟠 Media | [[00 - Executive Layer/CEO Dashboard]] |
+| Decidión sobre consolidación de proveedores plataformas | 🟠 Media | [[00 - Executive Layer/CEO Dashboard]] |
+
+### Proyectos PMO
+
+| Proyecto | Owner | Prioridad | Próximo paso bloqueante |
+|----------|-------|-----------|------------------------|
+| Consolidación Plataformas | Jeison / Carolina | 🔴 P1 | Diagnóstico técnico 5 plataformas (Jeison, sin fecha) |
+| HubSpot CRM central | Carolina | 🔴 P1 | Configurar pipeline por BU · Training equipo comercial |
+| Flywheel AXXIS | Carolina / Equipo AXXIS | 🔴 P1 | Juan David: landing corregida (Jun 23) — desbloquea todo |
+| Plan EF alineado MANC | Carolina / Jeison / Ernesto | 🔴 P1 | Reunión mercadeo semana 23-jun |
+| Experiencias B2B + Club Beneficios | Paola Pantaleon / Carolina | 🔴 P1 | Media Kit + deck ventas (Jul 20) |
+| Media Kits Revistas | Paola Nossa / Carolina | 🔴 P1 | AXXIS V2 (Jul 5) · Diners V1 (Jul 19) |
+| Plan Comercial Libros | Nicolas Serna | 🟠 P2 | Meta anual + empalme Nancy |
+| Diners H2 2026 (TikTok + Podcast + Newsletter + Carnet) | Ernesto / Paola Nossa / Carolina | 🔴 P1 | Definir owners esta semana |
+
+---
+
+## ⚠️ Alertas de Pauta
+
+| Alerta | Magnitud | Acción | Owner |
+|--------|---------|--------|-------|
+| AXXIS suscriptores: 0 compras con $122K COP en Meta Ads (CTR ok, landing rota) | 🔴 Crítico | Juan David corrige landing → Sebastián activa retargeting | Juan David primero, luego Sebastián |
+| Diners suscriptores: 1 compra con $121K COP — misma causa | 🔴 Crítico | Ídem AXXIS | Carolina + Sebastián |
+| CPC AXXIS subiendo 3 meses: $76→$92→$108 COP | 🔴 Crítico | LAL suscriptores + refresh creativos | Sebastián |
+| Email AXXIS: 2 envíos en 3 días → CTR colapsó -87% | 🔴 Crítico | Máx 1 email/semana + separar segmentos | Paola Gordillo |
+| EF: pauta pagada 100% bounce (Paid Search + Paid Other) | 🔴 Crítico | Suspender + alertar MANC | Jeison + Carolina |
+| Pipeline Diners anual: 49% de meta ($169.6M de gap) — riesgo concentración KEVINS 46% | 🔴 Crítico | Estrategia nuevos clientes H2 | Carolina + Natalia Castaño |
 
 ---
 
 ## 📊 Resumen por Persona
 
-| Persona | Tareas Activas | Alta Prioridad | Vencen/vencidas |
-|---------|---------------|---------------|-------------------|
-| Carolina Ramirez | 22 | 16 | 6 |
-| Jeison Montero | 12 | 9 | 2 |
-| Ernesto Rodriguez | 6 | 0 | 0 |
-| Estefanía Ochoa Fonseca | 6 | 2 | 2 |
-| Paola Pantaleón | 16 | 9 | 1 ⚠️ vencida |
-| Claris | 1 | 1 | 0 |
-| Nicolas Serna | 8 | 3 | 0 |
-| Paola Gordillo | 2 | 0 | 0 |
-| **Total** | **73** | **40** | **11** |
+| Persona | Rol | Tareas Activas | 🔴 Alta | Vencidas/Urgentes |
+|---------|-----|---------------|---------|------------------|
+| Carolina Ramirez | Head of Growth | 28 | 20 | 7 |
+| Juan David | SEO + Web AXXIS | 14 | 8 | 4 (esta semana) |
+| Paola Gordillo | Redes + Newsletter AXXIS + Libros | 15 | 8 | 2 |
+| Sebastián Díaz | Pauta Digital AXXIS | 5 | 4 | 1 |
+| Paola Nossa | Marketing + Media Kits | 8 | 6 | 2 |
+| Jeison Montero | Líder de Plataformas | 14 | 10 | 3 |
+| Ernesto Rodriguez | Contenido Editorial | 9 | 4 | 0 |
+| Estefanía Ochoa | CM Visión | 9 | 5 | 3 |
+| Paola Pantaleón | Experiencias + Comercial | 15 | 9 | 1 ⚠️ vencida |
+| Nicolas Serna | Libros | 8 | 3 | 2 |
+| Sandra Martínez | Editorial Diners | 2 | 1 | 0 |
+| Claris | Investigación Experiencias | 1 | 1 | 0 |
+| **Total** | | **128** | **79** | **25** |
 
 ---
 
 ## 📊 Resumen por BU
 
-| Unidad de Negocio | Tareas | Notas |
-|------------------|--------|-------|
-| Educación Financiera | 17 | Situación más crítica — plataformas al 2-5% de meta anual |
-| Experiencias | 19 | Crecimiento fuerte esta semana: portafolio de 28 experiencias y 32 prospectos B2B ya mapeados; ahora foco en comercial (media kit, deck, outreach) |
-| Visión Davivienda | 11 | Brecha de sesiones, pauta y contenido estratégico pendiente |
-| Libros | 10 | Empalme Nicolás/Nancy en curso; meta anual y calendario editorial sin definir |
-| Revistas (AXXIS + Diners) | 5 | CPC + suscripciones críticas. Sesión innovación AXXIS jun 27 |
-| PMO / Plataformas | 4 | Consolidación en backlog — depende de formalización de Jeison |
+| Unidad de Negocio | Tareas | Riesgo | Próximo desbloqueo crítico |
+|------------------|--------|--------|--------------------------|
+| AXXIS | 37 | 🔴 Crítico | Juan David corrige landing Jun 23 → desbloquea pauta + redes |
+| Educación Financiera | 20 | 🔴 Crítico | Reunión mercadeo MANC semana 23-jun |
+| Experiencias | 18 | 🟠 Alto | Media Kit + deck ventas → outreach B2B |
+| Diners H2 2026 | 12 | 🔴 Crítico | Definir owners TikTok/Podcast/Newsletter esta semana |
+| Revistas (transversal) | 12 | 🟠 Alto | Media Kits AXXIS V2 (Jul 5) + Diners V1 (Jul 19) |
+| Visión Davivienda | 14 | 🟡 Atención | Reunión MANC pasada + plan SEO evergreen |
+| Libros | 10 | 🟠 Alto | Meta anual + empalme Nancy |
+| PMO / Plataformas | 5 | 🟠 Alto | Diagnóstico técnico 5 plataformas |
 
 ---
 
-## Notas de esta actualización
+## Notas de esta actualización (2026-06-21)
 
-- **Experiencias** es la unidad con más movimiento: se generó el dashboard completo (8 tabs), el catálogo de 28 experiencias por categoría Diners, y el mapeo de 32 prospectos B2B en 11 sectores.
-- **Regla crítica aplicada**: Gamma es filial de Grupo Bolívar — se excluyó toda banca competidora de Davivienda de la lista de prospectos. Las filiales del grupo (Constructora Bolívar, Fiduciaria Bolívar, Seguros Bolívar) quedaron como prospectos ★ prioritarios, y las aseguradoras/constructoras competidoras de esas filiales quedan permitidas y marcadas con (*).
-- **Cargo corregido**: Jeison Montero es Líder de Plataformas (no PMO/Coordinador) — corregido en su ficha de persona y en el área de sus tasks.
-- **Dato corregido**: el tráfico de Spira en Mi Negocio es de 38 sesiones (3.3% del total), no 381 — corregido en todos los informes y tasks relacionadas.
-- **Libros** se incorpora por primera vez al consolidado: 8 tareas de Nicolás Serna y 2 de Paola Gordillo, todas con fuente en la reunión one-to-one del 11 de junio.
+- **Reorganización estructural:** de "Por Persona" a "Por BU → Persona" para alinear con la solicitud de plan de acción gerencial
+- **3 nuevos ejecutores documentados:** Juan David (SEO/Web AXXIS), Sebastián Díaz (Pauta AXXIS), Sandra Martínez (Editorial Diners)
+- **Flywheel AXXIS:** 32 nuevas tareas de los planes por persona. El bottleneck principal es la landing de suscripción (Juan David, Jun 23) — desbloquea el retargeting de Sebastián y el funnel de conversión de Paola Gordillo
+- **Ed. Financiera:** plan reorientado a objetivos MANC (5 ejes). Reunión estratégica mercadeo semana 23-jun es el hito más crítico
+- **Media Kits:** Media Kit Diners no existía — Paola Nossa es owner, Carolina aprueba. AXXIS V2 en 2 semanas, Diners V1 en 4 semanas
+- **Alerta nueva:** Pipeline anual Diners al 49% ($169.6M de gap) con riesgo concentración KEVINS JOYEROS (46% del presupuesto anual)
 
 ---
 
 ## Relacionado
 
-[[05 - PMO/Portfolio Proyectos]] · [[00 - Executive Layer/CEO Dashboard]] · [[02 - Personas/Jeison Montero]] · [[02 - Personas/Paola Pantaleon]] · [[02 - Personas/Nicolas Serna]]
+[[05 - PMO/Portfolio Proyectos]] · [[00 - Executive Layer/CEO Dashboard]] · [[03 - Unidades de Negocio/AXXIS/Planes de Acción/Flywheel AXXIS — Juan David (SEO + Web)]] · [[03 - Unidades de Negocio/AXXIS/Planes de Acción/Flywheel AXXIS — Paola Gordillo (Redes + Newsletter)]] · [[03 - Unidades de Negocio/AXXIS/Planes de Acción/Flywheel AXXIS — Sebastián (Pauta Digital)]] · [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Plan-Accion-EF-2026]] · [[07 - Marketing y Eventos/Plan de Accion Media Kits 2026]]
 
 ---
 
