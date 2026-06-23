@@ -1,5 +1,5 @@
 ---
-date: 2026-06-21
+date: 2026-06-23
 type: task-master
 tags: [tasks, pmo, consolidado, team, equipo]
 related-people: [Carolina Ramirez, Jeison Montero, Ernesto Rodriguez, Estefania Ochoa Fonseca, Paola Pantaleon, Nicolas Serna, Paola Gordillo, Paola Nossa, Sandra Martinez, Juan David, Sebastian Diaz]
@@ -39,6 +39,7 @@ Master consolidated task list for Ediciones Gamma, refreshed 2026-06-21. Reorgan
 | Contactar 2-3 anunciantes para casos de éxito media kit AXXIS | Paola Nossa | 2026-06-28 | AXXIS | [[07 - Marketing y Eventos/Plan de Accion Media Kits 2026]] |
 | Revisar presupuesto anual Libros con Jeison ($500M meta sugerida) ⚠️ vencida | Nicolas Serna | 2026-06-20 | Libros | [[Tasks/2026-06-13 Nicolas Serna - Revisar presupuesto anual Libros]] |
 | Enviar resultados encuestas preferencias aliados a Carolina ⚠️ **VENCIDA** | Paola Pantaleon | 2026-06-13 | Experiencias | [[Tasks/2026-06-12 Paola Pantaleon - Enviar encuestas preferencias aliados]] |
+| Facturar 9 deals "Listo para facturar" en HubSpot Pipeline e-Payco (plata cobrada sin facturar) | Carolina / Natalia Castaño | 2026-06-24 | AXXIS/Diners | HubSpot CRM Audit 2026-06-23 |
 
 ---
 
@@ -147,6 +148,51 @@ Master consolidated task list for Ediciones Gamma, refreshed 2026-06-21. Reorgan
 | 7 | Proponer serie editorial renta fija en MFxInvertir (CDTs, TES, fondos de deuda) | Jun 30 | 🟡 Media | pendiente | Ed. Financiera |
 | 8 | Cara de TikTok Diners — lanzamiento P1 Jul 2026 (con Paola Nossa) | Jul 2026 | 🔴 P1 | pendiente | Diners |
 | 9 | Podcast "La Mesa de Diners" — lanzamiento antes Ago 2026 | Ago 2026 | 🔴 P1 | pendiente | Diners |
+
+---
+
+## 🔗 HUBSPOT — Journey de Suscripción
+
+> Fuente: Auditoría HubSpot 2026-06-23 — 77,978 contactos · 13 suscriptores activos · LTV compuesto $725,900 COP
+> Contexto: HubSpot funciona como depósito de listas importadas, no como CRM activo. 98.4% de contactos vienen de importaciones masivas (ene-feb 2026). 702 clics a landing de suscripción en mayo → 0 leads creados en CRM. Tres integraciones críticas bloquean el journey: Triario→HubSpot, Meta→HubSpot, form /suscribirse/→HubSpot. LTV compuesto: suscripción ($580K) + expansión ($87K) + referidos ($58K) = $725,900 COP por suscriptor.
+
+### Carolina — Owner Journey HubSpot
+
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Facturar 9 deals "Listo para facturar" en Pipeline e-Payco | Jun 24 | 🔴 Crítica | pendiente |
+| 2 | Limpiar lifecycle stages: migrar 64,162 contactos de etapa custom "Contacto" → "Lead" estándar HubSpot | Jul 7 | 🔴 Crítica | pendiente |
+| 3 | Crear 7 propiedades de contacto: `subscription_type` · `subscription_start_date` · `subscription_end_date` · `ltv_cumulative_cop` · `nps_score` · `churn_risk` · `referral_source_contact` | Jul 7 | 🔴 Crítica | pendiente |
+| 4 | Crear WF-01 Lead Nurturing (4 emails en 7 días: hora 0 / día 2 / día 4 / día 7 con CTA a compra) | Jul 10 | 🔴 Crítica | pendiente |
+| 5 | Crear WF-02 Confirmación de compra (trigger: deal cerrado en e-Payco → email bienvenida inmediato) | Jul 10 | 🔴 Crítica | pendiente |
+| 6 | Crear WF-03 Onboarding 30 días (5 emails: día 0 / día 3 / día 7 / día 14 / día 30 con NPS) | Jul 15 | 🔴 Crítica | pendiente |
+| 7 | Activar nurturing sobre 77K base existente — primer envío segmentado WF-01 a etapa "Lead" | Jul 15 | 🔴 Crítica | pendiente |
+| 8 | Crear WF-04 Churn Alert (trigger: 3 emails sin abrir → encuesta 1 clic + email personal Ernesto) | Jul 20 | 🟠 Alta | pendiente |
+| 9 | Crear WF-06 Renovación anticipada (trigger: 60 días antes de closedate del deal → 4 emails) | Jul 20 | 🟠 Alta | pendiente |
+| 10 | Crear WF-08 Winback post-churn (3 emails: +30 días / +60 días / +90 días → Meta retargeting si no responde) | Jul 31 | 🟡 Media | pendiente |
+
+**KPIs meta:** leads desde pauta: 0 → ≥50/mes (jul) · suscriptores activos: 13 → ≥50 (ago) · CPL rentable hasta $72,590 COP · Conversion rate base 77K: meta 0.5% = 385 suscriptores sin nueva captación
+
+---
+
+### Jeison — Integraciones HubSpot
+
+| # | Tarea | Due | Prioridad | Status | Dependencia |
+|---|-------|-----|-----------|--------|------------|
+| 1 | Conectar Triario → HubSpot: webhook que crea deal automáticamente en Pipeline e-Payco en cada compra | Jul 7 | 🔴 Crítica | pendiente | Coordinar con Triario |
+| 2 | Evaluar y activar CAPI Meta → HubSpot: cada ViewContent de landing crea contacto en CRM | Jul 10 | 🔴 Crítica | pendiente | Requiere acceso Meta BM de Sebastián |
+
+### Juan David — Form HubSpot en landing
+
+| # | Tarea | Due | Prioridad | Status | Dependencia |
+|---|-------|-----|-----------|--------|------------|
+| 1 | Embed HubSpot form (hubspot.js) en landing /suscribirse/ para capturar lead antes de que llegue a Triario | Jul 7 | 🔴 Crítica | pendiente | Landing corregida (Jun 23) |
+
+### Sebastián — Meta → HubSpot
+
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Activar Meta Lead Ads nativo con integración HubSpot — cada lead de pauta entra al CRM automáticamente | Jul 10 | 🔴 Crítica | pendiente |
 
 ---
 
@@ -355,7 +401,7 @@ Master consolidated task list for Ediciones Gamma, refreshed 2026-06-21. Reorgan
 | Proyecto | Owner | Prioridad | Próximo paso bloqueante |
 |----------|-------|-----------|------------------------|
 | Consolidación Plataformas | Jeison / Carolina | 🔴 P1 | Diagnóstico técnico 5 plataformas (Jeison, sin fecha) |
-| HubSpot CRM central | Carolina | 🔴 P1 | Configurar pipeline por BU · Training equipo comercial |
+| HubSpot Journey Suscripción | Carolina / Jeison / Juan David / Sebastián | 🔴 P1 | Facturar 9 deals e-Payco (Jun 24) → conectar Triario→HubSpot (Jul 7) → WF-01 nurturing 77K (Jul 15) |
 | Flywheel AXXIS | Carolina / Equipo AXXIS | 🔴 P1 | Juan David: landing corregida (Jun 23) — desbloquea todo |
 | Plan EF alineado MANC | Carolina / Jeison / Ernesto | 🔴 P1 | Reunión mercadeo semana 23-jun |
 | Experiencias B2B + Club Beneficios | Paola Pantaleon / Carolina | 🔴 P1 | Media Kit + deck ventas (Jul 20) |
@@ -382,19 +428,20 @@ Master consolidated task list for Ediciones Gamma, refreshed 2026-06-21. Reorgan
 
 | Persona | Rol | Tareas Activas | 🔴 Alta | Vencidas/Urgentes |
 |---------|-----|---------------|---------|------------------|
-| Carolina Ramirez | Head of Growth | 28 | 20 | 7 |
-| Juan David | SEO + Web AXXIS | 14 | 8 | 4 (esta semana) |
+| Carolina Ramirez | Head of Growth | 38 | 27 | 8 |
+| Juan David | SEO + Web AXXIS | 15 | 9 | 4 (esta semana) |
 | Paola Gordillo | Redes + Newsletter AXXIS + Libros | 15 | 8 | 2 |
-| Sebastián Díaz | Pauta Digital AXXIS | 5 | 4 | 1 |
+| Sebastián Díaz | Pauta Digital AXXIS | 6 | 5 | 1 |
 | Paola Nossa | Marketing + Media Kits | 8 | 6 | 2 |
-| Jeison Montero | Líder de Plataformas | 14 | 10 | 3 |
+| Jeison Montero | Líder de Plataformas | 16 | 12 | 3 |
 | Ernesto Rodriguez | Contenido Editorial | 9 | 4 | 0 |
 | Estefanía Ochoa | CM Visión | 9 | 5 | 3 |
 | Paola Pantaleón | Experiencias + Comercial | 15 | 9 | 1 ⚠️ vencida |
 | Nicolas Serna | Libros | 8 | 3 | 2 |
 | Sandra Martínez | Editorial Diners | 2 | 1 | 0 |
 | Claris | Investigación Experiencias | 1 | 1 | 0 |
-| **Total** | | **128** | **79** | **25** |
+| Natalia Castaño | Comercial AXXIS/Diners | 1 | 1 | 1 |
+| **Total** | | **143** | **91** | **27** |
 
 ---
 
@@ -403,6 +450,7 @@ Master consolidated task list for Ediciones Gamma, refreshed 2026-06-21. Reorgan
 | Unidad de Negocio | Tareas | Riesgo | Próximo desbloqueo crítico |
 |------------------|--------|--------|--------------------------|
 | AXXIS | 37 | 🔴 Crítico | Juan David corrige landing Jun 23 → desbloquea pauta + redes |
+| HubSpot Journey | 14 | 🔴 Crítico | Facturar 9 deals (Jun 24) → Triario webhook (Jul 7) → WF-01 nurturing 77K (Jul 15) |
 | Educación Financiera | 20 | 🔴 Crítico | Reunión mercadeo MANC semana 23-jun |
 | Experiencias | 18 | 🟠 Alto | Media Kit + deck ventas → outreach B2B |
 | Diners H2 2026 | 12 | 🔴 Crítico | Definir owners TikTok/Podcast/Newsletter esta semana |
@@ -417,6 +465,7 @@ Master consolidated task list for Ediciones Gamma, refreshed 2026-06-21. Reorgan
 
 - **Reorganización estructural:** de "Por Persona" a "Por BU → Persona" para alinear con la solicitud de plan de acción gerencial
 - **3 nuevos ejecutores documentados:** Juan David (SEO/Web AXXIS), Sebastián Díaz (Pauta AXXIS), Sandra Martínez (Editorial Diners)
+- **2026-06-23:** Auditoría HubSpot + Journey de Suscripción — nueva sección con 14 tareas. LTV compuesto $725,900 COP/suscriptor. 3 integraciones críticas: Triario→HS, Meta→HS, form→HS. 77K base existente = $92M revenue potencial sin nueva captación (0.5% CR). Total: 128 → 143 tareas.
 - **Flywheel AXXIS:** 32 nuevas tareas de los planes por persona. El bottleneck principal es la landing de suscripción (Juan David, Jun 23) — desbloquea el retargeting de Sebastián y el funnel de conversión de Paola Gordillo
 - **Ed. Financiera:** plan reorientado a objetivos MANC (5 ejes). Reunión estratégica mercadeo semana 23-jun es el hito más crítico
 - **Media Kits:** Media Kit Diners no existía — Paola Nossa es owner, Carolina aprueba. AXXIS V2 en 2 semanas, Diners V1 en 4 semanas
