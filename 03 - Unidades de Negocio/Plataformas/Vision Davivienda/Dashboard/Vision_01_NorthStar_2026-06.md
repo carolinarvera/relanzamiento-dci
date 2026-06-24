@@ -1,5 +1,5 @@
 ---
-date: 2026-06-17
+date: 2026-06-24
 type: dashboard-tab
 tags: [vision-davivienda, dashboard, north-star, kpis, junio-2026]
 related-projects: [vision-davivienda, growth-dashboard]
@@ -9,14 +9,15 @@ sources:
   - "GA4 sumatoria 3 propiedades YTD jun 2026"
   - "GSC mar-jun 2026 (export 2026-06-17)"
   - "Braze dashboard 2026-06-16"
+  - "Sesión estrategia editorial 2026-06-24 (contenido especializado validado)"
 ai-first: true
 confidence: high
 ---
 
 # Visión Davivienda — North Star
-**Objetivos definidos por Natalia Otálora | Actualizado:** 2026-06-17
+**Objetivos definidos por Natalia Otálora | Actualizado:** 2026-06-24
 
-> **For future Claude:** Este archivo es el norte para conversaciones con Natalia Otálora (contacto estratégico Davivienda). Estructura: Meta Central 2M visualizaciones → 4 pilares ejecutables (Tráfico por canal, CTR orgánico, Engagement email+contenido, Suscripciones). Carolina Ramirez es Growth Lead. Natalia ausente desde el 28 jun — cerrar decisiones antes. El lenguaje de Natalia usa "visualizaciones", no "sesiones". El Excel `Vision_01_NorthStar.xlsx` refleja esta misma estructura.
+> **For future Claude:** Este archivo es el norte para conversaciones con Natalia Otálora (contacto estratégico Davivienda). Estructura: Meta Central 2M visualizaciones → 2 North Stars (Tráfico/posicionamiento + Suscriptores) ejecutados mediante estrategia editorial especializada y coyuntural. Carolina Ramirez es Growth Lead. Natalia ausente desde el 28 jun. El lenguaje de Natalia usa "visualizaciones", no "sesiones". CRÍTICO: Visión NO es educación financiera básica — es análisis económico especializado para profesionales y entusiastas que quieren entender documentos complejos (informes BanRep, DANE, MinHacienda). Nunca recomendar contenido tipo "qué es la inflación" — el nivel es análisis de la decisión de política monetaria.
 
 ---
 
@@ -110,6 +111,68 @@ Natalia revisó contenido y señaló tres problemas específicos:
 | Exceso de tecnicismos | Aleja al segmento "entusiasta" | Equipo investigaciones: traducir sin perder calidad |
 
 **Propuesta de Natalia:** series temáticas basadas en informes existentes (ej: sector construcción) para extender vida útil del contenido más allá de la coyuntura inmediata.
+
+---
+
+## ESTRATEGIA EDITORIAL VALIDADA — Junio 2026
+
+> Validado en sesión de estrategia 2026-06-24. Este es el marco editorial que rige toda la producción de contenido de Visión.
+
+### Posicionamiento editorial
+
+Visión NO es educación financiera básica. Es **análisis económico y financiero especializado** para dos audiencias:
+
+| Audiencia | Perfil | Relación con Visión |
+|-----------|--------|---------------------|
+| Primaria | Economistas, analistas, directivos | Usan Visión como síntesis y contraste de fuentes primarias |
+| De crecimiento (escalar) | Entusiastas con afinidad financiera | Quieren entender informes complejos sin que se los simplifiquen al extremo — Visión es su puente |
+
+### 5 Clusters coyunturales
+
+Cada cluster mezcla 3 tipos de contenido: **Análisis de informe** (lectura guiada de documentos oficiales) + **Coyuntura** (comentario sobre eventos recientes) + **Explainer entusiasta** (puente entre el dato técnico y quien quiere entenderlo).
+
+| Cluster | Fuentes oficiales | Ejemplos de títulos |
+|---------|------------------|---------------------|
+| Política monetaria | BanRep, Fed, BCE | "Qué decidió BanRep en la junta de julio y por qué importa", "Cómo leer un Informe de Política Monetaria" |
+| Mercados e indicadores | BVC, Bloomberg, Banco de la República | "Comportamiento del peso colombiano en julio: lectura de la TRM", "Cómo interpretar la curva de rendimientos colombiana" |
+| Macroeconomía / datos DANE | DANE, Fedesarrollo | "Lectura del dato de inflación julio 2026", "PIB Q2: qué dicen los números del DANE" |
+| Política fiscal y regulación | MinHacienda, CONFIS, SFC | "Marco Fiscal de Mediano Plazo 2026: análisis de los puntos clave" |
+| Perspectivas sectoriales | ANDI, Fedesarrollo, BanRep | "Perspectivas del sector financiero colombiano Q3 2026", "Índice de Confianza del Consumidor: cómo leerlo" |
+
+### Motor coyuntural — regla de las 48h
+
+El tráfico especializado llega en las primeras 48-72h de publicado el dato oficial. Visión debe publicar antes que medios generalistas — con más profundidad, no más rápido que agencias de noticias.
+
+| Frecuencia | Evento | Acción |
+|-----------|--------|--------|
+| Mensual | Dato de inflación DANE | Análisis publicado dentro de 48h |
+| Bimestral | Junta directiva BanRep | Análisis publicado el mismo día o siguiente |
+| Trimestral | PIB + Informe de Política Monetaria BanRep | Análisis profundo en 48h |
+| Anual | Marco Fiscal de Mediano Plazo, Presupuesto General | Análisis extendido |
+
+### Lead magnets de acceso (no calculadoras básicas)
+
+| Lead magnet | Propósito |
+|------------|-----------|
+| Calendario económico Colombia H2 2026 | Fechas de todos los informes oficiales — el entusiasta sabe cuándo leer a Visión |
+| Guía de lectura del IPM BanRep | Cómo estructurar la lectura del Informe de Política Monetaria |
+| Glosario de análisis macroeconómico | Los 50 términos de informes BanRep, DANE y MinHacienda |
+| Cómo leer los gráficos del DANE | Guía visual para interpretar inflación, PIB, mercado laboral |
+
+### Welcome sequence Braze — 4 emails en 8 días
+
+| Email | Timing | Contenido |
+|-------|--------|-----------|
+| 1 | Inmediato | Entrega del lead magnet + "Visión es análisis económico para quien quiere ir más allá del titular" |
+| 2 | Día 2 | Los 3 análisis más leídos de Visión — calibrar el tono y nivel |
+| 3 | Día 5 | Cómo funciona Visión: los análisis se publican vinculados al calendario económico, no en cadencia fija |
+| 4 | Día 8 | Próximo informe en el calendario: "el [fecha] se publica [informe] — lo analizaremos ese mismo día" |
+
+> Envíos post-welcome: vinculados a eventos, no cadencia fija. Máximo 2/semana. Canal: Braze (Estefanía Ochoa).
+
+### Distribución — LinkedIn como canal primario del entusiasta
+
+El perfil ABC1 especializado que comparte análisis de BanRep o DANE vive en LinkedIn, no en Instagram. Formato carrusel para explainers ("5 cosas que debes saber del IPM de agosto") — alta interacción, trae tráfico de calidad al artículo completo.
 
 ---
 

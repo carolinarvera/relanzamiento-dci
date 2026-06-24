@@ -1,5 +1,5 @@
 ---
-date: 2026-06-16
+date: 2026-06-24
 type: dashboard-tab
 tags: [vision-davivienda, dashboard, next-steps, roadmap, junio-2026]
 related-projects: [vision-davivienda, growth-dashboard]
@@ -8,7 +8,7 @@ confidence: high
 ---
 
 # Visión Davivienda — Next Steps
-**Actualizado:** 2026-06-16 | **⚠️ Natalia ausente desde el 28 de junio**
+**Actualizado:** 2026-06-24 | **⚠️ Natalia ausente desde el 28 de junio**
 
 ---
 
@@ -118,6 +118,48 @@ confidence: high
 | 2026-06-16 | Podcast congelado hasta estabilizar canales actuales | Natalia |
 | 2026-06-16 | Ejes contenido: Autoridad / Educativo / Coyuntura / Comunidad | Equipo |
 | 2026-06-16 | Roles por canal: IG educación, LI autoridad, X coyuntura, YT largo | Equipo |
+
+---
+
+## 🔵 ESTRATEGIA EDITORIAL — Validado 2026-06-24
+
+> Marco aprobado: contenido especializado y coyuntural (no educación básica). Ver detalles completos en [[Vision_01_NorthStar_2026-06#ESTRATEGIA EDITORIAL VALIDADA]].
+
+### Carolina — Prioridad 1: activar motor coyuntural
+
+| # | Acción | Deadline |
+|---|--------|---------|
+| 1 | **Construir calendario editorial coyuntural H2 2026** — mapear todas las fechas de publicación BanRep, DANE, MinHacienda, Fedesarrollo. Ernesto sabe con anticipación qué analizar y cuándo | 27 jun |
+| 2 | **Definir flujo editorial de 48h** — quién redacta (Ernesto), quién revisa rigor técnico, quién aprueba (Natalia Otalora). El proceso debe ser ágil sin saltarse aprobación | 27 jun |
+| 3 | **Estandarizar formato de análisis de informe** — estructura fija: Contexto / Qué dice el informe / Lo que significa para el entusiasta. Que Ernesto pueda producirlos ágilmente | 30 jun |
+
+### Carolina — Prioridad 2: lead magnets y suscriptores
+
+| # | Acción | Deadline |
+|---|--------|---------|
+| 4 | **Crear primer lead magnet: Calendario económico Colombia H2 2026** — PDF descargable con todas las fechas de informes oficiales. Bajo costo de producción, alto valor para el entusiasta | 4 jul |
+| 5 | **Definir CTA de suscripción en artículos de análisis** — inline dentro del cuerpo: "para recibir el análisis el mismo día que se publica el informe, suscríbete". Brief para Estefanía | 30 jun |
+
+### Estefanía — Welcome sequence Braze (4 emails)
+
+| # | Acción | Deadline |
+|---|--------|---------|
+| 6 | **Diseñar welcome sequence** — 4 emails en 8 días. Email 1: entrega lead magnet + bienvenida. Email 2: los 3 análisis más leídos. Email 3: cómo funciona Visión (calendario económico, no cadencia fija). Email 4: próximo informe en el calendario | 11 jul |
+| 7 | **Aprobar copy con Natalia Otalora** antes de activar en producción | Pre-Natalia regresa |
+
+### Leo (agencia) — SEO especializado
+
+| # | Acción | Deadline |
+|---|--------|---------|
+| 8 | **Auditoría GSC: búsquedas especializadas actuales** — identificar artículos con posición 4-20 en términos como "análisis BanRep", "inflación colombia datos", "política monetaria colombia" | 4 jul |
+| 9 | **Article schema + FAQ schema** en artículos de análisis — elegibilidad para featured snippets en "qué decidió BanRep hoy", "dato de inflación agosto 2026" | 11 jul |
+
+### Ernesto — Producción editorial
+
+| # | Acción | Deadline |
+|---|--------|---------|
+| 10 | **Primer artículo en formato análisis de informe** — usar el próximo dato oficial como prueba del flujo de 48h | Siguiente dato oficial |
+| 11 | **LinkedIn: publicar extracto de cada análisis** — un insight del artículo + link. Formato carrusel para explainers entusiastas | Ciclo mensual |
 
 ---
 

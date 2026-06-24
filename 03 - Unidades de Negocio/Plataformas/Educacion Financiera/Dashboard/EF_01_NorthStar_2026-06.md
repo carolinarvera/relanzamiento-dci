@@ -1,5 +1,5 @@
 ---
-date: 2026-06-18
+date: 2026-06-24
 type: dashboard-tab
 tags: [educacion-financiera, dashboard, north-star, kpis, junio-2026, mfxinvertir, mfxminegocio]
 related-projects: [educacion-financiera, consolidacion-plataformas]
@@ -8,14 +8,66 @@ sources:
   - "Informe mayo 2026 — Mis Finanzas para Invertir"
   - "Informe mayo 2026 — Mis Finanzas para Mi Negocio"
   - "SLA Oferta 14015-1 Ediciones Gamma / Banco Davivienda"
+  - "Sesión estrategia EF 2026-06-24 (north stars validados)"
 ai-first: true
 confidence: high
 ---
 
 # Educación Financiera — North Star
-**Baseline: mayo 2026 (mes de reinicio) | Actualizado:** 2026-06-18
+**Actualizado:** 2026-06-24 | **⚠️ ESTADO CRÍTICO — Nueva plataforma en definición**
 
-> **For future Claude:** Dashboard central de Educación Financiera (MFxInvertir + MFxMiNegocio). Contacto estratégico Davivienda: [[Maria Angelica Navarro]] (Jefe Ed. Financiera). El contrato SLA define el **piso** (entregables, disponibilidad, informes) — nosotros construimos el **techo** (usuarios calificados, engagement, leads). Mayo 2026 es el mes de reinicio real — los datos de ene-abr no son fiables. Comparar todo contra mayo, no contra metas anuales originales. Dos alertas críticas activas: pauta pagada con 100% rebote en ambas plataformas, y tráfico bot en MFN.
+> **For future Claude:** Dashboard central de Educación Financiera (MFxInvertir + MFxMiNegocio). Contacto estratégico Davivienda: [[Maria Angelica Navarro]] (Jefe Ed. Financiera). ALERTA CRÍTICA (2026-06-24): María Angélica está trabajando en una propuesta de nueva plataforma — esto define el North Star #1. Sin plataforma nueva live, los goals de tráfico y reconocimiento son prematuros. Los North Stars son SECUENCIALES (ver sección siguiente). Scope de Gamma/Leo: solo contenido web + WordPress. Newsletter → Mercadeo Davivienda; Pauta → Performix; RRSS → Datalab. Hay 4 actores sin orchestrador claro — riesgo de coordinación activo. El contrato SLA sigue vigente — el piso contractual no cambia por la nueva propuesta.
+
+---
+
+## ⚠️ NORTH STARS EN CASCADA — Validado 2026-06-24
+
+> Estas 3 metas son **secuenciales**, no paralelas. Sin plataforma, no hay tráfico. Sin tráfico, no hay reconocimiento.
+
+### North Star 1 — Nueva plataforma live (BLOQUEANTE)
+
+**Estado: en definición por María Angélica Navarro**
+
+| KPI de lanzamiento | Responsable | Estado |
+|--------------------|------------|--------|
+| Fecha go-live acordada con María Angélica | Carolina + MA Navarro | 🔴 Pendiente propuesta |
+| Contenido mínimo publicado en WordPress | Gamma + Leo | 🔴 Sin scope definido |
+| SEO técnico básico (sitemaps, indexación, metas) | Leo | 🔴 Sin scope definido |
+| Aprobación formal Davivienda | María Angélica Navarro | 🔴 En proceso |
+
+**Bloqueadores activos:**
+- Propuesta de nueva plataforma en curso — scope sin definir aún
+- Leo trabaja simultáneamente con Gamma y con Mercadeo Davivienda (frente doble — riesgo de instrucciones contradictorias)
+- 4 actores sin orchestrador claro: Gamma+Leo / Mercadeo / Performix / Datalab
+
+### North Star 2 — Tráfico a la plataforma (post-lanzamiento NS1)
+
+| Canal | Owner | Qué controla Gamma |
+|-------|-------|-------------------|
+| Orgánico (SEO) | Leo + Gamma | SEO on-page + técnico |
+| Newsletter | Mercadeo Davivienda | Solo proponer contenido |
+| Pauta | Performix | Nada — fuera de Gamma |
+| Redes sociales | Datalab | Alinear mensajes, no el calendario |
+
+### North Star 3 — Reconocimiento de marca (mediano plazo)
+
+- Búsquedas de marca: "MFxInvertir", "educación financiera Davivienda"
+- Tráfico directo (usuarios que regresan conscientemente)
+- Menciones y shares — depende de Datalab + Mercadeo + Leo alineados
+
+---
+
+## MAPA DE ACTORES — Fronteras de control
+
+| Actor | Responsabilidad | ¿Gamma controla? |
+|-------|----------------|-----------------|
+| Gamma + Leo | Contenido web + WordPress | ✅ Sí — alcance acotado |
+| Mercadeo Davivienda | Newsletter | ❌ Gamma puede proponer, no controla |
+| Performix | Pauta digital | ❌ Fuera de Gamma |
+| Datalab | Redes sociales MFxInvertir + MFxMiNegocio | ❌ Fuera de Gamma |
+| María Angélica Navarro | Aprobación + definición nueva plataforma | Interlocutora — no ejecutora |
+
+> Leo trabaja entre Gamma y Mercadeo Davivienda en paralelo. Aclarar cadena de mando antes de que se generen instrucciones contradictorias.
 
 ---
 
