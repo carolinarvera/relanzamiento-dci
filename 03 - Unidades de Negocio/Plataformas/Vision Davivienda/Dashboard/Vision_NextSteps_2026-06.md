@@ -12,99 +12,88 @@ confidence: high
 
 ---
 
-## FOCO DEL MES: 3 objetivos no negociables
+## FOCO: 4 frentes activos — organizados por tipo de acción
 
-1. **Desbloquear acceso a datos** — Business Manager + auditoría pauta
-2. **Activar piloto de contenido** — cronograma editorial con 4 pilares aprobado por Natalia
-3. **Escalar los 5 fixes técnicos SEO a Leo** — canonicals, títulos, metas, sitemap, SSR
+> ⚠️ Natalia ausente desde el 28 jun — toda aprobación debe cerrarse antes.
 
 ---
 
-## Acciones por owner
+### Estrategia Editorial y Coyuntura
 
-### 🔴 Carolina — Esta semana (antes del 28 jun)
-
-| # | Acción | Deadline |
-|---|--------|---------|
-| 1 | Enviar formato Excel de cronograma editorial a Estefanía | **Hoy 16 jun** |
-| 2 | Escalar a Jeison/Leo los 5 issues críticos SEO (ver auditoría) | 18 jun |
-| 3 | Preparar brief de piloto 2 meses con métricas de éxito para Natalia | 23 jun |
-| 4 | Reunión 1:1 con María Angélica Navarro | Semana del 23 |
-| 5 | Revisar contenidos "Invertir" cuando Estefanía los envíe | Esta semana |
+| # | Acción | Owner | Deadline |
+|---|--------|-------|---------|
+| 1 | Construir calendario editorial coyuntural H2 2026 (fechas BanRep, DANE, MinHacienda, Fedesarrollo) | Carolina | 27 jun |
+| 2 | Definir flujo editorial de 48h — redacción / revisión / aprobación Natalia | Carolina | 27 jun |
+| 3 | Estandarizar formato de análisis de informe (Contexto / Qué dice / Para el entusiasta) | Carolina | 30 jun |
+| 4 | Cronograma editorial detallado: canal × semana × eje × formato | Estefanía | 20 jun |
 
 ---
 
-### 🔴 Jeison — Esta semana
+### Contenido y Producción
 
-| # | Acción | Deadline |
-|---|--------|---------|
-| 1 | Coordinar reunión Carolina + Alejandro Bojacá (Performix) + acceso Business Manager | 18 jun |
-| 2 | Presentar justificación técnica/financiera ManyChat ($69 USD/mes) a dirección | 20 jun |
-| 3 | Corregir 403 en sitemap.xml con Leo (config Cloudflare) | 18 jun |
-| 4 | Escalar canonical + títulos dinámicos a Leo como P0 | 18 jun |
-
----
-
-### 🟠 Estefanía — Esta semana
-
-| # | Acción | Deadline |
-|---|--------|---------|
-| 1 | Elaborar cronograma editorial: canal × semana × eje × objetivo × formato | 20 jun |
-| 2 | Enviar contenidos "Invertir" a Carolina para revisión | 19 jun |
-| 3 | Pedir a Pao que cierre sesión Metricool | Hoy |
-| 4 | Auditar UTMs email — mapear campañas mayo y estandarizar nomenclatura | 23 jun |
-| 5 | Crear archivo centralizado accesos y contraseñas por plataforma | 20 jun |
+| # | Acción | Owner | Deadline |
+|---|--------|-------|---------|
+| 5 | Crear lead magnet: Calendario económico Colombia H2 2026 (PDF descargable) | Carolina | 4 jul |
+| 6 | Definir CTA de suscripción inline en artículos de análisis | Carolina | 30 jun |
+| 7 | Primer artículo en formato análisis de informe (prueba del flujo 48h) | Ernesto | Siguiente dato oficial |
+| 8 | LinkedIn: publicar extracto + insight de cada análisis | Ernesto | Ciclo mensual |
+| 9 | Aprobar ejes de comunicación + cronograma editorial | Natalia | 25 jun |
+| 10 | Aprobar piloto 2 meses de contenido | Natalia | 25 jun |
 
 ---
 
-### 🟠 Natalia — Antes del 28 jun
+### Email y Braze
 
-| # | Acción | Deadline |
-|---|--------|---------|
-| 1 | Revisar detalle campañas pauta (lookalikes + remarketing) | 20 jun |
-| 2 | Identificar variables de segmentación disponibles en base suscriptores | 20 jun |
-| 3 | Aprobar ejes de comunicación + cronograma editorial | 25 jun |
-| 4 | Aprobar piloto 2 meses de contenido | 25 jun |
-
----
-
-### 🟡 Leo (proveedor técnico) — Sprint prioritario
-
-| # | Issue | Tipo | Urgencia |
-|---|-------|------|---------|
-| 1 | Canonical tags ausentes sitewide | Fix crítico | 🔴 Semana 1 |
-| 2 | Títulos dinámicos por tipo de página | Fix crítico | 🔴 Semana 1 |
-| 3 | Meta descriptions dinámicas | Fix crítico | 🔴 Semana 1 |
-| 4 | Corregir 403 sitemap.xml | Fix crítico | 🔴 Semana 1 |
-| 5 | SSR/SSG para contenido JS-rendered | Arquitectura | 🟠 Semana 2-3 |
-| 6 | NewsArticle schema en artículos | SEO | 🟠 Semana 2 |
-| 7 | BreadcrumbList schema en categorías | SEO | 🟠 Semana 2 |
-| 8 | aria-label en tarjetas de artículos | Accesibilidad | 🟡 Semana 2 |
-| 9 | CDN para imágenes (S3 → CloudFront) | Performance | 🟡 Semana 3 |
+| # | Acción | Owner | Deadline |
+|---|--------|-------|---------|
+| 11 | Welcome sequence Braze: 4 emails en 8 días (ver estructura en [[Vision_01_NorthStar_2026-06]]) | Estefanía | 11 jul |
+| 12 | Aprobar copy welcome sequence con Natalia antes del 28 jun | Carolina | 27 jun |
+| 13 | Definir pruebas estructurales email: 1 CTA, botón, CTA arriba | Carolina + Estefanía | 25 jun |
+| 14 | Auditar UTMs email — mapear mayo y estandarizar nomenclatura | Estefanía | 23 jun |
 
 ---
 
-## Roadmap junio-agosto 2026
+### SEO y Técnico (Leo — sprint prioritario)
 
-| Semana | Foco |
-|--------|------|
-| **Jun 16-20** | Accesos BM, brief Natalia, cronograma editorial, fixes Leo semana 1 |
-| **Jun 23-27** | Piloto contenido aprobado, fixes Leo semana 2, plantillas email |
-| **Jun 28+** | Natalia ausente — ejecución del plan aprobado |
-| **Jul** | Piloto mes 1: medir resultados por pilar, evergreen SEO lanzado |
-| **Ago** | Piloto mes 2: presentar resultados a Natalia, decidir escalar |
+| # | Acción | Tipo | Deadline |
+|---|--------|------|---------|
+| 15 | Canonical tags ausentes sitewide | Fix P0 | 21 jun |
+| 16 | Títulos dinámicos por tipo de página | Fix P0 | 21 jun |
+| 17 | Meta descriptions dinámicas | Fix P0 | 21 jun |
+| 18 | Corregir 403 sitemap.xml (Cloudflare) | Fix P0 | 21 jun |
+| 19 | SSR/SSG para contenido JS-rendered (24% del sitio indexado — bloqueador crítico) | Arquitectura | 4 jul |
+| 20 | NewsArticle + Article schema en artículos de análisis | SEO | 28 jun |
+| 21 | FAQ schema en explainers entusiastas | SEO | 11 jul |
+| 22 | BreadcrumbList schema en categorías | SEO | 28 jun |
+| 23 | Auditoría GSC: búsquedas especializadas (posición 4-20 en "análisis BanRep" etc.) | SEO | 4 jul |
+| 24 | aria-label en tarjetas de artículos | Accesibilidad | 28 jun |
+| 25 | CDN para imágenes (S3 → CloudFront) | Performance | 4 jul |
 
 ---
 
-## Métricas de éxito del piloto de contenido (2 meses)
+### Analytics, Pauta y Operativo
 
-| Métrica | Baseline (hoy) | Target piloto |
-|---------|---------------|--------------|
-| Engagement rate por pilar | — (no medido) | Definir benchmark semana 1 |
-| Clics a web desde redes | — | +15% vs. período anterior |
-| Sesiones desde organic social | 1,846/mes | +30% |
-| Email CTR | 2% | 4%+ |
-| Suscripciones nuevas/mes | — | Medir línea base primero |
+| # | Acción | Owner | Deadline |
+|---|--------|-------|---------|
+| 26 | Solicitar accesos plataformas a Viviana → conectar Metricool | Carolina | 20 jun |
+| 27 | Ajustar dashboard Looker a "visitas" (no sesiones) | Estefanía | 20 jun |
+| 28 | Migrar métricas orgánicas redes al dashboard Looker | Estefanía | 23 jun |
+| 29 | Coordinar reunión + acceso Business Manager (Performix / Alejandro Bojacá) | Jeison | 18 jun |
+| 30 | Revisar detalle campañas pauta (lookalikes + remarketing) | Natalia | 20 jun |
+| 31 | Crear archivo centralizado de accesos y contraseñas por plataforma | Estefanía | 20 jun |
+| 32 | Presentar justificación ManyChat ($69 USD/mes) a dirección | Jeison | 20 jun |
+
+---
+
+## Roadmap jul-ago 2026
+
+| Período | Foco |
+|---------|------|
+| **Jun 24-27** | Calendario coyuntural, flujo 48h, welcome sequence draft, Leo SEO fixes P0 |
+| **Jun 28** | Natalia ausente — ejecución del plan aprobado |
+| **Jul 1-11** | Lead magnet live, welcome sequence activada, primer análisis de informe, Leo SEO schema |
+| **Jul** | Piloto mes 1: medir resultados motor coyuntural + email + SEO especializado |
+| **Ago** | Piloto mes 2: presentar resultados a Natalia al regreso |
 
 ---
 

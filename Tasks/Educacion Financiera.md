@@ -1,161 +1,178 @@
 ---
 type: tasks-consolidado
 unidad-de-negocio: Educacion Financiera
-last-updated: 2026-06-17
+last-updated: 2026-06-24
 ai-first: true
 tags: [tasks, educacion-financiera]
 ---
 
 ## For future Claude
-Archivo consolidado de tareas activas y completadas para la unidad **Educacion Financiera**. Plataformas MFxInvertir y MFxMiNegocio. Métricas críticas: UAM, vistas, bounce rate. MFxInvertir al 5.49% de meta anual a mayo 2026. Leer este archivo para conocer el estado actual de pendientes antes de cualquier sesión de trabajo con Carolina.
+Archivo consolidado de tareas activas para **Educación Financiera** (MFxInvertir + MFxMiNegocio). Organizado por tipo de acción, no por owner. ALERTA CRÍTICA (2026-06-24): North Stars validados en cascada — NS1: nueva plataforma live (BLOQUEANTE) → NS2: tráfico → NS3: reconocimiento. María Angélica Navarro está trabajando en una propuesta de nueva plataforma. Scope de Gamma/Leo: solo contenido web + WordPress. Newsletter → Mercadeo Davivienda; Pauta → Performix; RRSS → Datalab. Ver detalles en [[EF_01_NorthStar_2026-06]].
 
-# Tasks — Educacion Financiera
+# Tasks — Educación Financiera
 
 ## ⏳ Pendientes
 
-### Carolina Ramirez
+---
 
-- [ ] 🔴 **Informe consolidado plataformas Ed Financiera** · due 2026-06-20 · Cliente · KPI: Revenue, UAM, Sesiones
-  - Fecha: 2026-06-13
-  - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Invertir/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Invertir]]
-  Preparar y presentar informe consolidado de mayo 2026 para [[Maria Angelica Navarro]] cubriendo ambas plataformas: Mis Finanzas para Invertir y Mis Finanzas para Mi Negocio. Incluir: (1) contexto — mayo como mes de reinicio/base post caída abril, (2) KPIs reales vs meta, (3) alertas técnicas críticas identificadas (Spira en Mi Negocio, Paid Search inefectivo en ambas), (4) plan de acción con responsables y fechas. No presentar los números sin el contexto explicativo o generará alarma sin solución.
+### Reuniones y Alineación (NS1 — Bloqueante)
 
-- [ ] 🔴 **Replanteo estrategico Mis Finanzas para Invertir** · due 2026-06-27 · Estrategia · KPI: UAM, Sesiones, Revenue
-  - Fecha: 2026-06-13
-  - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Invertir/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Invertir]]
-  Mis Finanzas para Invertir acumula solo 5.49% de meta anual de vistas y 4.79% de usuarios a mayo 2026. No es un problema táctico — requiere replanteo estratégico. Estructurar plan con: (1) nueva meta ajustada tomando mayo como base, (2) estrategia de contenidos coyunturales (los que más engagement generan), (3) potenciar email y referral (mejores canales), (4) suspender Paid Search hasta resolver 100% bounce. Presentar a [[Maria Angelica Navarro]].
-  ⚠️ Llevar preparado a la reunión con [[Maria Angelica Navarro]] + [[Jeison Montero]] (ver Tasks/Plataformas — Reunión MA + Jeison visión plataformas, due 2026-06-20).
+- [ ] 🔴 **Sesión de alineación con María Angélica: scope nueva plataforma** · Carolina Ramirez · due 2026-06-27 · Estrategia · KPI: Claridad de alcance, NS1
+  - Fecha: 2026-06-24
+  - Fuente: [[EF_NextSteps_2026-06]]
+  Reunión con María Angélica Navarro para entender qué cambia en la nueva plataforma, qué contenido migra, qué se produce de cero y cuál es el cronograma de go-live. Sin esta información, cualquier contenido que Gamma produzca puede quedar obsoleto. Es la acción más crítica del momento.
 
-- [ ] 🔴 **Replanteo estrategico Mis Finanzas para Mi Negocio** · due 2026-06-27 · Estrategia · KPI: UAM, Sesiones, Revenue
-  - Fecha: 2026-06-13
-  - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Mi Negocio/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Mi Negocio]]
-  Mis Finanzas para Mi Negocio acumula solo 2.5% de meta anual de vistas y 2.6% de usuarios a mayo 2026 — la situación más crítica del ecosistema Ed. Financiera. Dos problemas técnicos confirmados: (1) Spira en tracking, (2) Paid Other 100% rebote. Plan de acción urgente: excluir tráfico contaminado, suspender pauta inefectiva, redefinir meta base desde mayo, potenciar Organic Social (mejor canal de calidad). Incluir en la reunión con [[Maria Angelica Navarro]] como prioridad junto con Mis Finanzas para Invertir.
-  ⚠️ Llevar preparado a la reunión con [[Maria Angelica Navarro]] + [[Jeison Montero]] (ver Tasks/Plataformas — Reunión MA + Jeison visión plataformas, due 2026-06-20).
-
-- [x] ✅ **Reunión seguimiento MANC + Jeison — mapeo procesos y alcance** · ~~due 2026-06-19~~ · Completada 2026-06-19
-  - Fuente: [[06 - Meetings/Educación financiera/2026-06-19 Carolina-MariaAngelica-Jeison - Ecosistema EF y Estrategia]]
-  Ecosistema completo mapeado. MANC confirmó que rol de Gamma evoluciona post-migración hacia growth integral. Reunión estratégica con mercadeo pendiente próxima semana.
-
-- [ ] 🔴 **Reunión estratégica con equipo de mercadeo Davivienda (EF)** · due 2026-06-27 · Estrategia · KPI: Alineación de alcance, Eficiencia operativa
+- [ ] 🔴 **Reunión estratégica con equipo de mercadeo Davivienda (EF)** · Carolina Ramirez · due 2026-06-27 · Estrategia · KPI: Alineación de alcance
   - Fecha: 2026-06-19
   - Fuente: [[06 - Meetings/Educación financiera/2026-06-19 Carolina-MariaAngelica-Jeison - Ecosistema EF y Estrategia]]
-  Reunión con todo el equipo: Gamma + MANC + mercadeo del banco. Objetivo: definir posicionamiento y alineación estructural de plataformas EF. MANC coordina desde su lado. Semana del 23 jun.
+  Reunión con todo el equipo: Gamma + MANC + mercadeo del banco. Objetivo: definir posicionamiento y alineación estructural de plataformas EF. MANC coordina desde su lado.
 
-- [ ] 🔴 **Reunión revisión migración de contenidos (EF)** · due 2026-06-27 · Tecnologia · KPI: Seguridad, SEO, UX
+- [ ] 🔴 **Reunión técnica: revisión migración de contenidos** · Carolina Ramirez + Jeison Montero · due 2026-06-27 · Tecnología · KPI: Seguridad, SEO, UX
   - Fecha: 2026-06-19
   - Fuente: [[06 - Meetings/Educación financiera/2026-06-19 Carolina-MariaAngelica-Jeison - Ecosistema EF y Estrategia]]
-  Reunión técnica con MANC para revisar proceso de migración de plataformas WordPress → nueva plataforma única. Objetivos de la migración: seguridad, SEO, UX, centralización de simuladores. Semana del 23 jun.
+  Reunión técnica con MANC para revisar proceso de migración de plataformas WordPress → nueva plataforma única. Objetivos: seguridad, SEO, UX, centralización de simuladores.
 
-- [ ] 🟡 **Reunion Maria Angelica unificacion plataformas Ed Financiera** · due 2026-06-27 · Estrategia · KPI: Eficiencia operativa, Consolidación plataformas
-  - Fecha: 2026-06-17
-  - Fuente: [[06 - Meetings/Vision/2026-06-17 Carolina-Jeison-Leo - Estructura Operativa y Estrategia Vision]]
-  Primera reunión realizada 2026-06-18 — ver [[06 - Meetings/Educación financiera/2026-06-18 Carolina-MariaAngelica-Jeison - Primera reunion EF]]. Reunión de seguimiento pendiente jun 19. La reunión formal de unificación de plataformas debe ocurrir después de resolver la desalineación de alcance y procesos.
-  ⚠️ Consolidar con la reunión inicial con [[Maria Angelica Navarro]] + [[Jeison Montero]] (ver Tasks/Plataformas — Reunión MA + Jeison visión plataformas, due 2026-06-20).
+---
 
-- [ ] 🔴 **Renegociar metas anuales plataformas Ed Financiera** · due 2026-06-30 · Estrategia · KPI: UAM, Sesiones, Revenue
+### Plataforma Nueva — Definición y Proceso (NS1)
+
+- [ ] 🔴 **Definir entregable exacto de Gamma en la nueva propuesta** · Carolina Ramirez · due 2026-06-27 · Estrategia · KPI: Claridad de alcance
+  - Fecha: 2026-06-24
+  - Fuente: [[EF_NextSteps_2026-06]]
+  ¿Gamma solo ejecuta WordPress o también participa en la arquitectura de contenido y wireframes? Definir en la sesión con María Angélica antes de empezar a producir. Sin esto el scope es ambiguo.
+
+- [ ] 🔴 **Clarificar rol de Leo (frente doble con Mercadeo Davivienda)** · Carolina Ramirez + Jeison Montero · due 2026-06-27 · Operativo · KPI: Eficiencia operativa, Evitar conflictos de instrucción
+  - Fecha: 2026-06-24
+  - Fuente: [[EF_NextSteps_2026-06]]
+  Leo trabaja simultáneamente con Gamma y con Mercadeo Davivienda. Si recibe instrucciones contradictorias de los dos frentes, ¿quién desempata? Dejar por escrito la cadena de mando para producción de contenido EF.
+
+- [ ] 🟠 **Brief de lanzamiento para los 3 actores externos** · Carolina Ramirez · due 2026-07-31 · Estrategia · KPI: Coordinación lanzamiento
+  - Fecha: 2026-06-24
+  - Fuente: [[EF_NextSteps_2026-06]]
+  Una vez que la plataforma esté en staging: preparar brief con URL final, mensajes clave, audiencias y fechas de activación por canal. Mercadeo Davivienda (newsletter), Performix (pauta), Datalab (RRSS) necesitan este brief antes de activar. No adelantar.
+
+- [ ] 🟠 **Definir orchestrador del lanzamiento** · Carolina Ramirez + Maria Angelica Navarro · due 2026-06-27 · Estrategia · KPI: Coordinación entre 4 actores
+  - Fecha: 2026-06-24
+  - Fuente: [[EF_NextSteps_2026-06]]
+  ¿Carolina como punto único entre los 4 actores (Gamma+Leo / Mercadeo / Performix / Datalab), o cada uno gestiona directamente con Davivienda? Sin orchestrador definido, el lanzamiento se fragmenta.
+
+- [ ] 🟡 **Mínimo viable de contenido para lanzar** · Carolina Ramirez · due 2026-06-27 · Estrategia · KPI: Fecha go-live
+  - Fecha: 2026-06-24
+  - Fuente: [[EF_NextSteps_2026-06]]
+  Definir con María Angélica cuántos artículos/secciones/módulos deben estar publicados antes del go-live. Sin este número no hay criterio de "listo para lanzar".
+
+---
+
+### Estrategia y Replanteo
+
+- [ ] 🔴 **Informe consolidado mayo 2026 para María Angélica** · Carolina Ramirez · due 2026-06-20 · Cliente · KPI: Revenue, UAM, Sesiones
   - Fecha: 2026-06-13
   - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Invertir/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Invertir]]
-  Las metas anuales 2026 de ambas plataformas son inalcanzables con los datos actuales: Mis Finanzas para Invertir va al 5.49% anual de vistas; Mi Negocio al 2.5%. La plataforma estuvo caída en abril (y posiblemente antes). Proponer a [[Maria Angelica Navarro]] ajustar las metas 2026 tomando mayo como nuevo mes base (línea cero), con proyección realista para los 7 meses restantes. Sin este ajuste, los reportes mensuales siempre mostrarán incumplimiento severo aunque la tendencia sea positiva.
+  Informe consolidado de mayo 2026 cubriendo MFI y MFN. Incluir: contexto (mayo como mes de reinicio post caída), KPIs reales vs meta, alertas técnicas, plan de acción. No presentar números sin contexto.
 
-### Ernesto Rodriguez
+- [ ] 🔴 **Replanteo estratégico Mis Finanzas para Invertir** · Carolina Ramirez · due 2026-06-27 · Estrategia · KPI: UAM, Sesiones, Revenue
+  - Fecha: 2026-06-13
+  - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Invertir/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Invertir]]
+  Solo 5.49% de meta anual de vistas a mayo 2026. Plan: nueva meta ajustada desde mayo, estrategia de contenidos coyunturales, potenciar email y referral, suspender Paid Search hasta resolver 100% bounce. Presentar a María Angélica.
 
-- [ ] 🟡 **Nuevo plan ebooks Mi Negocio** · due 2026-06-30 · Contenido · KPI: Descargas, Engagement
+- [ ] 🔴 **Replanteo estratégico Mis Finanzas para Mi Negocio** · Carolina Ramirez · due 2026-06-27 · Estrategia · KPI: UAM, Sesiones, Revenue
   - Fecha: 2026-06-13
   - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Mi Negocio/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Mi Negocio]]
-  Mis Finanzas para Mi Negocio: solo 6 descargas de e-books en mayo — meta mensual es 41. Los e-books actuales (posicionamiento en internet, inclusión comunidades, medios de pago) no están conectando con la demanda real de la audiencia PyME. El contenido con más tracción es Bre-B, facturación electrónica y temas impositivos — proponer nuevos e-books alineados a esos temas: "Guía Bre-B para PyMEs", "Facturación electrónica paso a paso", "Impuestos del primer semestre para tu negocio". Presentar propuesta a [[Maria Angelica Navarro]].
+  Solo 2.5% de meta anual a mayo 2026 — el más crítico del ecosistema EF. Excluir tráfico contaminado, suspender pauta inefectiva, redefinir meta base desde mayo, potenciar Organic Social. Incluir en reunión con María Angélica.
 
-- [ ] 🟡 **Serie contenidos Bre-B Mi Negocio** · due 2026-06-30 · Contenido · KPI: UAM, Engagement
+- [ ] 🔴 **Renegociar metas anuales plataformas EF** · Carolina Ramirez · due 2026-06-30 · Estrategia · KPI: UAM, Sesiones, Revenue
+  - Fecha: 2026-06-13
+  - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Invertir/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Invertir]]
+  Las metas anuales 2026 son inalcanzables: MFI al 5.49%, MFN al 2.5%. La plataforma estuvo caída en abril. Proponer a María Angélica ajustar metas tomando mayo como nueva línea base, con proyección realista para los 7 meses restantes.
+
+---
+
+### Editorial y Contenido (Post NS1)
+
+- [ ] 🔴 **Plantilla estándar de contenido EF** · Carolina Ramirez + Ernesto Rodriguez · due 2026-07-11 · Editorial · KPI: Calidad editorial, Consistencia
+  - Fecha: 2026-06-24
+  - Fuente: [[EF_NextSteps_2026-06]]
+  Definir estructura de artículo, tono, longitud y CTAs permitidos para la nueva plataforma. Alineada con lo que María Angélica defina. Retomar después de la sesión de alineación.
+
+- [ ] 🔴 **Flujo editorial escrito: redacción → aprobación → WordPress** · Carolina Ramirez · due 2026-07-11 · Editorial · KPI: Eficiencia producción
+  - Fecha: 2026-06-24
+  - Fuente: [[EF_NextSteps_2026-06]]
+  Gamma/Leo redacta → María Angélica aprueba → Leo sube a WordPress. Validar este orden o el que MA proponga. Dejar por escrito para que no dependa de instrucción verbal cada vez.
+
+- [ ] 🟠 **SEO técnico resuelto antes de activar pauta** · Jeison Montero + Leo (agencia) · due 2026-07-31 · Técnico / SEO · KPI: Indexación, Retorno pauta
+  - Fecha: 2026-06-24
+  - Fuente: [[EF_NextSteps_2026-06]]
+  Sitemaps, indexación, velocidad, meta-etiquetas deben estar OK antes de que Performix active pauta. No invertir en tráfico pagado con la plataforma sin indexar. Coordinar con Leo.
+
+- [ ] 🟡 **Serie de contenidos CDT / Renta Fija** · Ernesto Rodriguez · due 2026-06-30 · Contenido · KPI: UAM, Engagement, Descargas
+  - Fecha: 2026-06-13
+  - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Invertir/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Invertir]]
+  El e-book "ABC de los CDT's" concentró el 82% de todas las descargas en mayo. Proponer serie editorial: CDTs, TES, fondos de deuda. Nuevos e-books descargables. Presentar a María Angélica.
+
+- [ ] 🟡 **Serie contenidos Bre-B y pagos digitales (MFN)** · Ernesto Rodriguez · due 2026-06-30 · Contenido · KPI: UAM, Engagement
   - Fecha: 2026-06-13
   - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Mi Negocio/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Mi Negocio]]
-  El ecosistema Bre-B (nuevo sistema de pagos) es el territorio editorial con mayor tracción en Mis Finanzas para Mi Negocio: 4 artículos activos, buen engagement. Ampliar cobertura: guías prácticas de cobros digitales, comparativas pasarelas de pago, casos de uso para PyMEs. También potenciar facturación electrónica (10 vistas, mejor artículo del pilar Digitalización). Proponer pauta orgánica en Organic Social para estos contenidos (mejor canal de calidad: 63.89% interacción). Coordinar con [[Maria Angelica Navarro]].
+  Bre-B es el territorio editorial con mayor tracción en MFN: 4 artículos activos, buen engagement. Ampliar cobertura: guías de cobros digitales, comparativas pasarelas de pago, casos de uso PyME.
 
-- [ ] 🟡 **Serie contenidos CDTs Mis Finanzas** · due 2026-06-30 · Contenido · KPI: UAM, Engagement, Descargas
-  - Fecha: 2026-06-13
-  - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Invertir/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Invertir]]
-  El e-book "ABC de los CDT's" concentró el 82% de todas las descargas en mayo 2026 (55/67). Señal clara de interés de la audiencia en renta fija. Proponer serie editorial sobre instrumentos de renta fija: CDTs, TES, fondos de deuda. Incluir nuevos e-books descargables. Presentar propuesta a [[Maria Angelica Navarro]].
-
-### Jeison Montero
-
-- [ ] 🔴 **Excluir Spira del tracking Mi Negocio** · due 2026-06-18 · Tecnologia · KPI: UAM, Sesiones
+- [ ] 🟡 **Nuevo plan e-books Mi Negocio** · Ernesto Rodriguez · due 2026-06-30 · Contenido · KPI: Descargas, Engagement
   - Fecha: 2026-06-13
   - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Mi Negocio/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Mi Negocio]]
-  El dominio de ambiente de pruebas `lbmisfinanzasparaminegocio.spira.co` aparece en el top de URLs de Google Analytics con **38 sesiones** en mayo 2026 (3.3% del total de 1,149 sesiones). No distorsiona gravemente los KPIs pero es tráfico del proveedor que no debería aparecer en producción. Excluir dominio Spira del tracking en GA4 mediante filtro de propiedad o exclusión de hostname. Confirmar con [[Carolina Ramirez]] y [[Maria Angelica Navarro]].
+  Solo 6 descargas en mayo (meta 41). Los e-books actuales no conectan con la demanda real. Proponer: "Guía Bre-B para PyMEs", "Facturación electrónica paso a paso", "Impuestos del primer semestre".
 
-- [ ] 🔴 **Suspender pauta pagada plataformas Ed Financiera** · due 2026-06-18 · Tecnologia · KPI: Revenue, Sesiones
+---
+
+### Técnico y Analytics
+
+- [ ] 🔴 **Suspender pauta pagada ambas plataformas EF** · Jeison Montero · due 2026-06-18 · Tecnología · KPI: Revenue, Sesiones
   - Fecha: 2026-06-13
   - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Invertir/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Invertir]]
-  Patrón confirmado en AMBAS plataformas de Ed. Financiera en mayo 2026: Paid Search (Mis Finanzas para Invertir) y Paid Other (Mi Negocio) tienen 100% de rebote y 0% de interacción — todo el presupuesto de pauta pagada se está desperdiciando. Suspender o pausar ambas campañas inmediatamente hasta diagnosticar el problema. Revisar con proveedores de pauta la configuración de landing pages, audiencias y tracking. Reportar a [[Carolina Ramirez]] antes de comunicarlo a [[Maria Angelica Navarro]].
+  Paid Search (MFI) y Paid Other (MFN): 100% rebote, 0% interacción en mayo 2026. Todo el presupuesto desperdiciado. Suspender hasta diagnosticar. Reportar a Carolina antes de comunicar a María Angélica.
 
-- [ ] 🔴 **Revisar Paid Search Mis Finanzas para Invertir** · due 2026-06-20 · Tecnologia · KPI: UAM, Sesiones
+- [ ] 🔴 **Excluir dominio Spira de GA4 en MFN** · Jeison Montero · due 2026-06-20 · Tecnología · KPI: Confiabilidad datos, Sesiones
+  - Fecha: 2026-06-13
+  - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Mi Negocio/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Mi Negocio]]
+  El ambiente de pruebas `lbmisfinanzasparaminegocio.spira.co` aparece en GA4 como tráfico real. 38 sesiones en mayo contaminan los datos. Excluir mediante filtro de propiedad o exclusión de hostname. Confirmar que el próximo informe mensual indica "Spira excluido".
+
+- [ ] 🔴 **Revisar Paid Search MFxInvertir — plataforma, CPC, configuración** · Jeison Montero · due 2026-06-20 · Tecnología · KPI: UAM, Sesiones
   - Fecha: 2026-06-13
   - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Invertir/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Invertir]]
-  Paid Search en Mis Finanzas para Invertir (mayo 2026): 100% de rebote, 0% de interacción. Presupuesto completamente inefectivo. Revisar con el proveedor la configuración de campañas, landing pages y targeting. Decidir si suspender o redirigir presupuesto a Referral u Organic. Reportar hallazgos a [[Carolina Ramirez]] y [[Maria Angelica Navarro]].
+  100% rebote, 0% interacción. Revisar configuración de campañas, landing pages y targeting. Decidir si suspender o redirigir a Referral/Organic. Reportar hallazgos a Carolina y María Angélica.
 
-- [ ] 🔴 **Excluir dominio Spira GA4 MFxMiNegocio** · due 2026-06-20 · Plataformas · KPI: Sesiones, Usuarios
+- [ ] 🟡 **Investigar caída de medición en abril 2026** · Jeison Montero · due 2026-06-23 · Analytics · KPI: UAM, Sesiones
+  - Fecha: 2026-06-13
+  - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Invertir/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Invertir]]
+  Ambas plataformas sin datos de abril 2026. ¿Fue GA4 desconectado, caída de plataforma o problema de acceso? Determinar si meses anteriores también tienen datos confiables. Crítico para argumentar el ajuste de metas.
+
+- [ ] 🟡 **Revisar y filtrar tráfico internacional sospechoso (MFN)** · Jeison Montero · due 2026-06-23 · Analytics · KPI: UAM, Sesiones reales
+  - Fecha: 2026-06-13
+  - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Mi Negocio/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Mi Negocio]]
+  EE.UU. 25%, Japón 7%, China 3% = 35% de tráfico no calificado para una plataforma de PyMEs colombianas. Alta probabilidad de bots. Agregar filtro geográfico Colombia en GA4 y evaluar bot filtering.
+
+- [ ] 🟡 **Solicitar mejoras al informe mensual MFxInvertir** · Jeison Montero · due 2026-06-25 · Analytics · KPI: Calidad de datos
+  - Fecha: 2026-06-14
+  - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Invertir/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Invertir]]
+  Solicitar al proveedor: comparativo mes anterior (delta % real), desglose email por tipo de envío, detalle Paid Search (plataforma + presupuesto + CPC), fuentes Referral desglosadas, Top 10 artículos, métricas RRSS, descargas e-book por canal.
+
+- [ ] 🟡 **Solicitar mejoras al informe mensual MFxMiNegocio** · Jeison Montero · due 2026-06-25 · Analytics · KPI: Calidad de datos
   - Fecha: 2026-06-14
   - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Mi Negocio/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Mi Negocio]]
-  ## Qué está pasando
+  Solicitar al proveedor: comparativo mes anterior, claridad sobre tráfico internacional (bots vs real), detalle Paid Other (plataforma + presupuesto + CPC), Top 10 artículos, fuentes Referral, métricas RRSS, descargas e-book por canal.
 
-  Spira es el ambiente de pruebas que usa el proveedor para desarrollar y testear la plataforma Mis Finanzas para Mi Negocio. Cuando los desarrolladores entran al sitio de pruebas para revisar cambios, esas visitas se están contando como si fueran visitas de usuarios reales en el reporte de analytics.
+- [ ] 🟡 **Informe SEO Q2 — Solicitar al proveedor antes del 25 jul** · Carolina Ramirez + Jeison Montero · due 2026-07-25 · SEO / Analytics · KPI: Tráfico orgánico, Posicionamiento
+  - Fecha: 2026-06-18
+  - Fuente: [[EF_NextSteps_2026-06]]
+  Obligación SLA trimestral. Verificar que incluya: On-Page + Off-Page + Linkbuilding. Cruzar con datos de GSC si hay acceso.
 
-  En mayo 2026, ese ambiente de pruebas generó **38 sesiones de prueba** — el 3.3% del total reportado. No es un volumen que distorsione gravemente los KPIs, pero es incorrecto que aparezca: es tráfico interno del proveedor contando como si fuera tráfico de usuarios reales.
+---
 
-  **En resumen:** el proveedor está mezclando su propio tráfico interno con el nuestro, y eso hace que los números no sean reales.
+## ✅ Completados
 
-  ---
+- [x] **Reunión seguimiento MA Navarro + Jeison — mapeo procesos y alcance** · 2026-06-19
+  - Fuente: [[06 - Meetings/Educación financiera/2026-06-19 Carolina-MariaAngelica-Jeison - Ecosistema EF y Estrategia]]
+  Ecosistema completo mapeado. MANC confirmó que rol de Gamma evoluciona post-migración hacia growth integral. Reunión estratégica con mercadeo pendiente.
 
-  ## Qué pedirle al proveedor
+---
 
-  1. **Corregir el problema técnico:** excluir el dominio `lbmisfinanzasparaminegocio.spira.co` de Google Analytics para que nunca más aparezca en los reportes.
+## Relacionado
 
-  2. **Confirmar en cada PDF mensual** que ese filtro está activo — una línea simple que diga: *"Dominio de pruebas Spira excluido del tracking GA4."* Así podemos verificar que los datos son limpios mes a mes.
-
-  ---
-
-  Si el proveedor no tiene acceso para hacer el cambio en GA4, escalar a [[Maria Angelica Navarro]].
-
-- [ ] 🟡 **Investigar caida medicion abril plataformas** · due 2026-06-23 · Tecnologia · KPI: UAM, Sesiones
-  - Fecha: 2026-06-13
-  - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Invertir/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Invertir]]
-  Ambas plataformas (Mis Finanzas para Invertir y Mi Negocio) no tienen datos de abril 2026 — los informes lo denominan "ausencia de resultados" y "afectaciones técnicas". Investigar: ¿fue un problema de tracking (GA4 desconectado)? ¿caída de plataforma? ¿problema de acceso? Determinar si los meses anteriores a abril también tienen datos confiables o si hay un período mayor comprometido. Este dato es crítico para entender la verdadera línea base y argumentar ante [[Maria Angelica Navarro]] el ajuste de metas.
-
-- [ ] 🟡 **Revisar trafico internacional sospechoso Mi Negocio** · due 2026-06-23 · Analytics · KPI: UAM, Sesiones
-  - Fecha: 2026-06-13
-  - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Mi Negocio/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Mi Negocio]]
-  Mis Finanzas para Mi Negocio (mayo 2026): EE.UU. representa el 25.2%, Japón el 6.9% y China el 2.8% del tráfico — total 35% de usuarios fuera de Colombia para una plataforma de PyMEs colombianas. Alta probabilidad de tráfico bot o no calificado que infla usuarios y deprime tasas de conversión reales. Evaluar filtros geográficos en GA4 y revisar si aplica bot filtering. Reportar a [[Carolina Ramirez]].
-
-- [ ] 🟡 **Mejoras informe mensual MFxInvertir** · due 2026-06-25 · PMO/Tecnologia · KPI: Sesiones, Engagement, Descargas
-  - Fecha: 2026-06-14
-  - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Invertir/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Invertir]]
-  Solicitar al proveedor de Mis Finanzas para Invertir que incluya las siguientes mejoras en el informe mensual a partir de junio 2026. Comunicar también a [[Maria Angelica Navarro]].
-
-  **Solicitudes prioritarias (🔴 — sin esto el análisis queda incompleto):**
-  1. Comparativo mes anterior para todas las métricas principales — columna con delta % real
-  2. Desglose de canal Email por tipo: informe diario / newsletter / campañas puntuales
-  3. Detalle de Paid Search: plataforma exacta, presupuesto ejecutado, CPC — en mayo tuvo 100% rebote y 0% interacción
-  4. Fuentes de Referral desglosadas — desde qué sitios/dominios llega este tráfico (tiene 74.82% de interacción)
-
-  **Solicitudes de mejora (🟡 — mejoran análisis editorial):**
-  5. Ampliar Top 5 a Top 10 artículos con sesiones + tiempo promedio por artículo
-  6. Métricas de redes sociales (seguidores, alcance, engagement mensual)
-  7. Descargas de e-books por canal de origen
-
-  Ver detalle completo en el informe de mayo: sección "Solicitudes al Proveedor".
-
-- [ ] 🟡 **Mejoras informe mensual MFxMiNegocio** · due 2026-06-25 · Plataformas · KPI: Sesiones, Usuarios, Descargas
-  - Fecha: 2026-06-14
-  - Fuente: [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Mis Finanzas para Mi Negocio/Informes 2026/2026-05 Informe Mayo - Mis Finanzas para Mi Negocio]]
-  Solicitar al proveedor de Mis Finanzas para Mi Negocio que incluya las siguientes mejoras en el informe mensual a partir de junio 2026. Comunicar también a [[Maria Angelica Navarro]]. **Nota:** La exclusión de Spira tiene su propia tarea con fecha límite 2026-06-20 — resolver primero.
-
-  **Solicitudes prioritarias (🔴 — afectan confiabilidad de los datos):**
-  1. Comparativo mes anterior para todas las métricas principales — columna con delta % real
-  2. Claridad sobre tráfico internacional: US (25%), Japón (7%), China (3%) — ¿tráfico real o bots? Solicitar filtro Colombia-only para los KPIs de cumplimiento
-  3. Detalle de "Paid Other": plataforma exacta, presupuesto, CPC — en mayo tuvo 100% rebote y 0% interacción
-
-  **Solicitudes de mejora (🟡):**
-  4. Ampliar Top 5 a Top 10 artículos con tiempo promedio por artículo
-  5. Fuentes de Referral desglosadas (tiene 58.97% interacción — segunda mejor calidad)
-  6. Métricas de redes sociales (seguidores, alcance, engagement mensual)
-  7. Descargas de e-books por canal de origen
-
-  Ver detalle completo en el informe de mayo: sección "Solicitudes al Proveedor".
+[[EF_01_NorthStar_2026-06]] · [[EF_NextSteps_2026-06]] · [[Educacion Financiera]] · [[Maria Angelica Navarro]] · [[Jeison Montero]] · [[Ernesto Rodriguez]] · [[Contrato SLA Davivienda]]
