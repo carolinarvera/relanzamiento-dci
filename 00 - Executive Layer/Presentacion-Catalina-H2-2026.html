@@ -1,0 +1,1492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ediciones Gamma | Estrategia H2 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,400;1,700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #07070F;
+  --bg2:      #0C0C1A;
+  --bg3:      #111128;
+  --accent:   #FF5500;
+  --accent2:  #FF8C00;
+  --accent3:  #FFB800;
+  --green:    #00E87A;
+  --yellow:   #FFD000;
+  --orange:   #FF8C00;
+  --red:      #FF2244;
+  --white:    #FFFFFF;
+  --text:     #E8E8F0;
+  --text2:    #8888AA;
+  --text3:    #636380;
+  --border:   rgba(255,85,0,.22);
+  --border2:  rgba(255,255,255,.07);
+  --glow-sm:  0 0 8px rgba(255,85,0,.5);
+  --glow-md:  0 0 20px rgba(255,85,0,.35), 0 0 60px rgba(255,85,0,.15);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;font-size:16px;scroll-padding-top:64px;}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'DM Sans',system-ui,sans-serif;
+  font-size:15px;
+  line-height:1.55;
+  overflow-x:hidden;
+}
+
+/* ===================== GRID BG ===================== */
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,85,0,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,85,0,.05) 1px, transparent 1px);
+  background-size:48px 48px;
+  pointer-events:none;
+  z-index:0;
+}
+body>*{position:relative;z-index:1;}
+
+/* ===================== TYPE ===================== */
+.bc{font-family:'Barlow Condensed',sans-serif;}
+.mono{font-family:'Space Mono',monospace;}
+.label{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--text2);
+}
+
+/* ===================== NAV ===================== */
+nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  height:56px;
+  background:rgba(7,7,15,.92);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  padding:0 32px;
+  gap:0;
+  z-index:100;
+}
+.nav-logo{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;
+  font-size:22px;
+  color:var(--accent);
+  letter-spacing:.04em;
+  text-shadow:var(--glow-sm);
+  margin-right:40px;
+  flex-shrink:0;
+}
+.nav-links{
+  display:flex;
+  gap:6px;
+  flex:1;
+}
+.nav-link{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:600;
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--text2);
+  text-decoration:none;
+  padding:6px 12px;
+  border:1px solid transparent;
+  transition:all .2s;
+}
+.nav-link:hover{
+  color:var(--accent);
+  border-color:var(--border);
+  background:rgba(255,85,0,.08);
+}
+.nav-date{
+  font-family:'Space Mono',monospace;
+  font-size:11px;
+  color:var(--text3);
+  flex-shrink:0;
+}
+
+/* ===================== HERO ===================== */
+#hero{
+  min-height:100dvh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:80px 80px 60px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-glow{
+  position:absolute;
+  top:-120px;right:-120px;
+  width:700px;height:700px;
+  background:radial-gradient(circle at center, rgba(255,85,0,.18) 0%, rgba(255,85,0,.06) 40%, transparent 70%);
+  pointer-events:none;
+}
+.hero-glow2{
+  position:absolute;
+  bottom:-200px;left:-100px;
+  width:500px;height:500px;
+  background:radial-gradient(circle at center, rgba(255,140,0,.10) 0%, transparent 60%);
+  pointer-events:none;
+}
+.hero-eyebrow{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:20px;
+}
+.hero-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;
+  font-size:clamp(72px,11vw,160px);
+  line-height:.92;
+  letter-spacing:-.01em;
+  color:var(--white);
+  text-transform:uppercase;
+}
+.hero-title span{
+  color:var(--accent);
+  text-shadow:var(--glow-md);
+}
+.hero-rule{
+  width:120px;height:3px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2),transparent);
+  margin:28px 0;
+  box-shadow:var(--glow-sm);
+}
+.hero-sub{
+  font-size:17px;
+  color:var(--text2);
+  max-width:520px;
+  line-height:1.5;
+}
+.hero-sub strong{color:var(--text);}
+.hero-meta{
+  margin-top:48px;
+  display:flex;
+  gap:40px;
+}
+.hero-stat{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.hero-stat-val{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;
+  font-size:36px;
+  color:var(--accent);
+  text-shadow:var(--glow-sm);
+}
+.hero-stat-label{
+  font-size:11px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--text3);
+}
+.hero-tag{
+  position:absolute;
+  bottom:40px;right:80px;
+  font-family:'Space Mono',monospace;
+  font-size:10px;
+  color:var(--text3);
+  letter-spacing:.08em;
+}
+
+/* ===================== SECTIONS ===================== */
+section{padding:80px 80px;}
+section:nth-child(even){background:rgba(255,255,255,.012);}
+#hero{background:var(--bg);}
+section[id]{scroll-margin-top:56px;}
+
+.section-line{
+  display:flex;
+  align-items:flex-start;
+  gap:24px;
+  margin-bottom:48px;
+}
+.section-num{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;
+  font-size:80px;
+  line-height:.85;
+  color:rgba(255,85,0,.12);
+  flex-shrink:0;
+  min-width:70px;
+}
+.section-title-block{
+  flex:1;
+  border-left:3px solid var(--accent);
+  padding-left:20px;
+}
+.section-bu{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;
+  font-size:44px;
+  line-height:1;
+  letter-spacing:.02em;
+  text-transform:uppercase;
+  color:var(--white);
+}
+.section-sub{
+  font-size:14px;
+  color:var(--text2);
+  margin-top:4px;
+}
+.section-status{
+  margin-left:auto;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:6px;
+}
+
+/* ===================== STATUS BADGES ===================== */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:5px 12px;
+  border-radius:0;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  font-size:12px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  border:1px solid;
+}
+.badge-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;}
+.badge-verde{
+  border-color:var(--green);
+  color:var(--green);
+  background:rgba(0,232,122,.08);
+}
+.badge-verde .badge-dot{background:var(--green);box-shadow:0 0 6px var(--green);}
+.badge-amarillo{
+  border-color:var(--yellow);
+  color:var(--yellow);
+  background:rgba(255,208,0,.08);
+}
+.badge-amarillo .badge-dot{background:var(--yellow);box-shadow:0 0 6px var(--yellow);}
+.badge-naranja{
+  border-color:var(--orange);
+  color:var(--orange);
+  background:rgba(255,140,0,.08);
+}
+.badge-naranja .badge-dot{background:var(--orange);box-shadow:0 0 6px var(--orange);}
+.badge-rojo{
+  border-color:var(--red);
+  color:var(--red);
+  background:rgba(255,34,68,.08);
+}
+.badge-rojo .badge-dot{
+  background:var(--red);
+  box-shadow:0 0 6px var(--red);
+  animation:pulse-red 1.4s ease-in-out infinite;
+}
+@keyframes pulse-red{0%,100%{opacity:1;box-shadow:0 0 6px var(--red);}50%{opacity:.4;box-shadow:0 0 14px var(--red);}}
+
+/* ===================== OVERVIEW GRID ===================== */
+#overview{background:var(--bg2);}
+.overview-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+}
+.ov-card{
+  background:var(--bg);
+  border:1px solid var(--border2);
+  padding:28px 24px;
+  position:relative;
+  overflow:hidden;
+  transition:border-color .2s;
+}
+.ov-card:hover{border-color:var(--border);}
+.ov-card::before{
+  content:'';
+  position:absolute;
+  top:0;left:0;
+  width:100%;height:3px;
+}
+.ov-card.verde::before{background:var(--green);}
+.ov-card.amarillo::before{background:var(--yellow);}
+.ov-card.naranja::before{background:var(--orange);}
+.ov-card.rojo::before{background:var(--red);}
+.ov-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  font-size:18px;
+  letter-spacing:.05em;
+  text-transform:uppercase;
+  color:var(--text);
+  margin-bottom:12px;
+}
+.ov-metric{
+  font-family:'Space Mono',monospace;
+  font-size:28px;
+  font-weight:700;
+  line-height:1;
+  margin-bottom:6px;
+}
+.ov-metric.verde-val{color:var(--green);}
+.ov-metric.amarillo-val{color:var(--yellow);}
+.ov-metric.naranja-val{color:var(--orange);}
+.ov-metric.rojo-val{color:var(--red);}
+.ov-detail{font-size:12px;color:var(--text2);}
+.ov-tag{
+  margin-top:16px;
+  font-size:11px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+
+/* ===================== NS GRID ===================== */
+.ns-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin-bottom:32px;
+}
+.ns-card{
+  background:var(--bg2);
+  border:1px solid var(--border2);
+  padding:24px;
+  position:relative;
+  overflow:hidden;
+  transition:border-color .2s,box-shadow .2s;
+}
+.ns-card:hover{
+  border-color:var(--border);
+  box-shadow:0 0 24px rgba(255,85,0,.08);
+}
+.ns-card.blocked{
+  border-color:rgba(255,34,68,.3);
+  opacity:.8;
+}
+.ns-num{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;
+  font-size:52px;
+  line-height:1;
+  color:rgba(255,85,0,.15);
+  margin-bottom:12px;
+}
+.ns-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  font-size:18px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  color:var(--white);
+  margin-bottom:8px;
+}
+.ns-meta{
+  font-size:13px;
+  color:var(--text2);
+  line-height:1.5;
+  margin-bottom:16px;
+}
+.ns-kpi{
+  border-top:1px solid var(--border2);
+  padding-top:14px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.kpi-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:12px;
+}
+.kpi-label{color:var(--text2);}
+.kpi-val{
+  font-family:'Space Mono',monospace;
+  font-size:11px;
+  color:var(--accent2);
+}
+.ns-card.blocked .ns-num{color:rgba(255,34,68,.15);}
+.blocked-banner{
+  background:rgba(255,34,68,.12);
+  border:1px solid rgba(255,34,68,.3);
+  padding:8px 12px;
+  font-size:12px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--red);
+  margin-bottom:12px;
+}
+
+/* ===================== ACTIONS TABLE ===================== */
+.action-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+.action-table th{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  font-size:11px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--text2);
+  text-align:left;
+  padding:8px 12px;
+  border-bottom:1px solid var(--border2);
+}
+.action-table td{
+  padding:10px 12px;
+  border-bottom:1px solid rgba(255,255,255,.04);
+  vertical-align:top;
+}
+.action-table tr:last-child td{border-bottom:none;}
+.action-table tr:hover td{background:rgba(255,85,0,.04);}
+.prio-dot{
+  display:inline-block;
+  width:8px;height:8px;
+  border-radius:50%;
+  margin-right:6px;
+  vertical-align:middle;
+}
+.prio-alta .prio-dot{background:var(--red);box-shadow:0 0 6px var(--red);}
+.prio-media .prio-dot{background:var(--yellow);}
+.prio-baja .prio-dot{background:var(--green);}
+.tag-date{
+  font-family:'Space Mono',monospace;
+  font-size:10px;
+  color:var(--accent);
+  white-space:nowrap;
+}
+.tag-owner{
+  font-size:11px;
+  color:var(--text2);
+  font-style:italic;
+}
+
+/* ===================== INFO BOXES ===================== */
+.info-box{
+  border-left:3px solid var(--accent);
+  background:rgba(255,85,0,.06);
+  padding:16px 20px;
+  margin-bottom:16px;
+  font-size:13px;
+}
+.info-box.critical{
+  border-left-color:var(--red);
+  background:rgba(255,34,68,.06);
+}
+.info-box.success{
+  border-left-color:var(--green);
+  background:rgba(0,232,122,.06);
+}
+.info-box-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  font-size:13px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.info-box.critical .info-box-title{color:var(--red);}
+.info-box.success .info-box-title{color:var(--green);}
+.info-box.default .info-box-title{color:var(--accent);}
+
+/* ===================== CLUB TIERS ===================== */
+.tier-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+  margin:24px 0;
+}
+.tier-card{
+  background:var(--bg2);
+  border:1px solid var(--border2);
+  padding:24px;
+  position:relative;
+}
+.tier-name{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;
+  font-size:22px;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.tier-price{
+  font-family:'Space Mono',monospace;
+  font-size:26px;
+  font-weight:700;
+  color:var(--accent);
+  margin-bottom:12px;
+}
+.tier-price span{font-size:13px;color:var(--text2);}
+.tier-list{
+  list-style:none;
+  font-size:13px;
+  color:var(--text2);
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.tier-list li::before{
+  content:'-- ';
+  color:var(--accent);
+  font-family:'Space Mono',monospace;
+}
+.tier-card.black{
+  background:linear-gradient(135deg,#0F0F1E,#141420);
+  border-color:rgba(255,184,0,.25);
+}
+.tier-card.black .tier-name{color:var(--accent3);}
+.tier-card.black .tier-price{color:var(--accent3);text-shadow:0 0 10px rgba(255,184,0,.4);}
+.tier-card.black .tier-list li::before{color:var(--accent3);}
+.tier-meta{
+  margin-top:16px;
+  font-size:11px;
+  font-family:'Space Mono',monospace;
+  color:var(--text3);
+}
+
+/* ===================== METRICS ROW ===================== */
+.metrics-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:2px;
+  margin:24px 0;
+}
+.metric-cell{
+  background:var(--bg2);
+  border:1px solid var(--border2);
+  padding:20px 16px;
+  text-align:center;
+}
+.metric-val{
+  font-family:'Space Mono',monospace;
+  font-size:28px;
+  font-weight:700;
+  color:var(--white);
+  display:block;
+  margin-bottom:4px;
+}
+.metric-val.accent{color:var(--accent);text-shadow:var(--glow-sm);}
+.metric-val.green{color:var(--green);}
+.metric-val.red{color:var(--red);}
+.metric-val.yellow{color:var(--yellow);}
+.metric-label{font-size:11px;color:var(--text2);letter-spacing:.05em;}
+
+/* ===================== ROADMAP TABLE ===================== */
+.roadmap-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:13px;
+}
+.roadmap-table th{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  font-size:11px;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--text2);
+  text-align:left;
+  padding:10px 14px;
+  border-bottom:2px solid var(--border);
+  background:var(--bg2);
+}
+.roadmap-table td{
+  padding:12px 14px;
+  border-bottom:1px solid var(--border2);
+  vertical-align:top;
+}
+.roadmap-table tr:hover td{background:rgba(255,85,0,.03);}
+.periodo{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  font-size:14px;
+  letter-spacing:.06em;
+  color:var(--accent);
+  white-space:nowrap;
+}
+
+/* ===================== DIVIDER ===================== */
+.divider{
+  border:none;
+  border-top:1px solid var(--border2);
+  margin:32px 0;
+}
+.divider-accent{
+  border:none;
+  height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2),transparent);
+  margin:32px 0;
+  box-shadow:var(--glow-sm);
+}
+
+/* ===================== SUBSECTION ===================== */
+.subsection-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  font-size:20px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--accent2);
+  margin:32px 0 16px;
+}
+
+/* ===================== URGENT BOX ===================== */
+.urgent-box{
+  border:1px solid rgba(255,34,68,.4);
+  background:rgba(255,34,68,.06);
+  padding:20px 24px;
+  margin-bottom:24px;
+  position:relative;
+}
+.urgent-box::before{
+  content:'URGENTE';
+  position:absolute;
+  top:-1px;right:20px;
+  background:var(--red);
+  color:#fff;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:800;
+  font-size:10px;
+  letter-spacing:.15em;
+  padding:2px 8px;
+  transform:translateY(-50%);
+}
+.urgent-text{
+  font-size:14px;
+  color:var(--text);
+  line-height:1.5;
+}
+.urgent-text strong{color:var(--red);}
+
+/* ===================== FOOTER ===================== */
+footer{
+  background:var(--bg2);
+  border-top:1px solid var(--border);
+  padding:28px 80px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+}
+.footer-logo{
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:900;
+  font-size:18px;
+  color:var(--accent);
+  text-shadow:var(--glow-sm);
+}
+.footer-meta{font-size:11px;color:var(--text3);font-family:'Space Mono',monospace;}
+.footer-conf{
+  font-size:11px;
+  font-family:'Barlow Condensed',sans-serif;
+  font-weight:700;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  color:var(--text3);
+  border:1px solid var(--border2);
+  padding:4px 10px;
+}
+
+/* ===================== ACTIVE NAV ===================== */
+.nav-link.active{color:var(--accent);border-color:var(--border);}
+.nav-link:focus-visible{outline:1px solid var(--accent);outline-offset:2px;}
+
+/* ===================== TIER DIFFERENTIATION ===================== */
+.tier-card:not(.black){border-top:2px solid var(--border);}
+.tier-card:not(.black):first-child{border-top-color:rgba(255,255,255,.15);}
+.tier-card:not(.black):nth-child(2){border-top-color:var(--accent);}
+
+/* ===================== HERO STATS SEPARATOR ===================== */
+.hero-meta{border-top:1px solid var(--border2);padding-top:32px;margin-top:40px;}
+.hero-stat+.hero-stat{border-left:1px solid var(--border2);padding-left:40px;}
+
+/* ===================== TABLE ROW NUMBERS ===================== */
+.action-table tbody tr td:first-child{padding-left:16px;}
+
+/* ===================== PRINT ===================== */
+@media print{
+  nav,footer{display:none;}
+  section{break-inside:avoid;padding:40px 40px;}
+  body::before{display:none;}
+  .hero-glow,.hero-glow2{display:none;}
+}
+
+/* ===================== REDUCED MOTION ===================== */
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important;}
+  .badge-rojo .badge-dot{animation:none;}
+}
+
+/* ===================== UTILS ===================== */
+.flex{display:flex;gap:12px;align-items:center;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.mt8{margin-top:8px;}
+.mt16{margin-top:16px;}
+.mt24{margin-top:24px;}
+.mb16{margin-bottom:16px;}
+.mb24{margin-bottom:24px;}
+.accent-text{color:var(--accent);}
+.green-text{color:var(--green);}
+.red-text{color:var(--red);}
+.muted{color:var(--text2);}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-logo">EG</div>
+  <div class="nav-links">
+    <a class="nav-link" href="#overview">OVERVIEW</a>
+    <a class="nav-link" href="#vision">VISION</a>
+    <a class="nav-link" href="#ef">ED. FINANCIERA</a>
+    <a class="nav-link" href="#diners">DINERS</a>
+    <a class="nav-link" href="#axxis">AXXIS</a>
+    <a class="nav-link" href="#experiencias">EXPERIENCIAS</a>
+    <a class="nav-link" href="#libros">LIBROS</a>
+    <a class="nav-link" href="#prioridades">PRIORIDADES</a>
+  </div>
+  <div class="nav-date mono">JUN 2026</div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="label hero-eyebrow">Ediciones Gamma</div>
+  <h1 class="hero-title">
+    Estrategia<br>
+    <span>H2 2026</span>
+  </h1>
+  <div class="hero-rule"></div>
+  <p class="hero-sub">
+    <strong>Informe ejecutivo consolidado.</strong> Estado, North Stars y plan de accion por unidad de negocio. Horizonte: julio a diciembre 2026.
+  </p>
+  <div class="hero-meta">
+    <div class="hero-stat">
+      <span class="hero-stat-val">6</span>
+      <span class="hero-stat-label">Unidades de Negocio</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-val">2</span>
+      <span class="hero-stat-label">BUs en Estado Critico</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-val accent-text" style="color:var(--yellow)">66%</span>
+      <span class="hero-stat-label">Revenue Revistas vs Meta</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-val red-text">$422M</span>
+      <span class="hero-stat-label">Gap Revenue Revistas</span>
+    </div>
+  </div>
+  <div class="hero-tag">CONFIDENCIAL | CATALINA OBREGON</div>
+</section>
+
+<!-- ====== OVERVIEW ====== -->
+<section id="overview">
+  <div class="section-line">
+    <div class="section-num">00</div>
+    <div class="section-title-block">
+      <div class="section-bu">Estado General</div>
+      <div class="section-sub">Resumen de 6 unidades de negocio - junio 2026</div>
+    </div>
+  </div>
+
+  <div class="overview-grid">
+    <div class="ov-card verde">
+      <div class="ov-name">Vision Davivienda</div>
+      <div class="ov-metric verde-val">VERDE</div>
+      <div class="ov-detail">Plataforma operativa. Estrategia editorial validada.</div>
+      <div class="ov-tag" style="color:var(--green)">Motor coyuntural en construccion</div>
+    </div>
+    <div class="ov-card rojo">
+      <div class="ov-name">Ed. Financiera</div>
+      <div class="ov-metric rojo-val">CRITICO</div>
+      <div class="ov-detail">Plataforma nueva no live. NS1 bloqueado.</div>
+      <div class="ov-tag" style="color:var(--red)">Reunion MA Navarro 27 jun - urgente</div>
+    </div>
+    <div class="ov-card rojo">
+      <div class="ov-name">Diners Club</div>
+      <div class="ov-metric rojo-val">37%</div>
+      <div class="ov-detail">Revenue digital vs meta. Gap critico.</div>
+      <div class="ov-tag" style="color:var(--red)">Club de Beneficios como nuevo motor</div>
+    </div>
+    <div class="ov-card amarillo">
+      <div class="ov-name">AXXIS</div>
+      <div class="ov-metric amarillo-val">66-76%</div>
+      <div class="ov-detail">Revenue impreso 76%, digital 66% vs meta.</div>
+      <div class="ov-tag" style="color:var(--yellow)">$422M gap revistas total</div>
+    </div>
+    <div class="ov-card naranja">
+      <div class="ov-name">Experiencias</div>
+      <div class="ov-metric naranja-val">EN RIESGO</div>
+      <div class="ov-detail">Cierre Privilegios Davivienda jun 2026. 70% ingresos perdidos.</div>
+      <div class="ov-tag" style="color:var(--orange)">Vive Beneficios pendiente aprobacion</div>
+    </div>
+    <div class="ov-card naranja">
+      <div class="ov-name">Libros</div>
+      <div class="ov-metric naranja-val">DESARROLLO</div>
+      <div class="ov-detail">Plan comercial en construccion.</div>
+      <div class="ov-tag" style="color:var(--orange)">Nicolas Serna - P2</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== VISION DAVIVIENDA ====== -->
+<section id="vision">
+  <div class="section-line">
+    <div class="section-num">01</div>
+    <div class="section-title-block">
+      <div class="section-bu">Vision Davivienda</div>
+      <div class="section-sub">Plataforma de analisis financiero especializado | Contacto: Natalia Otalora</div>
+    </div>
+    <div class="section-status">
+      <div class="badge badge-verde"><span class="badge-dot"></span>Estado: Verde</div>
+      <div class="label" style="color:var(--text3);font-size:10px;margin-top:4px;">Estrategia validada jun 2026</div>
+    </div>
+  </div>
+
+  <div class="info-box default">
+    <div class="info-box-title">Posicionamiento validado</div>
+    Contenido especializado y coyuntural, NO educacion basica. Motor: analisis de informes oficiales BanRep, DANE, MinHacienda, Fedesarrollo publicados en menos de 48h. Audiencia: entusiasta financiero sofisticado.
+  </div>
+
+  <div class="ns-grid">
+    <div class="ns-card">
+      <div class="ns-num">01</div>
+      <div class="ns-title">Motor Coyuntural 48h</div>
+      <div class="ns-meta">Publicar analisis especializado dentro de las 48h siguientes a cada dato oficial. Flujo: Ernesto redacta, revision rigor, aprobacion Natalia.</div>
+      <div class="ns-kpi">
+        <div class="kpi-row"><span class="kpi-label">Meta articulos/mes</span><span class="kpi-val">4-6</span></div>
+        <div class="kpi-row"><span class="kpi-label">Deadline flujo editorial</span><span class="kpi-val accent-text">27 jun</span></div>
+        <div class="kpi-row"><span class="kpi-label">Lead magnet (PDF H2)</span><span class="kpi-val accent-text">4 jul</span></div>
+      </div>
+    </div>
+    <div class="ns-card">
+      <div class="ns-num">02</div>
+      <div class="ns-title">Suscriptores Digitales</div>
+      <div class="ns-meta">Welcome sequence Braze 4 emails en 8 dias. Email 1: entrega lead magnet + bienvenida. Email 2: mejores analisis. Email 3: como funciona Vision. Email 4: proximo informe.</div>
+      <div class="ns-kpi">
+        <div class="kpi-row"><span class="kpi-label">Open rate meta</span><span class="kpi-val">28%+</span></div>
+        <div class="kpi-row"><span class="kpi-label">Welcome sequence live</span><span class="kpi-val accent-text">11 jul</span></div>
+        <div class="kpi-row"><span class="kpi-label">Copy aprobacion Natalia</span><span class="kpi-val accent-text">antes 28 jun</span></div>
+      </div>
+    </div>
+    <div class="ns-card">
+      <div class="ns-num">03</div>
+      <div class="ns-title">SEO Especializado</div>
+      <div class="ns-meta">Posicion 1-3 en "analisis BanRep", "inflacion colombia datos", "politica monetaria colombia". Sprint Leo: canonical, SSR, Article+FAQ schema.</div>
+      <div class="ns-kpi">
+        <div class="kpi-row"><span class="kpi-label">Indexacion actual</span><span class="kpi-val red-text">24%</span></div>
+        <div class="kpi-row"><span class="kpi-label">P0 fixes (Leo)</span><span class="kpi-val accent-text">21 jun</span></div>
+        <div class="kpi-row"><span class="kpi-label">Article+FAQ schema</span><span class="kpi-val accent-text">28 jun</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection-title">Acciones proximas semana</div>
+  <table class="action-table">
+    <thead><tr><th>Accion</th><th>Owner</th><th>Deadline</th><th>Prioridad</th></tr></thead>
+    <tbody>
+      <tr class="prio-alta">
+        <td><span class="prio-dot"></span>Aprobar copy welcome sequence con Natalia</td>
+        <td class="tag-owner">Carolina</td>
+        <td class="tag-date">27 jun</td>
+        <td><span class="badge badge-rojo">URGENTE</span></td>
+      </tr>
+      <tr class="prio-alta">
+        <td><span class="prio-dot"></span>Calendario editorial coyuntural H2 2026 (BanRep, DANE, etc)</td>
+        <td class="tag-owner">Carolina</td>
+        <td class="tag-date">27 jun</td>
+        <td><span class="badge badge-rojo">URGENTE</span></td>
+      </tr>
+      <tr class="prio-alta">
+        <td><span class="prio-dot"></span>Definir flujo editorial 48h (quienes, pasos, tiempos)</td>
+        <td class="tag-owner">Carolina</td>
+        <td class="tag-date">27 jun</td>
+        <td><span class="badge badge-rojo">URGENTE</span></td>
+      </tr>
+      <tr class="prio-media">
+        <td><span class="prio-dot"></span>Fixes P0 SEO: canonical, meta descriptions, sitemap 403</td>
+        <td class="tag-owner">Leo (agencia)</td>
+        <td class="tag-date">completado?</td>
+        <td><span class="badge badge-amarillo">SEGUIMIENTO</span></td>
+      </tr>
+      <tr class="prio-media">
+        <td><span class="prio-dot"></span>Estandarizar formato analisis de informe</td>
+        <td class="tag-owner">Carolina</td>
+        <td class="tag-date">30 jun</td>
+        <td><span class="badge badge-amarillo">NORMAL</span></td>
+      </tr>
+      <tr class="prio-baja">
+        <td><span class="prio-dot"></span>Welcome sequence Braze - diseno 4 emails</td>
+        <td class="tag-owner">Estefania</td>
+        <td class="tag-date">11 jul</td>
+        <td><span class="badge badge-verde">PROXIMO</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="info-box success" style="margin-top:20px;">
+    <div class="info-box-title">Nota: Natalia ausente desde 28 jun</div>
+    Toda aprobacion critica debe cerrarse antes del viernes 27 de junio: copy welcome, calendario coyuntural, flujo editorial.
+  </div>
+</section>
+
+<!-- ====== ED. FINANCIERA ====== -->
+<section id="ef">
+  <div class="section-line">
+    <div class="section-num">02</div>
+    <div class="section-title-block">
+      <div class="section-bu">Educacion Financiera</div>
+      <div class="section-sub">MFxInvertir + MFxMiNegocio | Contacto: Maria Angelica Navarro</div>
+    </div>
+    <div class="section-status">
+      <div class="badge badge-rojo"><span class="badge-dot"></span>CRITICO - NS1 BLOQUEADO</div>
+    </div>
+  </div>
+
+  <div class="urgent-box">
+    <div class="urgent-text">
+      <strong>Reunion aclaracion con MA Navarro el 27 jun - BLOQUEANTE.</strong><br>
+      Sin claridad sobre la plataforma nueva y el entregable exacto de Gamma, los 3 North Stars no pueden iniciar. Esta reunion define el camino del contrato SLA 2026.
+    </div>
+  </div>
+
+  <div class="grid-2 mb24">
+    <div class="info-box critical">
+      <div class="info-box-title">Preguntas criticas 27 jun</div>
+      <ul style="list-style:none;font-size:13px;color:var(--text2);display:flex;flex-direction:column;gap:6px;margin-top:8px;">
+        <li style="padding-left:12px;border-left:2px solid var(--red)">Cual es el entregable exacto que espera Davivienda de Gamma</li>
+        <li style="padding-left:12px;border-left:2px solid var(--red)">Fecha de lanzamiento confirmada de la plataforma nueva</li>
+        <li style="padding-left:12px;border-left:2px solid var(--red)">Rol de Leo vs otro proveedor en la plataforma</li>
+        <li style="padding-left:12px;border-left:2px solid var(--red)">Si la plataforma no live, que pasa con el SLA y los KPIs</li>
+      </ul>
+    </div>
+    <div class="info-box default">
+      <div class="info-box-title">Contexto SLA</div>
+      <p style="font-size:13px;color:var(--text2);margin-top:8px;line-height:1.6">
+        Contrato SLA Oferta 14015-1: 10 plataformas en scope (2 activas). Entregables, KPIs y multas definidas. Gamma necesita saber exactamente que entregar antes de comprometer recursos. <br><br>
+        <strong style="color:var(--accent)">Accion si no hay claridad:</strong> Escalar a Catalina.
+      </p>
+    </div>
+  </div>
+
+  <div class="ns-grid">
+    <div class="ns-card blocked">
+      <div class="blocked-banner">NS1 - BLOQUEADO</div>
+      <div class="ns-num">01</div>
+      <div class="ns-title">Plataforma Nueva Live</div>
+      <div class="ns-meta">Condicion de entrada: acuerdo con MA Navarro sobre entregables. Sin esto, NS2 y NS3 no inician. Dependencia critica.</div>
+      <div class="ns-kpi">
+        <div class="kpi-row"><span class="kpi-label">Fecha plataforma</span><span class="kpi-val red-text">TBD - post 27 jun</span></div>
+        <div class="kpi-row"><span class="kpi-label">Plantilla contenido EF</span><span class="kpi-val">11 jul</span></div>
+        <div class="kpi-row"><span class="kpi-label">Brief lanzamiento</span><span class="kpi-val">post-staging</span></div>
+      </div>
+    </div>
+    <div class="ns-card blocked">
+      <div class="blocked-banner">NS2 - BLOQUEADO por NS1</div>
+      <div class="ns-num">02</div>
+      <div class="ns-title">Trafico Organico</div>
+      <div class="ns-meta">Depende de NS1. Una vez la plataforma este viva, iniciar SEO tecnico antes de pauta. No invertir en pauta sobre plataforma sin SEO base.</div>
+      <div class="ns-kpi">
+        <div class="kpi-row"><span class="kpi-label">Estado</span><span class="kpi-val red-text">Esperando NS1</span></div>
+        <div class="kpi-row"><span class="kpi-label">SEO tecnico</span><span class="kpi-val">antes de pauta</span></div>
+      </div>
+    </div>
+    <div class="ns-card blocked">
+      <div class="blocked-banner">NS3 - BLOQUEADO por NS1</div>
+      <div class="ns-num">03</div>
+      <div class="ns-title">Reconocimiento Marca</div>
+      <div class="ns-meta">Depende de NS1 y NS2. Incluye definicion del orchestrador y coordinacion de los 3 actores: Davivienda, Gamma, plataforma.</div>
+      <div class="ns-kpi">
+        <div class="kpi-row"><span class="kpi-label">Estado</span><span class="kpi-val red-text">Esperando NS1+NS2</span></div>
+        <div class="kpi-row"><span class="kpi-label">Orchestrador</span><span class="kpi-val red-text">Por definir</span></div>
+      </div>
+    </div>
+  </div>
+
+  <table class="action-table">
+    <thead><tr><th>Accion</th><th>Owner</th><th>Deadline</th></tr></thead>
+    <tbody>
+      <tr><td><span class="prio-dot" style="background:var(--red);box-shadow:0 0 6px var(--red)"></span><strong>Sesion aclaracion con MA Navarro</strong></td><td class="tag-owner">Carolina</td><td class="tag-date">27 jun</td></tr>
+      <tr><td><span class="prio-dot" style="background:var(--red)"></span>Definir entregable exacto de Gamma en la sesion</td><td class="tag-owner">Carolina</td><td class="tag-date">27 jun</td></tr>
+      <tr><td><span class="prio-dot" style="background:var(--red)"></span>Clarificar rol de Leo vs doble facturacion</td><td class="tag-owner">Carolina</td><td class="tag-date">27 jun</td></tr>
+      <tr><td><span class="prio-dot" style="background:var(--yellow)"></span>Plantilla estandar de contenido EF (post-aclaracion)</td><td class="tag-owner">Carolina</td><td class="tag-date">11 jul</td></tr>
+      <tr><td><span class="prio-dot" style="background:var(--yellow)"></span>Minimo viable de contenido para lanzar</td><td class="tag-owner">Carolina</td><td class="tag-date">27 jun</td></tr>
+      <tr><td><span class="prio-dot" style="background:var(--text3)"></span>SEO tecnico antes de invertir en pauta</td><td class="tag-owner">Leo</td><td class="tag-date">post-staging</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ====== DINERS ====== -->
+<section id="diners">
+  <div class="section-line">
+    <div class="section-num">03</div>
+    <div class="section-title-block">
+      <div class="section-bu">Diners Club</div>
+      <div class="section-sub">Revista lifestyle, gastronomia, moda, viajes | CM: Paola Gordillo | Editor: Simon Granja</div>
+    </div>
+    <div class="section-status">
+      <div class="badge badge-rojo"><span class="badge-dot"></span>Revenue Digital: 37% META</div>
+    </div>
+  </div>
+
+  <div class="info-box critical">
+    <div class="info-box-title">Alerta revenue critica</div>
+    Revenue digital pauta propia al 37% de meta (jun 2026). Pauta clientes (Rolex, marcas de lujo) son INGRESOS separados y no se incluyen en esta auditoria. Gap en revenue propio: 63% vs meta, requiere intervencion inmediata.
+  </div>
+
+  <div class="metrics-row">
+    <div class="metric-cell">
+      <span class="metric-val red">37%</span>
+      <span class="metric-label">Revenue digital vs meta</span>
+    </div>
+    <div class="metric-cell">
+      <span class="metric-val" style="color:var(--text2)">TBD</span>
+      <span class="metric-label">Suscriptores digitales activos</span>
+    </div>
+    <div class="metric-cell">
+      <span class="metric-val yellow">4%+</span>
+      <span class="metric-label">ER redes - meta H2</span>
+    </div>
+    <div class="metric-cell">
+      <span class="metric-val accent">28%+</span>
+      <span class="metric-label">Open rate email - meta</span>
+    </div>
+  </div>
+
+  <div class="ns-grid">
+    <div class="ns-card">
+      <div class="ns-num">01</div>
+      <div class="ns-title">Revenue Digital</div>
+      <div class="ns-meta">Ingresos pauta propia (consideracion + suscripciones). Meta: 80%+ de meta a dic 2026. 32 nuevos formatos propuestos para abrir inventario.</div>
+      <div class="ns-kpi">
+        <div class="kpi-row"><span class="kpi-label">Actual jun 2026</span><span class="kpi-val red-text">37% meta</span></div>
+        <div class="kpi-row"><span class="kpi-label">Meta dic 2026</span><span class="kpi-val green-text">80%+</span></div>
+        <div class="kpi-row"><span class="kpi-label">Pipeline Natalia C.</span><span class="kpi-val accent-text">$56.4M sin cerrar</span></div>
+      </div>
+    </div>
+    <div class="ns-card">
+      <div class="ns-num">02</div>
+      <div class="ns-title">Audiencia y Engagement</div>
+      <div class="ns-meta">Visitas web + engagement redes + open rate newsletter. Owners: Paola Gordillo (redes), Simon Granja (web), Sebastian Diaz (pauta Meta+AdSense).</div>
+      <div class="ns-kpi">
+        <div class="kpi-row"><span class="kpi-label">ER redes meta</span><span class="kpi-val">4%+</span></div>
+        <div class="kpi-row"><span class="kpi-label">Open rate meta</span><span class="kpi-val">28%+</span></div>
+        <div class="kpi-row"><span class="kpi-label">Tiempo en pagina</span><span class="kpi-val">3:30+</span></div>
+      </div>
+    </div>
+    <div class="ns-card">
+      <div class="ns-num">03</div>
+      <div class="ns-title">Club de Beneficios</div>
+      <div class="ns-meta">Nuevo motor de revenue. Tres tiers. Partners en gastronomia, moda, viajes y arte. Lanzamiento pendiente definicion MVP y aprobacion.</div>
+      <div class="ns-kpi">
+        <div class="kpi-row"><span class="kpi-label">Miembros pagos meta dic</span><span class="kpi-val accent-text">350</span></div>
+        <div class="kpi-row"><span class="kpi-label">Retencion 90 dias</span><span class="kpi-val">70%+</span></div>
+        <div class="kpi-row"><span class="kpi-label">Partners activos meta</span><span class="kpi-val">15</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection-title">Club de Beneficios - Modelo de Tiers</div>
+  <div class="tier-grid">
+    <div class="tier-card">
+      <div class="tier-name">Reader</div>
+      <div class="tier-price">$0 <span>/mes</span></div>
+      <ul class="tier-list">
+        <li>Newsletter quincenal</li>
+        <li>Acceso articulos basicos</li>
+        <li>Descuentos puntuales partners</li>
+        <li>Meta: 2.000 readers a dic</li>
+      </ul>
+      <div class="tier-meta">PUERTA DE ENTRADA AL ECOSISTEMA</div>
+    </div>
+    <div class="tier-card">
+      <div class="tier-name">Member</div>
+      <div class="tier-price">$29.900 <span>/mes</span></div>
+      <ul class="tier-list">
+        <li>Todo Reader +</li>
+        <li>Acceso a reservas exclusivas</li>
+        <li>Newsletter semanal editorial</li>
+        <li>Descuentos permanentes 10-20%</li>
+        <li>Invitaciones eventos Diners</li>
+        <li>Meta: 300 miembros a dic</li>
+      </ul>
+      <div class="tier-meta">MOTOR PRINCIPAL DE REVENUE</div>
+    </div>
+    <div class="tier-card black">
+      <div class="tier-name">Black</div>
+      <div class="tier-price">$89.900 <span>/mes</span></div>
+      <ul class="tier-list">
+        <li>Todo Member +</li>
+        <li>Concierge personalizado</li>
+        <li>Acceso priority en partners</li>
+        <li>Experiencias exclusivas</li>
+        <li>Contenido Black solo</li>
+        <li>Meta: 50 miembros a dic</li>
+      </ul>
+      <div class="tier-meta">TIER PREMIUM - RETIENE LOS MEJORES</div>
+    </div>
+  </div>
+
+  <div class="subsection-title">Palancas H2 2026</div>
+  <table class="action-table">
+    <thead><tr><th>Palanca</th><th>Responsable</th><th>Impacto estimado</th></tr></thead>
+    <tbody>
+      <tr><td>32 nuevos formatos de contenido (video, podcast, IG stories, colaboraciones)</td><td class="tag-owner">Equipo Diners</td><td class="tag-date">Alto</td></tr>
+      <tr><td>15 aplicaciones de IA en produccion de contenido</td><td class="tag-owner">Simon + Paola</td><td class="tag-date">Medio-Alto</td></tr>
+      <tr><td>Revision de precios suscripciones y tarifario pauta propia</td><td class="tag-owner">Carolina</td><td class="tag-date">Alto</td></tr>
+      <tr><td>Cierre pipeline Clara Diners ($56.4M pendiente)</td><td class="tag-owner">Natalia C.</td><td class="tag-date">Critico</td></tr>
+      <tr><td>SEO editorial: auditorias y optimizacion contenido existente</td><td class="tag-owner">Simon + Leo</td><td class="tag-date">Medio</td></tr>
+      <tr><td>MVP Club de Beneficios: definicion, 5 partners, launch plan</td><td class="tag-owner">Carolina</td><td class="tag-date">Alto - nuevo motor</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ====== AXXIS ====== -->
+<section id="axxis">
+  <div class="section-line">
+    <div class="section-num">04</div>
+    <div class="section-title-block">
+      <div class="section-bu">AXXIS</div>
+      <div class="section-sub">Revista arquitectura, diseno e interiorismo | CM: Paola Gordillo | Editor: Mateo Arias</div>
+    </div>
+    <div class="section-status">
+      <div class="badge badge-amarillo"><span class="badge-dot"></span>Atencion - 66-76% Meta</div>
+    </div>
+  </div>
+
+  <div class="info-box default">
+    <div class="info-box-title">Estructura de revenue (regla critica)</div>
+    Pauta propia (suscripciones + consideracion) vs campañas de clientes (ACESCO, CORONA, Amarilo, Prod. Destacados) = INGRESOS. Nunca mezclar en auditoria ni plan de accion de pauta propia.
+  </div>
+
+  <div class="metrics-row">
+    <div class="metric-cell">
+      <span class="metric-val yellow">76%</span>
+      <span class="metric-label">Revenue impreso vs meta</span>
+    </div>
+    <div class="metric-cell">
+      <span class="metric-val red">66%</span>
+      <span class="metric-label">Revenue digital vs meta</span>
+    </div>
+    <div class="metric-cell">
+      <span class="metric-val" style="color:var(--text2)">$0</span>
+      <span class="metric-label">Conversiones suscripcion digital</span>
+    </div>
+    <div class="metric-cell">
+      <span class="metric-val red">$108</span>
+      <span class="metric-label">CPC actual - subiendo 3 meses</span>
+    </div>
+  </div>
+
+  <div class="ns-grid">
+    <div class="ns-card">
+      <div class="ns-num">01</div>
+      <div class="ns-title">Revenue Digital</div>
+      <div class="ns-meta">Cerrar brecha digital del 34%. CERO conversiones en suscripcion digital a la fecha. Revisar embudo completo: landing, checkout, seguimiento.</div>
+      <div class="ns-kpi">
+        <div class="kpi-row"><span class="kpi-label">Conversiones actuales</span><span class="kpi-val red-text">0</span></div>
+        <div class="kpi-row"><span class="kpi-label">Meta H2</span><span class="kpi-val green-text">80%+</span></div>
+      </div>
+    </div>
+    <div class="ns-card">
+      <div class="ns-num">02</div>
+      <div class="ns-title">Audiencia Calificada</div>
+      <div class="ns-meta">Arquitectos, disenadores, constructoras, interioristas. Audiencia premium B2B. Contenido: proyectos, materiales, tendencias internacionales.</div>
+      <div class="ns-kpi">
+        <div class="kpi-row"><span class="kpi-label">Score redes actual</span><span class="kpi-val yellow-text">47/100</span></div>
+        <div class="kpi-row"><span class="kpi-label">Score SEO</span><span class="kpi-val red-text">35/100</span></div>
+      </div>
+    </div>
+    <div class="ns-card">
+      <div class="ns-num">03</div>
+      <div class="ns-title">Revenue Impreso</div>
+      <div class="ns-meta">Mantener 76% y crecer a meta completa. Mercado construccion en contraccion - riesgo de caida de anunciantes. Compensar con nuevas categorias.</div>
+      <div class="ns-kpi">
+        <div class="kpi-row"><span class="kpi-label">Estado actual</span><span class="kpi-val yellow-text">76% meta</span></div>
+        <div class="kpi-row"><span class="kpi-label">Riesgo mercado</span><span class="kpi-val red-text">Alto</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-box critical" style="margin-top:0;">
+    <div class="info-box-title">Riesgos criticos AXXIS H2</div>
+    <ul style="font-size:13px;color:var(--text2);list-style:none;display:flex;flex-direction:column;gap:6px;margin-top:8px;">
+      <li style="padding-left:12px;border-left:2px solid var(--red)">Mercado construccion en contraccion - posible caida de anunciantes historicos</li>
+      <li style="padding-left:12px;border-left:2px solid var(--red)">CPC Meta subiendo 3 meses consecutivos con CERO conversiones en suscripcion digital</li>
+      <li style="padding-left:12px;border-left:2px solid var(--yellow)">Gap $422M revistas total (AXXIS + Diners) sin reemplazo claro de Privilegios</li>
+      <li style="padding-left:12px;border-left:2px solid var(--yellow)">Podcast AXXIS retrasado - ventana de mercado acortandose</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ====== EXPERIENCIAS ====== -->
+<section id="experiencias">
+  <div class="section-line">
+    <div class="section-num">05</div>
+    <div class="section-title-block">
+      <div class="section-bu">Experiencias</div>
+      <div class="section-sub">Eventos y alianzas | Owner: Paola Pantaleon</div>
+    </div>
+    <div class="section-status">
+      <div class="badge badge-naranja"><span class="badge-dot"></span>En riesgo - Privil. cerrado</div>
+    </div>
+  </div>
+
+  <div class="urgent-box" style="border-color:rgba(255,140,0,.4);background:rgba(255,140,0,.06);">
+    <div class="urgent-text" style="border-top-color:var(--orange);">
+      <strong style="color:var(--orange);">Privilegios Davivienda cerro junio 2026.</strong><br>
+      Representaba el 70% de ingresos de revistas. La unidad de Experiencias necesita nuevas alianzas urgentes y un modelo de revenue alternativo para H2.
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="ns-card">
+      <div class="ns-num" style="color:rgba(255,140,0,.15)">01</div>
+      <div class="ns-title">Vive Beneficios - Linea 2</div>
+      <div class="ns-meta">Propuesta de Carolina para Linea 2 de Experiencias (Always On suscriptores). Pendiente de aprobacion del equipo. Complementaria al Club de Beneficios de Diners.</div>
+      <div class="ns-kpi">
+        <div class="kpi-row"><span class="kpi-label">Estado</span><span class="kpi-val" style="color:var(--orange)">Pendiente aprobacion</span></div>
+        <div class="kpi-row"><span class="kpi-label">Sinergias</span><span class="kpi-val accent-text">Club Diners + AXXIS</span></div>
+      </div>
+    </div>
+    <div class="ns-card">
+      <div class="ns-num" style="color:rgba(255,140,0,.15)">02</div>
+      <div class="ns-title">Pipeline Nuevas Alianzas</div>
+      <div class="ns-meta">Paola Pantaleon liderando prospeccion post-Privilegios. Foco en marcas premium que encajen con audiencias Diners y AXXIS. CoCrea vigente hasta sep 2026.</div>
+      <div class="ns-kpi">
+        <div class="kpi-row"><span class="kpi-label">CoCrea deadline</span><span class="kpi-val" style="color:var(--orange)">Sep 2026</span></div>
+        <div class="kpi-row"><span class="kpi-label">Circulacion CoCrea</span><span class="kpi-val accent-text">Minimo requerido</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== LIBROS ====== -->
+<section id="libros">
+  <div class="section-line">
+    <div class="section-num">06</div>
+    <div class="section-title-block">
+      <div class="section-bu">Libros</div>
+      <div class="section-sub">Editorial | Owner: Nicolas Serna | P2</div>
+    </div>
+    <div class="section-status">
+      <div class="badge badge-naranja"><span class="badge-dot"></span>Desarrollo - P2</div>
+    </div>
+  </div>
+
+  <div class="info-box default">
+    <div class="info-box-title">Estado actual</div>
+    Plan comercial en construccion bajo liderazgo de Nicolas Serna. Unidad en etapa de desarrollo. No hay alerta critica pero requiere impulso en H2 para compensar impacto de cierre Privilegios en revenue total de Gamma.
+  </div>
+
+  <div class="grid-2">
+    <div class="ns-card">
+      <div class="ns-num" style="color:rgba(255,140,0,.1)">01</div>
+      <div class="ns-title">Plan Comercial H2</div>
+      <div class="ns-meta">Nicolas Serna avanzando en plan. Necesita alineacion con prioridades de revenue de Gamma para H2. Posible sinergia con Experiencias y audiencias de revistas.</div>
+      <div class="ns-kpi">
+        <div class="kpi-row"><span class="kpi-label">Owner</span><span class="kpi-val">Nicolas Serna</span></div>
+        <div class="kpi-row"><span class="kpi-label">Prioridad</span><span class="kpi-val">P2</span></div>
+      </div>
+    </div>
+    <div class="ns-card">
+      <div class="ns-num" style="color:rgba(255,140,0,.1)">02</div>
+      <div class="ns-title">Sinergias Grupo</div>
+      <div class="ns-meta">Audiencias de AXXIS y Diners como canal de distribucion para catalogo de libros. Posicion de lanzamiento de titulos editoriales en eventos de Experiencias.</div>
+      <div class="ns-kpi">
+        <div class="kpi-row"><span class="kpi-label">Canal distribucion</span><span class="kpi-val accent-text">Revistas + Eventos</span></div>
+        <div class="kpi-row"><span class="kpi-label">Estado sinergia</span><span class="kpi-val">Por desarrollar</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PRIORIDADES ====== -->
+<section id="prioridades">
+  <div class="section-line">
+    <div class="section-num">07</div>
+    <div class="section-title-block">
+      <div class="section-bu">Prioridades H2</div>
+      <div class="section-sub">Acciones criticas y roadmap julio a diciembre 2026</div>
+    </div>
+  </div>
+
+  <div class="subsection-title">Esta semana - antes del 27 junio</div>
+  <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px;">
+    <div class="info-box critical">
+      <div class="info-box-title">[EF] Reunion aclaracion MA Navarro - BLOQUEANTE</div>
+      Sin esta reunion, la BU de Ed. Financiera no puede avanzar. Define entregables, fecha plataforma y rol Leo. Si no hay claridad: escalar a Catalina.
+    </div>
+    <div class="info-box critical">
+      <div class="info-box-title">[VISION] Aprobar copy welcome sequence con Natalia - ANTES de su salida el 28 jun</div>
+      Natalia ausente desde el 28 de junio. Este es el ultimo dia para aprobaciones criticas de Vision. Tambien: calendario coyuntural y flujo 48h.
+    </div>
+    <div class="info-box default">
+      <div class="info-box-title">[DINERS] Cerrar pipeline Natalia Castano ($56.4M)</div>
+      Pipeline Clara Diners de $56.4M sin cerrar. Natalia al 12.9% de meta anual. Reunion de cierre esta semana.
+    </div>
+    <div class="info-box default">
+      <div class="info-box-title">[VISION] Calendario coyuntural H2 2026</div>
+      Mapear fechas BanRep, DANE, MinHacienda, Fedesarrollo para H2. Base del motor coyuntural. Ernesto necesita este calendario para planificar produccion.
+    </div>
+    <div class="info-box default">
+      <div class="info-box-title">[VISION] Flujo editorial 48h</div>
+      Definir quien redacta, quien revisa rigor tecnico, quien aprueba. El proceso de 48h no puede depender de improviso.
+    </div>
+  </div>
+
+  <div class="subsection-title">Roadmap julio a diciembre 2026</div>
+  <table class="roadmap-table">
+    <thead>
+      <tr>
+        <th>Periodo</th>
+        <th>Vision Davivienda</th>
+        <th>EF</th>
+        <th>Diners</th>
+        <th>AXXIS + Otros</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="periodo">Jun 24-27</td>
+        <td>Calendario coyuntural, flujo 48h, aprobar copy welcome</td>
+        <td style="color:var(--red)">Reunion MA Navarro - CRITICO</td>
+        <td>Cerrar pipeline Natalia, revision precios</td>
+        <td>Revisar auditoria pauta propia</td>
+      </tr>
+      <tr>
+        <td class="periodo">Jul 1-11</td>
+        <td>Lead magnet live, welcome sequence activada, primer analisis coyuntural</td>
+        <td>Post-reunion: definir plataforma y entregable</td>
+        <td>MVP Club de Beneficios, primeros 5 partners</td>
+        <td>Embudo suscripcion digital AXXIS</td>
+      </tr>
+      <tr>
+        <td class="periodo">Julio</td>
+        <td>Piloto mes 1 motor coyuntural: medir resultados</td>
+        <td>Si plataforma live: contenido base SEO</td>
+        <td>Club Beneficios launch soft: 50 readers, 10 members</td>
+        <td>Podcast AXXIS: decision final</td>
+      </tr>
+      <tr>
+        <td class="periodo">Agosto</td>
+        <td>Piloto mes 2: presentar resultados a Natalia al regreso</td>
+        <td>Si NS1 vivo: iniciar trafico organico</td>
+        <td>Club: 100 members meta, 3 eventos</td>
+        <td>Nuevas alianzas Experiencias: 3 cerradas</td>
+      </tr>
+      <tr>
+        <td class="periodo">Sep - Dic</td>
+        <td>Consolidar motor, crecer suscriptores, SEO posicion 1-3</td>
+        <td>NS2 trafico si NS1 ok, NS3 reconocimiento</td>
+        <td>300 members meta, 15 partners, 80% revenue digital</td>
+        <td>AXXIS: cerrar gap digital, Libros: plan activo</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="divider-accent" style="margin-top:48px;"></div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;">
+    <div>
+      <div class="subsection-title" style="margin-top:0;">Indicadores a monitorear</div>
+      <table class="action-table">
+        <thead><tr><th>Indicador</th><th>Frecuencia</th></tr></thead>
+        <tbody>
+          <tr><td>Revenue pauta propia Diners + AXXIS</td><td class="tag-date">Mensual</td></tr>
+          <tr><td>Pipeline Natalia Castano (HubSpot)</td><td class="tag-date">Semanal</td></tr>
+          <tr><td>Avance plataforma EF</td><td class="tag-date">Semanal post-27jun</td></tr>
+          <tr><td>Suscriptores Vision + open rate</td><td class="tag-date">Quincenal</td></tr>
+          <tr><td>Members Club Beneficios Diners</td><td class="tag-date">Mensual desde ago</td></tr>
+          <tr><td>SEO posiciones Vision (GSC)</td><td class="tag-date">Quincenal</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="subsection-title" style="margin-top:0;">Decisiones que requieren Catalina</div>
+      <table class="action-table">
+        <thead><tr><th>Decision</th><th>Urgencia</th></tr></thead>
+        <tbody>
+          <tr><td>Si EF no tiene claridad post-27jun: escalar y redefinir SLA</td><td><span class="badge badge-rojo">ALTA</span></td></tr>
+          <tr><td>Aprobacion propuesta Vive Beneficios (Linea 2 Experiencias)</td><td><span class="badge badge-naranja">MEDIA</span></td></tr>
+          <tr><td>Presupuesto MVP Club de Beneficios Diners</td><td><span class="badge badge-naranja">MEDIA</span></td></tr>
+          <tr><td>Decision final Podcast AXXIS - si continua o se pausa</td><td><span class="badge badge-amarillo">NORMAL</span></td></tr>
+          <tr><td>Contrataciones pendientes de aprobacion (solicitudes en proceso)</td><td><span class="badge badge-amarillo">NORMAL</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">EDICIONES GAMMA</div>
+  <div class="footer-meta">Estrategia H2 2026 | Carolina Ramirez | Head of Growth & Business</div>
+  <div class="footer-conf">CONFIDENCIAL</div>
+</footer>
+
+<script>
+// Active nav on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-link');
+const navObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting && e.intersectionRatio >= 0.3){
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector('.nav-link[href="#'+e.target.id+'"]');
+      if(active) active.classList.add('active');
+    }
+  });
+}, {threshold:[.3]});
+sections.forEach(s => navObs.observe(s));
+
+// Entry animations — skip if user prefers reduced motion
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reducedMotion){
+  const entryObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+        entryObs.unobserve(e.target);
+      }
+    });
+  }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+
+  document.querySelectorAll('.ns-card, .ov-card, .tier-card, .metric-cell').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = 'opacity .45s ease '+(i%4*.07)+'s, transform .45s ease '+(i%4*.07)+'s';
+    entryObs.observe(el);
+  });
+}
+</script>
+</body>
+</html>
