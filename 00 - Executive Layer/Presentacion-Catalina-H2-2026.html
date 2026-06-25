@@ -729,90 +729,120 @@ tr:hover td { background: #FAFAFF; }
       <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:12px;" data-reveal>
 
         <!-- AXXIS -->
-        <div class="card" style="border-top: 3px solid var(--yellow);">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-            <div style="font-size:13px; font-weight:700; color:var(--text);">AXXIS</div>
-            <span class="badge badge-yellow"><span class="badge-dot"></span>74% meta</span>
+        <div class="card" style="border-top: 3px solid var(--yellow); padding:16px;">
+          <!-- Header -->
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <div style="font-size:14px; font-weight:800; color:var(--text); letter-spacing:-.02em;">AXXIS</div>
+            <span class="badge badge-yellow" style="font-size:10px;"><span class="badge-dot"></span>74% YTD</span>
           </div>
-          <div style="font-size:10px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.07em; margin-bottom:10px;">Arquitectura · Diseno · Construccion</div>
+          <div style="font-size:10px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:.07em; margin-bottom:12px;">Arquitectura · Diseno · Construccion</div>
 
-          <!-- Barra total -->
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:3px;">
-            <span style="font-size:10px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.05em;">Total pauta</span>
-            <span style="font-size:11px; font-weight:700; color:var(--yellow);">74% · $496M / $668M</span>
-          </div>
-          <div style="height:6px; background:rgba(245,166,35,.15); border-radius:3px; margin-bottom:10px; overflow:hidden;">
-            <div style="height:100%; width:74%; background:var(--yellow); border-radius:3px;"></div>
-          </div>
-
-          <!-- Barras por canal -->
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px;">
-            <div>
-              <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
-                <span style="font-size:10px; color:var(--text2); font-weight:600;">Editorial</span>
-                <span style="font-size:10px; font-weight:700; color:var(--text);">76%</span>
-              </div>
-              <div style="height:5px; background:rgba(107,104,160,.15); border-radius:3px; overflow:hidden;">
-                <div style="height:100%; width:76%; background:var(--purple); border-radius:3px;"></div>
-              </div>
+          <!-- Total anual -->
+          <div style="margin-bottom:12px; padding-bottom:12px; border-bottom:1px solid var(--border);">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+              <span style="font-size:10px; font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:.06em;">Ppto anual 2026</span>
+              <span style="font-size:10px; font-weight:700; color:var(--yellow);">22.2%</span>
             </div>
-            <div>
-              <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
-                <span style="font-size:10px; color:var(--text2); font-weight:600;">Digital</span>
-                <span style="font-size:10px; font-weight:700; color:var(--red);">66%</span>
-              </div>
-              <div style="height:5px; background:rgba(229,54,75,.12); border-radius:3px; overflow:hidden;">
-                <div style="height:100%; width:66%; background:var(--red); border-radius:3px;"></div>
-              </div>
+            <div style="height:7px; background:rgba(245,166,35,.15); border-radius:4px; margin-bottom:5px; overflow:hidden;">
+              <div style="height:100%; width:22.2%; background:var(--yellow); border-radius:4px;"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="font-size:10px; color:var(--text2);">Logrado: <strong style="color:var(--text);">$496M</strong></span>
+              <span style="font-size:10px; color:var(--text3);">Meta: $2,228M</span>
             </div>
           </div>
 
-          <div style="font-size:10.5px; padding:7px 9px; background:rgba(245,166,35,.08); border-radius:6px; color:var(--text2); line-height:1.4;">
+          <!-- Junio: Impreso -->
+          <div style="margin-bottom:8px;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:3px;">
+              <span style="font-size:10px; font-weight:600; color:var(--text2);">Impreso — Junio</span>
+              <span style="font-size:10.5px; font-weight:800; color:var(--yellow);">72.09%</span>
+            </div>
+            <div style="height:5px; background:rgba(245,166,35,.15); border-radius:3px; margin-bottom:3px; overflow:hidden;">
+              <div style="height:100%; width:72%; background:var(--yellow); border-radius:3px;"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="font-size:9.5px; color:var(--text2);">$106.5M logrado</span>
+              <span style="font-size:9.5px; color:var(--text3);">ppto $147.7M</span>
+            </div>
+          </div>
+
+          <!-- Junio: Digital -->
+          <div style="margin-bottom:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:3px;">
+              <span style="font-size:10px; font-weight:600; color:var(--text2);">Digital — Junio</span>
+              <span style="font-size:10.5px; font-weight:800; color:var(--green);">105.48% ✓</span>
+            </div>
+            <div style="height:5px; background:rgba(0,200,150,.15); border-radius:3px; margin-bottom:3px; overflow:hidden;">
+              <div style="height:100%; width:100%; background:var(--green); border-radius:3px;"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="font-size:9.5px; color:var(--text2);">$39.3M logrado</span>
+              <span style="font-size:9.5px; color:var(--text3);">ppto $37.3M</span>
+            </div>
+          </div>
+
+          <div style="font-size:10px; padding:7px 9px; background:rgba(245,166,35,.08); border-radius:6px; color:var(--text2); line-height:1.4;">
             <strong style="color:var(--yellow);">H2:</strong> Connect &amp; Collab + Directorio lead magnet + HubSpot suscriptores
           </div>
         </div>
 
         <!-- DINERS -->
-        <div class="card" style="border-top: 3px solid var(--red);">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:8px;">
-            <div style="font-size:13px; font-weight:700; color:var(--text);">Diners</div>
-            <span class="badge badge-rojo"><span class="badge-dot"></span>49% meta</span>
+        <div class="card" style="border-top: 3px solid var(--red); padding:16px;">
+          <!-- Header -->
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <div style="font-size:14px; font-weight:800; color:var(--text); letter-spacing:-.02em;">DINERS</div>
+            <span class="badge badge-rojo" style="font-size:10px;"><span class="badge-dot"></span>14.4% YTD</span>
           </div>
-          <div style="font-size:10px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.07em; margin-bottom:10px;">Lifestyle · Gastronomia · Cultura</div>
+          <div style="font-size:10px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:.07em; margin-bottom:12px;">Lifestyle · Gastronomia · Cultura</div>
 
-          <!-- Barra total -->
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:3px;">
-            <span style="font-size:10px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.05em;">Total pauta</span>
-            <span style="font-size:11px; font-weight:700; color:var(--red);">49% · $160M / $329M</span>
-          </div>
-          <div style="height:6px; background:rgba(229,54,75,.12); border-radius:3px; margin-bottom:10px; overflow:hidden;">
-            <div style="height:100%; width:49%; background:var(--red); border-radius:3px;"></div>
-          </div>
-
-          <!-- Barras por canal -->
-          <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px;">
-            <div>
-              <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
-                <span style="font-size:10px; color:var(--text2); font-weight:600;">Editorial</span>
-                <span style="font-size:10px; font-weight:600; color:var(--text3);">sin desglose</span>
-              </div>
-              <div style="height:5px; background:rgba(107,104,160,.1); border-radius:3px;">
-                <div style="height:100%; width:0%; background:var(--purple); border-radius:3px;"></div>
-              </div>
+          <!-- Total anual -->
+          <div style="margin-bottom:12px; padding-bottom:12px; border-bottom:1px solid var(--border);">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+              <span style="font-size:10px; font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:.06em;">Ppto anual 2026</span>
+              <span style="font-size:10px; font-weight:700; color:var(--red);">14.4%</span>
             </div>
-            <div>
-              <div style="display:flex; justify-content:space-between; margin-bottom:3px;">
-                <span style="font-size:10px; color:var(--text2); font-weight:600;">Digital</span>
-                <span style="font-size:10px; font-weight:700; color:var(--red);">37%</span>
-              </div>
-              <div style="height:5px; background:rgba(229,54,75,.12); border-radius:3px; overflow:hidden;">
-                <div style="height:100%; width:37%; background:var(--red); border-radius:3px;"></div>
-              </div>
+            <div style="height:7px; background:rgba(229,54,75,.12); border-radius:4px; margin-bottom:5px; overflow:hidden;">
+              <div style="height:100%; width:14.4%; background:var(--red); border-radius:4px;"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="font-size:10px; color:var(--text2);">Logrado: <strong style="color:var(--text);">$160M</strong></span>
+              <span style="font-size:10px; color:var(--text3);">Meta: $1,111M</span>
             </div>
           </div>
 
-          <div style="font-size:10.5px; padding:7px 9px; background:rgba(229,54,75,.06); border-radius:6px; color:var(--text2); line-height:1.4;">
-            <strong style="color:var(--red);">H2:</strong> Cerrar pipeline $56.4M Clara + rebuild pauta digital + newsletter 28%+ OR
+          <!-- Junio: Impreso -->
+          <div style="margin-bottom:8px;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:3px;">
+              <span style="font-size:10px; font-weight:600; color:var(--text2);">Impreso — Junio</span>
+              <span style="font-size:10.5px; font-weight:800; color:var(--yellow);">68.77%</span>
+            </div>
+            <div style="height:5px; background:rgba(245,166,35,.15); border-radius:3px; margin-bottom:3px; overflow:hidden;">
+              <div style="height:100%; width:68.77%; background:var(--yellow); border-radius:3px;"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="font-size:9.5px; color:var(--text2);">$44.1M logrado</span>
+              <span style="font-size:9.5px; color:var(--text3);">ppto $64.2M</span>
+            </div>
+          </div>
+
+          <!-- Junio: Digital -->
+          <div style="margin-bottom:12px;">
+            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:3px;">
+              <span style="font-size:10px; font-weight:600; color:var(--text2);">Digital — Junio</span>
+              <span style="font-size:10.5px; font-weight:800; color:var(--red);">51.11%</span>
+            </div>
+            <div style="height:5px; background:rgba(229,54,75,.12); border-radius:3px; margin-bottom:3px; overflow:hidden;">
+              <div style="height:100%; width:51%; background:var(--red); border-radius:3px;"></div>
+            </div>
+            <div style="display:flex; justify-content:space-between;">
+              <span style="font-size:9.5px; color:var(--text2);">$13.5M logrado</span>
+              <span style="font-size:9.5px; color:var(--text3);">ppto $26.5M</span>
+            </div>
+          </div>
+
+          <div style="font-size:10px; padding:7px 9px; background:rgba(229,54,75,.06); border-radius:6px; color:var(--text2); line-height:1.4;">
+            <strong style="color:var(--red);">H2:</strong> Pipeline $56.4M Clara sin cerrar + rebuild digital + newsletter 28%+ OR
           </div>
         </div>
 
