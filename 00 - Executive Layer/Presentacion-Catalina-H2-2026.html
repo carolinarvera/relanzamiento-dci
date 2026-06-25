@@ -701,112 +701,162 @@ tr:hover td { background: #FAFAFF; }
       <div class="section-header">
         <div>
           <div class="section-title">Estado consolidado: Ediciones Gamma</div>
-          <div class="section-sub">Junio 2026 · Revenue en riesgo crítico por cierre Privilegios Davivienda</div>
+          <div class="section-sub">Junio 2026 · 8 unidades de negocio · Plan H2 2026</div>
         </div>
       </div>
 
-      <div class="alert alert-critical" data-reveal>
-        <div class="alert-icon">⚠</div>
-        <div>
-          <div class="alert-title">Riesgo crítico activo</div>
-          Privilegios Davivienda cierra junio 2026 — representaba el 70% de ingresos de Revistas. Brecha total estimada: $422M COP. AXXIS al 66-76% de meta, Diners digital al 37%. El plan H2 2026 está diseñado para compensar esta caída con tres motores nuevos: Suscriptores, Vive Beneficios y Libros por Encargo.
+      <!-- FUNCIÓN ESTRATÉGICA -->
+      <div class="alert" style="background:var(--purple-light); border-left:4px solid var(--purple); border-radius:10px; padding:16px 20px; display:flex; gap:16px; align-items:flex-start;" data-reveal>
+        <div style="flex-shrink:0; width:36px; height:36px; background:var(--purple); border-radius:8px; display:flex; align-items:center; justify-content:center;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div style="flex:1;">
+          <div style="font-size:12px; font-weight:700; color:var(--purple); text-transform:uppercase; letter-spacing:.07em; margin-bottom:6px;">Estrategia y metodologia de direccion de recursos</div>
+          <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+            <span style="font-size:15px; font-weight:800; color:var(--text);">Auditar</span>
+            <span style="color:var(--text3); font-size:13px;">→</span>
+            <span style="font-size:15px; font-weight:800; color:var(--text);">Corregir</span>
+            <span style="color:var(--text3); font-size:13px;">→</span>
+            <span style="font-size:15px; font-weight:800; color:var(--text);">Optimizar</span>
+            <span style="color:var(--text3); font-size:13px;">→</span>
+            <span style="font-size:15px; font-weight:800; color:var(--purple);">Escalar</span>
+          </div>
+          <div style="font-size:11.5px; color:var(--text2); margin-top:6px; line-height:1.5;">Enfocado en plan de accion: cada BU pasa por el mismo ciclo antes de recibir mas recursos. Prioridad determinada por impacto en revenue y riesgo actual.</div>
         </div>
       </div>
 
-      <!-- 7 BU CARDS -->
+      <!-- 8 BU CARDS -->
       <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:12px;" data-reveal>
 
+        <!-- AXXIS -->
         <div class="card" style="border-top: 3px solid var(--yellow);">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
-            <div style="font-size:13px; font-weight:700; color:var(--text);">Revistas</div>
-            <span class="badge badge-yellow"><span class="badge-dot"></span>Alerta</span>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div style="font-size:13px; font-weight:700; color:var(--text);">AXXIS</div>
+            <span class="badge badge-yellow"><span class="badge-dot"></span>66-76% meta</span>
           </div>
-          <div style="font-size:10px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.07em; margin-bottom:4px;">AXXIS + DINERS</div>
-          <div style="font-size:22px; font-weight:800; color:var(--yellow); letter-spacing:-.03em; line-height:1; margin-bottom:4px;">66-37%</div>
-          <div style="font-size:11.5px; color:var(--text2); line-height:1.4;">Impreso 76% · Digital 37%. Gap $422M con la pérdida de Privilegios.</div>
-          <div style="margin-top:12px; font-size:11px; font-weight:600; color:var(--yellow);">Pauta B2B + Suscriptores + SEO</div>
+          <div style="font-size:10px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.07em; margin-bottom:6px;">Arquitectura · Diseno · Construccion</div>
+          <div style="font-size:11.5px; color:var(--text2); line-height:1.5; margin-bottom:10px;"><strong style="color:var(--text);">NS:</strong> Medio B2B de referencia en el sector construccion en Colombia</div>
+          <div style="font-size:11px; padding:8px; background:rgba(245,166,35,.08); border-radius:6px; color:var(--text2);">
+            <strong style="color:var(--yellow);">Accion H2:</strong> Connect &amp; Collab + Directorio lead magnet + HubSpot suscriptores
+          </div>
         </div>
 
+        <!-- DINERS -->
+        <div class="card" style="border-top: 3px solid var(--red);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div style="font-size:13px; font-weight:700; color:var(--text);">Diners</div>
+            <span class="badge badge-rojo"><span class="badge-dot"></span>37% meta digital</span>
+          </div>
+          <div style="font-size:10px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.07em; margin-bottom:6px;">Lifestyle · Gastronomia · Cultura</div>
+          <div style="font-size:11.5px; color:var(--text2); line-height:1.5; margin-bottom:10px;"><strong style="color:var(--text);">NS:</strong> Suscriptor digital rentable que crece con pauta premium</div>
+          <div style="font-size:11px; padding:8px; background:rgba(229,54,75,.06); border-radius:6px; color:var(--text2);">
+            <strong style="color:var(--red);">Accion H2:</strong> Rebuild pauta digital + newsletter 28%+ open rate + pipeline $56.4M cerrar
+          </div>
+        </div>
+
+        <!-- VIVE BENEFICIOS -->
         <div class="card" style="border-top: 3px solid var(--orange);">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
             <div style="font-size:13px; font-weight:700; color:var(--text);">Vive Beneficios</div>
             <span class="badge badge-naranja"><span class="badge-dot"></span>MVP</span>
           </div>
-          <div style="font-size:10px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.07em; margin-bottom:4px;">Alianzas · Línea 2</div>
-          <div style="font-size:22px; font-weight:800; color:var(--orange); letter-spacing:-.03em; line-height:1; margin-bottom:4px;">Canje</div>
-          <div style="font-size:11.5px; color:var(--text2); line-height:1.4;">Modelo sin flujo de dinero. Descuentos exclusivos suscriptores ABC1.</div>
-          <div style="margin-top:12px; font-size:11px; font-weight:600; color:var(--orange);">Owner: Paola Pantaleon</div>
-        </div>
-
-        <div class="card" style="border-top: 3px solid var(--orange);">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
-            <div style="font-size:13px; font-weight:700; color:var(--text);">Libros</div>
-            <span class="badge badge-naranja"><span class="badge-dot"></span>Desarrollo P2</span>
+          <div style="font-size:10px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.07em; margin-bottom:6px;">Alianzas · Linea 2 Experiencias</div>
+          <div style="font-size:11.5px; color:var(--text2); line-height:1.5; margin-bottom:10px;"><strong style="color:var(--text);">NS:</strong> Club de beneficios preferido del suscriptor ABC1 de Gamma</div>
+          <div style="font-size:11px; padding:8px; background:rgba(255,140,0,.07); border-radius:6px; color:var(--text2);">
+            <strong style="color:var(--orange);">Accion H2:</strong> Cerrar 5+ aliados fundadores modelo canje · nombre del club aprobado
           </div>
-          <div style="font-size:10px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.07em; margin-bottom:4px;">Editorial</div>
-          <div style="font-size:22px; font-weight:800; color:var(--orange); letter-spacing:-.03em; line-height:1; margin-bottom:4px;">29 títulos</div>
-          <div style="font-size:11.5px; color:var(--text2); line-height:1.4;">Canal directo + B2B corporativo + Libros por Encargo (Legado / Centenario).</div>
-          <div style="margin-top:12px; font-size:11px; font-weight:600; color:var(--orange);">Owner: Nicolas Serna</div>
         </div>
 
+        <!-- LIBROS -->
+        <div class="card" style="border-top: 3px solid var(--orange);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div style="font-size:13px; font-weight:700; color:var(--text);">Libros</div>
+            <span class="badge badge-naranja"><span class="badge-dot"></span>P2 en desarrollo</span>
+          </div>
+          <div style="font-size:10px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.07em; margin-bottom:6px;">Editorial · 29 titulos</div>
+          <div style="font-size:11.5px; color:var(--text2); line-height:1.5; margin-bottom:10px;"><strong style="color:var(--text);">NS:</strong> Referente editorial B2B corporativo en Colombia</div>
+          <div style="font-size:11px; padding:8px; background:rgba(255,140,0,.07); border-radius:6px; color:var(--text2);">
+            <strong style="color:var(--orange);">Accion H2:</strong> Lanzar Paquetes Legado/Centenario + canal directo activo · Owner: Nicolas Serna
+          </div>
+        </div>
+
+        <!-- VISION DAVIVIENDA -->
         <div class="card" style="border-top: 3px solid var(--green);">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
-            <div style="font-size:13px; font-weight:700; color:var(--text);">Visión Davivienda</div>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div style="font-size:13px; font-weight:700; color:var(--text);">Vision Davivienda</div>
             <span class="badge badge-verde"><span class="badge-dot"></span>Verde</span>
           </div>
-          <div style="font-size:10px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.07em; margin-bottom:4px;">Plataforma financiera</div>
-          <div style="font-size:22px; font-weight:800; color:var(--green); letter-spacing:-.03em; line-height:1; margin-bottom:4px;">48h</div>
-          <div style="font-size:11.5px; color:var(--text2); line-height:1.4;">Motor coyuntural. Análisis especializado publicado en menos de 48h.</div>
-          <div style="margin-top:12px; font-size:11px; font-weight:600; color:var(--green);">Contacto: Natalia Otalora</div>
+          <div style="font-size:10px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.07em; margin-bottom:6px;">Plataforma financiera · Educativa</div>
+          <div style="font-size:11.5px; color:var(--text2); line-height:1.5; margin-bottom:10px;"><strong style="color:var(--text);">NS:</strong> Analisis de coyuntura financiera publicado en menos de 48h</div>
+          <div style="font-size:11px; padding:8px; background:rgba(0,200,150,.07); border-radius:6px; color:var(--text2);">
+            <strong style="color:var(--green);">Accion H2:</strong> Mantener cadencia editorial + ampliar cobertura tematica · Contacto: Natalia Otalora
+          </div>
         </div>
 
+        <!-- EDUCACION FINANCIERA -->
         <div class="card" style="border-top: 3px solid var(--red);">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
-            <div style="font-size:13px; font-weight:700; color:var(--text);">Plataformas EF</div>
-            <span class="badge badge-rojo"><span class="badge-dot"></span>Crítico</span>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div style="font-size:13px; font-weight:700; color:var(--text);">Educacion Financiera</div>
+            <span class="badge badge-rojo"><span class="badge-dot"></span>Critico</span>
           </div>
-          <div style="font-size:10px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.07em; margin-bottom:4px;">Educación Financiera</div>
-          <div style="font-size:22px; font-weight:800; color:var(--red); letter-spacing:-.03em; line-height:1; margin-bottom:4px;">NS1 ●</div>
-          <div style="font-size:11.5px; color:var(--text2); line-height:1.4;">North Star 1 bloqueado. Plataforma nueva pendiente de claridad con MA Navarro.</div>
-          <div style="margin-top:12px; font-size:11px; font-weight:600; color:var(--red);">SLA 10 plataformas · 2 activas</div>
+          <div style="font-size:10px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.07em; margin-bottom:6px;">MFxInvertir · MFxMiNegocio</div>
+          <div style="font-size:11.5px; color:var(--text2); line-height:1.5; margin-bottom:10px;"><strong style="color:var(--text);">NS:</strong> North Star 1 bloqueado · pendiente de claridad estrategica con cliente</div>
+          <div style="font-size:11px; padding:8px; background:rgba(229,54,75,.06); border-radius:6px; color:var(--text2);">
+            <strong style="color:var(--red);">Accion H2:</strong> Definicion de plataforma nueva con MA Navarro · SLA 10 plataformas activo
+          </div>
         </div>
 
+        <!-- EXPERIENCIAS -->
         <div class="card" style="border-top: 3px solid var(--orange);">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
             <div style="font-size:13px; font-weight:700; color:var(--text);">Experiencias</div>
-            <span class="badge badge-naranja"><span class="badge-dot"></span>En riesgo</span>
+            <span class="badge badge-naranja"><span class="badge-dot"></span>Post-Privilegios</span>
           </div>
-          <div style="font-size:10px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.07em; margin-bottom:4px;">Eventos y alianzas</div>
-          <div style="font-size:22px; font-weight:800; color:var(--orange); letter-spacing:-.03em; line-height:1; margin-bottom:4px;">Post-Priv.</div>
-          <div style="font-size:11.5px; color:var(--text2); line-height:1.4;">Cierre Privilegios jun 2026. Pipeline nuevas alianzas activo — CoCrea vigente sep 2026.</div>
-          <div style="margin-top:12px; font-size:11px; font-weight:600; color:var(--orange);">Owner: Paola Pantaleon</div>
+          <div style="font-size:10px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.07em; margin-bottom:6px;">Eventos · Alianzas premium</div>
+          <div style="font-size:11.5px; color:var(--text2); line-height:1.5; margin-bottom:10px;"><strong style="color:var(--text);">NS:</strong> Experiencias premium que retienen y activan al suscriptor ABC1</div>
+          <div style="font-size:11px; padding:8px; background:rgba(255,140,0,.07); border-radius:6px; color:var(--text2);">
+            <strong style="color:var(--orange);">Accion H2:</strong> Pipeline nuevas alianzas marcas premium · CoCrea vigente sep 2026
+          </div>
         </div>
 
-        <div class="card" style="border-top: 3px solid var(--purple); grid-column: span 2;">
-          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
-            <div style="font-size:13px; font-weight:700; color:var(--text);">Ediciones Gamma — consolidado</div>
-            <span class="badge badge-purple"><span class="badge-dot"></span>H2 2026</span>
+        <!-- EDICIONES GAMMA (BU de marca) -->
+        <div class="card" style="border-top: 3px solid var(--purple);">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
+            <div style="font-size:13px; font-weight:700; color:var(--text);">Ediciones Gamma</div>
+            <span class="badge badge-purple"><span class="badge-dot"></span>Marca</span>
           </div>
-          <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
-            <div>
-              <div style="font-size:11px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px;">Revenue en riesgo</div>
-              <div style="font-size:20px; font-weight:800; color:var(--red);">$422M</div>
-              <div style="font-size:11px; color:var(--text2);">Gap vs meta consolidada</div>
-            </div>
-            <div>
-              <div style="font-size:11px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px;">CoCrea deadline</div>
-              <div style="font-size:20px; font-weight:800; color:var(--orange);">Sep '26</div>
-              <div style="font-size:11px; color:var(--text2);">Circulación mínima requerida</div>
-            </div>
-            <div>
-              <div style="font-size:11px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.06em; margin-bottom:4px;">HubSpot CRM</div>
-              <div style="font-size:20px; font-weight:800; color:var(--purple);">P1</div>
-              <div style="font-size:11px; color:var(--text2);">Columna vertebral journeys</div>
-            </div>
+          <div style="font-size:10px; font-weight:600; color:var(--text2); text-transform:uppercase; letter-spacing:.07em; margin-bottom:6px;">Marca editorial · Reconocimiento</div>
+          <div style="font-size:11.5px; color:var(--text2); line-height:1.5; margin-bottom:10px;"><strong style="color:var(--text);">NS:</strong> Marca editorial reconocida como referente de contenido de calidad en Colombia</div>
+          <div style="font-size:11px; padding:8px; background:rgba(91,79,212,.07); border-radius:6px; color:var(--text2);">
+            <strong style="color:var(--purple);">Accion H2:</strong> Posicionamiento B2B + LinkedIn activo + "Mundo D" como puerta de entrada
           </div>
         </div>
 
       </div>
+
+      <!-- CONSOLIDADO DE ACCIONES -->
+      <div style="margin-top:16px; background:var(--card); border:1px solid var(--border); border-radius:12px; padding:20px; box-shadow:var(--shadow);" data-reveal>
+        <div style="font-size:11px; font-weight:700; color:var(--text2); text-transform:uppercase; letter-spacing:.09em; margin-bottom:14px;">Consolidado de acciones criticas H2 2026</div>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px;">
+          <div style="border-left:3px solid var(--purple); padding-left:12px;">
+            <div style="font-size:12px; font-weight:700; color:var(--text); margin-bottom:3px;">HubSpot CRM</div>
+            <div style="font-size:11px; color:var(--text2); line-height:1.4;">Journeys J1-J5 unificados. Columna vertebral de suscriptores + pauta. Prioridad P1.</div>
+          </div>
+          <div style="border-left:3px solid var(--red); padding-left:12px;">
+            <div style="font-size:12px; font-weight:700; color:var(--text); margin-bottom:3px;">Gap $422M COP</div>
+            <div style="font-size:11px; color:var(--text2); line-height:1.4;">Compensar perdida Privilegios con 3 motores: Suscriptores + Vive Beneficios + Libros por Encargo.</div>
+          </div>
+          <div style="border-left:3px solid var(--orange); padding-left:12px;">
+            <div style="font-size:12px; font-weight:700; color:var(--text); margin-bottom:3px;">CoCrea Sep '26</div>
+            <div style="font-size:11px; color:var(--text2); line-height:1.4;">Circulacion minima como argumento B2B. Deadline duro para nuevas alianzas comerciales.</div>
+          </div>
+          <div style="border-left:3px solid var(--green); padding-left:12px;">
+            <div style="font-size:12px; font-weight:700; color:var(--text); margin-bottom:3px;">Vive Beneficios MVP</div>
+            <div style="font-size:11px; color:var(--text2); line-height:1.4;">5+ aliados fundadores modelo canje. Nombre del club + landing antes de activar campanas.</div>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <!-- ===== SECTION 01: REVISTAS ===== -->
