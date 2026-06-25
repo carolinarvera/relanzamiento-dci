@@ -1,7 +1,7 @@
 ---
 type: tasks-consolidado
 unidad-de-negocio: Plataformas
-last-updated: 2026-06-17
+last-updated: 2026-06-24
 ai-first: true
 tags: [tasks, plataformas]
 ---
@@ -25,6 +25,16 @@ Archivo consolidado de tareas activas y completadas para la unidad **Plataformas
   Cambiar los slides del comité estratégico para medir métricas de conversión real (ventas, suscripciones, impacto en P&G) en lugar de solo visualizaciones o visitas. Las métricas actuales son de "vanidad" según [[Catalina Obregon]].
 
 ### Jeison Montero
+
+- [ ] 🔴 **Conectar Triario → HubSpot (webhook automático)** · due 2026-07-07 · CRM · KPI: Deals automáticos en e-Payco, datos LTV
+  - Fecha: 2026-06-23
+  - Fuente: [[task.md]] · HubSpot CRM Audit 2026-06-23
+  Configurar webhook en Triario para que cada compra de suscripción cree automáticamente un Deal en el Pipeline e-Payco de HubSpot. Actualmente la creación es 100% manual: hay solo 13 deals y se cargan a mano. Sin este webhook el LTV es incalculable y los workflows de renovación no pueden dispararse. Coordinar con soporte Triario para activar el evento `purchase.completed` → HubSpot API.
+
+- [ ] 🔴 **Activar CAPI Meta → HubSpot (conversión server-side)** · due 2026-07-10 · CRM + Pauta · KPI: Atribución conversiones Meta
+  - Fecha: 2026-06-23
+  - Fuente: [[task.md]] · HubSpot CRM Audit 2026-06-23
+  Sin CAPI (Conversions API) Meta pierde ~40% de las conversiones por iOS 14.5+. Configurar integración server-side: cada evento ViewContent y Purchase en la landing debe llegar a Meta via servidor, no solo via Pixel del navegador. Requiere acceso al Meta Business Manager de Sebastián y revisar si Triario acepta CAPI en su dominio.
 
 - [ ] 🔴 **Centralizar requerimientos tecnicos Leo** · due 2026-06-20 · PMO/Tecnologia · KPI: Eficiencia operativa, UAM
   - Fecha: 2026-06-10
