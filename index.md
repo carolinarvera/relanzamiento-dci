@@ -12,7 +12,7 @@ Catalogo completo del vault GammaVault generado el 2026-06-12. Lee este archivo 
 
 # GammaVault Index
 
-*Ultimo catalogo: 2026-06-13 | 44 notas (+Natalia Castaño) | 6 tareas nuevas Libros | task.md maestro con 46 tareas consolidadas (actualizar con Tasks/ folder para estado real)*
+*Ultimo catalogo: 2026-06-24 | +12 notas nuevas esta semana | carpeta 07 - Marketing y Eventos creada con plan de marketing transversal*
 
 ---
 
@@ -36,7 +36,7 @@ Catalogo completo del vault GammaVault generado el 2026-06-12. Lee este archivo 
 - [[02 - Personas/Jeison Montero]] - PMO / Lider de Plataformas. Owner consolidacion plataformas. Perfil estructurado, actua como PM transversal.
 - [[02 - Personas/Ernesto Rodriguez]] - Contenido Editorial. Genera contenido para Vision (bien) y Ed. Financiera (rezago). Trabaja con Estefania CM.
 - [[02 - Personas/Nicolas Serna]] - Comercial Libros. Owner Plan Comercial Libros P2.
-- [[02 - Personas/Paola Nossa]] - Marketing y alianzas Revistas AXXIS y Diners.
+- [[02 - Personas/Paola Nossa]] - Líder de Marketing y Relacionamiento Bancario. Owner transversal de marketing Ediciones Gamma (AXXIS, Diners, Libros, Experiencias). Cronograma eventos, media kits, ayudaventas, planes B2B, suscriptores, alianzas.
 - [[02 - Personas/Paola Pantaleon]] - Experiencias y Alianzas. Owner Plan Nuevas Alianzas post-Privilegios. Podcast AXXIS.
 - [[02 - Personas/Paola Gordillo]] - Community Manager. Redes sociales. Trabaja con Ernesto Rodriguez.
 - [[02 - Personas/Proveedor Agencia Leo]] - Proveedor agencia. Contrato y funciones en definicion con Gamma.
@@ -51,8 +51,10 @@ Catalogo completo del vault GammaVault generado el 2026-06-12. Lee este archivo 
 ## 03 - Unidades de Negocio
 
 - [[03 - Unidades de Negocio/AXXIS/AXXIS]] - Revista Arquitectura y Diseno. Impreso 76% meta, Digital 66% meta. KPIs: revenue, usuarios, leads.
-- [[03 - Unidades de Negocio/AXXIS/AXXIS Dashboard Estratégico]] - Dashboard ejecutivo completo AXXIS: revenue, auditorias SEO/GEO/AEO/CRO/web/paid/redes/contenido, scorecards, roadmap PMO, plan por responsable y vista para direccion. Score global: 44/100 🟡. Actualizar con data real.
+- [[03 - Unidades de Negocio/AXXIS/AXXIS Dashboard Estratégico]] - Dashboard ejecutivo completo AXXIS: revenue, auditorias SEO/GEO/AEO/CRO/web/paid/redes/contenido, scorecards, roadmap PMO, plan por responsable y vista para direccion. Score global: 44/100. Actualizar con data real.
+- [[03 - Unidades de Negocio/AXXIS/Media Kit AXXIS 2026]] - Media kit comercial AXXIS V1 (fuente: pptx 33 slides). Tarifario completo impreso/alto impacto/digital/display. V2 en producción con Paola Nossa — deadline 5 jul 2026.
 - [[03 - Unidades de Negocio/Diners/Diners]] - Revista Cultura y Estilo de Vida. Impreso 78%, Digital 37% (critico). KPIs: revenue, usuarios, CPC, CTR.
+- [[03 - Unidades de Negocio/Diners/Dashboard/Diners_01_NorthStar_2026-06]] - North star dashboard de Diners jun 2026. Primera nota de seguimiento estratégico de la BU.
 - [[03 - Unidades de Negocio/Libros/Libros]] - Editorial gran formato y lujo. Ingresos: ventas + nuevas impresiones. En crecimiento.
 - [[03 - Unidades de Negocio/Libros/Informe Digital Mayo 2026 - Gamma]] - Primera línea base digital de Ediciones Gamma (mayo 2026): 541 seguidores IG, 61K visualizaciones, tráfico orgánico 596 sesiones. Competencia: Villegas Editores (19.2K IG). Presentado por Nicolás Serna.
 - [[03 - Unidades de Negocio/Libros/Estrategia-Libros-Conmemorativos-2026]] - Estrategia B2B editorial para libros conmemorativos corporativos. ICP, metodologia caza de aniversarios, scoring, paquetes ($80M-$300M COP/proyecto), proceso de venta consultivo, pipeline H2 2026. Owner: Nicolas Serna + Carolina.
@@ -74,6 +76,7 @@ Catalogo completo del vault GammaVault generado el 2026-06-12. Lee este archivo 
 
 - [[Estrategia SEO Libros y Contenidos Gamma 2026]] - Estrategia SEO de Ediciones Gamma: metodología 70/30, 4 artículos quincenales, 6 líneas temáticas (arte, arquitectura/AXXIS, gastronomía, cultura, turismo). Owner: Ernesto Rodriguez. KPIs: tráfico orgánico, tiempo en página, conversiones.
 - [[04 - Growth System/Benchmark Competitivo AXXIS y Diners 2026]] - Benchmark competitivo junio 2026: AXXIS vs Archdaily/AD/Dezeen/El Mueble, Diners vs Gatopardo/CNT/GQ México/Monocle. Scores por dimensión, brechas, 18 mejores prácticas priorizadas y plan 90 días. Fuente: investigación web directa.
+- [[04 - Growth System/2026-06-21 Inteligencia Competitiva Marketing Revistas]] - Análisis de tácticas de marketing de AD España, Wallpaper, Dezeen, GQ España, Harper's Bazaar, Vogue España y P&M Colombia. Top 10 tácticas priorizadas por impacto/esfuerzo aplicables a AXXIS y Diners.
 
 ---
 
@@ -95,11 +98,23 @@ Catalogo completo del vault GammaVault generado el 2026-06-12. Lee este archivo 
 ### Proveedores
 - [[06 - Meetings/Proveedores/2026-05-31 Informe Pauta Mayo 2026 - Sebastian Diaz]] — Informe mensual de pauta digital mayo 2026 (Sebastián Díaz Caro): Meta Ads + AdSense para Diners y AXXIS. AXXIS: 0 suscripciones, CPC $108 subiendo. Diners: 1 suscripción. AdSense $127K COP total. Análisis comparativo completo.
 
+### Marketing
+- [[06 - Meetings/Marketing/2026-06-16 Presentación Actividades de Marketing Sesión 2]] - Reunión Paola Nossa + Carolina. Cronograma de eventos, materiales promocionales, tarifario. Todos los action items mapeados por responsable.
+
 ### Vision
 - [[06 - Meetings/Vision/2026-06-10 Ernesto Rodriguez - Producción de contenidos]] - Reunion con Ernesto sobre produccion de contenidos Vision.
 - [[06 - Meetings/Vision/2026-06-10 Natalia Otálora Generalidades Estrategia digital]] - Reunion con Natalia Otalora sobre estrategia digital Vision.
 - [[06 - Meetings/Vision/2026-06-12 - estefania - cm Visión]] - Reunion con Estefania CM sobre gestion de redes Vision.
 - [[06 - Meetings/Vision/2026-06-12 Sesion Plataformas Davivienda - Carolina Estefania]] - Sesión operativa plataformas Davivienda: centralizar accesos, ejes de comunicación por plataforma, métricas para validar propuestas al banco.
+
+---
+
+## 07 - Marketing y Eventos
+
+- [[07 - Marketing y Eventos/Cronograma de Eventos y Marketing 2026]] - Calendario transversal de ferias y activaciones 2026 para AXXIS, Diners y Libros. Fuente: xlsx Paola Nossa. Budget eventos ~$38.5M COP AXXIS. 8 eventos sin informe de cierre. Owner: Paola Nossa.
+- [[07 - Marketing y Eventos/Plan de Marketing Revistas y Libros 2026]] - Plan de marketing definitivo 2026 definido por Carolina (24 jun). 22 acciones: Revistas B2B (Basic/Premium/Platino), Suscriptores (HubSpot LTV, reactivación), Alianzas Club de Beneficios (con Paola Pantaleón — nombre TBD), Libros venta directa y Paquetes Legado/Centenario (con Nicolás Serna).
+- [[07 - Marketing y Eventos/Plan de Accion Media Kits 2026]] - Plan de acción específico para mejora de media kits: diagnóstico AXXIS V1 (17 gaps), 3 fases de mejora. AXXIS V2 deadline 5 jul · Diners V1 deadline 19 jul. Owner: Paola Nossa.
+- [[07 - Marketing y Eventos/Ayudaventas — Formato Comercial por Edicion]] - Formato mensual que produce Paola Nossa para el equipo comercial: estructura, mejores prácticas de diseño, jerarquía visual y checklist de producción.
 
 ---
 
@@ -116,5 +131,4 @@ Catalogo completo del vault GammaVault generado el 2026-06-12. Lee este archivo 
 
 ---
 
-*Generado por /obsidian-init el 2026-06-12.*
-*Regenerar con: /obsidian-init o "Claude, regenera el index del vault".*
+*Última actualización manual: 2026-06-24. Regenerar con: /obsidian-init o "Claude, regenera el index del vault".*

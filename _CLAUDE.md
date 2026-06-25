@@ -31,6 +31,7 @@ Cada nota: contexto autocontenido · preámbulo "For future Claude" (2-3 oracion
 | `04 - Growth System/` | Frameworks, metodologías |
 | `05 - PMO/` | Portfolio de proyectos |
 | `06 - Meetings/` | Minutas por BU |
+| `07 - Marketing y Eventos/` | Plan de marketing transversal, cronograma de eventos, media kits, ayudaventas |
 | `Bases/` | Vistas filtradas de personas, proyectos, tareas |
 | `Logs/` | Log diario append-only · `CHANGELOG.md` historial del vault |
 | `Daily/` | Notas diarias YYYY-MM-DD.md |
@@ -52,10 +53,14 @@ Cada nota: contexto autocontenido · preámbulo "For future Claude" (2-3 oracion
 
 ---
 
-## Active Context (2026-06-20)
+## Active Context (2026-06-24)
 
 - Prioridad: revenue growth + compensar pérdida Privilegios Davivienda (cierra jun 2026)
 - Riesgo crítico: Privilegios era 70% ingresos Revistas · brecha $422MM vs meta $1.465MM
+- Sesión 2026-06-24: plan de marketing definitivo Revistas + Libros definido por Carolina (22 acciones)
+- Pendiente crítico: nombre inspiracional para Club de Beneficios (alianzas) — sin nombre, no hay material externo
+- Pendiente crítico: precios Paquetes Legado y Centenario (Libros por Encargo) — los define Nicolás Serna
+- Media Kit AXXIS V2 en producción (deadline 5 jul) · Media Kit Diners V1 en producción (deadline 19 jul)
 
 ---
 
