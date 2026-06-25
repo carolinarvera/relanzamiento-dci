@@ -41,7 +41,7 @@
   --sidebar-w: 228px;
 }
 
-html { font-size: 15px; scroll-behavior: smooth; }
+html { font-size: 15px; scroll-behavior: smooth; scroll-padding-top: 90px; }
 
 body {
   font-family: 'Inter', system-ui, sans-serif;
@@ -116,11 +116,14 @@ body {
   border-radius: 8px;
   text-decoration: none;
   color: rgba(255,255,255,.55);
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 500;
   transition: all .15s;
   cursor: pointer;
   margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  min-width: 0;
 }
 .nav-item:hover {
   background: rgba(255,255,255,.08);
@@ -138,11 +141,16 @@ body {
 .nav-item.active .nav-icon { opacity: 1; }
 .nav-item .nav-badge {
   margin-left: auto;
+  flex-shrink: 0;
   font-size: 9px; font-weight: 700;
   padding: 2px 6px;
   border-radius: 4px;
   letter-spacing: .04em;
   text-transform: uppercase;
+}
+.nav-label {
+  flex: 1; min-width: 0;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .nav-badge.red    { background: rgba(229,54,75,.3);  color: #FF8E9A; }
 .nav-badge.yellow { background: rgba(245,166,35,.3); color: #FECE6A; }
@@ -572,7 +580,7 @@ tr:hover td { background: #FAFAFF; }
     <div class="sidebar-section-label">Overview</div>
     <a class="nav-item active" href="#overview">
       <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" rx="1.5" fill="currentColor" opacity=".8"/><rect x="11" y="2" width="7" height="7" rx="1.5" fill="currentColor" opacity=".5"/><rect x="2" y="11" width="7" height="7" rx="1.5" fill="currentColor" opacity=".5"/><rect x="11" y="11" width="7" height="7" rx="1.5" fill="currentColor" opacity=".3"/></svg>
-      Estado general
+      <span class="nav-label">Estado general</span>
     </a>
   </div>
 
@@ -580,32 +588,32 @@ tr:hover td { background: #FAFAFF; }
     <div class="sidebar-section-label">Unidades de negocio</div>
     <a class="nav-item" href="#revistas">
       <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><rect x="3" y="2" width="9" height="16" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="9" y="4" width="8" height="12" rx="1.5" stroke="currentColor" stroke-width="1.5"/><line x1="5.5" y1="6" x2="9.5" y2="6" stroke="currentColor" stroke-width="1.2"/><line x1="5.5" y1="9" x2="9.5" y2="9" stroke="currentColor" stroke-width="1.2"/></svg>
-      01 · Revistas
+      <span class="nav-label">01 · Revistas</span>
       <span class="nav-badge yellow">67-37%</span>
     </a>
     <a class="nav-item" href="#vive">
       <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      02 · Vive Beneficios
+      <span class="nav-label">02 · Vive Beneficios</span>
       <span class="nav-badge orange">MVP</span>
     </a>
     <a class="nav-item" href="#libros">
       <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><path d="M4 3h9a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5"/><line x1="7" y1="7" x2="11" y2="7" stroke="currentColor" stroke-width="1.2"/><line x1="7" y1="10" x2="13" y2="10" stroke="currentColor" stroke-width="1.2"/><line x1="7" y1="13" x2="11" y2="13" stroke="currentColor" stroke-width="1.2"/></svg>
-      03 · Libros
+      <span class="nav-label">03 · Libros</span>
       <span class="nav-badge orange">P2</span>
     </a>
     <a class="nav-item" href="#vision">
       <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><path d="M2 10s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
-      04 · Visión Davivienda
+      <span class="nav-label">04 · Visión</span>
       <span class="nav-badge green">OK</span>
     </a>
     <a class="nav-item" href="#plataformas">
       <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M6 17l2-2h4l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="9" x2="18" y2="9" stroke="currentColor" stroke-width="1.2"/></svg>
-      05 · Plataformas EF
+      <span class="nav-label">05 · Plataformas</span>
       <span class="nav-badge red">CRIT</span>
     </a>
     <a class="nav-item" href="#experiencias">
       <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><path d="M10 2l2.4 4.9 5.4.8-3.9 3.8.9 5.3L10 14.4l-4.8 2.4.9-5.3L2.2 7.7l5.4-.8L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-      06 · Experiencias
+      <span class="nav-label">06 · Experiencias</span>
       <span class="nav-badge orange">●</span>
     </a>
   </div>
@@ -614,7 +622,7 @@ tr:hover td { background: #FAFAFF; }
     <div class="sidebar-section-label">Consolidado</div>
     <a class="nav-item" href="#gamma">
       <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h10M3 15h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="15" cy="14" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M14 14l.8.8 1.4-1.4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      07 · Ed. Gamma
+      <span class="nav-label">07 · Ed. Gamma</span>
     </a>
   </div>
 
@@ -1974,17 +1982,25 @@ tr:hover td { background: #FAFAFF; }
 const navLinks = document.querySelectorAll('.nav-item[href^="#"]');
 const targets  = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
 
+// Map subsections without sidebar links to their parent nav link
+const sectionAliases = { 'loops': 'revistas' };
+
 const navObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
       navLinks.forEach(a => a.classList.remove('active'));
-      const hit = document.querySelector(`.nav-item[href="#${e.target.id}"]`);
+      const targetId = sectionAliases[e.target.id] || e.target.id;
+      const hit = document.querySelector(`.nav-item[href="#${targetId}"]`);
       if (hit) hit.classList.add('active');
     }
   });
 }, { rootMargin: '-35% 0px -60% 0px' });
 
-targets.forEach(t => navObs.observe(t));
+// Observe all sections including subsections
+const allSections = [...targets];
+const loopsEl = document.querySelector('#loops');
+if (loopsEl && !allSections.includes(loopsEl)) allSections.push(loopsEl);
+allSections.forEach(t => navObs.observe(t));
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if (!reducedMotion) {
