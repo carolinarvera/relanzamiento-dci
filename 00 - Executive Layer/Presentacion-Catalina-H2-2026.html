@@ -130,8 +130,13 @@ body {
   color: rgba(255,255,255,.9);
 }
 .nav-item.active {
-  background: rgba(255,255,255,.14);
+  background: rgba(255,255,255,.12);
   color: #fff;
+  box-shadow: inset 3px 0 0 rgba(255,255,255,.7);
+}
+.nav-item:focus-visible {
+  outline: 2px solid rgba(255,255,255,.5);
+  outline-offset: -2px;
 }
 .nav-item .nav-icon {
   width: 18px; height: 18px;
@@ -199,35 +204,41 @@ body {
 .page-header {
   background: var(--card);
   border-bottom: 1px solid var(--border);
-  padding: 28px 40px 24px;
+  padding: 14px 40px 13px;
   position: sticky; top: 0;
   z-index: 50;
   box-shadow: 0 1px 0 var(--border);
+  display: flex; align-items: center; gap: 20px;
 }
 .page-header-eyebrow {
-  font-size: 10.5px; font-weight: 600;
+  font-size: 10px; font-weight: 600;
   color: var(--purple);
   letter-spacing: .12em;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  white-space: nowrap;
 }
 .page-header-title {
-  font-size: 22px; font-weight: 800;
+  font-size: 15px; font-weight: 700;
   color: var(--text);
-  letter-spacing: -.02em;
-  line-height: 1.15;
-  margin-bottom: 6px;
+  letter-spacing: -.01em;
+  line-height: 1.2;
+  white-space: nowrap;
 }
+.page-header-sep { color: var(--border); font-size: 18px; font-weight: 200; }
 .page-header-sub {
-  font-size: 13px; font-weight: 400;
+  font-size: 12px; font-weight: 400;
   color: var(--text2);
-  display: flex; align-items: center; gap: 16px;
+  display: flex; align-items: center; gap: 12px;
   flex-wrap: wrap;
 }
 .dot-sep { color: var(--text3); }
 
 /* ===== CONTENT WRAPPER ===== */
-.content { padding: 32px 40px 64px; display: flex; flex-direction: column; gap: 48px; }
+.content {
+  padding: 32px 40px 64px;
+  display: flex; flex-direction: column; gap: 48px;
+  max-width: 1320px;
+}
 
 /* ===== SECTION ===== */
 .section { display: flex; flex-direction: column; gap: 24px; }
@@ -387,21 +398,36 @@ tr:hover td { background: #FAFAFF; }
 .td-date  { font-size: 12px; font-weight: 600; color: var(--purple); white-space: nowrap; }
 
 /* ===== STEP FLOW ===== */
-.flow-wrap { display: flex; gap: 6px; align-items: stretch; flex-wrap: wrap; }
+.flow-wrap {
+  display: grid;
+  gap: 6px;
+  align-items: stretch;
+}
+/* arrows are <span> separators — hide in grid layout */
+.flow-wrap .flow-arrow { display: none; }
+.flow-wrap[data-steps="4"] { grid-template-columns: repeat(4,1fr); }
+.flow-wrap[data-steps="5"] { grid-template-columns: repeat(5,1fr); }
+.flow-wrap[data-steps="6"] { grid-template-columns: repeat(6,1fr); }
+.flow-wrap[data-steps="7"] { grid-template-columns: repeat(7,1fr); }
+/* fallback: auto-fit, min 140px */
+.flow-wrap:not([data-steps]) { grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); }
 .flow-step {
-  flex: 1; min-width: 130px;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 14px 16px;
   display: flex; flex-direction: column; gap: 5px;
+  position: relative;
 }
-.flow-arrow {
-  display: flex; align-items: center; justify-content: center;
-  color: var(--text3); font-size: 14px;
-  padding: 0 2px; flex-shrink: 0;
-  align-self: center;
+/* arrow connector via pseudo-element on all but last step */
+.flow-step:not(:last-child)::after {
+  content: '→';
+  position: absolute; right: -10px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--text3); font-size: 12px;
+  z-index: 1; pointer-events: none;
 }
+.flow-arrow { display: none; }
 .step-num {
   font-size: 10px; font-weight: 700; color: var(--purple);
   letter-spacing: .08em; text-transform: uppercase;
@@ -641,12 +667,13 @@ tr:hover td { background: #FAFAFF; }
 <main class="main">
 
   <div class="page-header">
-    <div class="page-header-eyebrow">Ediciones Gamma · Growth Marketing</div>
-    <div class="page-header-title">North Stars y plan de acción por unidad de negocio</div>
-    <div class="page-header-sub">
-      <span>Horizonte: julio – diciembre 2026</span>
+    <div class="page-header-eyebrow">Ediciones Gamma</div>
+    <span class="page-header-sep">/</span>
+    <div class="page-header-title">North Stars y plan de acción H2 2026</div>
+    <div class="page-header-sub" style="margin-left:auto;">
+      <span>Jul – Dic 2026</span>
       <span class="dot-sep">·</span>
-      <span>Carolina Ramirez V · Head of Growth</span>
+      <span>Carolina Ramirez V</span>
       <span class="dot-sep">·</span>
       <span>Junio 2026</span>
     </div>
@@ -975,7 +1002,7 @@ tr:hover td { background: #FAFAFF; }
       <!-- LOOP 1: PAUTA B2B -->
       <div data-reveal>
         <div class="sub-title">Loop Pauta B2B — de captación a mantenimiento</div>
-        <div style="margin-top:12px; display:flex; gap:6px; align-items:stretch; flex-wrap:wrap;">
+        <div class="flow-wrap" data-steps="6" style="margin-top:12px;">
           <div class="flow-step">
             <div class="step-num">Paso 1</div>
             <div class="step-title">LinkedIn B2B</div>
@@ -1308,7 +1335,7 @@ tr:hover td { background: #FAFAFF; }
       <!-- PIPELINE DE AFILIACIÓN -->
       <div data-reveal>
         <div class="sub-title">Pipeline de afiliación — 6 pasos</div>
-        <div style="margin-top:12px; display:flex; gap:6px; align-items:stretch; flex-wrap:wrap;">
+        <div class="flow-wrap" data-steps="6" style="margin-top:12px;">
           <div class="flow-step">
             <div class="step-num">Paso 1</div>
             <div class="step-title">Prospección</div>
@@ -1398,7 +1425,7 @@ tr:hover td { background: #FAFAFF; }
       <!-- FLUJO REDENCIÓN -->
       <div data-reveal>
         <div class="sub-title">Flujo de redención en punto de venta — Fase 1</div>
-        <div style="margin-top:12px; display:flex; gap:8px; align-items:stretch; flex-wrap:wrap;">
+        <div class="flow-wrap" data-steps="6" style="margin-top:12px;">
           <div class="flow-step" style="background:var(--purple-light);">
             <div class="step-num" style="color:var(--purple);">1</div>
             <div class="step-title">Suscriptor llega</div>
