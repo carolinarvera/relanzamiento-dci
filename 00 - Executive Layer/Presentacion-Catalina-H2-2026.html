@@ -38,7 +38,8 @@
   --orange-bg: rgba(255,140,0,.08);
   --red-bg:    rgba(229,54,75,.08);
 
-  --sidebar-w: 228px;
+  --sidebar-w: 200px;
+  --sidebar-w-collapsed: 0px;
 }
 
 html { font-size: 26px; scroll-behavior: smooth; scroll-padding-top: 64px; }
@@ -62,9 +63,39 @@ body {
   flex-direction: column;
   z-index: 100;
   overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-width: none;
+  transition: width .22s cubic-bezier(.4,0,.2,1);
 }
 .sidebar::-webkit-scrollbar { display: none; }
+.sidebar.collapsed { width: 0; }
+.sidebar.collapsed .sidebar-logo,
+.sidebar.collapsed .sidebar-section,
+.sidebar.collapsed .sidebar-spacer,
+.sidebar.collapsed .sidebar-user { opacity: 0; pointer-events: none; }
+
+/* Toggle button */
+.sidebar-toggle {
+  position: fixed;
+  top: 14px;
+  left: var(--sidebar-w);
+  z-index: 200;
+  width: 22px; height: 36px;
+  background: var(--purple-dark);
+  border: none;
+  border-radius: 0 6px 6px 0;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,.7);
+  transition: left .22s cubic-bezier(.4,0,.2,1), color .15s;
+  padding: 0;
+}
+.sidebar-toggle:hover { color: #fff; }
+.sidebar-toggle svg { transition: transform .22s; }
+body.sidebar-collapsed .sidebar-toggle { left: 0; }
+body.sidebar-collapsed .sidebar-toggle svg { transform: rotate(180deg); }
+body.sidebar-collapsed .sidebar { width: 0; }
+body.sidebar-collapsed .main { margin-left: 0; }
 
 .sidebar-logo {
   padding: 24px 20px 20px;
@@ -198,7 +229,12 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  min-width: 0;
+  overflow-x: hidden;
+  transition: margin-left .22s cubic-bezier(.4,0,.2,1);
 }
+
+body { overflow-x: hidden; }
 
 /* ===== PAGE HEADER ===== */
 .page-header {
@@ -609,6 +645,11 @@ tr:hover td { background: #FAFAFF; }
 </head>
 <body>
 
+<!-- ===== SIDEBAR TOGGLE ===== -->
+<button class="sidebar-toggle" id="sidebarToggle" title="Ocultar menú" aria-label="Ocultar menú">
+  <svg width="10" height="14" viewBox="0 0 10 14" fill="none"><path d="M7 1L2 7l5 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
 <!-- ===== SIDEBAR ===== -->
 <aside class="sidebar">
   <div class="sidebar-logo">
@@ -620,7 +661,6 @@ tr:hover td { background: #FAFAFF; }
   <div class="sidebar-section">
     <div class="sidebar-section-label">Overview</div>
     <a class="nav-item active" href="#overview">
-      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" rx="1.5" fill="currentColor" opacity=".8"/><rect x="11" y="2" width="7" height="7" rx="1.5" fill="currentColor" opacity=".5"/><rect x="2" y="11" width="7" height="7" rx="1.5" fill="currentColor" opacity=".5"/><rect x="11" y="11" width="7" height="7" rx="1.5" fill="currentColor" opacity=".3"/></svg>
       <span class="nav-label">Estado general</span>
     </a>
   </div>
@@ -628,37 +668,30 @@ tr:hover td { background: #FAFAFF; }
   <div class="sidebar-section">
     <div class="sidebar-section-label">Unidades de negocio</div>
     <a class="nav-item" href="#revistas">
-      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><rect x="3" y="2" width="9" height="16" rx="1.5" stroke="currentColor" stroke-width="1.5"/><rect x="9" y="4" width="8" height="12" rx="1.5" stroke="currentColor" stroke-width="1.5"/><line x1="5.5" y1="6" x2="9.5" y2="6" stroke="currentColor" stroke-width="1.2"/><line x1="5.5" y1="9" x2="9.5" y2="9" stroke="currentColor" stroke-width="1.2"/></svg>
       <span class="nav-label">01 · Revistas</span>
       <span class="nav-badge yellow">$997M</span>
     </a>
     <a class="nav-item" href="#vive">
-      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M7 10l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span class="nav-label">02 · Vive Beneficios</span>
       <span class="nav-badge orange">MVP</span>
     </a>
     <a class="nav-item" href="#libros">
-      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><path d="M4 3h9a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5"/><line x1="7" y1="7" x2="11" y2="7" stroke="currentColor" stroke-width="1.2"/><line x1="7" y1="10" x2="13" y2="10" stroke="currentColor" stroke-width="1.2"/><line x1="7" y1="13" x2="11" y2="13" stroke="currentColor" stroke-width="1.2"/></svg>
       <span class="nav-label">03 · Libros</span>
       <span class="nav-badge orange">P2</span>
     </a>
     <a class="nav-item" href="#vision">
-      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><path d="M2 10s3-6 8-6 8 6 8 6-3 6-8 6-8-6-8-6z" stroke="currentColor" stroke-width="1.5"/><circle cx="10" cy="10" r="2.5" stroke="currentColor" stroke-width="1.5"/></svg>
       <span class="nav-label">04 · Visión</span>
       <span class="nav-badge green">OK</span>
     </a>
     <a class="nav-item" href="#plataformas">
-      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M6 17l2-2h4l2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="2" y1="9" x2="18" y2="9" stroke="currentColor" stroke-width="1.2"/></svg>
       <span class="nav-label">05 · Plataformas</span>
       <span class="nav-badge red">CRIT</span>
     </a>
     <a class="nav-item" href="#experiencias">
-      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><path d="M10 2l2.4 4.9 5.4.8-3.9 3.8.9 5.3L10 14.4l-4.8 2.4.9-5.3L2.2 7.7l5.4-.8L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
       <span class="nav-label">06 · Experiencias</span>
       <span class="nav-badge orange">●</span>
     </a>
     <a class="nav-item" href="#edgamma">
-      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><path d="M10 3C6.13 3 3 6.13 3 10s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm0 2.5c1.24 0 2.38.38 3.32 1.03L5.53 13.32A4.47 4.47 0 015.5 10c0-2.48 2.02-4.5 4.5-4.5zm0 9c-1.24 0-2.38-.38-3.32-1.03l7.79-7.79c.65.94 1.03 2.08 1.03 3.32 0 2.48-2.02 4.5-4.5 4.5z" fill="currentColor" opacity=".7"/></svg>
       <span class="nav-label">07 · Ed. Gamma</span>
       <span class="nav-badge purple">BU</span>
     </a>
@@ -667,7 +700,6 @@ tr:hover td { background: #FAFAFF; }
   <div class="sidebar-section">
     <div class="sidebar-section-label">Consolidado</div>
     <a class="nav-item" href="#gamma">
-      <svg class="nav-icon" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h10M3 15h7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="15" cy="14" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M14 14l.8.8 1.4-1.4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span class="nav-label">08 · Roadmap</span>
     </a>
   </div>
@@ -2707,6 +2739,17 @@ if (!reducedMotion) {
   }, { threshold: 0.07 });
   document.querySelectorAll('[data-reveal]').forEach(el => revealObs.observe(el));
 }
+
+// Sidebar toggle
+(function(){
+  var btn = document.getElementById('sidebarToggle');
+  var body = document.body;
+  if (localStorage.getItem('sb_collapsed') === '1') body.classList.add('sidebar-collapsed');
+  btn.addEventListener('click', function(){
+    body.classList.toggle('sidebar-collapsed');
+    localStorage.setItem('sb_collapsed', body.classList.contains('sidebar-collapsed') ? '1' : '0');
+  });
+})();
 </script>
 </body>
 </html>
