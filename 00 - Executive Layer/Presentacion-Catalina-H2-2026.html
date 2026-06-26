@@ -473,18 +473,25 @@ tr:hover td { background: #FAFAFF; }
 .step-body  { font-size: 16.9px; color: var(--text2); line-height: 1.5; }
 
 /* ===== STAGE FLOW (vertical) ===== */
-.stages { display: flex; flex-direction: column; gap: 8px; }
+/* ===== STAGES — loop suscriptores ===== */
+.stages {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 10px;
+}
 .stage {
-  display: grid; grid-template-columns: 88px 1fr; gap: 16px; align-items: start;
+  display: flex; flex-direction: column; gap: 8px;
   background: var(--card); border: 1px solid var(--border);
-  border-radius: 10px; padding: 13px 18px;
+  border-radius: 12px; padding: 14px 16px;
+  position: relative;
+  border-top: 3px solid var(--purple-mid);
 }
 .stage-label {
-  font-size: 14.3px; font-weight: 700; color: var(--purple);
-  letter-spacing: .08em; text-transform: uppercase; padding-top: 2px;
+  font-size: 11px; font-weight: 700; color: var(--purple);
+  letter-spacing: .1em; text-transform: uppercase;
 }
-.stage-title { font-size: 19.5px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-.stage-body  { font-size: 16.9px; color: var(--text2); line-height: 1.55; }
+.stage-title { font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.3; }
+.stage-body  { font-size: 13px; color: var(--text2); line-height: 1.55; }
 
 /* ===== JOURNEY ROW ===== */
 .journey-list { display: flex; flex-direction: column; gap: 8px; }
@@ -1656,42 +1663,56 @@ tr:hover td { background: #FAFAFF; }
       <!-- PIPELINE DE AFILIACIÓN -->
       <div data-reveal>
         <div class="sub-title">Pipeline de afiliación: 6 pasos</div>
-        <div class="flow-wrap" data-steps="6" style="margin-top:12px;">
-          <div class="flow-step">
-            <div class="step-num">Paso 1</div>
-            <div class="step-title">Prospección</div>
-            <div class="step-body">Lista base Privilegios Davivienda. Mapear por categoría y ciudad, filtro perfil ABC1 y alineación con suscriptor</div>
+        <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-top:14px;">
+
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 18px; border-top:3px solid var(--purple);">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+              <div style="width:28px; height:28px; border-radius:8px; background:var(--purple); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; color:#fff; flex-shrink:0;">1</div>
+              <div style="font-size:16px; font-weight:700; color:var(--text);">Prospección</div>
+            </div>
+            <div style="font-size:14px; color:var(--text2); line-height:1.6;">Lista base Privilegios Davivienda. Mapear por categoría y ciudad, filtro perfil ABC1 y alineación con suscriptor.</div>
           </div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-step">
-            <div class="step-num">Paso 2</div>
-            <div class="step-title">Contacto</div>
-            <div class="step-body">Outreach LinkedIn, referidos o visita directa. Presentación breve del Club y beneficios para el aliado</div>
+
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 18px; border-top:3px solid var(--purple);">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+              <div style="width:28px; height:28px; border-radius:8px; background:var(--purple); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; color:#fff; flex-shrink:0;">2</div>
+              <div style="font-size:16px; font-weight:700; color:var(--text);">Contacto</div>
+            </div>
+            <div style="font-size:14px; color:var(--text2); line-height:1.6;">Outreach LinkedIn, referidos o visita directa. Presentación breve del Club y beneficios para el aliado.</div>
           </div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-step">
-            <div class="step-num">Paso 3</div>
-            <div class="step-title">Presentación</div>
-            <div class="step-body">Deck del Club: datos audiencia, ciudades, segmento target, ejemplos de aliados activos</div>
+
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 18px; border-top:3px solid var(--purple);">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+              <div style="width:28px; height:28px; border-radius:8px; background:var(--purple); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; color:#fff; flex-shrink:0;">3</div>
+              <div style="font-size:16px; font-weight:700; color:var(--text);">Presentación</div>
+            </div>
+            <div style="font-size:14px; color:var(--text2); line-height:1.6;">Deck del Club: datos audiencia, ciudades, segmento target, ejemplos de aliados activos.</div>
           </div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-step">
-            <div class="step-num">Paso 4</div>
-            <div class="step-title">Acuerdo</div>
-            <div class="step-body">Documento 1 página: beneficio que otorga el aliado + visibilidad que recibe. Sin dinero. Firma digital.</div>
+
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 18px; border-top:3px solid rgba(91,79,212,.4);">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+              <div style="width:28px; height:28px; border-radius:8px; background:rgba(91,79,212,.15); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; color:var(--purple); flex-shrink:0;">4</div>
+              <div style="font-size:16px; font-weight:700; color:var(--text);">Acuerdo</div>
+            </div>
+            <div style="font-size:14px; color:var(--text2); line-height:1.6;">Documento 1 página: beneficio que otorga el aliado + visibilidad que recibe. Sin dinero. Firma digital.</div>
           </div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-step">
-            <div class="step-num">Paso 5</div>
-            <div class="step-title">Onboarding</div>
-            <div class="step-body">Kit del aliado: distintivo "Aliado Club", QR + URL directa de verificación, guía para el personal</div>
+
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 18px; border-top:3px solid rgba(91,79,212,.4);">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+              <div style="width:28px; height:28px; border-radius:8px; background:rgba(91,79,212,.15); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; color:var(--purple); flex-shrink:0;">5</div>
+              <div style="font-size:16px; font-weight:700; color:var(--text);">Onboarding</div>
+            </div>
+            <div style="font-size:14px; color:var(--text2); line-height:1.6;">Kit del aliado: distintivo "Aliado Club", QR + URL directa de verificación, guía para el personal.</div>
           </div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-step">
-            <div class="step-num">Paso 6</div>
-            <div class="step-title">Activación</div>
-            <div class="step-body">Publicación landing Club · mención newsletter del mes · ficha en catálogo por ciudad y categoría</div>
+
+          <div style="background:var(--card); border:1px solid var(--border); border-radius:12px; padding:16px 18px; border-top:3px solid rgba(91,79,212,.4);">
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+              <div style="width:28px; height:28px; border-radius:8px; background:rgba(91,79,212,.15); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; color:var(--purple); flex-shrink:0;">6</div>
+              <div style="font-size:16px; font-weight:700; color:var(--text);">Activación</div>
+            </div>
+            <div style="font-size:14px; color:var(--text2); line-height:1.6;">Publicación landing Club · mención newsletter del mes · ficha en catálogo por ciudad y categoría.</div>
           </div>
+
         </div>
       </div>
 
