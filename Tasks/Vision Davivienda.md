@@ -206,11 +206,6 @@ Archivo consolidado de tareas activas para **Visión Davivienda**. Organizado po
   - Fuente: [[06 - Meetings/Vision/2026-06-12 Sesion Plataformas Davivienda - Carolina Estefania]]
   Una vez aprobado formalmente: implementar automatización de mensajes en redes sociales. Reducir carga operativa de moderación. Referente: Corficolombiana (PDFs por DM).
 
-- [ ] 🟡 **Evaluar Metricool / Hitzfield para plantillas y programación** · Ernesto Rodriguez · due 2026-06-27 · Herramientas · KPI: Eficiencia producción
-  - Fecha: 2026-06-10
-  - Fuente: [[06 - Meetings/Vision/2026-06-10 Ernesto Rodriguez - Producción de contenidos]]
-  Evaluar disponibilidad de Metricool o Hitzfield para automatizar plantillas de diseño con identidad de marca y programar publicaciones. Coordinación con Estefanía.
-
 ---
 
 ## ✅ Completados

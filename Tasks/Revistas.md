@@ -50,11 +50,6 @@ Archivo consolidado de tareas activas y completadas para la unidad **Revistas**.
   - Fuente: [[06 - Meetings/Proveedores/2026-06-18 Carolina-Sebastian-PaolaN-Jeison - Estrategia Pauta Meta AXXIS Diners Gamma]]
   Definir estrategia integral de contenidos para Ediciones Gamma en Meta. Enfoque acordado: NO anunciar "Ediciones Gamma" como concepto genérico — anunciar directamente libros/colecciones específicas y llevar al usuario a Gamma al hacer clic. Usar lookalike de suscriptores AXXIS y Diners como audiencia base. Alinear con [[Sebastian Diaz Caro]] y [[Paola Nossa]].
 
-- [ ] 🔴 **Compartir links Magnific y Hickfield a Paola Nossa** · due 2026-06-19 · Herramientas · KPI: Capacidad producción creativos
-  - Fecha: 2026-06-18
-  - Fuente: [[06 - Meetings/Proveedores/2026-06-18 Carolina-Sebastian-PaolaN-Jeison - Estrategia Pauta Meta AXXIS Diners Gamma]]
-  Compartir por chat a [[Paola Nossa]] los links de Magnific (imágenes) y Hickfield (videos) para que solicite acceso. Herramientas de IA para escalar producción de creativos publicitarios.
-
 ### Maria Claudia Vargas Pardo
 
 - [ ] 🔴 **Enviar tiempos de respuesta RRSS** · due 2026-06-25 · Operaciones · KPI: Atención al cliente
@@ -80,11 +75,6 @@ Archivo consolidado de tareas activas y completadas para la unidad **Revistas**.
   Revisar en conjunto la propuesta de comunicaciones y el recorrido del cliente. Asegurar alineación con propuesta de valor comercial e integrar la experiencia de negocio antes de cargar bases.
 
 ### Paola Nossa
-
-- [ ] 🔴 **Solicitar herramienta Magnific** · due 2026-06-19 · Herramientas · KPI: Capacidad producción creativos
-  - Fecha: 2026-06-18
-  - Fuente: [[06 - Meetings/Proveedores/2026-06-18 Carolina-Sebastian-PaolaN-Jeison - Estrategia Pauta Meta AXXIS Diners Gamma]]
-  Gestionar solicitud de acceso a Magnific (IA para escalar imágenes/creativos). Carolina comparte el link por chat. También revisar Hickfield para videos.
 
 - [ ] 🔴 **Solicitar base datos renovaciones y revisar tokenización IO** · due 2026-06-20 · Suscripciones · KPI: Renovaciones, Churn
   - Fecha: 2026-06-18

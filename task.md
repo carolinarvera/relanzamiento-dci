@@ -148,7 +148,6 @@ Master task list reorganizado 2026-06-24 alineado a la estructura de la Presenta
 | # | Tarea | Due | Prioridad | Status |
 |---|-------|-----|-----------|--------|
 | 1 | Coordinar con Juan David artículos pilar SEO — proveer proyectos + edición editorial | Jul 31 | 🟠 Alta | pendiente |
-| 2 | Evaluar herramientas diseño: Metricool o Hitzfield para plantillas y programación | Jun 27 | 🟡 Media | pendiente |
 
 ---
 
