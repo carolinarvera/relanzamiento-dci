@@ -61,6 +61,9 @@ Master task list reorganizado 2026-06-24 alineado a la estructura de la Presenta
 | 8 | Liderar sesión innovación AXXIS — misma metodología sesión Diners | Jun 27 | 🔴 Alta | programada |
 | 9 | Hablar con Sandra Martínez para definir contenido exclusivo suscriptores premium | Jun 27 | 🟡 Media | pendiente |
 | 10 | Revisar tarifario y kits de venta — combos pauta física + digital | Jun 30 | 🟡 Media | pendiente |
+| 11 | Definir estrategia contenidos sombrilla Gamma para pauta Meta (NO anunciar "Gamma" genérico — anunciar colecciones/libros específicos, LAL suscriptores como audiencia base) | Jun 25 | 🔴 Alta | pendiente |
+| 12 | Planear comunicaciones omnicanal + customer journey suscripciones (validar estructura ANTES de cargar base en HubSpot) | Jul 11 | 🔴 Alta | pendiente |
+| 13 | Explorar Menat para automatización IA + WhatsApp (alternancia virtual ↔ humana, primer nivel de atención) | Jul 18 | 🟡 Media | pendiente |
 | **HubSpot — Journey Suscripción** | | | | |
 | 11 | Limpiar lifecycle stages: migrar 64,162 contactos de etapa custom "Contacto" → "Lead" estándar | Jul 7 | 🔴 Crítica | pendiente |
 | 12 | Crear 7 propiedades de contacto HubSpot: `subscription_type` · `subscription_start_date` · `subscription_end_date` · `ltv_cumulative_cop` · `nps_score` · `churn_risk` · `referral_source_contact` | Jul 7 | 🔴 Crítica | pendiente |
@@ -151,7 +154,7 @@ Master task list reorganizado 2026-06-24 alineado a la estructura de la Presenta
 
 ---
 
-#### Paola Nossa — Media Kits AXXIS + Diners
+#### Paola Nossa — Media Kits AXXIS + Diners + Pauta
 
 | # | Tarea | Due | Prioridad | Status |
 |---|-------|-----|-----------|--------|
@@ -163,6 +166,9 @@ Master task list reorganizado 2026-06-24 alineado a la estructura de la Presenta
 | 6 | Producir Media Kit Diners V1 (estructura 16 slides) | Jul 19 | 🔴 Alta | pendiente |
 | 7 | Diseñar one-pager ejecutivo AXXIS + Diners (1 página A4) | Jul 31 | 🟠 Media | pendiente |
 | 8 | TikTok Diners con Ernesto — pilot 3 videos, lanzamiento Jul 2026 | Jul 2026 | 🔴 P1 | pendiente |
+| 9 | Solicitar a María Claudia base de datos suscriptores pendientes de renovación para campañas Meta | Jun 20 | 🔴 Alta | pendiente |
+| 10 | Crear piezas remarketing y display suscripciones (mín. 3 piezas por tipología — remarketing web + aliados/beneficios) | Jun 25 | 🔴 Alta | pendiente |
+| 11 | Landing page renovación suscripciones (no indexada, con descuento especial — coordinar con Juan David) | Jun 25 | 🔴 Alta | pendiente |
 
 ---
 
@@ -172,6 +178,24 @@ Master task list reorganizado 2026-06-24 alineado a la estructura de la Presenta
 |---|-------|-----|-----------|--------|
 | 1 | Coordinar con Simón Granja estrategia distribución contenido web (% artículos impresa → digital mensual) | Por definir | 🟠 Alta | pendiente |
 | 2 | Iniciar proceso de contratación perfil senior editorial con presupuesto Cocrea | Antes Jul 2026 | 🔴 Alta | pendiente |
+
+---
+
+#### María Claudia Vargas Pardo — Jefa Suscripciones
+
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Enviar a Carolina datos tiempos de gestión RRSS (meta acordada: máx 3h para consultas informativas en IG) | Jun 25 | 🔴 Alta | pendiente |
+| 2 | Notificar a Carolina inicio migración base de datos histórica a HubSpot (timeline: 3ra-4ta semana jul 2026) | Jul 14 | 🔴 Alta | pendiente |
+
+---
+
+#### Carolina + María Claudia — Suscripciones (conjuntas)
+
+| # | Tarea | Due | Prioridad | Status |
+|---|-------|-----|-----------|--------|
+| 1 | Definir estrategia de renovación: proceso relacionamiento + flujo automatizado HubSpot + intervención humana | Jul 11 | 🔴 Alta | pendiente |
+| 2 | Validar estructura comunicaciones y customer journey (alinear con propuesta de valor comercial antes de cargar bases) | Jul 11 | 🔴 Alta | pendiente |
 
 ---
 
@@ -461,20 +485,21 @@ Master task list reorganizado 2026-06-24 alineado a la estructura de la Presenta
 
 | Persona | Rol | Tareas Activas | 🔴 Alta | Vencidas |
 |---------|-----|---------------|---------|---------|
-| Carolina Ramirez | Head of Growth (Metas del Área) | 38 | 27 | 8 |
+| Carolina Ramirez | Head of Growth (Metas del Área) | 41 | 29 | 8 |
 | Juan David | SEO + Web AXXIS | 15 | 9 | 4 |
 | Paola Gordillo | Redes AXXIS + Libros | 15 | 8 | 2 |
 | Sebastián Díaz | Pauta Digital AXXIS | 6 | 5 | 1 |
-| Paola Nossa | Media Kits + Marketing | 9 | 7 | 2 |
+| Paola Nossa | Media Kits + Pauta + Marketing | 12 | 10 | 3 |
 | Jeison Montero | Plataformas + HubSpot | 16 | 12 | 3 |
-| Ernesto Rodriguez | Contenido Editorial | 9 | 4 | 0 |
+| Ernesto Rodriguez | Contenido Editorial | 8 | 4 | 0 |
 | Estefanía Ochoa | CM Visión | 9 | 5 | 3 |
 | Paola Pantaleón | Experiencias + Comercial | 15 | 9 | 1 |
 | Nicolas Serna | Libros | 8 | 3 | 2 |
 | Sandra Martínez | Editorial Diners | 2 | 1 | 0 |
+| María Claudia Vargas Pardo | Jefa Suscripciones | 2 | 2 | 1 |
 | Natalia Castaño | Comercial AXXIS/Diners | 1 | 1 | 1 |
 | Claris | Investigación Tech | 1 | 1 | 0 |
-| **Total** | | **144** | **92** | **27** |
+| **Total** | | **151** | **99** | **29** |
 
 ---
 
@@ -482,7 +507,7 @@ Master task list reorganizado 2026-06-24 alineado a la estructura de la Presenta
 
 | Sección | Tareas equipo | Metas Carolina | Riesgo | Próximo desbloqueo |
 |---------|--------------|---------------|--------|-------------------|
-| 01 · Revistas | 48 | 17 | 🔴 Crítico | Juan David: landing Jun 23 |
+| 01 · Revistas | 56 | 20 | 🔴 Crítico | Juan David: landing Jun 23 |
 | 02 · Vive Beneficios | 1 | 6 | 🟠 Alto | Nombre Club definido |
 | 03 · Libros | 10 | 2 | 🟠 Alto | Meta anual aprobada |
 | 04 · Visión Davivienda | 9 | 5 | 🟡 Atención | Reunión Natalia Otálora |
