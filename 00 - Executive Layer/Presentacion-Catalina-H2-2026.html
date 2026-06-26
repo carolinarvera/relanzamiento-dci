@@ -271,9 +271,11 @@ body { overflow-x: hidden; }
 
 /* ===== CONTENT WRAPPER ===== */
 .content {
-  padding: 44px 60px 80px;
+  padding: 44px 40px 80px;
   display: flex; flex-direction: column; gap: 72px;
-  max-width: 1400px;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 /* ===== SECTION ===== */
@@ -344,12 +346,12 @@ body { overflow-x: hidden; }
 .alert-success  { background: var(--green-bg);  border-left: 3px solid var(--green);  color: #005C44; }
 
 /* ===== GRID HELPERS ===== */
-.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
-.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.grid-2 { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 16px; }
 .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; }
 
 /* ===== METRIC ROW ===== */
-.metric-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.metric-row { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 12px; }
 .metric-cell {
   background: var(--card);
   border: 1px solid var(--border);
@@ -363,7 +365,7 @@ body { overflow-x: hidden; }
   line-height: 1;
   margin-bottom: 7px;
 }
-.metric-label { font-size: 16.9px; font-weight: 500; color: var(--text2); line-height: 1.3; }
+.metric-label { font-size: 13.9px; font-weight: 500; color: var(--text2); line-height: 1.3; }
 .val-green  { color: var(--green); }
 .val-yellow { color: var(--yellow); }
 .val-orange { color: var(--orange); }
@@ -440,10 +442,10 @@ tr:hover td { background: #FAFAFF; }
 }
 /* arrows are <span> separators — hide in grid layout */
 .flow-wrap .flow-arrow { display: none; }
-.flow-wrap[data-steps="4"] { grid-template-columns: repeat(4,1fr); }
-.flow-wrap[data-steps="5"] { grid-template-columns: repeat(5,1fr); }
-.flow-wrap[data-steps="6"] { grid-template-columns: repeat(6,1fr); }
-.flow-wrap[data-steps="7"] { grid-template-columns: repeat(7,1fr); }
+.flow-wrap[data-steps="4"] { grid-template-columns: repeat(4,minmax(0,1fr)); }
+.flow-wrap[data-steps="5"] { grid-template-columns: repeat(5,minmax(0,1fr)); }
+.flow-wrap[data-steps="6"] { grid-template-columns: repeat(6,minmax(0,1fr)); }
+.flow-wrap[data-steps="7"] { grid-template-columns: repeat(7,minmax(0,1fr)); }
 /* fallback: auto-fit, min 140px */
 .flow-wrap:not([data-steps]) { grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); }
 .flow-step {
