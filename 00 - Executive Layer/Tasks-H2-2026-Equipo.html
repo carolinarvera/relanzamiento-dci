@@ -174,6 +174,17 @@
     display: flex; align-items: center; gap: 8px;
     padding: 7px 0; border-bottom: 1px solid var(--border-light); margin-bottom: 5px;
   }
+  .group-header.collapsible { cursor: pointer; user-select: none; border-radius: 4px; padding: 7px 6px; margin: 0 -6px 5px; }
+  .group-header.collapsible:hover { background: rgba(0,0,0,.03); }
+  .group-body { display: grid; grid-template-rows: 1fr; transition: grid-template-rows .22s ease; }
+  .group-body.collapsed { grid-template-rows: 0fr; }
+  .group-body-inner { overflow: hidden; }
+  .group-toggle {
+    flex-shrink: 0; width: 18px; height: 18px; margin-left: 4px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); transition: transform .22s ease;
+  }
+  .group-toggle.closed { transform: rotate(-90deg); }
   .group-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
   .dot-AX { background: #1a1a1a; }
   .dot-DI { background: #6b1f1f; }
@@ -642,6 +653,21 @@ const LSKEY = 'gv_equipo_done1';
 let done = new Set(JSON.parse(localStorage.getItem(LSKEY)||'[]'));
 let F = { bu:'all', pri:'all', pipeline:'all', owner:'all' };
 let G = 'bu';
+let collapsedGroups = new Set();
+
+function toggleGroup(key, headerEl){
+  const body = headerEl.closest('.group').querySelector('.group-body');
+  const arrow = headerEl.querySelector('.group-toggle');
+  if(collapsedGroups.has(key)){
+    collapsedGroups.delete(key);
+    body.classList.remove('collapsed');
+    if(arrow) arrow.classList.remove('closed');
+  } else {
+    collapsedGroups.add(key);
+    body.classList.add('collapsed');
+    if(arrow) arrow.classList.add('closed');
+  }
+}
 
 function saveDone(){ localStorage.setItem(LSKEY, JSON.stringify([...done])); }
 function toggleDone(id,e){ e.stopPropagation(); done.has(id)?done.delete(id):done.add(id); saveDone(); render(); }
@@ -659,7 +685,7 @@ function setF(dim,val,el){
   updateFilterDots();
   render();
 }
-function setG(g,el){ G=g; document.querySelectorAll('.gchip').forEach(c=>c.classList.remove('active')); el.classList.add('active'); render(); }
+function setG(g,el){ if(g!=='pipeline') collapsedGroups.clear(); G=g; document.querySelectorAll('.gchip').forEach(c=>c.classList.remove('active')); el.classList.add('active'); render(); }
 function setOwner(sel){
   F.owner = sel.value || 'all';
   updateFilterDots();
@@ -798,16 +824,23 @@ function render(){
     else if(G==='ns'){ lbl=NS_LABELS[k]||k; dot='dot-default'; }
     else { lbl=k; dot='dot-default'; }
     const pct = items.length ? Math.round(gc/items.length*100) : 0;
+    const isAcc = G==='pipeline';
+    const isCol = isAcc && collapsedGroups.has(k);
+    const arrow = isAcc ? `<div class="group-toggle${isCol?' closed':''}"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg></div>` : '';
+    const hClick = isAcc ? `onclick="toggleGroup('${k.replace(/'/g,"\\'")}',this)"` : '';
     return `<div class="group">
-      <div class="group-header">
+      <div class="group-header${isAcc?' collapsible':''}" ${hClick}>
         <div class="group-dot ${dot}"></div>
         <div class="group-title">${lbl}</div>${sub}
         <div class="group-count">
           <div class="gc-bar"><div class="gc-fill" style="width:${pct}%"></div></div>
           ${gc}/${items.length}
         </div>
+        ${arrow}
       </div>
-      ${items.map(card).join('')}
+      <div class="group-body${isCol?' collapsed':''}">
+        <div class="group-body-inner">${items.map(card).join('')}</div>
+      </div>
     </div>`;
   }).join('');
 }
