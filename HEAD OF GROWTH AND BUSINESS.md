@@ -60,16 +60,54 @@ Growth & Business / Dirección / Estrategia
 8. Crear el programa de experiencias y alianzas
 9. Aumentar el posicionamiento de marca y de las unidades de negocio mediante acciones de marketing, eventos, alianzas y estrategias innovadoras
 
-## Unidades de negocio
+# 🏢 Ediciones Gamma
 
-- Revistas
-	- Diners
-	- AXXIS
-- Libros
-- Experiencias & Alianzas
-- Plataformas 
-	- Visión
-	- Educación Financiera
+> Casa editorial del Grupo Bolívar · Filial estratégica del Banco Davivienda · Bogotá, Colombia
+
+---
+
+## Identidad
+
+- **Fundada:** 1979
+- **Grupo:** Grupo Bolívar / Banco Davivienda
+- **Sede:** Bogotá, Colombia
+- **Experiencia:** Más de 60 años en contenido editorial de alta calidad
+- **Catálogo:** +590 títulos publicados
+- **Colaboradores:** +50 artistas, diseñadores y arquitectos
+
+---
+
+## Misión
+
+Crear y distribuir contenidos de alta calidad en formatos impresos y digitales, posicionando a Ediciones Gamma como referente cultural y editorial en Colombia.
+
+---
+
+## Unidades de Negocio
+
+| Unidad                   | Tipo                                                                 | Estado         | Objetivo - North Star                                                                                                                                                  |
+| ------------------------ | -------------------------------------------------------------------- | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [[AXXIS]]                | Revista — Arquitectura y Diseño                                      | Madura         | Venta de pauta - Venta de suscripciones                                                                                                                                |
+| [[Diners]]               | Revista — Cultura y Estilo de Vida                                   | Madura         | Venta de pauta - Venta de suscripciones                                                                                                                                |
+| [[Libros]]               | Editorial — Gran formato y lujo                                      | Crecimiento    | venta catálogo - venta por encargo                                                                                                                                     |
+| [[Experiencias]]         | Eventos, Beneficios a suscriptores de revistas, Alianzas comerciales | En desarrollo  | Alianzas comerciales - Venta de Extperiencias Banca privada Davivienda - Experiencias VIP corporativoas - Alianzas comerciales para club de beneficios de suscriptores |
+| [[Vision Davivienda]]    | Plataforma digital — Análisis financiero                             | Estratégica    | Trafico, posicionamiento, suscripción a newsletter                                                                                                                     |
+| [[Educacion Financiera]] | Plataforma digital — Educación                                       | Transformación | Trafico, posicionamiento                                                                                                                                               |
+
+---
+
+## Equipo Directivo
+
+- [[Catalina Obregon]] — Gerente General / CEO
+- [[Carolina Ramirez]] — Head of Growth & Business
+- [[Jeison Montero]] — PMO / Líder de Plataformas
+- [[Ernesto Rodriguez]] — Contenido Editorial
+- [[Paola Nossa]] — Marketing y Alianzas Revistas
+- [[Paola Pantaleon]] — Experiencias y Alianzas
+- [[Paola Gordillo]] — Community Manager
+- [[Nicolas Serna]] — Comercial Libros
+
+---
 
 ## Frameworks
 
