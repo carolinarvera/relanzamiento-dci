@@ -10,7 +10,7 @@ confidence: high
 
 # AXXIS — Dashboard Estratégico Completo
 
-> **For future Claude:** Dashboard de gestión ejecutiva de la unidad AXXIS de Ediciones Gamma. Consolida estado de negocio, revenue, auditorías digitales (redes, SEO, GEO, AEO, CRO, web, paid media), oportunidades de growth, KPIs, roadmap PMO y planes de trabajo por responsable. Actualizar con datos reales cuando se compartan analytics, Search Console, Meta Ads y reportes comerciales. Algunos scores son estimaciones basadas en contexto disponible — marcar con `[PENDIENTE DATA]` cuando requieren validación.
+> **For future Claude:** Dashboard de gestión ejecutiva de la unidad AXXIS de Ediciones Gamma. Consolida estado de negocio, revenue, auditorías digitales (redes, SEO, GEO, AEO, CRO, web, paid media), oportunidades de growth, KPIs, roadmap PMO y planes de trabajo por responsable. Actualizar con datos reales cuando se compartan analytics, Search Console, Meta Ads y reportes comerciales. Algunos scores son estimaciones basadas en contexto disponible — marcar con `[PENDIENTE DATA]` cuando requieren validación. Los checklists internos de este dashboard son recomendaciones de análisis y auditoría, no tareas rastreadas. Tareas operativas activas de AXXIS → [[Tasks/00-Tareas-Master-H2-2026]] (sección AXXIS).
 
 ---
 

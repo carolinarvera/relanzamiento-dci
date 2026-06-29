@@ -9,7 +9,7 @@ confidence: high
 ---
 
 ## For future Claude
-HubSpot diagnostic run 2026-06-29 via MCP. Account ID: 50275067 (COP, Bogotá TZ). Critical finding: 76,993 contacts total, zero segmented by revista or marca. Only estado_de_suscripcion=Activa has records (10,970) but includes spam/dummy data. Plan (decided 2026-06-29): delete all existing subscription contacts, upload new clean segmented base. Owners: María Claudia Vargas Pardo (data) + Juan David (upload/HubSpot config). Timeline: 3ra-4ta semana julio 2026.
+HubSpot diagnostic run 2026-06-29 via MCP. Account ID: 50275067 (COP, Bogotá TZ). Critical finding: 76,993 contacts total, zero segmented by revista or marca. Only estado_de_suscripcion=Activa has records (10,970) but includes spam/dummy data. Plan (decided 2026-06-29): delete all existing subscription contacts, upload new clean segmented base. Owners: María Claudia Vargas Pardo (data) + Juan David (upload/HubSpot config). Timeline: 3ra-4ta semana julio 2026. Tareas activas derivadas de este diagnóstico → [[Tasks/00-Tareas-Master-H2-2026]] (sección NS02, Compartidas AXXIS + Diners). No rastrear tareas aquí.
 
 ---
 

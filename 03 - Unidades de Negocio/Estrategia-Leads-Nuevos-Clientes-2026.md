@@ -9,7 +9,7 @@ confidence: high
 ---
 
 ## For future Claude
-Estrategia completa de prospección y nuevos clientes para AXXIS y DINERS H2 2026. Objetivo: cerrar $341.6M de gap anual diversificando más allá de joyería/construcción (hoy 63% del revenue). Prioridad absoluta: filiales Grupo Bolívar (Constructora, Seguros, Fiduciaria). Sectores con mayor potencial sin explotar: gastronomía premium (Diners natural), turismo/hotelería, moda premium, automotriz de lujo, smart home (AXXIS). Sistema de scoring 4D incluido. Ver también [[Auditoria-Revenue-Pauta-Jun-2026]] para el estado actual del pipeline.
+Estrategia completa de prospección y nuevos clientes para AXXIS y DINERS H2 2026. Objetivo: cerrar $341.6M de gap anual diversificando más allá de joyería/construcción (hoy 63% del revenue). Prioridad absoluta: filiales Grupo Bolívar (Constructora, Seguros, Fiduciaria). Sectores con mayor potencial sin explotar: gastronomía premium (Diners natural), turismo/hotelería, moda premium, automotriz de lujo, smart home (AXXIS). Sistema de scoring 4D incluido. Ver también [[Auditoria-Revenue-Pauta-Jun-2026]] para el estado actual del pipeline. Los items de acción son referencia estratégica — tareas rastreadas activas en [[Tasks/00-Tareas-Master-H2-2026]] (sección NS01, Compartidas AXXIS + Diners).
 
 ---
 
