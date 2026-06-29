@@ -11,6 +11,19 @@ Archivo consolidado de tareas activas para la unidad **Revistas** (AXXIS + Diner
 
 # Tasks — Revistas
 
+## 🚨 Vencidas al 2026-06-29
+
+| Tarea | Owner | Vencida | Días |
+|---|---|---|---|
+| Solicitar base datos renovaciones + revisar tokenización IO | [[Paola Nossa]] | 2026-06-20 | +9d |
+| Enviar tiempos de respuesta RRSS (máx 3h en IG) | [[Maria Claudia Vargas Pardo]] | 2026-06-25 | +4d |
+| Crear piezas remarketing y display suscripciones | [[Paola Nossa]] | 2026-06-25 | +4d |
+| Analizar HubSpot — config y segmentación | [[Carolina Ramirez]] | 2026-06-27 | +2d |
+| LinkedIn AXXIS — optimizar página empresa | [[Paola Gordillo]] | 2026-06-27 | +2d |
+| Recopilar datos e insumos AXXIS Media Kit | [[Paola Nossa]] | 2026-06-28 | +1d |
+
+---
+
 ## ⏳ Pendientes
 
 ---

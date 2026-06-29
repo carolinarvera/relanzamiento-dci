@@ -14,6 +14,8 @@ confidence: high
 
 # Visión Davivienda — Estrategia SEO 2026
 
+> ⚠️ **Supersedida parcialmente:** [[Vision_EstrategiaSEO_CRO_2026-06]] es la versión expandida que incluye CRO. Usar ese archivo para trabajo completo; este conserva el análisis SEO puro.
+
 > **For future Claude:** Estrategia SEO completa basada en auditoría técnica del 16 jun 2026 y datos reales de GSC (mar-jun 2026). El problema NO es visibilidad — el sitio ya tiene 453K impresiones/mes. El problema es: (1) 5 bloqueos técnicos que limitan indexación y CTR, (2) solo 24% del sitio está indexado (2,676 de ~11,000 páginas), (3) CTR de 1.5% vs benchmark 3-5%. La oportunidad inmediata vale +3,149 clics/mes solo con fixes de título/meta en 5 páginas. El foco es Leo (proveedor técnico Brace CMS). Natalia ausente desde 28 jun — todo debe estar escalado antes de esa fecha.
 
 ---

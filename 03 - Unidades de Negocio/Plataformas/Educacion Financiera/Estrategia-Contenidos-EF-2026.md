@@ -636,4 +636,5 @@ Estas métricas deben estar en el informe mensual. Hoy no aparecen — solicitar
 
 ## Relacionado
 
+[[Estrategia-Contenidos-EF-Ejecutiva-2026]] ← versión corta para presentar a María Angélica Navarro
 [[Plan-Accion-EF-2026]] · [[EF_01_NorthStar_2026-06]] · [[EF_NextSteps_2026-06]] · [[Backlog Solicitudes Editoriales 2026]] · [[2026-05 Informe Mayo - Mis Finanzas para Invertir]] · [[2026-05 Informe Mayo - Mis Finanzas para Mi Negocio]] · [[Maria Angelica Navarro]] · [[Ernesto Rodriguez]] · [[Jeison Montero]] · [[06 - Meetings/Proveedores/2026-06-19 Carolina-Duvan - Estrategia SEO Vision EF]]

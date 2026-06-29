@@ -354,3 +354,7 @@ Hearst España opera con menor visibilidad pública en eventos y branded content
 - ¿Tiene Ediciones Gamma capacidad de producción de video para TikTok? (Condiciona táctica #4).
 - ¿Cuál es el presupuesto disponible para el primer evento propio de AXXIS? (Condiciona táctica #1 vs #7).
 - AD España no tiene evento propio documentado en España — ¿hay oportunidad de ser primeros en Colombia antes de que AD LATAM los replique?
+
+
+---
+**Ver también:** [[04 - Growth System/2026-06-21 Inteligencia Competitiva Marketing Revistas]] — resumen táctico top 10 por impacto/esfuerzo

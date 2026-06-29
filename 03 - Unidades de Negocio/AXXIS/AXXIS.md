@@ -251,5 +251,10 @@ Comparativo tarifario vs: Forbes · Semana · Dinero · Portafolio
 
 ---
 
+## Documentos relacionados
+- [[AXXIS Dashboard Estratégico]] — KPIs, scores y métricas en tiempo real
+- [[Estrategia Growth AXXIS 2026]] — plan de crecimiento H2 2026
+- [[Media Kit AXXIS 2026]] — materiales comerciales
+
 ## Tags
 #axxis #revista #arquitectura #diseño #unidad-negocio

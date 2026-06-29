@@ -161,3 +161,7 @@ Ordenadas por impacto estimado / esfuerzo. Propietario sugerido entre paréntesi
 ---
 
 *Investigación realizada por Claude — 2026-06-21. Fuentes: sitios web oficiales, redes sociales y artículos de industria de cada publicación. Datos de audiencia e ingresos son públicamente reportados o estimados — marcar como `[VERIFICAR]` antes de citar externamente.*
+
+
+---
+**Ver también:** [[Research/Deep/2026-06-21 - inteligencia-competitiva-marketing-revistas-axxis-diners]] — investigación completa con fuentes y URLs
