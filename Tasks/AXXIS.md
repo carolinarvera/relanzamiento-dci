@@ -63,6 +63,82 @@ Archivo consolidado de tareas activas y completadas para la unidad **AXXIS**. Re
   - Fuente: [[task.md]] · HubSpot CRM Audit 2026-06-23
   5 emails post-compra: día 0 (bienvenida + acceso), día 3 (top 5 artículos), día 7 (beneficios ocultos), día 14 (equipo editorial), día 30 (NPS). Trigger: lifecycle → Customer. Los primeros 30 días determinan si el suscriptor renueva en año 1. Meta NPS >50.
 
+---
+
+## H2 2026 — Plan Estratégico
+
+> Fuente: Widget Tareas H2 2026 · 2026-06-29
+
+### Ernesto Rodriguez + Paola Gordillo — Contenido y Comunidad
+
+- [ ] 🔴 **Ejes de contenido por red social AXXIS** · H2 2026 · Contenido
+  - Fuente: Plan Estratégico H2 2026 · 2026-06-29
+  Pilares temáticos por plataforma: IG (lifestyle visual), TikTok (entretenimiento), LinkedIn (credenciales B2B), YouTube (formatos largos).
+
+- [ ] 🔴 **Calendarización de temas AXXIS** · H2 2026 · Contenido
+  - Fuente: Plan Estratégico H2 2026 · 2026-06-29
+  Parrilla mensual con temas, fechas, formato y plataforma.
+
+- [ ] 🔴 **Recopilar datos e insumos AXXIS Media Kit** · H2 2026 · Pauta B2B
+  - Fuente: Plan Estratégico H2 2026 · 2026-06-29
+  Métricas web GA4, casos de éxito de anunciantes actuales y precios de paquetes bundle.
+
+- [ ] 🔴 **Producir AXXIS Media Kit** · H2 2026 · Pauta B2B
+  - Fuente: Plan Estratégico H2 2026 · 2026-06-29
+  Documento de venta con bundles, métricas, propuesta de valor y formatos. Ernesto produce el copy; Paola Nossa y equipo comercial coordinan.
+
+- [ ] 🟡 **Plan de Newsletter AXXIS — Suscriptores** · H2 2026 · Retención
+  - Fuente: Plan Estratégico H2 2026 · 2026-06-29
+  Newsletter para suscriptores activos (retención/renovación). Separado del newsletter de no-suscriptores (conversión).
+
+- [ ] 🟡 **Plan de Newsletter AXXIS — Lectores sin suscripción** · H2 2026 · Conversión
+  - Fuente: Plan Estratégico H2 2026 · 2026-06-29
+  Newsletter gratuito para lectores no-suscriptores. Objetivo: convertir en suscriptor.
+
+### Paola Nossa + Ernesto + Mateo Arias Ortiz — Formatos Digitales
+
+- [ ] 🔴 **"Proyectos que hablan" — Podcast AXXIS** · H2 2026 · Formato Digital
+  - Fuente: [[03 - Unidades de Negocio/AXXIS/Formatos-Digitales-AXXIS]] · 2026-06-29
+  Audio + video. YouTube, Spotify y cápsulas 60 seg. para IG/TikTok. 1 episodio/mes. Invitados = anunciantes potenciales. Paola Nossa coordina lo comercial; Ernesto y Mateo producen.
+
+- [ ] 🔴 **"Connect And Collab" — Conversatorio AXXIS** · H2 2026 · Formato Digital
+  - Fuente: [[03 - Unidades de Negocio/AXXIS/Formatos-Digitales-AXXIS]] · 2026-06-29
+  Conversatorio presencial + streaming. Empresa protagonista = anunciante. Cobertura editorial AXXIS + distribución digital.
+
+- [ ] 🔴 **Calendario de producción formatos digitales H2 — AXXIS** · H2 2026 · Producción
+  - Fuente: Plan Estratégico H2 2026 · 2026-06-29
+  Qué se produce, cuándo y con qué presupuesto. Priorizar formatos con potencial de patrocinio.
+
+### Paola Gordillo — Redes Sociales
+
+- [ ] 🔴 **LinkedIn AXXIS — optimizar página empresa** · H2 2026 · Atracción B2B
+  - Fuente: Plan Estratégico H2 2026 · 2026-06-29
+  Bio, foto, links y highlights con datos de audiencia del sector arq/diseño.
+
+- [ ] 🔴 **Optimizar perfiles de redes sociales AXXIS** · H2 2026 · Atracción
+  - Fuente: Plan Estratégico H2 2026 · 2026-06-29
+  Coherencia visual y de bio entre IG, Facebook, LinkedIn y YouTube.
+
+### Juan David — SEO y Web
+
+- [ ] 🔴 **Plan de contenido SEO editorial — AXXIS** · H2 2026 · SEO
+  - Fuente: Plan Estratégico H2 2026 · 2026-06-29
+  Artículos evergreen arq/diseño/interiorismo. Juan David ejecuta la optimización técnica; Ernesto valida la calidad editorial.
+
+- [ ] 🔴 **Auditoría SEO AXXIS** · H2 2026 · SEO
+  - Fuente: Plan Estratégico H2 2026 · 2026-06-29
+  Diagnóstico completo: tráfico orgánico, keywords, errores técnicos y velocidad. Juan David ejecuta; Ernesto valida.
+
+- [ ] 🔴 **Optimización técnica web AXXIS** · H2 2026 · Web
+  - Fuente: Plan Estratégico H2 2026 · 2026-06-29
+  Core Web Vitals, velocidad mobile, metadatos y schema markup.
+
+### Sebastián Díaz — Pauta
+
+- [ ] 🔴 **Pauta brand awareness AXXIS** · H2 2026 · Pauta
+  - Fuente: Plan Estratégico H2 2026 · 2026-06-29
+  Campañas visibilidad en Meta a audiencias frías del sector arq/diseño. Ernesto produce los copies.
+
 - [ ] 🟠 **Crear WF-06 Renovación anticipada** · due 2026-07-20 · CRM · KPI: Renewal rate año 1
   - Fecha: 2026-06-23
   - Fuente: [[task.md]] · HubSpot CRM Audit 2026-06-23

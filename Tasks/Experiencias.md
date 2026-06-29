@@ -73,3 +73,86 @@ Archivo consolidado de tareas activas y completadas para la unidad **Experiencia
   - Fecha: 2026-06-17
   - Fuente: [[06 - Meetings/Experiencias/2026-06-17 Carolina-Paola-Nicolas-Natalia - Reunion Unidad Experiencias]]
   Programar y liderar reunión con equipo y aliados clave para presentar el nuevo modelo de la Unidad de Experiencias (dos ramas: Corporativa + Always On) y definir requerimientos mínimos de los contratos. Previamente: solicitar a Catalina el contacto del encargado en Davivienda para entender viabilidad y procesos de alianzas corporativas.
+
+---
+
+## H2 2026 — Plan Estratégico
+
+> Fuente: [[03 - Unidades de Negocio/Experiencias/Experiencias]] · Widget Tareas H2 2026 · 2026-06-29
+> Dos ramas: Rama 1 Experiencias Corporativas (B2B, activa — 10 pagadas por Davivienda Banca Privada) · Rama 2 Club de Beneficios (Always On, en construcción)
+
+### Paola Pantaleon — Rama 1: Corporativas
+
+- [ ] 🔴 **[URGENTE] Confirmar calendario Experiencias H2 2026** · H2 2026 · Operaciones
+  - Fuente: Experiencias.md · 2026-06-29
+  Colección JD Gutiérrez + Vicky Turbay (julio) · Feria ARBO (agosto) · Galería El Dorado. Definir fechas, formato y cupos.
+
+- [ ] 🔴 **Portafolio comercializable Experiencias 2026** · H2 2026 · Comercial
+  - Fuente: Experiencias.md · 2026-06-29
+  Catálogo de experiencias: arte y cultura, bienestar, gastronomía, legacy. Base para prospectar marcas fuera de Davivienda.
+
+- [ ] 🔴 **Expansión Experiencias más allá de Davivienda** · H2 2026 · Prospección
+  - Fuente: Experiencias.md · 2026-06-29
+  Sectores objetivo: Seguros Bolívar, Constructora Bolívar, sector automotriz, farmacéutico. Excluir banca competidora directa de Davivienda.
+
+- [ ] 🔴 **Red de alianzas gastronómicas — primeros aliados Diners** · H2 2026 · Alianzas Club
+  - Fuente: Experiencias.md · 2026-06-29
+  Prospectar y activar restaurantes, bares y chefs premium en Bogotá. Modelo: aliado da descuento al suscriptor, Gamma cobra por visibilidad editorial.
+
+### Natalia Castaño — Rama 1: Corporativas
+
+- [ ] 🔴 **Modelo de contrato anual corporativo** · H2 2026 · Legal/Comercial
+  - Fuente: Experiencias.md · 2026-06-29
+  Contrato único con múltiples fechas y valores definidos (vs. contratos individuales). Términos generales + anexos operativos.
+
+### Nicolas Serna — Sistema de Aliados
+
+- [ ] 🔴 **Sistema de niveles aliados (Básico / Premium / Plus)** · H2 2026 · Alianzas Club
+  - Fuente: Experiencias.md · 2026-06-29
+  Básico: menor % descuento, landing only. Premium: % medio, landing + mailing. Plus: mayor %, landing + mailing + SMS + redes. Criterios de selección y autonomía del aliado.
+
+### Carolina — Rama 2: Club de Beneficios
+
+- [ ] 🔴 **[URGENTE] PWA plataforma 360 — seleccionar proveedor y cotizar** · H2 2026 · Tecnología
+  - Fuente: Experiencias.md · 2026-06-29
+  Decisión tomada: PWA (no app nativa). Jeison investigó proveedores españoles y locales. Cotizaciones en proceso. Seleccionar y firmar. Base tecnológica de todo el Club.
+
+- [ ] 🔴 **Reunión con María Claudia — método de identificación suscriptores** · H2 2026 · Operaciones
+  - Fuente: Experiencias.md · 2026-06-29
+  Definir cómo verifica el aliado si una persona es suscriptor activo: cédula, QR, credencial digital o PWA. Dato clave para cotizaciones de tecnología.
+
+- [ ] 🔴 **Consulta legal — responsabilidad civil aliados, contratos y datos** · H2 2026 · Legal
+  - Fuente: Experiencias.md · 2026-06-29
+  (1) Responsabilidad si aliado causa daño al suscriptor, (2) estructura de contratos con aliados, (3) qué datos personales se pueden compartir.
+
+- [ ] 🔴 **Integración beneficios Davivienda medios de pago** · H2 2026 · Alianzas
+  - Fuente: Experiencias.md · 2026-06-29
+  Descuentos adicionales al pagar con tarjeta Davivienda (financiado por Mastercard/Visa). Explorar con Catalina antes de avanzar.
+
+### Jeison Montero — Tech Club
+
+- [ ] 🔴 **PWA plataforma 360 — cerrar cotizaciones y seleccionar proveedor** · H2 2026 · Tecnología
+  - Fuente: Experiencias.md · 2026-06-29
+  Liderar selección técnica. Requisitos: identificación suscriptor, trazabilidad redenciones, reservas online, reportes de ahorro, vista 360.
+
+- [ ] 🔴 **Pipeline comercial Experiencias en HubSpot** · H2 2026 · CRM
+  - Fuente: Experiencias.md · 2026-06-29
+  Prospectos corporativos: empresa, tipo de experiencia, valor, fecha y estado de negociación.
+
+- [ ] 🟡 **QR editorial "Vive la Revista" — integración en impreso y digital** · H2 2026 · Tech/Editorial
+  - Fuente: Experiencias.md · 2026-06-29
+  QR en contenido impreso y digital que conecta directamente con el beneficio editorial de esa edición. Juan David implementa la landing; Jeison integra la verificación del suscriptor.
+
+### Ernesto Rodriguez + Paola Nossa — Kit Comercial
+
+- [ ] 🔴 **Kit comercial Experiencias para empresas** · H2 2026 · Comercial
+  - Fuente: Experiencias.md · 2026-06-29
+  Propuesta de valor para marcas patrocinadoras: formatos disponibles, audiencia, alcance digital y precios.
+
+- [ ] 🟡 **Media kit aliados Club de Beneficios** · H2 2026 · Alianzas Club
+  - Fuente: Experiencias.md · 2026-06-29
+  Propuesta para marcas que quieran unirse al Club: qué obtienen por nivel (Básico/Premium/Plus), cuántos suscriptores se benefician, visibilidad editorial.
+
+- [ ] 🟡 **Newsletter onboarding Club de Beneficios** · H2 2026 · CRM
+  - Fuente: Experiencias.md · 2026-06-29
+  Secuencia de bienvenida al Club: qué beneficios tienen, cómo activarlos, reporte de ahorros. Ernesto produce el copy; Jeison configura el journey en HubSpot.
