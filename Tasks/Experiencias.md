@@ -1,158 +1,38 @@
 ---
-type: tasks-consolidado
+type: tasks-stub
 unidad-de-negocio: Experiencias
-last-updated: 2026-06-17
+last-updated: 2026-06-29
 ai-first: true
 tags: [tasks, experiencias]
 ---
 
 ## For future Claude
-Archivo consolidado de tareas activas y completadas para la unidad **Experiencias**. Nueva unidad de negocio. Línea 1: Banca Privada Davivienda. Línea 2: Club de Beneficios suscriptores. En formalización — estructura y roles pendientes de aprobación Catalina. Leer este archivo para conocer el estado actual de pendientes antes de cualquier sesión de trabajo con Carolina.
-
-# Tasks — Experiencias
-
-## ⏳ Pendientes
-
-### Carolina Ramirez
-
-- [ ] 🟡 **Reunion Maria Claudia identificacion suscriptores** · due 2026-06-23 · CX/Plataforma · KPI: Adopcion beneficios
-  - Fecha: 2026-06-12
-  - Fuente: [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]]
-  Agendar y realizar reunión con María Claudia (Servicio al Cliente) para definir el método de identificación de suscriptores en la plataforma PWA (cédula, QR, wallet). Dato crítico para cotizaciones de tecnología.
-
-- [ ] 🔴 **Media Kit Profesional Experiencias** · due 2026-07-04 · Growth · KPI: Alianzas cerradas, Ingresos experiencias corporativas
-  - Fecha: 2026-06-17
-  - Fuente: [[06 - Meetings/Experiencias/2026-06-17 Carolina-Paola-Nicolas-Natalia - Reunion Unidad Experiencias]]
-  Desarrollar Media Kit Profesional para la Unidad de Experiencias. Debe incluir soporte fotográfico de experiencias ejecutadas, datos de satisfacción de clientes VIP, y alcance de la red de aliados. Objetivo: profesionalizar las interacciones comerciales con empresas del ecosistema Grupo Bolívar y nuevos sectores (Seguros, Automotriz, Constructoras, Farmacéuticas).
-
-### Claris
-
-- [ ] 🔴 **Investigar software Club El Tiempo** · due 2026-06-20 · Tecnologia · KPI: Adopcion beneficios
-  - Fecha: 2026-06-12
-  - Fuente: [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]]
-  Investigar el proveedor/software que usa Club El Tiempo para validación de suscriptores y trazabilidad de redenciones. Referente clave: validación por cédula, beneficiarios adicionales, reportes de ahorro, cross-sell. Entregar hallazgos a [[Carolina Ramirez]].
-
-### Natalia Castaño
-
-- [ ] 🔴 **Esquema comisiones y listado prospeccion corporativa** · due 2026-07-04 · Contratos Corporativos · KPI: Ingresos experiencias corporativas, Pipeline B2B
-  - Fecha: 2026-06-17
-  - Fuente: [[06 - Meetings/Experiencias/2026-06-17 Carolina-Paola-Nicolas-Natalia - Reunion Unidad Experiencias]]
-  Dos acciones paralelas:
-  1. **Esquema de comisiones:** Investigar, estructurar y establecer (junto al área financiera) el modelo de incentivos comerciales para venta de experiencias corporativas fuera de Davivienda.
-  2. **Listado de prospección:** Compartir con el equipo el listado inicial de clientes potenciales de sectores clave: Seguros, Automotriz, Constructoras, Farmacéuticas — para activar gestión comercial.
-
-### Nicolas Serna
-
-- [ ] 🔴 **Criterios seleccion aliados y estructura niveles Experiencias** · due 2026-07-04 · Alianzas · KPI: Alianzas activas, Redenciones suscriptores
-  - Fecha: 2026-06-17
-  - Fuente: [[06 - Meetings/Experiencias/2026-06-17 Carolina-Paola-Nicolas-Natalia - Reunion Unidad Experiencias]]
-  Dos acciones paralelas:
-  1. **Reunión con María Claudia (Servicio al Cliente):** Coordinar espacio para definir método de identificación digital de suscriptores y alinear el proyecto con los KPIs del área.
-  2. **Formalizar criterios y estructura de niveles:** Documentar condiciones de exclusividad, descuentos y comisiones para ingreso de aliados al programa (niveles Básico/Premium/Plus por % de descuento ofrecido).
-
-### Paola Nossa
-
-- [ ] 🔴 **Propuestas segmentadas por industria Experiencias** · due 2026-07-04 · Growth · KPI: Ingresos experiencias corporativas, Alianzas cerradas
-  - Fecha: 2026-06-17
-  - Fuente: [[06 - Meetings/Experiencias/2026-06-17 Carolina-Paola-Nicolas-Natalia - Reunion Unidad Experiencias]]
-  Diseñar presentaciones comerciales segmentadas con datos específicos por industria para la expansión corporativa de Experiencias. Sectores prioritarios: banca (ecosistema Grupo Bolívar, no banca competidora de Davivienda), automotriz, hoteles, emprendedores. Cada propuesta debe incluir métricas de alcance, perfil de audiencia VIP, casos de éxito y formatos disponibles.
-
-### Paola Pantaleon
-
-- [ ] 🔴 **Cotizaciones plataforma 360 suscriptores** · due 2026-06-20 · Tecnologia · KPI: Adopcion beneficios
-  - Fecha: 2026-06-12
-  - Fuente: [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]]
-  Solicitar y comparar cotizaciones de proveedor local para plataforma PWA 360 de suscriptores. Decisión tecnológica tomada: PWA (no app nativa). Requiere: identificación suscriptor, trazabilidad redenciones, reservas online, reportes de ahorro, vista 360. [[Jeison Montero]] ya investigó proveedores españoles y locales.
-
-- [ ] 🔴 **Enviar encuestas preferencias aliados** · due 2026-06-13 · Alianzas · KPI: Alianzas
-  - Fecha: 2026-06-12
-  - Fuente: [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]]
-  Enviar a [[Carolina Ramirez]] los resultados de las encuestas de preferencias de suscriptores (restaurantes y categorías de beneficios). Insumo necesario para estructurar la oferta del Club de Beneficios y definir primeros aliados a contactar.
-
-- [ ] 🔴 **Reunion stakeholders nuevo modelo Experiencias** · due 2026-07-04 · Dirección · KPI: Alianzas cerradas, Ingresos experiencias
-  - Fecha: 2026-06-17
-  - Fuente: [[06 - Meetings/Experiencias/2026-06-17 Carolina-Paola-Nicolas-Natalia - Reunion Unidad Experiencias]]
-  Programar y liderar reunión con equipo y aliados clave para presentar el nuevo modelo de la Unidad de Experiencias (dos ramas: Corporativa + Always On) y definir requerimientos mínimos de los contratos. Previamente: solicitar a Catalina el contacto del encargado en Davivienda para entender viabilidad y procesos de alianzas corporativas.
+Stub file. ALL Experiencias H2 strategic tasks (15 tareas EX) are in [[Tasks/00-Tareas-Master-H2-2026]]. Do not add tasks here. Context: Nueva unidad. Dos ramas: (1) Experiencias Corporativas B2B — 10 experiencias ya pagadas por Davivienda Banca Privada, expansión a Grupo Bolívar + sectores (automotriz, farmacéutico). (2) Club de Beneficios Always On — suscriptores, en construcción (PWA pendiente, nombre pendiente aprobación equipo: "Vive Beneficios"). Estructura y roles pendientes de aprobación Catalina. Leer BU folder: [[03 - Unidades de Negocio/Experiencias/Experiencias]].
 
 ---
 
-## H2 2026 — Plan Estratégico
+# Tasks — Experiencias
 
-> Fuente: [[03 - Unidades de Negocio/Experiencias/Experiencias]] · Widget Tareas H2 2026 · 2026-06-29
-> Dos ramas: Rama 1 Experiencias Corporativas (B2B, activa — 10 pagadas por Davivienda Banca Privada) · Rama 2 Club de Beneficios (Always On, en construcción)
+**Todas las tareas H2 activas están en [[Tasks/00-Tareas-Master-H2-2026]].**
 
-### Paola Pantaleon — Rama 1: Corporativas
+Buscar sección "## Experiencias & Alianzas" en el master. Ejecución inmediata (julio) también en master, sección "## Ejecución Inmediata".
+Para el equipo: [[00 - Executive Layer/Tasks-H2-2026-Equipo]] (filtrar por EX).
 
-- [ ] 🔴 **[URGENTE] Confirmar calendario Experiencias H2 2026** · H2 2026 · Operaciones
-  - Fuente: Experiencias.md · 2026-06-29
-  Colección JD Gutiérrez + Vicky Turbay (julio) · Feria ARBO (agosto) · Galería El Dorado. Definir fechas, formato y cupos.
+## Tareas H1 pendientes de cierre
 
-- [ ] 🔴 **Portafolio comercializable Experiencias 2026** · H2 2026 · Comercial
-  - Fuente: Experiencias.md · 2026-06-29
-  Catálogo de experiencias: arte y cultura, bienestar, gastronomía, legacy. Base para prospectar marcas fuera de Davivienda.
+> Estas tareas pre-H2 no están en el master. Resolverlas o archivarlas.
 
-- [ ] 🔴 **Expansión Experiencias más allá de Davivienda** · H2 2026 · Prospección
-  - Fuente: Experiencias.md · 2026-06-29
-  Sectores objetivo: Seguros Bolívar, Constructora Bolívar, sector automotriz, farmacéutico. Excluir banca competidora directa de Davivienda.
+### Carolina Ramirez
 
-- [ ] 🔴 **Red de alianzas gastronómicas — primeros aliados Diners** · H2 2026 · Alianzas Club
-  - Fuente: Experiencias.md · 2026-06-29
-  Prospectar y activar restaurantes, bares y chefs premium en Bogotá. Modelo: aliado da descuento al suscriptor, Gamma cobra por visibilidad editorial.
+- [ ] 🔴 **Media Kit Profesional Experiencias** · due 2026-07-04 · Comercial
+  Soporte fotográfico de experiencias ejecutadas, datos satisfacción clientes VIP, alcance red de aliados. Target: ecosistema Grupo Bolívar + nuevos sectores. Fuente: [[06 - Meetings/Experiencias/2026-06-17 Carolina-Paola-Nicolas-Natalia - Reunion Unidad Experiencias]]
 
-### Natalia Castaño — Rama 1: Corporativas
+### Claris
 
-- [ ] 🔴 **Modelo de contrato anual corporativo** · H2 2026 · Legal/Comercial
-  - Fuente: Experiencias.md · 2026-06-29
-  Contrato único con múltiples fechas y valores definidos (vs. contratos individuales). Términos generales + anexos operativos.
+- [ ] 🔴 **Investigar software Club El Tiempo** · due 2026-06-20 · Tecnologia
+  Referente para validación suscriptores: cédula, beneficiarios adicionales, reportes de ahorro, cross-sell. Entregar hallazgos a Carolina.
 
-### Nicolas Serna — Sistema de Aliados
+### Paola Pantaleon
 
-- [ ] 🔴 **Sistema de niveles aliados (Básico / Premium / Plus)** · H2 2026 · Alianzas Club
-  - Fuente: Experiencias.md · 2026-06-29
-  Básico: menor % descuento, landing only. Premium: % medio, landing + mailing. Plus: mayor %, landing + mailing + SMS + redes. Criterios de selección y autonomía del aliado.
-
-### Carolina — Rama 2: Club de Beneficios
-
-- [ ] 🔴 **[URGENTE] PWA plataforma 360 — seleccionar proveedor y cotizar** · H2 2026 · Tecnología
-  - Fuente: Experiencias.md · 2026-06-29
-  Decisión tomada: PWA (no app nativa). Jeison investigó proveedores españoles y locales. Cotizaciones en proceso. Seleccionar y firmar. Base tecnológica de todo el Club.
-
-- [ ] 🔴 **Reunión con María Claudia — método de identificación suscriptores** · H2 2026 · Operaciones
-  - Fuente: Experiencias.md · 2026-06-29
-  Definir cómo verifica el aliado si una persona es suscriptor activo: cédula, QR, credencial digital o PWA. Dato clave para cotizaciones de tecnología.
-
-- [ ] 🔴 **Consulta legal — responsabilidad civil aliados, contratos y datos** · H2 2026 · Legal
-  - Fuente: Experiencias.md · 2026-06-29
-  (1) Responsabilidad si aliado causa daño al suscriptor, (2) estructura de contratos con aliados, (3) qué datos personales se pueden compartir.
-
-- [ ] 🔴 **Integración beneficios Davivienda medios de pago** · H2 2026 · Alianzas
-  - Fuente: Experiencias.md · 2026-06-29
-  Descuentos adicionales al pagar con tarjeta Davivienda (financiado por Mastercard/Visa). Explorar con Catalina antes de avanzar.
-
-### Jeison Montero — Tech Club
-
-- [ ] 🔴 **PWA plataforma 360 — cerrar cotizaciones y seleccionar proveedor** · H2 2026 · Tecnología
-  - Fuente: Experiencias.md · 2026-06-29
-  Liderar selección técnica. Requisitos: identificación suscriptor, trazabilidad redenciones, reservas online, reportes de ahorro, vista 360.
-
-- [ ] 🔴 **Pipeline comercial Experiencias en HubSpot** · H2 2026 · CRM
-  - Fuente: Experiencias.md · 2026-06-29
-  Prospectos corporativos: empresa, tipo de experiencia, valor, fecha y estado de negociación.
-
-- [ ] 🟡 **QR editorial "Vive la Revista" — integración en impreso y digital** · H2 2026 · Tech/Editorial
-  - Fuente: Experiencias.md · 2026-06-29
-  QR en contenido impreso y digital que conecta directamente con el beneficio editorial de esa edición. Juan David implementa la landing; Jeison integra la verificación del suscriptor.
-
-### Ernesto Rodriguez + Paola Nossa — Kit Comercial
-
-- [ ] 🔴 **Kit comercial Experiencias para empresas** · H2 2026 · Comercial
-  - Fuente: Experiencias.md · 2026-06-29
-  Propuesta de valor para marcas patrocinadoras: formatos disponibles, audiencia, alcance digital y precios.
-
-- [ ] 🟡 **Media kit aliados Club de Beneficios** · H2 2026 · Alianzas Club
-  - Fuente: Experiencias.md · 2026-06-29
-  Propuesta para marcas que quieran unirse al Club: qué obtienen por nivel (Básico/Premium/Plus), cuántos suscriptores se benefician, visibilidad editorial.
-
-- [ ] 🟡 **Newsletter onboarding Club de Beneficios** · H2 2026 · CRM
-  - Fuente: Experiencias.md · 2026-06-29
-  Secuencia de bienvenida al Club: qué beneficios tienen, cómo activarlos, reporte de ahorros. Ernesto produce el copy; Jeison configura el journey en HubSpot.
+- [ ] 🔴 **Enviar encuestas preferencias aliados** · due 2026-06-13 · Alianzas
+  Resultados de encuestas de preferencias de suscriptores (restaurantes y categorías de beneficios). Insumo para oferta del Club.

@@ -8,11 +8,74 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 ---
 
 ## For future Claude
-This is the single source of truth for ALL active tasks at Ediciones Gamma H2 2026. 122 tasks across 6 BUs: AXXIS (21), Diners (20), Compartidas AX+DI (45), Ediciones Gamma (5), Libros (16), Experiencias (15). The BU-specific files (AXXIS.md, Diners.md, etc.) derive from this master. When adding, reassigning or closing a task, update BOTH this file AND the corresponding BU file. Blockers: #7LI and #12LI (precios Libros — Nicolas Serna). Urgentes: 9 tareas. Tool reference: HTML `00 - Executive Layer/Tasks-H2-2026-Equipo.html` para uso del equipo.
+**THIS IS THE ONLY SOURCE OF TRUTH FOR ALL TASKS.** Do not look for tasks in AXXIS.md, Diners.md, Revistas.md, Libros.md or Experiencias.md — those files are now context-only stubs. Adding a task anywhere else creates duplication and hallucination risk. Structure: (1) Ejecución Inmediata = operational tasks with due dates July 2026; (2) H2 strategic tasks by BU = 122 initiatives. Blockers: #7LI and #12LI (precios Libros — Nicolas Serna). Urgentes: 9 tareas. HTML para equipo: `00 - Executive Layer/Tasks-H2-2026-Equipo.html`.
 
 ---
 
 # Plan Maestro de Tareas — H2 2026
+
+---
+
+## Ejecución Inmediata — Julio 2026
+
+> Tareas operativas con fecha límite definida. Fuente: reuniones y auditorías jun 2026.
+
+### Carolina Ramirez
+
+- [ ] 🔴 **Limpiar lifecycle stages HubSpot — migrar "Contacto" → "Lead"** · due 2026-07-07 · CRM
+  Fuente: HubSpot CRM Audit 2026-06-23 · 64,162 contactos atrapados en etapa custom que bloquea todo workflow. Sin esto, nurturing nunca corre.
+
+- [ ] 🔴 **Crear propiedades contacto HubSpot (7 propiedades)** · due 2026-07-07 · CRM
+  Fuente: HubSpot CRM Audit 2026-06-23 · `subscription_type` · `subscription_start_date` · `subscription_end_date` · `ltv_cumulative_cop` · `nps_score` · `churn_risk` · `referral_source_contact`. Prerequisito de workflows de renovación y LTV.
+
+- [ ] 🔴 **Crear WF-01 Lead Nurturing AXXIS** · due 2026-07-10 · CRM
+  Fuente: HubSpot CRM Audit 2026-06-23 · Secuencia 4 emails / 7 días. Trigger: lifecycle = Lead. Con 77K leads y CR 5% = ~3,850 suscriptores sin gasto adicional.
+
+- [ ] 🔴 **Crear WF-03 Onboarding 30 días** · due 2026-07-15 · CRM
+  Fuente: HubSpot CRM Audit 2026-06-23 · 5 emails post-compra: D+0 bienvenida · D+3 top artículos · D+7 beneficios · D+14 equipo editorial · D+30 NPS. Meta NPS >50.
+
+- [ ] 🔴 **Aplicar WF-01 nurturing — adaptar para base Diners** · due 2026-07-15 · CRM
+  Fuente: HubSpot CRM Audit 2026-06-23 · Una vez activo en AXXIS, adaptar tono a Diners (gastronomía, cultura, lifestyle). Bases AXXIS y Diners NUNCA mezcladas en HubSpot.
+
+- [ ] 🟠 **Crear WF-06 Renovación anticipada** · due 2026-07-20 · CRM
+  Fuente: HubSpot CRM Audit 2026-06-23 · 4 emails: -60d primer aviso · -30d gancho contenido · -15d urgencia precio · -3d cierre. Meta renewal rate año 1: 65-70%.
+
+### Juan David
+
+- [ ] 🔴 **Embed HubSpot form en landing /suscribirse/ (AXXIS)** · due 2026-07-07 · CRM + Web
+  Fuente: HubSpot CRM Audit 2026-06-23 · Sin esto, 100% de clics Meta se pierden sin registro en CRM. Prerequisito: landing URL ya corregida a `/suscribirse/`.
+
+### Sebastián Díaz
+
+- [ ] 🔴 **Activar Meta Lead Ads nativo → HubSpot** · due 2026-07-10 · CRM + Pauta
+  Fuente: HubSpot CRM Audit 2026-06-23 · 702 clics en mayo, 0 leads en HubSpot. CPL = ∞. Integrar vía Meta → HubSpot en Configuración de cuenta.
+
+### Natalia Castaño
+
+- [ ] 🔴 **Facturar 9 deals "Listo para facturar" en HubSpot e-Payco** · URGENTE · Revenue
+  Fuente: HubSpot CRM Audit 2026-06-23 · Montos: $208K–$322K COP c/u. Ingresos ya cobrados sin factura. Coordinar con Carolina.
+
+### Paola Pantaleon
+
+- [ ] 🔴 **Reunión stakeholders — presentar nuevo modelo Experiencias** · due 2026-07-04 · Dirección
+  Fuente: Reunión Unidad Experiencias 2026-06-17 · Dos ramas: Corporativa + Always On. Solicitar a Catalina contacto en Davivienda para viabilidad de alianzas corporativas.
+
+### Paola Nossa
+
+- [ ] 🔴 **Propuestas segmentadas por industria — Experiencias corporativas** · due 2026-07-04 · Comercial
+  Fuente: Reunión Unidad Experiencias 2026-06-17 · Sectores: banca Grupo Bolívar (NO competencia Davivienda), automotriz, hoteles, emprendedores. Incluir métricas, perfil VIP, casos de éxito, formatos.
+
+### Nicolas Serna
+
+- [ ] 🔴 **Criterios selección aliados + estructura niveles Club** · due 2026-07-04 · Alianzas
+  Fuente: Reunión Unidad Experiencias 2026-06-17 · Formalizar condiciones exclusividad, descuentos y comisiones por nivel Básico/Premium/Plus.
+
+### Natalia Castaño — Experiencias
+
+- [ ] 🔴 **Esquema de comisiones + listado prospección corporativa** · due 2026-07-04 · Contratos
+  Fuente: Reunión Unidad Experiencias 2026-06-17 · (1) Modelo de incentivos comerciales con área financiera. (2) Lista inicial de prospectos: Seguros, Automotriz, Constructoras, Farmacéuticas.
+
+---
 
 ## Resumen ejecutivo
 
