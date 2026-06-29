@@ -696,7 +696,11 @@ function clearFilters(){
   render();
 }
 function initOwnerSelect(){
-  const owners=[...new Set(T.flatMap(t=>t.owners))].sort((a,b)=>a.split(' ').pop().localeCompare(b.split(' ').pop(),'es'));
+  const owners=[...new Set(T.flatMap(t=>t.owners))].sort((a,b)=>{
+    if(a==='Carolina') return 1;
+    if(b==='Carolina') return -1;
+    return a.split(' ').pop().localeCompare(b.split(' ').pop(),'es');
+  });
   const sel=document.getElementById('ownerSelect');
   owners.forEach(o=>{
     const opt=document.createElement('option');
