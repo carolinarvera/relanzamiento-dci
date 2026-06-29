@@ -44,10 +44,9 @@ Archivo consolidado de tareas activas para la unidad **Revistas** (AXXIS + Diner
 
 #### NS02 — Suscriptores
 
-- [ ] 🔴 **Analizar HubSpot — config y segmentación** · due 2026-06-27 · CRM · KPI: Retención, Suscripciones
-  - Fecha: 2026-06-23
-  - Fuente: [[06 - Meetings/Marketing/2026-06-23 Carolina-MariaClaudia - Suscripciones y HubSpot]]
-  Revisar configuración y segmentación de datos en HubSpot. Problema encontrado: cargas "dummy" + sin separación AXXIS / Diners. Enviar hallazgos a [[Maria Claudia Vargas Pardo]] antes de la migración.
+- [x] ~~**Analizar HubSpot — config y segmentación**~~ · COMPLETADO 2026-06-29
+  - Diagnóstico ejecutado vía MCP: 76,993 contactos, 0 segmentados por revista, 10,970 "Activas" con dummy. Plan decidido: borrar base actual y cargar nueva base limpia. Ver [[03 - Unidades de Negocio/AXXIS/NS02-Diagnostico-HubSpot-Revistas]]
+  - **Siguiente acción:** Enviar diagnóstico a María Claudia + Juan David antes del 2026-07-03
 
 - [ ] 🔴 **Configurar journey HubSpot suscriptores** · due 2026-07-11 · CRM · KPI: Retención, Suscripciones
   - Fecha: 2026-06-23
