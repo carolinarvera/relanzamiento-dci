@@ -266,6 +266,7 @@
   .subtask-list li::before { content: '·'; margin-right: 6px; color: var(--text-muted); }
   .task-badges { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; margin-bottom: 3px; }
   .task-owner { font-size: 10px; color: var(--text-muted); letter-spacing: .01em; }
+  .task-due { display:inline-flex; align-items:center; gap:3px; font-size:10.5px; font-weight:600; color:#92400e; background:#fef3c7; border:1px solid #fde68a; border-radius:4px; padding:1px 7px; margin-top:4px; }
   .task-meta { display: flex; flex-direction: column; gap: 3px; }
 
   .badge {
@@ -643,10 +644,20 @@ const T=[
 {id:116,sid:"9EX",title:"PWA plataforma 360 — seleccionar proveedor y cotizar",desc:"Decisión tomada: PWA. Jeison investigó proveedores. Cotizaciones en proceso. Seleccionar y firmar. Base tecnológica del Club.",owners:["Jeison Montero","Carolina"],ns:"NS02",bu:["EX"],tipo:"Beneficios Club B2C",pri:"urgente",pipeline:"Infraestructura"},
 {id:117,sid:"10EX",title:"Sistema de niveles aliados (Básico / Premium / Plus)",desc:"Básico: menor %, landing. Premium: % medio + landing + mailing. Plus: mayor % + todos los canales.",owners:["Nicolas Serna","Paola Pantaleon"],ns:"NS01",bu:["EX"],tipo:"Beneficios Club B2C",pri:"alta",pipeline:"Infraestructura"},
 {id:118,sid:"11EX",title:"Red de alianzas gastronómicas — primeros aliados Diners",desc:"Prospectar y activar restaurantes, bares y chefs premium en Bogotá. Aliado da descuento; Gamma cobra por visibilidad.",owners:["Paola Pantaleon"],ns:"NS01",bu:["EX"],tipo:"Beneficios Club B2C",pri:"alta",pipeline:"Fidelización"},
-{id:119,sid:"12EX",title:'QR editorial "Vive la Revista" — suscriptor accede a beneficios',desc:"QR en impreso y digital que conecta con el beneficio editorial de esa edición.",owners:["Juan David","Jeison Montero"],ns:"NS02",bu:["EX"],tipo:"Beneficios Club B2C",pri:"alta",pipeline:"Fidelización"},
+{id:119,sid:"12EX",title:"Definición de plataforma Club de Beneficios",desc:"Validar 3 tipos de accesos: Suscriptor, Aliado y Editorial Gamma. Decidir entre PWA, validación por cédula o app nativa.",owners:["Carolina","Jeison Montero"],ns:"NS02",bu:["EX"],tipo:"Beneficios Club B2C",pri:"media",pipeline:"Fidelización"},
 {id:120,sid:"13EX",title:"Media kit aliados Club de Beneficios",desc:"Propuesta para marcas que quieran unirse al Club: qué obtienen por nivel, visibilidad editorial.",owners:["Ernesto Rodriguez","Paola Nossa"],ns:"NS01",bu:["EX"],tipo:"Beneficios Club B2C",pri:"alta",pipeline:"Consideración"},
 {id:121,sid:"14EX",title:"Newsletter onboarding Club de Beneficios",desc:"Bienvenida al Club: cómo activar beneficios y reporte de ahorros. Ernesto produce el copy; Jeison configura el journey.",owners:["Ernesto Rodriguez","Jeison Montero"],ns:"NS02",bu:["EX"],tipo:"Beneficios Club B2C",pri:"alta",pipeline:"Retención"},
 {id:122,sid:"15EX",title:"Consulta legal — responsabilidad civil aliados, contratos y datos",desc:"(1) responsabilidad si aliado causa daño al suscriptor, (2) estructura de contratos con aliados, (3) qué datos personales se pueden compartir.",owners:["Carolina"],ns:"NS01",bu:["EX"],tipo:"Alianzas",pri:"alta",pipeline:"Infraestructura"},
+{id:123,sid:"EJ01",title:"Limpiar lifecycle stages HubSpot — migrar 'Contacto' → 'Lead'",desc:"64,162 contactos atrapados en etapa custom que bloquea todo workflow. Sin esto, nurturing nunca corre.",owners:["Carolina"],ns:"HubSpot",bu:["AX","DI"],tipo:"Suscripciones B2C",pri:"alta",pipeline:"Infraestructura",due:"julio 2026"},
+{id:124,sid:"EJ02",title:"Crear propiedades contacto HubSpot (7 propiedades)",desc:"subscription_type · subscription_start_date · subscription_end_date · ltv_cumulative_cop · nps_score · churn_risk · referral_source_contact. Prerequisito de workflows de renovación y LTV.",owners:["Carolina"],ns:"HubSpot",bu:["AX","DI"],tipo:"Suscripciones B2C",pri:"alta",pipeline:"Infraestructura",due:"julio 2026"},
+{id:125,sid:"EJ03",title:"Crear WF-01 Lead Nurturing AXXIS",desc:"Secuencia 4 emails / 7 días. Trigger: lifecycle = Lead. Con 77K leads y CR 5% → ~3,850 suscriptores sin gasto adicional.",owners:["Carolina"],ns:"HubSpot",bu:["AX"],tipo:"Suscripciones B2C",pri:"alta",pipeline:"Consideración",due:"julio 2026"},
+{id:126,sid:"EJ04",title:"Crear WF-03 Onboarding 30 días",desc:"5 emails post-compra: D+0 bienvenida · D+3 top artículos · D+7 beneficios · D+14 equipo editorial · D+30 NPS. Meta NPS >50.",owners:["Carolina"],ns:"HubSpot",bu:["AX","DI"],tipo:"Suscripciones B2C",pri:"alta",pipeline:"Retención",due:"julio 2026"},
+{id:127,sid:"EJ05",title:"Adaptar WF-01 nurturing para base Diners",desc:"Una vez activo en AXXIS, adaptar tono a Diners (gastronomía, cultura, lifestyle). Bases AXXIS y Diners NUNCA mezcladas.",owners:["Carolina"],ns:"HubSpot",bu:["DI"],tipo:"Suscripciones B2C",pri:"alta",pipeline:"Consideración",due:"julio 2026"},
+{id:128,sid:"EJ06",title:"Crear WF-06 Renovación anticipada",desc:"4 emails: -60d primer aviso · -30d gancho contenido · -15d urgencia precio · -3d cierre. Meta renewal rate año 1: 65-70%.",owners:["Carolina"],ns:"HubSpot",bu:["AX","DI"],tipo:"Suscripciones B2C",pri:"media",pipeline:"Retención",due:"julio 2026"},
+{id:129,sid:"EJ07",title:"Embed HubSpot form en landing /suscribirse/ AXXIS",desc:"Sin esto, 100% de clics Meta se pierden sin registro en CRM. Prerequisito: landing URL ya corregida a /suscribirse/.",owners:["Juan David"],ns:"HubSpot",bu:["AX"],tipo:"Suscripciones B2C",pri:"alta",pipeline:"Infraestructura",due:"julio 2026"},
+{id:130,sid:"EJ08",title:"Activar Meta Lead Ads nativo → HubSpot",desc:"702 clics en mayo, 0 leads en HubSpot. CPL = ∞. Integrar vía Meta → HubSpot en Configuración de cuenta.",owners:["Sebastián Díaz"],ns:"HubSpot",bu:["AX","DI"],tipo:"Suscripciones B2C",pri:"alta",pipeline:"Infraestructura",due:"2026-07-10"},
+{id:131,sid:"EJ09",title:"Reunión stakeholders — presentar nuevo modelo Experiencias",desc:"Presentar las dos ramas: Corporativa (B2B Banca Privada) + Always On (Club de Beneficios suscriptores). Definir siguiente paso.",owners:["Paola Pantaleon"],ns:"NS01",bu:["EX"],tipo:"Alianzas",pri:"alta",pipeline:"Infraestructura",due:"julio 2026"},
+{id:132,sid:"EJ10",title:"Criterios selección aliados + estructura niveles Club de Beneficios",desc:"Formalizar condiciones de exclusividad, descuentos y comisiones por nivel Básico / Premium / Plus.",owners:["Paola Pantaleon"],ns:"NS01",bu:["EX"],tipo:"Beneficios Club B2C",pri:"alta",pipeline:"Fidelización",due:"2026-07-30"},
 ];
 
 const LSKEY = 'gv_equipo_done1';
@@ -755,6 +766,7 @@ function card(t){
       <div class="task-title">${t.title}${t.isParent?' <span class="badge badge-parent">Tarea principal</span>':''}${t.isBlocker?' <span class="badge badge-blocker">BLOQUEADOR</span>':''}</div>
       <div class="task-desc">${t.desc}</div>
       ${subtaskHTML}
+      ${t.due ? `<div class="task-due">⏰ Vence ${t.due}</div>` : ''}
       <div class="task-meta">
         <div class="task-badges">
           <span class="badge badge-${t.ns}">${t.ns}</span>
