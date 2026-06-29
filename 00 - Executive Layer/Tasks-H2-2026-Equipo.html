@@ -810,7 +810,10 @@ function render(){
     if(G==='pipeline') return k.sort((a,b)=>PIPELINE_ORDER.indexOf(a)-PIPELINE_ORDER.indexOf(b));
     if(G==='ns') return k.sort((a,b)=>NS_ORDER.indexOf(a)-NS_ORDER.indexOf(b));
     if(G==='tipo') return k.sort((a,b)=>TIPO_ORDER.indexOf(a)-TIPO_ORDER.indexOf(b));
-    return k.sort((a,b)=>a.localeCompare(b,'es'));
+    return k.sort((a,b)=>{
+      if(G==='owner'){ if(a==='Carolina') return 1; if(b==='Carolina') return -1; }
+      return a.localeCompare(b,'es');
+    });
   }
 
   const keys = sortKeys(Object.keys(groups));
