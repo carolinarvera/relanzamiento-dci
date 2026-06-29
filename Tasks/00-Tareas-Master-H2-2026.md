@@ -22,27 +22,27 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 
 ### Carolina Ramirez
 
-- [ ] 🔴 **Limpiar lifecycle stages HubSpot — migrar "Contacto" → "Lead"** · due 2026-07-07 · CRM
+- [ ] 🔴 **Limpiar lifecycle stages HubSpot — migrar "Contacto" → "Lead"** · CRM
   Fuente: HubSpot CRM Audit 2026-06-23 · 64,162 contactos atrapados en etapa custom que bloquea todo workflow. Sin esto, nurturing nunca corre.
 
-- [ ] 🔴 **Crear propiedades contacto HubSpot (7 propiedades)** · due 2026-07-07 · CRM
+- [ ] 🔴 **Crear propiedades contacto HubSpot (7 propiedades)** · CRM
   Fuente: HubSpot CRM Audit 2026-06-23 · `subscription_type` · `subscription_start_date` · `subscription_end_date` · `ltv_cumulative_cop` · `nps_score` · `churn_risk` · `referral_source_contact`. Prerequisito de workflows de renovación y LTV.
 
-- [ ] 🔴 **Crear WF-01 Lead Nurturing AXXIS** · due 2026-07-10 · CRM
+- [ ] 🔴 **Crear WF-01 Lead Nurturing AXXIS** · CRM
   Fuente: HubSpot CRM Audit 2026-06-23 · Secuencia 4 emails / 7 días. Trigger: lifecycle = Lead. Con 77K leads y CR 5% = ~3,850 suscriptores sin gasto adicional.
 
-- [ ] 🔴 **Crear WF-03 Onboarding 30 días** · due 2026-07-15 · CRM
+- [ ] 🔴 **Crear WF-03 Onboarding 30 días** · CRM
   Fuente: HubSpot CRM Audit 2026-06-23 · 5 emails post-compra: D+0 bienvenida · D+3 top artículos · D+7 beneficios · D+14 equipo editorial · D+30 NPS. Meta NPS >50.
 
-- [ ] 🔴 **Aplicar WF-01 nurturing — adaptar para base Diners** · due 2026-07-15 · CRM
+- [ ] 🔴 **Aplicar WF-01 nurturing — adaptar para base Diners** · CRM
   Fuente: HubSpot CRM Audit 2026-06-23 · Una vez activo en AXXIS, adaptar tono a Diners (gastronomía, cultura, lifestyle). Bases AXXIS y Diners NUNCA mezcladas en HubSpot.
 
-- [ ] 🟠 **Crear WF-06 Renovación anticipada** · due 2026-07-20 · CRM
+- [ ] 🟠 **Crear WF-06 Renovación anticipada** · CRM
   Fuente: HubSpot CRM Audit 2026-06-23 · 4 emails: -60d primer aviso · -30d gancho contenido · -15d urgencia precio · -3d cierre. Meta renewal rate año 1: 65-70%.
 
 ### Juan David
 
-- [ ] 🔴 **Embed HubSpot form en landing /suscribirse/ (AXXIS)** · due 2026-07-07 · CRM + Web
+- [ ] 🔴 **Embed HubSpot form en landing /suscribirse/ (AXXIS)** · CRM + Web
   Fuente: HubSpot CRM Audit 2026-06-23 · Sin esto, 100% de clics Meta se pierden sin registro en CRM. Prerequisito: landing URL ya corregida a `/suscribirse/`.
 
 ### Sebastián Díaz
@@ -50,30 +50,13 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🔴 **Activar Meta Lead Ads nativo → HubSpot** · due 2026-07-10 · CRM + Pauta
   Fuente: HubSpot CRM Audit 2026-06-23 · 702 clics en mayo, 0 leads en HubSpot. CPL = ∞. Integrar vía Meta → HubSpot en Configuración de cuenta.
 
-### Natalia Castaño
-
-- [ ] 🔴 **Facturar 9 deals "Listo para facturar" en HubSpot e-Payco** · URGENTE · Revenue
-  Fuente: HubSpot CRM Audit 2026-06-23 · Montos: $208K–$322K COP c/u. Ingresos ya cobrados sin factura. Coordinar con Carolina.
-
 ### Paola Pantaleon
 
-- [ ] 🔴 **Reunión stakeholders — presentar nuevo modelo Experiencias** · due 2026-07-04 · Dirección
-  Fuente: Reunión Unidad Experiencias 2026-06-17 · Dos ramas: Corporativa + Always On. Solicitar a Catalina contacto en Davivienda para viabilidad de alianzas corporativas.
+- [ ] 🔴 **Reunión stakeholders — presentar nuevo modelo Experiencias** · Dirección
+  Fuente: Reunión Unidad Experiencias 2026-06-17 · Dos ramas: Corporativa + Always On.
 
-### Paola Nossa
-
-- [ ] 🔴 **Propuestas segmentadas por industria — Experiencias corporativas** · due 2026-07-04 · Comercial
-  Fuente: Reunión Unidad Experiencias 2026-06-17 · Sectores: banca Grupo Bolívar (NO competencia Davivienda), automotriz, hoteles, emprendedores. Incluir métricas, perfil VIP, casos de éxito, formatos.
-
-### Nicolas Serna
-
-- [ ] 🔴 **Criterios selección aliados + estructura niveles Club** · due 2026-07-04 · Alianzas
+- [ ] 🔴 **Criterios selección aliados + estructura niveles Club** · due 2026-07-30 · Alianzas
   Fuente: Reunión Unidad Experiencias 2026-06-17 · Formalizar condiciones exclusividad, descuentos y comisiones por nivel Básico/Premium/Plus.
-
-### Natalia Castaño — Experiencias
-
-- [ ] 🔴 **Esquema de comisiones + listado prospección corporativa** · due 2026-07-04 · Contratos
-  Fuente: Reunión Unidad Experiencias 2026-06-17 · (1) Modelo de incentivos comerciales con área financiera. (2) Lista inicial de prospectos: Seguros, Automotriz, Constructoras, Farmacéuticas.
 
 ---
 
@@ -131,7 +114,7 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
   URL limpia, propuesta de valor, formulario HubSpot y social proof. Juan David desarrolla; Ernesto produce el copy.
 
 - [ ] 🔴 `#16AX` **Plan de contenido SEO editorial — AXXIS** · NS03 · Atracción
-  Artículos evergreen arq/diseño. Juan David ejecuta; Ernesto valida la calidad editorial.
+  Artículos evergreen informes del sector arq/diseño. Juan David ejecuta; Ernesto realiza el contenido.
 
 - [ ] 🟡 `#17AX` **Embeds y reproductor web — AXXIS** · NS03 · Infraestructura
   Integrar reproductores de video y podcast en axxis.com.co. Juan David implementa.
@@ -156,7 +139,7 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🔴 `#8AX` **Ejes de contenido por red social — AXXIS** · NS03 · Atracción
   Pilares temáticos por plataforma. Ernesto define los ejes editoriales.
 
-- [ ] 🔴 `#9AX` **Calendarización de temas AXXIS** · NS03 · Atracción
+- [ ] 🔴 `#9AX` **Calendario parrilla AXXIS** · NS03 · Atracción
   Parrilla mensual con temas, fechas, formato y plataforma.
 
 - [ ] 🔴 `#10AX` **Desarrollo de formatos AXXIS (reels, stories, posts)** · NS03 · Atracción
@@ -165,18 +148,18 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 ### Paola Nossa + Ernesto + Mateo Arias Ortiz — Formatos Digitales
 
 - [ ] 🔴 `#13AX` **"Proyectos que hablan" — Podcast AXXIS** · NS03 · Atracción
-  Audio + video. YouTube, Spotify y cápsulas 60 seg para IG/TikTok. 1 ep/mes. Invitados = anunciantes potenciales.
+  Audio + video. YouTube, Spotify y cápsulas 15/30/60 seg para IG/TikTok. 1 ep/mes. Invitados = anunciantes potenciales.
 
-- [ ] 🔴 `#14AX` **"Connect And Collab" — Conversatorio AXXIS** · NS03 · Atracción
+- [ ] 🔴 `#14AX` **"Definición Connect And Collab" — Conversatorio AXXIS** · NS03 · Atracción
   Conversatorio presencial + streaming. Empresa protagonista = anunciante.
 
 - [ ] 🔴 `#15AX` **Calendario de producción formatos digitales H2 — AXXIS** · NS03 · Atracción
-  Qué se produce, cuándo y con qué presupuesto. Priorizar formatos con potencial de patrocinio.
+  Qué se produce, cuándo y con qué presupuesto. Priorizar formatos con potencial de patrocinio. 
 
 ### Sebastián Díaz — Pauta
 
-- [ ] 🔴 `#21AX` **Pauta brand awareness AXXIS** · NS03 · Atracción
-  Campañas visibilidad en Meta a audiencias frías. Objetivo: alcance.
+- [ ] 🔴 `#21AX` **Pauta AXXIS** · NS03 · Atracción
+  Campañas visibilidad en Meta a audiencias frías. Objetivo: alcance. Asegurar configuración Meta y Google Ads.
 
 ---
 
@@ -190,14 +173,14 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🔴 `#1DI` **Recopilar datos e insumos Diners Media Kit** · NS01 · Consideración
   Métricas web GA4, casos de éxito, precios bundle, audiencia, tiraje y calendario de eventos 2026.
 
-- [ ] 🔴 `#2DI` **Producir Diners Media Kit (16 slides)** · NS01 · Consideración
-  Ernesto produce el copy; Paola Nossa coordina. Incluir casos de éxito por sector.
+- [ ] 🔴 `#2DI` **Producir Diners Media Kit** · NS01 · Consideración
+  Paola Nossa coordina. Comercial apoya. Incluir casos de éxito por sector.
 
 - [ ] 🔴 `#3DI` **Media Kit con formatos digitales segmentados — Diners** · NS01 · Consideración
   Catálogo segmentado: lujo, licores, gastronomía, cultura.
 
 - [ ] 🟡 `#4DI` **One-pager ejecutivo Diners (A4)** · NS01 · Consideración
-  Resumen una página para reuniones rápidas. Ernesto produce el copy.
+  Resumen una página para reuniones rápidas. Paola Noss coordina. Ernesto produce el copy. Juan David implementa
 
 ### Paola Gordillo — Redes Sociales
 
@@ -247,10 +230,10 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🔴 `#12DI` **Desarrollo de formatos Diners (reels, stories, posts)** · NS03 · Atracción
   Ernesto produce el copy y guiones; Paola Gordillo coordina. Incluye pilot TikTok.
 
-### Ernesto + Simon Granja — Formatos Digitales
+### Paola Nossa + Simon Granja — Formatos Digitales
 
 - [ ] 🔴 `#14DI` **Calendario de producción formatos digitales H2 — Diners** · NS03 · Atracción
-  Priorizar La Mesa de Diners y Detrás de la barra. Ernesto coordina; Simón Granja ejecuta.
+  Definir nuevos formatos como La Mesa de Diners y Detrás de la barra. Retomar formatos anteriores. Paola Nossa coordina; Simón Granja ejecuta.
 
 ### Sebastián Díaz — Pauta
 
@@ -263,19 +246,19 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 
 > Aplican a ambas revistas. Ver detalle completo: [[Tasks/Revistas]]
 
-### Equipo Comercial + Paola Nossa — Venta B2B
+### Equipo Comercial — Venta B2B
 
 - [ ] 🔴 `#1RE` **Listado de clientes y segmentación** · NS01 · Infraestructura
-  Clasificar base actual: recurrentes, inactivos, nuevas categorías.
+  Clasificar base actual: recurrentes, inactivos, nuevas categorías. Comercial lidera
 
 - [ ] 🔴 `#2RE` **Propuesta de paquetes comerciales flexibles** · NS01 · Consideración
-  Paquetes de bajo riesgo para marcas nuevas con opción de escalar. Bundles print + digital + redes.
+  Paquetes de bajo riesgo para marcas nuevas con opción de escalar. Bundles print + digital + redes. Comercial Lidera
 
 - [ ] 🔴 `#3RE` **Ofertas de entrada "rompe hielo" con opción de upgrade** · NS01 · Conversión
-  Oferta accesible para marcas que nunca han pautado. Escalable a paquete mayor.
+  Oferta accesible para marcas que nunca han pautado. Escalable a paquete mayor. Comercial lidera.
 
 - [ ] 🟡 `#10RE` **Revisión tarifaria y kits de venta (combos print + digital)** · NS01 · Infraestructura
-  Analizar tarifarios actuales y kits.
+  Analizar tarifarios actuales y kits. Comercial lidera
 
 ### Ernesto Rodriguez — Argumentos de Venta
 
@@ -286,13 +269,13 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
   Casos de éxito adaptados para LinkedIn.
 
 - [ ] 🔴 `#7RE` **Media Kit interactivo — versión digital navegable** · NS01 · Consideración
-  El anunciante explora formatos, audiencias y precios desde un link. Juan David desarrolla.
+  El anunciante explora formatos, audiencias y precios desde un link. Paola Nossa Cordina, Comercial revisa y apoya. Ernesto revisa estilo y tono. Juan David desarrolla.
 
 - [ ] 🔴 `#8RE` **Nuevos formatos digitales B2B** · NS01 · Atracción
-  Webinars co-patrocinados, masterclasses y transmisiones en vivo.
+  Webinars co-patrocinados, masterclasses y transmisiones en vivo. Paola Nossa Coordina y Ernesto desarrolla
 
-- [ ] 🔴 `#9RE` **Eventos y Experiencias B2B co-patrocinados** · NS01 · Atracción
-  Webinars y masterclasses con anunciantes como protagonistas.
+- [ ] 🔴 `#9RE` **Experiencias B2B co-patrocinados** · NS01 · Atracción
+  Visitas en sitio. Temática editorial como funciona?  hoy en...., en los zapatos de... Paola Nossa, Mateo, Ernesto
 
 ### Carolina — Comercial
 
@@ -301,8 +284,8 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 
 ### Paola Pantaleon — Alianzas
 
-- [ ] 🔴 `#11RE` **Estrategia Macropauta y Alianzas banco (post-Privilegios Davivienda)** · NS01 · Fidelización
-  Estructurar ofertas donde Gamma aporte audiencia y los aliados del banco asuman beneficios.
+- [ ] 🔴 `#11RE` **Estrategia Alianzas Club de Beneficios (post-Privilegios Davivienda)** · NS01 · Fidelización
+  Estructurar ofertas donde Gamma aporte audiencia y los aliados del banco asuman beneficios. Se debe aterrizar precios.y paquetes foco % descuento / $ valor pauta
 
 ### Jeison Montero + Carolina — CRM y Journeys
 
@@ -324,49 +307,47 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🟡 `#17RE` **Automatización IA + WhatsApp** · NS02 · Consideración
   Primer nivel por IA (renovaciones, FAQs). Escala a humano para casos complejos.
 
-- [ ] 🔴 🚨 `#18RE` **[URGENTE] Revisar tokenización IO — validar renovación automática** · NS02 · Infraestructura
+- [ ] 🔴 🚨 `#18RE` **[URGENTE] Revisar y validar renovación automática** · NS02 · Infraestructura
   Sospecha activa: la renovación automática vía pasarela IO no opera.
 
-- [ ] 🔴 `#19RE` **Plan newsletter como puerta de entrada a suscripción** · NS02 · Consideración
+- [ ] 🔴 `#19RE` **Seguimiento funnel newsletter a suscriptores** · NS02 · Consideración
   Secuencia: newsletter (sem 1) → contenido exclusivo (sem 2) → oferta suscripción (sem 3).
 
-- [ ] 🔴 `#20RE` **Definir propuesta de valor diferenciada para retener suscriptores** · NS02 · Consideración
-  Qué obtiene el suscriptor que no obtiene el lector casual.
+- [ ] 🔴 `#20RE` **Propuesta de valor para suscriptores** · NS02 · Consideración
+  Qué obtiene el suscriptor que no obtiene el lector casual. Paola Nossa define 
 
 - [ ] 🔴 `#26RE` **Validar estructura de comunicaciones y customer journey** · NS02 · Infraestructura
   Ejecutar ANTES de cargar bases en HubSpot.
 
-- [ ] 🔴 `#27RE` **Definir estrategia de renovación HubSpot** · NS02 · Retención
-  Acciones automatizadas + intervención humana si no responde.
+- [ ] 🔴 `#27RE` **Estrategia de renovación HubSpot** · NS02 · Retención
+  Acciones automatizadas + intervención humana si no responde. Carolina Define, Jeison Implementa
 
-- [ ] 🟡 `#28RE` **Notificar inicio migración base de datos histórica** · NS02 · Infraestructura
+- [ ] 🟡 `#28RE` **Migración base de datos a HS** · NS02 · Infraestructura
   Avisar a Carolina cuando comience la carga a HubSpot.
 
-- [ ] 🔴 `#29RE` **SLA de atención RRSS — tiempos de respuesta** · NS02 · Infraestructura
+- [ ] 🔴 `#29RE` **SLA de atención RRSS — tiempos de respuesta CM** · NS02 · Infraestructura
   Meta: máximo 3 horas para consultas en Instagram.
 
-- [ ] 🔴 `#30RE` **Integración HubSpot ↔ pasarela IO** · NS02 · Infraestructura
-  Cuando se confirma un pago en IO, el contacto se actualiza a 'Cliente' en HubSpot.
-
 - [ ] 🔴 `#31RE` **Embeds formularios HubSpot en webs** · NS02 · Infraestructura
-  Integrar formularios en axxis.com.co y revistadiner.com.
+  Integrar formularios en revistaaxxis.com.co y revistadiner.com. Juan David implementa
 
 - [ ] 🔴 `#32RE` **Pixel Meta → HubSpot: sincronizar audiencias** · NS02 · Infraestructura
-  Sebastián gestiona Meta, Juan David el pixel web, Jeison las listas en HubSpot.
+  Sebastián gestiona Meta, Juan David el pixel web, Jeison Coordina.
 
-- [ ] 🔴 `#24RE` **[URGENTE] Solicitar base de datos de renovaciones pendientes** · NS02 · Retención
-  Pedir a María Claudia la base con suscripciones vencidas o próximas a vencer.
+- [ ] 🔴 `#24RE` **Plan de renovaciones pendientes** · NS02 · Retención
+  Validar subida de información a HubSpot. Coordinar con Sebastian campaña de META, coordinar envio de newsletter. Paola Nossa coordina el descuento.
+
 
 ### Sebastián Díaz — Pauta / Campañas
 
 - [ ] 🔴 `#21RE` **Campaña remarketing a suscriptores vencidos** · NS02 · Retención
-  Segmento extraído de base IO con vencimiento reciente. Oferta de reactivación.
+  Segmento extraído de base IO con vencimiento reciente. Oferta de reactivación. Mínimo 3 piezas por tipología para usuarios que interactuaron sin convertir. Jeison coordina el desarrollo de piezas. Paola Gordillo apoya 
 
-- [ ] 🔴 `#22RE` **Campaña winback — reactivar suscriptores inactivos** · NS02 · Retención
+- [ ] 🔴 `#22RE` **Campaña winback — suscriptores inactivos** · NS02 · Retención
   Oferta escalonada: 30d → 60d → 90d+.
 
-- [ ] 🔴 `#23RE` **Piezas remarketing y display suscripciones** · NS02 · Retención
-  Mínimo 3 piezas por tipología para usuarios que interactuaron sin convertir.
+- [ ] 🔴 `#23RE` **Estrategia de campañas actuales y links de aterrizaje** · NS02 · Retención
+  Mínimo 3 piezas por tipología para usuarios que interactuaron sin convertir. Jeison coordina el desarrollo de piezas. Paola Gordillo apoya 
 
 - [ ] 🔴 `#33RE` **Pauta Meta conversión suscripciones** · NS02 · Conversión
   Campañas conversión. LAL desde base de suscriptores. Creativos diferenciados AXXIS vs Diners.
@@ -399,7 +380,7 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🔴 `#40RE` **Configurar alerta anunciantes inactivos +45 días** · HubSpot · Retención
   Notificar al ejecutivo comercial si un anunciante no tiene actividad en 45 días.
 
-- [ ] 🔴 `#41RE` **[Tarea principal] Emails en el funnel HubSpot** · HubSpot · Consideración
+- [ ] 🔴 `#41RE` **Emails en el funnel HubSpot** · HubSpot · Consideración
   Ernesto produce el copy. Jeison y Juan David configuran. Subtareas: D+0 Bienvenida · D+3 Caso de éxito · D+7 Oferta rompe hielo · Alerta -15 días · Winback 3 toques.
 
 - [ ] 🔴 `#42RE` **Configurar score de engagement B2C** · HubSpot · Infraestructura
@@ -420,21 +401,11 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 
 > Ver detalle: [[03 - Unidades de Negocio/Ediciones Gamma]]
 
-### Carolina
-
-- [ ] 🔴 🚨 `#2EG` **[URGENTE] Club de Beneficios — definir nombre inspiracional** · NS01 · Fidelización
-  Sin nombre no hay material externo ni propuesta para aliados. CRÍTICO para todo el lanzamiento.
-
-- [ ] 🔴 🚨 `#3EG` **[URGENTE] CoCrea — gestionar incentivo tributario hasta septiembre 2026** · NS01 · Atracción
-  Incentivo tributario Davivienda que vence sep 2026. Definir qué actividades califican.
-
-- [ ] 🔴 `#4EG` **"Mundo D" — alineación Gamma con plataforma sombrilla Davivienda** · NS01 · Atracción
-  Revistas serán puerta de entrada al ecosistema Mundo D. Definir rol y monetización.
 
 ### Carolina + Ernesto Rodriguez
 
 - [ ] 🔴 `#1EG` **Estrategia contenidos sombrilla Ediciones Gamma — pauta Meta** · NS01 · Conversión
-  Anunciar libros/colecciones específicas. LAL de suscriptores AXXIS y Diners como audiencia base.
+	libros / colecciones específicas. Gamma como especialistas del sector, Arquitectura, Diseño y cultural
 
 - [ ] 🟡 `#5EG` **Brand guidelines Ediciones Gamma — identidad sombrilla** · NS01 · Infraestructura
   Guía de identidad visual y verbal para alinear AXXIS, Diners, Libros y Experiencias.
@@ -452,22 +423,22 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 
 - [ ] 🔴 🚧 `#12LI` **[BLOQUEADOR] Definir precios Paquete Legado y Centenario** · NS01 · Infraestructura
   Sin precio no hay deck de pitch ni propuesta a Ecopetrol. Ref. Villegas: $140K–$546K COP/ejemplar.
-
-### Carolina + Nicolas Serna — URGENTE
-
-- [ ] 🔴 🚨 `#15LI` **[URGENTE — antes del 10 julio] Primer contacto Ecopetrol (75 años agosto 2026)** · NS01 · Conversión
-  Score HTAC 17/20. Diferenciador: libro + medios AXXIS/Diners. Requiere precios Legado definidos.
-
 ### Nicolas Serna — Foco 1: Venta Directa / Catálogo
 
 - [ ] 🟡 `#4LI` **Revisar flujo de empaque regalo en tienda online** · NS02 · Conversión
   Validar que el flujo comunique claramente la opción de regalo. Mejora directa en conversión.
 
-- [ ] 🟡 `#5LI` **Descuento exclusivo 10-15% para suscriptores AXXIS/Diners** · NS02 · Fidelización
+- [ ] 🟡 `#5LI` **Validación de Descuento exclusivo 10-15% para suscriptores AXXIS/Diners** · NS02 · Fidelización
   Cross-sell estratégico. Coordinar mecánica web con Juan David.
 
 - [ ] 🔴 `#6LI` **Media Kit catálogo B2B — intermediarios** · NS01 · Consideración
   29 títulos por categoría, precios unitarios, descuentos por volumen y opciones de empaque.
+  
+- [ ]  🟡 `#2LI` **WhatsApp Business catálogo — 29 títulos** · NS02 · Conversión
+  Flujo: consulta → ficha del libro → precio → link pago.
+
+- [ ] 🟡  `#3LI` **Instagram Shop — catálogo vinculado + tags en contenido** · NS03 · Conversión
+  29 títulos en Instagram Shop con tags en Reels y Stories. 
 
 ### Nicolas Serna — Foco 2: Gift Book Corporativo
 
@@ -480,56 +451,33 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🟡 `#10LI` **Campaña Gift Book a 77 anunciantes HubSpot** · NS01 · Conversión
   Relación preexistente = conversión más fácil. Email en octubre para compras de diciembre.
 
-### Nicolas Serna — Foco 3: Caza de Aniversarios
+### Nicolas Serna — Libros por encargo
 
-- [ ] 🔴 `#13LI` **Investigación 20 empresas en años hito** · NS01 · Atracción
-  Supersociedades + LinkedIn: fundadas en 1951 (75 años), 1976 (50 años), 1926 (100 años). Filtro $5.000M COP.
+- [ ] 🔴 `#13LI` **Precios de paquetes** · NS01 · Atracción
+  Diferenciadores de lbrs sobre pedidos
 
-- [ ] 🔴 `#14LI` **Scoring HTAC + carga prospectos en HubSpot** · NS01 · Consideración
+- [ ] 🔴 `#14LI` **Lista de empresas Scoring HTAC + carga prospectos en HubSpot** · NS01 · Consideración
   H+T+A+C. Prospectos A (17-20 pts) → contacto inmediato.
 
-- [ ] 🔴 `#16LI` **Deck pitch Libros por Encargo** · NS01 · Consideración
-  Portfolio 3 libros, proceso editorial 6 fases, paquetes Legado/Centenario. Requiere #12LI resuelto.
-
-### Carolina + Nicolas Serna — Alianzas
-
-- [ ] 🔴 `#9LI` **Propuesta Grupo Bolívar — libros como regalo VIP** · NS01 · Conversión
-  Davivienda Banca Privada + Seguros Bolívar + Fiduciaria Bolívar. Arte y Arq/Diseño. Paquete Elite.
+- [ ] 🔴 `#16LI` **Media KIT y deck presentación Libros por Encargo** · NS01 · Consideración
+  Requiere Definición de precios Paquetes y segmentación de empresas con propuesta definida
+- [ ] 🔴 🚨 `#15LI` **Lista de empresas con Score HTC ** · NS01 · Conversión
+  Score HTAC 17/20. Diferenciador: libro sobre pedido. Requiere precios definidos.
 
 ### Juan David + Ernesto — Digital
 
 - [ ] 🔴 `#1LI` **SEO 29 páginas de producto — sinopsis + keywords longtail** · NS03 · Atracción
-  Arq/Diseño, Arte, Turismo, Cocina, Crianza. Juan David ejecuta; Ernesto valida.
+  Arq/Diseño, Arte, Turismo, Cocina, Crianza. Juan David ejecuta; Ernesto Valida y pasa ajustes.
 
-### Paola Nossa — Digital
-
-- [ ] 🔴 `#2LI` **WhatsApp Business catálogo — 29 títulos** · NS02 · Conversión
-  Flujo: consulta → ficha del libro → precio → link pago.
-
-- [ ] 🔴 `#3LI` **Instagram Shop — catálogo vinculado + tags en contenido** · NS03 · Conversión
-  29 títulos en Instagram Shop con tags en Reels y Stories.
 
 ---
 
-## Experiencias & Alianzas — 15 tareas
+## Experiencias Banca Privada & Experiencias VIP — 15 tareas
 
 > Ver detalle completo: [[Tasks/Experiencias]] · [[03 - Unidades de Negocio/Experiencias/Experiencias]]
 
-### Carolina — Urgentes y Estrategia
 
-- [ ] 🔴 🚨 `#9EX` **[URGENTE] PWA plataforma 360 — seleccionar proveedor y cotizar** · NS02 · Infraestructura
-  Decisión tomada: PWA. Cotizaciones en proceso. Seleccionar y firmar. Base tecnológica del Club.
-
-- [ ] 🔴 `#8EX` **Reunión con María Claudia — método de identificación suscriptores** · NS02 · Infraestructura
-  Definir cómo verifica el aliado si una persona es suscriptor: cédula, QR, credencial o PWA.
-
-- [ ] 🔴 `#15EX` **Consulta legal — responsabilidad civil aliados, contratos y datos** · NS01 · Infraestructura
-  (1) Responsabilidad si aliado causa daño, (2) estructura contratos, (3) datos personales compartibles.
-
-- [ ] 🟡 `#7EX` **Integración beneficios Davivienda medios de pago** · NS01 · Fidelización
-  Descuentos adicionales al pagar con tarjeta Davivienda. Explorar con Catalina antes de avanzar.
-
-### Paola Pantaleon — Rama 1: Corporativas
+### Paola Pantaleon — Experiencias Corporativas (Banca Privada + expansión)
 
 - [ ] 🔴 🚨 `#1EX` **[URGENTE] Confirmar calendario Experiencias H2 2026** · NS01 · Retención
   JD Gutiérrez + Vicky Turbay (julio) · ARBO (agosto) · Galería El Dorado.
@@ -548,23 +496,16 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🔴 `#2EX` **Modelo de contrato anual corporativo** · NS01 · Infraestructura
   Contrato único con múltiples fechas y valores. Términos generales + anexos operativos.
 
-### Nicolas Serna — Sistema de Aliados Club
+### Paola Pantaleon — Aliados Club de Beneficios (suscriptores AXXIS y Diners)
 
 - [ ] 🔴 `#10EX` **Sistema de niveles aliados (Básico / Premium / Plus)** · NS01 · Infraestructura
   Básico: menor %, landing. Premium: % medio + mailing. Plus: mayor % + todos los canales.
 
-### Jeison Montero — Tech Club
+- [ ] 🔴 `#15EX` **Consulta legal — responsabilidad civil aliados, contratos y datos** · NS01 · Infraestructura
+  (1) Responsabilidad si aliado causa daño, (2) estructura contratos, (3) datos personales compartibles.
 
-- [ ] 🔴 `#6EX` **Pipeline comercial Experiencias en HubSpot** · HubSpot · Infraestructura
-  Prospectos corporativos: empresa, tipo de experiencia, valor, fecha y estado.
-
-- [ ] 🟡 `#12EX` **QR editorial "Vive la Revista" — suscriptor accede a beneficios** · NS02 · Fidelización
-  QR en impreso y digital que conecta con el beneficio editorial de esa edición.
-
-### Ernesto + Paola Nossa — Kit Comercial
-
-- [ ] 🔴 `#4EX` **Kit comercial Experiencias para empresas** · NS01 · Consideración
-  Propuesta de valor para marcas patrocinadoras: formatos, audiencia, alcance digital y precios.
+- [ ] 🟡 `#12EX` **Definición de plataforma Club de Beneficios** · NS02 · Fidelización
+  Validar 3 tipos de accesos: Suscriptor, Aliado y Editorial Gamma.
 
 - [ ] 🔴 `#13EX` **Media kit aliados Club de Beneficios** · NS01 · Consideración
   Propuesta para marcas que quieran unirse al Club: qué obtienen por nivel, visibilidad editorial.
