@@ -233,7 +233,20 @@
   .task-card.done .task-title { text-decoration: line-through; color: var(--text-muted); }
   .task-card.done .task-desc { text-decoration: line-through; }
 
-  .checkbox { display: none; }
+  .checkbox {
+    width: 18px; height: 18px; border-radius: 5px; flex-shrink: 0;
+    border: 2px solid var(--border); background: var(--surface);
+    cursor: pointer; transition: background .15s, border-color .15s;
+    margin-top: 2px; position: relative;
+  }
+  .checkbox:hover { border-color: #9ca3af; }
+  .checkbox.checked { background: var(--green); border-color: var(--green); }
+  .checkbox.checked::after {
+    content: ''; position: absolute;
+    left: 4px; top: 1px; width: 5px; height: 9px;
+    border: 2px solid #fff; border-top: none; border-left: none;
+    transform: rotate(45deg);
+  }
 
   .task-id {
     font-size: 10px; font-weight: 700; font-family: 'SF Mono', 'Fira Mono', monospace;
@@ -500,6 +513,8 @@
   </main>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore-compat.js"></script>
 <script>
 const BU_LABELS = { AX:'AXXIS', DI:'Diners', EG:'Ediciones Gamma', LI:'Libros', EX:'Experiencias' };
 const BU_GROUP_ORDER = ['AX','DI','RE','EG','LI','EX'];
@@ -643,8 +658,18 @@ const T=[
 {id:132,sid:"EJ10",title:"Criterios selección aliados + estructura niveles Club de Beneficios",desc:"Formalizar condiciones de exclusividad, descuentos y comisiones por nivel Básico / Premium / Plus.",owners:["Paola Pantaleon"],ns:"NS01",bu:["EX"],tipo:"Beneficios Club B2C",pri:"alta",pipeline:"Fidelización",due:"2026-07-30"},
 ];
 
-const LSKEY = 'gv_equipo_done1';
-let done = new Set(JSON.parse(localStorage.getItem(LSKEY)||'[]'));
+const firebaseConfig = {
+  apiKey: "AIzaSyApJMd6VSbXvjzPO9U3pz4O0_MRzPRGbRw",
+  authDomain: "tareas-growth-mkt.firebaseapp.com",
+  projectId: "tareas-growth-mkt",
+  storageBucket: "tareas-growth-mkt.firebasestorage.app",
+  messagingSenderId: "764678159712",
+  appId: "1:764678159712:web:d9bfb814377c164daaf205"
+};
+firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore();
+const estadoRef = db.collection('tareas-growth').doc('estado');
+let done = new Set();
 let F = { bu:'all', pri:'all', pipeline:'all', owner:'all' };
 let G = 'bu';
 let collapsedGroups = new Set();
@@ -663,8 +688,13 @@ function toggleGroup(key, headerEl){
   }
 }
 
-function saveDone(){ localStorage.setItem(LSKEY, JSON.stringify([...done])); }
-function toggleDone(id,e){ e.stopPropagation(); done.has(id)?done.delete(id):done.add(id); saveDone(); render(); }
+function toggleDone(id,e){
+  e.stopPropagation();
+  const op = done.has(id)
+    ? firebase.firestore.FieldValue.arrayRemove(id)
+    : firebase.firestore.FieldValue.arrayUnion(id);
+  estadoRef.set({ done: op }, { merge: true });
+}
 function updateFilterDots(){
   ['bu','pri','pipeline','owner'].forEach(dim=>{
     const dot=document.getElementById('fdot-'+dim);
@@ -850,6 +880,11 @@ function render(){
 initOwnerSelect();
 updateSidebarCounts();
 render();
+estadoRef.onSnapshot(snap => {
+  const d = snap.data();
+  done = new Set(d && d.done ? d.done : []);
+  render();
+});
 </script>
 </body>
 </html>
