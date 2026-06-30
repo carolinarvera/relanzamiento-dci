@@ -47,9 +47,17 @@ Cada nota: contexto autocontenido · preámbulo "For future Claude" (2-3 oracion
 - `[[01 - Empresa/Editorial Gamma]]` — identidad, equipo directivo
 - `[[05 - PMO/Portfolio Proyectos]]` — proyectos P1/P2/P3
 - `[[BUSINESS_UNITS]]` — KPIs por BU
-- `[[index]]` — catálogo completo
 - Mis Tareas (Google Sheets): https://docs.google.com/spreadsheets/d/1YljVvNxeELPr6RglypTv56FyqX-KRbjqRm9fGm56G_o
 - Equipo (Google Sheets): https://docs.google.com/spreadsheets/d/1Ta1-fJ4u2JN-7OxdI_higArTa3DN5ggyGAP4pHQYOGA
+
+## ⚠️ Regla index.md — no leer en cada tarea
+
+`index.md` es un fallback de navegación, NO un archivo de inicio.
+
+**Leer index.md SOLO cuando:** no sabes la ruta de un archivo específico y necesitas localizarlo.
+**NO leer index.md cuando:** ya conoces la ruta · la tarea no requiere navegar el vault · ya lo leíste en esta sesión.
+
+Si ya leíste index.md una vez en la sesión, **no volver a leerlo** — la información ya está en contexto.
 
 ---
 
