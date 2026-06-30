@@ -50,14 +50,16 @@ Cada nota: contexto autocontenido · preámbulo "For future Claude" (2-3 oracion
 - Mis Tareas (Google Sheets): https://docs.google.com/spreadsheets/d/1YljVvNxeELPr6RglypTv56FyqX-KRbjqRm9fGm56G_o
 - Equipo (Google Sheets): https://docs.google.com/spreadsheets/d/1Ta1-fJ4u2JN-7OxdI_higArTa3DN5ggyGAP4pHQYOGA
 
-## ⚠️ Regla index.md — no leer en cada tarea
+## ⚠️ Regla index.md — pedir permiso siempre
 
 `index.md` es un fallback de navegación, NO un archivo de inicio.
 
-**Leer index.md SOLO cuando:** no sabes la ruta de un archivo específico y necesitas localizarlo.
-**NO leer index.md cuando:** ya conoces la ruta · la tarea no requiere navegar el vault · ya lo leíste en esta sesión.
+**Antes de LEER index.md:** preguntar "¿Cargo el index para localizar el archivo?" y esperar confirmación.
+**Antes de ACTUALIZAR index.md:** preguntar "¿Actualizo index.md con los cambios de esta sesión?" y esperar confirmación.
 
-Si ya leíste index.md una vez en la sesión, **no volver a leerlo** — la información ya está en contexto.
+**NO leer ni actualizar sin preguntar**, incluso si parece obvio que sería útil. La carga tiene costo de tokens y la actualización puede introducir inconsistencias si no es el momento correcto.
+
+Excepción: si Carolina pide explícitamente "busca X en el vault" o "actualiza el index", proceder sin preguntar.
 
 ---
 
