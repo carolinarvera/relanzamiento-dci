@@ -19,6 +19,8 @@ Catalogo completo del vault GammaVault generado el 2026-06-12. Lee este archivo 
 ## 00 - Executive Layer
 
 - [[00 - Executive Layer/CEO Dashboard]] - Vista ejecutiva consolidada: alertas criticas, revenue por BU, proyectos estrategicos, decisiones pendientes y riesgos. Actualizar en cada reunion estrategica.
+- [[00 - Executive Layer/Plan-Growth-H2-2026.html]] - Plan de Growth H2 2026 completo: 8 BUs, 3 Needle Movers Revistas, Growth Loops, acciones P1. Dashboard HTML desplegado en https://gamma-growth-plan.vercel.app — compartir con el equipo via esa URL. Sección Roadmap extraída a documento separado.
+- [[00 - Executive Layer/2026-06-29 Auditoria Vault - Duplicados y Optimizacion]] - Auditoría vault 2026-06-29: 10 grupos de archivos diagnosticados, acciones ejecutadas (4 archivos eliminados, cross-links agregados, Plan-Maestro Libros creado). Todas las acciones completadas.
 
 ---
 
@@ -100,8 +102,7 @@ Catalogo completo del vault GammaVault generado el 2026-06-12. Lee este archivo 
 - [[06 - Meetings/CEO/2026-06-05-Lineamientos Catalina Obregón y direccionamiento]] - Reunion estrategica con Catalina. Cierre Privilegios Davivienda junio 2026, evaluacion plataformas, estructura equipo ([[Jeison Montero]] alias Jason / Ernesto / Viviana), estrategia "Mundo D" como sombrilla del banco.
 
 ### Experiencias
-- [[06 - Meetings/Experiencias/2026-06-12-experiencias-Paola-Pantaleon]] - Reunion con Paola Pantaleon sobre unidad Experiencias y Alianzas.
-- [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]] - Reunión estratégica sobre nuevo modelo experiencias: "vivir la revista", club beneficios suscriptores, Banca Privada Davivienda (10 experiencias activas 2026). Sesión innovación AXXIS programada 27 jun. Referentes: Club El Tiempo, Monocle.
+- [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]] - Reunión estratégica sobre nuevo modelo experiencias: "vivir la revista", club beneficios suscriptores, Banca Privada Davivienda (10 experiencias activas 2026). Referentes: Club El Tiempo, Monocle. (Borrador duplicado eliminado 2026-06-29.)
 
 ### Proveedores
 - [[06 - Meetings/Proveedores/2026-05-31 Informe Pauta Mayo 2026 - Sebastian Diaz]] — Informe mensual de pauta digital mayo 2026 (Sebastián Díaz Caro): Meta Ads + AdSense para Diners y AXXIS. AXXIS: 0 suscripciones, CPC $108 subiendo. Diners: 1 suscripción. AdSense $127K COP total. Análisis comparativo completo.
@@ -139,4 +140,4 @@ Catalogo completo del vault GammaVault generado el 2026-06-12. Lee este archivo 
 
 ---
 
-*Última actualización manual: 2026-06-24. Regenerar con: /obsidian-init o "Claude, regenera el index del vault".*
+*Última actualización: 2026-06-29. Cambios: Plan-Growth-H2-2026 desplegado en Vercel, auditoría vault ejecutada, Plan-Maestro Libros creado, cross-links AXXIS, Tasks/Revistas con vencidas señalizadas.*

@@ -1,5 +1,5 @@
 ---
-date: 2026-06-12
+date: 2026-06-29
 type: dashboard
 tags: [dashboard, ceo, revenue, alertas, estrategia, executive]
 related-people: [Carolina Ramirez, Catalina Obregon, Jeison Montero, Paola Pantaleon, Nicolas Serna]
@@ -9,13 +9,15 @@ confidence: high
 ---
 
 ## For future Claude
-Main executive dashboard for Ediciones Gamma. Consolidates critical alerts, revenue by business unit, active strategic projects, pending decisions, and risks. This is the primary navigation hub — update after every strategic meeting. The most important single note in the vault for executive decision-making.
+Main executive dashboard for Ediciones Gamma. Consolidates critical alerts, revenue by business unit, active strategic projects, pending decisions, and risks. This is the primary navigation hub — update after every strategic meeting. The most important single note in the vault for executive decision-making. Plan de Growth H2 2026 desplegado en https://gamma-growth-plan.vercel.app — ese es el artefacto maestro de estrategia, leer antes de cualquier acción de planeación.
 
 ---
 
 # 🎯 CEO Dashboard — Ediciones Gamma
 
-> Vista ejecutiva consolidada · Actualizar en cada reunión estratégica
+> Vista ejecutiva consolidada · Actualizada: 2026-06-29
+
+**Plan de Growth H2 2026:** https://gamma-growth-plan.vercel.app
 
 ---
 
@@ -23,27 +25,31 @@ Main executive dashboard for Ediciones Gamma. Consolidates critical alerts, reve
 
 | Alerta | Detalle | Owner |
 |--------|---------|-------|
-| Gap Revenue Revistas | $422 MM vs meta $1.465 MM (a 15 jun) | [[Carolina Ramirez]] |
-| Pérdida Privilegios Davivienda | 70% ingresos revistas en riesgo | [[Catalina Obregon]] |
-| Digital Diners en 37% | Muy por debajo de meta | [[Carolina Ramirez]] |
-| 5 plataformas fragmentadas | Costos duplicados + problemas técnicos | [[Jeison Montero]] |
+| Gap Revenue AXXIS | 22.2% cumplimiento anual ($496M logrado vs $2,228M meta) | [[Carolina Ramirez]] |
+| Gap Revenue Diners | 14.4% cumplimiento anual ($160M logrado vs $1,111M meta) | [[Carolina Ramirez]] |
+| Privilegios Davivienda cerrado | Jun 2026 — era 70% ingresos revistas | [[Catalina Obregon]] |
+| Pipeline Clara Diners | $56.4M sin cerrar — riesgo crítico H2 | [[Natalia Castaño]] |
+| Educación Financiera bloqueada | NS1 bloqueado — pendiente claridad MA Navarro | [[Jeison Montero]] |
+| Nombre Vive Beneficios TBD | Sin nombre no hay material externo ni activación | [[Paola Pantaleon]] |
+| Precios Libros por Encargo | Paquete Legado + Centenario pendientes Nicolás | [[Nicolas Serna]] |
+| HubSpot sin segmentar | 76,993 contactos, 0 segmentados por revista, base dummy | [[Carolina Ramirez]] |
 
 ---
 
-## 📊 Revenue
+## 📊 Revenue — Estado Jun 2026
 
-| Unidad | Meta Anual | Acumulado | % Avance | Riesgo |
-|--------|------------|-----------|----------|--------|
-| AXXIS Negociaciones anual | $668,066,670 | $496,071,732 | **74%** | 🟡 |
-| AXXIS Impreso Junio | $44,312,743 | $52,800,400 | **119%** | 🟢 |
-| AXXIS Digital Junio | $11,188,086 | $9,550,400 | **85%** | 🟡 |
-| DINERS Negociaciones anual | $329,435,472 | $159,829,844 | **49%** | 🔴 |
-| DINERS Impreso Junio | $19,255,073 | $30,748,400 | **160%** | 🟢 |
-| DINERS Digital Junio | $7,920,000 | $9,075,600 | **115%** | 🟢 |
-| Total AXXIS+DINERS negociaciones | $997,502,141 | $655,901,576 | **66%** | 🟠 |
-| Gap para 100% anual | — | -$341,600,424 | — | 🔴 |
-| Libros | Por definir | Por definir | — | 🟠 |
-| Plataformas | Por definir | Por definir | — | 🟠 |
+| Unidad | Meta Anual | Logrado | % Avance | Riesgo |
+|--------|------------|---------|----------|--------|
+| AXXIS — ppto anual | $2,228M | $496M | **22.2%** | 🔴 |
+| AXXIS — impreso Jun | $147.7M | $106.5M | **72%** | 🟡 |
+| AXXIS — digital Jun | $37.3M | $39.3M | **105%** | 🟢 |
+| DINERS — ppto anual | $1,111M | $160M | **14.4%** | 🔴 |
+| DINERS — impreso Jun | $64.2M | $44.1M | **69%** | 🟡 |
+| DINERS — digital Jun | $26.5M | $13.5M | **51%** | 🔴 |
+| Total AXXIS+DINERS negociaciones | $997.5M | $655.9M | **66%** | 🟠 |
+| Gap para 100% anual | — | -$341.6M | — | 🔴 |
+| Libros | $350M H2 | Por definir | — | 🟠 |
+| Experiencias | 10 exp Dic 2026 | 1/10 | **10%** | 🟠 |
 
 ---
 
@@ -51,52 +57,51 @@ Main executive dashboard for Ediciones Gamma. Consolidates critical alerts, reve
 
 | Proyecto | Owner | Estado | Prioridad |
 |----------|-------|--------|-----------|
+| HubSpot CRM — migración y journeys | [[Carolina Ramirez]] | En curso (Jul semana 3-4) | 🔴 P1 |
+| Vive Beneficios — MVP Club alianzas | [[Paola Pantaleon]] | 5% — nombre TBD | 🔴 P1 |
+| Relevancia Digital Revistas | [[Carolina Ramirez]] | Auditoría en curso | 🔴 P1 |
+| Suscripciones — landing + funnel | [[Carolina Ramirez]] | P0 pendiente | 🔴 P1 |
+| Plan Comercial Libros H2 | [[Nicolas Serna]] | Bloqueado por precios | 🟠 P2 |
 | Consolidación Plataformas | [[Jeison Montero]] | Planificación | 🔴 P1 |
-| Nuevas Alianzas post-Privilegios | [[Paola Pantaleon]] | Activo | 🔴 P1 |
-| HubSpot como CRM central | [[Carolina Ramirez]] | En curso | 🔴 P1 |
-| Plan Comercial Libros | [[Nicolas Serna]] | En desarrollo | 🟠 P2 |
-| Carnet Digital Diners | Por asignar | Planificación | 🟠 P2 |
-| Podcast AXXIS | [[Paola Pantaleon]] | En desarrollo | 🟡 P3 |
+| Media Kit AXXIS V2 | [[Paola Nossa]] | En producción (deadline 5 jul) | 🟠 P2 |
+| Media Kit Diners V1 | [[Paola Nossa]] | En producción (deadline 19 jul) | 🟠 P2 |
+| Experiencias Davivienda — 10 exp | [[Paola Pantaleon]] | 1/10 en curso | 🟠 P2 |
+| Connect & Collab AXXIS | [[Ernesto Rodriguez]] | Por lanzar Jul 2026 | 🟡 P3 |
 
 ---
 
 ## 🧠 Decisiones Pendientes
 
-- [ ] Aprobar formalización de Jeison como Product Owner de Plataformas
-- [ ] Definir estrategia de pricing revistas (mantener premium vs bundles)
-- [ ] Decisión sobre consolidación de proveedores plataformas
-- [ ] Aprobar plan de nuevas alianzas para compensar Privilegios Davivienda
+- [ ] Nombre del Club de Beneficios (Vive Beneficios) — sin nombre no hay activación externa
+- [ ] Precios Paquete Legado y Centenario — Nicolás Serna debe definirlos antes de activar OBJ2 Libros
+- [ ] Estrategia EF con MA Navarro — claridad sobre plataforma nueva y scope SLA
+- [ ] Pricing revistas: mantener premium vs bundles vs ofertas de entrada
+- [ ] Macropauta y alianzas banco (compensar Privilegios) — due 2026-07-15
 
 ---
 
-## ⚠️ Riesgos Estratégicos
+## 📅 Fechas Clave H2 2026
 
-| Riesgo | Nivel | Acción Requerida |
-|--------|-------|-----------------|
-| Fin programa Privilegios Davivienda | 🔴 Crítico | Plan alianzas urgente |
-| Brecha revenue $422 MM | 🔴 Crítico | Acelerar comercial + digital |
-| Fragmentación plataformas | 🔴 Crítico | Roadmap consolidación |
-| Mercado en recesión | 🟠 Alto | Diversificar fuentes ingreso |
-| Resistencia cambio organizacional | 🟠 Alto | Alineación equipo + comunicación |
-
----
-
-## 📅 Próximas Fechas Clave
-
-| Evento | Fecha | Relevancia |
-|--------|-------|------------|
-| Expo Construcción | Por confirmar | Revenue AXXIS |
-| Expo Camacol | Por confirmar | Revenue AXXIS |
-| Colombia Moda | Por confirmar | Revenue Diners |
-| Feria de Diseño | Por confirmar | Revenue AXXIS |
+| Evento / Hito | Fecha | BU |
+|---|---|---|
+| Media Kit AXXIS V2 | 2026-07-05 | AXXIS |
+| Media Kit Diners V1 | 2026-07-19 | Diners |
+| Migración HubSpot | sem 3-4 jul 2026 | Revistas |
+| CoCrea vence | sep 2026 | Revistas |
+| Expo Construcción | por confirmar | AXXIS |
+| Expo Camacol | por confirmar | AXXIS |
+| Colombia Moda | por confirmar | Diners |
+| Feria de Diseño | por confirmar | AXXIS |
 
 ---
 
-## 🔗 Notas Relacionadas
+## 🔗 Navegación
 
-[[Editorial Gamma]] · [[Carolina Ramirez]] · [[Jeison Montero]] · [[AXXIS]] · [[Diners]] · [[Libros]] · [[Experiencias]] · [[Educacion Financiera]] · [[Vision Davivienda]]
+**Plan maestro:** https://gamma-growth-plan.vercel.app
+
+[[00 - Executive Layer/Plan-Growth-H2-2026.html]] · [[Editorial Gamma]] · [[Carolina Ramirez]] · [[Jeison Montero]] · [[AXXIS]] · [[Diners]] · [[Libros]] · [[Experiencias]] · [[Educacion Financiera]] · [[Vision Davivienda]] · [[05 - PMO/Portfolio Proyectos]]
 
 ---
 
 ## Tags
-#ceo #dashboard #ejecutivo #gamma #estrategia
+#ceo #dashboard #ejecutivo #gamma #estrategia #h2-2026
