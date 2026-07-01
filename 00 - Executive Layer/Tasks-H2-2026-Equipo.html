@@ -63,6 +63,8 @@
   .header-stat.clickable:hover { background: rgba(255,255,255,.1); }
   .header-stat.clickable.active { background: rgba(52,211,153,.18); }
   .header-stat.clickable.active .header-stat-label { color: #34d399; }
+  .header-stat.clickable.active-urgente { background: rgba(248,113,113,.18); }
+  .header-stat.clickable.active-urgente .header-stat-label { color: #f87171; }
   .sep { width: 1px; height: 28px; background: rgba(255,255,255,.12); }
 
   /* ─── Layout ─── */
@@ -363,7 +365,7 @@
       <div class="header-stat-label">tareas</div>
     </div>
     <div class="sep"></div>
-    <div class="header-stat">
+    <div class="header-stat clickable" id="urgenteStatBtn" onclick="toggleUrgenteFilter()">
       <div class="header-stat-num" id="hUrgente" style="color:#f87171">—</div>
       <div class="header-stat-label">urgentes</div>
     </div>
@@ -675,6 +677,7 @@ const db = firebase.firestore();
 const estadoRef = db.collection('tareas-growth').doc('estado');
 let done = new Set();
 let showDoneOnly = false;
+let showUrgenteOnly = false;
 let F = { bu:'all', pri:'all', pipeline:'all', owner:'all' };
 let G = 'bu';
 let collapsedGroups = new Set();
@@ -696,6 +699,11 @@ function toggleGroup(key, headerEl){
 function toggleDoneFilter(){
   showDoneOnly = !showDoneOnly;
   document.getElementById('doneStatBtn').classList.toggle('active', showDoneOnly);
+  render();
+}
+function toggleUrgenteFilter(){
+  showUrgenteOnly = !showUrgenteOnly;
+  document.getElementById('urgenteStatBtn').classList.toggle('active-urgente', showUrgenteOnly);
   render();
 }
 function toggleDone(id,e){
@@ -762,6 +770,7 @@ function filtered(){
   const q = (document.getElementById('searchInput').value||'').toLowerCase();
   return T.filter(t=>{
     if(showDoneOnly && !done.has(t.id)) return false;
+    if(showUrgenteOnly && t.pri!=='urgente') return false;
     if(!matchesBU(t,F.bu)) return false;
     if(F.pri!=='all'&&t.pri!==F.pri) return false;
     if(F.pipeline!=='all'&&t.pipeline!==F.pipeline) return false;
