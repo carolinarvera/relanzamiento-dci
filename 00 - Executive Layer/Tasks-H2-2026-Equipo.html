@@ -360,7 +360,7 @@
     </div>
   </div>
   <div class="header-right">
-    <div class="header-stat">
+    <div class="header-stat clickable" onclick="clearFilters()">
       <div class="header-stat-num" id="hTotal">—</div>
       <div class="header-stat-label">tareas</div>
     </div>
@@ -385,7 +385,7 @@
         <div class="sidebar-label">Unidad de negocio</div>
         <div class="filter-dot" id="fdot-bu"></div>
       </div>
-      <div class="sidebar-chip active" data-f="bu" data-v="all" onclick="setF('bu','all',this)">
+      <div class="sidebar-chip active" data-f="bu" data-v="all" onclick="clearFilters()">
         <span class="chip-dot" style="background:#999"></span> Todas las BUs
         <span class="chip-count" id="cnt-all"></span>
       </div>
@@ -735,11 +735,14 @@ function setOwner(sel){
 }
 function clearFilters(){
   F={bu:'all',pri:'all',pipeline:'all',owner:'all'};
+  showDoneOnly=false; showUrgenteOnly=false;
   document.querySelectorAll('[data-f]').forEach(c=>c.classList.remove('active'));
   const allChip=document.querySelector('[data-f="bu"][data-v="all"]');
   if(allChip) allChip.classList.add('active');
   const sel=document.getElementById('ownerSelect');
   if(sel) sel.value='';
+  document.getElementById('doneStatBtn').classList.remove('active');
+  document.getElementById('urgenteStatBtn').classList.remove('active-urgente');
   updateFilterDots();
   render();
 }
