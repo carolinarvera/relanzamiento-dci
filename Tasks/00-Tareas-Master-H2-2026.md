@@ -22,6 +22,9 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 
 ### Carolina Ramirez
 
+- [ ] 🔴 **Enviar base suscriptores activos a Sebastián** · due 2026-07-04 · Pauta
+  Fuente: Reunión pauta técnica 2026-07-01 · Necesaria para excluir suscriptores activos y vencidos de las campañas Meta. Sin esto, presupuesto impacta a quienes ya compraron.
+
 - [ ] 🔴 **Limpiar lifecycle stages HubSpot — migrar "Contacto" → "Lead"** · CRM
   Fuente: HubSpot CRM Audit 2026-06-23 · 64,162 contactos atrapados en etapa custom que bloquea todo workflow. Sin esto, nurturing nunca corre.
 
@@ -49,6 +52,30 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 
 - [ ] 🔴 **Activar Meta Lead Ads nativo → HubSpot** · due 2026-07-10 · CRM + Pauta
   Fuente: HubSpot CRM Audit 2026-06-23 · 702 clics en mayo, 0 leads en HubSpot. CPL = ∞. Integrar vía Meta → HubSpot en Configuración de cuenta.
+
+- [ ] 🔴 **Cambiar campaña a objetivo conversiones** · due 2026-07-07 · Pauta
+  Fuente: Reunión pauta técnica 2026-07-01 · Campaña activa NO se apaga — preservar aprendizaje algoritmo Meta.
+
+- [ ] 🔴 **Actualizar anuncios — reemplazar activo por video (Reels)** · due 2026-07-07 · Pauta
+  Fuente: Reunión pauta técnica 2026-07-01 · Reemplazar activos de bajo rendimiento (imágenes sin CTA) por Reels usando video de portada.
+
+- [ ] 🔴 **Actualizar proceso de suscripciones** según acordado · due 2026-07-07 · Pauta
+  Fuente: Reunión pauta técnica 2026-07-01
+
+- [ ] 🔴 **Desarrollar landing pages** — reunirse con Juan para diseño · due 2026-07-11 · Pauta + Web
+  Fuente: Reunión pauta técnica 2026-07-01 · 3 páginas independientes por segmento (seguidores, lookalike, Privilegios). No indexadas. Con descuentos personalizados por segmento.
+
+- [ ] 🔴 **Validar pixel Ediciones Gama** — confirmar recolección adecuada de datos · due 2026-07-07 · Técnico
+  Fuente: Reunión pauta técnica 2026-07-01
+
+- [ ] 🔴 **Verificar carrito de compras** — asegurar que el sistema genere datos correctamente · due 2026-07-07 · Técnico
+  Fuente: Reunión pauta técnica 2026-07-01
+
+- [ ] 🔴 **Revisar sistema revistas** — integridad de datos · due 2026-07-07 · Técnico
+  Fuente: Reunión pauta técnica 2026-07-01
+
+- [ ] 🟡 **Analizar LinkedIn Ads** — viabilidad, segmentación y costos para B2B Q4 · due 2026-07-31 · Pauta
+  Fuente: Reunión pauta técnica 2026-07-01 · Costo mínimo $10 USD/campaña. Segmentar por cargos + ciudades principales.
 
 ### Paola Pantaleon
 
