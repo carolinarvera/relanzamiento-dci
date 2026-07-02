@@ -10,7 +10,7 @@ nota-calidad: Notas auto-generadas por Gemini — contenido escaso, puede ser in
 ---
 
 ## For future Claude
-Reunión presencial del 2026-07-01 sobre la propuesta de plataforma de lealtad (Vive Beneficios). Relevancia crítica: **Catalina Obregon (CEO) estuvo presente y confirmó que la prioridad del MVP es el look & feel**. Participaron también María Claudia Vargas y Nidia Alexandra Rodriguez Linares — roles por confirmar. Las notas disponibles son auto-generadas por Gemini y tienen bajo nivel de detalle. Ref: [[06 - Meetings/Experiencias/2026-07-01 Carolina-Jeison-Juandy - Landing Vive Beneficios]] · [[Arquitectura-Navegacion-ViveBeneficios]]
+Reunión presencial del 2026-07-01 sobre la propuesta de plataforma de lealtad (Vive Beneficios). Relevancia crítica: **Catalina Obregon (CEO) estuvo presente y confirmó que la prioridad del MVP es el look & feel**. Nidia Alexandra Rodriguez Linares es Jefe Financiera — su presencia indica que el proyecto tiene visibilidad financiera desde etapa temprana. María Claudia Vargas rol por confirmar (probable Servicio al Cliente). Las notas disponibles son auto-generadas por Gemini y tienen bajo nivel de detalle. Ref: [[06 - Meetings/Experiencias/2026-07-01 Carolina-Jeison-Juandy - Landing Vive Beneficios]] · [[Arquitectura-Navegacion-ViveBeneficios]]
 
 ---
 
@@ -50,7 +50,7 @@ Implicación: antes de entrar a desarrollo técnico, el equipo debe tener claro 
 
 - [ ] Definir look & feel del MVP — moodboard, referencias visuales, paleta, tipografía
 - [ ] Confirmar rol de María Claudia Vargas en el proyecto (¿Servicio al Cliente / suscriptores?)
-- [ ] Confirmar rol de Nidia Alexandra Rodriguez Linares
+- [x] Confirmar rol de Nidia Alexandra Rodriguez Linares — **Jefe Financiera** (confirmado 2026-07-01)
 - [ ] Alinear con la reunión del mismo día (Jeison + Juandy) sobre flujo y arquitectura
 
 ---

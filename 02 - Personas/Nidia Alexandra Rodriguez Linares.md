@@ -7,26 +7,22 @@ confidence: low
 ---
 
 ## For future Claude
-Nidia Alexandra Rodriguez Linares — equipo Ediciones Gamma (email: nidia.rodriguez@revistadiners.com.co). Presente en reunión presencial de plataforma de lealtad 2026-07-01. Rol exacto desconocido — pendiente confirmar.
+Nidia Alexandra Rodriguez Linares — Jefe Financiera de Ediciones Gamma (email: nidia.rodriguez@revistadiners.com.co). Su presencia en la reunión de plataforma de lealtad (2026-07-01) indica que el proyecto Vive Beneficios tiene visibilidad financiera desde etapas tempranas. Relevante para: aprobación de presupuesto de desarrollo, definición de modelo de cobro a aliados, y facturación dentro de la plataforma.
 
 ---
 
 # Nidia Alexandra Rodriguez Linares
 
 > **Email:** nidia.rodriguez@revistadiners.com.co
-> **Organización:** Ediciones Gamma / Revista Diners
-> **Rol:** Por confirmar
+> **Organización:** Ediciones Gamma
+> **Rol:** Jefe Financiera
 
 ---
 
 ## Contexto
 
 - Presente en reunión "Propuesta Plataforma Lealtad" (2026-07-01) con Catalina, Carolina, Jeison y Juandy
-- Sin más contexto disponible al 2026-07-01
-
-## Pendiente
-
-- [ ] Confirmar rol dentro de Gamma y relevancia en proyecto Vive Beneficios
+- Su participación implica que el proyecto tiene revisión financiera desde el inicio
 
 ---
 
