@@ -178,3 +178,7 @@ Ventas 2025 por mes (dotación 3,420): Feb 2,111 · Mar 1,761 · Abr 1,603 · Ma
 5. **Bundle con Anuario funciona.** Es la segunda promoción más vendida tanto en AXXIS como en Diners. Usar en journeys de renovación y upsell.
 
 6. **Compra directa creció 3x en valor (2024→2025).** Potencial canal para activar con WhatsApp Business y e-commerce directo.
+
+7. **Inserto físico dentro de la revista** *(idea nueva — 2026-07-01)*: incluir en cada ejemplar vendido por unidad un inserto con QR o CTA para suscribirse. El incentivo NO puede ser descuento (techo de pricing). Debe ser valor: acceso a contenido digital exclusivo, sorteo de experiencia con aliado, acceso anticipado a próxima edición. Canal de conversión de costo casi cero que aprovecha los $5.6M+ de compra directa activa.
+
+8. **Geo-analítica de puntos de venta** *(idea nueva — 2026-07-01)*: el 55% de sell-through es promedio — hay puntos en 20% y otros en 90%. Redistribuir dotación quitando ejemplares de puntos sin rotación y concentrando en librerías boutique, cafés premium y zonas de diseño de nicho. No requiere presupuesto, solo data de rotación por punto.
