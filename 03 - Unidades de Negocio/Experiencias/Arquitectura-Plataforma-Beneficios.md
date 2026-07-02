@@ -1,9 +1,9 @@
 ---
 date: 2026-07-01
 type: product-spec
-tags: [experiencias, vive-beneficios, pwa, arquitectura, mvp, producto, tech-stack, kpis, gamificacion, navegacion, ux]
+tags: [experiencias, beneficios-suscriptores, pwa, arquitectura, mvp, producto, tech-stack, kpis, gamificacion, navegacion, ux]
 related-people: [Carolina Ramirez, Jeison Montero, Juan David Duran Lerma, Catalina Obregon, Paola Pantaleon, Nicolas Serna]
-related-projects: [Vive-Beneficios]
+related-projects: [Beneficios-Suscriptores]
 ai-first: true
 confidence: high
 status: borrador
@@ -11,12 +11,12 @@ version: v1.1
 ---
 
 ## For future Claude
-Documento maestro único de la Plataforma de Programa de Beneficios (Vive Beneficios). Fusiona la arquitectura de navegación (v1.1) y la arquitectura de producto (v1.0) en un solo documento. Cubre: visión del sistema, tipología de actores, módulos detallados por actor, user journeys paso a paso, flujos de conexión entre actores, KPIs, gamificación, stack tecnológico, fases de desarrollo y decisiones pendientes que bloquean el MVP. Decisiones clave de reuniones 2026-07-01: CEO Catalina confirmó prioridad look & feel, validación por ID único (no QR), notificaciones WhatsApp + email. Input definitivo para cotizar desarrollo externo o evaluar alcance con Juandy. Ref: [[06 - Meetings/Experiencias/2026-07-01 Carolina-Jeison-Juandy - Landing Vive Beneficios]] · [[06 - Meetings/Experiencias/2026-07-01 Equipo-Catalina - Propuesta Plataforma Lealtad]] · [[Experiencias_05_Pipeline_ViveBeneficios.xlsx]]
+Documento maestro único de la Plataforma de Programa de Beneficios (Beneficios Suscriptores). Fusiona la arquitectura de navegación (v1.1) y la arquitectura de producto (v1.0) en un solo documento. Cubre: visión del sistema, tipología de actores, módulos detallados por actor, user journeys paso a paso, flujos de conexión entre actores, KPIs, gamificación, stack tecnológico, fases de desarrollo y decisiones pendientes que bloquean el MVP. Decisiones clave de reuniones 2026-07-01: CEO Catalina confirmó prioridad look & feel, validación por ID único (no QR), notificaciones WhatsApp + email. Input definitivo para cotizar desarrollo externo o evaluar alcance con Juandy. Ref: [[06 - Meetings/Experiencias/2026-07-01 Carolina-Jeison-Juandy - Landing Vive Beneficios]] · [[06 - Meetings/Experiencias/2026-07-01 Equipo-Catalina - Propuesta Plataforma Lealtad]] · [[Experiencias_05_Pipeline_ViveBeneficios.xlsx]]
 
 ---
 
 # Arquitectura — Plataforma de Programa de Beneficios
-### Vive Beneficios · Ediciones Gamma · v1.1 · 2026-07-01
+### Beneficios Suscriptores · Ediciones Gamma · v1.1 · 2026-07-01
 
 > **Producto:** Programa de beneficios exclusivos para suscriptores de Revista Diners y AXXIS
 > **Tipo de beneficios:** Descuentos y alianzas con restaurantes, comercios y experiencias curadas
@@ -32,6 +32,7 @@ Documento maestro único de la Plataforma de Programa de Beneficios (Vive Benefi
 | v1.0 | 2026-06-30 | Arquitectura inicial — 3 actores, 26 módulos |
 | v1.1 | 2026-07-01 | Reunión Jeison + Juandy: QR → ID único · notificaciones WhatsApp + email · gamificación Gold/Premium/Black · cross-selling AXXIS↔Diners · autogestión calendario aliado · HubSpot conectado a reservas |
 | v1.1b | 2026-07-01 | Fusión con doc de producto: KPIs, user journeys, stack tecnológico, fases |
+| v1.2 | 2026-07-02 | Benchmark competitivo Club Vivamos (El Tiempo) — geolocalización de aliados y beneficiarios familiares como consideraciones adicionales para el MVP |
 
 ---
 
@@ -39,7 +40,7 @@ Documento maestro único de la Plataforma de Programa de Beneficios (Vive Benefi
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                    PLATAFORMA VIVE BENEFICIOS                   │
+│                 PLATAFORMA BENEFICIOS SUSCRIPTORES               │
 │                        (URL única — PWA)                        │
 ├──────────────┬──────────────────────┬───────────────────────────┤
 │  SUSCRIPTOR  │       ALIADO         │    GAMMA ADMIN            │
@@ -113,10 +114,7 @@ Documento maestro único de la Plataforma de Programa de Beneficios (Vive Benefi
 | **Explorar Beneficios** | Catálogo en tarjetas/carrusel · filtro por categoría (Gastronomía, Arte, Bienestar, Moda, Viajes, Hogar) · filtro por descuento mínimo · filtro por revista (AXXIS / Diners) · beneficios guardados · beneficios temporales editoriales |
 | **Perfil del Aliado** | Nombre · descripción · galería fotos · descuento activo · dirección + mapa · horario · contacto · **CTA Reservar** · calificación y reseñas |
 | **Reservas** | Flujo: fecha → personas → notas → confirmación · Mis Reservas: próximas / historial · cancelar o reagendar · calificar post-visita · conectado a HubSpot |
-| **Mi ID de Suscriptor** | ID único personal (no QR) · nombre + revista + nivel · estado activo/vencido · fecha renovación · *V2: wallet Apple/Google* |
-| **Mis Ahorros** | Ahorro total acumulado COP · ahorro este mes vs. anterior · por categoría · historial redenciones · comparar vs. costo suscripción (driver de retención) |
-| **Referir a un Amigo** | Link personal de referido · compartir WhatsApp/email · estado de mis referidos (enviado → registrado → suscrito) · beneficio por referido exitoso (pendiente definir) |
-| **Mi Perfil** | Datos personales · revista vinculada · categorías favoritas · top 5 aliados favoritos · preferencias de notificaciones (WhatsApp + email) · *V2: vincular familia/beneficiarios* |
+| **Mi Perfil** | Hub personal con 4 tabs: **Mi ID** (carnet digital, número único, nivel, estado) · **Mis Ahorros** (total COP, desglose categoría, historial, comparar vs. costo suscripción) · **Referidos** (link único, estado referidos, progreso nivel) · **Configuración** (datos personales, categorías favoritas, notificaciones WhatsApp/email, cuenta) · *V2: vincular familia/beneficiarios · wallet Apple/Google* |
 | **Asistencia** | FAQ · problema con reserva · problema con aliado · formulario → equipo Gamma · reportar aliado (PQRS) |
 
 ### 3.2 Aliado
@@ -134,7 +132,7 @@ Documento maestro único de la Plataforma de Programa de Beneficios (Vive Benefi
 | **Mi Perfil Público** | Editar nombre, descripción, fotos (hasta 8), horario, dirección, contacto · solicitar cambio de categoría · vista previa del perfil como suscriptor |
 | **Proponer Experiencia** | Formulario: tipo, capacidad, fecha, precio, descripción, adjuntos → va directo a equipo Comercial Gamma (Nicolás Serna) · trazabilidad del estado · historial |
 | **Mi Plan & Facturación** | Plan actual (Básico/Premium/Plus) · beneficios incluidos · **CTA Upgrade** con comparativa · fecha renovación · historial de pagos · descargar factura · contactar cuenta manager |
-| **Materiales** | Logo y sello "Aliado Vive Beneficios" · piezas para redes · media kit · guía de protocolo de validación de ID |
+| **Materiales** | Logo y sello "Aliado Beneficios Suscriptores" · piezas para redes · media kit · guía de protocolo de validación de ID |
 
 ### 3.3 Gamma Admin
 
@@ -416,7 +414,28 @@ Suscriptor genera link personal
 
 ---
 
-## 9. Decisiones Pendientes (bloquean MVP)
+## 9. Benchmark — Club Vivamos (El Tiempo Casa Editorial)
+
+Precedente directo (2026-07-02, sugerido por Carolina): casa editorial multi-marca (El Tiempo, Portafolio, Aló, Bocas) con club de beneficios para suscriptores — mismo modelo de negocio que Beneficios Suscriptores. [clubvivamos.com](https://www.clubvivamos.com/), [eltiempo.com/zona-usuario/club-vivamos](https://www.eltiempo.com/zona-usuario/club-vivamos).
+
+| Elemento | Club Vivamos (El Tiempo) | Beneficios Suscriptores (Gamma) |
+|---|---|---|
+| Categorías | Hogar y Servicios, Entretenimiento, Gastronomía, Salud y Bienestar, Turismo, Ropa y Accesorios (6) | Gastronomía, Arte, Bienestar, Moda, Viajes, Hogar — prácticamente equivalente |
+| Validación | ID/cédula + carnet digital vía app | ID único sin QR — misma dirección, ya decidido |
+| Cross-marca | Beneficios cruzados entre El Tiempo, Portafolio, Aló, Bocas | Cross-selling AXXIS↔Diners ya en el spec |
+| Red de aliados | 130+ marcas, descuentos hasta 50% | Sin cifra objetivo aún — 10-30 aliados piloto Diners en MVP |
+| Geolocalización | App ubica aliados cercanos por ciudad | **No contemplado** — hoy solo filtro por categoría |
+| Beneficiarios familiares | Incluidos sin costo dentro de la misma suscripción, disponible ya | Marcado como V2 — Club Vivamos lo tiene desde el arranque |
+| Monetización adicional | Alianza con tarjeta de crédito co-branded (El Tiempo–AV Villas) | No mapeado aún |
+
+**Implicaciones a considerar (no decididas):**
+1. Evaluar si geolocalización de aliados debería entrar al MVP en vez de diferirse — es la feature de descubrimiento central del precedente más cercano.
+2. Revisar si "vincular beneficiarios/familia" (hoy V2) es viable adelantar al MVP — El Tiempo lo ofrece desde el día uno sin fricción aparente.
+3. Explorar si una alianza de tarjeta co-branded (banca Grupo Bolívar) es una palanca de monetización adicional para Beneficios Suscriptores, en línea con la relación con Davivienda.
+
+---
+
+## 10. Decisiones Pendientes (bloquean MVP)
 
 | Decisión | Responsable | Urgencia |
 |---|---|---|
@@ -438,4 +457,4 @@ Suscriptor genera link personal
 ---
 
 ## Tags
-#arquitectura #mvp #vive-beneficios #pwa #producto #tech-stack #kpis #gamificacion #suscriptores #aliados #admin #experiencias #navegacion #ux
+#arquitectura #mvp #beneficios-suscriptores #pwa #producto #tech-stack #kpis #gamificacion #suscriptores #aliados #admin #experiencias #navegacion #ux
