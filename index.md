@@ -54,6 +54,8 @@ Mapa de navegación del vault. Usar para localizar archivos — los detalles est
 ## 03 - Unidades de Negocio
 
 ### Revistas
+- [[03 - Unidades de Negocio/Pauta-B2B-H1-2026]] — Pauta B2B H1 2026: 107% semestral, Natalia Castaño crítica (14-17%), Clara Vergara Diners digital $0
+- [[03 - Unidades de Negocio/Suscripciones-Revistas-2024-2026]] — Suscripciones históricas AXXIS/Diners 2024-2026: caída Privilegios, plan 360
 - [[03 - Unidades de Negocio/AXXIS/AXXIS]] — Revista Arq/Diseño. 3 NS: Pauta B2B / Suscriptores / Relevancia Digital
 - [[03 - Unidades de Negocio/AXXIS/AXXIS Dashboard Estratégico]] — Dashboard completo AXXIS. Score global 44/100
 - [[03 - Unidades de Negocio/AXXIS/Media Kit AXXIS 2026]] — Media kit V1. V2 en producción (deadline 5 jul)

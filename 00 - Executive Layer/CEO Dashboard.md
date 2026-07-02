@@ -28,6 +28,8 @@ Main executive dashboard for Ediciones Gamma. Consolidates critical alerts, reve
 | Gap Revenue AXXIS | 22.2% cumplimiento anual ($496M logrado vs $2,228M meta) | [[Carolina Ramirez]] |
 | Gap Revenue Diners | 14.4% cumplimiento anual ($160M logrado vs $1,111M meta) | [[Carolina Ramirez]] |
 | Privilegios Davivienda cerrado | Jun 2026 — era 70% ingresos revistas | [[Catalina Obregon]] |
+| Natalia Castaño — performance crítica | AXXIS impreso 14% · digital 17% acumulado H1. 0% junio en todos los formatos. Requiere conversación urgente. | [[Carolina Ramirez]] |
+| Clara Vergara — Diners digital $0 | $38M presupuesto asignado Diners digital, $0 ejecutado H1. | [[Carolina Ramirez]] |
 | Pipeline Clara Diners | $56.4M sin cerrar — riesgo crítico H2 | [[Natalia Castaño]] |
 | Educación Financiera bloqueada | NS1 bloqueado — pendiente claridad MA Navarro | [[Jeison Montero]] |
 | Nombre Vive Beneficios TBD | Sin nombre no hay material externo ni activación | [[Paola Pantaleon]] |
@@ -46,8 +48,9 @@ Main executive dashboard for Ediciones Gamma. Consolidates critical alerts, reve
 | DINERS — ppto anual | $1,111M | $160M | **14.4%** | 🔴 |
 | DINERS — impreso Jun | $64.2M | $44.1M | **69%** | 🟡 |
 | DINERS — digital Jun | $26.5M | $13.5M | **51%** | 🔴 |
-| Total AXXIS+DINERS negociaciones | $997.5M | $655.9M | **66%** | 🟠 |
-| Gap para 100% anual | — | -$341.6M | — | 🔴 |
+| Pauta total H1 (ejecutado) | $973.7M ppto semestral | $1,043.5M | **107%** | 🟢 |
+| Pauta vs meta anual total ($3,340.5M) | — | $1,043.5M | **31.2%** | 🔴 |
+| Total negociaciones (dato anterior) | $997.5M | $655.9M | **66%** | 🟠 |
 | Libros | $350M H2 | Por definir | — | 🟠 |
 | Experiencias | 10 exp Dic 2026 | 1/10 | **10%** | 🟠 |
 
