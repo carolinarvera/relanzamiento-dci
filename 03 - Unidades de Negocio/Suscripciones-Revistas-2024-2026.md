@@ -23,8 +23,9 @@ Datos históricos de suscripciones AXXIS y Diners 2024–2026 (hasta mayo 2026).
 |---|---|
 | Privilegios AXXIS: -72% | 3,656 (feb 2024) → 1,029 (may 2026) |
 | Privilegios Diners: -57% | 12,462 (ene 2024) → 5,303 (may 2026) |
-| Gamma AXXIS: plano-bajo | ~900 promedio 2025; repunte a 1,387 en may 2026 |
-| Gamma Diners: plano-bajo | ~950 promedio 2025; repunte a 1,895 en abr 2026 |
+| Gamma AXXIS: plano-bajo | ~900 promedio 2025; repunte a 1,387 en may 2026 (ver nota*) |
+| Gamma Diners: plano-bajo | ~950 promedio 2025; repunte a 1,895 en abr 2026 (ver nota*) |
+| *Repuntes abr-may 2026 | Suscripciones regalo de Davivienda a clientes Privilegios como compensación por cierre — no son orgánicas ni proyectables |
 | Web AXXIS: colapso | 36% (2024) → 17% (2025) → 24% (2026) |
 | Web Diners: colapso | 40% (2024) → 26% (2025) → 16% (2026) |
 | Call center: dominando | AXXIS 63% · Diners 80% en 2026 |
@@ -154,7 +155,7 @@ Ventas 2025 por mes (dotación 3,420): Feb 2,111 · Mar 1,761 · Abr 1,603 · Ma
 
 2. **Call center no es estrategia de largo plazo.** 80% Diners vía call es costoso y no escala. Hay que mover conversiones a digital con HubSpot + ManyChat.
 
-3. **Repuntes abril-mayo 2026 (Gamma) son señal positiva.** AXXIS +501 Gamma en mayo, Diners +1,000 Gamma en abril — investigar qué acción generó estos repuntes para replicar.
+3. **Repuntes abril-mayo 2026 (Gamma) NO son orgánicos.** Diners +1,000 Gamma en abril, AXXIS +501 Gamma en mayo — corresponden a suscripciones que Davivienda está regalando a un grupo de clientes de Privilegios como compensación por el cierre del programa. No replicar ni proyectar como crecimiento real. Son suscriptores transitorios sin intención de pago.
 
 4. **La base Gamma real es pequeña pero existe.** AXXIS ~900-1,400 propios, Diners ~900-1,900 propios. Con HubSpot y journeys correctos, esa base puede crecer a 3,000-5,000 sin Privilegios.
 
