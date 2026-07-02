@@ -149,6 +149,14 @@ Ventas 2025 por mes (dotación 3,420): Feb 2,111 · Mar 1,761 · Abr 1,603 · Ma
 
 ---
 
+## Restricción de pricing — confirmada 2026-07-01
+
+**María Claudia Vargas Pardo (Jefe Suscripciones) confirmó:** no es posible bajar más los precios ni aumentar los descuentos — están en el límite operativo. Esto elimina precio como palanca de conversión.
+
+**Implicación directa:** la estrategia de retención y conversión de subs regalo de Davivienda debe basarse en **valor percibido** (contenido, beneficios, exclusividad), no en descuento. Los journeys HubSpot no pueden apelar a precio más bajo — deben apelar a lo que pierden si no renuevan.
+
+---
+
 ## Implicaciones para NS02
 
 1. **Web es el cuello de botella crítico.** Diners cayó de 40% a 16% web en 2 años. Sin landing funcional y funnel digital, el canal más escalable está muerto. P0 antes de encender cualquier campaña.
