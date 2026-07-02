@@ -22,18 +22,28 @@ Arquitectura de navegación completa de la PWA Vive Beneficios para los 3 actore
 
 ---
 
+## Changelog
+
+| Versión | Fecha | Cambios |
+|---------|-------|---------|
+| v1.0 | 2026-06-30 | Arquitectura inicial — 3 actores, 26 módulos |
+| v1.1 | 2026-07-01 | Reunión con Jeison + Juandy: QR → ID único · notificaciones WhatsApp + email · gamificación niveles suscriptor · cross-selling AXXIS↔Diners · autogestión calendario aliado · HubSpot conectado a reservas |
+
+---
+
 ## Principios de Diseño
 
 - **Login diferenciado:** cada actor ve solo lo que le corresponde desde el primer pantalla post-login
-- **Mobile-first:** PWA, sin descarga de app, funciona desde navegador móvil
+- **Mobile-first:** PWA sin descarga, funciona desde navegador móvil · URL única centralizada
 - **Acción principal siempre visible:** Suscriptor → Reservar / Aliado → Confirmar reservas / Admin → Alertas
-- **Datos en tiempo real:** validación de carnet, estado reservas y redenciones deben ser live
+- **Datos en tiempo real:** validación de ID único, estado reservas y redenciones deben ser live
+- **Cross-selling integrado:** suscriptor AXXIS ve beneficios Diners y viceversa — incentiva suscripción combinada
 
 ---
 
 ## Actor 1: Suscriptor
 
-**Acceso:** Cédula + número de suscripción → verificación en tiempo real contra base Gamma
+**Acceso:** ID único por suscriptor (método exacto pendiente: número suscripción, cédula, o código generado) · decisión tomada 2026-07-01: se descarta QR
 
 ### Módulos
 
@@ -44,7 +54,7 @@ Arquitectura de navegación completa de la PWA Vive Beneficios para los 3 actore
 | **Perfil del Aliado** | Nombre · descripción · galería fotos · descuento activo · dirección + mapa · horario · contacto · **CTA Reservar** · calificación y reseñas |
 | **Reservas** | Flujo: fecha → personas → notas → QR de confirmación · Mis Reservas: próximas / pendientes / historial · cancelar o reagendar · calificar post-visita |
 | **Mis Ahorros** | Ahorro total acumulado COP · ahorro este mes vs. anterior · por categoría · historial redenciones · comparar vs. costo suscripción (driver de retención) |
-| **Mi Carnet Digital** | QR único personal · nombre + revista + nivel · estado activo/vencido · fecha renovación · compartir carnet · *V2: wallet Apple/Google* |
+| **Mi ID de Suscriptor** | ID único personal (no QR) · nombre + revista + nivel · estado activo/vencido · fecha renovación · ~~QR descartado 2026-07-01~~ · *V2: wallet Apple/Google* |
 | **Referir a un Amigo** | Link personal de referido · compartir WhatsApp/email · estado de mis referidos (enviado → registrado → suscrito) · beneficio por referido exitoso |
 | **Asistencia** | FAQ · problema con reserva · problema con aliado · chat/formulario → equipo Gamma · reportar aliado (PQRS) |
 | **Mi Perfil** | Datos personales · revista vinculada · preferencias de notificaciones (push + email) · preferencias de categorías · *V2: vincular familia/beneficiarios* |
@@ -115,6 +125,31 @@ Aliado ──propone experiencia──► Gamma Admin (Comercial) ──aprueba�
 Aliado ──solicita upgrade──────► Gamma Admin (Finanzas) ──gestiona──► nuevo contrato
 Suscriptor ──reporta aliado───► Gamma Admin ──investiga──► suspensión si aplica
 ```
+
+---
+
+## Actualizaciones v1.1 (2026-07-01)
+
+Cambios desde la reunión con Jeison + Juandy:
+
+| Tema | Antes (v1.0) | Ahora (v1.1) |
+|------|-------------|--------------|
+| Validación suscriptor | QR dinámico | **ID único** (método exacto pendiente) |
+| Notificaciones | Push web (FCM) | **WhatsApp + email** · "trampolín" en MVP |
+| Niveles suscriptor | No contemplado | **Gold / Premium / Black** según uso + referidos |
+| Reservas | Sistema propio básico | Conectado a **HubSpot** para trazabilidad |
+| Calendario aliado | Bloqueo de fechas simple | **Autogestión autónoma** de horarios y disponibilidad |
+| Cross-selling | No contemplado | **AXXIS ↔ Diners** en una sola plataforma |
+| Aliados favoritos | Manual (guardar) | **Top 5 automático** por historial + opción manual (pendiente de decidir) |
+
+### Pendientes de esta reunión
+
+- [ ] URL definitiva de la plataforma
+- [ ] Método exacto de ID único (cédula / número suscripción / código generado)
+- [ ] Carolina + Juandy: evaluar fases y alcance — ¿interno o externo?
+- [ ] Definir modelo trampolín WhatsApp vs. integración total para MVP
+- [ ] Decidir lógica aliados favoritos: manual vs. automático por historial
+- [ ] Beneficio específico por referido exitoso (con Nicolás)
 
 ---
 
