@@ -11,17 +11,38 @@ version: v1.1
 ---
 
 ## For future Claude
-Documento maestro único de la Plataforma de Programa de Beneficios (Beneficios Suscriptores). Fusiona la arquitectura de navegación (v1.1) y la arquitectura de producto (v1.0) en un solo documento. Cubre: visión del sistema, tipología de actores, módulos detallados por actor, user journeys paso a paso, flujos de conexión entre actores, KPIs, gamificación, stack tecnológico, fases de desarrollo y decisiones pendientes que bloquean el MVP. Decisiones clave de reuniones 2026-07-01: CEO Catalina confirmó prioridad look & feel, validación por ID único (no QR), notificaciones WhatsApp + email. Input definitivo para cotizar desarrollo externo o evaluar alcance con Juandy. Ref: [[06 - Meetings/Experiencias/2026-07-01 Carolina-Jeison-Juandy - Landing Vive Beneficios]] · [[06 - Meetings/Experiencias/2026-07-01 Equipo-Catalina - Propuesta Plataforma Lealtad]] · [[Experiencias_05_Pipeline_ViveBeneficios.xlsx]]
+Documento maestro único de la Plataforma de Programa de Beneficios (Beneficios Suscriptores). **Alcance: solo Rama Alianzas (always-on).** El BU Experiencias tiene 2 ramas diferenciadas: (1) Alianzas = club de beneficios suscriptores always-on — es lo que cubre este doc; (2) Experiencias = banca privada + VIP corporativo = one-time, NO vive en esta plataforma. Hay 2 tipos de aliado: Aliado Beneficios (long-term, siempre en catálogo) y Aliado VIP/Banca Privada (one-time, no en catálogo). Decisiones 2026-07-03: desarrollo interno confirmado (se rechaza proveedor externo), QR descartado, se prefieren billeteras virtuales (Apple/Google Wallet) — puede anticiparse a V1 en lugar de V2. Ref: [[06 - Meetings/Experiencias/2026-07-03 Review-Avances-Experiencias]] · [[06 - Meetings/Experiencias/2026-07-01 Carolina-Jeison-Juandy - Landing Vive Beneficios]] · [[06 - Meetings/Experiencias/2026-07-01 Equipo-Catalina - Propuesta Plataforma Lealtad]]
 
 ---
 
 # Arquitectura — Plataforma de Programa de Beneficios
-### Beneficios Suscriptores · Ediciones Gamma · v1.1 · 2026-07-01
+### Beneficios Suscriptores · Ediciones Gamma · v1.3 · 2026-07-03
 
-> **Producto:** Programa de beneficios exclusivos para suscriptores de Revista Diners y AXXIS
+> **Producto:** Club de beneficios always-on para suscriptores de Revista Diners y AXXIS
 > **Tipo de beneficios:** Descuentos y alianzas con restaurantes, comercios y experiencias curadas
-> **Alcance inicial:** MVP web y móvil (PWA — Progressive Web App)
+> **Alcance inicial:** MVP web y móvil (PWA — Progressive Web App) · desarrollo interno (Juandy)
 > **Owner producto:** [[Carolina Ramirez]] · **Owner técnico:** [[Jeison Montero]]
+
+---
+
+## Contexto BU — Las 3 Líneas de Experiencias
+
+El BU Experiencias opera con **3 líneas diferenciadas**. Esta plataforma cubre **solo la Línea 3**.
+
+| Línea | Nombre | Modelo | Aliado | Plataforma |
+|---|---|---|---|---|
+| **L1** | Experiencias VIP Corporativas | B2B — venta de experiencias a empresas, aseguradoras, banca | Colaboración puntual por evento | No aplica — operación directa |
+| **L2** | Experiencias Banca Privada | One-time — eventos exclusivos para clientes premium | One-time — **no** vive en catálogo | No aplica — operación directa |
+| **L3** | Beneficios Suscriptores (always-on) | Club de beneficios permanente para suscriptores Diners/AXXIS | Contrato largo plazo · siempre en catálogo | **Este documento** |
+
+### Dos tipos de aliado
+
+| Tipo | Nombre | Relación | En catálogo | Onboarding |
+|---|---|---|---|---|
+| **Aliado Beneficios** | Always-on | Contrato largo plazo · descuentos permanentes · cobertura nacional | Sí — siempre activo | Proceso estándar (formulario + docs) |
+| **Aliado VIP / Banca Privada** | One-time | Colaboración puntual para experiencia específica | No — evento puntual | Proceso ágil diferenciado |
+
+> **Criterio de prospección (2026-07-03):** exclusividad del servicio + cobertura/ubicación nacional. NO prospectar solo por descuentos. Intercambio comercial: visibilidad y pauta a cambio de mejores tasas.
 
 ---
 
@@ -33,6 +54,7 @@ Documento maestro único de la Plataforma de Programa de Beneficios (Beneficios 
 | v1.1 | 2026-07-01 | Reunión Jeison + Juandy: QR → ID único · notificaciones WhatsApp + email · gamificación Gold/Premium/Black · cross-selling AXXIS↔Diners · autogestión calendario aliado · HubSpot conectado a reservas |
 | v1.1b | 2026-07-01 | Fusión con doc de producto: KPIs, user journeys, stack tecnológico, fases |
 | v1.2 | 2026-07-02 | Benchmark competitivo Club Vivamos (El Tiempo) — geolocalización de aliados y beneficiarios familiares como consideraciones adicionales para el MVP |
+| v1.3 | 2026-07-03 | Reunión review avances: estructura 3 líneas BU + 2 tipos aliado · desarrollo interno confirmado · billeteras virtuales preferidas sobre QR · prospección por exclusividad, no descuentos |
 
 ---
 
@@ -79,15 +101,18 @@ Documento maestro único de la Plataforma de Programa de Beneficios (Beneficios 
 | **Canal principal** | Celular (PWA) + WhatsApp + email |
 | **Niveles** | Gold → Premium → Black (gamificación) |
 
-### Aliado
+### Aliado Beneficios (always-on)
+
+> Este es el único tipo de aliado que tiene acceso a la plataforma. Los aliados VIP/Banca Privada se gestionan por fuera (operación directa).
 
 | Atributo | Detalle |
 |---|---|
-| **Quién es** | Restaurante, comercio o proveedor de experiencias con contrato vigente |
+| **Quién es** | Restaurante, comercio o proveedor con contrato long-term · siempre activo en catálogo |
 | **Acceso** | NIT + email registrado en contrato — cada aliado ve solo sus propios datos |
 | **Objetivo** | Recibir y gestionar reservas · validar suscriptores · medir su desempeño |
 | **Canal principal** | Web (desktop) + WhatsApp/email para alertas |
 | **Planes** | Básico · Premium · Plus |
+| **Prospección** | Por exclusividad del servicio + cobertura nacional · intercambio: visibilidad/pauta por mejores descuentos |
 
 ### Gamma Admin
 
