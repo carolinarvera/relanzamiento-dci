@@ -273,19 +273,19 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 
 > Aplican a ambas revistas. Ver detalle completo: [[Tasks/Revistas]]
 
-### Equipo Comercial — Venta B2B
+### Jeison Montero (PM) + Equipo Comercial — Venta B2B
 
 - [ ] 🔴 `#1RE` **Listado de clientes y segmentación** · NS01 · Infraestructura
-  Clasificar base actual: recurrentes, inactivos, nuevas categorías. Comercial lidera
+  Clasificar base actual: recurrentes, inactivos, nuevas categorías. Jeison Montero coordina proceso; equipo comercial ejecuta y valida.
 
 - [ ] 🔴 `#2RE` **Propuesta de paquetes comerciales flexibles** · NS01 · Consideración
-  Paquetes de bajo riesgo para marcas nuevas con opción de escalar. Bundles print + digital + redes. Comercial Lidera
+  Paquetes de bajo riesgo para marcas nuevas con opción de escalar. Bundles print + digital + redes. Jeison Montero coordina entre comercial, editorial y digital.
 
 - [ ] 🔴 `#3RE` **Ofertas de entrada "rompe hielo" con opción de upgrade** · NS01 · Conversión
-  Oferta accesible para marcas que nunca han pautado. Escalable a paquete mayor. Comercial lidera.
+  Oferta accesible para marcas que nunca han pautado. Escalable a paquete mayor. Jeison Montero PM; equipo comercial define precios con Carolina.
 
 - [ ] 🟡 `#10RE` **Revisión tarifaria y kits de venta (combos print + digital)** · NS01 · Infraestructura
-  Analizar tarifarios actuales y kits. Comercial lidera
+  Analizar tarifarios actuales y kits. Jeison Montero coordina entre comercial, Sebastián Díaz y Juan David.
 
 ### Ernesto Rodriguez — Argumentos de Venta
 
@@ -296,13 +296,13 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
   Casos de éxito adaptados para LinkedIn.
 
 - [ ] 🔴 `#7RE` **Media Kit interactivo — versión digital navegable** · NS01 · Consideración
-  El anunciante explora formatos, audiencias y precios desde un link. Paola Nossa Cordina, Comercial revisa y apoya. Ernesto revisa estilo y tono. Juan David desarrolla.
+  El anunciante explora formatos, audiencias y precios desde un link. **Jeison Montero PM** — coordina: Paola Nossa (comercial), Ernesto (tono), Juan David (desarrollo).
 
 - [ ] 🔴 `#8RE` **Nuevos formatos digitales B2B** · NS01 · Atracción
-  Webinars co-patrocinados, masterclasses y transmisiones en vivo. Paola Nossa Coordina y Ernesto desarrolla
+  Webinars co-patrocinados, masterclasses y transmisiones en vivo. **Jeison Montero PM** — coordina: Paola Nossa (producción), Ernesto (contenido), Juan David (plataforma).
 
 - [ ] 🔴 `#9RE` **Experiencias B2B co-patrocinados** · NS01 · Atracción
-  Visitas en sitio. Temática editorial como funciona?  hoy en...., en los zapatos de... Paola Nossa, Mateo, Ernesto
+  Visitas en sitio. Temática editorial. **Jeison Montero PM** — coordina: Paola Nossa, Mateo Arias Ortiz, Ernesto.
 
 ### Carolina — Comercial
 
@@ -341,7 +341,7 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
   Secuencia: newsletter (sem 1) → contenido exclusivo (sem 2) → oferta suscripción (sem 3).
 
 - [ ] 🔴 `#20RE` **Propuesta de valor para suscriptores** · NS02 · Consideración
-  Qué obtiene el suscriptor que no obtiene el lector casual. Paola Nossa define 
+  Qué obtiene el suscriptor que no obtiene el lector casual. Paola Nossa define contenido; **Jeison Montero coordina** con HubSpot y plataforma.
 
 - [ ] 🔴 `#26RE` **Validar estructura de comunicaciones y customer journey** · NS02 · Infraestructura
   Ejecutar ANTES de cargar bases en HubSpot.
@@ -385,10 +385,10 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
   Stories y posts con link directo a landing.
 
 - [ ] 🟡 `#34RE` **Estrategia de distribución multiplataforma** · NS03 · Atracción
-  YouTube (largo), Spotify (audio), IG/TikTok (cortos). Adaptación por plataforma.
+  YouTube (largo), Spotify (audio), IG/TikTok (cortos). **Jeison Montero PM** — coordina Ernesto (contenido) + Paola Gordillo (canales) + Juan David (plataforma).
 
 - [ ] 🟡 `#35RE` **Presencia en medios externos y relaciones con prensa** · NS03 · Atracción
-  Notas sobre ediciones especiales, eventos y lanzamientos.
+  Notas sobre ediciones especiales, eventos y lanzamientos. **Jeison Montero PM** — coordina Ernesto (copy) + Paola Nossa (relaciones).
 
 ### Jeison Montero + Carolina — HubSpot Config
 
@@ -432,10 +432,12 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 ### Carolina + Ernesto Rodriguez
 
 - [ ] 🔴 `#1EG` **Estrategia contenidos sombrilla Ediciones Gamma — pauta Meta** · NS01 · Conversión
-	libros / colecciones específicas. Gamma como especialistas del sector, Arquitectura, Diseño y cultural
+  Libros / colecciones específicas. Gamma como especialistas del sector: Arquitectura, Diseño y cultural. Carolina define; Ernesto produce.
+
+### Jeison Montero (PM) — Cross-BU
 
 - [ ] 🟡 `#5EG` **Brand guidelines Ediciones Gamma — identidad sombrilla** · NS01 · Infraestructura
-  Guía de identidad visual y verbal para alinear AXXIS, Diners, Libros y Experiencias.
+  Guía de identidad visual y verbal para alinear AXXIS, Diners, Libros y Experiencias. **Jeison Montero PM** — coordina: Ernesto (tono verbal), Juan David (identidad digital), Paola Nossa (materiales comerciales).
 
 ---
 

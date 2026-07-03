@@ -7,7 +7,7 @@ related-projects: [Beneficios-Suscriptores]
 ai-first: true
 confidence: high
 status: borrador
-version: v1.1
+version: v1.4
 ---
 
 ## For future Claude
@@ -16,7 +16,7 @@ Documento maestro único de la Plataforma de Programa de Beneficios (Beneficios 
 ---
 
 # Arquitectura — Plataforma de Programa de Beneficios
-### Beneficios Suscriptores · Ediciones Gamma · v1.3 · 2026-07-03
+### Beneficios Suscriptores · Ediciones Gamma · v1.4 · 2026-07-03
 
 > **Producto:** Club de beneficios always-on para suscriptores de Revista Diners y AXXIS
 > **Tipo de beneficios:** Descuentos y alianzas con restaurantes, comercios y experiencias curadas
@@ -55,6 +55,7 @@ El BU Experiencias opera con **3 líneas diferenciadas**. Esta plataforma cubre 
 | v1.1b | 2026-07-01 | Fusión con doc de producto: KPIs, user journeys, stack tecnológico, fases |
 | v1.2 | 2026-07-02 | Benchmark competitivo Club Vivamos (El Tiempo) — geolocalización de aliados y beneficiarios familiares como consideraciones adicionales para el MVP |
 | v1.3 | 2026-07-03 | Reunión review avances: estructura 3 líneas BU + 2 tipos aliado · desarrollo interno confirmado · billeteras virtuales preferidas sobre QR · prospección por exclusividad, no descuentos |
+| v1.4 | 2026-07-02 (registrado 2026-07-03) | Reunión equipo completo (landing): geolocalización de aliados confirmada · filtros ampliados (descuento min/max, relevancia, fecha, calificación) · badges visuales tipo Amazon · formulario Excel interino para carga de aliados · calificación 1-5 estrellas sin comentarios por ahora · **abierto:** si fase 1 usa activación simple y difiere reservas/calendario a fase 2. Nota: esta reunión propuso QR para redención — descartado al día siguiente (ver v1.3). Ref: [[06 - Meetings/Experiencias/2026-07-02 Equipo-Experiencias - Landing Beneficios Suscriptores]] |
 
 ---
 
@@ -136,9 +137,9 @@ El BU Experiencias opera con **3 líneas diferenciadas**. Esta plataforma cubre 
 | Módulo | Funcionalidades clave |
 |--------|----------------------|
 | **Home / Dashboard** | Beneficios destacados del mes · beneficio editorial activo · próximas reservas · ahorro acumulado mes · CTA referir amigo |
-| **Explorar Beneficios** | Catálogo en tarjetas/carrusel · filtro por categoría (Gastronomía, Arte, Bienestar, Moda, Viajes, Hogar) · filtro por descuento mínimo · filtro por revista (AXXIS / Diners) · beneficios guardados · beneficios temporales editoriales |
+| **Explorar Beneficios** | Catálogo en tarjetas/carrusel · **geolocalización automática y manual de aliados cercanos** (confirmado 2026-07-02) · filtros: categoría, % descuento (mín/máx), relevancia, fecha de adición, calificación del aliado, revista (AXXIS / Diners) · **badges visuales** (% descuento, "nuevo", "destacado" — estilo Amazon) · beneficios guardados · beneficios temporales editoriales |
 | **Perfil del Aliado** | Nombre · descripción · galería fotos · descuento activo · dirección + mapa · horario · contacto · **CTA Reservar** · calificación y reseñas |
-| **Reservas** | Flujo: fecha → personas → notas → confirmación · Mis Reservas: próximas / historial · cancelar o reagendar · calificar post-visita · conectado a HubSpot |
+| **Reservas** | Flujo: fecha → personas → notas → confirmación · Mis Reservas: próximas / historial · cancelar o reagendar · calificar post-visita (1-5 estrellas, sin comentarios por ahora) · conectado a HubSpot · **⚠️ abierto (2026-07-02):** evaluar si fase 1 usa activación simple del beneficio (sin calendario) y este flujo completo de reservas pasa a fase 2 |
 | **Mi Perfil** | Hub personal con 4 tabs: **Mi ID** (carnet digital, número único, nivel, estado) · **Mis Ahorros** (total COP, desglose categoría, historial, comparar vs. costo suscripción) · **Referidos** (link único, estado referidos, progreso nivel) · **Configuración** (datos personales, categorías favoritas, notificaciones WhatsApp/email, cuenta) · *V2: vincular familia/beneficiarios · wallet Apple/Google* |
 | **Asistencia** | FAQ · problema con reserva · problema con aliado · formulario → equipo Gamma · reportar aliado (PQRS) |
 
@@ -167,7 +168,7 @@ El BU Experiencias opera con **3 líneas diferenciadas**. Esta plataforma cubre 
 |--------|----------------------|
 | **Dashboard Global** | KPIs ejecutivos en tiempo real · suscriptores activos por revista · aliados activos por nivel/categoría · redenciones totales · revenue membresías · solicitudes pendientes · gráficas de tendencia |
 | **Gestión Suscriptores** | Lista completa (activos/vencidos) · perfil individual (reservas, redenciones, ahorros) · marcar activo/inactivo · enviar notificación individual · segmentar y exportar (CSV) · suscriptores por vencer (alerta retención) |
-| **Gestión Aliados** | Lista por categoría/nivel · perfil editable · aprobar onboarding · cambiar nivel de plan · suspender/reactivar · métricas individuales · alerta aliados sin redenciones en 60 días · exportar directorio |
+| **Gestión Aliados** | Lista por categoría/nivel · perfil editable · aprobar onboarding · cambiar nivel de plan · suspender/reactivar · métricas individuales · alerta aliados sin redenciones en 60 días · exportar directorio · **interino (hasta tener panel propio):** carga inicial vía formulario Excel estandarizado (nombre, servicios, categoría) |
 | **Catálogo & Categorías** | Ver/agregar/desactivar categorías · reordenar posición en catálogo · definir aliados destacados · gestionar beneficios temporales · vincular beneficio a edición revista |
 | **Solicitudes Comerciales** | Propuestas de experiencia de aliados · aprobar → publica / rechazar con comentario · asignar a ejecutivo comercial · solicitudes de upgrade de plan · historial gestionado |
 | **Revenue & Facturación** | Membresías activas y valor mensual · revenue por nivel · renovaciones próximas (30/60/90 días) · generar factura electrónica · historial pagos · proyección Q3/Q4 · exportar a contabilidad |
@@ -449,12 +450,12 @@ Precedente directo (2026-07-02, sugerido por Carolina): casa editorial multi-mar
 | Validación | ID/cédula + carnet digital vía app | ID único sin QR — misma dirección, ya decidido |
 | Cross-marca | Beneficios cruzados entre El Tiempo, Portafolio, Aló, Bocas | Cross-selling AXXIS↔Diners ya en el spec |
 | Red de aliados | 130+ marcas, descuentos hasta 50% | Sin cifra objetivo aún — 10-30 aliados piloto Diners en MVP |
-| Geolocalización | App ubica aliados cercanos por ciudad | **No contemplado** — hoy solo filtro por categoría |
+| Geolocalización | App ubica aliados cercanos por ciudad | **Decidido (2026-07-02):** automática y manual — se incluye en el catálogo |
 | Beneficiarios familiares | Incluidos sin costo dentro de la misma suscripción, disponible ya | Marcado como V2 — Club Vivamos lo tiene desde el arranque |
 | Monetización adicional | Alianza con tarjeta de crédito co-branded (El Tiempo–AV Villas) | No mapeado aún |
 
 **Implicaciones a considerar (no decididas):**
-1. Evaluar si geolocalización de aliados debería entrar al MVP en vez de diferirse — es la feature de descubrimiento central del precedente más cercano.
+1. ~~Evaluar si geolocalización de aliados debería entrar al MVP~~ — **Resuelto 2026-07-02:** se confirma que sí entra, automática y manual.
 2. Revisar si "vincular beneficiarios/familia" (hoy V2) es viable adelantar al MVP — El Tiempo lo ofrece desde el día uno sin fricción aparente.
 3. Explorar si una alianza de tarjeta co-branded (banca Grupo Bolívar) es una palanca de monetización adicional para Beneficios Suscriptores, en línea con la relación con Davivienda.
 
@@ -477,7 +478,7 @@ Precedente directo (2026-07-02, sugerido por Carolina): casa editorial multi-mar
 
 ## Relacionado
 
-[[Experiencias]] · [[Jeison Montero]] · [[Juan David Duran Lerma]] · [[Paola Pantaleon]] · [[Nicolas Serna]] · [[Carolina Ramirez]] · [[Nidia Alexandra Rodriguez Linares]] · [[Experiencias_05_Pipeline_ViveBeneficios.xlsx]] · [[06 - Meetings/Experiencias/2026-07-01 Carolina-Jeison-Juandy - Landing Vive Beneficios]] · [[06 - Meetings/Experiencias/2026-07-01 Equipo-Catalina - Propuesta Plataforma Lealtad]]
+[[Experiencias]] · [[Jeison Montero]] · [[Juan David Duran Lerma]] · [[Paola Pantaleon]] · [[Nicolas Serna]] · [[Carolina Ramirez]] · [[Nidia Alexandra Rodriguez Linares]] · [[Experiencias_05_Pipeline_ViveBeneficios.xlsx]] · [[06 - Meetings/Experiencias/2026-07-01 Carolina-Jeison-Juandy - Landing Vive Beneficios]] · [[06 - Meetings/Experiencias/2026-07-01 Equipo-Catalina - Propuesta Plataforma Lealtad]] · [[06 - Meetings/Experiencias/2026-07-02 Equipo-Experiencias - Landing Beneficios Suscriptores]] · [[06 - Meetings/Experiencias/2026-07-03 Review-Avances-Experiencias]]
 
 ---
 

@@ -231,8 +231,9 @@ Master task list reorganizado 2026-06-24 alineado a la estructura de la Presenta
 | 4 | Solicitar cotizaciones plataforma PWA 360 para gestión suscriptores | Jun 20 | 🔴 Alta | en-proceso |
 | 5 | Reunión con María Claudia (Servicio al Cliente) — definir método de identificación suscriptores | Jun 23 | 🟡 Media | pendiente |
 | 6 | Beneficios Suscriptores Diners — MVP + 1.000 carnets activos meta Q3 2026 (depende: alianzas + plataforma) | Sep 2026 | 🟠 P2 | pendiente |
+| 7 | Presentar propuesta integral 360° Beneficios Suscriptores (portal + esquema alianzas + fases + responsables) — compromiso de Jeison Montero en reunión 2026-07-02 | Jul 31 | 🔴 Alta | pendiente |
 
-**KPIs meta área:** nombre del Club definido (pendiente) · 30 aliados activos julio · Beneficios Suscriptores MVP Q3
+**KPIs meta área:** nombre del Club definido (pendiente) · 10-15 aliados activos julio (meta ajustada reunión 2026-07-02) · Beneficios Suscriptores MVP Q3
 
 ---
 
