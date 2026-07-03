@@ -161,7 +161,7 @@ Ventas 2025 por mes (dotación 3,420): Feb 2,111 · Mar 1,761 · Abr 1,603 · Ma
 2. **Bundle físico** — Anuario es la segunda promo más vendida históricamente; no es descuento, es valor añadido a precio completo
 3. **Comunidad y acceso** — invitaciones a eventos, sesiones con arquitectos/chefs/editores según revista
 4. **Urgencia por pérdida** — "pierdes acceso a X cuando venza", no precio sino consecuencia
-5. **Experiencias únicas sostenidas por aliados** *(en construcción — bloqueada hasta tener aliado definido)*: experiencia exclusiva para suscriptores activos (cena con chef, visita a estudio de arquitectura, acceso a evento de moda) donde el aliado pone el valor y la revista pone la audiencia. **Prerequisito:** cerrar al menos un aliado fundador con [[02 - Personas/Paola Pantaleon]] antes de comunicar esta palanca externamente. Conectar con pipeline [[03 - Unidades de Negocio/Experiencias/Experiencias]] y Vive Beneficios.
+5. **Experiencias únicas sostenidas por aliados** *(en construcción — bloqueada hasta tener aliado definido)*: experiencia exclusiva para suscriptores activos (cena con chef, visita a estudio de arquitectura, acceso a evento de moda) donde el aliado pone el valor y la revista pone la audiencia. **Prerequisito:** cerrar al menos un aliado fundador con [[02 - Personas/Paola Pantaleon]] antes de comunicar esta palanca externamente. Conectar con pipeline [[03 - Unidades de Negocio/Experiencias/Experiencias]] y Beneficios Suscriptores.
 
 ---
 

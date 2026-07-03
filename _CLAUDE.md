@@ -68,7 +68,7 @@ Excepción: si Carolina pide explícitamente "busca X en el vault" o "actualiza 
 - Prioridad: revenue growth + compensar pérdida Privilegios Davivienda (cierra jun 2026)
 - Riesgo crítico: Privilegios era 70% ingresos Revistas · brecha $422MM vs meta $1.465MM
 - Sesión 2026-06-24: plan de marketing definitivo Revistas + Libros definido por Carolina (22 acciones)
-- Pendiente crítico: nombre inspiracional para Club de Beneficios (alianzas) — sin nombre, no hay material externo
+- Pendiente crítico: nombre inspiracional para Beneficios Suscriptores (alianzas) — sin nombre, no hay material externo
 - Pendiente crítico: precios Paquetes Legado y Centenario (Libros por Encargo) — los define Nicolás Serna
 - Media Kit AXXIS V2 en producción (deadline 5 jul) · Media Kit Diners V1 en producción (deadline 19 jul)
 

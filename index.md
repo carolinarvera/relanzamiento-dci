@@ -41,7 +41,7 @@ Mapa de navegación del vault. Usar para localizar archivos — los detalles est
 - [[02 - Personas/Estefania Ochoa Fonseca]] — CM Visión Davivienda. Braze solo para Visión
 - [[02 - Personas/Paola Gordillo]] — CM AXXIS y Diners (NO Visión)
 - [[02 - Personas/Paola Nossa]] — Líder Marketing: eventos, media kits, alianzas
-- [[02 - Personas/Paola Pantaleon]] — Experiencias y Alianzas. Vive Beneficios
+- [[02 - Personas/Paola Pantaleon]] — Experiencias y Alianzas. Beneficios Suscriptores
 - [[02 - Personas/Nicolas Serna]] — Comercial Libros
 - [[02 - Personas/Natalia Castaño]] — Ejecutiva Comercial AXXIS/Diners
 - [[02 - Personas/Natalia Otalora]] — Cliente Davivienda · Visión (aprueba estrategias)
@@ -56,6 +56,7 @@ Mapa de navegación del vault. Usar para localizar archivos — los detalles est
 ### Revistas
 - [[03 - Unidades de Negocio/Pauta-B2B-H1-2026]] — Pauta B2B H1 2026: 107% semestral, Natalia Castaño crítica (14-17%), Clara Vergara Diners digital $0
 - [[03 - Unidades de Negocio/Suscripciones-Revistas-2024-2026]] — Suscripciones históricas AXXIS/Diners 2024-2026: caída Privilegios, plan 360
+- [[03 - Unidades de Negocio/Zona-Premium-Suscriptores-AXXIS-Diners]] — Doc maestro: 2 pilares valor no-precio (contenido exclusivo, Beneficios Suscriptores), decisiones pendientes, cronograma jul-oct
 - [[03 - Unidades de Negocio/AXXIS/AXXIS]] — Revista Arq/Diseño. 3 NS: Pauta B2B / Suscriptores / Relevancia Digital
 - [[03 - Unidades de Negocio/AXXIS/AXXIS Dashboard Estratégico]] — Dashboard completo AXXIS. Score global 44/100
 - [[03 - Unidades de Negocio/AXXIS/Media Kit AXXIS 2026]] — Media kit V1. V2 en producción (deadline 5 jul)
@@ -95,6 +96,7 @@ Mapa de navegación del vault. Usar para localizar archivos — los detalles est
 - [[04 - Growth System/Benchmark Competitivo AXXIS y Diners 2026]] — Benchmark jun 2026 vs competencia regional
 - [[04 - Growth System/2026-06-21 Inteligencia Competitiva Marketing Revistas]] — Top 10 tácticas de medios rivales aplicables a AXXIS/Diners
 - [[Estrategia SEO Libros y Contenidos Gamma 2026]] — SEO Gamma: 70/30, 4 artículos quincenales
+- [[04 - Growth System/Estrategia-Redes-Sociales-Paola-Gordillo-2026]] — Vista consolidada SM Paola Gordillo cruzando AXXIS/Diners/Libros/Gamma: estado por BU, capacidad, brechas
 
 ---
 

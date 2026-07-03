@@ -9,7 +9,7 @@ confidence: high
 ---
 
 ## For future Claude
-Diners is Ediciones Gamma's culture, gastronomy, and lifestyle magazine (60+ years). Revenue (June 2026): Impreso 160% del obj. mensual, Digital 115% del obj. mensual — pero negociaciones anuales acumuladas en solo 49% ($159.8M de $329.4M), el peor gap anual de todas las revistas Gamma. Riesgo de concentración: KEVINS JOYEROS = 46% del ppto anual. Digital no existe como canal real: $3.45M COP en Meta Ads → 1 sola suscripción (CVR 0.002%). Cero presencia en TikTok, YouTube, Podcast, Newsletter. Plan H2 2026: lanzar TikTok (cara: Ernesto Rodríguez), Podcast "La Mesa de Diners", Newsletter premium y Carnet Digital antes de octubre 2026 para cerrar el gap de $169.6M sin depender de Privilegios Davivienda. Este archivo es contexto BU — tareas activas en [[Tasks/00-Tareas-Master-H2-2026]] (sección Diners + Compartidas).
+Diners is Ediciones Gamma's culture, gastronomy, and lifestyle magazine (60+ years). Revenue (June 2026): Impreso 160% del obj. mensual, Digital 115% del obj. mensual — pero negociaciones anuales acumuladas en solo 49% ($159.8M de $329.4M), el peor gap anual de todas las revistas Gamma. Riesgo de concentración: KEVINS JOYEROS = 46% del ppto anual. Digital no existe como canal real: $3.45M COP en Meta Ads → 1 sola suscripción (CVR 0.002%). Cero presencia en TikTok, YouTube, Podcast, Newsletter. Plan H2 2026: lanzar TikTok (cara: Ernesto Rodríguez), Podcast "La Mesa de Diners", Newsletter premium y Beneficios Suscriptores antes de octubre 2026 para cerrar el gap de $169.6M sin depender de Privilegios Davivienda. Este archivo es contexto BU — tareas activas en [[Tasks/00-Tareas-Master-H2-2026]] (sección Diners + Compartidas).
 
 **Corrección importante (informe GA4 + Meta Business real, mayo 2026, as of 2026-06-16):** el tráfico web NO sigue cayendo — mayo 2026 cerró con 256,079 vistas (+58.4% vs abril) y 217,684 sesiones (+65.1%), mejor que el promedio 2025. El dato de "caída 44% YoY" del dashboard solo aplicaba a ene-feb 2026 (antes del acceso a GA4). Además, Instagram tiene 97,011 seguidores reales (Meta Business), no los ~40K estimados en el dashboard — corregir esa cifra donde aparezca. Ver sección "Informe Web & Redes — Mayo 2026 (datos reales)" más abajo.
 
@@ -134,7 +134,7 @@ Fuentes: Dashboard Diners_Tabs_2026-06 (9 tabs, as of 2026-06-16) + Informe Web 
 ## Propuesta de Valor Suscriptores
 
 - Contenido editorial premium mensual
-- Beneficios exclusivos (Carnet Digital en desarrollo)
+- Beneficios exclusivos (Beneficios Suscriptores en desarrollo)
 - Acceso a experiencias y eventos
 - Alianzas con restaurantes, hoteles y marcas
 - Libros de regalo con suscripción
@@ -395,11 +395,11 @@ Condé Nast Traveler Spain como referencia más alineada (viajes/lujo/gastronom�
 |----------|-------|
 | Audiencia objetivo | Suscriptores Diners + audiencia FB/IG (142.5K Facebook / 97K Instagram) reconvertida a email |
 | Frecuencia | Semanal, domingo/lunes AM |
-| Monetización | Sponsors por bloque ($500K–$2M COP/envío) + Ofertas Premium + Carnet Digital |
+| Monetización | Sponsors por bloque ($500K–$2M COP/envío) + Ofertas Premium + Beneficios Suscriptores |
 | Meta 12 meses | 5,000 → 10,000 → 25,000 suscriptores |
 | KPIs objetivo | Open Rate >30%, CTR >8%, Unsubscribe <0.5%, Revenue/envío $1-3M COP |
 
-**Roadmap:** Jul 2026 onboarding HubSpot + diseño template → Ago 2026 piloto (500-1,000 suscriptores) + campaña de captación (meta 2,000) → Sep 2026 primer sponsor + meta 10,000 suscriptores (con Carnet Digital como beneficio exclusivo).
+**Roadmap:** Jul 2026 onboarding HubSpot + diseño template → Ago 2026 piloto (500-1,000 suscriptores) + campaña de captación (meta 2,000) → Sep 2026 primer sponsor + meta 10,000 suscriptores (con Beneficios Suscriptores como beneficio exclusivo).
 
 ---
 
@@ -853,7 +853,7 @@ Tendencia: arranque lento en enero → rampa hasta pico en semana del 30 de marz
 
 ## Oportunidades de Growth
 
-- **Carnet Digital Diners:** Diferenciador clave para suscriptores → acceso a red de aliados
+- **Beneficios Suscriptores Diners:** Diferenciador clave para suscriptores → acceso a red de aliados
 - **Beneficios gastronómicos:** Alianzas con restaurantes reconocidos
 - **Contenido transmedia:** Podcasts de gastronomía + videos de viajes
 - **Comunidad digital:** Newsletter premium + comunidad exclusiva
@@ -867,7 +867,7 @@ Tendencia: arranque lento en enero → rampa hasta pico en semana del 30 de marz
 |--------|-------|------------|
 | Digital en 37% vs meta | 🔴 Crítico | Estrategia paid + SEO urgente |
 | Pérdida Privilegios Davivienda | 🔴 Crítico | Nuevas alianzas corporativas |
-| Churn sin programa ancla | 🔴 Alto | Activar beneficios y carnet digital |
+| Churn sin programa ancla | 🔴 Alto | Activar beneficios y Beneficios Suscriptores |
 | Baja adopción histórica beneficios | 🟠 Medio | Comunicación activa + onboarding |
 
 ---
@@ -876,7 +876,7 @@ Tendencia: arranque lento en enero → rampa hasta pico en semana del 30 de marz
 
 - Programa Beneficios Diners — Owner: [[Paola Pantaleon]]
 - Estrategia Digital Diners — Owner: [[Carolina Ramirez]]
-- Carnet Digital — En desarrollo, MVP + 1,000 carnets activos como meta Q3 2026
+- Beneficios Suscriptores — En desarrollo, MVP + 1,000 carnets activos como meta Q3 2026
 - TikTok Diners — Owner: Ernesto Rodríguez + Paola Nossa. Posicionar a Ernesto como voz editorial. No iniciado (P1, Jul 2026)
 - Podcast "La Mesa de Diners" — Owner: Paola Pantaleon + Ernesto Rodríguez. Concepto definido, modelo Gatopardo Semanario, sponsors $1-3M COP/episodio (P1, Ago 2026)
 - Newsletter Premium "La Mesa de Diners" — Owner: Growth + HubSpot. Pendiente onboarding (P1, Jul 2026)
@@ -949,7 +949,7 @@ Tendencia: arranque lento en enero → rampa hasta pico en semana del 30 de marz
 | 19 | Crear `/llms.txt` en la raíz del dominio con estructura editorial y URLs canónicas principales | Juan David | Jul 7 | Diners ya aparece en ChatGPT/Perplexity (62 sesiones YTD via "AI Assistant"). llms.txt ayuda a los crawlers de IA a indexar correctamente el contenido |
 | 20 | Añadir Schema `Organization` + `Logo` + `Article` con authorship (autor, fecha, experto citado) en top 10 artículos orgánicos | Juan David | Jul 10 | Sin schema de entidad, Google AI Overviews y ChatGPT no pueden atribuir el contenido a Diners como fuente autoritativa |
 | 21 | Para los 3 artículos de mayor CTR orgánico: agregar bloque de respuesta directa ("En resumen...") al inicio de cada artículo | Simon Granja | Jul 10 | Los AI Overviews de Google privilegian contenido con respuesta explícita en los primeros 100 palabras — aumenta citabilidad sin cambiar el artículo |
-| 22 | Definir MVP Carnet Digital + fecha de lanzamiento | Carolina | Jul 15 | Diferenciador clave — beneficio que justifica precio premium de suscripción |
+| 22 | Definir MVP Beneficios Suscriptores + fecha de lanzamiento | Carolina | Jul 15 | Diferenciador clave — beneficio que justifica precio premium de suscripción |
 | 23 | Identificar 5 nuevos prospectos anunciantes digitales H2 | Lilo + Natalia + Clara | Jul 15 | Pipeline digital = 0 clientes propios activos |
 | 24 | Definir fecha y formato Colombia Moda 2026 + cerrar 2+ sponsors paquete digital | Paola Nossa + Lilo | Jul 15 | |
 
@@ -965,7 +965,7 @@ Tendencia: arranque lento en enero → rampa hasta pico en semana del 30 de marz
 | 25 | Lanzar cuenta TikTok Diners + 3 videos piloto con Ernesto Rodríguez | Paola Nossa + Ernesto | Ago 2026 | |
 | 26 | Añadir hreflang `es-ES` en artículos de cultura general | Juan David | Ago 2026 | España = 3er país por clics pero posición 14.71 — TLD .co interpretado como Colombia-only |
 | 27 | Lanzar canal YouTube Diners | Paola Nossa + Ernesto | Sep 2026 | |
-| 28 | Lanzamiento Carnet Digital (MVP público) | Carolina + Juan David + Paola Nossa | Sep 2026 | |
+| 28 | Lanzamiento Beneficios Suscriptores (MVP público) | Carolina + Juan David + Paola Nossa | Sep 2026 | |
 | 29 | Bazar Diners Q4 — definir fecha y formato | Paola Nossa + Pantaleon | Sep 2026 | |
 
 ---
@@ -990,8 +990,8 @@ Tendencia: arranque lento en enero → rampa hasta pico en semana del 30 de marz
 | Escenario | Predicción |
 |-----------|-----------|
 | **A — Sin cambios** | Revenue anual cierra ~$240-260M (gap $70-90M sin resolver). Tráfico baja a 120K pág/mes Q4. 0 suscripciones digitales nuevas. Dependencia de KEVINS aumenta. Ningún canal nuevo lanzado. |
-| **B — Con P0+P1+P2** | Revenue $290-310M (gap $20-40M, recuperable). Newsletter: 5K suscriptores activos, ROAS >4x. TikTok lanzado. Tráfico orgánico +50% vs base. Carnet Digital en MVP. 5+ nuevos anunciantes digitales. |
-| **C — Ejecución perfecta** | Revenue $329M = 100% ppto. Newsletter: 10K suscriptores, $4M COP/mes. TikTok: 50K+ followers. Podcast: 3K listens/episodio con sponsors. Carnet Digital: 5K carnets activos. |
+| **B — Con P0+P1+P2** | Revenue $290-310M (gap $20-40M, recuperable). Newsletter: 5K suscriptores activos, ROAS >4x. TikTok lanzado. Tráfico orgánico +50% vs base. Beneficios Suscriptores en MVP. 5+ nuevos anunciantes digitales. |
+| **C — Ejecución perfecta** | Revenue $329M = 100% ppto. Newsletter: 10K suscriptores, $4M COP/mes. TikTok: 50K+ followers. Podcast: 3K listens/episodio con sponsors. Beneficios Suscriptores: 5K carnets activos. |
 
 **Diagnóstico (jun 2026):** La raíz de todos los problemas digitales de Diners es una sola: el funnel de conversión está roto. La misma falla — checkout 404, sin Pixel, sin tracking — explica los 47,971 clics de pauta sin conversiones, los 0 pedidos en el newsletter con 55% de open rate, y los COP 0 en Google Ads con 6 meses de inversión. Arreglar el funnel (0A-0E, todos de Juan David) desbloquea simultáneamente pauta, newsletter y SEO. Todo lo demás es optimización sobre una base que ya funciona.
 

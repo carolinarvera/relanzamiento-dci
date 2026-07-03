@@ -15,7 +15,7 @@ owner: Carolina Ramirez
 ---
 
 ## For future Claude
-Estrategia de contenidos para Experiencias — BU nueva (formalizada jun 2026) que reemplaza el programa Privilegios Davivienda. Dos ramas con necesidades de contenido completamente distintas: RAMA 1 (Corporativa B2B con Davivienda Banca Privada y Grupo Bolívar) necesita contenido de propuesta, pitch y post-evento; RAMA 2 (Club de Beneficios/Vive Beneficios para suscriptores AXXIS/Diners) necesita contenido de activación y conversión de lectores en miembros. La BU no tiene presencia propia en RRSS — vive dentro de los canales de AXXIS y Diners. El contenido que genera sirve para tres funciones: (1) vender la experiencia a nuevas empresas, (2) retener y activar suscriptores, (3) documentar las experiencias para que hablen solas. Relacionado con [[Experiencias.md]] · [[Arquitectura-Navegacion-ViveBeneficios]] · [[Vive Beneficios — nombre Línea 2]].
+Estrategia de contenidos para Experiencias — BU nueva (formalizada jun 2026) que reemplaza el programa Privilegios Davivienda. Dos ramas con necesidades de contenido completamente distintas: RAMA 1 (Corporativa B2B con Davivienda Banca Privada y Grupo Bolívar) necesita contenido de propuesta, pitch y post-evento; RAMA 2 (Beneficios Suscriptores para suscriptores AXXIS/Diners) necesita contenido de activación y conversión de lectores en miembros. La BU no tiene presencia propia en RRSS — vive dentro de los canales de AXXIS y Diners. El contenido que genera sirve para tres funciones: (1) vender la experiencia a nuevas empresas, (2) retener y activar suscriptores, (3) documentar las experiencias para que hablen solas. Relacionado con [[Experiencias.md]] · [[03 - Unidades de Negocio/Experiencias/Arquitectura-Plataforma-Beneficios]].
 
 ---
 
@@ -47,7 +47,7 @@ Estrategia de contenidos para Experiencias — BU nueva (formalizada jun 2026) q
 **Canal:** Propuesta formal + email + LinkedIn + reunión presencial.
 **No aplica Instagram público** — este contenido es para venta directa B2B.
 
-### Rama 2 — Club de Beneficios / Vive Beneficios (B2C)
+### Rama 2 — Beneficios Suscriptores (B2C)
 **Audiencia de contenido:** Suscriptores activos de AXXIS y Diners · lectores frecuentes que aún no son suscriptores.
 **Objetivo del contenido:** Convertir lectores en miembros del club · retener miembros existentes · hacer que la membresía sea aspiracional, no transaccional.
 **Canal:** IG de AXXIS/Diners · newsletters · sección en sitios web de revistas.
@@ -96,7 +96,7 @@ Estrategia de contenidos para Experiencias — BU nueva (formalizada jun 2026) q
 ---
 
 ### PILAR 4 — Beneficios del Club (conversión de lectores a miembros)
-**Qué es:** Contenido que explica directa y específicamente qué obtiene un miembro del Club de Beneficios / Vive Beneficios. No genérico — con nombres de aliados, porcentajes de descuento reales, fechas.
+**Qué es:** Contenido que explica directa y específicamente qué obtiene un miembro de Beneficios Suscriptores. No genérico — con nombres de aliados, porcentajes de descuento reales, fechas.
 **Objetivo:** Convertir lectores de AXXIS y Diners que aún no son suscriptores · retener suscriptores existentes al mostrar valor concreto.
 **Formatos:**
   - Carrusel IG "Como suscriptor de Diners, este mes tienes acceso a:" (lista real de beneficios activos)

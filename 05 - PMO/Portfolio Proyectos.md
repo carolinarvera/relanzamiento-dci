@@ -8,7 +8,7 @@ confidence: high
 ---
 
 ## For future Claude
-Complete strategic project portfolio for Ediciones Gamma (June 2026). P1 critical: Consolidación Plataformas (Jeison), Alianzas post-Privilegios (Paola Pantaleón), HubSpot (Carolina). P2: Plan Comercial Libros (Nicolás), Carnet Digital, Estrategia Digital. P3: Podcast, Automatización. Note: document header says "Junio 2025" — incorrect, should be 2026.
+Complete strategic project portfolio for Ediciones Gamma (June 2026). P1 critical: Consolidación Plataformas (Jeison), Alianzas post-Privilegios (Paola Pantaleón), HubSpot (Carolina). P2: Plan Comercial Libros (Nicolás), Beneficios Suscriptores, Estrategia Digital. P3: Podcast, Automatización. Note: document header says "Junio 2025" — incorrect, should be 2026.
 
 ---
 
@@ -40,7 +40,7 @@ Complete strategic project portfolio for Ediciones Gamma (June 2026). P1 critica
 - **Próximos pasos:**
   - [ ] Mapear marcas potenciales para alianzas
   - [ ] Diseñar nuevo modelo de beneficios suscriptores
-  - [ ] Lanzar Carnet Digital Diners
+  - [ ] Lanzar Beneficios Suscriptores Diners
 
 ### 🔴 HubSpot como Centro Operativo Comercial
 - **Objetivo:** CRM centralizado para pipeline, forecast y reporting
@@ -64,7 +64,7 @@ Complete strategic project portfolio for Ediciones Gamma (June 2026). P1 critica
   - [ ] Plan ferias 2025-2026
   - [ ] Convenios corporativos
 
-### 🟠 Carnet Digital Diners
+### 🟠 Beneficios Suscriptores Diners
 - **Objetivo:** Diferenciador para suscriptores → acceso a red de aliados
 - **Owner:** Por asignar
 - **Estado:** Planificación

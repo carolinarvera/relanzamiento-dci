@@ -2,7 +2,7 @@
 date: 2026-06-19
 type: research
 tags: [experiencias, competencia, b2b, vip, colombia, analisis-mercado]
-related-projects: [Experiencias-Corporativas-B2B, Vive-Beneficios]
+related-projects: [Experiencias-Corporativas-B2B, Beneficios-Suscriptores]
 related-people: [Carolina Ramirez, Paola Pantaleon]
 sources:
   - https://cielo.travel/corporate-group-incentive-travel-in-colombia/
@@ -19,7 +19,7 @@ ai-first: true
 ---
 
 ## For future Claude
-Análisis competitivo del mercado de experiencias B2B VIP en Colombia (as of 2026-06-18). Contexto: [[03 - Unidades de Negocio/Experiencias/Experiencias]] está lanzando dos líneas — Experiencias Corporativas B2B (Línea 1) y Vive Beneficios (Línea 2). Este análisis mapea quién compite en el espacio, cómo se diferencian, qué precios manejan y qué gaps existen. **Conclusión principal: Gamma ocupa un espacio único sin competidor directo — ningún actor combina credibilidad editorial premium + curaduría cultural local + acceso a audiencia VIP verificada.**
+Análisis competitivo del mercado de experiencias B2B VIP en Colombia (as of 2026-06-18). Contexto: [[03 - Unidades de Negocio/Experiencias/Experiencias]] está lanzando dos líneas — Experiencias Corporativas B2B (Línea 1) y Beneficios Suscriptores (Línea 2). Este análisis mapea quién compite en el espacio, cómo se diferencian, qué precios manejan y qué gaps existen. **Conclusión principal: Gamma ocupa un espacio único sin competidor directo — ningún actor combina credibilidad editorial premium + curaduría cultural local + acceso a audiencia VIP verificada.**
 
 ---
 
@@ -72,7 +72,7 @@ El mercado de experiencias corporativas premium en Colombia tiene **4 tipos de a
 - No tienen el perfil de lujo de AXXIS/Diners — apuntan a mass premium, Gamma apunta a ultra premium
 - Sin curaduría artística ni acceso a figuras culturales
 
-**Aprendizaje clave para Línea 2 (Vive Beneficios):** 30 años de operación demuestran que el modelo funciona en Colombia. Su sistema de verificación por cédula y reporte de ahorros son estándares a replicar.
+**Aprendizaje clave para Línea 2 (Beneficios Suscriptores):** 30 años de operación demuestran que el modelo funciona en Colombia. Su sistema de verificación por cédula y reporte de ahorros son estándares a replicar.
 
 ---
 
@@ -213,7 +213,7 @@ Fuente: [Emergen Research - Corporate Luxury Event Market](https://www.emergenre
 
 ### Benchmark Línea 2 — Club La Nación (Argentina)
 
-**Por qué importa:** Club La Nación es el referente más maduro de un modelo de beneficios para suscriptores de medios en Latinoamérica. Operan hace décadas, con escala real. Esto valida el concepto de Vive Beneficios antes de que Gamma lo construya.
+**Por qué importa:** Club La Nación es el referente más maduro de un modelo de beneficios para suscriptores de medios en Latinoamérica. Operan hace décadas, con escala real. Esto valida el concepto de Beneficios Suscriptores antes de que Gamma lo construya.
 
 **Modelo:**
 - B2C puro — programa de beneficios para suscriptores de La Nación y revistas del grupo
@@ -222,8 +222,8 @@ Fuente: [Emergen Research - Corporate Luxury Event Market](https://www.emergenre
 - Sistema de puntos acumulables
 - Expansión geográfica activa (recientemente en Córdoba)
 
-**Diferencias clave con Vive Beneficios:**
-| Dimensión | Club La Nación | Vive Beneficios (Gamma) |
+**Diferencias clave con Beneficios Suscriptores:**
+| Dimensión | Club La Nación | Beneficios Suscriptores (Gamma) |
 |---|---|---|
 | Perfil suscriptor | Mass premium | Ultra premium (AXXIS/Diners) |
 | Tipo de beneficio | Descuentos y 2x1 | Acceso exclusivo + experiencias curadas |
@@ -231,7 +231,7 @@ Fuente: [Emergen Research - Corporate Luxury Event Market](https://www.emergenre
 | Escala | Masiva, nacional | Íntima, selectiva |
 | Diferenciador | Ahorro | Exclusividad y acceso |
 
-**Aprendizaje táctico:** El sistema de verificación por cédula, el programa de puntos, y el reporte de ahorros de Club La Nación son estándares de UX que Vive Beneficios debería adoptar. El modelo funciona — Gamma solo necesita ejecutarlo en el segmento premium con mayor exclusividad.
+**Aprendizaje táctico:** El sistema de verificación por cédula, el programa de puntos, y el reporte de ahorros de Club La Nación son estándares de UX que Beneficios Suscriptores debería adoptar. El modelo funciona — Gamma solo necesita ejecutarlo en el segmento premium con mayor exclusividad.
 
 Fuente: [Club LA NACION](https://club.lanacion.com.ar/) / [Guía BizTech23](https://sales.biztech23.com/2024/10/15/club-la-nacion-guia-completa-para-aprovechar-al-maximo-sus-beneficios/)
 
@@ -257,4 +257,4 @@ Lo que sí podemos inferir del mercado global:
 ---
 
 ## Tags
-#experiencias #competencia #b2b #vip #colombia #mercado #analisis #cielo-travel #club-el-tiempo #bogota-autentica #pricing #vive-beneficios
+#experiencias #competencia #b2b #vip #colombia #mercado #analisis #cielo-travel #club-el-tiempo #bogota-autentica #pricing #beneficios-suscriptores

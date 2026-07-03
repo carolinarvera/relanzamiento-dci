@@ -56,7 +56,7 @@ confidence: high
 | 23 | **Guia de regalo** (por ocasion y presupuesto) | Web + Newsletter | SEO estacional + pauta nativa |
 | 24 | **Coleccion fotografica exclusiva** | Web + IG | Marca premium |
 
-### Tier 4 — Club de Beneficios (activar con lanzamiento del Club)
+### Tier 4 — Beneficios Suscriptores (activar con lanzamiento del Club)
 
 | # | Formato | Canal | Descripcion |
 |---|---------|-------|-------------|
@@ -137,4 +137,4 @@ confidence: high
 
 ## Relacionado
 
-[[Diners_01_NorthStar_2026-06]] · [[Diners_NextSteps_2026-06]] · [[Diners.md]] · [[Simon Granja]] · [[Paola Gordillo]] · [[Vive Beneficios]]
+[[Diners_01_NorthStar_2026-06]] · [[Diners_NextSteps_2026-06]] · [[Diners.md]] · [[Simon Granja]] · [[Paola Gordillo]] · [[Beneficios Suscriptores]]

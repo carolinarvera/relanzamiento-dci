@@ -11,7 +11,7 @@ confidence: high
 ---
 
 ## For future Claude
-Plan de marketing definitivo para Revistas (AXXIS + Diners) y Libros, definido por Carolina Ramirez el 2026-06-24. Tiene 3 grandes áreas: (1) Revistas con foco B2B y foco Suscriptores, (2) Alianzas — Club de Beneficios (trabajo compartido con [[Paola Pantaleon]]), (3) Libros — venta directa y libros por encargo (trabajo compartido con [[Nicolas Serna]]). El foco B2B de revistas involucra a [[Lilo]] (Claudia Liliana, ejecutiva comercial) para la Fase 2 del media kit por sector. El nombre "Club de Beneficios" está en evaluación — se busca nombre inspiracional. Los Paquetes Legado y Centenario son productos de Libros por Encargo cuyos precios define Nicolás.
+Plan de marketing definitivo para Revistas (AXXIS + Diners) y Libros, definido por Carolina Ramirez el 2026-06-24. Tiene 3 grandes áreas: (1) Revistas con foco B2B y foco Suscriptores, (2) Alianzas — Beneficios Suscriptores (trabajo compartido con [[Paola Pantaleon]]), (3) Libros — venta directa y libros por encargo (trabajo compartido con [[Nicolas Serna]]). El foco B2B de revistas involucra a [[Lilo]] (Claudia Liliana, ejecutiva comercial) para la Fase 2 del media kit por sector. El nombre "Beneficios Suscriptores" está en evaluación — se busca nombre inspiracional. Los Paquetes Legado y Centenario son productos de Libros por Encargo cuyos precios define Nicolás.
 
 ---
 
@@ -64,11 +64,11 @@ Objetivo: crecer, retener y reactivar la base de suscriptores de AXXIS y Diners.
 
 ---
 
-## ALIANZAS — Club de Beneficios
+## ALIANZAS — Beneficios Suscriptores
 
 > Colaborativo: [[Paola Nossa]] + [[Paola Pantaleon]]
 
-**Nombre:** "Club de Beneficios" está en evaluación. **Se deben buscar opciones de nombre con sentido inspiracional** — pendiente de definir con el equipo.
+**Nombre:** "Beneficios Suscriptores" está en evaluación. **Se deben buscar opciones de nombre con sentido inspiracional** — pendiente de definir con el equipo.
 
 Objetivo: activar aliados para entregar beneficios exclusivos a suscriptores y crear una propuesta de valor diferencial que justifique y retenga la suscripción.
 
@@ -80,7 +80,7 @@ Objetivo: activar aliados para entregar beneficios exclusivos a suscriptores y c
 | 2 | Apoyo en material POP | Diseño y producción de material punto de venta / activación para los aliados del club | Paola Nossa | Paola Pantaleón |
 | 3 | Landing de activación de aliados | Página específica para que aliados se registren, activen beneficios o consulten el programa del club | Paola Nossa | Jeison Montero |
 
-**Pendiente crítico:** definir nombre inspiracional para el Club de Beneficios antes de producir cualquier material externo.
+**Pendiente crítico:** definir nombre inspiracional para el Beneficios Suscriptores antes de producir cualquier material externo.
 
 ---
 
@@ -124,7 +124,7 @@ Objetivo: vender libros customizados como producto de alto valor para empresas y
 |-------------|---------------|
 | [[Paola Nossa]] | Owner de la mayoría de acciones de marketing (media kits, landings, newsletters, material) |
 | [[Carolina Ramirez]] | Aprobación, foco estratégico, planes comerciales B2B, reactivación |
-| [[Paola Pantaleon]] | Co-owner Alianzas — Club de Beneficios |
+| [[Paola Pantaleon]] | Co-owner Alianzas — Beneficios Suscriptores |
 | [[Nicolas Serna]] | Co-owner Libros — precios, paquetes por encargo, venta B2B |
 | [[Lilo]] | Comercial revistas — colabora en media kit por sector (Fase 2) |
 | [[Jeison Montero]] | Digital — landings, web libros, HubSpot |

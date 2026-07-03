@@ -10,7 +10,7 @@ confidence: high
 ---
 
 ## For future Claude
-Experiencias es la unidad de negocios de eventos, activaciones y beneficios de Ediciones Gamma — reemplazo estratégico del programa Privilegios Davivienda (cierra junio 2026, representaba 70% de ingresos Revistas). Estructura formalizada el 2026-06-17 con 4 responsables y DOS ramas: (1) Experiencias Corporativas Exclusivas — B2B, VIP, financiadas por empresas; base Davivienda Banca Privada (10 ya pagadas 2026), expansión al ecosistema Grupo Bolívar (excluyendo banca competidora directa); (2) Experiencias Gamma / Club de Beneficios — Always On para suscriptores AXXIS y Diners, modelo aliados con niveles Básico/Premium/Plus por % de descuento. Nicolás Serna lidera el sistema de aliados; Natalia Castaño lidera contratos corporativos (modelo de contrato anual consolidado). Carolina lidera crecimiento: QR en editorial, media kit, propuestas segmentadas por industria, newsletters, benchmarking El Tiempo/Semana. Próxima experiencia: julio 2026 (J.D. Gutiérrez + Vicky Turbay). Sesión innovación AXXIS: 2026-06-27.
+Experiencias es la unidad de negocios de eventos, activaciones y beneficios de Ediciones Gamma — reemplazo estratégico del programa Privilegios Davivienda (cierra junio 2026, representaba 70% de ingresos Revistas). Estructura formalizada el 2026-06-17 con 4 responsables y DOS ramas: (1) Experiencias Corporativas Exclusivas — B2B, VIP, financiadas por empresas; base Davivienda Banca Privada (10 ya pagadas 2026), expansión al ecosistema Grupo Bolívar (excluyendo banca competidora directa); (2) Experiencias Gamma / Beneficios Suscriptores — Always On para suscriptores AXXIS y Diners, modelo aliados con niveles Básico/Premium/Plus por % de descuento. Nicolás Serna lidera el sistema de aliados; Natalia Castaño lidera contratos corporativos (modelo de contrato anual consolidado). Carolina lidera crecimiento: QR en editorial, media kit, propuestas segmentadas por industria, newsletters, benchmarking El Tiempo/Semana. Próxima experiencia: julio 2026 (J.D. Gutiérrez + Vicky Turbay). Sesión innovación AXXIS: 2026-06-27.
 
 ---
 
@@ -78,7 +78,7 @@ Experiencias es la unidad de negocios de eventos, activaciones y beneficios de E
 
 ---
 
-### Rama 2: Experiencias Gamma / Club de Beneficios (Always On) 🔄 (en construcción)
+### Rama 2: Experiencias Gamma / Beneficios Suscriptores (Always On) 🔄 (en construcción)
 
 **Concepto:**
 > Cada artículo de la revista conecta con un beneficio tangible para el suscriptor.
@@ -115,7 +115,7 @@ Criterios de selección: exclusividad, descuentos y comisiones definidos. Autono
 
 ## Plataforma Tecnológica Requerida
 
-Para operar el Club de Beneficios se necesita una plataforma que resuelva:
+Para operar el Beneficios Suscriptores se necesita una plataforma que resuelva:
 - Identificación del suscriptor (credencial digital, QR, wallet o cédula)
 - Trazabilidad de redenciones (quién redimió, qué, cuándo)
 - Reservas online (tipo booking)
@@ -204,7 +204,7 @@ Para operar el Club de Beneficios se necesita una plataforma que resuelva:
 - NPS clientes VIP por experiencia
 - Ingresos por venta de experiencias
 
-**Línea 2 — Club de Beneficios:**
+**Línea 2 — Beneficios Suscriptores:**
 - Alianzas activas
 - % suscriptores que usan beneficios
 - Tasa de renovación atribuida a beneficios
@@ -237,10 +237,10 @@ Para operar el Club de Beneficios se necesita una plataforma que resuelva:
 | Proyecto | Owner | Estado |
 |----------|-------|--------|
 | Experiencias Banca Privada 2026 | [[Paola Pantaleon]] / [[Carolina Ramirez]] | ✅ Activo — 1/10 ejecutada |
-| Club de Beneficios Diners | [[Paola Pantaleon]] | En construcción |
+| Beneficios Suscriptores Diners | [[Paola Pantaleon]] | En construcción |
 | Plataforma PWA / 360 suscriptores | [[Jeison Montero]] / [[Carolina Ramirez]] | Cotización en proceso |
 | Sesión Innovación AXXIS | [[Carolina Ramirez]] | Programada 2026-06-27 |
-| Carnet Digital Diners | Por definir | Planificación |
+| Beneficios Suscriptores Diners | Por definir | Planificación |
 | Red de Alianzas Gastronómicas | [[Paola Pantaleon]] | Prospección |
 | Podcast AXXIS | [[Paola Pantaleon]] | En desarrollo |
 

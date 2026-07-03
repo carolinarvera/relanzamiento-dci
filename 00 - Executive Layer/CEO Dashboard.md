@@ -32,7 +32,7 @@ Main executive dashboard for Ediciones Gamma. Consolidates critical alerts, reve
 | Clara Vergara — Diners digital $0 | $38M presupuesto asignado Diners digital, $0 ejecutado H1. | [[Carolina Ramirez]] |
 | Pipeline Clara Diners | $56.4M sin cerrar — riesgo crítico H2 | [[Natalia Castaño]] |
 | Educación Financiera bloqueada | NS1 bloqueado — pendiente claridad MA Navarro | [[Jeison Montero]] |
-| Nombre Vive Beneficios TBD | Sin nombre no hay material externo ni activación | [[Paola Pantaleon]] |
+| Nombre Beneficios Suscriptores TBD | Sin nombre no hay material externo ni activación | [[Paola Pantaleon]] |
 | Precios Libros por Encargo | Paquete Legado + Centenario pendientes Nicolás | [[Nicolas Serna]] |
 | HubSpot sin segmentar | 76,993 contactos, 0 segmentados por revista, base dummy | [[Carolina Ramirez]] |
 
@@ -61,7 +61,7 @@ Main executive dashboard for Ediciones Gamma. Consolidates critical alerts, reve
 | Proyecto | Owner | Estado | Prioridad |
 |----------|-------|--------|-----------|
 | HubSpot CRM — migración y journeys | [[Carolina Ramirez]] | En curso (Jul semana 3-4) | 🔴 P1 |
-| Vive Beneficios — MVP Club alianzas | [[Paola Pantaleon]] | 5% — nombre TBD | 🔴 P1 |
+| Beneficios Suscriptores — MVP Club alianzas | [[Paola Pantaleon]] | 5% — nombre TBD | 🔴 P1 |
 | Relevancia Digital Revistas | [[Carolina Ramirez]] | Auditoría en curso | 🔴 P1 |
 | Suscripciones — landing + funnel | [[Carolina Ramirez]] | P0 pendiente | 🔴 P1 |
 | Plan Comercial Libros H2 | [[Nicolas Serna]] | Bloqueado por precios | 🟠 P2 |
@@ -75,7 +75,7 @@ Main executive dashboard for Ediciones Gamma. Consolidates critical alerts, reve
 
 ## 🧠 Decisiones Pendientes
 
-- [ ] Nombre del Club de Beneficios (Vive Beneficios) — sin nombre no hay activación externa
+- [ ] Nombre inspiracional definitivo para Beneficios Suscriptores — sin nombre no hay activación externa
 - [ ] Precios Paquete Legado y Centenario — Nicolás Serna debe definirlos antes de activar OBJ2 Libros
 - [ ] Estrategia EF con MA Navarro — claridad sobre plataforma nueva y scope SLA
 - [ ] Pricing revistas: mantener premium vs bundles vs ofertas de entrada

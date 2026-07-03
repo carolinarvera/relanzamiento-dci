@@ -1,8 +1,8 @@
 ---
 date: 2026-07-01
 type: person
-tags: [persona, diners, servicio-cliente, vive-beneficios]
-related-projects: [Vive-Beneficios]
+tags: [persona, diners, servicio-cliente, beneficios-suscriptores]
+related-projects: [Beneficios-Suscriptores]
 ai-first: true
 confidence: medium
 ---
@@ -22,7 +22,7 @@ María Claudia Vargas — equipo Ediciones Gamma (email: mariaclaudia.vargas@rev
 
 ## Contexto
 
-- Mencionada en vault como "María Claudia (Servicio al Cliente)" — pendiente reunión con Carolina para definir método de identificación de suscriptores activos en la plataforma Vive Beneficios
+- Mencionada en vault como "María Claudia (Servicio al Cliente)" — pendiente reunión con Carolina para definir método de identificación de suscriptores activos en la plataforma Beneficios Suscriptores
 - Presente en reunión presencial de plataforma de lealtad (2026-07-01) con Catalina y equipo técnico
 
 ## Pendiente
@@ -39,4 +39,4 @@ María Claudia Vargas — equipo Ediciones Gamma (email: mariaclaudia.vargas@rev
 ---
 
 ## Tags
-#persona #servicio-cliente #vive-beneficios #suscriptores
+#persona #servicio-cliente #beneficios-suscriptores #suscriptores

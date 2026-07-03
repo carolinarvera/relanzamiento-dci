@@ -51,7 +51,7 @@ Líder de Experiencias y Segmento Banca Privada (rol principal) · Apoyo medio t
 | Podcast AXXIS | En desarrollo |
 | Podcast "La Mesa de Diners" (con Ernesto Rodríguez) | Concepto definido, lanzamiento Ago 2026 (P1, as of 2026-06) |
 | [[Experiencias]] | Activo |
-| Carnet Digital Diners | En desarrollo — MVP + 1,000 carnets activos meta Q3 2026 |
+| Beneficios Suscriptores Diners | En desarrollo — MVP + 1,000 carnets activos meta Q3 2026 |
 | Bazar Diners (evento propio, con Paola Nossa) | Por definir, Q3-Q4 2026 |
 
 ## Tags

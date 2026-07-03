@@ -11,7 +11,7 @@ confidence: high
 # Diners — Next Steps H2 2026
 **Actualizado:** 2026-06-24 | **Estado:** Revenue digital 37% meta — CRITICO
 
-> **For future Claude:** Diners tiene revenue digital en estado critico (37% de meta a jun 2026). Las acciones aqui priorizan 3 frentes: recuperar revenue de pauta propia, activar Club de Beneficios como tercer motor, y mejorar audiencia digital. Owner estrategia: Carolina Ramirez. CM redes: Paola Gordillo. Editor web: Simon Granja. Pauta digital: Sebastian Diaz. Aprobaciones presupuesto y precios: Catalina Obregon.
+> **For future Claude:** Diners tiene revenue digital en estado critico (37% de meta a jun 2026). Las acciones aqui priorizan 3 frentes: recuperar revenue de pauta propia, activar Beneficios Suscriptores como tercer motor, y mejorar audiencia digital. Owner estrategia: Carolina Ramirez. CM redes: Paola Gordillo. Editor web: Simon Granja. Pauta digital: Sebastian Diaz. Aprobaciones presupuesto y precios: Catalina Obregon.
 
 ---
 
@@ -33,17 +33,17 @@ confidence: high
 
 ---
 
-### Club de Beneficios (nuevo motor)
+### Beneficios Suscriptores (nuevo motor)
 
 | # | Accion | Owner | Deadline |
 |---|--------|-------|---------|
-| 6 | Definir MVP Club de Beneficios: 3 tiers (Reader / Member / Black) con pricing y beneficios | Carolina | 11 jul |
+| 6 | Definir MVP Beneficios Suscriptores: 3 tiers (Reader / Member / Black) con pricing y beneficios | Carolina | 11 jul |
 | 7 | Identificar 5 partners fundadores (gastronomia, moda, viajes, arte, belleza premium) | Paola Pantaleon | 18 jul |
 | 8 | Validar modelo de revenue del Club con Catalina — precio, particion, volumen minimo viable | Carolina | 18 jul |
 | 9 | Definir flujo de onboarding y comunicacion para cada tier | Carolina + Paola Gordillo | 25 jul |
 | 10 | Lanzamiento soft del Club con primeros 50 miembros Reader | Carolina | Ago 2026 |
 
-> Ver estructura de tiers en [[Diners_01_NorthStar_2026-06#North Star 3]] y [[Vive Beneficios]].
+> Ver estructura de tiers en [[Diners_01_NorthStar_2026-06#North Star 3]] y [[Beneficios Suscriptores]].
 
 ---
 
@@ -76,7 +76,7 @@ confidence: high
 |---------|------|
 | **Jun 25-30** | Baseline metricas, pipeline pauta propia, separacion data Looker |
 | **Jul 1-11** | Auditoria tarifario + SEO tecnico + cadencia editorial redes |
-| **Jul 12-25** | MVP Club de Beneficios definido, pricing aprobado, partners identificados |
+| **Jul 12-25** | MVP Beneficios Suscriptores definido, pricing aprobado, partners identificados |
 | **Ago** | Lanzamiento soft Club, activar formatos IA contenido, primer mes tracking |
 | **Sep** | Evaluacion piloto — medir revenue pauta propia + primeros ingresos Club |
 
@@ -87,11 +87,11 @@ confidence: high
 | Fecha | Decision | Por |
 |-------|---------|-----|
 | 2026-06-24 | North Stars Diners validados: Revenue / Audiencia / Club Beneficios | Carolina |
-| 2026-06-24 | Club de Beneficios como tercer motor de revenue (diferenciador vs AXXIS) | Carolina |
+| 2026-06-24 | Beneficios Suscriptores como tercer motor de revenue (diferenciador vs AXXIS) | Carolina |
 | 2026-06-24 | Pauta clientes (Rolex etc.) = INGRESOS separados — nunca en auditoria propia | Carolina |
 
 ---
 
 ## Relacionado
 
-[[Diners_01_NorthStar_2026-06]] · [[Diners_02_Formatos_IA_2026-06]] · [[Diners.md]] · [[Vive Beneficios]] · [[Paola Gordillo]] · [[Simon Granja]] · [[Natalia Castano]] · [[Forecast Pauta Jun 2026]]
+[[Diners_01_NorthStar_2026-06]] · [[Diners_02_Formatos_IA_2026-06]] · [[Diners.md]] · [[Beneficios Suscriptores]] · [[Paola Gordillo]] · [[Simon Granja]] · [[Natalia Castano]] · [[Forecast Pauta Jun 2026]]

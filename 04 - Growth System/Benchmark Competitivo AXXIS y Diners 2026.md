@@ -203,7 +203,7 @@ confidence: medium
 | Publicidad digital | ✅ Activo | Activo | ✅ Activo | Activo | 3/5 |
 | Content marketing para clientes | ✅ Activo | Activo | Activo | Activo | 3/5 |
 | Newsletter premium | ❌ No formal | Activo | ✅ Activo | ✅ Daily 🌟 | 1/5 |
-| Club de beneficios | ✅ Carnet Digital (dev.) | No | Membresía Condé | ✅ Monocle Club 🌟 | 2/5 |
+| Club de beneficios | ✅ Beneficios Suscriptores (dev.) | No | Membresía Condé | ✅ Monocle Club 🌟 | 2/5 |
 | Podcast / Radio | ❌ No | ✅ Spotify | Parcial | ✅ Radio 24/7 🌟 | 1/5 |
 | Eventos / experiencias | ✅ Activo | Limitado | Eventos | ✅ Conferencia anual | 3/5 |
 | E-commerce | ❌ No | ✅ Tienda | No | ✅ Tiendas globales 🌟 | 1/5 |
@@ -294,7 +294,7 @@ AXXIS Revenue Digital Ideal:
 ```
 DINERS Revenue Digital Ideal:
 ├── Publicidad display + content marketing (actual)
-├── Club de beneficios + Carnet Digital (ya en desarrollo)
+├── Club de beneficios + Beneficios Suscriptores (ya en desarrollo)
 ├── Newsletter premium (semana Diners — modelo Monocle)
 ├── Podcast editorial patrocinado (Semanario Diners — modelo Gatopardo)
 └── Paywall metered (largo plazo — modelo Condé Nast)

@@ -265,7 +265,7 @@ owner: Carolina Ramirez
 |---|---|---|
 | **P6** | **Autoridad de Medio** | Demostrar que Diners entrega la audiencia premium más calificada de Colombia |
 | **P7** | **Branded Content Premium** | Co-crear contenido que respete el universo editorial Diners (no publi genérico) |
-| **P8** | **Club de Beneficios** | Partners que ofrecen experiencias exclusivas a suscriptores = nuevo modelo comercial |
+| **P8** | **Beneficios Suscriptores** | Partners que ofrecen experiencias exclusivas a suscriptores = nuevo modelo comercial |
 
 ---
 
@@ -333,7 +333,7 @@ owner: Carolina Ramirez
 
 ---
 
-#### PILAR 8 — CLUB DE BENEFICIOS (nuevo motor)
+#### PILAR 8 — BENEFICIOS SUSCRIPTORES (nuevo motor)
 
 **Eje 8.1 — Comunicación del beneficio a suscriptores**
 
@@ -349,7 +349,7 @@ owner: Carolina Ramirez
 
 | Variable | Detalle |
 |---|---|
-| **Temas** | Presentación del Club de Beneficios a restaurantes, hoteles, marcas de lujo, galerías de arte · Propuesta: "tu marca frente a 22K lectores premium semanalmente" · Casos de éxito de partners |
+| **Temas** | Presentación de Beneficios Suscriptores a restaurantes, hoteles, marcas de lujo, galerías de arte · Propuesta: "tu marca frente a 22K lectores premium semanalmente" · Casos de éxito de partners |
 | **Objetivo** | Conversión (nuevos partners B2B) |
 | **Formato** | Deck de propuesta PDF · Email comercial · Presentación en reunión · Post LinkedIn "únete al club" |
 | **Red social** | LinkedIn · Email |
@@ -387,8 +387,8 @@ owner: Carolina Ramirez
 | Autoridad de Medio | Inteligencia de mercado | Consideración + Branding | Whitepaper · Newsletter B2B | LinkedIn · Email |
 | Branded Content | Diners Selecciona | Conversión (ingreso) | Artículo branded · Newsletter patrocinada | Web · Newsletter · Instagram |
 | Branded Content | Eventos con marca | Conversión + Branding | Cobertura multiplataforma | Instagram · Newsletter · LinkedIn |
-| Club de Beneficios | Comunicación a suscriptores | Conversión + Retención | Email exclusivo · Stories IG | Newsletter · Instagram |
-| Club de Beneficios | Captación de partners | Conversión (partnership) | Deck comercial · Email | LinkedIn · Email |
+| Beneficios Suscriptores | Comunicación a suscriptores | Conversión + Retención | Email exclusivo · Stories IG | Newsletter · Instagram |
+| Beneficios Suscriptores | Captación de partners | Conversión (partnership) | Deck comercial · Email | LinkedIn · Email |
 
 ---
 
@@ -403,7 +403,7 @@ owner: Carolina Ramirez
 | **YouTube** | Autoridad editorial + contenido largo | Chef profiles, documentales culturales, visitas a restaurantes, viajes | 2x mes |
 | **Facebook** | Comunidad existente + eventos + alcance adulto | Artículos compartidos, eventos, grupos de gastronomía | 1x día |
 | **Newsletter** | Conversión + retención + canal más rentable | La Mesa de Diners: cultura · gastronomía · agenda semanal | 1x semana (domingo) |
-| **LinkedIn** | B2B exclusivo | Media Kit, casos de éxito, inteligencia de mercado, Club de Beneficios para partners | 2x semana |
+| **LinkedIn** | B2B exclusivo | Media Kit, casos de éxito, inteligencia de mercado, Beneficios Suscriptores para partners | 2x semana |
 
 ---
 
@@ -447,7 +447,7 @@ owner: Carolina Ramirez
 | Video YouTube — producción editorial | Ernesto Rodriguez + Paola Nossa | — |
 | LinkedIn B2B — contenido y prospectos | Carolina Ramirez | LinkedIn |
 | Pauta de amplificación | Sebastián Díaz | Meta Ads · Google Ads |
-| Club de Beneficios — partners | Carolina Ramirez + Paola Pantaleon | — |
+| Beneficios Suscriptores — partners | Carolina Ramirez + Paola Pantaleon | — |
 
 ---
 

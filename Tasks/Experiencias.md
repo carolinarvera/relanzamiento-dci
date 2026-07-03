@@ -7,7 +7,7 @@ tags: [tasks, experiencias]
 ---
 
 ## For future Claude
-Stub file. ALL Experiencias H2 strategic tasks (15 tareas EX) are in [[Tasks/00-Tareas-Master-H2-2026]]. Do not add tasks here. Context: Nueva unidad. Dos ramas: (1) Experiencias Corporativas B2B — 10 experiencias ya pagadas por Davivienda Banca Privada, expansión a Grupo Bolívar + sectores (automotriz, farmacéutico). (2) Club de Beneficios Always On — suscriptores, en construcción (PWA pendiente, nombre pendiente aprobación equipo: "Vive Beneficios"). Estructura y roles pendientes de aprobación Catalina. Leer BU folder: [[03 - Unidades de Negocio/Experiencias/Experiencias]].
+Stub file. ALL Experiencias H2 strategic tasks (15 tareas EX) are in [[Tasks/00-Tareas-Master-H2-2026]]. Do not add tasks here. Context: Nueva unidad. Dos ramas: (1) Experiencias Corporativas B2B — 10 experiencias ya pagadas por Davivienda Banca Privada, expansión a Grupo Bolívar + sectores (automotriz, farmacéutico). (2) Beneficios Suscriptores Always On — suscriptores, en construcción (PWA pendiente, nombre pendiente aprobación equipo: "Beneficios Suscriptores"). Estructura y roles pendientes de aprobación Catalina. Leer BU folder: [[03 - Unidades de Negocio/Experiencias/Experiencias]].
 
 ---
 

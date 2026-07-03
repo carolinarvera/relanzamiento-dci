@@ -250,7 +250,7 @@ Paquete base: Paquete Web Básico adaptado con artículo en sección Cultura + a
 
 ---
 
-### Pack CLUB DE BENEFICIOS (nuevo — pendiente lanzamiento)
+### Pack BENEFICIOS SUSCRIPTORES (nuevo — pendiente lanzamiento)
 **Precio a definir: modelo partnership**
 
 Para: restaurantes, hoteles, teatros, galerías, marcas de experiencias que quieran llegar a suscriptores activos de Diners.
@@ -291,7 +291,7 @@ Usar esta guía en la reunión comercial para recomendar el paquete correcto:
 |---|---|---|
 | Confirmar cifra real del newsletter (400K vs 22K) | Paola Gordillo | Pendiente |
 | Aprobación de estructura de descuentos | Catalina Obregon | Pendiente |
-| Definir precio Pack Club de Beneficios | Carolina + Catalina | Pendiente |
+| Definir precio Pack Beneficios Suscriptores | Carolina + Catalina | Pendiente |
 | Versión PDF / presentación para reuniones | Carolina | Pendiente |
 | Definir add-on TikTok (precio y entregable) | Carolina + Paola Gordillo | Pendiente |
 

@@ -311,7 +311,7 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 
 ### Paola Pantaleon — Alianzas
 
-- [ ] 🔴 `#11RE` **Estrategia Alianzas Club de Beneficios (post-Privilegios Davivienda)** · NS01 · Fidelización
+- [ ] 🔴 `#11RE` **Estrategia Alianzas Beneficios Suscriptores (post-Privilegios Davivienda)** · NS01 · Fidelización
   Estructurar ofertas donde Gamma aporte audiencia y los aliados del banco asuman beneficios. Se debe aterrizar precios.y paquetes foco % descuento / $ valor pauta
 
 ### Jeison Montero + Carolina — CRM y Journeys
@@ -523,7 +523,7 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🔴 `#2EX` **Modelo de contrato anual corporativo** · NS01 · Infraestructura
   Contrato único con múltiples fechas y valores. Términos generales + anexos operativos.
 
-### Paola Pantaleon — Aliados Club de Beneficios (suscriptores AXXIS y Diners)
+### Paola Pantaleon — Aliados Beneficios Suscriptores (suscriptores AXXIS y Diners)
 
 - [ ] 🔴 `#10EX` **Sistema de niveles aliados (Básico / Premium / Plus)** · NS01 · Infraestructura
   Básico: menor %, landing. Premium: % medio + mailing. Plus: mayor % + todos los canales.
@@ -531,11 +531,11 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🔴 `#15EX` **Consulta legal — responsabilidad civil aliados, contratos y datos** · NS01 · Infraestructura
   (1) Responsabilidad si aliado causa daño, (2) estructura contratos, (3) datos personales compartibles.
 
-- [ ] 🟡 `#12EX` **Definición de plataforma Club de Beneficios** · NS02 · Fidelización
+- [ ] 🟡 `#12EX` **Definición de plataforma Beneficios Suscriptores** · NS02 · Fidelización
   Validar 3 tipos de accesos: Suscriptor, Aliado y Editorial Gamma.
 
-- [ ] 🔴 `#13EX` **Media kit aliados Club de Beneficios** · NS01 · Consideración
+- [ ] 🔴 `#13EX` **Media kit aliados Beneficios Suscriptores** · NS01 · Consideración
   Propuesta para marcas que quieran unirse al Club: qué obtienen por nivel, visibilidad editorial.
 
-- [ ] 🔴 `#14EX` **Newsletter onboarding Club de Beneficios** · NS02 · Retención
+- [ ] 🔴 `#14EX` **Newsletter onboarding Beneficios Suscriptores** · NS02 · Retención
   Bienvenida al Club: cómo activar beneficios y reporte de ahorros. Ernesto copy; Jeison journey.

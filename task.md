@@ -3,13 +3,13 @@ date: 2026-06-24
 type: task-master
 tags: [tasks, pmo, consolidado, team, equipo]
 related-people: [Carolina Ramirez, Jeison Montero, Ernesto Rodriguez, Estefania Ochoa Fonseca, Paola Pantaleon, Nicolas Serna, Paola Gordillo, Paola Nossa, Sandra Martinez, Juan David, Sebastian Diaz, Natalia Castaño]
-related-projects: [Consolidacion-Plataformas, Alianzas-post-Privilegios, HubSpot, Revenue-Growth, Experiencias-B2B, Flywheel-AXXIS, EF-Davivienda, Vive-Beneficios, Libros-H2-2026]
+related-projects: [Consolidacion-Plataformas, Alianzas-post-Privilegios, HubSpot, Revenue-Growth, Experiencias-B2B, Flywheel-AXXIS, EF-Davivienda, Beneficios-Suscriptores, Libros-H2-2026]
 ai-first: true
 confidence: high
 ---
 
 ## For future Claude
-Master task list reorganizado 2026-06-24 alineado a la estructura de la Presentación Catalina H2 2026 (7 secciones: Revistas, Vive Beneficios, Libros, Visión Davivienda, Plataformas EF, Experiencias, Ed. Gamma). Las tareas de Carolina Ramirez están marcadas como **META DEL ÁREA** en cada sección — son los resultados estratégicos por los que responde como Head of Growth. Las tareas del equipo son de ejecución. Regla crítica: Gamma es filial Grupo Bolívar — bancos competidores de Davivienda excluidos siempre; filiales del grupo (Constructora, Fiduciaria, Seguros Bolívar) son prioridad alta.
+Master task list reorganizado 2026-06-24 alineado a la estructura de la Presentación Catalina H2 2026 (7 secciones: Revistas, Beneficios Suscriptores, Libros, Visión Davivienda, Plataformas EF, Experiencias, Ed. Gamma). Las tareas de Carolina Ramirez están marcadas como **META DEL ÁREA** en cada sección — son los resultados estratégicos por los que responde como Head of Growth. Las tareas del equipo son de ejecución. Regla crítica: Gamma es filial Grupo Bolívar — bancos competidores de Davivienda excluidos siempre; filiales del grupo (Constructora, Fiduciaria, Seguros Bolívar) son prioridad alta.
 
 ---
 
@@ -217,7 +217,7 @@ Master task list reorganizado 2026-06-24 alineado a la estructura de la Presenta
 
 ---
 
-## 02 · VIVE BENEFICIOS
+## 02 · BENEFICIOS SUSCRIPTORES
 
 > Club de alianzas y beneficios para suscriptores. Motor nuevo post-Privilegios. Nombre pendiente de definición.
 
@@ -230,13 +230,13 @@ Master task list reorganizado 2026-06-24 alineado a la estructura de la Presenta
 | 3 | Consultar con legal: responsabilidad civil de la revista ante incidentes con aliados ⚠️ vencida | Jun 18 | 🔴 Alta | pendiente |
 | 4 | Solicitar cotizaciones plataforma PWA 360 para gestión suscriptores | Jun 20 | 🔴 Alta | en-proceso |
 | 5 | Reunión con María Claudia (Servicio al Cliente) — definir método de identificación suscriptores | Jun 23 | 🟡 Media | pendiente |
-| 6 | Carnet Digital Diners — MVP + 1.000 carnets activos meta Q3 2026 (depende: alianzas + plataforma) | Sep 2026 | 🟠 P2 | pendiente |
+| 6 | Beneficios Suscriptores Diners — MVP + 1.000 carnets activos meta Q3 2026 (depende: alianzas + plataforma) | Sep 2026 | 🟠 P2 | pendiente |
 
-**KPIs meta área:** nombre del Club definido (pendiente) · 30 aliados activos julio · Carnet Digital MVP Q3
+**KPIs meta área:** nombre del Club definido (pendiente) · 30 aliados activos julio · Beneficios Suscriptores MVP Q3
 
 ---
 
-### Equipo Vive Beneficios
+### Equipo Beneficios Suscriptores
 
 #### Claris — Investigación Tech
 
@@ -409,13 +409,13 @@ Master task list reorganizado 2026-06-24 alineado a la estructura de la Presenta
 | 6 | Crear presentación comercial / deck de ventas B2B (adaptable por sector) | Jul 25 | 🔴 Alta | pendiente |
 | 7 | Diseñar propuesta comercial tipo — pricing, alcance, categorías, casos de éxito | Jul 31 | 🔴 Alta | pendiente |
 | 8 | Redactar correo presentación empresas B2B (priorizar ★ filiales Grupo Bolívar) | Jul 31 | 🔴 Alta | pendiente |
-| 9 | Diseñar nuevo modelo beneficios suscriptores (Club Beneficios / Vive Beneficios / Línea 2) | Sin fecha | 🔴 Alta | pendiente |
+| 9 | Diseñar nuevo modelo beneficios suscriptores (Club Beneficios / Beneficios Suscriptores / Línea 2) | Sin fecha | 🔴 Alta | pendiente |
 | 10 | Definir herramienta newsletters Experiencias (Mailchimp vs HubSpot) | Jun 30 | 🟡 Media | pendiente |
 | 11 | Preparar portafolio de experiencias PDF para nuevas empresas cliente | Jul 15 | 🟡 Media | pendiente |
 | 12 | Crear lista contactos newsletter B2B + primer envío (mínimo 30 contactos) | Jul 31 | 🟡 Media | pendiente |
 | 13 | Definir estrategia aliados — criterios selección, modelo alianza, onboarding, acuerdo tipo | Ago 1 | 🟡 Media | pendiente |
 | 14 | Crear plantillas email seguimiento aliados (primer contacto → propuesta → bienvenida) | Ago 10 | 🟡 Media | pendiente |
-| 15 | Lanzar Carnet Digital Diners (depende: alianzas activas + plataforma tecnológica) | Sep 2026 | 🟠 Media | pendiente |
+| 15 | Lanzar Beneficios Suscriptores Diners (depende: alianzas activas + plataforma tecnológica) | Sep 2026 | 🟠 Media | pendiente |
 
 ---
 
@@ -445,7 +445,7 @@ Master task list reorganizado 2026-06-24 alineado a la estructura de la Presenta
 
 | Decisión | Urgencia |
 |---------|---------|
-| Definir nombre inspiracional para Club de Beneficios (Vive Beneficios u otro) — sin nombre no hay material externo | 🔴 Alta |
+| Definir nombre inspiracional para Beneficios Suscriptores (Beneficios Suscriptores u otro) — sin nombre no hay material externo | 🔴 Alta |
 | Aprobar formalización de Jeison como Líder de Plataformas con autoridad real | 🔴 Alta |
 | Aprobar plan de nuevas alianzas para compensar Privilegios Davivienda | 🔴 Alta |
 | Aprobar meta anual oficial Libros ($500M COP sugerido) | 🟡 Media |
@@ -459,7 +459,7 @@ Master task list reorganizado 2026-06-24 alineado a la estructura de la Presenta
 | HubSpot Journey Suscripción | Carolina / Jeison / Juan David / Sebastián | 🔴 P1 | Facturar 9 deals e-Payco (hoy) → Triario webhook (Jul 7) → WF-01 nurturing 77K (Jul 15) |
 | Flywheel AXXIS | Carolina / Equipo AXXIS | 🔴 P1 | Juan David: landing corregida (Jun 23) — desbloquea pauta + redes + HubSpot form |
 | Plan EF alineado MANC | Carolina / Jeison / Ernesto | 🔴 P1 | Reunión mercadeo semana 23-jun |
-| Vive Beneficios (Club) | Paola Pantaleon / Carolina | 🔴 P1 | Nombre definido + Media Kit + deck ventas B2B (Jul 20) |
+| Beneficios Suscriptores (Club) | Paola Pantaleon / Carolina | 🔴 P1 | Nombre definido + Media Kit + deck ventas B2B (Jul 20) |
 | Media Kits Revistas | Paola Nossa / Carolina | 🔴 P1 | AXXIS V2 (Jul 5) · Diners V1 (Jul 19) |
 | Diners H2 2026 | Ernesto / Paola Nossa / Carolina | 🔴 P1 | Definir owners TikTok/Podcast/Newsletter esta semana |
 | Consolidación Plataformas | Jeison / Carolina | 🔴 P1 | Diagnóstico técnico 5 plataformas (Jeison, sin fecha) |
@@ -508,7 +508,7 @@ Master task list reorganizado 2026-06-24 alineado a la estructura de la Presenta
 | Sección | Tareas equipo | Metas Carolina | Riesgo | Próximo desbloqueo |
 |---------|--------------|---------------|--------|-------------------|
 | 01 · Revistas | 56 | 20 | 🔴 Crítico | Juan David: landing Jun 23 |
-| 02 · Vive Beneficios | 1 | 6 | 🟠 Alto | Nombre Club definido |
+| 02 · Beneficios Suscriptores | 1 | 6 | 🟠 Alto | Nombre Club definido |
 | 03 · Libros | 10 | 2 | 🟠 Alto | Meta anual aprobada |
 | 04 · Visión Davivienda | 9 | 5 | 🟡 Atención | Reunión Natalia Otálora |
 | 05 · Plataformas EF | 19 | 8 | 🔴 Crítico | Reunión MANC semana 23-jun |

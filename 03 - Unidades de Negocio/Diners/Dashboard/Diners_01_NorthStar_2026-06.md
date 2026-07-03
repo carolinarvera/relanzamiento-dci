@@ -11,13 +11,13 @@ confidence: high
 # Diners — North Star & Estrategia H2 2026
 **Actualizado:** 2026-06-24 | **Estado:** Digital 37% meta — CRÍTICO
 
-> **For future Claude:** Diners es revista de cultura, gastronomía, moda, viajes y lifestyle premium. Estado crítico en revenue digital (37% de meta a jun 2026). Estrategia validada jun 2026: 3 North Stars (Revenue / Audiencia / Comunidad), Club de Beneficios como tercer motor, 32 propuestas de nuevos formatos, 15 aplicaciones de IA en contenido. CM: [[Paola Gordillo]] (redes AXXIS + Diners — NO Visión). Editor web: [[Simon Granja]]. Pauta digital: [[Proveedor Pauta digital Sebastian Diaz]] (Meta Ads + AdSense). Pauta: SIEMPRE separar pauta propia (suscripciones + consideración) de campañas de clientes (Rolex, marcas lujo = INGRESOS, nunca en auditoría propia). Catalina Obregon aprueba toda revisión de precios o contratación.
+> **For future Claude:** Diners es revista de cultura, gastronomía, moda, viajes y lifestyle premium. Estado crítico en revenue digital (37% de meta a jun 2026). Estrategia validada jun 2026: 3 North Stars (Revenue / Audiencia / Comunidad), Beneficios Suscriptores como tercer motor, 32 propuestas de nuevos formatos, 15 aplicaciones de IA en contenido. CM: [[Paola Gordillo]] (redes AXXIS + Diners — NO Visión). Editor web: [[Simon Granja]]. Pauta digital: [[Proveedor Pauta digital Sebastian Diaz]] (Meta Ads + AdSense). Pauta: SIEMPRE separar pauta propia (suscripciones + consideración) de campañas de clientes (Rolex, marcas lujo = INGRESOS, nunca en auditoría propia). Catalina Obregon aprueba toda revisión de precios o contratación.
 
 ---
 
 ## 3 NORTH STARS — Validado 2026-06-24
 
-> Estructura base AXXIS adaptada a Diners. Diners agrega el Club de Beneficios como tercer motor de revenue que AXXIS no tiene.
+> Estructura base AXXIS adaptada a Diners. Diners agrega el Beneficios Suscriptores como tercer motor de revenue que AXXIS no tiene.
 
 ### North Star 1 — Revenue digital
 
@@ -42,7 +42,7 @@ confidence: high
 | Open rate newsletter | 28%+ |
 | Tiempo en página | 3:30+ |
 
-### North Star 3 — Club de Beneficios (nuevo motor)
+### North Star 3 — Beneficios Suscriptores (nuevo motor)
 
 **Métrica:** Miembros activos + retención 90 días
 
@@ -65,7 +65,7 @@ confidence: high
 | CM redes sociales | Paola Gordillo | AXXIS + Diners — bien distribuido |
 | Editor web | Simon Granja | Owner tareas editoriales SEO |
 | Pauta digital | Sebastián Díaz | Meta Ads + AdSense |
-| Club de Beneficios | 🟡 No existe aún | Propuesta validada jun 2026 |
+| Beneficios Suscriptores | 🟡 No existe aún | Propuesta validada jun 2026 |
 
 ---
 
@@ -86,7 +86,7 @@ confidence: high
 ## PALANCAS DE GROWTH — Prioridad H2 2026
 
 1. **Nuevos formatos y IA** — Ver [[Diners_02_Formatos_IA_2026-06]] (32 formatos + 15 apps IA)
-2. **Club de Beneficios** — tercer motor de revenue con partners gastronomía/moda/viajes/arte
+2. **Beneficios Suscriptores** — tercer motor de revenue con partners gastronomía/moda/viajes/arte
 3. **Revisión de precios** — suscripciones y tarifario pauta propia por debajo del benchmark premium
 4. **Email marketing** — confirmar herramienta actual y mejorar cadencia y segmentación
 5. **SEO editorial** — auditoría SEO ya existe en [[2026-06 Auditoría SEO - Diners]]

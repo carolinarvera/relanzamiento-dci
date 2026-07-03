@@ -78,7 +78,7 @@ Un número por marca para separar bandejas y no contaminar segmentación:
 | **Compradores catálogo Libros** | Libros | B2C | Compra en tienda online |
 | **Interesados Libros (lista)** | Libros | B2C | Opt-in campañas regalo / seeding |
 | **Prospectos Libros de encargo** | Libros | B2B | Consulta recibida / outreach Nicolás |
-| **Miembros Club Vive Beneficios** | Experiencias | B2C | Membresía activa |
+| **Miembros Beneficios Suscriptores** | Experiencias | B2C | Membresía activa |
 | **Empresas Experiencias (Rama 1)** | Experiencias | B2B | Davivienda Banca Privada + Grupo Bolívar |
 | **Aliados del Club** | Experiencias | Aliados | Aliado activo confirmado |
 
@@ -156,11 +156,11 @@ Igual que AXXIS. Ajuste: en Diners los anunciantes principales son marcas de luj
 
 ### 4.4 Experiencias
 
-#### B2C — Miembros del Club / Vive Beneficios
+#### B2C — Miembros Beneficios Suscriptores
 
 | Caso de uso | Trigger | Mensaje | Frecuencia |
 |-------------|---------|---------|------------|
-| **Bienvenida al Club** | Membresía activada | "Hola [nombre], ya eres parte del Club de Beneficios de [AXXIS/Diners]. Tu primer beneficio activo: [beneficio concreto con instrucciones]." | Una vez |
+| **Bienvenida al Club** | Membresía activada | "Hola [nombre], ya eres parte de Beneficios Suscriptores de [AXXIS/Diners]. Tu primer beneficio activo: [beneficio concreto con instrucciones]." | Una vez |
 | **Recordatorio de beneficio próximo a vencer** | 7 días antes del vencimiento | "Tu beneficio en [nombre aliado] vence el [fecha]. Para activarlo antes de que expire: [instrucción o link]." | Automático |
 | **Confirmación de experiencia** | Registro confirmado | "Tu lugar en [nombre de la experiencia] está reservado. Fecha: [fecha]. Lugar: [dirección]. Detalles completos 24h antes por aquí." | Por evento |
 | **Recordatorio 24h antes** | T-24h del evento | "Mañana es [nombre de la experiencia]. Te esperamos a las [hora] en [lugar]. Confirma asistencia respondiendo 'Confirmo' o escríbenos si necesitas algo." | Por evento |
@@ -179,7 +179,7 @@ Igual que AXXIS. Ajuste: en Diners los anunciantes principales son marcas de luj
 
 | Caso de uso | Trigger | Mensaje | Frecuencia |
 |-------------|---------|---------|------------|
-| **Confirmación de alianza** | Aliado firmado | "Hola [nombre], confirmamos la alianza de [nombre del negocio] con el Club de Beneficios de [AXXIS/Diners]. Los detalles de activación y materiales de comunicación te llegan esta semana." | Una vez |
+| **Confirmación de alianza** | Aliado firmado | "Hola [nombre], confirmamos la alianza de [nombre del negocio] con Beneficios Suscriptores de [AXXIS/Diners]. Los detalles de activación y materiales de comunicación te llegan esta semana." | Una vez |
 | **Briefing de experiencia** | Evento próximo con ese aliado | "Hola [nombre], te enviamos el briefing para [nombre de la experiencia] del [fecha]. Por favor confirmar disponibilidad y capacidad antes del [fecha límite]." | Por evento |
 | **Verificación de beneficio activo** | Antes de publicar beneficio en newsletter/WA | "Hola [nombre], vamos a comunicar el beneficio de [condiciones] a los miembros del club la semana del [fecha]. ¿Está disponible y sin cambios?" | Por publicación |
 | **Resumen de activaciones** | Fin de cada mes | "Resumen de [mes]: [número] miembros activaron el beneficio de [nombre del negocio] a través del club. Te compartimos el detalle. ¿Todo bien para continuar el próximo mes?" | Mensual |
