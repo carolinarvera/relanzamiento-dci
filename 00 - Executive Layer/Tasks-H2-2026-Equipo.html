@@ -423,6 +423,23 @@
 
     <div class="sidebar-section">
       <div class="sidebar-label-row">
+        <div class="sidebar-label">Persona</div>
+        <div class="filter-dot" id="fdot-owner"></div>
+      </div>
+      <div class="owner-select-wrap">
+        <select class="owner-select" id="ownerSelect" onchange="setOwner(this)">
+          <option value="">Todas las personas</option>
+        </select>
+        <svg class="owner-select-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="m6 9 6 6 6-6"/>
+        </svg>
+      </div>
+    </div>
+
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-section">
+      <div class="sidebar-label-row">
         <div class="sidebar-label">Prioridad</div>
         <div class="filter-dot" id="fdot-pri"></div>
       </div>
@@ -444,7 +461,7 @@
 
     <div class="sidebar-section">
       <div class="sidebar-label-row">
-        <div class="sidebar-label">Momento de pipeline</div>
+        <div class="sidebar-label">Pipeline</div>
         <div class="filter-dot" id="fdot-pipeline"></div>
       </div>
       <div class="sidebar-chip" data-f="pipeline" data-v="Atracción" onclick="setF('pipeline','Atracción',this)">
@@ -470,23 +487,6 @@
       <div class="sidebar-chip" data-f="pipeline" data-v="Infraestructura" onclick="setF('pipeline','Infraestructura',this)">
         <span class="chip-dot pldot-Infraestructura"></span> Infraestructura
         <span class="chip-count" id="cnt-pl-Infraestructura"></span>
-      </div>
-    </div>
-
-    <hr class="sidebar-divider">
-
-    <div class="sidebar-section">
-      <div class="sidebar-label-row">
-        <div class="sidebar-label">Persona</div>
-        <div class="filter-dot" id="fdot-owner"></div>
-      </div>
-      <div class="owner-select-wrap">
-        <select class="owner-select" id="ownerSelect" onchange="setOwner(this)">
-          <option value="">Todas las personas</option>
-        </select>
-        <svg class="owner-select-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="m6 9 6 6 6-6"/>
-        </svg>
       </div>
     </div>
 
