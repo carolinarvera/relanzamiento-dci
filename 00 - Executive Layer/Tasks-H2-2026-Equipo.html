@@ -113,6 +113,7 @@
   .chip-dot-EG { background: #2d5a27; }
   .chip-dot-LI { background: #5c3617; }
   .chip-dot-EX { background: #7c5000; }
+  .chip-dot-BS { background: #1a5568; }
   .chip-count {
     margin-left: auto; font-size: 10px; color: var(--text-muted);
     background: var(--bg); border-radius: 10px; padding: 1px 6px;
@@ -198,6 +199,7 @@
   .dot-EG { background: #2d5a27; }
   .dot-LI { background: #5c3617; }
   .dot-EX { background: #7c5000; }
+  .dot-BS { background: #1a5568; }
   .dot-Atracción { background: #0070f3; }
   .dot-Consideración { background: #6f42c1; }
   .dot-Conversión { background: #059669; }
@@ -266,6 +268,7 @@
   .id-EG { color: #2d5a27; }
   .id-LI { color: #5c3617; }
   .id-EX { color: #7c5000; }
+  .id-BS { color: #1a5568; }
 
   .task-body { flex: 1; min-width: 0; }
   .task-title { font-size: 12.5px; font-weight: 500; line-height: 1.45; margin-bottom: 3px; color: var(--text); }
@@ -313,6 +316,7 @@
   .bu-EG { background: rgba(45,90,39,.08); color: #2d5a27; }
   .bu-LI { background: rgba(92,54,23,.08); color: #5c3617; }
   .bu-EX { background: rgba(124,80,0,.08); color: #7c5000; }
+  .bu-BS { background: rgba(26,85,104,.08); color: #1a5568; }
 
   .owner-tag { display: none; } /* moved to .task-owner row */
 
@@ -408,6 +412,10 @@
       <div class="sidebar-chip" data-f="bu" data-v="EX" onclick="setF('bu','EX',this)">
         <span class="chip-dot chip-dot-EX"></span> Experiencias
         <span class="chip-count" id="cnt-EX"></span>
+      </div>
+      <div class="sidebar-chip" data-f="bu" data-v="BS" onclick="setF('bu','BS',this)">
+        <span class="chip-dot chip-dot-BS"></span> Beneficios Suscriptores
+        <span class="chip-count" id="cnt-BS"></span>
       </div>
     </div>
 
@@ -521,9 +529,9 @@
 <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-firestore-compat.js"></script>
 <script>
-const BU_LABELS = { AX:'AXXIS', DI:'Diners', EG:'Ediciones Gamma', LI:'Libros', EX:'Experiencias' };
-const BU_GROUP_ORDER = ['AX','DI','RE','EG','LI','EX'];
-const BU_GROUP_LABELS = { AX:'AXXIS', DI:'Diners', RE:'AXXIS + Diners (compartidas)', EG:'Ediciones Gamma', LI:'Libros', EX:'Experiencias & Alianzas' };
+const BU_LABELS = { AX:'AXXIS', DI:'Diners', EG:'Ediciones Gamma', LI:'Libros', EX:'Experiencias', BS:'Beneficios Suscriptores' };
+const BU_GROUP_ORDER = ['AX','DI','RE','EG','LI','EX','BS'];
+const BU_GROUP_LABELS = { AX:'AXXIS', DI:'Diners', RE:'AXXIS + Diners (compartidas)', EG:'Ediciones Gamma', LI:'Libros', EX:'Experiencias & Alianzas', BS:'Beneficios Suscriptores' };
 const PIPELINE_ORDER = ['Atracción','Consideración','Conversión','Retención','Fidelización','Infraestructura'];
 const PIPELINE_DESC = {
   'Atracción':'Visibilidad, alcance orgánico, audiencias nuevas',
@@ -590,7 +598,7 @@ const T=[
 {id:49,sid:"8RE",title:"Nuevos formatos digitales B2B",desc:"Webinars co-patrocinados, masterclasses y transmisiones en vivo.",owners:["Juan David","Paola Nossa","Jeison Montero"],ns:"NS01",bu:["AX","DI"],tipo:"Pauta B2B",pri:"alta",pipeline:"Atracción"},
 {id:50,sid:"9RE",title:"Experiencias B2B co-patrocinados",desc:"Visitas en sitio. Temática editorial. Jeison Montero PM — coordina: Paola Nossa, Mateo Arias Ortiz, Ernesto.",owners:["Jeison Montero","Paola Nossa","Mateo Arias Ortiz","Ernesto Rodriguez"],ns:"NS01",bu:["AX","DI"],tipo:"Pauta B2B",pri:"alta",pipeline:"Atracción"},
 {id:51,sid:"10RE",title:"Revisión tarifaria y kits de venta (combos print + digital)",desc:"Analizar tarifarios actuales y kits. Jeison Montero coordina entre comercial, Sebastián Díaz y Juan David.",owners:["Jeison Montero","Equipo Comercial","Paola Nossa"],ns:"NS01",bu:["AX","DI"],tipo:"Venta B2B",pri:"media",pipeline:"Infraestructura"},
-{id:52,sid:"11RE",title:"Estrategia Alianzas Beneficios Suscriptores (post-Privilegios Davivienda)",desc:"Estructurar ofertas donde Gamma aporte audiencia y los aliados del banco asuman beneficios. Se debe aterrizar precios y paquetes foco % descuento / $ valor pauta.",owners:["Paola Pantaleon"],ns:"NS01",bu:["AX","DI"],tipo:"Alianzas",pri:"alta",pipeline:"Fidelización"},
+{id:52,sid:"11RE",title:"Estrategia Alianzas Beneficios Suscriptores (post-Privilegios Davivienda)",desc:"Estructurar ofertas donde Gamma aporte audiencia y los aliados del banco asuman beneficios. Se debe aterrizar precios y paquetes foco % descuento / $ valor pauta.",owners:["Paola Pantaleon"],ns:"NS01",bu:["AX","DI","BS"],tipo:"Alianzas",pri:"alta",pipeline:"Fidelización"},
 {id:53,sid:"12RE",title:"Auditar HubSpot — config y segmentación actual",desc:"Cargas 'dummy' sin separación AXXIS/Diners. Auditar estructura, propiedades y listas.",owners:["Jeison Montero","Carolina"],ns:"NS02",bu:["AX","DI"],tipo:"Suscripciones B2C",pri:"alta",pipeline:"Infraestructura"},
 {id:54,sid:"13RE",title:"Configurar journey HubSpot suscriptores",desc:"Email bienvenida (D+0), onboarding (D+3, D+7), alerta renovación (-15 días).",owners:["Jeison Montero","Juan David","Carolina"],ns:"NS02",bu:["AX","DI"],tipo:"Suscripciones B2C",pri:"alta",pipeline:"Infraestructura"},
 {id:55,sid:"14RE",title:"Planear comunicaciones omnicanal + customer journey",desc:"Mapear todos los touchpoints: email, WhatsApp, RRSS, web. Ernesto define los mensajes clave.",owners:["Carolina","Ernesto Rodriguez","Jeison Montero"],ns:"NS02",bu:["AX","DI"],tipo:"Suscripciones B2C",pri:"alta",pipeline:"Consideración"},
@@ -645,12 +653,12 @@ const T=[
 {id:109,sid:"2EX",title:"Modelo de contrato anual corporativo",desc:"Contrato único con múltiples fechas y valores. Términos generales + anexos operativos.",owners:["Natalia Castaño","Carolina"],ns:"NS01",bu:["EX"],tipo:"Alianzas",pri:"alta",pipeline:"Infraestructura"},
 {id:110,sid:"3EX",title:"Portafolio comercializable Experiencias 2026",desc:"Catálogo: arte y cultura, bienestar, gastronomía, legacy. Base para prospectar marcas fuera de Davivienda.",owners:["Paola Pantaleon"],ns:"NS01",bu:["EX"],tipo:"Alianzas",pri:"alta",pipeline:"Consideración"},
 {id:112,sid:"5EX",title:"Expansión Experiencias más allá de Davivienda",desc:"Seguros Bolívar, Constructora Bolívar, sector automotriz, farmacéutico. Excluir banca competidora.",owners:["Paola Pantaleon","Carolina"],ns:"NS01",bu:["EX"],tipo:"Alianzas",pri:"alta",pipeline:"Atracción"},
-{id:117,sid:"10EX",title:"Sistema de niveles aliados (Básico / Premium / Plus)",desc:"Básico: menor %, landing. Premium: % medio + landing + mailing. Plus: mayor % + todos los canales.",owners:["Nicolas Serna","Paola Pantaleon"],ns:"NS01",bu:["EX"],tipo:"Beneficios Club B2C",pri:"alta",pipeline:"Infraestructura"},
-{id:118,sid:"11EX",title:"Red de alianzas gastronómicas — primeros aliados Diners",desc:"Prospectar y activar restaurantes, bares y chefs premium en Bogotá. Aliado da descuento; Gamma cobra por visibilidad.",owners:["Paola Pantaleon"],ns:"NS01",bu:["EX"],tipo:"Beneficios Club B2C",pri:"alta",pipeline:"Fidelización"},
-{id:119,sid:"12EX",title:"Definición de plataforma Beneficios Suscriptores",desc:"Validar 3 tipos de accesos: Suscriptor, Aliado y Editorial Gamma. Decidir entre PWA, validación por cédula o app nativa.",owners:["Carolina","Jeison Montero"],ns:"NS02",bu:["EX"],tipo:"Beneficios Club B2C",pri:"media",pipeline:"Fidelización"},
-{id:120,sid:"13EX",title:"Media kit aliados Beneficios Suscriptores",desc:"Propuesta para marcas que quieran unirse al Club: qué obtienen por nivel, visibilidad editorial.",owners:["Ernesto Rodriguez","Paola Nossa"],ns:"NS01",bu:["EX"],tipo:"Beneficios Club B2C",pri:"alta",pipeline:"Consideración"},
-{id:121,sid:"14EX",title:"Newsletter onboarding Beneficios Suscriptores",desc:"Bienvenida al Club: cómo activar beneficios y reporte de ahorros. Ernesto produce el copy; Jeison configura el journey.",owners:["Ernesto Rodriguez","Jeison Montero"],ns:"NS02",bu:["EX"],tipo:"Beneficios Club B2C",pri:"alta",pipeline:"Retención"},
-{id:122,sid:"15EX",title:"Consulta legal — responsabilidad civil aliados, contratos y datos",desc:"(1) responsabilidad si aliado causa daño al suscriptor, (2) estructura de contratos con aliados, (3) qué datos personales se pueden compartir.",owners:["Carolina"],ns:"NS01",bu:["EX"],tipo:"Alianzas",pri:"alta",pipeline:"Infraestructura"},
+{id:117,sid:"10EX",title:"Sistema de niveles aliados (Básico / Premium / Plus)",desc:"Básico: menor %, landing. Premium: % medio + landing + mailing. Plus: mayor % + todos los canales.",owners:["Nicolas Serna","Paola Pantaleon"],ns:"NS01",bu:["BS"],tipo:"Beneficios Club B2C",pri:"alta",pipeline:"Infraestructura"},
+{id:118,sid:"11EX",title:"Red de alianzas gastronómicas — primeros aliados Diners",desc:"Prospectar y activar restaurantes, bares y chefs premium en Bogotá. Aliado da descuento; Gamma cobra por visibilidad.",owners:["Paola Pantaleon"],ns:"NS01",bu:["BS"],tipo:"Beneficios Club B2C",pri:"alta",pipeline:"Fidelización"},
+{id:119,sid:"12EX",title:"Definición de plataforma Beneficios Suscriptores",desc:"Validar 3 tipos de accesos: Suscriptor, Aliado y Editorial Gamma. Decidir entre PWA, validación por cédula o app nativa.",owners:["Carolina","Jeison Montero"],ns:"NS02",bu:["BS"],tipo:"Beneficios Club B2C",pri:"media",pipeline:"Fidelización"},
+{id:120,sid:"13EX",title:"Media kit aliados Beneficios Suscriptores",desc:"Propuesta para marcas que quieran unirse al Club: qué obtienen por nivel, visibilidad editorial.",owners:["Ernesto Rodriguez","Paola Nossa"],ns:"NS01",bu:["BS"],tipo:"Beneficios Club B2C",pri:"alta",pipeline:"Consideración"},
+{id:121,sid:"14EX",title:"Newsletter onboarding Beneficios Suscriptores",desc:"Bienvenida al Club: cómo activar beneficios y reporte de ahorros. Ernesto produce el copy; Jeison configura el journey.",owners:["Ernesto Rodriguez","Jeison Montero"],ns:"NS02",bu:["BS"],tipo:"Beneficios Club B2C",pri:"alta",pipeline:"Retención"},
+{id:122,sid:"15EX",title:"Consulta legal — responsabilidad civil aliados, contratos y datos",desc:"(1) responsabilidad si aliado causa daño al suscriptor, (2) estructura de contratos con aliados, (3) qué datos personales se pueden compartir.",owners:["Carolina"],ns:"NS01",bu:["BS"],tipo:"Alianzas",pri:"alta",pipeline:"Infraestructura"},
 {id:123,sid:"EJ01",title:"Limpiar lifecycle stages HubSpot — migrar 'Contacto' → 'Lead'",desc:"64,162 contactos atrapados en etapa custom que bloquea todo workflow. Sin esto, nurturing nunca corre.",owners:["Carolina"],ns:"HubSpot",bu:["AX","DI"],tipo:"Suscripciones B2C",pri:"alta",pipeline:"Infraestructura",due:"julio 2026"},
 {id:124,sid:"EJ02",title:"Crear propiedades contacto HubSpot (7 propiedades)",desc:"subscription_type · subscription_start_date · subscription_end_date · ltv_cumulative_cop · nps_score · churn_risk · referral_source_contact. Prerequisito de workflows de renovación y LTV.",owners:["Carolina"],ns:"HubSpot",bu:["AX","DI"],tipo:"Suscripciones B2C",pri:"alta",pipeline:"Infraestructura",due:"julio 2026"},
 {id:125,sid:"EJ03",title:"Crear WF-01 Lead Nurturing AXXIS",desc:"Secuencia 4 emails / 7 días. Trigger: lifecycle = Lead. Con 77K leads y CR 5% → ~3,850 suscriptores sin gasto adicional.",owners:["Carolina"],ns:"HubSpot",bu:["AX"],tipo:"Suscripciones B2C",pri:"alta",pipeline:"Consideración",due:"julio 2026"},
@@ -659,8 +667,8 @@ const T=[
 {id:128,sid:"EJ06",title:"Crear WF-06 Renovación anticipada",desc:"4 emails: -60d primer aviso · -30d gancho contenido · -15d urgencia precio · -3d cierre. Meta renewal rate año 1: 65-70%.",owners:["Carolina"],ns:"HubSpot",bu:["AX","DI"],tipo:"Suscripciones B2C",pri:"media",pipeline:"Retención",due:"julio 2026"},
 {id:129,sid:"EJ07",title:"Embed HubSpot form en landing /suscribirse/ AXXIS",desc:"Sin esto, 100% de clics Meta se pierden sin registro en CRM. Prerequisito: landing URL ya corregida a /suscribirse/.",owners:["Juan David"],ns:"HubSpot",bu:["AX"],tipo:"Suscripciones B2C",pri:"alta",pipeline:"Infraestructura",due:"julio 2026"},
 {id:130,sid:"EJ08",title:"Activar Meta Lead Ads nativo → HubSpot",desc:"702 clics en mayo, 0 leads en HubSpot. CPL = ∞. Integrar vía Meta → HubSpot en Configuración de cuenta.",owners:["Sebastián Díaz"],ns:"HubSpot",bu:["AX","DI"],tipo:"Suscripciones B2C",pri:"alta",pipeline:"Infraestructura",due:"2026-07-10"},
-{id:131,sid:"EJ09",title:"Reunión stakeholders — presentar nuevo modelo Experiencias",desc:"Presentar las dos ramas: Corporativa (B2B Banca Privada) + Always On (Club de Beneficios suscriptores). Definir siguiente paso.",owners:["Paola Pantaleon"],ns:"NS01",bu:["EX"],tipo:"Alianzas",pri:"alta",pipeline:"Infraestructura",due:"julio 2026"},
-{id:132,sid:"EJ10",title:"Criterios selección aliados + estructura niveles Beneficios Suscriptores",desc:"Formalizar condiciones de exclusividad, descuentos y comisiones por nivel Básico / Premium / Plus.",owners:["Paola Pantaleon"],ns:"NS01",bu:["EX"],tipo:"Beneficios Club B2C",pri:"alta",pipeline:"Fidelización",due:"2026-07-30"},
+{id:131,sid:"EJ09",title:"Reunión stakeholders — presentar nuevo modelo Experiencias",desc:"Presentar las dos ramas: Corporativa (B2B Banca Privada) + Always On (Club de Beneficios suscriptores). Definir siguiente paso.",owners:["Paola Pantaleon"],ns:"NS01",bu:["BS"],tipo:"Alianzas",pri:"alta",pipeline:"Infraestructura",due:"julio 2026"},
+{id:132,sid:"EJ10",title:"Criterios selección aliados + estructura niveles Beneficios Suscriptores",desc:"Formalizar condiciones de exclusividad, descuentos y comisiones por nivel Básico / Premium / Plus.",owners:["Paola Pantaleon"],ns:"NS01",bu:["BS"],tipo:"Beneficios Club B2C",pri:"alta",pipeline:"Fidelización",due:"2026-07-30"},
 {id:133,sid:"EJ11",title:"Enviar base suscriptores activos a Sebastián",desc:"Necesaria para excluir suscriptores activos y vencidos de campañas Meta. Sin esto, presupuesto impacta a quienes ya compraron.",owners:["Carolina"],ns:"HubSpot",bu:["AX","DI"],tipo:"Suscripciones B2C",pri:"alta",pipeline:"Infraestructura",due:"2026-07-04"},
 {id:134,sid:"EJ12",title:"Cambiar campaña a objetivo conversiones",desc:"Campaña activa NO se apaga — preservar aprendizaje algoritmo Meta.",owners:["Sebastián Díaz"],ns:"NS02",bu:["AX","DI"],tipo:"Suscripciones B2C",pri:"alta",pipeline:"Conversión",due:"2026-07-07"},
 {id:135,sid:"EJ13",title:"Actualizar anuncios — reemplazar activos por video (Reels)",desc:"Reemplazar activos de bajo rendimiento (imágenes sin CTA) por Reels usando video de portada.",owners:["Sebastián Díaz"],ns:"NS03",bu:["AX","DI"],tipo:"Suscripciones B2C",pri:"alta",pipeline:"Atracción",due:"2026-07-07"},
@@ -830,7 +838,7 @@ function card(t){
 }
 
 function updateSidebarCounts(){
-  const buCodes=['AX','DI','EG','LI','EX'];
+  const buCodes=['AX','DI','EG','LI','EX','BS'];
   const el=(id)=>document.getElementById(id);
   el('cnt-all').textContent=T.length;
   buCodes.forEach(b=>{ const cnt=T.filter(t=>t.bu.includes(b)).length; const el2=document.getElementById('cnt-'+b); if(el2)el2.textContent=cnt; });
