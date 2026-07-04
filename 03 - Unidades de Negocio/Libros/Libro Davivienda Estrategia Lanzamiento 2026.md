@@ -9,7 +9,7 @@ confidence: high
 ---
 
 ## For future Claude
-Full launch strategy for the Davivianda digital book (100% free download, physical event September 29, 2026). Two agencies: Babel (PR, Juan Camilo Perdomo) and LEO Burnett (creative, Luisa Saenz). Day D confirmed: Sept 29. Pre-launch runs July 6 - Sept 28. Post-launch: Oct 1 - Nov 30.
+Full launch strategy for the Davivianda digital book. Day D: September 29, 2026. Calibrated with real 2025-2026 campaign data. Key validated finding: journalist/reporter reels are the top format (+561%); Stories tipo social do NOT work (80-100 views); LinkedIn Davivienda Corredores is critical (~17K impressions); YouTube Shorts grew 1,091%. See companion file Libro Davivienda Resultados Campana 2025-2026.md for benchmark data.
 
 ---
 
@@ -18,7 +18,22 @@ Full launch strategy for the Davivianda digital book (100% free download, physic
 **Producto:** Libro digital 100% gratuito · Descarga sin costo
 **DIA D — Evento fisico:** 29 de septiembre 2026 (lunes)
 **Autores:** Economistas y expertos de Davivienda
-**Metrica de referencia:** 700K visitas en lanzamientos previos
+**Benchmark:** 228.619 sesiones oct-nov 2025 · 570.6K vistas Shorts · 2.650 interacciones LinkedIn
+
+---
+
+## Aprendizajes 2025 que cambian la estrategia 2026
+
+| Aprendizaje | Impacto en el plan |
+|---|---|
+| Reels reportero/periodista = +561% vs promedio | Formato PRIORITARIO. Contratar periodista/reportero para el evento y para piezas pre-launch |
+| "Que es el libro?" = +430% (carrusel) y +576% (video) | Publicar como primera pieza de expectativa — no esperar al evento |
+| Stories tipo social = 80-100 vistas, 3 likes | ELIMINADO del plan. No producir. |
+| LinkedIn Davivienda Corredores = 17K impresiones + 2.650 interacciones | Canal critico. Coordinar 6+ publicaciones regionales con Natalia |
+| YouTube Shorts = 570K vistas (vs 47.9K en 2025) | Dedicar presupuesto de produccion a Shorts dinamicos |
+| Temas coyuntura local (salario minimo) = +206% | Vincular capitulos del libro a coyuntura economica del momento (sep 2026) |
+| Investigadores compartiendo en sus redes = impacto real | Incluir en el plan que cada autor amplifique desde su perfil personal |
+| Influencer (378K subs) = 5.793 vistas | Incluir 1 aliado financiero digital — buscar perfil con mayor conversion |
 
 ---
 
@@ -26,40 +41,28 @@ Full launch strategy for the Davivianda digital book (100% free download, physic
 
 | Fase | Periodo | Semanas |
 |---|---|---|
-| Pre-lanzamiento · Autoridad autores | 6 jul — 9 ago | S1 - S5 |
-| Pre-lanzamiento · Calentamiento | 10 ago — 14 sep | S6 - S11 |
-| Pre-lanzamiento · Embargo | 15 sep — 28 sep | S12 - S13 |
-| **DIA D — LANZAMIENTO** | **29 sep 2026** | — |
-| Post-lanzamiento | 30 sep — 30 nov | S1-P - S9-P |
+| Pre · Autoridad autores | 6 jul — 9 ago | S1-S5 |
+| Pre · Calentamiento | 10 ago — 14 sep | S6-S11 |
+| Pre · Embargo y activacion | 15 sep — 28 sep | S12-S13 |
+| **DIA D** | **29 sep 2026** | — |
+| Post-lanzamiento | 30 sep — 30 nov | S1-P a S9-P |
 
 ---
 
-## Norte de la estrategia
+## Canales activos y metas 2026
 
-| Objetivo | Meta |
-|---|---|
-| Descargas del libro | Superar 700K visitas historicas |
-| Cobertura earned media | 10+ medios especializados economia/finanzas |
-| Email dia D | OR > 65% · CTR > 10% |
-| Autoridad autores | Cada autor con articulo en Vision + perfil LI optimizado antes del 15 sep |
-
-**Regla de oro:** Los autores son el eje de autoridad. Todo el contenido gira alrededor de ellos, no del banco.
-
----
-
-## Canales activos
-
-| Canal | Tipo | Owner |
-|---|---|---|
-| vision.davivianda.com | Owned | Gamma / Jeison |
-| Email Braze (135K · 61% OR) | Owned | Estefania Ochoa |
-| Instagram @visiondavivienda | Owned | Estefania Ochoa |
-| X / Twitter | Owned | Estefania Ochoa |
-| LinkedIn (pagina + autores) | Owned + Shared | Autores + Estefania |
-| YouTube Vision | Owned | Jeison / Autores |
-| Perfiles personales autores (LI + IG) | Shared | Cada autor |
-| Medios especializados (El Tiempo, radio, digital) | Earned | Babel / Juan Camilo |
-| Davivienda Corredores RRSS | Shared | Davivienda (coord. Natalia) |
+| Canal | Tipo | Owner | Meta 2026 |
+|---|---|---|---|
+| vision.davivianda.com | Owned | Gamma / Jeison | >280K sesiones oct-nov |
+| Email Braze (135K · 61% OR) | Owned | Estefania Ochoa | OR >65% dia D · CTR >10% |
+| Instagram @visiondavivienda | Owned | Estefania Ochoa | >3M vistas Reels acumuladas |
+| X / Twitter | Owned | Estefania Ochoa | >150K alcance organico |
+| LinkedIn Vision (pagina + autores) | Owned + Shared | Autores + Estefania | >3.000 interacciones |
+| LinkedIn Davivienda Corredores | Shared · CRITICO | Natalia / Davivienda | 6 publicaciones · >20K impresiones |
+| YouTube Shorts | Owned | Jeison / LEO | >800K vistas Shorts |
+| Perfiles personales autores | Shared | Cada autor | 100% autores publicando dia D |
+| Medios especializados | Earned | Babel / Juan Camilo | 5+ notas publicadas dia D |
+| Influencer financiero digital | Paid/Co | Carolina / Babel | TBD — definir aliado antes del 15 jul |
 
 ---
 
@@ -67,202 +70,213 @@ Full launch strategy for the Davivianda digital book (100% free download, physic
 
 ### BLOQUE A · Autoridad autores — 6 jul al 9 ago (S1-S5)
 
-**Objetivo:** Que los autores del libro sean reconocibles en Vision y en LinkedIn antes de que arranque cualquier convocatoria masiva. El publico llega al evento sabiendo quienes son.
+**Objetivo:** Que los autores del libro sean reconocibles en Vision y en LinkedIn antes de cualquier convocatoria masiva.
 
-**Insumos necesarios antes del 6 jul:**
-- Lista de autores: nombre, cargo, foto profesional, area de expertise, extracto de su capitulo
+**Insumos necesarios antes del 6 jul:** lista autores + foto + cargo + extracto del capitulo.
 
 **vision.davivianda.com — 1 articulo por autor, 1 por semana:**
 
 | Semana | Fecha | Contenido |
 |---|---|---|
-| S1 | 6-12 jul | Articulo Autor 1 — perfil + extracto capitulo |
-| S2 | 13-19 jul | Articulo Autor 2 — perfil + extracto capitulo |
-| S3 | 20-26 jul | Articulo Autor 3 — perfil + extracto capitulo |
-| S4 | 27 jul - 2 ago | Articulo Autor 4 — perfil + extracto capitulo |
-| S5 | 3-9 ago | Articulo Autor 5 (o intro al libro si hay menos autores) |
+| S1 | 6-12 jul | Articulo Autor 1 — perfil + extracto capitulo + firma con link LinkedIn |
+| S2 | 13-19 jul | Articulo Autor 2 |
+| S3 | 20-26 jul | Articulo Autor 3 |
+| S4 | 27 jul - 2 ago | Articulo Autor 4 |
+| S5 | 3-9 ago | Articulo Autor 5 / intro al libro si hay menos autores |
 
-Estructura de cada articulo: foto del autor · cargo · area de expertise · pregunta central de su capitulo · extracto exclusivo de 1-2 parrafos · firma con link al perfil LinkedIn del autor.
+**Instagram — serie "Conoce al autor" (CARRUSEL, no Stories):**
+- 1 carrusel por autor, publicado la misma semana del articulo
+- Hook H7 en slide 1: "Llevo X anos analizando [tema]. En el libro de Vision escribi algo que el mercado no esta viendo."
+- Slides 2-5: quien es, que capitulo escribe, 1 dato exclusivo, donde leerlo
+- Ultimo slide: CTA al sitio
 
-**LinkedIn autores (paralelo al articulo):**
-- Semana del articulo: el autor optimiza su headline y about (coord. Estefania + Babel)
-- Mismo dia de publicacion del articulo: el autor comparte el link en LinkedIn con comentario personal
-- Vision publica presentacion del autor desde la pagina empresa (link en 1er comentario)
+**LinkedIn autores (mismo dia del articulo):**
+- El autor optimiza headline y about antes de que salga su articulo
+- Dia de publicacion del articulo: el autor comparte con comentario personal
+- Vision publica presentacion desde la pagina empresa (link en 1er comentario)
 
-**Instagram Vision — serie "Conoce al autor":**
-- 1 carrusel por autor, publicado el mismo dia del articulo
-- Slide 1 (hook H7): "Llevo X anos analizando [tema]. En el libro de Vision digo algo que el mercado no esta viendo."
-- Slides 2-5: quien es, que capitulo escribe, 1 dato exclusivo de su capitulo, donde leerlo
-- Ultimo slide: "Analisis completo en vision.davivianda.com [link en bio]"
-
-**Babel — acciones paralelas bloque A:**
-- Brief de autores enviado a editores de economia de medios target (sin embargo, solo presentacion)
-- Contacto previo: El Tiempo (editor economia), La Republica, Portafolio, Semana Economica, W Radio, Blu Radio
+**Babel — bloque A:**
+- Brief de autores enviado a editores de medios target (presentacion, sin embargo)
+- Contacto previo: El Tiempo, La Republica, Portafolio, Semana Economica, W Radio, Blu Radio
 
 ---
 
 ### BLOQUE B · Calentamiento tematico — 10 ago al 14 sep (S6-S11)
 
-**Objetivo:** Instalar los temas del libro en la conversacion publica. Los lectores de Vision ya conocen a los autores; ahora conocen los temas. El libro empieza a ser anticipado.
+**Objetivo:** Instalar los temas del libro en la conversacion publica antes de que exista convocatoria formal.
 
-**vision.davivianda.com — serie tematica del libro:**
+**Pieza ancla (NUEVO — basado en 2025):**
+Producir el video "Que es el libro 2026?" en la semana del 10-16 ago.
+- Formato: Reel 60-90 seg · Estilo reportero · Autor principal del libro responde
+- Publicar en Instagram Y YouTube simultaneamente
+- Este video es el #1 de expectativa — los datos de 2025 muestran +576% vs promedio en YouTube y +430% en carrusel equivalente en IG
+
+**vision.davivianda.com — articulos tematicos:**
 
 | Semana | Fecha | Contenido |
 |---|---|---|
-| S6 | 10-16 ago | Articulo tema 1 del libro (basado en capitulo 1) |
-| S7 | 17-23 ago | Articulo tema 2 del libro |
-| S8 | 24-30 ago | Articulo tema 3 del libro |
-| S9 | 31 ago - 6 sep | Articulo tema 4 del libro |
-| S10 | 7-13 sep | Articulo tema 5 del libro + mencion del evento 29 sep |
-| S11 | 14-20 sep | Landing page del libro live (sin descarga aun) — "Disponible el 29 sep" |
+| S6 | 10-16 ago | "Que es el libro 2026?" — articulo introductorio + video embed |
+| S7 | 17-23 ago | Articulo tema 1 del libro (capitulo principal) |
+| S8 | 24-30 ago | Articulo tema 2 |
+| S9 | 31 ago - 6 sep | Articulo tema 3 |
+| S10 | 7-13 sep | Articulo tema 4 + mencion del evento 29 sep |
+| S11 | 14-20 sep | Landing page del libro live — "Disponible el 29 sep" |
+
+**Instagram — formatos validados (NO Stories tipo social):**
+- S6: Reel "Que es el libro?" — periodista/reportero pregunta al autor (LEO produce)
+- S7-S11: 1 Reel por semana — formato reportero con concepto del capitulo correspondiente
+- 1 carrusel coyuntural por semana — vincular capitulos a noticias economicas del momento (salario minimo, TRM, BanRep)
+
+**YouTube Shorts — dedicar produccion especifica:**
+- S6: Short "Que es el libro 2026?" (60 seg, mismo del Reel pero optimizado para Shorts)
+- S7-S11: 1 Short por semana — concepto economico del capitulo en formato rapido
+- Meta acumulada pre-launch: 300K vistas Shorts antes del 29 sep
 
 **Email Braze:**
-- Martes 11 ago: "Lo que viene en Vision este segundo semestre" — mencion del libro como el proyecto mas importante
-- Martes 1 sep: "El libro de analisis economico de Davivienda llega el 29 de septiembre — conoce a los autores" — A/B test asunto obligatorio
-- Martes 15 sep: "2 semanas para el lanzamiento — estos son los temas del libro" — 5 bullets con los temas principales
+- Martes 11 ago: "Lo que viene en Vision este segundo semestre" — mencion del libro
+- Martes 1 sep: "El libro de analisis economico de Davivienda llega el 29 de septiembre" — A/B test asunto
+- Martes 15 sep: "2 semanas para el lanzamiento — los temas que encontraras"
 
-**X / Twitter — hilos semanales:**
-- 1 hilo por semana basado en el articulo tematico de la semana
-- Hook H1 o H4 en primer tweet · link al articulo en el ultimo tweet
-- Tweets adicionales: dato provocador de cada capitulo (sin revelar el contexto)
+**X / Twitter:**
+- 1 hilo por semana basado en el articulo tematico (link al articulo en ultimo tweet)
+- Hilos de 6-8 tweets (los de 6 tweets funcionaron bien en 2025)
+- Tweets adicionales: dato provocador de cada capitulo
 
-**Instagram:**
-- Glosario visual animado (LEO): 1 Reel por semana, 1 concepto clave del libro, 30-45 seg
-- Story semanal: "Cuantas semanas faltan para el libro" (contador, no fecha exacta hasta S10)
+**Babel — bloque B:**
+- Semana del 10 ago: envio del "Diccionario de conceptos financieros" a mesas de radio
+  - Target: W Radio manana · Blu Radio · RCN Radio
+  - Formato: 1 pagina A4, 10 terminos clave del libro, branding Vision
+- Menciones en newsletters de economia (ago-sep) — no notas completas aun
+- Agenda entrevistas con autores para septiembre (pre-evento)
 
-**Babel — tacticas bloque B:**
-- Envio del "Diccionario de conceptos financieros" a mesas de radio (semana del 10 ago)
-  - Formato: 1 pagina A4, 10 terminos clave del libro, branding Vision Davivianda
-  - Target: W Radio manana · Blu Radio economia · RCN Radio
-- Menciones en newsletters de economia especializados (ago-sep): no notas completas, menciones de que viene
-- Gestion de agenda de entrevistas con autores para el mes de septiembre (pre-evento)
+**Influencer financiero digital — activar en sep:**
+- Perfil objetivo: canal YouTube finanzas personales Colombia, >200K suscriptores
+- Referencia: Mis Propias Finanzas (378K) funciono en 2025 — buscar aliado con mejor tasa de conversion
+- Contenido: "Como leer / aprovechar el Libro Vision Davivianda 2026" + link en comentarios
+- Coordinar con Babel antes del 15 jul para tener aliado confirmado para septiembre
 
 **LEO Burnett — produccion bloque B:**
-- Glosario visual animado: 6 Reels (1 por semana ago-sep)
-- Motion graphics por autor: 15 seg, dato clave del capitulo (para usar en S12-S13)
-- Plantillas de historia para Instagram personal de cada autor
-- Video teaser del evento: 60 seg, sin revelar contenido del libro, con fecha 29 sep
+- Reel "Que es el libro?" (periodista + autor) — pieza prioritaria, producir primera
+- 6 Shorts tematicos (1 por semana S6-S11)
+- 1 carrusel de expectativa (equivalente al +430% de 2025) — publicar semana S9
+- Plantillas para que cada autor use en su Instagram personal
 
 ---
 
 ### BLOQUE C · Embargo y activacion final — 15 sep al 28 sep (S12-S13)
 
-**Objetivo:** Tener todos los medios listos para publicar el dia D. Maximo calor previo al evento.
+**Semana 12 — 15-21 sep:**
 
-**Semana 12 — 15 al 21 sep:**
-
-- Vision.davivianda.com: landing page del libro live con boton "Disponible el 29 sep" + formulario de notificacion por email
-- Instagram: revelar fecha oficial del evento con pieza de impacto (LEO)
-- LinkedIn autores: cada autor publica "sneak peek" de su capitulo — 1 dato o conclusion sin contexto
+- Landing page del libro live: resumen + autores + boton "Disponible el 29 sep"
+- Instagram: pieza de impacto revelando fecha (LEO produce)
+- LinkedIn autores: sneak peek coordinado — todos en la misma semana
 - Email Braze martes 15 sep: "Ya tenemos fecha. El 29 de septiembre."
-- Babel: envio del libro bajo embargo a 5 medios target con brief de fecha de publicacion = 29 sep AM
+- Babel: envio del libro bajo embargo a 5 medios con brief — publicacion = 29 sep AM
+- Coordinar con Natalia: brief para LinkedIn Davivienda Corredores (6 plazas)
 
-**Semana 13 — 22 al 28 sep (semana previa al evento):**
+**Semana 13 — 22-28 sep:**
 
 | Dia | Accion | Canal |
 |---|---|---|
 | Lun 22 sep | Email "Faltan 7 dias" — anticipos + que encontraras | Braze |
-| Mar 23 sep | Babel confirma con todos los medios que la nota esta lista para el 29 | PR |
-| Mie 24 sep | Video teaser 60 seg publicado en YouTube e Instagram | IG + YT |
-| Jue 25 sep | Post LinkedIn Vision: "El lunes llega el libro. Esto es lo que encontraras." | LinkedIn |
-| Vie 26 sep | Hilo X: los 5 temas mas importantes del libro (sin spoilers) | X |
-| Sab 27 sep | Story IG: "Faltan 2 dias" + pieza de autor | Instagram |
-| Dom 28 sep | Recordatorio final: "Manana" | IG Story + X tweet |
+| Mar 23 sep | Babel confirma con todos los medios que la nota esta lista | PR |
+| Mie 24 sep | Video teaser 60 seg publicado en Instagram + YouTube | IG + YT |
+| Jue 25 sep | Post LinkedIn Vision: "El lunes llega el libro" | LinkedIn |
+| Vie 26 sep | Hilo X: los 5 temas mas importantes | X (19 tweets estilo 2025) |
+| Sab 27 sep | Short YouTube: "Falta 1 dia" — clip rapido del autor | YT Shorts |
+| Dom 28 sep | Story IG (solo si es contenido del autor, no foto social) | IG |
 
 ---
 
 ## FASE 2 — DIA D: 29 DE SEPTIEMBRE 2026 (LUNES)
 
-**Objetivo:** Maximo alcance en 48 horas. Todos los canales activan al mismo tiempo.
-
-### Cronograma hora a hora — lunes 29 sep
+### Cronograma hora a hora
 
 | Hora | Accion | Canal | Responsable |
 |---|---|---|---|
-| 6:00 AM | Email masivo Braze: "El libro ya esta disponible — descargalo ahora" | Email 135K | Estefania |
-| 7:00 AM | Post Instagram: portada del libro + CTA descarga (link en bio) | Instagram Vision | Estefania |
-| 7:00 AM | Hilo X: lanzamiento oficial + thread con los 5 temas + link en ultimo tweet | X Vision | Estefania |
-| 7:30 AM | Post LinkedIn Vision: lanzamiento + link descarga en primer comentario | LinkedIn Vision | Estefania |
-| 8:00 AM | Cada autor publica en LinkedIn: "Mi capitulo ya esta disponible — esto es lo que analice" | LinkedIn autores | Coord. Babel+Estefania |
+| 6:00 AM | Email masivo: "El libro ya esta disponible" | Braze 135K | Estefania |
+| 7:00 AM | Post Instagram: portada + CTA descarga | Instagram Vision | Estefania |
+| 7:00 AM | Hilo X lanzamiento oficial (19 tweets · link en ultimo) | X Vision | Estefania |
+| 7:30 AM | Post LinkedIn Vision: lanzamiento + link en 1er comentario | LinkedIn Vision | Estefania |
+| 8:00 AM | Cada autor publica en LinkedIn: "Mi capitulo ya esta disponible" | LinkedIn autores | Coord. Babel + Estefania |
+| 8:00 AM | Davivienda Corredores publica Post 1 en LinkedIn (Bogota) | LinkedIn Corredores | Natalia/Davivienda |
 | 9:00 AM | Notas de prensa publicadas en medios (embargo levantado) | Medios 5+ | Babel |
-| 9:30 AM | Davivienda Corredores publica en sus RRSS (si esta coordinado con Natalia) | Corredores | Natalia/Davivienda |
-| 10:00 AM | Cada autor publica pieza LEO en su Instagram personal | IG autores | Cada autor |
-| 11:00 AM | Story Instagram Vision: "Ya lo tienes? Cuantas personas lo han descargado?" | IG Stories | Estefania |
-| 12:00 PM | Tweet con el dato mas impactante del libro + link | X | Estefania |
-| 2:00 PM | Post LinkedIn Vision: cita de uno de los autores sobre el libro | LinkedIn | Estefania |
-| 4:00 PM | IG Reel: clip de 30 seg con el dato mas sorprendente del libro | Instagram | Estefania |
-| 6:00 PM | Evento fisico — cobertura en vivo por Stories | IG Stories | Estefania + equipo |
-| 8:00 PM | Resumen del evento: foto o clip del evento en Feed | Instagram | Estefania |
-| 9:00 PM | Tweet final del dia: "Fue un dia increible. El libro sigue disponible." + link | X | Estefania |
+| 9:30 AM | Cada autor publica pieza LEO en su Instagram personal | IG autores | Cada autor |
+| 10:00 AM | Reel reportero "El libro ya salio" — periodista en el evento | Instagram Vision | LEO + Estefania |
+| 11:00 AM | Davivienda Corredores publica Post 2 en LinkedIn (Medellin) | LinkedIn Corredores | Natalia |
+| 12:00 PM | Short YouTube: primer clip del evento | YT Shorts | Jeison |
+| 2:00 PM | Davivienda Corredores publica Post 3 en LinkedIn (otras plazas) | LinkedIn Corredores | Natalia |
+| 3:00 PM | Tweet con dato mas impactante del libro + link | X | Estefania |
+| 4:00 PM | Reel #2: "Preguntas a los invitados del evento" — formato 2025 validado | Instagram | LEO + Estefania |
+| 6:00 PM | Evento fisico — cobertura en vivo por Stories (del evento, no tipo social) | IG Stories | Estefania |
+| 8:00 PM | Resumen del evento en feed (foto o Reel, no galeria estatica) | Instagram | Estefania |
+| 9:00 PM | Tweet final: "Fue un dia historico. El libro sigue aqui." + link | X | Estefania |
 
 ### Dia D+1 — martes 30 sep
 
 | Accion | Canal | Responsable |
 |---|---|---|
-| Email "Por si te lo perdiste" — para quienes no abrieron el email del dia D | Braze | Estefania |
-| Video resumen del evento (2-3 min) publicado en YouTube | YouTube | LEO edita / Jeison sube |
-| Post LinkedIn autores: agradecimiento y reflexion sobre el evento | LinkedIn autores | Cada autor |
-| Post Instagram: galeria de fotos del evento | Instagram Vision | Estefania |
-| Babel: seguimiento a medios que no publicaron — propuesta nota de segunda vuelta | PR | Juan Camilo |
-| Reporte flash a Natalia: descargas primeras 24h, cobertura obtenida, OR email | WhatsApp/email | Carolina |
+| Email "Por si te lo perdiste" — no abrieron el del dia D | Braze | Estefania |
+| Reel reportero #2 del evento (montar durante la noche del 29) | Instagram + YT | LEO / Jeison |
+| LinkedIn autores: agradecimiento y reflexion personal | LinkedIn autores | Cada autor |
+| Davivienda Corredores Posts 4-6 (plazas restantes) | LinkedIn Corredores | Natalia |
+| Babel: seguimiento a medios que no publicaron | PR | Juan Camilo |
+| Reporte flash a Natalia: descargas 24h, cobertura, OR email | WhatsApp | Carolina |
 
 ---
 
-## FASE 3 — POST-LANZAMIENTO: 1 oct al 30 nov 2026
+## FASE 3 — POST-LANZAMIENTO: 30 sep al 30 nov 2026
 
-**Objetivo:** Sostener descargas y convertir el libro en autoridad de largo plazo para Vision.
+### Semanas 1-4 post (30 sep — 1 nov)
 
-### Semanas 1-4 post (1 oct — 1 nov)
-
-| Semana | Fecha | Accion principal |
+| Semana | Fecha | Prioridad |
 |---|---|---|
-| S1-P | 1-7 oct | Vision: articulo capitulo 1 + compilado cobertura media · Email: "Lo que dijeron los medios" |
-| S2-P | 8-14 oct | Vision: articulo capitulo 2 · Email: "Los 5 datos mas importantes del libro" · Serie clips evento (LEO) |
-| S3-P | 15-21 oct | Vision: articulo capitulo 3 · YouTube: video autor 1 (8-12 min) · Clips serie en IG/X |
-| S4-P | 22-28 oct | Vision: articulo capitulo 4 · YouTube: video autor 2 · Clips serie en IG/X |
+| S1-P | 30 sep - 7 oct | Vision: articulo capitulo 1 · Email: "Lo que dijeron los medios" · Serie Reels reportero (1/dia, 2 semanas) |
+| S2-P | 8-14 oct | Vision: articulo capitulo 2 · Email: "Los 5 datos del libro" · YouTube: video largo autor 1 |
+| S3-P | 15-21 oct | Vision: articulo capitulo 3 · YouTube: video autor 2 · Continuar Reels diarios |
+| S4-P | 22-28 oct | Vision: articulo capitulo 4 · YouTube: video autor 3 · Babel: informe cobertura a Natalia |
 
-**Detalle acciones recurrentes semanas 1-4:**
-- Instagram / X: 1 clip de evento por dia durante las primeras 2 semanas (LEO edita, Estefania publica)
-- LinkedIn autores: 1 post por autor en octubre referenciando su capitulo con dato nuevo
-- Babel: informe final de cobertura earned media entregado a Natalia antes del 15 oct
+**Reels diarios post-evento (2 semanas):** clips de 30 seg por autor respondiendo 1 pregunta — LEO edita el dia del evento, Estefania publica 1 por dia. Este formato fue el top de 2025 con +561%.
 
 ### Semanas 5-9 post (2 nov — 30 nov)
 
 | Canal | Cadencia | Contenido |
 |---|---|---|
-| vision.davivianda.com | 1 articulo/semana | Capitulos restantes del libro — con FAQ al final (AEO) |
-| YouTube | 1 video/semana | Serie "El libro capitulo a capitulo" — 1 video por autor |
-| Email Braze | 1 email/semana (martes) | Email semanal Vision con referencia al libro en cada envio |
-| Instagram | 3 posts/semana | Combinar calendario regular Vision + contenido libro |
-| LinkedIn autores | 1 post/mes por autor | Referencia a su capitulo con dato o contexto nuevo |
+| vision.davivianda.com | 1 art/semana | Capitulos restantes · FAQ al final de cada articulo (AEO) |
+| YouTube | 1 video/semana | Serie "El libro capitulo a capitulo" — 8-12 min por autor |
+| YouTube Shorts | 2-3/semana | Clips del video largo — Shorts de 60 seg |
+| Email Braze | Martes | Email semanal Vision con referencia al libro en cada envio |
+| Instagram | 3 posts/semana | Calendrario regular Vision + contenido libro |
+| LinkedIn autores | 1 post/mes | Referencia al capitulo con dato o contexto nuevo |
 
 ---
 
-## Insumos criticos — solicitar a Davivienda antes del 1 jul
+## Insumos criticos para reunion LEO — 1 jul
 
-| Insumo | Para que | Due |
+| Insumo | Para que | Urgencia |
 |---|---|---|
-| Lista autores: nombre, cargo, foto, area, extracto capitulo | Articulos Vision + piezas LEO | 1 jul |
-| Acceso borrador del libro | Produccion de piezas LEO + articulos tematicos | 1 jul |
-| Brief de marca del libro (colores, tipografia, lineamientos) | LEO Burnett | 1 jul |
-| Confirmacion fecha 29 sep | Cronograma definitivo | CONFIRMADO |
-| Coordinacion Davivienda Corredores RRSS | Amplificacion dia D | 15 jul |
-| Posibilidad pre-registro tecnologico (formulario landing) | Email pre-evento | 15 jul |
+| Lista autores: nombre, cargo, foto, extracto | Articulos Vision S1-S5 + piezas LEO | CRITICO — sin esto no arranca |
+| Acceso borrador del libro | Articulos tematicos S6-S11 + brief LEO | CRITICO |
+| Brief de marca del libro | LEO Burnett produccion | CRITICO |
+| Coordinacion LinkedIn Davivienda Corredores | Amplificacion dia D (6 plazas) | ALTA — antes del 15 jul |
+| Contacto influencer financiero para activar en sep | Amplificacion pre-evento | ALTA — antes del 15 jul |
+| Posibilidad pre-registro tecnico (formulario landing) | Email pre-evento | MEDIA |
 
 ---
 
-## KPIs por fase
+## KPIs por fase — calibrados con data 2025
 
-| Metrica | Pre (jul-sep 28) | Dia D (29 sep) | Post (oct-nov) |
+| Metrica | Pre (jul-28 sep) | Dia D (29 sep) | Post (oct-nov) |
 |---|---|---|---|
-| Visitas landing Vision (libro) | — | Meta: 5K sesiones | Acumulado |
-| Descargas del libro | — | Meta: superar 700K historico | Acumulado mes |
-| OR email | >55% (emails previos) | >65% (email dia D) | >50% (emails post) |
+| Sesiones web | — | Meta: 5K sesiones dia D | >280K oct-nov (vs 228K en 2025) |
+| YouTube Shorts vistas | 300K pre-launch | — | >800K acumulado (vs 570K 2025) |
+| OR email | >55% emails previos | >65% email dia D | >50% post |
 | CTR email al libro | >5% | >10% | >5% |
-| Impresiones Instagram (dia D) | Guardados autores | Meta: 50K impresiones | Saves serie clips |
-| Cobertura earned media | Menciones pre | 5+ notas publicadas dia D | Cobertura total |
-| Conexiones LinkedIn autores | +20/autor pre-evento | Impresiones dia D | +10/autor/mes |
+| LinkedIn interacciones (Vision) | Autores activos | — | >3.000 (vs 2.650 en 2026) |
+| LinkedIn impresiones (Corredores) | — | 6 posts activos | >20K impresiones (vs 17K 2026) |
+| Reels vistas (IG) | — | 3M+ acumulado | — |
+| Cobertura earned media | Menciones pre | 5+ notas dia D | Informe Babel antes 15 oct |
 
 ---
 
-*Actualizado 2026-06-30 · Dia D confirmado: 29 sep 2026 · Para sesion 10 jul con Babel y LEO · Carolina Ramirez*
+*Actualizado 2026-06-30 · Dia D confirmado: 29 sep 2026 · Calibrado con data real campanas 2025-2026 · Para sesion 10 jul con Babel y LEO · Carolina Ramirez*
