@@ -43,6 +43,8 @@ El BU Experiencias opera con **3 líneas diferenciadas**. Esta plataforma cubre 
 | **Aliado VIP / Banca Privada** | One-time | Colaboración puntual para experiencia específica | No — evento puntual | Proceso ágil diferenciado |
 
 > **Criterio de prospección (2026-07-03):** exclusividad del servicio + cobertura/ubicación nacional. NO prospectar solo por descuentos. Intercambio comercial: visibilidad y pauta a cambio de mejores tasas.
+>
+> **Perfil real de la base (2026-07-03):** promedio 45.3 años, mediana 44, mayor bloque en 51+ años (19.1%) — ver [[Perfil-Demografico-Base-Privilegios-2026]]. Calibrar categorías de aliados a una audiencia madura, no asumir perfil millennial/trendy.
 
 ---
 

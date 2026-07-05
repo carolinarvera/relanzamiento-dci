@@ -22,12 +22,16 @@ owner: Natalia Castaño · Carolina Ramirez
 |---|---|
 | 60+ años de autoridad editorial colombiana | Credibilidad que ningún medio global puede replicar |
 | NSE Alto 45% + Medio-Alto 39% | La audiencia con mayor poder de compra del país |
-| 737K usuarios únicos web / mes | Alcance digital real, no inflado |
+| 58.9K visitantes únicos / mes (Metricool jun 2026) | Alcance real y verificable — Colombia 85.5% del tráfico |
 | Bogotá 59% digital · 55% impresa | Concentración en el mercado de consumo premium |
+| Facebook 30.6% del tráfico + Instagram 16.8% | Las redes no solo generan engagement — generan visitas reales al artículo |
 | IG 6.3% engagement rate | 3x el promedio del sector editorial en Colombia |
 | Editorial, no catálogo | Las marcas aparecen en contexto aspiracional, no publicitario |
+| Rolex y Cartier ya generan tráfico orgánico en Diners | "Tu marca ya tiene audiencia aquí — con pauta, multiplicamos el alcance" |
 
 **Argumento de cierre:** Esquire Colombia, AD LATAM y GQ son licencias extranjeras. Diners es el único medio colombiano de alta gama con historia, editorial propia y comunidad de lectores premium leales. No compras un espacio — compras autoridad editorial colombiana.
+
+> **Nota interna (no mostrar al cliente):** El media kit cita 737K "usuarios únicos promedio mensual" — esta cifra no cuadra con Metricool (58.9K/mes). Hipótesis: son usuarios anuales. Usar 58.9K/mes en propuestas directas hasta confirmar con GA4 vía Jeison. Ver [[Diners_Metricool_2026-06]].
 
 ---
 

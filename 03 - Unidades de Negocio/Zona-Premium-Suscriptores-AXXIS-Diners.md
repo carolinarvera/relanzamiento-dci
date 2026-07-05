@@ -55,6 +55,8 @@ La "Zona Premium de Suscriptores" es el paraguas que agrupa las iniciativas que 
 
 **No se duplica aquí** — la arquitectura completa vive en [[03 - Unidades de Negocio/Experiencias/Arquitectura-Plataforma-Beneficios]]. Este documento solo trae a la matriz de la sección 3 las decisiones que bloquean el MVP.
 
+**Perfil real de la base (2026-07-03):** el análisis demográfico de la base de Privilegios (5,853 registros, ver [[Perfil-Demografico-Base-Privilegios-2026]]) muestra una audiencia más madura de lo asumido — promedio 45.3 años, mediana 44, con el bloque más grande en 51+ años (19.1%). Esto debe calibrar el criterio de prospección de aliados: no asumir perfil "millennial trendy".
+
 ---
 
 ## 3. Matriz de decisiones pendientes (consolidada)
@@ -93,7 +95,7 @@ La "Zona Premium de Suscriptores" es el paraguas que agrupa las iniciativas que 
 
 ## Relacionado
 
-[[Suscripciones-Revistas-2024-2026]] · [[04 - Growth System/2026-06-21 Inteligencia Competitiva Marketing Revistas]] · [[03 - Unidades de Negocio/Diners/Diners]] (newsletter premium — estrategia de marketing/digital) · [[03 - Unidades de Negocio/Experiencias/Arquitectura-Plataforma-Beneficios]] · [[Carolina Ramirez]] · [[Sandra Martinez]] · [[Jeison Montero]] · [[Maria Claudia Vargas Pardo]] · [[Paola Pantaleon]] · [[Nicolas Serna]] · [[Catalina Obregon]]
+[[Suscripciones-Revistas-2024-2026]] · [[04 - Growth System/2026-06-21 Inteligencia Competitiva Marketing Revistas]] · [[03 - Unidades de Negocio/Diners/Diners]] (newsletter premium — estrategia de marketing/digital) · [[03 - Unidades de Negocio/Experiencias/Arquitectura-Plataforma-Beneficios]] · [[Perfil-Demografico-Base-Privilegios-2026]] · [[Carolina Ramirez]] · [[Sandra Martinez]] · [[Jeison Montero]] · [[Maria Claudia Vargas Pardo]] · [[Paola Pantaleon]] · [[Nicolas Serna]] · [[Catalina Obregon]]
 
 ---
 
