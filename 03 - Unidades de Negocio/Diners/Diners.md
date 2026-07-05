@@ -343,63 +343,175 @@ Guías locales y gastronomía práctica generan 3–8x más ingreso por visita q
 
 ---
 
-## Informe Web & Redes — Mayo 2026 (datos reales GA4 + Meta Business)
-> Fuente: Informe Web Mayo 2026 - Equipo Growth Marketing (Keynote, as of 2026-06-16)
+## Analytics — Junio 2026 (Metricool · fuente de verdad)
+> Fuente: Metricool + Meta Business, periodo jun 4 - jul 3 2026. Reemplaza datos de mayo. Alertas de discrepancia con media kit documentadas abajo.
 
-### Tráfico por Sección
-| Sección | Vistas | Crecimiento vs abril | Nota |
-|---------|--------|----------------------|------|
-| Cultura | 118,928 | +84.8% | Sección líder. Pico 13,470 vistas el 25 may. Top artículo: "Gracias Botero" (23,964 vistas) |
-| Estilo de Vida | 35,801 | +15.8% | Pico 1,868 vistas el 9 may. Top: destinos aguas termales (5,274 vistas) |
-| Gastronomía | 30,276 | +185.6% | Mayor crecimiento porcentual de todas las secciones |
+### Web — revistadiners.com.co
 
-Foco editorial actual: viajes y gastronomía. Estrategia de cargue de contenido a secciones secundarias para posicionar el resto de la web (Tendencias se mantiene estable).
+| Métrica | Jun 2026 | Mayo 2026 (ref) |
+|---|---|---|
+| Visitantes únicos | 58,900 | 190,951 (GA4) |
+| Visitas | 61,410 | 217,684 |
+| Páginas vistas | 72,450 | 256,079 |
+| Páginas / visitante | 1.23 | 1.47 |
 
-### Artículos Más Leídos — Mayo 2026
-| # | Artículo | Vistas | Tema |
-|---|----------|--------|------|
-| 1 | Dear Nannies Killer: la historia del hijo de Pablo Escobar que no se había contado antes | 8,800 | Lo último |
-| 2 | Premios India Catalina 2026: lista completa de ganadores | 5,375 | Cultura |
-| 3 | El último adiós a Fernando Botero: el cortometraje Gracias Botero | 2,893 | Cultura |
-| 4 | De Roma a su pantalla: las mejores series sobre el Vaticano en streaming | 2,887 | Cultura |
-| 5 | Donde el sol también hospeda: hotel Morúa | 2,707 | Estilo de vida |
+> **Alerta media kit:** el media kit cita "737K usuarios únicos / mes" — inconsistente con 58.9K/mes real. Hipótesis: son usuarios anuales totales (58.9K × 12 ≈ 707K). No usar el 737K como promedio mensual en propuestas. Pendiente verificar en GA4 con Jeison.
 
-### Demografía y Fuentes de Tráfico
-- **Usuarios nuevos:** 99,367 · **Dispositivos:** Mobile 81% · Desktop 17% · Tablet 0.9%
-- **Fuentes de tráfico:** Organic Search 43% · Paid Social 30% · Direct 14% · Paid Search 5% · Email 4%
-- **Audiencia:** Mujeres 64% · Hombres 36%
+**Fuentes de tráfico (jun 2026):**
 
-### Redes Sociales — Datos Reales (corrige estimaciones del dashboard)
-| Plataforma | Seguidores reales | Alcance | Visualizaciones | Interacciones | Engagement | Geo top | Demo top |
-|------------|--------------------|---------|--------------------|----------------|------------|---------|----------|
-| **Instagram** | **97,011** (vs ~40K estimado en dashboard — corregir) | 1,032,561 | 1,656,118 | 65,210 | **6.3%** 🟢 Bueno (>3%) | Bogotá 24% | 35-44 años 36.7%, Mujeres 59% |
-| **Facebook** | 142,539 (consistente con dashboard: 142,704) | 1,162,190 | 2,808,671 | 12,051 | 1% | Bogotá 36.5% | 25-34 años 32.8%, Mujeres 59.8% |
+| Fuente | % |
+|---|---|
+| Google orgánico + Google App | 45.3% |
+| Facebook | 30.6% |
+| Instagram | 16.8% |
+| Directo | 5.1% |
+| Otros | 2.2% |
 
-**Insights abril→mayo:** Instagram seguidores -4.6%, visualizaciones -23.9%, interacciones -15.7% (leve declive). Facebook +202.2% seguidores, +97.4% visualizaciones, +141.6% interacciones (crecimiento fuerte, posible pauta o evento).
+**Top artículos junio 2026:**
 
-### Competencia en Redes — Benchmark
-Condé Nast Traveler Spain como referencia más alineada (viajes/lujo/gastronomía premium): Instagram 175,000 seguidores con 2 posts/día. Patrones ganadores observados: video-first (reels/tours), contenido de guía/servicio práctico, embudo claro (redes = descubrimiento snackable, web/YouTube = contenido largo de cierre de funnel).
+| Artículo | Vistas | Insight |
+|---|---|---|
+| 1921 Express: restaurante de Alejandro Riaño | 5,800 | Celebrity colombiana + apertura = fórmula viral |
+| Las 5 canciones más importantes de Michael Jackson | 5,600 | Pop culture global trending |
+| Kristen Stewart: la directora | 3,500 | Celebrity cultura global |
+| Natalia Cano, reconocida por Cartier | 1,800 | Lujo con ángulo colombiano |
+| Rolex Oyster: cien años | 1,300 | Lujo con ángulo histórico |
 
-**Implicación directa para Diners:** confirma la tesis del dashboard — el video corto (TikTok) es el formato con mayor potencial de descubrimiento que Diners no está aprovechando.
+**Top artículos mayo 2026 (referencia):**
+
+| Artículo | Vistas | Tema |
+|---|---|---|
+| Dear Nannies Killer (hijo de Escobar) | 8,800 | Crime / Lo último |
+| Premios India Catalina 2026 | 5,375 | Cultura |
+| Gracias Botero (cortometraje) | 2,893 | Cultura |
+| Series sobre el Vaticano | 2,887 | Entretenimiento |
+| Hotel Morúa | 2,707 | Estilo de vida |
+
+**Diagnóstico web consolidado:** 1.23 páginas/visita confirma el problema estructural de retención interna. El tráfico entra bien (SEO 45% + social 47%) pero no circula. Subir este ratio a 2.0 duplica el inventario publicitario sin sumar un visitante nuevo.
+
+---
+
+### Instagram
+
+> Fuente: Metricool, jun 21 - jul 3, 2026 (13 días)
+
+| Métrica | Valor |
+|---|---|
+| Seguidores totales | **98,170** |
+| Crecimiento diario | +68.92 / día |
+| Posts por semana | 18.85 |
+| Visualizaciones (período) | 546,080 |
+| Alcance medio diario | 45,064 |
+| Seguidores alcanzados | 198,360 |
+| No seguidores alcanzados | **337,250 (63%)** |
+| Engagement rate | **5.98%** |
+
+**Demografía top:** Bogotá 24.23% · Medellín 3.94% · Cali 2.63% · Santiago Chile 2.04%
+
+**Top posts (período):**
+
+| Post | Alcance | Views | Interacciones |
+|---|---|---|---|
+| Franz Kafka (película) | 15,420 | 26,370 | 1,640 |
+| Bar World 100 (coctelería) | 12,870 | 25,310 | 1,230 |
+| Moda y Fútbol (Bogotá) | 6,570 | 17,500 | 288 |
+| Fortezza (Chef Carmine) | 2,870 | 6,420 | 188 |
+| VASSAR Festival | 2,530 | 4,540 | 145 |
+
+**Insights clave:**
+- El 63% del alcance son no-seguidores — el algoritmo distribuye activamente el contenido
+- Cultura global (Kafka, Bar World) triplica el alcance de gastronomía local (Fortezza)
+- 18.85 posts/semana es excesivo — reducir a 12-14 para mejorar alcance por post
+- Proyección dic 2026: 110K-122K seguidores a ritmo actual
+- **Corrección media kit:** actualizar de 89.5K a 98.17K
+
+**Benchmark referencia:** Condé Nast Traveler Spain — 175K IG, 2 posts/día, video-first, embudo redes → web → suscripción.
+
+---
+
+### Facebook
+
+> Fuente: Metricool, muestra 3 posts jun 2026
+
+| Post | Alcance | Views | Reacciones | Compartidos |
+|---|---|---|---|---|
+| Destinos / Mundial 2026 | 7,800 | 22,290 | 517 | **1,330** |
+| Cine Colombiano | 264 | 21,420 | 440 | **1,140** |
+| El Papá de los Asados | 253 | 28,150 | 201 | **785** |
+
+**Diagnóstico:** el alcance orgánico de la página es mínimo (264-253 personas / post sobre 142K seguidores = 0.18%). Facebook no es un canal de alcance — es un canal de **compartidos**. Los 1,330 compartidos del post del Mundial son lo que genera el 30.6% de tráfico web de Facebook. Sin compartidos, Facebook no existe como canal.
+
+**Fórmula de compartidos en Facebook de Diners:** identidad colombiana + evento real con urgencia + utilidad práctica.
+
+> **Alerta Metricool:** los campos "Engagement" (450K, 318K) son errores de cálculo de la herramienta. No usar. Los datos confiables son alcance, vistas, reacciones, comentarios y compartidos.
+
+---
+
+### TikTok
+
+> Fuente: Metricool, jun 4 - jul 3, 2026
+
+| Métrica | Valor |
+|---|---|
+| Seguidores | **7** (cuenta startup) |
+| Posts en el período | 7 |
+| Visualizaciones totales | 1,183 |
+| Promedio vistas/post | 169 |
+
+**Top posts:**
+
+| Post | Views | Likes | Duración |
+|---|---|---|---|
+| Bogotá, capital de la parrilla (Hacienda San Rafael) | 379 | 30 | 1:47 |
+| Naturaleza de Colombia | 173 | 5 | 1:42 |
+| Manuela Álvarez (Moda / Selección) | 172 | 5 | 2:09 |
+| Fotógrafos de fauna | 136 | 2 | **0:15** |
+| VASSAR Festival | 60 | 2 | **3:00** |
+
+**Diagnóstico:** TikTok es territorio virgen. El algoritmo favorece duraciones bajo 60 segundos (el de 0:15 supera al de 3:00). El mejor post confirma el pilar La Mesa: lugar trending en Bogotá + gastronomía. Plan de activación: 1 post/día, 20-45 segundos, pilar La Mesa como entrada. Meta dic 2026: 3,000-8,000 seguidores.
+
+---
+
+### Resumen de canales — estado actual
+
+| Canal | Seguidores | Engagement | Motor real | Estado |
+|---|---|---|---|---|
+| **Web** | — | 1.23 pág/visita | SEO 45% + FB 31% + IG 17% | Tráfico OK, retención baja |
+| **Instagram** | 98,170 | 5.98% | 63% alcance no-seguidores | Activo y creciendo |
+| **Facebook** | 142,539 | 0.18% alcance orgánico | 785-1,330 compartidos/post | Motor de tráfico via shares |
+| **TikTok** | 7 | — | Sin señal aún | Startup — activar jul 2026 |
+| **Newsletter** | 22K (HubSpot activos) | OR 21-55% según segmento | Lista 22K activos (400K = base CRM total, no envío) | Funnel roto — ver abajo |
 
 ---
 
 ## Newsletter "La Mesa de Diners"
-> Fuente: Dashboard Diners_Tabs_2026-06, tab Newsletter (as of 2026-06-16)
+> Fuente: HubSpot real jun 2026 (envíos reales verificados por Paola Gordillo)
 
-**Estado actual:** sin baseline. No existe lista de email mapeada y activa. HubSpot instalado pero sin onboarding — Carolina no tiene acceso real a listas, flows ni métricas. Varios compromisos comerciales incluyen "Newsletter" como entregable sin tracking de envíos (Cartier, Pandora, Deepal, Bogotá Fashion Week, Alimentec, Papá de los Asados — todos "Pendiente").
+**Estado actual — datos reales HubSpot:**
 
-**Concepto:** newsletter semanal premium, blueprint tipo Gatopardo Semanario. 3 bloques: (1) historia editorial de la semana, (2) recomendaciones de mesa [gastronomía], (3) para tu agenda [eventos/cultura/viajes].
+| Envío | Fecha | Lista | Open Rate | Conversiones COP |
+|---|---|---|---|---|
+| Envío 1 (segmento activo) | Jun 14 | 11,000 | **55.1%** | $0 |
+| Envío 2 (lista completa) | Jun 19 | 22,000 | 21.86% | $0 |
+
+**Conclusión crítica:** 55.1% de open rate con 11K contactos activos prueba que la lista tiene calidad. El problema no es el email — es el funnel post-clic (checkout 404). Cero conversiones no es un problema de email marketing; es un problema de infraestructura (P0 en Next Steps).
+
+> **Alerta media kit:** la cifra de "400K contactos calificados" del media kit no cuadra con los envíos reales (22K máximo). Los 400K probablemente son el CRM total acumulado (suscriptores impresos + digitales + histórico), no la base de envío activa. Confirmar con Paola Gordillo antes de usar en propuestas.
+
+**Frecuencia oficial (media kit):** 2 envíos/semana (jueves y sábados).
+
+**Concepto:** newsletter semanal premium. 3 bloques: (1) historia editorial de la semana, (2) recomendaciones de mesa [gastronomía], (3) para tu agenda [eventos/cultura/viajes].
 
 | Variable | Valor |
-|----------|-------|
-| Audiencia objetivo | Suscriptores Diners + audiencia FB/IG (142.5K Facebook / 97K Instagram) reconvertida a email |
-| Frecuencia | Semanal, domingo/lunes AM |
-| Monetización | Sponsors por bloque ($500K–$2M COP/envío) + Ofertas Premium + Beneficios Suscriptores |
-| Meta 12 meses | 5,000 → 10,000 → 25,000 suscriptores |
-| KPIs objetivo | Open Rate >30%, CTR >8%, Unsubscribe <0.5%, Revenue/envío $1-3M COP |
+|---|---|
+| Lista activa real | ~11,000 contactos (seg. alta engagement) |
+| Lista total HubSpot | 22,000 |
+| Frecuencia | 2x/semana (jueves y sábados) |
+| Monetización | Sponsors por bloque ($500K–$2M COP/envío) |
+| Meta 12 meses | 25,000 suscriptores activos |
+| KPIs objetivo | Open Rate >30%, CTR >8%, Revenue/envío $1-3M COP |
 
-**Roadmap:** Jul 2026 onboarding HubSpot + diseño template → Ago 2026 piloto (500-1,000 suscriptores) + campaña de captación (meta 2,000) → Sep 2026 primer sponsor + meta 10,000 suscriptores (con Beneficios Suscriptores como beneficio exclusivo).
+**Roadmap:** Jul 2026 — segmentar lista en 4 grupos (Paola) + activar UTMs → Ago 2026 — workflows Bienvenida + Conversión → Sep 2026 — primer sponsor confirmado.
 
 ---
 
