@@ -558,53 +558,83 @@ Cualquier usuario que llega por el menú principal o un anuncio puede estar caye
 
 ---
 
-## SEO — Auditoría GSC (últimos 3 meses, datos al 2026-06-19)
-> Fuente: Google Search Console exportado 2026-06-19. Rango: últimos 3 meses (mar–jun 2026).
+## SEO — GSC Reporte Completo (datos al jul 2026)
+> Fuente: Google Search Console — reporte completo exportado por Carolina jul 2026. Archivo completo: [[GSC_Reporte_Completo_2026]] en carpeta SEO/. Análisis anterior (jun 19, 3m) conservado como referencia.
 
-**For future Claude:** Diners tiene 5.15M impresiones orgánicas por trimestre con CTR del 1.65% — el promedio de la industria editorial es 3-5%. El canal orgánico está **muy desaprovechado**. El 90% del potencial perdido se concentra en 3 artículos con impresiones masivas y CTR roto. Sin inversión en contenido nuevo, solo arreglando meta titles y consolidando clusters existentes, se puede duplicar el tráfico orgánico en 60 días.
+**For future Claude:** Diners tiene 5.5M impresiones orgánicas con CTR del 1.62% — la industria editorial referencia es 3-5%. El 90% del potencial perdido se concentra en 4 páginas con impresiones masivas y CTR roto. Sin crear contenido nuevo, solo optimizando metadata, se pueden ganar +12,000 clics adicionales. El archivo completo con todas las queries y páginas está en `SEO/GSC_Reporte_Completo_2026.md`.
 
 ### Resumen Global GSC
 
 | Métrica | Valor | Benchmark editorial |
-|---------|-------|---------------------|
-| Clics orgánicos (3m) | 84,942 | — |
-| Impresiones totales | 5,149,548 | — |
-| CTR promedio | 1.65% | 3–5% 🔴 muy bajo |
-| Posición promedio | 7.7 | objetivo: <5 |
-| Clics/día promedio | ~950 | |
-| Pico diario (India Catalina) | 1,991 (20 abr) | |
-| Tendencia jun 2026 | ↗ creciendo | 1,468→1,590 (jun 13-14) |
-| Dispositivo dominante | Móvil 74.5% | |
+|---|---|---|
+| Clics orgánicos totales | 89,206 | — |
+| Impresiones totales | 5,509,236 | — |
+| CTR promedio | 1.62% | 3–5% 🔴 muy bajo |
+| Posición promedio | ~7.5 | objetivo: <5 |
+| Dispositivo dominante | Móvil 74.4% (66,383 clics) | — |
+| Desktop | 24.8% (22,169 clics) | — |
 
-**El CTR del 1.65% es el problema central.** Con 5.15M impresiones, un CTR del 3% (realista para guías y contenido editorial) generaría 154,485 clics — el doble del actual. No hay que rankear mejor: hay que hacer que los que ya rankean hagan click.
+**El CTR del 1.62% es el problema central.** Con 5.5M impresiones, un CTR del 3% generaría 165,277 clics — casi el doble del actual. No hay que rankear mejor: hay que hacer que los que ya rankean generen click.
 
-### Top 10 Páginas por Tráfico
+### Top 10 Páginas por Tráfico (URLs exactas)
 
-| # | Página | Clics | Impresiones | CTR | Posición |
-|---|--------|-------|-------------|-----|----------|
-| 1 | Restaurantes afueras de Bogotá | 7,388 | 152,148 | 4.86% | 5.88 |
-| 2 | Poemas de amor García Márquez | 4,647 | 37,878 | 12.27% | 5.29 |
-| 3 | Aguas termales cerca de Bogotá | 4,559 | 73,328 | 6.22% | 4.65 |
-| 4 | Series más largas del mundo | 2,998 | 93,292 | 3.21% | 3.78 |
-| 5 | Restaurantes temáticos Bogotá | 2,933 | 46,017 | 6.37% | 6.5 |
-| 6 | Homepage | 2,739 | 21,685 | 12.63% | 6.01 |
-| 7 | India Catalina 2026 (ganadores) | 2,357 | 28,165 | 8.37% | 4.58 |
-| 8 | Restaurantes pescado Bogotá | 2,353 | 37,001 | 6.36% | 5.57 |
-| 9 | Camisas colombianas | 1,312 | 27,713 | 4.73% | 6.77 |
-| 10 | Brunch Bogotá 2026 | 1,227 | 66,110 | 1.86% | 6.36 |
+| # | URL | Clics | Impresiones | CTR | Posición |
+|---|---|---|---|---|---|
+| 1 | /estilo-de-vida/restaurantes-a-las-afueras-de-bogota/ | 7,227 | 183,637 | 3.94% | 6.03 |
+| 2 | /cultura/poemas-de-amor-de-gabriel-garcia-marquez/ | 4,499 | 35,914 | 12.53% | 5.32 |
+| 3 | /estilo-de-vida/58511_destinos-aguas-termales-cerca-bogota/ | 4,203 | 69,363 | 6.06% | 4.81 |
+| 4 | /cultura/series-mas-largas/ | 3,111 | 88,132 | 3.53% | 3.78 |
+| 5 | /estilo-de-vida/gastronomia-61731_restaurantes-tematicos-en-bogota/ | 3,030 | 49,462 | 6.13% | 6.55 |
+| 6 | / (homepage) | 2,629 | 21,357 | 12.31% | 6.01 |
+| 7 | /estilo-de-vida/restaurantes-pescado/ | 2,439 | 44,688 | 5.46% | 5.82 |
+| 8 | /cultura/india-catalina-2026-lganadores/ | 2,358 | 28,333 | 8.32% | 4.63 |
+| 9 | /lo-ultimo/marcas-colombianas-camisas-mundial/ | 1,714 | 41,783 | 4.10% | 7.01 |
+| 10 | /gastronomia/donde-comer/mejores-brunch-en-bogota-2026/ | 1,389 | 67,455 | 2.06% | 6.08 |
 
-### 🚨 Las 3 Oportunidades de CTR — Impacto Inmediato
+### 🚨 Las 4 Oportunidades de CTR — Mayor ROI
 
-Estas páginas ya rankean bien. Google ya las muestra. El problema es que nadie hace click. Son las de mayor ROI porque no requieren contenido nuevo, solo optimización de metadata.
+Estas páginas ya rankean. Google ya las muestra. El único problema es el CTR roto. No requieren contenido nuevo — solo reescribir el title y la meta description.
 
-#### #1 — "Canciones indirectas" (95,161 imp · 0.7% CTR · pos 4.4)
-**El caso más crítico.** La página con más impresiones del sitio (95K) tiene un CTR del 0.7% cuando debería ser 5-8% a esa posición. Eso son **+4,000 clics/trimestre perdidos** en una sola página. Causas probables: el `<title>` no coincide con lo que el usuario busca, o el snippet no tiene un gancho claro. Acción: reescribir title + meta description con urgencia/promesa clara ("Las mejores canciones con indirectas para [situación específica]"). **Esfuerzo: 30 minutos. Impacto estimado: +3,000-4,000 clics/trimestre.**
+#### #1 — "Canciones indirectas" (91,122 imp · 0.74% CTR · pos 4.98)
+URL: `/cultura/canciones-indirectas/`
+**La mayor oportunidad del sitio.** 91K impresiones con 0.74% CTR. Si CTR sube al 5% → 4,556 clics/período (vs 673 actuales). Causas: el `<title>` no coincide con el intent del buscador. Acción (Simon): reescribir title + meta con gancho emocional específico a la situación de búsqueda. Esfuerzo: 30 min. **Impacto estimado: +4,000 clics.**
 
-#### #2 — "Santorini colombiano" (28,953 imp · 0.17% CTR · pos 4.3)
-28,953 impresiones por trimestre con 0.17% de CTR es una anomalía. Alguien busca "santorini colombiano" → Google muestra a Diners → nadie entra. Posible causa: el artículo habla de "Santorini colombiano" como concepto pero el buscador quiere un destino concreto con dirección, fotos, cómo llegar. Acción: revisar el artículo vs. intent del buscador. Si el intent es "destino turístico", el título debe ser geográficamente específico. **Esfuerzo: 1h. Impacto estimado: +2,000-2,500 clics/trimestre.**
+#### #2 — "Series más largas" (88,132 imp · 3.53% CTR · pos 3.78)
+URL: `/cultura/series-mas-largas/`
+Segunda página por impresiones. CTR de 3.53% es mediocre en posición 3.78 — a esa posición debería ser 7-10%. Si CTR sube al 6% → 5,288 clics (vs 3,111 actuales). Acción: optimizar title con número concreto ("Las X series más largas del mundo en 2026") + meta con top 3 de la lista para generar curiosidad. Esfuerzo: 30 min. **Impacto estimado: +2,000 clics.**
 
-#### #3 — "Brunch Bogotá 2026" (66,110 imp · 1.86% CTR · pos 6.4)
-Esta es la guía de brunch pero está en posición 6.4 con CTR de 1.86%. El mismo artículo en posición 3 tendría CTR del 8-10% → 5,000+ clics (actualmente 1,227). Acciones combinadas: (a) actualizar el título con el año 2026 y "los mejores", (b) agregar 5+ restaurantes nuevos para aumentar autoridad y señales de frescura, (c) conseguir 2-3 links internos desde artículos relacionados. **Esfuerzo: 2h editorial. Impacto estimado: +2,000-3,500 clics/trimestre.**
+#### #3 — "Brunch Bogotá 2026" (67,455 imp · 2.06% CTR · pos 6.08)
+URL: `/gastronomia/donde-comer/mejores-brunch-en-bogota-2026/`
+Tercera página por volumen de impresiones. 67K impresiones con solo 2.06% CTR. Si CTR sube al 5% → 3,373 clics (vs 1,389 actuales). Acciones combinadas: (a) title con año + "los mejores" + cantidad de opciones, (b) agregar 5+ restaurantes nuevos para señal de frescura, (c) 2-3 links internos desde artículos de restaurantes relacionados. Esfuerzo: 2h editorial (Simon). **Impacto estimado: +2,000 clics.**
+
+#### #4 — "Santorini colombiano" (28,040 imp · 0.15% CTR · pos 4.57)
+Query directa. 28K impresiones con 0.15% CTR es una anomalía grave. El artículo no responde el intent: el buscador quiere destino geográfico específico (ubicación, cómo llegar, fotos reales), el artículo entrega concepto editorial. Acción: revisar y reescribir el artículo para responder el intent de búsqueda turística, con datos prácticos al inicio. Esfuerzo: 2h. **Impacto estimado: +1,400 clics.**
+
+### Top Queries por Volumen (oportunidades de posición)
+
+| Query | Clics | Impresiones | CTR | Posición | Acción |
+|---|---|---|---|---|---|
+| restaurantes afueras de Bogotá | 436 | 2,524 | 17.27% | 2.28 | Ya en top 3 — mantener |
+| termales cerca a bogotá | 526 | 4,866 | 10.81% | 2.05 | Ya en top 2 — mantener |
+| brunch bogota | 378 | 7,415 | 5.10% | 6.41 | Subir a top 3 → x4 clics |
+| rooftop bogota | 417 | 5,587 | 7.46% | 3.90 | Subir a top 2 → duplicar |
+| series colombianas | 159 | 9,311 | 1.71% | 7.11 | CTR + posición — 2 acciones |
+| feria eva 2026 | 162 | 8,071 | 2.01% | 6.78 | Estacional — no prioritario |
+| michael jackson | 96 | 56,253 | 0.17% | 8.04 | Competencia muy alta — ignorar |
+
+### Queries de marca (branded search)
+
+| Query | Clics | CTR | Posición | Estado |
+|---|---|---|---|---|
+| "revista diners" | 1,296 | 61.28% | 2.05 | Fuerte — usuarios leales |
+| "revista diners colombia" | 169 | 72.84% | 1.0 | Óptimo |
+| "diners" (sin "revista") | 375 | 9.95% | 4.77 | 90% de los buscadores no entran — mejorar snippet |
+| "diners revista" | 150 | 55.97% | 1.45 | Fuerte |
+| "revistadiners" | 36 | 76.60% | 1.09 | Fuerte |
+
+**Insight de marca:** cuando el usuario busca "diners" sin "revista", Diners aparece en posición 4.77 con 9.95% CTR. Hay 3,767 impresiones/período perdidas por la polisemia del nombre. Solución: meta title de homepage debe contener "Revista Diners — Cultura, Gastronomía y Lifestyle" para reforzar el snippet de marca.
+
+### Clusters de Contenido — Estado Actual
 
 ### Clusters de Contenido — Estado Actual
 
