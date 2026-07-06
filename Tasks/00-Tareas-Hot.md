@@ -10,6 +10,8 @@ tags: [tasks, urgente, hot, semana-actual]
 ## For future Claude
 Solo las tareas urgentes o con deadline esta semana. Leer este archivo primero al inicio de sesión — NO el master completo. Actualizar al cierre de cada sesión. Plan completo (122 tareas): `Tasks/00-Tareas-Master-H2-2026.md`.
 
+**Completado sesión 2026-07-06:** Optimización 30 notas de reuniones (06 - Meetings/) — todas reescritas al formato slim (For future Claude / Decisiones / Tareas / Pendientes). Commit `b26e361`.
+
 ---
 
 # Tareas Urgentes — Semana 6-12 Jul 2026
