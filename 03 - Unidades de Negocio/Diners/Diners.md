@@ -343,6 +343,90 @@ Guías locales y gastronomía práctica generan 3–8x más ingreso por visita q
 
 ---
 
+## GA4 — Páginas por Ruta (Jun 6 – Jul 3, 2026)
+> Fuente: Export GA4 "Páginas y pantallas: Ruta de página y clase de pantalla" · Cuenta: Revista Diners GA4 · 28 días. Actualizado 2026-07-04.
+
+**For future Claude:** Este export es la fuente más granular de comportamiento por página. Revela tres hallazgos que cambian el análisis: (1) el funnel de suscripción está cuantificado por primera vez — hay 9 personas que llegan a "Finalizar compra" pero $0 en revenue, (2) el tráfico viral (<5s engagement) es ~30-40% del total y deprime todas las métricas, (3) el contenido de gastronomía/guías locales genera AdSense 5–10x mayor que el contenido cultural trending.
+
+### Funnel de Suscripción — Primera Medición Real
+
+| Paso | Página | Vistas | Usuarios | Engagement avg | Bounce | Eventos clave | Revenue |
+|------|--------|--------|----------|----------------|--------|---------------|---------|
+| 1 | Suscripciones (planes) | 793 | 572 | 8.8s | 63.4% | 0 | $0 |
+| 2 | Suscripción 3 meses (producto) | 30 | 17 | 32.3s | 5.3% | 0 | $0 |
+| 3 | Carrito | 56 | 20 | 43.4s | 0% | **19** | $0 |
+| 4 | Finalizar compra | 29 | 9 | **167.3s** | 12.5% | 0 | $0 |
+| 5 | Confirmación | — | — | — | — | 0 | **$0** |
+
+**Lectura del funnel:**
+- 793 usuarios llegan a ver planes, 572 son únicos. El 8.8s de engagement en esa página indica que la mayoría la abandona sin leer. La propuesta de valor no está clara en los primeros 10 segundos.
+- Solo 30 usuarios llegan al producto "3 meses" (96.2% drop entre planes y producto). Esta es la mayor pérdida del funnel — la página de planes no convierte a selección de producto.
+- El carrito tiene 56 vistas y **19 eventos clave** — hay personas que sí agregan al carrito.
+- 9 personas llegan a "Finalizar compra" y pasan 167 segundos — están intentando completar el pago. Y no pueden. Aquí falla la pasarela.
+- Revenue total del funnel: **$0 en 28 días** con 572 personas que vieron planes.
+
+**Si se arreglara solo la pasarela (paso 4→5):**
+Con 9 personas llegando a checkout y un CVR de compra típico de e-commerce (70-80%), serían ~6 suscripciones/mes solo del tráfico orgánico actual. Mínimo.
+
+**Si además se optimizara la página de planes (paso 1→2, de 96% drop a 20% drop):**
+793 × 80% → producto = 634 usuarios en producto → 30% a carrito = 190 → 60% a checkout = 114 → 75% pagan = **~86 suscripciones/mes** del tráfico orgánico actual.
+
+### Taxonomía de Calidad del Tráfico por Página
+
+El engagement time revela tres perfiles de usuario completamente distintos:
+
+**Tier 1 — Lector Real (>45s engagement) = Alto valor**
+| Página | Vistas | Engagement | Bounce | AdSense COP |
+|--------|--------|-----------|--------|-------------|
+| Aguas termales cerca a Bogotá | 6,165 | 97.2s | 28.5% | 9,736 |
+| 20 restaurantes afueras de Bogotá | 5,070 | 90.7s | 29.3% | 5,965 |
+| GGM poemas de amor | 1,800 | 87.6s | 36.6% | 1,128 |
+| Getty / Michael Jackson fotos | 186 | 89.6s | 38.8% | 149 |
+| Karts en Bogotá | 2,054 | 54.2s | 38.2% | 1,760 |
+| 1921 Express (restaurante) | 6,622 | 51.7s | 33.9% | 4,815 |
+| Series más largas | 1,268 | 49.0s | 32.9% | 1,054 |
+| Restaurantes Candelaria | 2,714 | 42.6s | 37.6% | 1,952 |
+| Brunch Bogotá | 1,024 | 45.3s | 23.4% | 870 |
+| Quiz Hogwarts | 373 | 126.1s | 18.9% | 122 |
+
+**Tier 2 — Lector Casual (10-44s) = Valor medio**
+Incluye homepage (22-24s), artículos de lujo (Rolex 24s), cultura nacional. Leen el titular y primera sección.
+
+**Tier 3 — Tráfico Viral Bounce (<5s) = Casi sin valor**
+| Página | Vistas | Engagement | Bounce | AdSense COP |
+|--------|--------|-----------|--------|-------------|
+| Kristen Stewart directora | 6,982 | 2.7s | 85.3% | 267 |
+| Miami en Mundial | 4,790 | 0.7s | 90.0% | 1 |
+| 5 canciones mundiales fútbol | 4,407 | 3.1s | 84.9% | 232 |
+| Toy Story 5 | 2,560 | 2.3s | 90.6% | 142 |
+| Gran Tomatina 2026 | 2,210 | 2.6s | 86.5% | 68 |
+| Paula Klein (Lumen) | 2,041 | 1.7s | 88.4% | 26 |
+
+El Tier 3 suma ~18K vistas pero genera apenas ~$736 COP en AdSense. El mismo volumen en Tier 1 generaría ~$25K-$30K COP. El tráfico viral dilata las métricas del sitio sin valor proporcional.
+
+### Top 10 Páginas por Revenue AdSense (Jun 6–Jul 3)
+
+| Página | Vistas | AdSense COP | COP/vista |
+|--------|--------|-------------|-----------|
+| Aguas termales cerca a Bogotá | 6,165 | 9,736 | 1.58 |
+| 20 restaurantes afueras de Bogotá | 5,070 | 5,965 | 1.18 |
+| 1921 Express (restaurante) | 6,622 | 4,815 | 0.73 |
+| Michael Jackson canciones (5) | 7,057 | 6,888 | 0.98 |
+| Rolex Oyster 100 años | 2,693 | 2,058 | 0.76 |
+| Restaurantes Candelaria | 2,714 | 1,952 | 0.72 |
+| Camisas colombianas Mundial | 4,175 | 1,911 | 0.46 |
+| Karts en Bogotá | 2,054 | 1,760 | 0.86 |
+| Restaurantes temáticos | 1,884 | 1,797 | 0.95 |
+| 5 restaurantes panorámica Bogotá | 2,727 | 1,785 | 0.65 |
+
+Patrón: gastronomía Bogotá + lujo = mayor RPM. El artículo Michael Jackson (#1 en vistas) genera $0.98/vista — exactamente promedio. El artículo de Termales (#4 en vistas) genera $1.58/vista — 60% más eficiente.
+
+### Page Not Found
+
+2,937 vistas en 28 días (vs 25,147 YTD). Tráfico perdido en errores 404. Causa principal: `/suscripciones/` sin redirect + URLs de artículos eliminados sin redirección 301.
+
+---
+
 ## Analytics — Junio 2026 (Metricool · fuente de verdad)
 > Fuente: Metricool + Meta Business, periodo jun 4 - jul 3 2026. Reemplaza datos de mayo. Alertas de discrepancia con media kit documentadas abajo.
 
@@ -880,10 +964,36 @@ Para obtenerlo: GSC → Experiencia → Señales de página → cambiar filtro a
 
 ---
 
-## Google Ads — Auditoría YTD 2026 (ene–jun 17)
-> Fuente: 14 CSVs de Google Ads exportados 2026-06-17. Período: 2026-01-01 a 2026-06-17.
+## Google Ads — Auditoría Jun 2026 + YTD
+> Fuente: CSV consolidado Jun 2026 (10 campañas, 59 keywords, ~240 search terms, demografía, dayparting). Período de referencia YTD: ene–jun 17 (14 CSVs previos). Actualizado 2026-07-04.
 
-**For future Claude:** Google Ads de Diners tiene inversión activa YTD de COP 2.12M y CERO conversiones registradas. La causa raíz no es la calidad de las campañas — el tracking no está configurado y la cuenta está optimizando para clics, no resultados. La estructura completa de campañas es de tráfico a artículos (AdSense), no de captación de suscripciones.
+**For future Claude:** Google Ads de Diners tiene inversión activa YTD de COP 2.12M y CERO conversiones registradas. La causa raíz no es la calidad de las campañas — el tracking no está configurado y la cuenta está optimizando para clics, no resultados. La estructura completa de campañas es de tráfico a artículos (AdSense), no de captación de suscripciones. El reporte de junio confirma: COP 422K gastado, 7,557 clics, 0 conversiones. La eficiencia del CPC sigue mejorando (COP 40–66/clic por campaña) pero sin tracking ni checkout funcional, la maquinaria solo financia AdSense.
+
+### Actualización Junio 2026 — Campañas Activas
+
+| Campaña | Inversión Jun COP | Clics | CTR | CPC |
+|---------|-----------------|-------|-----|-----|
+| Aguas termales Bogotá | 113,423 | 2,796 | 16.29% | 40.6 |
+| Restaurantes La Candelaria | 73,748 | 1,201 | 26.25% | 61.4 |
+| Karts en Bogotá | 71,077 | 1,265 | 26.38% | 56.2 |
+| 20 restaurantes afueras Bogotá | 66,119 | 1,009 | 11.65% | 65.5 |
+| Restaurantes temáticos Bogotá | 35,398 | 475 | 11.85% | 74.5 |
+| Brunch Bogotá | 30,953 | 362 | 20.14% | 85.5 |
+| 10 poemas García Márquez | 23,756 | 344 | 10.40% | 69.1 |
+| Jazz en vivo | 5,518 | 74 | 22.63% | 74.6 |
+| 7 milhojas Bogotá | 1,968 | 28 | 17.07% | 70.3 |
+| 11 series más largas | 265 | 3 | 11.11% | 88.3 |
+| **TOTAL junio** | **422,225** | **7,557** | **~17.9% prom.** | **~55.9** |
+
+**Conversiones junio: 0** — en todas las campañas.
+
+**Observaciones junio:**
+- El CPC promedio cayó a COP 55.9 vs COP 72 YTD: la cuenta sigue aprendiendo sin cambiar el resultado
+- Karts (26.38%) y Candelaria (26.25%) tienen los mejores CTRs — la intención de búsqueda y el anuncio están bien alineados
+- Poemas GGM (10.40%) y Series (11.11%) tienen los peores CTRs — candidatos a pausar o reescribir el anuncio
+- Brunch (COP 85.5/click) es la campaña más cara por clic — revisar concordancia de keywords
+
+**Doble inversión — riesgo a resolver:** Los tres clusters con mayor inversión en Ads (termales, restaurantes afueras, karts) son también los tres de mayor tráfico orgánico en GSC. Diners está pagando para enviar tráfico a contenido que ya rankea en posiciones 1-5. Esto no es necesariamente malo (incremento de cobertura de SERP) pero requiere decisión explícita: ¿el paid amplifica alcance nuevo o canibaliza orgánico?
 
 ### Resumen Ejecutivo
 
@@ -957,12 +1067,23 @@ Top términos por inversión (todos informacionales, ninguno comercial):
 
 ### Demografía
 
-| Género | % Impresiones |
-|--------|--------------|
-| Mujer | 58.5% |
-| Hombre | 41.9% |
+| Género | % Impresiones Jun 2026 | % Impresiones YTD |
+|--------|----------------------|------------------|
+| Mujer | 60.32% | 58.5% |
+| Hombre | 40.13% | 41.9% |
 
-Top edades: 25-34 (28.2%) y 35-44 (27.8%). Target ideal para suscripción premium — mismo perfil que el suscriptor objetivo editorial.
+**Distribución por edad y género (junio 2026):**
+
+| Rango | Mujer | Hombre | Total |
+|-------|-------|--------|-------|
+| 18-24 | 4.06% | 3.33% | 7.39% |
+| 25-34 | 15.38% | 11.41% | 26.86% (2do) |
+| 35-44 | 17.43% | 11.04% | **28.50% (1ro)** |
+| 45-54 | 12.77% | 7.72% | 20.52% (3ro) |
+| 55-64 | 7.39% | 4.29% | 11.71% |
+| 65+ | 3.02% | 2.16% | 5.19% |
+
+El segmento dominante es **mujer 35-44** (17.43% del total). Nota relevante: la edad pico de los anuncios (35-44) es más joven que la base de suscriptores Privilegios (promedio 45.3 años, mediana 44). Google Ads está capturando un segmento digitalmente activo que aún no es suscriptor — el perfil ideal de conversión si el funnel estuviera operativo.
 
 ### Dayparting — Cuándo Impactar
 
