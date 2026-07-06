@@ -3,156 +3,29 @@ date: 2026-06-12
 type: meeting
 tags: [experiencias, diners, axxis, club-beneficios, vivir-la-revista, suscriptores, alianzas]
 related-people: [Carolina Ramirez, Paola Pantaleon]
-related-projects: [Alianzas-post-Privilegios, Revenue-Growth]
-sources: [Drive - Notas Gemini Carolina/Paola Andrea 2026-06-12]
 ai-first: true
 confidence: high
 ---
 
-# Reunión Carolina / Paola Andrea — Club de Beneficios 
+## For future Claude
+Reunión fundacional del 2026-06-12 entre Carolina y Paola Pantaleon que definió la estrategia de la unidad Experiencias. Dos líneas de negocio: (1) venta de experiencias Davivienda a banca privada (10 ya pagadas) + (2) Beneficios Suscriptores (always-on). Decisión tecnológica: PWA. Referentes: Club El Tiempo, Monocle. Estado actualizado en [[03 - Unidades de Negocio/Experiencias/Experiencias]].
 
-> **For future Claude:** Reunión fundacional del 2026-06-12 entre Carolina Ramirez y Paola Pantaleon que definió la estrategia de la unidad Experiencias. Cubre las dos líneas de negocio (venta de experiencias Davivienda + Club de Beneficios suscriptores), la decisión tecnológica PWA, oportunidades de integración con Davivienda, y referentes (Club El Tiempo, Monocle). **La estrategia consolidada y los próximos pasos actualizados viven en [[03 - Unidades de Negocio/Experiencias/Experiencias]] — leer ese archivo para el estado actual.** Este archivo es la fuente primaria de la reunión; no modificar.
+## Decisiones
+- **2 ramas de negocio confirmadas:** Experiencias corporativas VIP + Beneficios Suscriptores always-on
+- Davivienda Banca Privada ya pagó 10 experiencias para 2026 — operación activa
+- Tecnología plataforma: **PWA** (web service / cáscara de app) — descarta app nativa
+- Sesión innovación DINERS: aspiracional de experiencias + reducir a 6 ediciones anuales
+- Sesión innovación AXXIS programada 27 jun 2026 — lidera Carolina
 
----
+## Tareas
+| Tarea | Owner | Due |
+|---|---|---|
+| Enviar encuestas preferencias (restaurantes y categorías) | Paola Pantaleon | Inmediato |
+| Pedir cotizaciones proveedor local plataforma 360 | Carolina | Esta semana |
+| Reunión con María Claudia (identificación digital suscriptores) | Carolina | Próxima semana |
+| Hablar con Sandra (Diners): contenido exclusivo para suscriptores premium | Carolina | Esta semana |
+| Coordinar con Catalina: acercamiento banco para beneficios + medios de pago | Carolina | Esta semana |
 
-## Participantes
-
-- [[Carolina Ramirez]] — Head of Growth & Business
-- [[Paola Pantaleon]] — Experiencias y Alianzas
-- Gamma Sala Juntas (presente)
-
----
-
-## Resumen Ejecutivo
-
-Se explicó la creación de un modelo de negocio basado en venta de **experiencias exclusivas para empresas y desarrollo de beneficios tangibles** para suscriptores de revistas Diners y AXXIS. La propuesta central: hoy, los suscriptores no solo leen la revista, sino que quieren **"vivir la revista"** — cada artículo conecta con un beneficio real (descuento, experiencia, acceso exclusivo).
-
-**Dos grandes hallazgos:**
-1. Al ser filiales de Davivienda se dio la oportunidad de hacer un programa de experiencias para clientes top del banco  (Banca Privada Davivienda Vivienda) con 10 experiencias aprobadas y pagadas para 2026. Esto motiva la creación de esta unidad de negocios y la posibilidad de generar nuevos ingresos para la compañia
-2. La sesión de innovación de DINERS concluyó que la revista debe ser experiencial + reducir a 6 ediciones anuales. La de AXXIS es el 27 de junio 2026.
-
----
-
-## 1. Experiencias (ya activo y funcionando)
-
-### Modelo
-- Davivienda (Banca Privada) compra experiencias curadas a Gamma para sus mejores clientes de banca privada
-- 10 experiencias aprobadas y **ya pagadas** para todo 2026
-- 10-15 clientes VIP por experiencia
-
-### Categorías
-| Categoría | Ejemplos |
-|-----------|---------|
-| Arte y Cultura | Taller Jorge Lisarazo, Colección J.D. Gutiérrez + Vicky Turbay (julio), Recorrido La Macarena, Galería El Dorado, Feria ARBO (agosto) |
-| Bienestar y Moda | Juan de Dios (ya ejecutado ✅), Showroom Mala, SPA Skin Medical |
-| Gastronomía | TBD |
-| Deportes | TBD |
-| Entretenimiento | TBD |
-| Legacy / Patrimonial | Inversiones, temas legales, temas patrimoniales |
-
-### Próximas experiencias 2026
-- **Julio:** Visita colección privada José Darío Gutiérrez + Vicky Turbay (en preparación)
-- **Agosto:** Feria de arte ARBO — recorrido exclusivo para 10-15 personas
-- **Próximo:** Galería El Dorado con la fundadora y los artistas
-
-### Estado
-- Primera experiencia (Juan de Dios Salud + Belleza) ya ejecutada ✅ — fue un éxito. Feedback CEO: positivo.
-
----
-
-## 2. Club de Beneficios — Plataforma Tecnológica
-
-| Opción | Ventajas | Desventajas |
-|--------|----------|-------------|
-| App nativa | Mejor UX, puntos, gamificación | Personas no quieren descargar más apps |
-| Web service (PWA) | Cáscara de app, se alimenta de web, misma info en celular y desktop | Menor UX nativa |
-| Microsite dedicado | Fácil de lanzar | No se siente como producto propio | Completa | Requiere desarrollo |
-
-**Conclusión:** Web service (PWA) es la opción óptima — cáscara de app, se alimenta de web, misma info en celular y desktop.
-
-### Estado actual
-- Jeison presentó investigación de proveedores (españoles y locales) para plataforma 360
-- Carolina solicitando cotizaciones a proveedor local
-- Reunión pendiente con María Claudia (Servicio al Cliente) para definir identificación de suscriptores
-
----
-
-### 2. Integración con Davivienda (oportunidades)
-
-| Oportunidad                           | Descripción                                                                             | Estado                         |
-| ------------------------------------- | --------------------------------------------------------------------------------------- | ------------------------------ |
-| Medios de pago Davivienda             | Descuentos adicionales al pagar con tarjeta Davivienda (financiado por Mastercard/Visa) | Revisión interna pendiente     |
-| Conciertos y eventos Vivienda         | Descuento para suscriptores en eventos propios del banco                                | Por explorar con Cata          |
-| Expansión a otros segmentos           | Banca clásica, premium, y no solo privada                                               | Por validar                    |
-| Articulador de experiencias del banco | Gamma opera la logística de experiencias del área propia de Davivienda                  | Posible nueva línea de negocio |
-
-> ⚠️ Toca coordinar con Catalina antes de hablar con el banco 
-
----
-
-## Referentes 
-
-| Referente      | País        | Aprendizaje clave                                                                          |
-| -------------- | ----------- | ------------------------------------------------------------------------------------------ |
-| Club La Nación | Argentina   | Club de beneficios de medios en Latam                                                      |
-| Monocle Club   | Reino Unido | Curaduría premium, revista de nicho                                                        |
-| Club El Tiempo | Colombia    | Validación por cédula, beneficiarios adicionales, reportes de ahorro, cross-sell de libros |
-
-### Hallazgos de Club El Tiempo
-- Validación: suscriptor muestra cédula en el comercio (activo/inactivo)
-- Beneficiarios adicionales: titular puede vincular familia → datos registrados → oportunidad de venta
-- Reportes: cuánto ha ahorrado el suscriptor usando beneficios
-- Cross-sell: aprovechan casa editorial para vender libros con descuento a suscriptores
-
----
-
-## 6. Sesiones de Innovación de Revistas
-
-### DINERS (ya completada)
-- Resultado: Convertirse en revista **aspiracional de experiencias de vida**
-- Reducir a **6 ediciones anuales** (de 12)
-- Papel premium, tipo colección — "mejor pocas revistas lindas que 12 de papel regular"
-- Enfocar en "ser suscriptor es vivir de cierto modo"
-- Entregado a Sandra (editora Diners)
-
-### AXXIS (programada)
-- **Fecha:** 27 de junio 2026
-- **Liderada por:** Carolina Ramirez (Cata se lo pidió)
-- Objetivo: Definir hacia dónde va AXXIS con la misma metodología de Diners
-
----
-
-## Próximos Pasos
-
-| Acción | Responsable | Plazo | Estado |
-|--------|-------------|-------|--------|
-| Enviar resultados encuestas de preferencias (restaurantes y categorías) a Carolina | Paola Pantaleon | Inmediato | Pendiente |
-| Consultar con legal responsabilidad civil de aliados recomendados en artículos | Carolina Ramirez | Miércoles | Pendiente |
-| Coordinar con Cata nuevo acercamiento con banco para propuesta de beneficios + medios de pago | Carolina Ramirez | Esta semana | Pendiente |
-| Hablar con Sandra: crear contenido exclusivo para suscriptores premium (no disponible en web pública) | Carolina Ramirez | Esta semana | Pendiente |
-| Investigar proveedor/software de Club El Tiempo (validación + redenciones) | Claris | Esta semana | En proceso |
-| Estructurar plan de trabajo y entregarlo | Carolina Ramirez | Miércoles | Pendiente |
-| Hablar con Catalina para oficializar roles y liderazgo del proyecto | Carolina Ramirez | Esta semana | Pendiente |
-| Sesión de innovación AXXIS | Carolina Ramirez (lidera) | 27 junio 2026 | Programada |
-| Reunión con María Claudia (Servicio al Cliente) para método de identificación suscriptores | Carolina Ramirez | Próxima semana | Pendiente |
-| Pedir cotizaciones proveedor local plataforma 360 | Carolina Ramirez | Esta semana | En proceso |
-
----
-
-## Temas Legales Identificados
-
-- [ ] Responsabilidad civil de la revista ante incidentes con aliados (ej: intoxicación en restaurante recomendado)
-- [ ] Contratos necesarios con proveedores/aliados
-- [ ] Tratamiento de datos personales en plataforma (qué información compartir con aliados)
-- [ ] Cobertura geográfica: aliados Bogotá vs. suscriptores nacionales
-
----
-
-## Relacionado
-
-[[Paola Pantaleon]] · [[Carolina Ramirez]] · [[Diners]] · [[AXXIS]] · [[Experiencias]] · [[Portfolio Proyectos]] · [[Catalina Obregon]]
-
----
-
-## Tags
-#experiencias #club-beneficios #vivir-la-revista #alianzas #suscriptores #innovacion #diners #axxis #meeting
+## Pendientes / Bloqueantes
+- Legal: responsabilidad civil de aliados recomendados en artículos
+- Tratamiento datos personales en plataforma (qué compartir con aliados)

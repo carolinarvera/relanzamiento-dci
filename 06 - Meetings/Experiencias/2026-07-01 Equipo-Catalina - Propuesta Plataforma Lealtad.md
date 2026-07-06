@@ -1,65 +1,26 @@
 ---
 date: 2026-07-01
 type: meeting
-tags: [experiencias, vive-beneficios, pwa, mvp, plataforma-lealtad, catalina, presencial]
+tags: [experiencias, beneficios-suscriptores, mvp, catalina, presencial]
 related-people: [Catalina Obregon, Carolina Ramirez, Jeison Montero, Juan David Duran Lerma, Maria Claudia Vargas, Nidia Alexandra Rodriguez Linares]
-related-projects: [Vive-Beneficios, PWA-360]
 ai-first: true
 confidence: low
-nota-calidad: Notas auto-generadas por Gemini — contenido escaso, puede ser incompleto. Complementar con memoria del equipo.
+nota-calidad: Notas auto-generadas por Gemini — contenido escaso.
 ---
 
 ## For future Claude
-Reunión presencial del 2026-07-01 sobre la propuesta de plataforma de lealtad (Vive Beneficios). Relevancia crítica: **Catalina Obregon (CEO) estuvo presente y confirmó que la prioridad del MVP es el look & feel**. Nidia Alexandra Rodriguez Linares es Jefe Financiera — su presencia indica que el proyecto tiene visibilidad financiera desde etapa temprana. María Claudia Vargas rol por confirmar (probable Servicio al Cliente). Las notas disponibles son auto-generadas por Gemini y tienen bajo nivel de detalle. Ref: [[06 - Meetings/Experiencias/2026-07-01 Carolina-Jeison-Juandy - Landing Vive Beneficios]] · [[Arquitectura-Navegacion-ViveBeneficios]]
+Reunión presencial del 2026-07-01 sobre propuesta plataforma de lealtad. **Catalina Obregon (CEO) estuvo presente y confirmó que la prioridad del MVP es el look & feel.** Nidia Alexandra Rodriguez Linares = Jefe Financiera — presencia indica visibilidad financiera desde etapa temprana. Ref: [[06 - Meetings/Experiencias/2026-07-01 Carolina-Jeison-Juandy - Landing Vive Beneficios]]
 
----
+## Decisiones
+- **Catalina aprueba avanzar** con la plataforma de lealtad
+- **Prioridad MVP: look & feel** — antes de desarrollo técnico, definir diseño de interfaz
+- Proyecto tiene visibilidad presupuestal (Jefe Financiera presente)
 
-# Reunión — Propuesta Plataforma de Lealtad
+## Tareas
+| Tarea | Owner | Due |
+|---|---|---|
+| Definir look & feel del MVP — moodboard, referencias visuales, paleta | Grupo | Próxima semana |
+| Confirmar rol de María Claudia Vargas en el proyecto | Carolina | Esta semana |
 
-> **Fecha:** 2026-07-01 · **Modalidad:** Presencial — Sala de Juntas
-> **Participantes:**
-> - [[Catalina Obregon]] (CEO) ← presencia relevante
-> - [[Carolina Ramirez]]
-> - [[Jeison Montero]]
-> - [[Juan David Duran Lerma]] (Juandy)
-> - [[Maria Claudia Vargas]] (mariaclaudia.vargas@revistadiners.com.co)
-> - [[Nidia Alexandra Rodriguez Linares]] (nidia.rodriguez@revistadiners.com.co)
-
-⚠️ *Notas fuente: auto-generadas por Gemini — calidad baja. El contenido puede ser incompleto o impreciso.*
-
----
-
-## Decisión Clave
-
-**Catalina Obregon confirma:** la prioridad del MVP es definir el **look & feel** (estética y experiencia visual de la plataforma).
-
-Implicación: antes de entrar a desarrollo técnico, el equipo debe tener claro el diseño de interfaz del MVP. Esto es un aval CEO para avanzar con la plataforma.
-
----
-
-## Temas Tratados (resumen Gemini)
-
-- **Analytics e identificación:** revisión de métricas de tráfico de plataforma · discusión sobre procesos de identificación y conexión
-- **Sistema responsive y notificaciones:** evaluación de diseño responsive y sistema de notificaciones
-- **Mapeo y feedback:** revisión de contexto de feedback · planificación para el siguiente año
-- **MVP:** confirmación de prioridad en look & feel por parte de Catalina
-
----
-
-## Pendientes que genera esta reunión
-
-- [ ] Definir look & feel del MVP — moodboard, referencias visuales, paleta, tipografía
-- [ ] Confirmar rol de María Claudia Vargas en el proyecto (¿Servicio al Cliente / suscriptores?)
-- [x] Confirmar rol de Nidia Alexandra Rodriguez Linares — **Jefe Financiera** (confirmado 2026-07-01)
-- [ ] Alinear con la reunión del mismo día (Jeison + Juandy) sobre flujo y arquitectura
-
----
-
-## Relacionado
-
-[[06 - Meetings/Experiencias/2026-07-01 Carolina-Jeison-Juandy - Landing Vive Beneficios]] · [[Arquitectura-Navegacion-ViveBeneficios]] · [[Catalina Obregon]] · [[Juan David Duran Lerma]] · [[Jeison Montero]]
-
----
-
-## Tags
-#vive-beneficios #mvp #plataforma-lealtad #catalina #presencial #look-and-feel #reunion
+## Pendientes / Bloqueantes
+- Alinear con reunión del mismo día (Jeison + Juandy) sobre flujo y arquitectura
