@@ -33,6 +33,26 @@ Solo las tareas urgentes o con deadline esta semana. Leer este archivo primero a
 
 ---
 
+---
+
+## 📋 Nuevas — Review Revistas Jul 6
+
+| Tarea | Owner | Due |
+|---|---|---|
+| Subir contenidos J Albornos + Jorge Lisarazo | Natalia Castaño | 2026-07-10 |
+| Alinear proceso solicitudes contenido (comercial ↔ editorial) | Paola Nossa + Jeison | 2026-07-10 |
+| Listar e ingresar competidores en Metricool (hasta 10) | Paola Gordillo | 2026-07-10 |
+| Listar formatos digitales para pauta comercial | Paola Nossa | 2026-07-10 |
+| Implementar registro centralizado compromisos comerciales | **Carolina** | 2026-07-10 |
+| Agendar reunión HubSpot automatizaciones | **Carolina** | 2026-07-10 |
+| Auditar web empresa + Diners + plan de acción | Paola Gordillo | 2026-07-13 |
+| Crear calendario transversal RRSS | Paola Gordillo | 2026-07-13 |
+| Fijar fechas optimización perfiles RRSS | Paola Gordillo | 2026-07-13 |
+| Crear formulario B2B para eventos/ferias | Grupo | 2026-07-15 |
+| Propuesta editorial integral → Catalina (lujo accesible + formatos) | Carolina + Grupo | 2026-07-20 |
+
+---
+
 ## 🟠 P1 — Esta semana si es posible
 
 | Tarea | Owner | Contexto |

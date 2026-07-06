@@ -43,6 +43,15 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🟠 **Crear WF-06 Renovación anticipada** · CRM
   Fuente: HubSpot CRM Audit 2026-06-23 · 4 emails: -60d primer aviso · -30d gancho contenido · -15d urgencia precio · -3d cierre. Meta renewal rate año 1: 65-70%.
 
+- [ ] 🔴 **Implementar registro centralizado de compromisos comerciales** · due 2026-07-10 · Comercial
+  Fuente: Review Revistas 2026-07-06 · Documento: cliente + ejecutivo + tipo contenido + estado. Elimina silos entre comercial y editorial.
+
+- [ ] 🔴 **Agendar reunión HubSpot automatizaciones** · due 2026-07-10 · CRM
+  Fuente: Review Revistas 2026-07-06 · Ejecutivos comerciales = responsables de contactos completos. IA (ChatGPT/Gemini) para enriquecer prospectos.
+
+- [ ] 🔴 **Preparar propuesta editorial integral para Catalina** · due 2026-07-20 · Estrategia
+  Fuente: Review Revistas 2026-07-06 · Integra comercial + editorial: "lujo accesible" + nuevos formatos digitales + campañas transmedia. Con datos sólidos.
+
 ### Juan David
 
 - [ ] 🔴 **Embed HubSpot form en landing /suscribirse/ (AXXIS)** · CRM + Web
@@ -76,6 +85,44 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 
 - [ ] 🟡 **Analizar LinkedIn Ads** — viabilidad, segmentación y costos para B2B Q4 · due 2026-07-31 · Pauta
   Fuente: Reunión pauta técnica 2026-07-01 · Costo mínimo $10 USD/campaña. Segmentar por cargos + ciudades principales.
+
+### Natalia Castaño
+
+- [ ] 🔴 **Subir contenidos J Albornos + Jorge Lisarazo** · due 2026-07-10 · Contenido
+  Fuente: Review Revistas 2026-07-06 · Contenido sobre pisos del proyecto con Jorge Lisarazo. Publicar esta semana.
+
+### Paola Nossa
+
+- [ ] 🔴 **Alinear proceso solicitudes/realización/ejecución de contenidos** · due 2026-07-10 · Coordinación
+  Fuente: Review Revistas 2026-07-06 · Toda solicitud incluye: J (Jeison) + Sebastián + Mateo + editores correspondientes.
+
+- [ ] 🔴 **Listar formatos digitales disponibles para pauta comercial** · due 2026-07-10 · Comercial
+  Fuente: Review Revistas 2026-07-06 · Insumo para Media Kit AXXIS y propuesta a Catalina.
+
+### Paola Gordillo
+
+- [ ] 🔴 **Auditar web empresa y Diners + plan de acción** · due 2026-07-13 · Digital
+  Fuente: Review Revistas 2026-07-06
+
+- [ ] 🔴 **Crear calendario transversal RRSS** · due 2026-07-13 · Contenido
+  Fuente: Review Revistas 2026-07-06 · Carruseles + historias + encuestas. Transversal AXXIS + Diners.
+
+- [ ] 🔴 **Listar e ingresar competidores en Metricool** (hasta 10) · due 2026-07-10 · Analytics
+  Fuente: Review Revistas 2026-07-06 · Revistas arq/diseño + creadores de contenido relevantes.
+
+- [ ] 🟡 **Fijar fechas optimización perfiles RRSS** · due 2026-07-13 · Digital
+  Fuente: Review Revistas 2026-07-06
+
+### Grupo Revistas
+
+- [ ] 🔴 **Crear formulario B2B para eventos/ferias** · due 2026-07-15 · Comercial
+  Fuente: Review Revistas 2026-07-06 · Captura estandarizada B2B (ej. Expocamacol).
+
+- [ ] 🔴 **Propuesta nuevos formatos digitales → Catalina** · due 2026-07-20 · Estrategia
+  Fuente: Review Revistas 2026-07-06 · Ejemplos transmedia. Sin precios en el PDF.
+
+- [ ] 🔴 **Proponer sección "lujo accesible" a Catalina** · due 2026-07-20 · Comercial
+  Fuente: Review Revistas 2026-07-06 · Nueva sección AXXIS. Agrupa talento joven/small biz con paquetes digitales accesibles.
 
 ### Paola Pantaleon
 
