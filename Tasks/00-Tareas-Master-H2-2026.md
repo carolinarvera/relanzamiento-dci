@@ -52,6 +52,18 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🔴 **Preparar propuesta editorial integral para Catalina** · due 2026-07-20 · Estrategia
   Fuente: Review Revistas 2026-07-06 · Integra comercial + editorial: "lujo accesible" + nuevos formatos digitales + campañas transmedia. Con datos sólidos.
 
+- [ ] 🔴 **Mapear recursos Visión — inventario tareas + costos + tiempos** · due Esta semana · Plataformas
+  Fuente: Reunión Contratos Plataformas 2026-07-08 con Catalina · Base para la nueva propuesta comercial Davivienda. Incluir Carolina + Jeison + Ernesto. Deadline duro pre-vacaciones.
+
+- [ ] 🔴 **Negociar contrato Leo — basado en inventario de recursos** · due Esta semana · Plataformas
+  Fuente: Reunión Contratos Plataformas 2026-07-08 · Espira = servidor+seguridad / Leo = SEO+WordPress. No negociar sin tener datos de inventario. Brecha técnica entre ambos a resolver.
+
+- [ ] 🔴 **Reunirse con Torres (Davivienda) — propuesta recursos + estrategia Visión** · due Esta semana · Plataformas
+  Fuente: Reunión Contratos Plataformas 2026-07-08 · Presentar nuevo esquema: fee recurrente + proyectos especiales. KPIs: tráfico + suscripciones + relevancia digital.
+
+- [ ] 🟠 **Contactar abogada — reemplazo RRHH de María Isabel** · due Esta semana · RRHH
+  Fuente: Reunión Contratos Plataformas 2026-07-08 · Proceso de personal pendiente.
+
 ### Juan David
 
 - [ ] 🔴 **Embed HubSpot form en landing /suscribirse/ (AXXIS)** · CRM + Web

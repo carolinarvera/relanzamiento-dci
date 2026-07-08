@@ -2,7 +2,7 @@
 date: 2026-07-06
 type: tasks-hot
 scope: urgentes-esta-semana
-last-updated: 2026-07-06
+last-updated: 2026-07-08
 ai-first: true
 tags: [tasks, urgente, hot, semana-actual]
 ---
@@ -15,6 +15,17 @@ Solo las tareas urgentes o con deadline esta semana. Leer este archivo primero a
 ---
 
 # Tareas Urgentes — Semana 6-12 Jul 2026
+
+---
+
+## ⚡ PRE-VACACIONES — Contratos Plataformas Davivienda (Jul 8)
+
+| Tarea | Owner | Contexto |
+|---|---|---|
+| Mapear recursos Visión — inventario tareas + costos + tiempos de dedicación | **Carolina** | Base para toda la propuesta comercial nueva. Deadline duro: antes de vacaciones |
+| Negociar contrato Leo — basado en inventario de recursos | **Carolina** | Espira = servidor+seg / Leo = SEO+WordPress. No negociar sin tener los datos |
+| Reunirse con Torres (Davivienda) — presentar propuesta recursos y estrategia Visión | **Carolina** | Interlocutor banco para contrato Visión. Agendar esta semana |
+| Contactar abogada — reemplazo RRHH de María Isabel | **Carolina** | Proceso de personal pendiente |
 
 ---
 
