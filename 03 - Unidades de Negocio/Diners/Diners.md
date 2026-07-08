@@ -611,34 +611,76 @@ Patrón: gastronomía Bogotá + lujo = mayor RPM. El artículo Michael Jackson (
 
 Cualquier usuario que llega por el menú principal o un anuncio puede estar cayendo en un error. **Solución inmediata: redirect 301 de `/suscripciones/` a la URL canónica correcta.**
 
-### Planes y Precios Actuales
-| Plan | Precio | Incluye |
-|------|--------|---------|
-| 3 meses | $53,700 | 3 ediciones impresas |
-| 6 meses | $181,100 | 6 ediciones + libro "Cocina para el fin de semana" (20% dcto) |
-| 1 año | $214,800 | 12 ediciones + libro Panamá Country GRATIS |
+### Planes y Precios Actuales (auditados visualmente jul 2026)
+| Plan | Precio | Flete | Total | Por edición |
+|------|--------|-------|-------|-------------|
+| 1 edición (precio kiosco) | $17,900 | $9,900 | **$27,800** | $27,800 |
+| 3 meses (3 ediciones) | $53,700 | Gratis | **$53,700** | $17,900 |
+| 6 meses (6 ed.) + libro $119K | $181,100 | Gratis | **$181,100** | — |
+| 12 meses (12 ediciones) + libro | $214,800 | Gratis | **$214,800** | $17,900 |
 
-**Oportunidad de precio no comunicada:** Plan anual = $17,900/mes. Plan semestral = $30,183/mes. El anual es 41% más barato por mes y nadie lo ve porque no hay comparativa visible.
+> Precio kiosco = $17,900 · Flete variable por ciudad de destino (ya configurado en la plataforma) · Suscripciones: envio gratis · Edicion individual: flete calculado al checkout segun zona · Detalle de tarifas por definir.
 
-### Diagnóstico por Elemento CRO
-| Elemento | Estado | Problema |
-|----------|--------|---------|
-| URL canónica | 🔴 Rota | `/suscripciones/` = 404. Dos URLs con contenido inconsistente |
-| Planes mostrados | 🔴 Inconsistente | 2 planes en una URL, 3 en otra |
-| CTA texto | 🟠 Genérico | "Añadir al carrito" — lenguaje de e-commerce básico para marca premium |
-| Métodos de pago | 🔴 Ausentes | No visibles en ningún paso antes del checkout |
-| Garantías | 🔴 Ausentes | Sin política de reembolso ni "satisfacción garantizada" |
-| Social proof | 🔴 Ausente | Sin testimonios, número de suscriptores, ni reseñas |
-| Urgencia / escasez | 🔴 Ausente | Sin "oferta limitada", sin fecha de corte |
-| Propuesta de valor | 🔴 Débil | No responde "¿por qué Diners?" — sin brand story ni preview de contenido |
-| Comparativa planes | 🔴 Ausente | El valor del plan anual vs semestral no se comunica visualmente |
-| Pasos del funnel | 🔴 Excesivos | 5 pasos mínimos: listado → producto → carrito → checkout → pago |
-| Mobile UX | 🔵 Sin auditar | Crítico: 81% del tráfico es mobile |
+**PROBLEMA DE COMUNICACION DE VALOR — no de precios (corregido jul 2026):**
+El precio del plan semestral SÍ tiene lógica — el problema es que el valor está invisible:
 
-### 3 Acciones que Pueden Recuperar Conversiones Esta Semana
-1. **Redirect 301 `/suscripciones/` → URL canónica** — 10 minutos de trabajo, recupera todas las visitas perdidas
-2. **Unificar en una sola URL** con los 3 planes y eliminar la duplicidad de URLs
-3. **Añadir comparativa visual de planes** que muestre el precio por mes — el anual gana obviamente si el usuario puede comparar
+| Componente | Valor |
+|---|---|
+| 6 ediciones × $17,900 | $107,400 |
+| Libro "Cocina para el fin de semana" (precio real) | $119,000 |
+| **Valor total** | **$226,400** |
+| **Precio del plan** | **$181,100** |
+| **Ahorro real** | **$45,300 (20%)** |
+
+El usuario ve $181,100 sin contexto, lo compara mentalmente con "$53,700 × 2 = $107,400" y concluye que el semestral es caro. La página no muestra el precio del libro ni el valor total. Resultado: el plan que más margen deja es el que menos se vende.
+
+**Accion correctiva:** Mostrar en la landing: ~~$226,400~~ → **$181,100** · Incluye libro valorado en $119,000 · Ahorras $45,300.
+
+### Diagnostico Visual del Funnel Completo (screenshots jul 2026)
+
+**Mapa del funnel real — 5 pasos:**
+```
+[Landing /suscripciones/] → [Pagina de producto] → [Carrito] → [Datos personales] → [Pago]
+     793 usuarios                30 usuarios          56 usuarios    29 usuarios        0 compras
+```
+
+| Elemento | Estado | Problema especifico |
+|----------|--------|-------------------|
+| URL canonica | Rota | `/suscripciones/` = 404. Dos URLs con contenido inconsistente |
+| Paradoja de precios | CRITICO | Plan 6 meses = $30,183/edicion vs $17,900 en plan de 3 meses |
+| Propuesta de valor | Ausente | La landing muestra solo precios. No hay titular, beneficios, ni por que Diners |
+| Pasos del funnel | Excesivos | 5 pasos para una suscripcion de revista — estandar de industria: 2-3 pasos |
+| Formulario checkout | Excesivo | Pide tipo doc., N documento, fecha de nacimiento, tipo de comprador, datos de empresa, direccion completa. Para una revista: nombre + email + direccion + pago es suficiente |
+| Bug de cantidad | Bug | Carrito muestra "x 2" a $107,400 en lugar de x 1 a $53,700. Genera desconfianza |
+| Metodos de pago | Ausentes | No visibles antes del ultimo paso — genera ansiedad pre-checkout |
+| Social proof | Ausente | Sin testimonios, numero de suscriptores, ni resenas |
+| Garantias | Ausentes | Sin politica de reembolso ni satisfaccion garantizada |
+| Comparativa planes | Ausente | No hay precio por mes ni badge Recomendado |
+| CTA texto | Generico | "Comprar" — vs "Suscribirme" o "Quiero mi Diners" |
+| Mobile UX | Roto | Tabla del carrito se corta horizontalmente en movil (74% del trafico) |
+| Campo cupon | Confunde | Visible en carrito sin cupon activo — usuarios buscan cupon, no lo encuentran, abandonan |
+| Distracciones | Alto | Header completo con menu editorial + footer con decenas de links en pagina de conversion |
+
+### Acciones Priorizadas — CRO Suscripciones
+
+**P0 — Esta semana (Juan David):**
+1. Arreglar el bug de cantidad en el carrito (x 2 por defecto → x 1)
+2. Redirect 301 `/suscripciones/` → URL canonica real
+3. Fix pasarela de pago (usuarios llegan al paso 5 y no pueden pagar)
+4. Reducir formulario de checkout: eliminar tipo doc, fecha de nacimiento, datos de empresa. Dejar: nombre, email, telefono, direccion, pago
+
+**P1 — Proximas 2 semanas (Carolina + Simon Granja):**
+5. Redisenar landing de planes: agregar titular con beneficio + bullets de que recibe + precio/edicion + badge Mas popular en plan anual
+6. Mostrar metodos de pago aceptados desde la pagina de planes
+7. Revisar y corregir la logica de precios del plan de 6 meses
+8. Simplificar el carrito a un step (skip cart → ir directo a checkout desde la pagina de producto)
+9. Quitar el campo de cupon si no hay cupones activos
+
+**P2 — H2 2026:**
+10. Agregar social proof: "X suscriptores activos", testimonial de lector
+11. Agregar garantia de 30 dias
+12. Crear version de landing sin header/footer para trafico de Meta Ads y Google Ads
+13. Fix mobile: tabla del carrito responsive
 
 ---
 
