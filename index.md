@@ -84,6 +84,8 @@ Mapa de navegación del vault. Usar para localizar archivos — los detalles est
 
 ### Plataformas
 - [[03 - Unidades de Negocio/Experiencias/Experiencias]] — Eventos, alianzas, beneficios suscriptores
+- [[03 - Unidades de Negocio/Experiencias/Arquitectura-Plataforma-Beneficios]] — Spec técnico plataforma Beneficios Suscriptores: 3 actores, módulos, KPIs, stack
+- [[03 - Unidades de Negocio/Experiencias/Prototipos-UI-Beneficios-Suscriptores]] — Prototipos HTML por actor: Suscriptor ✅, Aliado ✅, Gamma Admin pendiente
 - [[03 - Unidades de Negocio/Plataformas/Vision Davivienda/Vision Davivienda]] — Plataforma financiera educativa Davivienda. Funciona bien
 - [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Educacion Financiera]] — Ed. Financiera. Rezago crítico. Estrategia "Mundo D"
 - [[03 - Unidades de Negocio/Plataformas/Educacion Financiera/Backlog Solicitudes Editoriales 2026]] — Backlog contenido plataformas. Tarifas 2026

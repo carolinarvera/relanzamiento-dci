@@ -480,7 +480,7 @@ Precedente directo (2026-07-02, sugerido por Carolina): casa editorial multi-mar
 
 ## Relacionado
 
-[[Experiencias]] · [[Jeison Montero]] · [[Juan David Duran Lerma]] · [[Paola Pantaleon]] · [[Nicolas Serna]] · [[Carolina Ramirez]] · [[Nidia Alexandra Rodriguez Linares]] · [[Experiencias_05_Pipeline_ViveBeneficios.xlsx]] · [[06 - Meetings/Experiencias/2026-07-01 Carolina-Jeison-Juandy - Landing Vive Beneficios]] · [[06 - Meetings/Experiencias/2026-07-01 Equipo-Catalina - Propuesta Plataforma Lealtad]] · [[06 - Meetings/Experiencias/2026-07-02 Equipo-Experiencias - Landing Beneficios Suscriptores]] · [[06 - Meetings/Experiencias/2026-07-03 Review-Avances-Experiencias]]
+[[Experiencias]] · [[Jeison Montero]] · [[Juan David Duran Lerma]] · [[Paola Pantaleon]] · [[Nicolas Serna]] · [[Carolina Ramirez]] · [[Nidia Alexandra Rodriguez Linares]] · [[Experiencias_05_Pipeline_ViveBeneficios.xlsx]] · [[06 - Meetings/Experiencias/2026-07-01 Carolina-Jeison-Juandy - Landing Vive Beneficios]] · [[06 - Meetings/Experiencias/2026-07-01 Equipo-Catalina - Propuesta Plataforma Lealtad]] · [[06 - Meetings/Experiencias/2026-07-02 Equipo-Experiencias - Landing Beneficios Suscriptores]] · [[06 - Meetings/Experiencias/2026-07-03 Review-Avances-Experiencias]] · [[03 - Unidades de Negocio/Experiencias/Prototipos-UI-Beneficios-Suscriptores]]
 
 ---
 
