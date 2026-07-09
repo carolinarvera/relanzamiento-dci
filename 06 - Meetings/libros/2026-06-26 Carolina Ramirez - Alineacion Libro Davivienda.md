@@ -8,27 +8,26 @@ confidence: stated
 ---
 
 ## For future Claude
-Kick-off del lanzamiento digital del libro Davivienda (título específico no registrado). Agencias: Babel (PR + relaciones medios) y Leo (creativos). Estructura de lanzamiento: 3 momentos temporales. HubSpot como CRM. Ciesa maneja logística física. Este es el primer proyecto de Libros con presencia digital real — modelo para futuros lanzamientos.
+Kick-off del lanzamiento digital del libro Davivianda (título específico no registrado). IMPORTANTE: este es un proyecto liderado y desarrollado 100% por el área de mercadeo de Davivianda — NO es un proyecto de Ediciones Gamma. Gamma apoya en ejecución digital (Vision.com, redes, email Braze, coordinación con agencias Babel y LEO). El libro es GRATUITO y digital — no hay precios, no hay Instagram Shop, no hay HubSpot (herramienta solo Gamma). Nicolás Serna NO está en este proyecto. Agencias: Babel (PR + relaciones medios) y Leo Burnett (creativos). Estructura de lanzamiento: 3 momentos temporales. Ciesa maneja logística física de copias para el evento (si aplica).
 
 ## Decisiones
 - **Estructura lanzamiento 3 momentos:**
-  - *Momento 1:* Pre-lanzamiento — construcción expectativa, captación lista email, PR con medios
-  - *Momento 2:* Lanzamiento — evento, pauta, redes, email campaign
-  - *Momento 3:* Post-lanzamiento — mantenimiento tráfico, reseñas, conversión larga
-- **Agencias asignadas:** Babel = PR y medios; Leo = creativos digitales y redes
-- **CRM:** HubSpot para captura leads y seguimiento compradores
-- **Logística:** Ciesa — envíos físicos, inventario, despacho
-- **Canal digital prioritario:** Instagram + email (TikTok descartado desde reunión previa)
-- **Instagram Shop:** solo títulos seleccionados del catálogo — no catálogo completo de 29 títulos
+  - *Momento 1:* Pre-lanzamiento — construcción expectativa, PR con medios
+  - *Momento 2:* Lanzamiento — evento, redes, email campaign
+  - *Momento 3:* Post-lanzamiento — mantenimiento tráfico, amplificación por capítulo
+- **Agencias asignadas:** Babel = PR y medios; Leo Burnett = creativos digitales y redes
+- **Email:** Braze (lista Vision, ~135K suscriptores) — owner Estefanía Ochoa
+- **Logística:** no aplica — el libro es digital y gratuito, la logística del evento es responsabilidad de Davivianda
+- **Canal digital prioritario:** Instagram + email Braze (TikTok descartado desde reunión previa)
+- **Libro:** digital, 100% gratuito — no hay tienda, no hay precios, no hay SKUs
 
 ## Tareas
 | Tarea | Owner | Due |
 |---|---|---|
-| Definir títulos para Instagram Shop (lista corta) | Nicolás + Carolina | 2026-07-07 |
-| Configurar flujo HubSpot para libro Davivienda | Paola Gordillo (CM) | 2026-07-14 |
 | Brief creativo a Leo (3 momentos + formatos) | Carolina | 2026-07-03 |
 | Coordinar PR estrategia con Babel | Carolina | 2026-07-07 |
+| Confirmar sesión unificación con todas las agencias | Carolina | 2026-07-10 |
 
 ## Pendientes / Bloqueantes
-- Precios definitivos: sin confirmación de Nicolás → no se puede activar tienda ni campaña
-- Fecha lanzamiento: sin confirmar — bloquea cronograma de PR y medios
+- Acceso al borrador del libro + lista de autores (solicitar a Davivianda) — bloquea Bloque A y brief LEO
+- Fecha lanzamiento: confirmada por Carolina = 29 sep 2026 (Día D)

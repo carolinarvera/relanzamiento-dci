@@ -10,7 +10,7 @@ confidence: high
 ---
 
 ## For future Claude
-NS01 for Libros BU: full funnel map for OBJ1 (catalog direct sales — B2C + small B2B). North Star: $150M COP revenue from catalog H2 2026. Funnel has 5 stages: Descubrimiento → Consideración → Conversión → Upsell Corporativo → Retención. Current critical gaps: zero SEO on product pages, no WhatsApp Business catalog, no Instagram Shop, no subscriber discount configured. All gaps have owners and deadlines assigned. This document is the single source of truth for OBJ1 pipeline state. Created 2026-06-29.
+NS01 for Libros BU: full funnel map for OBJ1 (catalog direct sales — B2C + small B2B). North Star: $150M COP revenue from catalog H2 2026. Funnel has 5 stages: Descubrimiento → Consideración → Conversión → Upsell Corporativo → Retención. Current critical gaps: zero SEO on product pages, no WhatsApp Business catalog, no subscriber discount configured. Instagram Shop DESCARTADO — no disponible en Colombia. All gaps have owners and deadlines assigned. This document is the single source of truth for OBJ1 pipeline state. Created 2026-06-29.
 
 ---
 
@@ -31,7 +31,7 @@ Desglose por canal meta:
 | WhatsApp Business | $30M COP | 20% | No configurado |
 | Consignación (hoteles / librerías) | $35M COP | 23% | Parcialmente activo |
 | Corporativo pequeño (<50u sin empaque custom) | $25M COP | 17% | Sin activar |
-| Instagram Shop | $10M COP | 7% | No configurado |
+| Instagram Shop | — | — | DESCARTADO — no disponible en Colombia |
 
 ---
 
@@ -74,7 +74,7 @@ Desglose por canal meta:
 | Acción | Estado | Frecuencia mínima |
 |---|---|---|
 | Reels de libros (unboxing, detalle, uso) | ⚠️ Irregular | 3 por semana |
-| Stories con tag de producto (Instagram Shop) | ❌ No existe | Daily cuando aplique |
+| Stories con CTA a WhatsApp o link en bio | ❌ No existe | Daily cuando aplique |
 | Carruseles comparativos (categorías, selección de regalo) | ❌ No existe | 2 por semana |
 | Colaboración con arquitectos/artistas del catálogo | ❌ No existe | 1 por mes |
 
@@ -171,16 +171,6 @@ Desglose por canal meta:
 
 ---
 
-### Instagram Shop (Owner: Paola Nossa + Paola Gordillo | Deadline: Jul 31)
-
-| Acción | Estado |
-|---|---|
-| Catálogo vinculado a Instagram Shop | ❌ No configurado |
-| Productos taggeados en publicaciones activas | ❌ No existe |
-| Historias con producto taggeado | ❌ No existe |
-
----
-
 ## ETAPA 4 — UPSELL CORPORATIVO
 
 **Objetivo:** convertir compradores individuales o contactos corporativos en clientes de lotes.
@@ -225,7 +215,7 @@ Desglose por canal meta:
 |---|---|---|---|---|
 | SEO 29 fichas de producto | Juan David | Jul 31 | Datos técnicos (Nicolas) | Alto |
 | WhatsApp Business catalogo cargado | Paola Nossa | Jul 31 | Ninguno | Alto |
-| Instagram Shop configurado | Paola Nossa | Jul 31 | Ninguno | Medio-Alto |
+| ~~Instagram Shop~~ | ~~Paola Nossa~~ | — | DESCARTADO — no disponible en Colombia | — |
 | Empaque regalo en checkout | Nicolas + Jeison | Jul 15 | Ninguno | Alto |
 | Fotos de interiores en fichas | Nicolas | Jul 31 | Acceso a libros físicos | Alto |
 | Descuento suscriptores activado | Nicolas (define %) | Ago 1 | Decisión % descuento | Medio |

@@ -5,14 +5,14 @@ type: task
 status: pendiente
 priority: alta
 assignee: Nicolas Serna
-tags: [libros, instagram-shop, whatsapp-business, catalogo, seleccion-titulos]
+tags: [libros, whatsapp-business, catalogo, seleccion-titulos]
 related: [Plan-Trabajo-Libros-H2-2026, NS01-Funnel-Catalogo-Venta-Directa]
 source: minuta-2026-07-01
 ---
 
-# Seleccionar titulos para Instagram Shop y WhatsApp Business
+# Seleccionar titulos prioritarios para WhatsApp Business
 
-**Decision de la reunion (Jul 1):** NO subir los 29 titulos — solo los mas vendidos y buscados para evitar saturacion del catalogo.
+**Decision de la reunion (Jul 1):** NO activar todos los 29 titulos — seleccionar los de mayor rotacion. Instagram Shop descartado (no disponible en Colombia).
 
 ## Que entregar
 Lista priorizada de titulos seleccionados (estimado: 10-15 titulos) con:
@@ -28,7 +28,6 @@ Lista priorizada de titulos seleccionados (estimado: 10-15 titulos) con:
 4. **Disponibilidad de inventario suficiente** (no incluir si hay <20 unidades en bodega)
 
 ## Para quien
-- Paola Gordillo: usa la lista para configurar Instagram Shop
 - Paola Nossa: usa la lista para WhatsApp Business (Fase 1 — no todos)
 - Juan David: prioriza estas fichas de producto en el trabajo de SEO
 

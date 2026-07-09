@@ -2,7 +2,7 @@
 date: 2026-07-01
 due: 2026-07-15
 type: task
-status: pendiente
+status: cancelado
 priority: alta
 assignee: Paola Gordillo
 tags: [libros, instagram-shop, catalogo, digital, configuracion]
@@ -10,9 +10,9 @@ related: [NS01-Funnel-Catalogo-Venta-Directa, Plan-Trabajo-Libros-H2-2026]
 source: minuta-2026-07-01
 ---
 
-# Configurar Instagram Shop — titulos seleccionados Libros
+# ~~Configurar Instagram Shop — titulos seleccionados Libros~~ CANCELADO
 
-**Depende de:** Nicolas define la lista de titulos seleccionados (tarea paralela — deadline Jul 3).
+**Motivo:** Instagram Shop no está disponible en Colombia. Canal descartado definitivamente de toda estrategia Libros.
 
 ## Que hacer
 

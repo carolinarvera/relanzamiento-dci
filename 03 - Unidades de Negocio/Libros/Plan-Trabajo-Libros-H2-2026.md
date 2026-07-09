@@ -40,10 +40,6 @@ Strategic operational plan for Libros BU defined by Carolina on 2026-06-24. Thre
 - Fase 2: los 29 titulos del catalogo con canal de cierre rapido para compras individuales y corporativas pequenas
 - Flujo: consulta → ficha del libro → precio → link pago / coordinacion entrega
 
-### Instagram Shop — Paola Nossa
-- Catalogo vinculado a Instagram Shop con tags en Reels y Stories
-- Trafico caliente con intencion de compra: producto taggeado directo desde el contenido
-
 ### Media Kit Catalogo B2B — Nicolas
 - Documento para propuestas B2B: planes para CORPORATIVO + INTERMEDIARIOS + Gift Book
 - Contenido: los 29 titulos organizados por categoria, precios unitarios, descuentos por volumen, opciones de empaque
@@ -130,7 +126,7 @@ Antes de salir a prospectar necesitan precio:
 | Definir precios paquetes corporativos (Basico/Premium/Elite) | **Nicolas Serna** | BLOQUEADOR |
 | SEO 29 titulos (sinopsis + keywords longtail) | **Juan David** | Alta — Jul 31 |
 | WhatsApp Business catalogo 29 titulos | **Paola Nossa** | Alta — Jul 31 |
-| Instagram Shop configuracion + tags | **Paola Nossa** | Alta — Jul 31 |
+| ~~Instagram Shop~~ | DESCARTADO | No disponible en Colombia |
 | Media kit corporativo Gift Book | **Nicolas Serna** | Alta — requiere precios |
 | Revision flujo empaque regalo sitio web | **Nicolas Serna** | Media — Jul 15 |
 | Media kit catalogo B2B (intermediarios) | **Nicolas Serna** | Media — Jul 31 |

@@ -525,9 +525,6 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ]  🟡 `#2LI` **WhatsApp Business catálogo — 29 títulos** · NS02 · Conversión
   Flujo: consulta → ficha del libro → precio → link pago.
 
-- [ ] 🟡  `#3LI` **Instagram Shop — catálogo vinculado + tags en contenido** · NS03 · Conversión
-  29 títulos en Instagram Shop con tags en Reels y Stories. 
-
 ### Nicolas Serna — Foco 2: Gift Book Corporativo
 
 - [ ] 🔴 `#8LI` **Media Kit Corporativo Gift Book — PDF 2 páginas** · NS01 · Consideración

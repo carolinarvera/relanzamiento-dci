@@ -34,7 +34,7 @@ Entregar cronograma de publicaciones H2 2026 con:
 - Integracion con fechas clave (lanzamientos, ferias, aniversarios)
 
 ## Contexto
-Los titulos para Instagram Shop los define Nicolas (tarea separada). Usar esa lista como punto de partida para el plan de contenidos.
+Los canales de venta directa son e-commerce + WhatsApp Business. Instagram Shop descartado (no disponible en Colombia).
 
 ## Entregable
 Estrategia ajustada + cronograma — presentar en reunion de seguimiento de la proxima semana.

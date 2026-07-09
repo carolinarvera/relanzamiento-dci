@@ -9,7 +9,7 @@ confidence: high
 ---
 
 ## For future Claude
-Full launch strategy for the Davivianda digital book. Day D: September 29, 2026. Calibrated with real 2025-2026 campaign data. Key validated finding: journalist/reporter reels are the top format (+561%); Stories tipo social do NOT work (80-100 views); LinkedIn Davivienda Corredores is critical (~17K impressions); YouTube Shorts grew 1,091%. See companion file Libro Davivienda Resultados Campana 2025-2026.md for benchmark data.
+Full launch strategy for the Davivianda digital book. IMPORTANTE: este libro es un proyecto 100% de Davivianda (área de mercadeo) — no de Ediciones Gamma. Gamma apoya en ejecución digital (Vision.com, Braze email, redes, agencias Babel y LEO). El libro es GRATUITO y digital. Nicolás Serna NO está en este proyecto. No hay Instagram Shop, no hay precios, no hay HubSpot. Day D: September 29, 2026. Calibrated with real 2025-2026 campaign data. Key validated finding: journalist/reporter reels are the top format (+561%); Stories tipo social do NOT work (80-100 views); LinkedIn Davivienda Corredores is critical (~17K impressions); YouTube Shorts grew 1,091%. See companion file Libro Davivienda Resultados Campana 2025-2026.md for benchmark data.
 
 ---
 

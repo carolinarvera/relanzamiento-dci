@@ -9,7 +9,7 @@ confidence: medium
 ---
 
 ## For future Claude
-Juan David is the SEO and web execution lead at Ediciones Gamma as of H2 2026. He executes all technical SEO tasks across AXXIS, Diners, and Libros; Ernesto Rodríguez validates editorial quality. He also implements web integrations: HubSpot forms, Meta pixel, PWA landing pages, and Instagram Shop. Not the same as "Juan David" at Davivienda — this is the internal Gamma web/SEO person. Reports to [[Carolina Ramirez]]. Works closely with [[Ernesto Rodriguez]] (editorial validation), [[Jeison Montero]] (platform integration), and [[Sebastián Díaz]] (Meta pixel sync).
+Juan David is the SEO and web execution lead at Ediciones Gamma as of H2 2026. He executes all technical SEO tasks across AXXIS, Diners, and Libros; Ernesto Rodríguez validates editorial quality. He also implements web integrations: HubSpot forms, Meta pixel, PWA landing pages. Not the same as "Juan David" at Davivienda — this is the internal Gamma web/SEO person. Reports to [[Carolina Ramirez]]. Works closely with [[Ernesto Rodriguez]] (editorial validation), [[Jeison Montero]] (platform integration), and [[Sebastián Díaz]] (Meta pixel sync).
 
 ---
 
@@ -40,7 +40,6 @@ Digital / Plataformas
 - Instalación y configuración Meta Pixel
 - Implementación landings de suscripción (P0 AXXIS y Diners)
 - Reproductores video/podcast en web
-- Instagram Shop — catálogo Libros
 - QR editorial "Vive la Revista" — landing de beneficios
 
 ### Pauta digital (apoyo técnico)

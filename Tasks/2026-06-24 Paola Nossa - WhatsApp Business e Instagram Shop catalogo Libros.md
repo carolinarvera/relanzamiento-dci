@@ -5,11 +5,11 @@ type: task
 status: pendiente
 priority: alta
 assignee: Paola Nossa
-tags: [libros, whatsapp-business, instagram-shop, catalogo, digital]
+tags: [libros, whatsapp-business, catalogo, digital]
 related: [Plan-Trabajo-Libros-H2-2026]
 ---
 
-# WhatsApp Business e Instagram Shop — Catalogo Libros
+# WhatsApp Business — Catalogo Libros
 
 ## Accion 1 — WhatsApp Business (Fase 2)
 
@@ -21,14 +21,6 @@ Flujo a implementar:
 3. Opcion: compra individual → link pago / opcion: pedido corporativo → coordinar con Nicolas
 
 Resultado esperado: compras sin friccion, sin depender del e-commerce para cierres rapidos.
-
-## Accion 2 — Instagram Shop
-
-- Vincular el catalogo de Libros a Instagram Shop
-- Taggear productos en Reels y Stories de forma activa
-- Trafico caliente con intencion de compra directo desde el contenido
-
-Coordinar con Paola Gordillo (CM) para que cada Reel o Story de un libro tenga el producto taggeado.
 
 ## Referencia
 [[Plan-Trabajo-Libros-H2-2026]] · [[Auditoria-Catalogo-Activo-2026]]
