@@ -38,7 +38,7 @@ No se libera presupuesto nuevo de pauta hasta cerrar esto.
 | 1 | Auditar Meta Pixel + Conversions API en checkout de suscripción (AXXIS y Diners) — verificar si el evento `Purchase` dispara | Plataformas (Jeison) | Sin esto, Meta no puede optimizar hacia venta ni sabemos qué campañas funcionan |
 | 2 | Investigar por qué se rechazaron los asset groups de la PMax "Suscriptores" en Google Ads y volver a lanzarla con recursos conformes | Growth / agencia Google Ads | Presupuesto ya aprobado ($4,000/día) sin usar hace semanas |
 | 3 | Verificar conversion tracking de Google Ads a nivel de cuenta — 0.00% de conversión en TODAS las campañas (no solo suscripción) sugiere un problema de tag, no solo de checkout | Growth / agencia Google Ads | Sin esto ninguna campaña de Google Ads es optimizable |
-| 4 | Confirmar con el equipo técnico que el checkout procesa pago de principio a fin (vinculado al bloqueante ya registrado: Sandra Martínez) | Jeison / Sandra Martínez | Root cause — todo lo demás es síntoma |
+| 4 | Confirmar con el equipo técnico que el checkout procesa pago de principio a fin | Jeison / equipo técnico | Root cause — todo lo demás es síntoma |
 | 5 | Auditar la página `/suscripciones/` con marco CRO: claridad de propuesta de valor, CTA, señales de confianza, fricción en el formulario | Growth | 9 personas llegaron a checkout y no completaron — probablemente no es solo tracking |
 
 **Owner de cierre de Fase 0:** Carolina — checkpoint con Jeison antes de liberar Fase 1.
@@ -119,4 +119,4 @@ Solo se activa cuando Fase 0 está verificada (conversiones visibles en Meta + G
 
 - No incluye Ediciones Gamma (cuenta de pauta compartida por facturación, pero fuera del alcance de suscripciones — sin canal de suscripción propio).
 - No incluye "Colchones El Dorado" (pauta de cliente, INGRESOS — reporting separado por regla existente).
-- Asume que el diagnóstico de checkout (Sandra Martínez, bloqueante ya registrado) se resuelve en paralelo a Fase 0 — este plan no reemplaza esa conversación, la refuerza con evidencia de 4 canales adicionales.
+- Asume que el diagnóstico técnico de checkout (equipo técnico/Jeison) se resuelve en paralelo a Fase 0 — este plan no reemplaza esa conversación, la refuerza con evidencia de 4 canales adicionales. No confundir con el bloqueante de Sandra Martínez (editora revista impresa) sobre contenido exclusivo — son dos bloqueantes distintos, ver [[Ejes-de-Contenido-AXXIS-Diners-2026]].
