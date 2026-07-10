@@ -32,15 +32,19 @@ Código fuente local: `~/Documents/beneficios-suscriptores-prototipo/` (proyecto
 
 ### Feedback a la base alterna ("Vive Beneficios")
 
-Otro equipo construye en paralelo una base con naming "Vive Beneficios" y validación por QR — ambos contradicen decisiones ya tomadas (nombre unificado Beneficios Suscriptores; QR descartado 2026-07-03 a favor de billeteras virtuales). Pendiente avisarles.
+Otro equipo construye en paralelo una base con naming "Vive Beneficios" y validación por QR — ambos contradicen decisiones ya tomadas (nombre unificado Beneficios Suscriptores; QR descartado 2026-07-03 a favor de billeteras virtuales). En estos mockups la credencial ya se corrigió a ID sin QR — pendiente avisarles del naming y del QR en su propia base.
 
-Mientras tanto, se propusieron 5 secciones para sumar sobre su base (mismo sistema visual de ellos: crema/rojo ladrillo/dorado), sin reemplazar nada: **https://beneficios-suscriptores-prototipo.vercel.app/mejoras**
+Las 5 mejoras propuestas ahora están **integradas dentro de cada pantalla que corresponde** (no como página aislada), con el mismo sistema visual de ellos (crema/rojo ladrillo/dorado), sin reemplazar nada — marcadas con una etiqueta "Nuevo":
 
-1. Mis ahorros (total ahorrado vs. valor de suscripción + desglose por categoría)
-2. Filtros ampliados (ordenar + % descuento, calificación, cerca de mí)
-3. Calificación y distancia en las tarjetas de experiencia
-4. Referir y ganar (motor de crecimiento para el sistema de niveles)
-5. FAQ (resolver objeciones antes del registro)
+**Inicio suscriptor** — https://beneficios-suscriptores-prototipo.vercel.app/mejoras-suscriptor
+1. Mis ahorros (total ahorrado vs. valor de suscripción + desglose por categoría) — tras el hero
+2. Filtros ampliados (ordenar + % descuento, calificación, cerca de mí) — sobre "Experiencias seleccionadas para ti"
+3. Calificación y distancia en las tarjetas de esa misma sección
+4. Referir y ganar (motor de crecimiento para el sistema de niveles) — al final
+
+**Landing pública** — https://beneficios-suscriptores-prototipo.vercel.app/mejoras-landing
+3. Calificación y distancia en "Experiencias destacadas del mes"
+5. FAQ — después de "Cómo funciona", antes del CTA final (resuelve objeciones antes del registro)
 
 ## Decisiones de producto reflejadas en los prototipos
 
