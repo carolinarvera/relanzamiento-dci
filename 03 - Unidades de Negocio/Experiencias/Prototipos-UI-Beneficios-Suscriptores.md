@@ -10,7 +10,7 @@ status: en-construccion
 ---
 
 ## For future Claude
-Prototipos HTML de la plataforma Beneficios Suscriptores, uno por cada actor definido en [[03 - Unidades de Negocio/Experiencias/Arquitectura-Plataforma-Beneficios]] (Suscriptor, Aliado, Gamma Admin). Sirven como insumo visual para la tarea de Juan David "Definir funcionalidades del portal + mockups/bocetos" (due 31 jul, ver [[06 - Meetings/Experiencias/2026-07-02 Equipo-Experiencias - Landing Beneficios Suscriptores]]). Son pantallas de inicio ya logueado — no flujos completos. Datos y aliados mostrados son ficticios (ej. "Casa Alma", "María Trujillo"), solo para maquetar; no representan aliados reales prospectados.
+Prototipos HTML de la plataforma Beneficios Suscriptores, uno por cada actor definido en [[03 - Unidades de Negocio/Experiencias/Arquitectura-Plataforma-Beneficios]] (Suscriptor, Aliado, Gamma Admin). Sirven como insumo visual para la tarea de Juan David "Definir funcionalidades del portal + mockups/bocetos" (due 31 jul, ver [[06 - Meetings/Experiencias/2026-07-02 Equipo-Experiencias - Landing Beneficios Suscriptores]]). Son pantallas de inicio ya logueado (Suscriptor, Aliado) más una landing pública (Inicio) — no flujos completos. Datos y aliados mostrados son ficticios (ej. "Casa Alma", "María Trujillo"), solo para maquetar; no representan aliados reales prospectados. El sitio se unificó a **3 páginas únicas** en un solo sistema de diseño (2026-07-10) — ya no existen páginas separadas de "mejoras"; las 5 mejoras propuestas por feedback a la base alterna quedaron integradas directamente en Inicio y Suscriptor.
 
 ---
 
@@ -20,30 +20,31 @@ Prototipos HTML de la plataforma Beneficios Suscriptores, uno por cada actor def
 
 ## Estado por actor
 
-**Sitio en vivo (Vercel):** https://beneficios-suscriptores-prototipo.vercel.app
+**Sitio en vivo (Vercel):** https://beneficios-suscriptores-prototipo.vercel.app — **3 páginas únicas**, un solo sistema de diseño (piedra cálida/bronce/vino).
 
 | Actor | Pantalla | Estado | Link directo |
 |---|---|---|---|
-| Suscriptor | Inicio (logueado) | ✅ v1 | https://beneficios-suscriptores-prototipo.vercel.app/suscriptor |
+| — | Inicio (landing pública) | ✅ v1 | https://beneficios-suscriptores-prototipo.vercel.app/ |
+| Suscriptor | Inicio (logueado) | ✅ v2 — mejoras integradas | https://beneficios-suscriptores-prototipo.vercel.app/suscriptor |
 | Aliado | Inicio (logueado) | ✅ v1 | https://beneficios-suscriptores-prototipo.vercel.app/aliado |
 | Gamma Admin | Inicio (logueado) | ⏳ pendiente | — |
 
 Código fuente local: `~/Documents/beneficios-suscriptores-prototipo/` (proyecto Vercel independiente `caro8/beneficios-suscriptores-prototipo`, fuera del vault). Versiones anteriores como Artifact: [Suscriptor](https://claude.ai/code/artifact/0d12a42e-527f-4dd7-85e9-4c4edf13e28d) · [Aliado](https://claude.ai/code/artifact/f471ad13-1b16-41c2-b006-934f12e96948).
 
-### Feedback a la base alterna ("Vive Beneficios")
+### Feedback a la base alterna ("Vive Beneficios") — mejoras ya integradas
 
-Otro equipo construye en paralelo una base con naming "Vive Beneficios" y validación por QR — ambos contradicen decisiones ya tomadas (nombre unificado Beneficios Suscriptores; QR descartado 2026-07-03 a favor de billeteras virtuales). En estos mockups la credencial ya se corrigió a ID sin QR — pendiente avisarles del naming y del QR en su propia base.
+Otro equipo construye en paralelo una base con naming "Vive Beneficios" y validación por QR — ambos contradicen decisiones ya tomadas (nombre unificado Beneficios Suscriptores; QR descartado 2026-07-03 a favor de billeteras virtuales). En estos mockups la credencial usa ID sin QR — pendiente avisarles del naming y del QR en su propia base.
 
-Las 5 mejoras propuestas ahora están **integradas dentro de cada pantalla que corresponde** (no como página aislada), con el mismo sistema visual de ellos (crema/rojo ladrillo/dorado), sin reemplazar nada — marcadas con una etiqueta "Nuevo":
+Las 5 mejoras propuestas para su pantallazo (2026-07-06) se llevaron directo al sistema de diseño propio de Gamma, sin páginas paralelas de "mejoras" ni el naming/paleta de ellos:
 
-**Inicio suscriptor** — https://beneficios-suscriptores-prototipo.vercel.app/mejoras-suscriptor
-1. Mis ahorros (total ahorrado vs. valor de suscripción + desglose por categoría) — tras el hero
-2. Filtros ampliados (ordenar + % descuento, calificación, cerca de mí) — sobre "Experiencias seleccionadas para ti"
-3. Calificación y distancia en las tarjetas de esa misma sección
-4. Referir y ganar (motor de crecimiento para el sistema de niveles) — al final
+**`/suscriptor`**
+1. Mis ahorros (total ahorrado vs. valor de suscripción + desglose por categoría) — tras el saludo
+2. Filtros ampliados (ordenar + % descuento por rango, calificación 4.5+, cerca de mí) — panel de dos filas sobre el catálogo
+3. Calificación y distancia — ya presentes en las tarjetas del catálogo
+4. Referir y ganar — banner de ancho completo al final de la página
 
-**Landing pública** — https://beneficios-suscriptores-prototipo.vercel.app/mejoras-landing
-3. Calificación y distancia en "Experiencias destacadas del mes"
+**`/` (Inicio)**
+3. Calificación y ciudad en "Experiencias destacadas del mes"
 5. FAQ — después de "Cómo funciona", antes del CTA final (resuelve objeciones antes del registro)
 
 ## Decisiones de producto reflejadas en los prototipos
