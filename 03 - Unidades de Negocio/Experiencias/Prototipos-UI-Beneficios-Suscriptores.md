@@ -20,11 +20,15 @@ Prototipos HTML de la plataforma Beneficios Suscriptores, uno por cada actor def
 
 ## Estado por actor
 
-| Actor | Pantalla | Estado | Link |
+**Sitio en vivo (Vercel):** https://beneficios-suscriptores-prototipo.vercel.app
+
+| Actor | Pantalla | Estado | Link directo |
 |---|---|---|---|
-| Suscriptor | Inicio (logueado) | ✅ v1 | https://claude.ai/code/artifact/0d12a42e-527f-4dd7-85e9-4c4edf13e28d |
-| Aliado | Inicio (logueado) | ✅ v1 | https://claude.ai/code/artifact/f471ad13-1b16-41c2-b006-934f12e96948 |
+| Suscriptor | Inicio (logueado) | ✅ v1 | https://beneficios-suscriptores-prototipo.vercel.app/suscriptor |
+| Aliado | Inicio (logueado) | ✅ v1 | https://beneficios-suscriptores-prototipo.vercel.app/aliado |
 | Gamma Admin | Inicio (logueado) | ⏳ pendiente | — |
+
+Código fuente local: `~/Documents/beneficios-suscriptores-prototipo/` (proyecto Vercel independiente `caro8/beneficios-suscriptores-prototipo`, fuera del vault). Versiones anteriores como Artifact: [Suscriptor](https://claude.ai/code/artifact/0d12a42e-527f-4dd7-85e9-4c4edf13e28d) · [Aliado](https://claude.ai/code/artifact/f471ad13-1b16-41c2-b006-934f12e96948).
 
 ## Decisiones de producto reflejadas en los prototipos
 
