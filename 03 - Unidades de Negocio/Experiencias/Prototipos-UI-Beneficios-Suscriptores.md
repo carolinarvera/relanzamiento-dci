@@ -30,6 +30,18 @@ Prototipos HTML de la plataforma Beneficios Suscriptores, uno por cada actor def
 
 Código fuente local: `~/Documents/beneficios-suscriptores-prototipo/` (proyecto Vercel independiente `caro8/beneficios-suscriptores-prototipo`, fuera del vault). Versiones anteriores como Artifact: [Suscriptor](https://claude.ai/code/artifact/0d12a42e-527f-4dd7-85e9-4c4edf13e28d) · [Aliado](https://claude.ai/code/artifact/f471ad13-1b16-41c2-b006-934f12e96948).
 
+### Feedback a la base alterna ("Vive Beneficios")
+
+Otro equipo construye en paralelo una base con naming "Vive Beneficios" y validación por QR — ambos contradicen decisiones ya tomadas (nombre unificado Beneficios Suscriptores; QR descartado 2026-07-03 a favor de billeteras virtuales). Pendiente avisarles.
+
+Mientras tanto, se propusieron 5 secciones para sumar sobre su base (mismo sistema visual de ellos: crema/rojo ladrillo/dorado), sin reemplazar nada: **https://beneficios-suscriptores-prototipo.vercel.app/mejoras**
+
+1. Mis ahorros (total ahorrado vs. valor de suscripción + desglose por categoría)
+2. Filtros ampliados (ordenar + % descuento, calificación, cerca de mí)
+3. Calificación y distancia en las tarjetas de experiencia
+4. Referir y ganar (motor de crecimiento para el sistema de niveles)
+5. FAQ (resolver objeciones antes del registro)
+
 ## Decisiones de producto reflejadas en los prototipos
 
 - **Sin QR** — validación de suscriptor por ID único digitado por el aliado (QR descartado 2026-07-03).
