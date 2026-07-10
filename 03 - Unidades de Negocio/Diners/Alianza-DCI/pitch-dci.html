@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reunir la marca · Diners Club × Revista Diners</title>
+<style>
+  :root{
+    --navy:#0A2540; --navy-deep:#061a30; --ink:#12233a;
+    --parchment:#F4F1EA; --parchment-soft:#EDEAE2;
+    --bronze:#B08D57; --gold:#D2A855; --wine:#8C3A3A;
+    --muted:rgba(244,241,234,.62); --line:rgba(210,168,85,.28);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--serif); color:var(--parchment);
+    background:var(--navy-deep);
+    -webkit-font-smoothing:antialiased;
+  }
+  .deck{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+  .slide{
+    min-height:100vh;scroll-snap-align:start;position:relative;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:8vh 7vw;
+    background:radial-gradient(120% 120% at 80% 0%, #0d2c4d 0%, var(--navy) 45%, var(--navy-deep) 100%);
+    border-bottom:1px solid rgba(0,0,0,.3);
+  }
+  .slide::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(60% 50% at 15% 90%, rgba(176,141,87,.10), transparent 60%),
+      linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.18));
+  }
+  .wrap{max-width:1040px;margin:0 auto;width:100%;position:relative;z-index:1}
+  .eyebrow{
+    font-family:var(--sans);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;margin-bottom:1.4rem;display:flex;align-items:center;gap:.9rem;
+  }
+  .eyebrow::after{content:"";height:1px;flex:1;max-width:120px;background:var(--line)}
+  h1{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.02;font-weight:600;letter-spacing:-.01em}
+  h2{font-size:clamp(1.7rem,3.8vw,2.7rem);line-height:1.08;font-weight:600;letter-spacing:-.01em;margin-bottom:1.2rem}
+  h3{font-size:1.15rem;font-weight:600;color:var(--gold);margin-bottom:.5rem}
+  p{font-size:clamp(1rem,1.6vw,1.22rem);line-height:1.55;color:rgba(244,241,234,.9);max-width:62ch}
+  .lead{font-size:clamp(1.15rem,2vw,1.5rem);color:var(--parchment)}
+  .muted{color:var(--muted)}
+  .accent{color:var(--gold)}
+  .wine{color:#E0A0A0}
+  strong{color:#fff;font-weight:600}
+
+  /* cover */
+  .cover h1{margin:.4rem 0 1.6rem}
+  .cover .x{color:var(--bronze);font-style:italic;font-weight:400}
+  .cover-sub{font-size:clamp(1.1rem,2vw,1.5rem);color:var(--parchment);max-width:46ch;margin-bottom:2.4rem}
+  .brandline{font-family:var(--sans);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);padding-top:1.1rem;display:inline-block}
+  .seal{
+    position:absolute;top:8vh;right:7vw;font-family:var(--sans);font-size:.68rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--gold);border:1px solid var(--line);border-radius:2px;
+    padding:.5rem .8rem;z-index:2
+  }
+
+  /* grids */
+  .grid{display:grid;gap:1.1rem;margin-top:1.6rem}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .card{
+    background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:3px;
+    padding:1.4rem 1.35rem;
+  }
+  .card h3{margin-bottom:.55rem}
+  .card p{font-size:.98rem;line-height:1.5;color:rgba(244,241,234,.8)}
+  .card.hl{border-color:var(--gold);background:rgba(210,168,85,.08)}
+  .card.sm{padding:1rem 1.05rem}
+  .card.sm h3{font-size:1rem;margin-bottom:.35rem}
+  .card.sm p{font-size:.84rem;line-height:1.38}
+  .tier-own{font-family:var(--sans);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.5rem}
+  .card.hl .tier-own{color:var(--gold)}
+  .sublabel{font-family:var(--sans);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bronze);margin:1.4rem 0 .2rem}
+  .translabel{font-family:var(--serif);font-size:clamp(1.05rem,1.7vw,1.35rem);font-weight:600;color:var(--gold);margin:1.5rem 0 .3rem;display:flex;align-items:center;gap:.9rem}
+  .translabel::after{content:"";height:1px;flex:1;background:var(--line)}
+  .subhead{font-family:var(--sans);font-size:.95rem;color:var(--gold);margin-top:.6rem;letter-spacing:.01em}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:1.8rem}
+  .stat .n{font-size:clamp(1.8rem,3.4vw,2.7rem);font-weight:600;color:var(--gold);line-height:1}
+  .stat .l{font-family:var(--sans);font-size:.78rem;letter-spacing:.04em;color:var(--muted);margin-top:.5rem;line-height:1.35}
+
+  /* table */
+  .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:1.4rem}
+  .tscroll table{margin-top:0;min-width:560px}
+  table{width:100%;border-collapse:collapse;margin-top:1.4rem;font-size:.96rem}
+  th,td{text-align:left;padding:.7rem 1rem;border-bottom:1px solid rgba(210,168,85,.16);vertical-align:top}
+  th{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+  td{color:rgba(244,241,234,.85)}
+  tr.us td{background:rgba(210,168,85,.07)}
+  tr.us td:first-child{color:var(--gold);font-weight:600;font-family:var(--serif)}
+  .td-strong{color:#fff}
+
+  /* roadmap */
+  .road{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+  .phase{border-top:2px solid var(--gold);padding-top:1rem}
+  .phase .ph{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze)}
+  .phase h3{font-size:1.05rem;color:var(--parchment);margin:.35rem 0 .5rem}
+  .phase .when{font-family:var(--sans);color:var(--gold);font-size:.85rem;margin-bottom:.6rem}
+  .phase p{font-size:.92rem;color:rgba(244,241,234,.78)}
+
+  /* statement (tesis block on brecha slide) */
+  .tesis{margin-top:1.4rem;border-left:2px solid var(--gold);padding-left:1.2rem}
+  .tesis .big{font-size:clamp(1.2rem,2.2vw,1.6rem);color:var(--parchment);font-weight:600;line-height:1.2}
+  .tesis .sub{font-size:1rem;color:rgba(244,241,234,.8);margin-top:.5rem;max-width:64ch}
+
+  /* ask */
+  .ask{background:linear-gradient(160deg,#0b2a4a,#04101f)}
+  .ask ol{margin:1.4rem 0 0;padding-left:0;list-style:none;counter-reset:a}
+  .ask li{counter-increment:a;position:relative;padding:.7rem 0 .7rem 3rem;border-bottom:1px solid var(--line);font-size:1.02rem;color:var(--parchment);max-width:74ch;line-height:1.45}
+  .ask li::before{content:counter(a);position:absolute;left:0;top:.7rem;font-family:var(--sans);font-size:.85rem;font-weight:700;color:var(--navy-deep);background:var(--gold);width:1.6rem;height:1.6rem;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .closing{margin-top:1.6rem;font-style:italic;font-size:clamp(1.05rem,1.9vw,1.35rem);color:var(--gold);max-width:60ch}
+
+  /* nav dots */
+  .dots{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;gap:11px}
+  .dots button{width:9px;height:9px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer;padding:0;transition:.25s}
+  .dots button.active{background:var(--gold);border-color:var(--gold);transform:scale(1.25)}
+  .pageno{position:fixed;left:24px;bottom:20px;font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;color:var(--muted);z-index:20}
+  .conf{position:fixed;right:24px;bottom:20px;font-family:var(--sans);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,241,234,.35);z-index:20}
+
+  .note{font-family:var(--sans);font-size:.78rem;color:var(--muted);margin-top:1.2rem;letter-spacing:.01em}
+
+  @media(max-width:760px){
+    .slide{padding:7vh 8vw}
+    .g2,.g3,.g4,.stats,.road{grid-template-columns:1fr 1fr}
+    .dots{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <!-- 1 · COVER -->
+  <section class="slide cover">
+    <span class="seal">Confidencial · Borrador</span>
+    <div class="wrap">
+      <div class="eyebrow">Propuesta de Alianza</div>
+      <h1><span class="x">Diners Club × Revista Diners</span></h1>
+      <p class="cover-sub">Reconectando la franquicia con su mayor activo en Colombia: La Revista Diners.</p>
+      <span class="brandline">Para Diners Club International · Discover Global Network</span>
+    </div>
+  </section>
+
+  <!-- 2 · REVISTA DINERS -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">El activo · Revista Diners</div>
+      <h2>Revista Diners: 60 años en el territorio exacto de la marca.</h2>
+      <p>Gastronomía, viajes, cultura, estilo de vida. La revista de estilo de vida más longeva del país, con una audiencia madura y de alto poder adquisitivo que coincide con el perfil del tarjetahabiente Diners Club.</p>
+      <div class="stats">
+        <div class="stat"><div class="n">45 <span style="font-size:1rem" class="muted">años</span></div><div class="l">edad promedio de la audiencia: madura, no millennial</div></div>
+        <div class="stat"><div class="n">84%</div><div class="l">NSE Alto + Medio-Alto</div></div>
+        <div class="stat"><div class="n">~59K</div><div class="l">visitantes únicos web / mes</div></div>
+        <div class="stat"><div class="n">~98K</div><div class="l">seguidores Instagram · engagement ~6%</div></div>
+      </div>
+      <p style="margin-top:1.4rem">La marca Diners Club tiene el ecosistema completo de impacto: impreso, web, redes, newsletter, podcast y formatos digitales.</p>
+      <p class="note">Cifras verificadas (Metricool/Meta, jun 2026). La credibilidad es parte de la propuesta.</p>
+    </div>
+  </section>
+
+  <!-- 3 · ESTADO ACTUAL -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">El estado actual · Colombia</div>
+      <h2>Una franquicia sub-explotada. Una oferta delgada.</h2>
+      <div class="stats">
+        <div class="stat"><div class="n">169K</div><div class="l">tarjetas Diners Club activas</div></div>
+        <div class="stat"><div class="n">11%</div><div class="l">del parque total de TC Davivienda</div></div>
+        <div class="stat"><div class="n">89%</div><div class="l">Blue (clásica) · 11% Black afluente</div></div>
+        <div class="stat"><div class="n">2–4</div><div class="l">accesos a salas VIP al año · + Davipuntos</div></div>
+      </div>
+      <p style="margin-top:1.8rem">Hoy el tarjetahabiente de Diners Club recibe poco más que puntos y un par de accesos a salas VIP. <strong>Sin concierge, sin seguros de viaje, sin protección de compra, sin hoteles de lujo, sin alianzas de consumo cotidiano.</strong> Una marca enorme, operando con una fracción de su potencial.</p>
+      <p class="note">Davivienda, franquiciado exclusivo de Diners Club en Colombia. Cifras internas.</p>
+    </div>
+  </section>
+
+  <!-- 4 · BRECHA + TESIS -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">La brecha</div>
+      <h2>El terreno de los descuentos, los lounges y las asistencias ya está tomado.</h2>
+      <div class="tscroll">
+      <table>
+        <thead><tr><th>Beneficio</th><th>Diners hoy</th><th>Visa</th><th>Mastercard</th></tr></thead>
+        <tbody>
+          <tr><td class="td-strong">Salas VIP</td><td class="wine">2–4 / año</td><td>Airport Companion</td><td>LoungeKey · 1,500+</td></tr>
+          <tr><td class="td-strong">Concierge / seguros de viaje</td><td class="wine">—</td><td>Sí</td><td>Sí</td></tr>
+          <tr><td class="td-strong">Protección de compra</td><td class="wine">—</td><td>Sí</td><td>Sí</td></tr>
+          <tr><td class="td-strong">Hoteles de lujo</td><td class="wine">—</td><td>Luxury Hotel Collection</td><td>Travel Rewards</td></tr>
+          <tr><td class="td-strong">Alianzas everyday-value</td><td class="wine">—</td><td>Descontinuado</td><td>Éxito, Cabify, Tostao…</td></tr>
+          <tr class="us"><td>Curaduría cultural y experiencias VIP</td><td>Nadie</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="tesis">
+        <div class="big">Visa y Mastercard ganaron la ubicuidad. Diners Club puede ganar mediante la <span class="accent">pertenencia</span>.</div>
+        <div class="sub">Creando identidad de estilo de vida y experiencias premium que solo Diners Club y Revista Diners, en alianza, pueden ofrecer en Colombia.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · DOS VÍAS -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">La estrategia · dos vías</div>
+      <h2>Reclamando el territorio.</h2>
+      <div class="grid g2">
+        <div class="card"><h3>Vía 1 · Always-on</h3><p>Los tarjetahabientes Diners Club acceden a un mundo de beneficios permanentes: restaurantes, comercios, cultura y experiencias, <strong>con curaduría editorial. No cupones: descuentos seleccionados</strong>.</p></div>
+        <div class="card hl"><h3>Vía 2 · Experiencias VIP</h3><p>Experiencias destacadas e inigualables que solo existen <strong>pagando con la tarjeta Diners</strong>. El territorio experiencial, con 60 años de raíz cultural local que solo Revista Diners puede ofrecer en Colombia.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · DISTRIBUCIÓN OMNICANAL -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Revista Diners · Distribución omnicanal</div>
+      <h2>Los formatos ya existen. Y ya llevan el nombre Diners.</h2>
+      <p class="subhead">Lo mejor: para iniciar, no se requiere construir nada nuevo.</p>
+      <div class="grid g4">
+        <div class="card sm"><h3>Impreso</h3><p>Revista mensual. Categorías consolidadas, secciones especiales, content marketing a doble página y formatos de alto impacto.</p></div>
+        <div class="card sm"><h3>Web + display</h3><p>revistadiners.com.co: contenidos editoriales, pull de pauta (headers, banners, formatos digitales) y acceso a contenido premium.</p></div>
+        <div class="card sm"><h3>Redes</h3><p>Instagram ~98K (engagement ~6%) y Facebook ~142K.</p></div>
+        <div class="card sm"><h3>Newsletters</h3><p><strong>~22.200 registrados · open rate 26–28%</strong>, por encima del benchmark editorial en Colombia (~20-22%). Espacio de marca en cada envío segmentado.</p></div>
+      </div>
+      <div class="translabel">Formatos de impacto transmedia · una audiencia ya fidelizada</div>
+      <div class="grid g4" style="margin-top:.2rem">
+        <div class="card sm hl"><h3>La Mesa de Diners</h3><p>Newsletter y podcast. El nombre ya es territorio de marca compartido.</p></div>
+        <div class="card sm"><h3>Historias Diners</h3><p>Micro-documentales en video: formato nativo para el storytelling editorial.</p></div>
+        <div class="card sm"><h3>Diners Club Recomienda</h3><p>Video-entrevistas de estilo de vida: el vehículo natural de "Ruta al estilo Diners".</p></div>
+        <div class="card sm"><h3>Temporalidad Diners</h3><p>Secciones impresas y digitales con curaduría por temporada, con beneficios y experiencias que solo existen pagando con la tarjeta Diners.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · GENERANDO AFINIDAD DE MARCA -->
+  <section class="slide ask">
+    <div class="wrap">
+      <div class="eyebrow">El plan</div>
+      <h2>Generando afinidad de marca.</h2>
+      <ol>
+        <li><strong>Sponsor de secciones:</strong> Diners Club como pilar de exposición de marca en el ecosistema integral de la revista (impreso, web, redes, La Mesa de Diners, formatos digitales), generando presencia y posicionamiento.</li>
+        <li><strong>Suscripción de regalo</strong> de la revista al tarjetahabiente: piloto con el segmento Black (18.4K) y escalar según adopción.</li>
+        <li><strong>Beneficios always-on:</strong> acceso de tarjetahabientes a la plataforma Beneficios Suscriptores.</li>
+        <li><strong>Experiencias exclusivas</strong> activadas pagando con la tarjeta Diners (generación de presupuesto de franquicia).</li>
+        <li><strong>Sección especial "Diners Club Recomienda"</strong> con calendario de temporadas.</li>
+      </ol>
+      <p class="closing">Medir afinidad de marca, uso y conversión sobre la base de tarjetahabientes. La meta: posicionar a Diners como el club de estilo de vida premium de Colombia, antes de que el territorio experiencial se consolide alrededor de Mastercard.</p>
+    </div>
+  </section>
+
+  <!-- 8 · NIVELES DE BENEFICIOS -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Niveles de beneficios</div>
+      <h2>El tarjetahabiente Diners no entra como un suscriptor más. Entra un nivel por encima.</h2>
+      <p>El club tiene niveles de membresía. El suscriptor de la revista avanza por ellos. El tarjetahabiente Diners Club accede a un nivel <strong>exclusivo, reservado solo para la franquicia</strong>.</p>
+      <div class="grid g4" style="margin-top:1.4rem">
+        <div class="card"><span class="tier-own">Suscriptor de la revista</span><h3>Gold</h3><p>Catálogo completo y descuentos always-on.</p></div>
+        <div class="card"><span class="tier-own">Suscriptor de la revista</span><h3>Premium</h3><p>Beneficios y experiencias temporales, con descuentos mejorados.</p></div>
+        <div class="card"><span class="tier-own">Suscriptor de la revista</span><h3>Black</h3><p>Experiencias exclusivas, eventos editoriales y cupos limitados.</p></div>
+        <div class="card hl"><span class="tier-own">Exclusivo Diners Club</span><h3>Diamante</h3><p>El nivel superior. Experiencias que solo existen pagando con la tarjeta Diners y descuentos adicionales.</p></div>
+      </div>
+      <p style="margin-top:1.2rem"><strong>El nivel Diamante requiere inversión de la franquicia:</strong> al regalar la suscripción, el tarjetahabiente es también suscriptor de la revista y accede al club completo. Para el resto de tarjetahabientes, el beneficio se activa como descuento al pagar con la tarjeta Diners Club.</p>
+    </div>
+  </section>
+
+  <!-- 9 · ROADMAP -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Roadmap</div>
+      <h2>De piloto a escala</h2>
+      <div class="road">
+        <div class="phase"><div class="ph">Fase 0</div><h3>Alineación</h3><div class="when">Jul–Ago 2026</div><p>Sponsorship interno, sondeo DCI/Davivienda, coherencia del programa.</p></div>
+        <div class="phase"><div class="ph">Fase 1</div><h3>Piloto co-branded</h3><div class="when">Sep–Oct 2026</div><p>Pauta piloto · suscripción regalo (segmento Black) · nivel Diamante con 10–30 aliados · primera "Diners Club Recomienda".</p></div>
+        <div class="phase"><div class="ph">Fase 2</div><h3>V1 Full</h3><div class="when">Oct–Nov 2026</div><p>Expansión de niveles, referidos y medición de afinidad de marca.</p></div>
+        <div class="phase"><div class="ph">Fase 3</div><h3>Escala</h3><div class="when">Ene 2027+</div><p>Wallet digital, campaña de posicionamiento y posible integración de beneficios en la app de Diners Club.</p></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="dots" id="dots"></div>
+<div class="pageno" id="pageno">01 / 09</div>
+<div class="conf">Ediciones Gamma · Confidencial</div>
+
+<script>
+  const deck=document.getElementById('deck');
+  const slides=[...document.querySelectorAll('.slide')];
+  const dotsWrap=document.getElementById('dots');
+  const pageno=document.getElementById('pageno');
+  const pad=n=>String(n).padStart(2,'0');
+  slides.forEach((s,i)=>{
+    const b=document.createElement('button');
+    b.setAttribute('aria-label','Ir a lámina '+(i+1));
+    b.onclick=()=>slides[i].scrollIntoView();
+    dotsWrap.appendChild(b);
+  });
+  const dots=[...dotsWrap.children];
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const i=slides.indexOf(e.target);
+        dots.forEach((d,j)=>d.classList.toggle('active',j===i));
+        pageno.textContent=pad(i+1)+' / '+pad(slides.length);
+      }
+    });
+  },{root:deck,threshold:.55});
+  slides.forEach(s=>io.observe(s));
+  let idx=0;
+  deck.addEventListener('scroll',()=>{idx=Math.round(deck.scrollTop/window.innerHeight)});
+  window.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'||e.key==='PageDown'){e.preventDefault();slides[Math.min(idx+1,slides.length-1)].scrollIntoView()}
+    if(e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();slides[Math.max(idx-1,0)].scrollIntoView()}
+  });
+</script>
+</body>
+</html>

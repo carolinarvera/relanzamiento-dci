@@ -75,6 +75,17 @@ Complete strategic project portfolio for Ediciones Gamma (June 2026). P1 critica
 - **Owner:** [[Carolina Ramirez]]
 - **Estado:** En definición
 
+### 🟠 Alianza Diners Club International (reposicionamiento franquicia)
+- **Objetivo:** Convencer a DCI / Discover Global Network de una alianza 360 para reposicionar la franquicia Diners Club en Colombia, apalancando Revista Diners + Beneficios Suscriptores + plataforma Davivienda
+- **Owner:** [[Carolina Ramirez]] · **Sponsor:** [[Catalina Obregon]] · loop a [[Paola Pantaleon]]
+- **Estado:** Borrador de pitch (2026-07-09)
+- **Tesis:** "Visa/Mastercard ganaron la ubicuidad; Diners puede ganar la pertenencia" — white space = membresía con curaduría cultural local. Davivienda ya es el franquiciado exclusivo de Diners Club Colombia
+- **Entregables:** doc maestro + deck HTML → [[Estrategia-Alianza-DCI-2026]] (`03 - Unidades de Negocio/Diners/Alianza-DCI/`)
+- **Próximos pasos:**
+  - [ ] Validar con Catalina antes de cualquier acercamiento externo
+  - [ ] Decidir despliegue del deck (Vercel) e idioma (ES/EN)
+  - [ ] Cerrar coherencia interna de Beneficios Suscriptores antes de exponerlo
+
 ---
 
 ## Proyectos P3 — En Desarrollo
