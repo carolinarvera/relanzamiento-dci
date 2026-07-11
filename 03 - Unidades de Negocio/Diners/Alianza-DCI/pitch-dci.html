@@ -73,6 +73,10 @@
   .card h3{margin-bottom:.55rem}
   .card p{font-size:.98rem;line-height:1.5;color:rgba(244,241,234,.8)}
   .card.hl{border-color:var(--gold);background:rgba(210,168,85,.08)}
+  .card.team-wide{grid-column:1 / -1;display:grid;grid-template-columns:.85fr 1.6fr;gap:1.6rem;align-items:center}
+  .card.team-wide h3{margin-bottom:0}
+  .card.team-wide p{font-size:.98rem}
+  @media(max-width:760px){.card.team-wide{grid-template-columns:1fr;gap:.6rem}}
   .card.sm{padding:1rem 1.05rem}
   .card.sm h3{font-size:1rem;margin-bottom:.35rem}
   .card.sm p{font-size:.84rem;line-height:1.38}
@@ -85,6 +89,7 @@
 
   /* stats */
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:1.8rem}
+  .stats.stats-5{grid-template-columns:repeat(5,1fr)}
   .stat .n{font-size:clamp(1.8rem,3.4vw,2.7rem);font-weight:600;color:var(--gold);line-height:1}
   .stat .l{font-family:var(--sans);font-size:.78rem;letter-spacing:.04em;color:var(--muted);margin-top:.5rem;line-height:1.35}
 
@@ -128,6 +133,14 @@
 
   .note{font-family:var(--sans);font-size:.78rem;color:var(--muted);margin-top:1.2rem;letter-spacing:.01em}
 
+  /* kpi bullets */
+  .kpi-list{list-style:none;margin:.5rem 0 0;padding:0}
+  .kpi-list li{position:relative;padding:.4rem 0 .4rem 1.1rem;font-size:.92rem;line-height:1.4;color:rgba(244,241,234,.85);border-bottom:1px solid rgba(210,168,85,.12)}
+  .kpi-list li:last-child{border-bottom:none}
+  .kpi-list li::before{content:"";position:absolute;left:0;top:.72rem;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+  .kpi-list li .m{color:#fff}
+  .kpi-list li .q{color:var(--muted);font-style:italic}
+
   @media(max-width:760px){
     .slide{padding:7vh 8vw}
     .g2,.g3,.g4,.stats,.road{grid-template-columns:1fr 1fr}
@@ -143,9 +156,9 @@
     <span class="seal">Confidencial · Borrador</span>
     <div class="wrap">
       <div class="eyebrow">Propuesta de Alianza</div>
-      <h1>Ediciones Gamma <span class="x">×</span> Diners Club</h1>
-      <p class="cover-sub">Revista, red de aliados y plataforma de beneficios al servicio de un objetivo: <strong>que la gente vuelva a pensar en Diners Club.</strong></p>
-      <span class="brandline">Para Diners Club International · Discover Global Network · Marca Davivienda</span>
+      <h1>Ediciones Gamma <span class="x">+</span> Diners Club</h1>
+      <p class="cover-sub">Un ecosistema omnicanal, diseñado desde la estrategia de marca, para activar el posicionamiento, capturar la atención del segmento de alto valor y consolidar a Diners Club en Colombia bajo un territorio propio: <strong>Interesting Life.</strong></p>
+      <span class="brandline">Diners Club International · en alianza con Ediciones Gamma — filial de Banco Davivienda</span>
     </div>
   </section>
 
@@ -153,14 +166,13 @@
   <section class="slide">
     <div class="wrap">
       <div class="eyebrow">Quiénes somos</div>
-      <h2>Ediciones Gamma: la casa detrás de la propuesta.</h2>
-      <p>Casa editorial <strong>filial de Davivienda / Grupo Bolívar</strong>. Sabemos hacer revistas — y sabemos operar programas de alianzas: <strong>15 años consiguiendo y gestionando aliados y comercios</strong> en viajes y gastronomía a través de Privilegios. Los contactos, la curaduría y la operación ya existen.</p>
+      <h2>Los expertos detrás de la estrategia.</h2>
+      <p>Ediciones Gamma es la casa editorial <strong>filial de Banco Davivienda / Grupo Bolívar</strong>. Sabemos hacer contenido curado y especializado en segmentos de nicho — durante los últimos <strong>15 años hemos operado programas de beneficios, alianzas con comercios y experiencias en gastronomía</strong> a través del programa Privilegios.</p>
       <div class="grid g3">
-        <div class="card hl"><span class="tier-own">Quien ofrece la alianza</span><h3>Ediciones Gamma</h3><p>2 revistas (Diners, AXXIS), 3 plataformas digitales del banco y una red viva de aliados y comercios premium.</p></div>
-        <div class="card"><span class="tier-own">El medio</span><h3>Revista Diners</h3><p>60 años de autoridad en gastronomía, viajes y estilo de vida. El canal mensual hacia el tarjetahabiente — no la contraparte del trato.</p></div>
-        <div class="card"><span class="tier-own">La marca que se reposiciona</span><h3>Diners Club</h3><p>La franquicia que Davivienda opera en Colombia. La revista le presta autoridad editorial; las marcas no se fusionan.</p></div>
+        <div class="card hl"><span class="tier-own">Ediciones Gamma</span><h3>Ecosistema de la marca</h3><p>Red de aliados y comercios premium, programas de beneficios y experiencias en gastronomía, junto a 2 revistas de nicho (Diners, AXXIS) y un ecosistema digital propio.</p></div>
+        <div class="card"><span class="tier-own">Revista Diners</span><h3>La conexión con el segmento</h3><p>Autoridad editorial en gastronomía, viajes y estilo de vida, con una audiencia premium fiel. Cada mes, en la casa y el correo del lector.</p></div>
+        <div class="card team-wide"><div><span class="tier-own">Equipo Gamma</span><h3>Mente editorial y ejecución estratégica</h3></div><p>Reunimos el talento de periodistas experimentados, estrategas de marca y profesionales creativos para transformar los objetivos de la marca en narrativas de alto impacto, experiencias de valor y activaciones diferenciales.</p></div>
       </div>
-      <p class="note">Sin confusión de marcas: Gamma aporta capacidad — contenido, red de aliados y ejecución. No reclama el nombre.</p>
     </div>
   </section>
 
@@ -168,16 +180,15 @@
   <section class="slide">
     <div class="wrap">
       <div class="eyebrow">El medio · Revista Diners</div>
-      <h2>Revista Diners: 60 años en el territorio exacto de la marca.</h2>
-      <p>Gastronomía, viajes, cultura, estilo de vida. La revista de estilo de vida más longeva del país, con una audiencia madura y de alto poder adquisitivo que coincide con el perfil del tarjetahabiente Diners Club.</p>
+      <h2>Revista Diners: la revista de estilo de vida con más trayectoria del país.</h2>
+      <p>Gastronomía, viajes, cultura, estilo de vida con una audiencia madura y de alto poder adquisitivo que coincide con el perfil del tarjetahabiente Diners Club.</p>
       <div class="stats">
         <div class="stat"><div class="n">45 <span style="font-size:1rem" class="muted">años</span></div><div class="l">edad promedio de la audiencia: madura, no millennial</div></div>
         <div class="stat"><div class="n">84%</div><div class="l">NSE Alto + Medio-Alto</div></div>
         <div class="stat"><div class="n">~59K</div><div class="l">visitantes únicos web / mes</div></div>
         <div class="stat"><div class="n">~98K</div><div class="l">seguidores Instagram · engagement ~6%</div></div>
       </div>
-      <p style="margin-top:1.4rem">La marca Diners Club tiene el ecosistema completo de impacto: impreso, web, redes, newsletter, podcast y formatos digitales.</p>
-      <p class="note">Cifras verificadas (Metricool/Meta, jun 2026). La credibilidad es parte de la propuesta.</p>
+      <p style="margin-top:1.4rem">La marca Diners Club tiene un ecosistema completo de impacto: impreso, web, redes, newsletter, podcast y formatos digitales.</p>
     </div>
   </section>
 
@@ -185,12 +196,13 @@
   <section class="slide">
     <div class="wrap">
       <div class="eyebrow">El estado actual · Colombia</div>
-      <h2>Una franquicia sub-explotada. Una oferta delgada.</h2>
-      <div class="stats">
+      <h2>Una franquicia con potencial.</h2>
+      <div class="stats stats-5">
         <div class="stat"><div class="n">169K</div><div class="l">tarjetas Diners Club activas</div></div>
         <div class="stat"><div class="n">11%</div><div class="l">del parque total de TC Davivienda</div></div>
-        <div class="stat"><div class="n">89%</div><div class="l">Blue (clásica) · 11% Black afluente</div></div>
-        <div class="stat"><div class="n">2–4</div><div class="l">accesos a salas VIP al año · + Davipuntos</div></div>
+        <div class="stat"><div class="n">89%</div><div class="l">Blue (clásica)</div></div>
+        <div class="stat"><div class="n">11%</div><div class="l">Black (afluente)</div></div>
+        <div class="stat"><div class="n">2–4</div><div class="l">Beneficios: accesos a salas VIP al año · + Davipuntos</div></div>
       </div>
       <p style="margin-top:1.8rem">Hoy el tarjetahabiente de Diners Club recibe poco más que puntos y un par de accesos a salas VIP. <strong>Sin concierge, sin seguros de viaje, sin protección de compra, sin hoteles de lujo, sin alianzas de consumo cotidiano.</strong> Una marca enorme, operando con una fracción de su potencial.</p>
       <p class="note">Davivienda, franquiciado exclusivo de Diners Club en Colombia. Cifras internas.</p>
@@ -217,7 +229,6 @@
       </div>
       <div class="tesis">
         <div class="big">Visa y Mastercard ganaron la ubicuidad. Diners Club puede ganar mediante la <span class="accent">pertenencia</span>.</div>
-        <div class="sub">Creando identidad de estilo de vida y experiencias premium que solo Diners Club y Revista Diners, en alianza, pueden ofrecer en Colombia.</div>
       </div>
     </div>
   </section>
@@ -225,11 +236,11 @@
   <!-- 6 · DOS VÍAS -->
   <section class="slide">
     <div class="wrap">
-      <div class="eyebrow">La estrategia · dos vías</div>
-      <h2>Reclamando el territorio.</h2>
+      <div class="eyebrow">Estrategia de posicionamiento · dos vías</div>
+      <h2>Re-creando la pertenencia.</h2>
       <div class="grid g2">
-        <div class="card"><h3>Vía 1 · AON — Always On</h3><p>Red de beneficios permanentes con curaduría editorial, <strong>empezando por gastronomía</strong>: el territorio natural del "club of diners" y la categoría que Privilegios validó durante 15 años. El gancho de reposicionamiento: <strong>valor percibido cada vez que el tarjetahabiente sale a comer</strong> — no cupones, descuentos seleccionados.</p></div>
-        <div class="card hl"><h3>Vía 2 · Interesting Life</h3><p>No lo llamamos "experiencias" — ese territorio ya lo compró Mastercard. <strong>Interesting Life</strong> es una forma de vivir con curiosidad y buen gusto: momentos inigualables que solo existen <strong>pagando con la tarjeta Diners</strong>, curados con 60 años de autoridad cultural local.</p></div>
+        <div class="card"><h3>Vía 1 · AON — Always On</h3><p>Red de beneficios permanentes con curaduría editorial, <strong>expertos en experiencias en restaurantes y gastronomía</strong>: el territorio natural del "club of diners" y la categoría que Privilegios validó durante 15 años. El gancho de reposicionamiento: <strong>valor percibido cada vez que el tarjetahabiente sale a comer</strong> — no cupones, son experiencias seleccionadas.</p></div>
+        <div class="card hl"><h3>Vía 2 · Interesting Life</h3><p><strong>Interesting Life</strong> es una forma de vivir con curiosidad y buen gusto: momentos inigualables que solo existen <strong>pagando con la tarjeta Diners</strong>, curados con 60 años de autoridad cultural local.</p></div>
       </div>
       <p style="margin-top:1.4rem">La campaña comunica <strong>valor concreto y verificable</strong>: descuento real en restaurantes curados editorialmente, visible y canjeable desde la app. Cada pieza de comunicación apunta a un beneficio activable ese mismo mes.</p>
     </div>
@@ -239,8 +250,8 @@
   <section class="slide">
     <div class="wrap">
       <div class="eyebrow">Revista Diners · Distribución omnicanal</div>
-      <h2>Los formatos ya existen. Y ya llevan el nombre Diners.</h2>
-      <p class="subhead">Lo mejor: para iniciar, no se requiere construir nada nuevo.</p>
+      <h2>Todo un ecosistema listo para co-crear.</h2>
+      <p class="subhead">Para iniciar, no se requiere construir nada nuevo.</p>
       <div class="grid g4">
         <div class="card sm"><h3>Impreso</h3><p>Revista mensual. Categorías consolidadas, secciones especiales, content marketing a doble página y formatos de alto impacto.</p></div>
         <div class="card sm"><h3>Web + display</h3><p>revistadiners.com.co: contenidos editoriales, pull de pauta (headers, banners, formatos digitales) y acceso a contenido premium.</p></div>
@@ -249,7 +260,7 @@
       </div>
       <div class="translabel">Formatos de impacto transmedia · una audiencia ya fidelizada</div>
       <div class="grid g4" style="margin-top:.2rem">
-        <div class="card sm hl"><h3>La Mesa de Diners</h3><p>Newsletter y podcast. El nombre ya es territorio de marca compartido.</p></div>
+        <div class="card sm hl"><h3>La Mesa de Diners</h3><p>Newsletter y podcast.</p></div>
         <div class="card sm"><h3>Historias Diners</h3><p>Micro-documentales en video: formato nativo para el storytelling editorial.</p></div>
         <div class="card sm"><h3>Diners Club Recomienda</h3><p>Video-entrevistas de estilo de vida: el vehículo natural de "Ruta al estilo Diners".</p></div>
         <div class="card sm"><h3>Temporalidad Diners</h3><p>Secciones por temporada + <strong>un beneficio anual insignia en una edición especial</strong> de la revista, con acceso exclusivo para tarjetahabientes.</p></div>
@@ -261,93 +272,70 @@
   <section class="slide ask">
     <div class="wrap">
       <div class="eyebrow">El plan</div>
-      <h2>Generando afinidad de marca.</h2>
+      <h2>Alineando acciones.</h2>
+      <p class="lead" style="margin-bottom:.4rem">La meta: conectar Diners Club con el estilo de vida premium de Colombia.</p>
       <ol>
-        <li><strong>Sponsor de secciones:</strong> Diners Club como pilar de exposición de marca en el ecosistema integral de la revista (impreso, web, redes, La Mesa de Diners, formatos digitales), generando presencia y posicionamiento.</li>
-        <li><strong>Suscripción de regalo</strong> de la revista al tarjetahabiente: piloto con el segmento Black (18.4K) y escalar según adopción.</li>
         <li><strong>Beneficios always-on:</strong> acceso de tarjetahabientes a la plataforma Beneficios Suscriptores.</li>
+        <li><strong>Beneficio anual insignia</strong> entregado en una edición especial de la revista.</li>
         <li><strong>Experiencias exclusivas</strong> activadas pagando con la tarjeta Diners (generación de presupuesto de franquicia).</li>
-        <li><strong>Sección especial "Diners Club Recomienda"</strong> con calendario de temporadas y un <strong>beneficio anual insignia</strong> entregado en una edición especial de la revista.</li>
+        <li><strong>Sponsor de secciones:</strong> Diners Club como pilar de exposición de marca en el ecosistema integral de la revista (impreso, web, redes, La Mesa de Diners, formatos digitales), generando presencia y posicionamiento.</li>
+        <li><strong>Sección especial "Diners Club Recomienda"</strong> con calendario de temporadas.</li>
+        <li><strong>Suscripción de regalo</strong> de la revista al tarjetahabiente: piloto con el segmento Black (18.4K) y escalar según adopción.</li>
       </ol>
-      <p class="closing">Medir afinidad de marca, uso y conversión sobre la base de tarjetahabientes. La meta: posicionar a Diners como el club de estilo de vida premium de Colombia, antes de que el territorio experiencial se consolide alrededor de Mastercard.</p>
     </div>
   </section>
 
-  <!-- 9 · NIVELES DE BENEFICIOS -->
-  <section class="slide">
-    <div class="wrap">
-      <div class="eyebrow">Niveles de beneficios</div>
-      <h2>El tarjetahabiente Diners no entra como un suscriptor más. Entra un nivel por encima.</h2>
-      <p>El club tiene niveles de membresía. El suscriptor de la revista avanza por ellos. El tarjetahabiente Diners Club accede a un nivel <strong>exclusivo, reservado solo para la franquicia</strong>.</p>
-      <div class="grid g4" style="margin-top:1.4rem">
-        <div class="card"><span class="tier-own">Suscriptor de la revista</span><h3>Gold</h3><p>Catálogo completo y descuentos always-on.</p></div>
-        <div class="card"><span class="tier-own">Suscriptor de la revista</span><h3>Premium</h3><p>Beneficios y experiencias temporales, con descuentos mejorados.</p></div>
-        <div class="card"><span class="tier-own">Suscriptor de la revista</span><h3>Black</h3><p>Experiencias exclusivas, eventos editoriales y cupos limitados.</p></div>
-        <div class="card hl"><span class="tier-own">Exclusivo Diners Club</span><h3>Diamante</h3><p>El nivel superior. Experiencias que solo existen pagando con la tarjeta Diners y descuentos adicionales.</p></div>
-      </div>
-      <p style="margin-top:1.2rem"><strong>El nivel Diamante requiere inversión de la franquicia:</strong> al regalar la suscripción, el tarjetahabiente es también suscriptor de la revista y accede al club completo. Para el resto de tarjetahabientes, el beneficio se activa como descuento al pagar con la tarjeta Diners Club.</p>
-    </div>
-  </section>
-
-  <!-- 10 · ROADMAP -->
+  <!-- 9 · ROADMAP -->
   <section class="slide">
     <div class="wrap">
       <div class="eyebrow">Roadmap</div>
       <h2>De piloto a escala</h2>
       <div class="grid g3" style="margin-top:1.2rem">
         <div class="card sm"><span class="tier-own">Pilar 1</span><h3>Definir</h3><p>Estrategia de reposicionamiento y stack de beneficios: AON + Interesting Life.</p></div>
-        <div class="card sm"><span class="tier-own">Pilar 2</span><h3>Desplegar</h3><p>Piloto co-branded: sponsor de secciones, suscripción regalo, nivel Diamante, primeros aliados gastronómicos.</p></div>
+        <div class="card sm"><span class="tier-own">Pilar 2</span><h3>Desplegar</h3><p>Piloto co-branded: sponsor de secciones, suscripción regalo, primeros aliados gastronómicos.</p></div>
         <div class="card sm"><span class="tier-own">Pilar 3</span><h3>Comunicar</h3><p>Artículo editorial + pauta + newsletter. Medido en alcance y efectividad.</p></div>
       </div>
       <div class="road">
         <div class="phase"><div class="ph">Fase 0</div><h3>Alineación</h3><div class="when">Jul–Ago 2026</div><p>Sponsorship interno, sondeo DCI/Davivienda, coherencia del programa.</p></div>
-        <div class="phase"><div class="ph">Fase 1</div><h3>Piloto co-branded</h3><div class="when">Sep–Oct 2026</div><p>Pauta piloto · suscripción regalo (segmento Black) · nivel Diamante con 10–30 aliados gastronómicos · primera "Diners Club Recomienda".</p></div>
+        <div class="phase"><div class="ph">Fase 1</div><h3>Piloto co-branded</h3><div class="when">Sep–Oct 2026</div><p>Pauta piloto · suscripción regalo (segmento Black) · 10–30 aliados gastronómicos · primera "Diners Club Recomienda".</p></div>
         <div class="phase"><div class="ph">Fase 2</div><h3>V1 Full</h3><div class="when">Oct–Nov 2026</div><p>Expansión de niveles, referidos y medición de afinidad de marca.</p></div>
         <div class="phase"><div class="ph">Fase 3</div><h3>Escala</h3><div class="when">Ene 2027+</div><p>Wallet digital, campaña de posicionamiento y posible integración de beneficios en la app de Diners Club.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- 11 · INVERSIÓN -->
-  <section class="slide">
-    <div class="wrap">
-      <div class="eyebrow">Inversión</div>
-      <h2>¿Cuánto cuesta? Primero el marco, luego la cifra.</h2>
-      <p>El piloto se cotiza al cerrar su alcance — cuántos aliados, qué campaña, qué edición especial. Lo que ya está definido es <strong>quién asume qué</strong>:</p>
-      <div class="tscroll">
-      <table>
-        <thead><tr><th>Categoría</th><th>Quién la asume</th></tr></thead>
-        <tbody>
-          <tr><td class="td-strong">Producción editorial (secciones + edición especial)</td><td>Gamma — financiada por el sponsor de secciones</td></tr>
-          <tr><td class="td-strong">Suscripción regalo (segmento Black, 18.4K)</td><td>La franquicia asume el costo de circulación</td></tr>
-          <tr><td class="td-strong">Operación de plataforma</td><td>Fee a negociar sobre volumen de tarjetahabientes</td></tr>
-          <tr class="us"><td>Aliados AON</td><td>El aliado da el descuento y paga visibilidad — Gamma no subsidia descuentos</td></tr>
-          <tr><td class="td-strong">Pauta de campaña</td><td>A definir con marca Davivienda</td></tr>
-          <tr><td class="td-strong">Experiencias Interesting Life</td><td>Cotización por evento</td></tr>
-        </tbody>
-      </table>
-      </div>
-      <p class="note">Cifra del piloto en dimensionamiento — se presenta al cerrar el alcance de la Fase 0.</p>
-    </div>
-  </section>
-
-  <!-- 12 · KPIS -->
+  <!-- 10 · KPIS -->
   <section class="slide">
     <div class="wrap">
       <div class="eyebrow">Medición</div>
-      <h2>KPIs que se pueden cumplir.</h2>
+      <h2>KPIs para comenzar a medir.</h2>
       <div class="grid g2">
-        <div class="card"><h3>Alcance</h3><p>Impactos de campaña en revista + redes + newsletter · suscripciones regalo activadas · circulación de la edición especial anual.</p></div>
-        <div class="card hl"><h3>Efectividad</h3><p>% del segmento Black que activa la plataforma · redenciones AON por tarjetahabiente · afinidad de marca medida pre/post: <em>"pienso en Diners Club cuando pienso en salir a comer"</em>.</p></div>
+        <div class="card"><h3>Engagement de contenido</h3>
+          <ul class="kpi-list">
+            <li><span class="m">Engagement rate</span> de publicaciones · interacciones / alcance</li>
+            <li><span class="m">Open rate + CTR</span> del newsletter La Mesa de Diners</li>
+            <li><span class="m">Guardados y compartidos</span> del contenido co-branded</li>
+            <li><span class="m">Tiempo de lectura</span> en notas web de la revista</li>
+          </ul>
+        </div>
+        <div class="card hl"><h3>Conversión</h3>
+          <ul class="kpi-list">
+            <li><span class="m">% del segmento Black</span> que activa la plataforma</li>
+            <li><span class="m">Redenciones AON</span> por tarjetahabiente (vs. suscriptor regular)</li>
+            <li><span class="m">Frecuencia de redención</span> mensual por tarjetahabiente</li>
+            <li><span class="m">Ticket promedio</span> en aliados al pagar con Diners</li>
+            <li>Afinidad de marca pre/post · <span class="q">"pienso en Diners Club cuando pienso en salir a comer"</span></li>
+          </ul>
+        </div>
       </div>
-      <p style="margin-top:1.4rem">El crecimiento de tarjetas activas (169K hoy) es el KPI de negocio del banco. <strong>Gamma responde por el alcance, la adopción y la efectividad</strong> de la capa de contenido y beneficios.</p>
+      <p style="margin-top:1.4rem">El crecimiento de tarjetas activas (169K hoy) es el KPI de negocio del banco. <strong>Gamma responde por el engagement, la adopción y la conversión</strong> de la capa de contenido y beneficios.</p>
     </div>
   </section>
 
 </div>
 
 <div class="dots" id="dots"></div>
-<div class="pageno" id="pageno">01 / 12</div>
+<div class="pageno" id="pageno">01 / 10</div>
 <div class="conf">Ediciones Gamma · Confidencial</div>
 
 <script>
