@@ -142,9 +142,32 @@
   .kpi-list li .q{color:var(--muted);font-style:italic}
 
   @media(max-width:760px){
-    .slide{padding:7vh 8vw}
-    .g2,.g3,.g4,.stats,.road{grid-template-columns:1fr 1fr}
+    .slide{padding:7vh 8vw;min-height:auto;padding-top:12vh;padding-bottom:12vh}
+    .g2,.g3,.g4,.stats,.stats.stats-5,.road{grid-template-columns:1fr 1fr}
     .dots{display:none}
+    .pageno,.conf{display:none}
+    table{min-width:480px}
+  }
+
+  @media(max-width:560px){
+    .slide{padding:10vh 6vw}
+    .g2,.g3,.g4,.stats,.stats.stats-5,.road{grid-template-columns:1fr}
+    .card.team-wide{grid-template-columns:1fr}
+    .seal{position:static;display:inline-block;margin-bottom:1.6rem}
+    h1{font-size:clamp(2rem,9vw,3rem)}
+    .stat .n{font-size:clamp(1.5rem,7vw,2.2rem)}
+    .ask li{padding-left:2.6rem}
+    .brandline{letter-spacing:.12em}
+  }
+
+  @media(max-width:400px){
+    .slide{padding:9vh 5vw}
+    h2{font-size:clamp(1.4rem,7vw,2rem)}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .deck{scroll-behavior:auto}
   }
 </style>
 </head>
