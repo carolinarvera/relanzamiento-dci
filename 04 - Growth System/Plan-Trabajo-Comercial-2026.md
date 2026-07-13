@@ -41,7 +41,31 @@ La etapa "Propuesta enviada" del Pipeline B2B usa el ID interno `closedwon`. Est
 
 ---
 
-## Parte 1 — Estructura del Pipeline (etapas y significado)
+## Parte 1 — Segmentación: Dos Tipos de Cliente en HubSpot
+
+El CRM maneja dos negocios distintos que NUNCA se mezclan en vistas, reportes ni forecast:
+
+| Tipo | Quiénes son | Pipeline | Owner del proceso |
+|---|---|---|---|
+| **Cliente B2B** | Empresas que compran pauta (anunciantes) | Pipeline B2B | Las 4 comerciales — este plan |
+| **Cliente B2C** | Suscriptores de las revistas (personas) | Pipeline e-Payco (Libros y Suscripciones) | NS02 Suscriptores — journeys HubSpot |
+
+**Estado real (auditoría 2026-07-12):** la propiedad de contacto `tipo_de_cliente` ya existe en HubSpot con los valores exactos "Cliente B2B" / "Cliente B2C" — pero está **vacía en los 77,135 contactos**. La estructura existe, nadie la diligencia.
+
+**Reglas operativas:**
+
+1. **Todo contacto nuevo se marca con `tipo_de_cliente` al crearse.** La comercial que crea un contacto de anunciante lo marca "Cliente B2B". Los suscriptores se marcan "Cliente B2C" (idealmente automático por workflow).
+2. **Todas las vistas de este plan filtran por `tipo_de_cliente = Cliente B2B`.** Un forecast comercial que incluya suscriptores está corrupto.
+3. **El monto de un deal B2B es pauta (INGRESOS); una suscripción B2C nunca entra al Pipeline B2B.** Es la misma regla de siempre: pauta de clientes y suscripciones no se mezclan.
+4. **Poblado retroactivo (acción para Jeison):** workflow o carga masiva —
+   - Contactos asociados a deals del Pipeline B2B → "Cliente B2B"
+   - Contactos con `estado_de_suscripcion` diligenciado o `segmento` = SUSCRIPTORES / ZONA PRIVADA DINERS / segmentos Privilegios → "Cliente B2C"
+
+> Los segmentos B2C existentes (`segmento`: CLASICO, PREMIUM, BANCA PRIVADA, PREMIUM PLUS, SUSCRIPTORES, etc.) y `estado_de_suscripcion` (Activa, Pendiente pago, Cancelada, Renovada) siguen siendo del mundo suscriptores — este plan no los toca.
+
+---
+
+## Parte 2 — Estructura del Pipeline B2B (etapas y significado)
 
 Mapeo del proceso comercial completo sobre el Pipeline B2B:
 
@@ -61,10 +85,11 @@ Mapeo del proceso comercial completo sobre el Pipeline B2B:
 - Monto estimado (usar tabla de formatos del Sistema de Ventas)
 - Fecha estimada de cierre
 - Owner (comercial responsable)
+- Contacto asociado marcado como "Cliente B2B"
 
 ---
 
-## Parte 2 — Rutina Diaria: Las 4 Preguntas
+## Parte 3 — Rutina Diaria: Las 4 Preguntas
 
 Cada comercial abre HubSpot cada mañana y responde estas 4 preguntas. 15 minutos máximo de planeación, el resto del día es ejecución.
 
@@ -113,7 +138,7 @@ Todo deal tiene **fecha estimada de cierre** desde el día 1. Referencia por tip
 
 ---
 
-## Parte 3 — Checkpoints Documentales (el trámite que mata cierres)
+## Parte 4 — Checkpoints Documentales (el trámite que mata cierres)
 
 Los cierres B2B se caen o se atrasan por papeles, no por precio. Estos dos checks se gestionan DENTRO de la etapa "En cierre / Documentación" y se registran como propiedades del deal.
 
@@ -151,7 +176,7 @@ Documentos que **el cliente le envía a Gamma** para otorgarle crédito (pago a 
 
 ---
 
-## Parte 4 — Propiedades a Crear en HubSpot (implementación)
+## Parte 5 — Propiedades a Crear en HubSpot (implementación)
 
 Para que las 4 preguntas y los checks se puedan filtrar en vistas, crear estas propiedades de deal (solicitar a Jeison):
 
@@ -164,6 +189,8 @@ Para que las 4 preguntas y los checks se puedan filtrar en vistas, crear estas p
 | `Formato ancla` | Texto | Formato de la tabla del Sistema de Ventas |
 | `Motivo de pérdida` | Lista desplegable | Precio / Presupuesto congelado / Eligió competidor / Sin respuesta / Timing / Otro |
 
+> La propiedad de contacto `tipo_de_cliente` (Cliente B2B / Cliente B2C) **ya existe** — no crear una nueva. La acción es poblarla (ver Parte 1).
+
 **Vistas guardadas a crear (una por comercial + una gerencial):**
 1. "Mis prospectos fríos" — Prospecto + sin actividad 7 días
 2. "Mi seguimiento hoy" — Cita agendada + Seguimiento, orden por próxima tarea
@@ -171,9 +198,11 @@ Para que las 4 preguntas y los checks se puedan filtrar en vistas, crear estas p
 4. "Trámites atascados" — Check proveedor o crédito = En trámite + sin actividad 5 días
 5. [Gerencial] "Pipeline total por comercial y etapa" — dashboard para Carolina
 
+Todas las vistas de contactos filtran `tipo_de_cliente = Cliente B2B`.
+
 ---
 
-## Parte 5 — Forecast Semanal (viernes, 30 min por comercial)
+## Parte 6 — Forecast Semanal (viernes, 30 min por comercial)
 
 Cada viernes, cada comercial reporta contra estas metas. Los datos salen de HubSpot — la reunión es para decisiones, no para reconstruir información.
 
@@ -216,7 +245,7 @@ Cada viernes, cada comercial reporta contra estas metas. Los datos salen de HubS
 
 ---
 
-## Parte 6 — Cadencia de Gestión
+## Parte 7 — Cadencia de Gestión
 
 | Momento | Qué pasa | Duración |
 |---|---|---|
@@ -227,17 +256,18 @@ Cada viernes, cada comercial reporta contra estas metas. Los datos salen de HubS
 
 ---
 
-## Parte 7 — Plan de Implementación
+## Parte 8 — Plan de Implementación
 
 | # | Acción | Responsable | Cuándo |
 |---|---|---|---|
 | 1 | Verificar probabilidades de etapa del Pipeline B2B (alerta `closedwon`) | Jeison | Semana del 14 jul |
 | 2 | Crear las 6 propiedades de deal + 5 vistas guardadas | Jeison | Semana del 14 jul |
-| 3 | Confirmar checklist documental (proveedor y crédito) con contabilidad | Carolina | Semana del 14 jul |
-| 4 | Armar carpeta Drive con paquete de proveedor vigente | Contabilidad | Semana del 14 jul |
-| 5 | Sesión de entrenamiento: Sistema de Ventas + este plan (2 horas) | Carolina + equipo | Semana del 21 jul |
-| 6 | Cada comercial carga su pipeline real actual a HubSpot (todo lo que tiene en curso) | Las 4 comerciales | Semana del 21 jul |
-| 7 | Primer forecast de viernes con datos reales | Todas | Viernes 24 jul |
+| 3 | Poblar `tipo_de_cliente` en los 77K contactos (workflow B2B/B2C) | Jeison | Semana del 14 jul |
+| 4 | Confirmar checklist documental (proveedor y crédito) con contabilidad | Carolina | Semana del 14 jul |
+| 5 | Armar carpeta Drive con paquete de proveedor vigente | Contabilidad | Semana del 14 jul |
+| 6 | Sesión de entrenamiento: Sistema de Ventas + este plan (2 horas) | Carolina + equipo | Semana del 21 jul |
+| 7 | Cada comercial carga su pipeline real actual a HubSpot (todo lo que tiene en curso) | Las 4 comerciales | Semana del 21 jul |
+| 8 | Primer forecast de viernes con datos reales | Todas | Viernes 24 jul |
 
 **Criterio de éxito a 30 días (viernes 14 ago):** pipeline activo en HubSpot >$100M distribuido en las 4 etapas, cero deals creados directamente en Closed Won, y el forecast del viernes sale de HubSpot sin reconstrucción manual.
 
@@ -249,4 +279,4 @@ Cada viernes, cada comercial reporta contra estas metas. Los datos salen de HubS
 
 ---
 
-*Generado por Claude — 2026-07-12, sobre auditoría real del Pipeline B2B en HubSpot.*
+*Generado por Claude — 2026-07-12, sobre auditoría real del Pipeline B2B en HubSpot. Actualizado mismo día con segmentación B2B/B2C.*
