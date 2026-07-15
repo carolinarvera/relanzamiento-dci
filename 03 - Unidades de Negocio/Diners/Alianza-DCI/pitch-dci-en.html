@@ -71,7 +71,7 @@
   .card.team-wide{grid-column:1 / -1;display:grid;grid-template-columns:.85fr 1.6fr;gap:1.6rem;align-items:center}
   .card.team-wide h3{margin-bottom:0}
   .card.team-wide p{font-size:.98rem}
-  @media(max-width:760px){.card.team-wide{grid-template-columns:1fr;gap:.6rem}}
+  @media screen and (max-width:760px){.card.team-wide{grid-template-columns:1fr;gap:.6rem}}
   .card.sm{padding:1rem 1.05rem}
   .card.sm h3{font-size:1rem;margin-bottom:.35rem}
   .card.sm p{font-size:.84rem;line-height:1.38}
@@ -136,7 +136,7 @@
   .kpi-list li .m{color:#fff}
   .kpi-list li .q{color:var(--muted);font-style:italic}
 
-  @media(max-width:760px){
+  @media screen and (max-width:760px){
     .slide{padding:7vh 8vw;min-height:auto;padding-top:12vh;padding-bottom:12vh}
     .g2,.g3,.g4,.stats,.stats.stats-5,.road{grid-template-columns:1fr 1fr}
     .dots{display:none}
@@ -144,7 +144,7 @@
     table{min-width:480px}
   }
 
-  @media(max-width:560px){
+  @media screen and (max-width:560px){
     .slide{padding:10vh 6vw}
     .g2,.g3,.g4,.stats,.stats.stats-5,.road{grid-template-columns:1fr}
     .card.team-wide{grid-template-columns:1fr}
@@ -154,7 +154,7 @@
     .brandline{letter-spacing:.12em}
   }
 
-  @media(max-width:400px){
+  @media screen and (max-width:400px){
     .slide{padding:9vh 5vw}
     h2{font-size:clamp(1.4rem,7vw,2rem)}
   }
@@ -162,6 +162,21 @@
   @media(prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
     .deck{scroll-behavior:auto}
+  }
+
+  @page { size: 13.333in 7.5in; margin: 0; }
+  @media print {
+    .dots, .pageno, .conf { display: none !important; }
+    html, body { background: var(--navy-deep); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .deck { height: auto; overflow: visible; }
+    .slide {
+      width: 13.333in; height: 7.5in; min-height: 0;
+      page-break-after: always; page-break-inside: avoid;
+      padding: 0.6in 0.9in;
+    }
+    .slide:last-child { page-break-after: auto; }
+    .tscroll { overflow: visible; }
+    .tscroll table { min-width: 0; }
   }
 </style>
 </head>
@@ -314,37 +329,11 @@
     </div>
   </section>
 
-  <!-- 10 · KPIS -->
-  <section class="slide">
-    <div class="wrap">
-      <div class="eyebrow">Measurement</div>
-      <h2>KPIs to start measuring.</h2>
-      <div class="grid g2">
-        <div class="card"><h3>Content engagement</h3>
-          <ul class="kpi-list">
-            <li><span class="m">Engagement rate</span> on posts · interactions / reach</li>
-            <li><span class="m">Open rate + CTR</span> on the La Mesa de Diners newsletter</li>
-            <li><span class="m">Saves and shares</span> of co-branded content</li>
-            <li><span class="m">Read time</span> on magazine web articles</li>
-          </ul>
-        </div>
-        <div class="card hl"><h3>Conversion</h3>
-          <ul class="kpi-list">
-            <li><span class="m">% of the Black segment</span> activating the platform</li>
-            <li><span class="m">AON redemptions</span> per cardholder (vs. regular subscriber)</li>
-            <li><span class="m">Monthly redemption frequency</span> per cardholder</li>
-            <li><span class="m">Average ticket</span> at partner venues when paying with Diners</li>
-            <li>Pre/post brand affinity · <span class="q">"I think of Diners Club when I think of going out to eat"</span></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
 
 </div>
 
 <div class="dots" id="dots"></div>
-<div class="pageno" id="pageno">01 / 10</div>
+<div class="pageno" id="pageno">01 / 09</div>
 <div class="conf">Ediciones Gamma</div>
 
 <script>
