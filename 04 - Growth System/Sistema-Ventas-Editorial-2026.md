@@ -399,6 +399,24 @@ Usar en este orden. No preguntar todo de una vez — es una conversación, no un
 | Premium impreso | Contraportada | $37.17M | La posición más visible de la revista |
 | Lanzamiento alto impacto | Portada Falsa | $43.7M | Solo suscriptores — exclusivo |
 
+### Paquetes ancla (definidos en Review de Revistas 2026-07-14)
+
+Tres bundles prearmados para dejar de vender el menú de 15 formatos y empezar a vender una oferta cerrada. Precios pendientes de cierre con Paola Gordillo (banner display en revisión, ver nota).
+
+| Paquete | Para quién | Incluye | Precio |
+|---|---|---|---|
+| **Starter** | Estudios emergentes, diseñadores, marcas nuevas | Contenido web + newsletter + posts en redes + banner display 7 días | Por definir (competitivo, entrada) |
+| **Pymes** | Empresas medianas que quieren presencia sostenida | Starter ampliado + mayor frecuencia (por definir con Pao) | Por definir |
+| **Anual 360** | Clientes de contrato largo / cuentas grandes | Presencia impreso + digital + eventos a lo largo del año | Por definir (contrato anual) |
+
+> **Decisiones abiertas del paquete (tareas Lilo + Pao):**
+> - Revisar inclusión del banner display en el Starter — evaluar efectividad y duración 5 vs 7 días para optimizar precio
+> - Enfocar el Starter en precio competitivo para estudios emergentes y diseñadores
+
+### Formato nuevo — Mención de audio en artículo web
+
+Mención de 20 segundos en la lectura de audio de artículos web, aprovechando la tecnología de audio ya disponible en el sitio. Beneficio adicional para sumar a paquetes digitales. (Introducido en Review 2026-07-14.)
+
 ---
 
 ## Parte 9 — Guía de Alineación Editorial

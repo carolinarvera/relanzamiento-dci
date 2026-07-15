@@ -172,7 +172,27 @@ Documentos que **el cliente le envía a Gamma** para otorgarle crédito (pago a 
 
 > **Acción pendiente:** validar con contabilidad/cartera la lista exacta y los montos de cupo que exigen pagaré. Esta lista es el estándar del mercado colombiano — ajustar a la política real de Gamma.
 
-**Regla operativa:** en la primera reunión de negociación avanzada, la comercial pregunta: *"¿Su empresa requiere creación de proveedor? ¿Cuánto tarda ese trámite?"* — y arranca el papeleo EN PARALELO a la negociación, no después del sí. Esto ahorra 2-4 semanas de ciclo.
+**Regla operativa (ratificada en Review de Revistas 2026-07-14):** en la PRIMERA visita — no en la negociación avanzada — la comercial identifica la necesidad del cliente y arranca la recolección de documentos para creación de proveedor EN PARALELO a la venta, exista o no cierre inmediato. Esto es lo que evita el cuello de botella administrativo posterior. La comercial pregunta: *"¿Su empresa requiere creación de proveedor? ¿Cuánto tarda ese trámite?"*
+
+### Criterio de perfil de pago: contado vs crédito
+
+No todos los clientes califican ni requieren crédito. La comercial debe definir el perfil de pago desde el inicio:
+
+| Perfil | Cuándo | Documentación |
+|---|---|---|
+| **Crédito (30/60/90 días)** | Cliente con historial, corporativo, cupo aprobado | Check crédito completo (Parte 4, Check 2) |
+| **Contado / anticipado** | Cliente nuevo sin historial, o de riesgo (caso Girardot) | Pago antes de publicar — no requiere trámite de crédito |
+
+> El trámite documental de crédito debe estar listo para quien lo necesite, pero la comercial usa criterio: no todo cliente entra a crédito. Identificar temprano quién debe pagar por anticipado evita publicar sin cobrar.
+
+### ⚠️ Cuello de botella administrativo (riesgo abierto — escalamiento a Catalina)
+
+Bloqueante identificado en el Review 2026-07-14:
+- La creación de clientes y actualización de contratos (área administrativa) es lenta y suele requerir intervención superior para avanzar.
+- Hay una contradicción de política: se le exigen al cliente documentos de crédito (estados financieros, pagarés) pero luego se le exige pago inmediato. Genera confusión y frustración.
+- **Caso Amarilo:** se publicó contenido sin facturar aún, por demora administrativa + condiciones de pago del cliente a 90 días. Riesgo de ejecutar sin cobrar.
+
+**Acción:** Carolina alinea con Catalina — separar gestión de empresa de relaciones personales, y coherencia entre política de crédito y exigencia de pago. Este bloqueo afecta facturación y publicación; no es del alcance de la comercial resolverlo, pero sí debe registrarlo en el deal cuando frena un cierre.
 
 ---
 
