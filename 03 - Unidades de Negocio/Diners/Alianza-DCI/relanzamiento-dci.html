@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diners Club International · Relanzamiento 360 Colombia</title>
+<style>
+  :root{
+    --navy:#0A2540; --navy-deep:#061a30; --ink:#12233a;
+    --parchment:#F4F1EA; --parchment-soft:#EDEAE2;
+    --bronze:#B08D57; --gold:#D2A855; --wine:#8C3A3A;
+    --muted:rgba(244,241,234,.62); --line:rgba(210,168,85,.28);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--serif); color:var(--parchment);
+    background:var(--navy-deep);
+    -webkit-font-smoothing:antialiased;
+  }
+  .deck{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+  .slide{
+    min-height:100vh;scroll-snap-align:start;position:relative;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:8vh 7vw;
+    background:radial-gradient(120% 120% at 80% 0%, #0d2c4d 0%, var(--navy) 45%, var(--navy-deep) 100%);
+    border-bottom:1px solid rgba(0,0,0,.3);
+  }
+  .slide::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(60% 50% at 15% 90%, rgba(176,141,87,.10), transparent 60%),
+      linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.18));
+  }
+  .wrap{max-width:1040px;margin:0 auto;width:100%;position:relative;z-index:1}
+  .eyebrow{
+    font-family:var(--sans);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold);font-weight:600;margin-bottom:1.4rem;display:flex;align-items:center;gap:.9rem;
+  }
+  .eyebrow::after{content:"";height:1px;flex:1;max-width:120px;background:var(--line)}
+  h1{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.02;font-weight:600;letter-spacing:-.01em}
+  h2{font-size:clamp(1.7rem,3.8vw,2.7rem);line-height:1.08;font-weight:600;letter-spacing:-.01em;margin-bottom:1.2rem}
+  h3{font-size:1.15rem;font-weight:600;color:var(--gold);margin-bottom:.5rem}
+  p{font-size:clamp(1rem,1.6vw,1.22rem);line-height:1.55;color:rgba(244,241,234,.9);max-width:62ch}
+  .lead{font-size:clamp(1.15rem,2vw,1.5rem);color:var(--parchment)}
+  .muted{color:var(--muted)}
+  .accent{color:var(--gold)}
+  .wine{color:#E0A0A0}
+  strong{color:#fff;font-weight:600}
+
+  /* cover */
+  .cover h1{margin:.4rem 0 1.6rem}
+  .cover .x{color:var(--bronze);font-style:italic;font-weight:400}
+  .cover-sub{font-size:clamp(1.1rem,2vw,1.5rem);color:var(--parchment);max-width:52ch;margin-bottom:2.4rem}
+  .brandline{font-family:var(--sans);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);padding-top:1.1rem;display:inline-block}
+
+  /* grids */
+  .grid{display:grid;gap:1.1rem;margin-top:1.6rem}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .card{
+    background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:3px;
+    padding:1.4rem 1.35rem;
+  }
+  .card h3{margin-bottom:.55rem}
+  .card p{font-size:.98rem;line-height:1.5;color:rgba(244,241,234,.8)}
+  .card.hl{border-color:var(--gold);background:rgba(210,168,85,.08)}
+  .card.team-wide{grid-column:1 / -1;display:grid;grid-template-columns:.85fr 1.6fr;gap:1.6rem;align-items:center}
+  .card.team-wide h3{margin-bottom:0}
+  .card.team-wide p{font-size:.98rem}
+  @media(max-width:760px){.card.team-wide{grid-template-columns:1fr;gap:.6rem}}
+  .card.sm{padding:1rem 1.05rem}
+  .card.sm h3{font-size:1rem;margin-bottom:.35rem}
+  .card.sm p{font-size:.84rem;line-height:1.38}
+  .tier-own{font-family:var(--sans);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.5rem}
+  .card.hl .tier-own{color:var(--gold)}
+  .sublabel{font-family:var(--sans);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bronze);margin:1.4rem 0 .2rem}
+  .translabel{font-family:var(--serif);font-size:clamp(1.05rem,1.7vw,1.35rem);font-weight:600;color:var(--gold);margin:1.5rem 0 .3rem;display:flex;align-items:center;gap:.9rem}
+  .translabel::after{content:"";height:1px;flex:1;background:var(--line)}
+  .subhead{font-family:var(--sans);font-size:.95rem;color:var(--gold);margin-top:.6rem;letter-spacing:.01em}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:1.8rem}
+  .stats.stats-5{grid-template-columns:repeat(5,1fr)}
+  .stat .n{font-size:clamp(1.8rem,3.4vw,2.7rem);font-weight:600;color:var(--gold);line-height:1}
+  .stat .l{font-family:var(--sans);font-size:.78rem;letter-spacing:.04em;color:var(--muted);margin-top:.5rem;line-height:1.35}
+
+  /* table */
+  .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:1.4rem}
+  .tscroll table{margin-top:0;min-width:560px}
+  table{width:100%;border-collapse:collapse;margin-top:1.4rem;font-size:.96rem}
+  th,td{text-align:left;padding:.7rem 1rem;border-bottom:1px solid rgba(210,168,85,.16);vertical-align:top}
+  th{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600}
+  td{color:rgba(244,241,234,.85)}
+  tr.us td{background:rgba(210,168,85,.07)}
+  tr.us td:first-child{color:var(--gold);font-weight:600;font-family:var(--serif)}
+  .td-strong{color:#fff}
+
+  /* roadmap */
+  .road{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem}
+  .phase{border-top:2px solid var(--gold);padding-top:1rem}
+  .phase .ph{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze)}
+  .phase h3{font-size:1.05rem;color:var(--parchment);margin:.35rem 0 .5rem}
+  .phase .when{font-family:var(--sans);color:var(--gold);font-size:.85rem;margin-bottom:.6rem}
+  .phase p{font-size:.92rem;color:rgba(244,241,234,.78)}
+
+  /* statement (tesis block) */
+  .tesis{margin-top:1.4rem;border-left:2px solid var(--gold);padding-left:1.2rem}
+  .tesis .big{font-size:clamp(1.2rem,2.2vw,1.6rem);color:var(--parchment);font-weight:600;line-height:1.2}
+  .tesis .sub{font-size:1rem;color:rgba(244,241,234,.8);margin-top:.5rem;max-width:64ch}
+
+  /* ask */
+  .ask{background:linear-gradient(160deg,#0b2a4a,#04101f)}
+  .ask ol{margin:1.4rem 0 0;padding-left:0;list-style:none;counter-reset:a}
+  .ask li{counter-increment:a;position:relative;padding:.7rem 0 .7rem 3rem;border-bottom:1px solid var(--line);font-size:1.02rem;color:var(--parchment);max-width:74ch;line-height:1.45}
+  .ask li::before{content:counter(a);position:absolute;left:0;top:.7rem;font-family:var(--sans);font-size:.85rem;font-weight:700;color:var(--navy-deep);background:var(--gold);width:1.6rem;height:1.6rem;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .closing{margin-top:1.6rem;font-style:italic;font-size:clamp(1.05rem,1.9vw,1.35rem);color:var(--gold);max-width:60ch}
+
+  /* nav dots */
+  .dots{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;gap:9px}
+  .dots button{width:9px;height:9px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer;padding:0;transition:.25s}
+  .dots button.active{background:var(--gold);border-color:var(--gold);transform:scale(1.25)}
+  .pageno{position:fixed;left:24px;bottom:20px;font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;color:var(--muted);z-index:20}
+  .conf{position:fixed;right:24px;bottom:20px;font-family:var(--sans);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(244,241,234,.35);z-index:20}
+
+  .note{font-family:var(--sans);font-size:.78rem;color:var(--muted);margin-top:1.2rem;letter-spacing:.01em}
+
+  /* kpi bullets */
+  .kpi-list{list-style:none;margin:.5rem 0 0;padding:0}
+  .kpi-list li{position:relative;padding:.4rem 0 .4rem 1.1rem;font-size:.92rem;line-height:1.4;color:rgba(244,241,234,.85);border-bottom:1px solid rgba(210,168,85,.12)}
+  .kpi-list li:last-child{border-bottom:none}
+  .kpi-list li::before{content:"";position:absolute;left:0;top:.72rem;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+  .kpi-list li .m{color:#fff}
+  .kpi-list li .q{color:var(--muted);font-style:italic}
+
+  /* ---- NUEVOS COMPONENTES (relanzamiento) ---- */
+  /* module divider */
+  .divider{background:linear-gradient(150deg,#0b2a4a 0%, #061a30 100%);text-align:left}
+  .modnum{font-family:var(--sans);font-size:clamp(4rem,14vw,9rem);font-weight:800;line-height:.9;color:transparent;-webkit-text-stroke:1.5px var(--gold);letter-spacing:-.02em}
+  .modkicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--bronze);margin-bottom:.6rem}
+  .tagline{font-size:clamp(1.8rem,4vw,3rem);font-weight:600;line-height:1.05;color:var(--parchment);margin:1.2rem 0 .6rem;max-width:20ch}
+  .tagline em{color:var(--gold);font-style:italic}
+  .modindex{font-family:var(--sans);font-size:.82rem;color:var(--muted);margin-top:1.8rem;line-height:1.9;letter-spacing:.02em}
+  .modindex b{color:var(--gold);font-weight:600}
+
+  /* channel rows */
+  .chanrow{display:grid;grid-template-columns:120px 1fr;gap:1.2rem;padding:1rem 0;border-bottom:1px solid var(--line);align-items:start}
+  .chanrow:last-child{border-bottom:none}
+  .chanrow .ch{font-family:var(--sans);font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;padding-top:.15rem}
+  .chanrow p{font-size:.98rem;line-height:1.48;color:rgba(244,241,234,.85)}
+  .chanrow .tag{font-family:var(--sans);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bronze);display:block;margin-top:.4rem}
+  @media(max-width:640px){.chanrow{grid-template-columns:1fr;gap:.35rem}}
+
+  /* rtb pillars */
+  .rtb{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1.4rem}
+  .rtb .pill{border-top:2px solid var(--gold);padding-top:.9rem}
+  .rtb .pill .yr{font-family:var(--sans);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--bronze)}
+  .rtb .pill h3{color:var(--parchment);font-size:1.05rem;margin:.3rem 0 .4rem}
+  .rtb .pill p{font-size:.9rem;color:rgba(244,241,234,.78)}
+
+  @media(max-width:760px){
+    .slide{padding:7vh 8vw;min-height:auto;padding-top:12vh;padding-bottom:12vh}
+    .g2,.g3,.g4,.stats,.stats.stats-5,.road,.rtb{grid-template-columns:1fr 1fr}
+    .dots{display:none}
+    .pageno,.conf{display:none}
+    table{min-width:480px}
+  }
+  @media(max-width:560px){
+    .slide{padding:10vh 6vw}
+    .g2,.g3,.g4,.stats,.stats.stats-5,.road,.rtb{grid-template-columns:1fr}
+    .card.team-wide{grid-template-columns:1fr}
+    h1{font-size:clamp(2rem,9vw,3rem)}
+    .stat .n{font-size:clamp(1.5rem,7vw,2.2rem)}
+    .ask li{padding-left:2.6rem}
+    .brandline{letter-spacing:.12em}
+  }
+  @media(max-width:400px){
+    .slide{padding:9vh 5vw}
+    h2{font-size:clamp(1.4rem,7vw,2rem)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .deck{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <!-- ============ APERTURA ============ -->
+
+  <!-- 1 · COVER -->
+  <section class="slide cover">
+    <div class="wrap">
+      <div class="eyebrow">Propuesta de Relanzamiento 360°</div>
+      <h1>Diners Club <span class="x">International</span></h1>
+      <p class="cover-sub">Reposicionar la primera tarjeta de pago del mundo como el símbolo definitivo de estatus, gastronomía y experiencias exclusivas en Colombia. Un territorio propio: <strong>Interesting Life.</strong></p>
+      <span class="brandline">Diners Club International · Davivienda — franquiciado exclusivo · en alianza con Ediciones Gamma</span>
+    </div>
+  </section>
+
+  <!-- 2 · QUIÉNES SOMOS · EDICIONES GAMMA -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Quiénes construyen la estrategia</div>
+      <h2>Los expertos detrás del reposicionamiento.</h2>
+      <p>Ediciones Gamma es la casa editorial <strong>filial de Banco Davivienda / Grupo Bolívar</strong>. Durante <strong>15 años operamos programas de beneficios, alianzas con comercios premium y experiencias en gastronomía</strong> a través del programa Privilegios — el mismo motor que hoy proponemos re-encender para Diners Club.</p>
+      <div class="grid g3">
+        <div class="card hl"><span class="tier-own">Ediciones Gamma</span><h3>Ecosistema de marca</h3><p>Red de aliados y comercios premium, programas de beneficios y experiencias en gastronomía, junto a 2 revistas de nicho (Diners, AXXIS) y un ecosistema digital propio.</p></div>
+        <div class="card"><span class="tier-own">Revista Diners</span><h3>La conexión con el segmento</h3><p>60 años de autoridad editorial en gastronomía, viajes y estilo de vida, con una audiencia premium fiel. Cada mes, en la casa y el correo del lector.</p></div>
+        <div class="card team-wide"><div><span class="tier-own">Equipo Gamma</span><h3>Mente editorial + ejecución estratégica</h3></div><p>Periodistas experimentados, estrategas de marca y creativos que transforman los objetivos de la marca en narrativas de alto impacto, experiencias de valor y activaciones diferenciales.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · REVISTA DINERS -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">El activo · autoridad editorial</div>
+      <h2>Revista Diners: mismo ADN que la tarjeta.</h2>
+      <p>Nacida en <strong>1963</strong> como el medio para los socios de la Tarjeta Diners Club. Gastronomía, viajes, cultura y estilo de vida, con una audiencia madura y de alto poder adquisitivo que coincide con el perfil del tarjetahabiente.</p>
+      <div class="stats">
+        <div class="stat"><div class="n">45 <span style="font-size:1rem" class="muted">años</span></div><div class="l">edad promedio de la audiencia: madura, no millennial</div></div>
+        <div class="stat"><div class="n">84%</div><div class="l">NSE Alto + Medio-Alto</div></div>
+        <div class="stat"><div class="n">~59K</div><div class="l">visitantes únicos web / mes</div></div>
+        <div class="stat"><div class="n">~98K</div><div class="l">seguidores Instagram · engagement ~6%</div></div>
+      </div>
+      <p style="margin-top:1.4rem">Ecosistema completo de impacto: impreso, web, redes, newsletter, podcast y formatos digitales propios.</p>
+    </div>
+  </section>
+
+  <!-- 4 · ESTADO ACTUAL -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Punto de partida · Diners Club Colombia</div>
+      <h2>Una franquicia enorme, con una fracción de su potencial.</h2>
+      <div class="stats stats-5">
+        <div class="stat"><div class="n">169K</div><div class="l">tarjetas Diners Club activas</div></div>
+        <div class="stat"><div class="n">11%</div><div class="l">del parque total de TC Davivienda</div></div>
+        <div class="stat"><div class="n">89%</div><div class="l">Blue (clásica)</div></div>
+        <div class="stat"><div class="n">11%</div><div class="l">Black (afluente) · 18.4K</div></div>
+        <div class="stat"><div class="n">2–4</div><div class="l">accesos a salas VIP al año · + Davipuntos</div></div>
+      </div>
+      <p style="margin-top:1.8rem">Hoy el tarjetahabiente recibe poco más que puntos y un par de accesos a salas VIP. <strong>Sin concierge, sin seguros de viaje, sin protección de compra, sin hoteles de lujo, sin alianzas de consumo cotidiano.</strong> El relanzamiento existe para cerrar esa brecha.</p>
+      <p class="note">Davivienda, franquiciado exclusivo de Diners Club en Colombia. Cifras internas · confidencial.</p>
+    </div>
+  </section>
+
+  <!-- ============ MÓDULO 1 · POSICIONAMIENTO Y COMUNICACIÓN 360° ============ -->
+
+  <!-- 5 · DIVIDER + CONCEPTO CREATIVO -->
+  <section class="slide divider">
+    <div class="wrap">
+      <div class="modkicker">Módulo 1</div>
+      <div class="modnum">01</div>
+      <div class="modkicker" style="margin-top:1.2rem;color:var(--gold)">Concepto creativo central</div>
+      <h2 class="tagline">Diners no vende crédito. Vende <em>pertenencia</em>.</h2>
+      <p>El territorio de marca es la <strong>curaduría cultural local</strong>: la única tarjeta que nació de una comunidad de comensales, con 60 años de criterio editorial detrás. No competimos en ubicuidad (Visa) ni en "experiencias" genéricas (Mastercard Priceless). Competimos en <strong>criterio, cercanía y estatus con sentido.</strong></p>
+      <div class="modindex">Módulo 1 cubre → <b>concepto + tono + RTB</b> · <b>ATL</b> · <b>BTL</b> · <b>Digital</b> · <b>KPIs</b></div>
+    </div>
+  </section>
+
+  <!-- 6 · TONO + RTB -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 1 · Tono de comunicación + Reason to Believe</div>
+      <h2>Sofisticado, pero contemporáneo.</h2>
+      <div class="grid g2">
+        <div class="card"><h3>Tono de marca</h3><p>Editorial y curado, con autoridad sin arrogancia. Cálido, no frío. Habla desde el <strong>criterio</strong> (qué vale la pena) y no desde el precio. Menos "lujo inalcanzable", más "el mejor asiento de la casa reservado para ti".</p></div>
+        <div class="card hl"><h3>Consumidor premium colombiano hoy</h3><p>Maduro (edad promedio 45), NSE alto, viajado y exigente. No quiere que le griten estatus: quiere <strong>curaduría con criterio</strong> y acceso real. Valora el tiempo, la mesa difícil de reservar y lo auténtico local.</p></div>
+      </div>
+      <div class="sublabel">Reason to Believe · tres pruebas que nadie más tiene</div>
+      <div class="rtb">
+        <div class="pill"><div class="yr">Desde 1950</div><h3>La primera tarjeta del mundo</h3><p>Diners Club inventó la categoría — "the club of diners". 75 años de legado, hoy parte de Discover Global Network con +1.000 salas VIP.</p></div>
+        <div class="pill"><div class="yr">Desde 1963</div><h3>60 años de autoridad editorial</h3><p>Revista Diners: criterio real en gastronomía y estilo de vida. La tarjeta y la revista comparten origen y ADN.</p></div>
+        <div class="pill"><div class="yr">Curaduría local</div><h3>Acceso que no se compra</h3><p>Mesas, catas y experiencias curadas ciudad por ciudad. No un catálogo global genérico: pertenencia con acento colombiano.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · BRECHA + TESIS -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 1 · El terreno competitivo</div>
+      <h2>Los descuentos, los lounges y las asistencias ya están tomados.</h2>
+      <div class="tscroll">
+      <table>
+        <thead><tr><th>Beneficio</th><th>Diners hoy</th><th>Visa Infinite</th><th>Mastercard Black</th></tr></thead>
+        <tbody>
+          <tr><td class="td-strong">Salas VIP</td><td class="wine">2–4 / año</td><td>Airport Companion</td><td>LoungeKey · 1,500+</td></tr>
+          <tr><td class="td-strong">Concierge / seguros de viaje</td><td class="wine">—</td><td>Sí</td><td>Sí</td></tr>
+          <tr><td class="td-strong">Protección de compra</td><td class="wine">—</td><td>Sí</td><td>Sí</td></tr>
+          <tr><td class="td-strong">Hoteles de lujo</td><td class="wine">—</td><td>Luxury Hotel Collection</td><td>Travel Rewards</td></tr>
+          <tr><td class="td-strong">Alianzas everyday-value</td><td class="wine">—</td><td>Descontinuado</td><td>Éxito, Cabify, Tostao…</td></tr>
+          <tr class="us"><td>Curaduría cultural + gastronomía local VIP</td><td>Territorio libre</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="tesis">
+        <div class="big">Visa y Mastercard ganaron la ubicuidad. Diners Club puede ganar mediante la <span class="accent">pertenencia</span>.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · DOS VÍAS -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 1 · Estrategia de posicionamiento · dos vías</div>
+      <h2>Re-creando la pertenencia.</h2>
+      <div class="grid g2">
+        <div class="card"><h3>AON — Always On</h3><p>Plataforma continua de beneficios curados con la mejor oferta gastronómica del país. No son cupones: son <strong>experiencias seleccionadas</strong> — el territorio natural de la Revista Diners. <strong>Gastronomía como categoría de entrada</strong>, con expansión progresiva a viajes y lifestyle.</p></div>
+        <div class="card hl"><h3>Interesting Life</h3><p>El lado inspiracional y exclusivo. Eventos privados, entretenimiento premium y gastronomía de autor para descubrir joyas ocultas locales. <strong>Momentos inigualables</strong> que redefinen pertenecer a un club selecto.</p></div>
+      </div>
+      <p style="margin-top:1.4rem">Cada pieza de comunicación comunica <strong>valor concreto y verificable</strong>, siempre apuntando a un destacado activable ese mismo mes. La marca se prueba en el uso, no en la promesa.</p>
+    </div>
+  </section>
+
+  <!-- 9 · ATL -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 1 · Estrategia ATL</div>
+      <h2>Presencia dirigida donde vive el segmento.</h2>
+      <p class="subhead">Medios masivos con precisión geográfica — no cobertura amplia, sino densidad premium.</p>
+      <div style="margin-top:1.2rem">
+        <div class="chanrow"><div class="ch">OOH Premium</div><p>Vallas y mupis en corredores de alto valor: <strong>Zona T, Parque de la 93 y Chicó</strong> (Bogotá); <strong>El Poblado y Provenza</strong> (Medellín); Granada (Cali). Digital-OOH programado en horas de mayor tráfico del segmento.<span class="tag">Objetivo: notoriedad + halo de estatus</span></p></div>
+        <div class="chanrow"><div class="ch">Aeropuertos</div><p>Branding y pantallas en <strong>salas VIP de El Dorado y José María Córdova</strong>, jet-bridges y zonas priority. El viajero frecuente es el corazón del target Diamante.<span class="tag">Objetivo: relevancia contextual viaje/lujo</span></p></div>
+        <div class="chanrow"><div class="ch">Prensa de nicho</div><p>Pauta en medios impresos y digitales de <strong>negocios y estilo de vida</strong> + posicionamiento reforzado en Revista Diners y AXXIS (casa). Autoridad prestada por el contexto editorial.<span class="tag">Objetivo: credibilidad + profundidad</span></p></div>
+      </div>
+      <p class="note">Piezas maestras del concepto "Interesting Life" declinadas por ciudad y por momento gastronómico/cultural.</p>
+    </div>
+  </section>
+
+  <!-- 10 · BTL -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 1 · Estrategia BTL</div>
+      <h2>La pertenencia se demuestra en vivo.</h2>
+      <p class="subhead">Ultra-lujo, invite-only, curado. Cada activación es contenido y prueba de producto a la vez.</p>
+      <div class="grid g2" style="margin-top:1.2rem">
+        <div class="card hl"><h3>Mesas Diners · invite-only</h3><p>Cenas privadas con los chefs top del país, menús de degustación ocultos y catas exclusivas. El formato insignia de "Interesting Life".</p></div>
+        <div class="card"><h3>Patrocinios de estatus</h3><p>Torneos de golf en clubes campestres, ferias de arte (tipo <strong>ARTBO</strong>) y festivales gastronómicos de referencia. Presencia curada, no logo genérico.</p></div>
+        <div class="card"><h3>Pop-ups gastronómicos privados</h3><p>Experiencias efímeras solo para tarjetahabientes: cocina de autor, maridajes, "joyas ocultas" locales activadas por temporada.</p></div>
+        <div class="card"><h3>Activación en salas VIP</h3><p>Momentos de marca en lounges de aeropuerto y espacios priority — donde el target ya está y tiene tiempo.</p></div>
+      </div>
+      <p class="note">Cada evento se documenta como contenido transmedia (Historias Diners, La Mesa de Diners) → escala el alcance más allá de los asistentes.</p>
+    </div>
+  </section>
+
+  <!-- 11 · DIGITAL -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 1 · Estrategia Digital</div>
+      <h2>Performance con criterio editorial.</h2>
+      <div style="margin-top:.6rem">
+        <div class="chanrow"><div class="ch">Performance</div><p>Adquisición y upgrade segmentados: <strong>lookalikes del cohorte Black, geo-fencing de zonas premium</strong>, landing dedicada al relanzamiento y retargeting secuencial. Cada peso trazable a activación o upgrade.</p></div>
+        <div class="chanrow"><div class="ch">Influencers</div><p>Líderes de opinión de <strong>gastronomía (críticos), viajes y negocios</strong>. Integración editorial nativa (no publicidad evidente) vía formatos propios: Historias Diners, La Mesa de Diners.</p></div>
+        <div class="chanrow"><div class="ch">Programática</div><p>Audiencias de altos ingresos vía <strong>PMP / deals premium</strong> y targeting contextual en medios de lujo, lifestyle y negocios. Brand-safety curada.</p></div>
+        <div class="chanrow"><div class="ch">CRM / Inbound</div><p>Journeys para la base actual (activación, cross-sell hacia Diamante) + <strong>prospección calificada</strong> capturada por el contenido de la revista. Nurturing hasta el upgrade.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · KPIs MÓDULO 1 -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 1 · Cómo mediremos</div>
+      <h2>KPIs de comunicación 360°.</h2>
+      <div class="grid g2">
+        <div class="card"><h3>Notoriedad y percepción (ATL/BTL)</h3>
+          <ul class="kpi-list">
+            <li><span class="m">Share of Voice OOH</span> en corredores premium definidos</li>
+            <li><span class="m">Recall asistido</span> del concepto "Interesting Life" en el segmento</li>
+            <li><span class="m">Brand affinity pre/post</span> · <span class="q">"pienso en Diners cuando pienso en salir a comer"</span></li>
+            <li><span class="m">Asistentes de alto valor + NPS</span> de experiencias BTL</li>
+          </ul>
+        </div>
+        <div class="card hl"><h3>Performance y conversión (Digital)</h3>
+          <ul class="kpi-list">
+            <li><span class="m">CAC / costo por upgrade</span> a nivel Diamante</li>
+            <li><span class="m">CTR y CVR</span> de campañas de performance</li>
+            <li><span class="m">Engagement rate</span> de contenido con influencers</li>
+            <li><span class="m">MQL → SQL</span> de prospección calificada vía revista</li>
+            <li><span class="m">Tasa de activación</span> de plataforma post-campaña</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="dots" id="dots"></div>
+<div class="pageno" id="pageno">01 / 12</div>
+<div class="conf">Confidencial · Ediciones Gamma</div>
+
+<script>
+  const deck=document.getElementById('deck');
+  const slides=[...document.querySelectorAll('.slide')];
+  const dotsWrap=document.getElementById('dots');
+  const pageno=document.getElementById('pageno');
+  const pad=n=>String(n).padStart(2,'0');
+  slides.forEach((s,i)=>{
+    const b=document.createElement('button');
+    b.setAttribute('aria-label','Ir a lámina '+(i+1));
+    b.onclick=()=>slides[i].scrollIntoView();
+    dotsWrap.appendChild(b);
+  });
+  const dots=[...dotsWrap.children];
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const i=slides.indexOf(e.target);
+        dots.forEach((d,j)=>d.classList.toggle('active',j===i));
+        pageno.textContent=pad(i+1)+' / '+pad(slides.length);
+      }
+    });
+  },{root:deck,threshold:.55});
+  slides.forEach(s=>io.observe(s));
+  let idx=0;
+  deck.addEventListener('scroll',()=>{idx=Math.round(deck.scrollTop/window.innerHeight)});
+  window.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'||e.key==='PageDown'){e.preventDefault();slides[Math.min(idx+1,slides.length-1)].scrollIntoView()}
+    if(e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();slides[Math.max(idx-1,0)].scrollIntoView()}
+  });
+</script>
+</body>
+</html>
