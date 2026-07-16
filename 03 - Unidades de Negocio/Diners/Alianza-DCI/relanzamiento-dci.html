@@ -154,6 +154,14 @@
   .chanrow .tag{font-family:var(--sans);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--bronze);display:block;margin-top:.4rem}
   @media(max-width:640px){.chanrow{grid-template-columns:1fr;gap:.35rem}}
 
+  /* bulleted option lists (categoría → opciones → acción) */
+  .card .catlabel{font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze);display:block;margin-bottom:.15rem}
+  .blist{list-style:none;margin:.4rem 0 0;padding:0}
+  .blist li{position:relative;padding:.3rem 0 .3rem 1rem;font-size:.88rem;line-height:1.42;color:rgba(244,241,234,.85)}
+  .blist li::before{content:"";position:absolute;left:0;top:.66rem;width:5px;height:5px;border-radius:50%;background:var(--bronze)}
+  .blist li strong{color:#fff;font-weight:600}
+  .action{display:block;font-family:var(--sans);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-top:.85rem;padding-top:.6rem;border-top:1px solid var(--line)}
+
   /* rtb pillars */
   .rtb{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1.4rem}
   .rtb .pill{border-top:2px solid var(--gold);padding-top:.9rem}
@@ -318,18 +326,86 @@
     </div>
   </section>
 
-  <!-- 9 · ATL -->
+  <!-- 9 · ATL (A) · FUERA DE CASA -->
   <section class="slide">
     <div class="wrap">
-      <div class="eyebrow">Módulo 1 · Estrategia ATL</div>
+      <div class="eyebrow">Módulo 1 · Estrategia ATL (1 de 2) · Fuera de casa</div>
       <h2>Presencia dirigida donde vive el segmento.</h2>
-      <p class="subhead">Medios masivos con precisión geográfica — no cobertura amplia, sino densidad premium.</p>
-      <div style="margin-top:1.2rem">
-        <div class="chanrow"><div class="ch">OOH Premium</div><p>Vallas y mupis en corredores de alto valor: <strong>Zona T, Parque de la 93 y Chicó</strong> (Bogotá); <strong>El Poblado y Provenza</strong> (Medellín); Granada (Cali). Digital-OOH programado en horas de mayor tráfico del segmento.<span class="tag">Objetivo: notoriedad + halo de estatus</span></p></div>
-        <div class="chanrow"><div class="ch">Aeropuertos</div><p>Branding y pantallas en <strong>salas VIP de El Dorado y José María Córdova</strong>, jet-bridges y zonas priority. El viajero frecuente es el corazón del target Diamante.<span class="tag">Objetivo: relevancia contextual viaje/lujo</span></p></div>
-        <div class="chanrow"><div class="ch">Prensa de nicho</div><p>Pauta en medios impresos y digitales de <strong>negocios y estilo de vida</strong> + posicionamiento reforzado en Revista Diners y AXXIS (casa). Autoridad prestada por el contexto editorial.<span class="tag">Objetivo: credibilidad + profundidad</span></p></div>
+      <p class="subhead">No cobertura amplia, sino densidad premium — por categoría, con una acción estratégica clara en cada una.</p>
+      <div class="grid g3">
+        <div class="card hl">
+          <span class="catlabel">Categoría</span><h3>OOH gran formato · Exterior</h3>
+          <ul class="blist">
+            <li>Vallas y pantallas LED en corredores de mayor valor: <strong>Zona T, Parque de la 93, Chicó y Andino</strong> (Bogotá)</li>
+            <li><strong>El Poblado, Provenza, Milla de Oro, Parque Lleras</strong> (Medellín); Granada y Ciudad Jardín (Cali)</li>
+            <li><strong>Domination</strong> temporal (varias caras) de un corredor gastronómico por ciudad durante el lanzamiento</li>
+            <li>Digital-OOH programado en las franjas horarias de mayor tráfico del segmento</li>
+          </ul>
+          <span class="action">Acción → notoriedad de alto impacto + halo de estatus</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Categoría</span><h3>OOH de proximidad · Indoor</h3>
+          <ul class="blist">
+            <li>Mupis y pantallas en centros comerciales de lujo: <strong>Andino, El Retiro, Oviedo, Santafé</strong></li>
+            <li>Circuitos indoor en clubes sociales, gimnasios boutique, spas y hoteles 5★</li>
+            <li>Piezas branded en <strong>menús y mesas de restaurantes aliados</strong> (puente natural con AON)</li>
+            <li>Señalización en zonas de valet y parqueaderos premium</li>
+          </ul>
+          <span class="action">Acción → recordación en el lugar y momento de consumo</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Categoría</span><h3>Aeropuertos &amp; travel</h3>
+          <ul class="blist">
+            <li>Branding en <strong>salas VIP El Dorado</strong> (nac/int) y <strong>José María Córdova</strong></li>
+            <li>Pantallas en jet-bridges, mangas de abordaje y zonas <strong>priority / fast-track</strong></li>
+            <li>Pauta en revistas de a bordo premium y pantallas de transfer</li>
+            <li>Alianza con transfer/valet de lujo hacia y desde el aeropuerto</li>
+          </ul>
+          <span class="action">Acción → relevancia de viaje · corazón del target Diamante</span>
+        </div>
       </div>
-      <p class="note">Piezas maestras del concepto "Interesting Life" declinadas por ciudad y por momento gastronómico/cultural.</p>
+    </div>
+  </section>
+
+  <!-- 10 · ATL (B) · EDITORIAL, AUDIO Y PANTALLA -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 1 · Estrategia ATL (2 de 2) · Editorial, audio y pantalla</div>
+      <h2>Autoridad, intimidad y contexto aspiracional.</h2>
+      <p class="subhead">Donde el segmento consume contenido con atención — no interrupción, sino pertenencia editorial.</p>
+      <div class="grid g3">
+        <div class="card hl">
+          <span class="catlabel">Categoría</span><h3>Prensa &amp; editorial de nicho</h3>
+          <ul class="blist">
+            <li>Doble página + advertorial "Interesting Life" en <strong>Revista Diners y AXXIS</strong> (casa, costo marginal)</li>
+            <li>Pauta en medios de <strong>negocios y estilo de vida</strong> de alto perfil</li>
+            <li><strong>Portadas y ediciones especiales</strong> patrocinadas por temporada</li>
+            <li>Encartes de lujo dirigidos por segmento geográfico y de consumo</li>
+          </ul>
+          <span class="action">Acción → autoridad prestada por el contexto + profundidad</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Categoría</span><h3>Audio dirigido</h3>
+          <ul class="blist">
+            <li>Patrocinio de los <strong>podcasts top de negocios y gastronomía</strong> de Colombia</li>
+            <li>Branded audio en <strong>La Mesa de Diners</strong> (formato propio, audiencia fidelizada)</li>
+            <li>Menciones curadas en franjas y emisoras premium</li>
+            <li>Spotify/streaming: audio ads segmentados a perfiles de altos ingresos</li>
+          </ul>
+          <span class="action">Acción → intimidad y frecuencia con el segmento</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Categoría</span><h3>Pantalla dirigida · CTV &amp; cine</h3>
+          <ul class="blist">
+            <li><strong>Connected TV / OTT</strong> segmentado a hogares de altos ingresos (no TV abierta genérica)</li>
+            <li>Product placement en programas de <strong>cocina, viajes y cultura</strong></li>
+            <li>Cine en <strong>salas premium (VIP / Gold)</strong> en las ciudades foco</li>
+            <li>Patrocinio de estrenos y funciones privadas para tarjetahabientes</li>
+          </ul>
+          <span class="action">Acción → alcance premium con contexto aspiracional</span>
+        </div>
+      </div>
+      <p class="note">Todas las piezas declinan el concepto maestro "Interesting Life" por ciudad y por momento gastronómico/cultural.</p>
     </div>
   </section>
 
@@ -393,7 +469,7 @@
 </div>
 
 <div class="dots" id="dots"></div>
-<div class="pageno" id="pageno">01 / 12</div>
+<div class="pageno" id="pageno">01 / 13</div>
 <div class="conf">Confidencial · Ediciones Gamma</div>
 
 <script>
