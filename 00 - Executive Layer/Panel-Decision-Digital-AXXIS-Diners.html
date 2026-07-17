@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel de Decisión Digital — AXXIS &amp; Diners · Junio 2026</title>
+<style>
+  :root{
+    --bg:#faf9f7; --card:#ffffff; --border:#e6e2da; --border-strong:#d3ccc0;
+    --text:#1c1a17; --text-2:#5c574d; --text-3:#6b6558;
+    --accent-diners:#7a2e2e; --accent-axxis:#3a5a40; --accent-conjunta:#2f4858;
+    --f0:#a31e17; --f1:#94500a; --f2:#15529c; --fc:#1f6b45;
+    --focus:#15529c; --dec-bg:#f2f5f8; --dec-bd:#15529c;
+    --kill-bg:#fbf1f0; --kill-bd:#a31e17; --keep-bg:#f0f6f2; --keep-bd:#1f6b45;
+    --radius:12px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#15130f; --card:#1e1c17; --border:#332f27; --border-strong:#453f34;
+      --text:#f1eee7; --text-2:#c9c3b5; --text-3:#948d7c;
+      --accent-diners:#d98787; --accent-axxis:#8fb896; --accent-conjunta:#7fa8bd;
+      --f0:#ff7b70; --f1:#f3a85e; --f2:#6fa8f0; --fc:#5fcf94;
+      --focus:#6fa8f0; --dec-bg:#1a2028; --dec-bd:#6fa8f0;
+      --kill-bg:#2a1a18; --kill-bd:#ff7b70; --keep-bg:#182420; --keep-bd:#5fcf94;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#15130f; --card:#1e1c17; --border:#332f27; --border-strong:#453f34;
+    --text:#f1eee7; --text-2:#c9c3b5; --text-3:#948d7c;
+    --accent-diners:#d98787; --accent-axxis:#8fb896; --accent-conjunta:#7fa8bd;
+    --f0:#ff7b70; --f1:#f3a85e; --f2:#6fa8f0; --fc:#5fcf94;
+    --focus:#6fa8f0; --dec-bg:#1a2028; --dec-bd:#6fa8f0;
+    --kill-bg:#2a1a18; --kill-bd:#ff7b70; --keep-bg:#182420; --keep-bd:#5fcf94;
+  }
+  :root[data-theme="light"]{
+    --bg:#faf9f7; --card:#ffffff; --border:#e6e2da; --border-strong:#d3ccc0;
+    --text:#1c1a17; --text-2:#5c574d; --text-3:#6b6558;
+    --accent-diners:#7a2e2e; --accent-axxis:#3a5a40; --accent-conjunta:#2f4858;
+    --f0:#a31e17; --f1:#94500a; --f2:#15529c; --fc:#1f6b45;
+    --focus:#15529c; --dec-bg:#f2f5f8; --dec-bd:#15529c;
+    --kill-bg:#fbf1f0; --kill-bd:#a31e17; --keep-bg:#f0f6f2; --keep-bd:#1f6b45;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.5}
+  .wrap{max-width:1180px;margin:0 auto;padding:32px 20px 80px}
+  h1{font-size:26px;font-weight:600;margin:0 0 6px;letter-spacing:-0.01em}
+  .sub{margin:0;color:var(--text-2);font-size:15px;max-width:780px}
+  .rule{font-size:13px;color:var(--text);background:var(--dec-bg);border-left:3px solid var(--dec-bd);padding:10px 14px;border-radius:0 6px 6px 0;margin:16px 0 0;max-width:780px}
+  .rule.alert{border-left-color:var(--f0);background:var(--kill-bg)}
+  h2.sec{font-size:13px;font-weight:600;color:var(--text-3);text-transform:uppercase;letter-spacing:.05em;margin:34px 0 12px;padding-top:22px;border-top:1px solid var(--border);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  h2.sec:first-of-type{border-top:none;padding-top:0}
+
+  .kpigrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+  .kpi{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 18px;display:flex;flex-direction:column}
+  .kpi h3{font-size:13px;font-weight:600;margin:0 0 12px;color:var(--text-3);text-transform:uppercase;letter-spacing:.04em;display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .kpi table{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:12px}
+  .kpi th{text-align:left;font-weight:400;color:var(--text-2);padding:5px 0;border-bottom:1px solid var(--border)}
+  .kpi td{text-align:right;font-weight:600;padding:5px 0 5px 8px;border-bottom:1px solid var(--border);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .kpi tr:last-child th,.kpi tr:last-child td{border-bottom:none}
+  .kpi thead th,.kpi thead td{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--text-3);font-weight:600}
+  .tag{font-size:10px;font-weight:600;padding:2px 7px;border-radius:999px;letter-spacing:0;text-transform:none;white-space:nowrap}
+  .tag.ok{color:var(--fc);border:1px solid var(--fc);background:color-mix(in srgb, var(--fc) 10%, transparent)}
+  .tag.prelim{color:var(--f1);border:1px solid var(--f1);background:color-mix(in srgb, var(--f1) 10%, transparent)}
+  .down{color:var(--f0)} .up{color:var(--fc)}
+  .pend{color:var(--text-3);font-weight:400;font-style:italic;font-size:12.5px}
+  .dec{font-size:12.5px;color:var(--text);background:var(--dec-bg);border-left:3px solid var(--dec-bd);padding:9px 12px;border-radius:0 6px 6px 0;margin-top:auto}
+
+  nav.tabs{display:flex;gap:8px;margin:14px 0 20px;flex-wrap:wrap}
+  nav.tabs button{font:inherit;font-size:14px;font-weight:600;padding:10px 20px;border-radius:999px;border:1px solid var(--border-strong);background:var(--card);color:var(--text-2);cursor:pointer}
+  nav.tabs button:hover{background:var(--border)}
+  nav.tabs button:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+  nav.tabs button.active{background:var(--text);color:var(--bg);border-color:var(--text)}
+  nav.tabs button[data-s="diners"].active{background:var(--accent-diners);border-color:var(--accent-diners);color:#fff}
+  nav.tabs button[data-s="axxis"].active{background:var(--accent-axxis);border-color:var(--accent-axxis);color:#fff}
+  .scheme{display:none} .scheme.active{display:block}
+  .scheme-head{display:flex;align-items:baseline;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+  .scheme-head .dot{width:10px;height:10px;border-radius:50%}
+  .scheme-head h2{font-size:19px;font-weight:600;margin:0}
+  .scheme-head span{font-size:13px;color:var(--text-3)}
+
+  .datagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:14px}
+  .datacard{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px;display:flex;flex-direction:column}
+  .datacard h3{font-size:13px;font-weight:600;margin:0 0 4px;color:var(--text);text-transform:uppercase;letter-spacing:.04em;display:flex;align-items:center;gap:8px}
+  .datacard .chan{font-size:11px;font-weight:700;padding:2px 8px;border-radius:4px;letter-spacing:.04em}
+  .chan.ig{color:#fff;background:#7a2e6e}
+  .chan.web{color:#fff;background:#2f4858}
+  @media (prefers-color-scheme: dark){ .chan.ig{background:#c78ab8;color:#1a1410} .chan.web{background:#7fa8bd;color:#101a1f} }
+  :root[data-theme="dark"] .chan.ig{background:#c78ab8;color:#1a1410}
+  :root[data-theme="dark"] .chan.web{background:#7fa8bd;color:#101a1f}
+  .datacard .lead{font-size:12.5px;color:var(--text-2);margin:0 0 12px}
+  .datacard ol,.datacard ul{margin:0 0 12px;padding-left:20px;font-size:13px}
+  .datacard li{margin-bottom:6px}
+  .n{float:right;font-weight:600;color:var(--text-2);font-variant-numeric:tabular-nums;margin-left:10px}
+  .fmt{font-size:10px;font-weight:600;padding:1px 6px;border-radius:999px;margin-left:6px;color:var(--text-3);border:1px solid var(--border-strong)}
+  .fmt.reel{color:var(--f2);border-color:var(--f2)}
+  .chip{display:inline-block;font-size:10px;font-weight:600;padding:1px 7px;border-radius:999px;margin-left:6px;color:var(--f2);border:1px solid var(--f2)}
+  .big{font-size:22px;font-weight:600;margin:0 0 2px}
+  .bigsub{font-size:12.5px;color:var(--text-2);margin:0 0 12px}
+  table.chtab{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:12px;min-width:520px}
+  table.chtab th,table.chtab td{padding:7px 10px;border-bottom:1px solid var(--border);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  table.chtab th:first-child,table.chtab td:first-child{text-align:left;font-weight:400;color:var(--text-2)}
+  table.chtab thead th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--text-3);font-weight:600;text-align:right}
+  table.chtab thead th:first-child{text-align:left}
+  table.chtab tbody td{font-weight:600}
+  table.chtab tfoot th,table.chtab tfoot td{border-top:2px solid var(--border-strong);border-bottom:none;font-weight:600;color:var(--text-3)}
+  .bar{display:inline-block;width:52px;height:6px;border-radius:3px;background:var(--border);vertical-align:middle;margin-right:6px;overflow:hidden}
+  .bar i{display:block;height:100%;background:currentColor;border-radius:3px}
+
+  .verdict{border-radius:var(--radius);border:1px solid var(--border);background:var(--card);padding:16px 18px;margin-bottom:12px}
+  .verdict h4{margin:0 0 6px;font-size:14.5px;font-weight:600;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .vt{font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;letter-spacing:.03em}
+  .vt.kill{color:#fff;background:var(--f0)} .vt.fix{color:#fff;background:var(--f1)} .vt.keep{color:#fff;background:var(--fc)}
+  @media (prefers-color-scheme: dark){ .vt.kill,.vt.fix,.vt.keep{color:#15130f} }
+  :root[data-theme="dark"] .vt.kill,:root[data-theme="dark"] .vt.fix,:root[data-theme="dark"] .vt.keep{color:#15130f}
+  .verdict .why{font-size:13px;color:var(--text-2);margin:0 0 8px}
+  .verdict .fixit{font-size:13px;background:var(--keep-bg);border-left:3px solid var(--keep-bd);padding:9px 12px;border-radius:0 6px 6px 0;margin:0}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
+  .card h3{font-size:15px;font-weight:600;margin:0 0 6px;display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .phase{font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+  .phase.f0{color:var(--f0);border-color:var(--f0)} .phase.f1{color:var(--f1);border-color:var(--f1)}
+  .phase.f2{color:var(--f2);border-color:var(--f2)} .phase.fc{color:var(--fc);border-color:var(--fc)}
+  .card .goal{font-size:13px;color:var(--text-2);margin:0 0 12px;font-style:italic}
+  .card ul{margin:0;padding-left:18px;font-size:13px}
+  .card ul li{margin-bottom:6px}
+  .errors{margin-top:34px;background:var(--kill-bg);border:1px solid var(--kill-bd);border-radius:var(--radius);padding:18px 20px}
+  .errors h3{font-size:13px;font-weight:600;margin:0 0 8px;text-transform:uppercase;letter-spacing:.04em}
+  .errors ul{margin:0;padding-left:20px;font-size:13px}
+  .errors li{margin-bottom:6px}
+  footer{margin-top:22px;padding-top:18px;border-top:1px solid var(--border);font-size:12px;color:var(--text-3)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Panel de Decisión Digital — AXXIS &amp; Diners</h1>
+  <p class="sub">Corte: <b>junio 1–30, 2026</b>, contra mayo. Objetivo: relevancia digital. Cada bloque cierra con la decisión que cambia el próximo mes, no con el dato.</p>
+  <p class="rule">Regla del panel: si un dato no responde <b>“qué hacemos distinto el próximo mes”</b>, no va aquí. Las métricas de vanidad solo aparecen para desmontarlas.</p>
+  <p class="rule alert"><b>Titular de junio — probado, no inferido:</b> el tráfico de Paid Social de AXXIS dura <b>5 segundos</b>. No es una métrica floja: es 79.3% de todo su tráfico interactuando 5 segundos, contra 43s del orgánico y 98s del email. <b>Sin Paid Social, AXXIS pasaría de 24.35% a 46.33% de interacción y de 12s a 40s.</b> La relación se confirma en las dos revistas: a más Paid Social, menos engagement (AXXIS 79.3% → 24.35%; Diners 52% → 40.21%). El +41.3% de junio compró gente que no llegó a leer el titular.</p>
+
+  <h2 class="sec">Panel de control</h2>
+  <div class="kpigrid" id="kpis"></div>
+
+  <h2 class="sec">Por revista</h2>
+  <nav class="tabs" role="tablist" aria-label="Revista">
+    <button role="tab" aria-selected="true" data-s="axxis" class="active">Revista AXXIS</button>
+    <button role="tab" aria-selected="false" data-s="diners">Revista Diners</button>
+    <button role="tab" aria-selected="false" data-s="conjunta">Base Conjunta</button>
+  </nav>
+  <main id="app"></main>
+
+  <div class="errors">
+    <h3>Errores de data en los informes de junio — corregir antes de presentar</h3>
+    <ul>
+      <li><b>AXXIS — usuarios nuevos duplicados.</b> Un slide dice 71,219; el demográfico dice 142,438. Es exactamente 71,219 × 2. No son dos métricas, es una duplicación.</li>
+      <li><b>Diners — usuarios nuevos imposibles.</b> El informe reporta 252,802 usuarios nuevos, pero la suma de usuarios por canal es 140,161. Los nuevos no pueden superar a los totales.</li>
+      <li><b>Diners — dos informes del mismo mes no cuadran.</b> El demográfico reporta 164,280 sesiones; el de canales, 158,107. La diferencia mayor está en Paid Social: <b>95,468 vs 82,272 (−13,196)</b>. Antes de decidir presupuesto hay que saber cuál es la cifra buena.</li>
+      <li><b>AXXIS — mismo problema, mismo mes.</b> Un informe reporta 97,699 sesiones y 22.79% de interacción; el de canales, 103,433 y 24.35%. Paid Social: <b>74,918 vs 82,008 (+7,090)</b>. Las dos revistas tienen dos versiones de junio circulando.</li>
+      <li><b>AXXIS — tracking sin asignar.</b> 1,837 sesiones caen en “Unassigned” con 8.6% de interacción, el peor índice de la cuenta (0.35×). Son UTMs mal configurados: hay que arreglarlos antes de que contaminen más decisiones.</li>
+      <li><b>AXXIS — Arquitectura con dos cifras.</b> 86,429 vistas en el bloque de métricas, 59,030 en la tabla del top 5. Misma sección, mismo mes.</li>
+      <li><b>AXXIS — seguidores de Facebook.</b> 156,950 en un slide, 157,950 en otro.</li>
+      <li><b>AXXIS — benchmark equivocado.</b> El engagement de <b>Instagram</b> (6.1%) se califica contra la tabla de <b>Facebook</b> (bueno &gt;1%) y se concluye “muy por encima”. Son escalas distintas: infla el resultado. Además el slide de Instagram está titulado “Redes sociales - Facebook”.</li>
+      <li><b>AXXIS — el “artículo más leído” no está en el top 5.</b> El informe declara “CAM de Chía” como el más leído, pero el top 5 abre con “Casa con arquitectura abierta” (3,567) y CAM de Chía no aparece. El pico de 4,628 del 27-jun es de <b>sección</b>, no del artículo.</li>
+    </ul>
+  </div>
+
+  <footer>Ediciones Gamma · Growth System · Web: GA4 junio 2026 (informes AXXIS y Diners). Búsqueda: GSC, junio recortado del diario abr–jul. Contenido IG: Metricool 30 jun – 6 jul (n=29, señal preliminar). Producción de formatos: Mateo Arias Ortiz (AXXIS) / Simón Granja (Diners) + Paola Nossa.</footer>
+</div>
+
+<script>
+const KPIS = [
+  { h:"Web · junio (GA4)", tag:"ok", rows:[
+      ["Usuarios únicos","80,778 <span class='up'>+48.5%</span>","140,161",0],
+      ["Sesiones","97,699 <span class='up'>+41.3%</span>","164,280",0],
+      ["Tiempo promedio","<span class='down'>0:52 · −21.4%</span>","—",1],
+      ["Páginas por sesión","<span class='down'>1.20</span>","<span class='down'>1.23</span>",0],
+      ["Rebote","<span class='down'>77% · +9.5%</span>","—",1],
+      ["Tráfico alquilado (pauta)","<span class='down'>76.8%</span>","<span class='down'>62.7%</span>",0]
+    ],
+    dec:"<b>El crecimiento de AXXIS es comprado, no ganado.</b> Si se apaga la pauta, cae de 97,699 a 22,628 sesiones (−77%). Y mientras el volumen subía, la calidad se hundía. <b>1.20 páginas por sesión</b> = entran a un artículo y se van. Antes de subir un peso más de pauta: arreglar el rebote y el enlazado interno." },
+  { h:"Redes · Instagram (junio)", tag:"ok", rows:[
+      ["Seguidores","161,306","—",1],
+      ["Alcance","339,805 <span class='up'>+17.4%</span>","—",1],
+      ["Interacciones","<span class='down'>20,569 · −28.2%</span>","—",1],
+      ["Clics al enlace","23,165 <span class='up'>+35%</span>","—",1],
+      ["Engagement rate","6.1%","—",1]
+    ],
+    dec:"<b>Alcance +17.4% con interacciones −28.2%.</b> Es la firma del alcance comprado: llega a más gente que interactúa menos. El engagement de 6.1% se comparó contra la tabla de Facebook y se declaró excelente — es un error de escala. Falta el dato de Diners: pedir el export de Metricool de junio." },
+  { h:"Contenido · formato", tag:"prelim", rows:[
+      ["Formato ganador","Carrusel","Sin dato válido",0],
+      ["ER carrusel","4.94%","6.41%",0],
+      ["ER reel","<span class='down'>3.19%</span>","6.60%",0],
+      ["Muestra (piezas)","14","15",0]
+    ],
+    dec:"<b>AXXIS: el carrusel gana por 1.75 pts</b> y 3 de sus 5 peores piezas son reels. La propuesta de julio de crear un formato en video para “conquistar al segmento joven” va contra este dato y contra su propia demografía (44.5% tiene 55+; 18-24 es 5.2%). <b>Diners: no hay ganador</b> — el reel gana por 0.19 pts solo por el outlier MAZ; sin él cae a 5.08% y pierde." },
+  { h:"Eficiencia editorial", tag:"prelim", rows:[
+      ["Publicados","14","15",0],
+      ["Con impacto (&gt; su promedio)","7","6",0],
+      ["% con impacto","50%","40%",0],
+      ["Artículos nuevos (web)","+7% en junio","—",1]
+    ],
+    dec:"<b>La mitad del contenido no supera su propio promedio.</b> En web se subió la producción +7% y la duración de sesión cayó −21.4%: más notas no produjeron más lectura. El problema no es volumen, es concentración y enlazado." }
+];
+
+const LISTICLE = {
+  ig:{ lead:"5 de 15 piezas de Diners en IG son listicle. Promedian <b>4.80% de ER contra 7.27% del resto</b> — 2.47 puntos por debajo. Sin “Estatuas” (el único que funcionó), el resto promedia 4.47% y 14 saves.",
+    items:[["Estatuas más impresionantes del mundo",6.10,"49,636 alcance · 511 saves — el único que viajó"],
+      ["Ciudades europeas pet-friendly",5.17,"3,324 alcance · 6 saves"],
+      ["Restaurantes ficticios de la cultura pop",4.58,"3,672 alcance · 15 saves"],
+      ["Montañas rusas más extremas",4.31,"3,666 alcance · 19 saves"],
+      ["Lugares que desafían la gravedad",3.84,"3,572 alcance · 14 saves"]],
+    verdict:"kill", vtxt:"Dejar de publicarlo así",
+    how:["<b>Liberar el slot:</b> son 33% del calendario rindiendo 2.47 pts bajo el promedio. Ese espacio va al tema emergente (“Colombia reconocida en el mundo”), que promedia 8.7%.","<b>Si el listicle debe ir a IG</b> para dar tráfico al artículo: no publicar el carrusel-lista completo. Publicar <b>una sola historia del listado</b>, contada a fondo, con link al artículo. El carrusel-lista compite con el artículo; la historia única lo alimenta.","<b>“Estatuas” es la excepción, no la regla:</b> 1 de 5. Mismo criterio que aplicamos a MAZ en reels — un outlier no valida el formato."] },
+  web:{ lead:"7 de las 10 páginas top de Diners son listicle y concentran <b>25,739 de 32,531 clics = 79% del tráfico</b>. En WEB el listicle no es el problema: es el motor.",
+    items:[["Restaurantes a las afueras de Bogotá",null,"7,181 clics · pos. 6.06"],
+      ["Poemas de amor de García Márquez",null,"4,469 clics · pos. 5.03"],
+      ["Aguas termales cerca de Bogotá",null,"4,209 clics · pos. 4.82"],
+      ["Restaurantes temáticos en Bogotá",null,"3,086 clics · pos. 6.55"],
+      ["Las series más largas",null,"3,076 clics · pos. 3.84"],
+      ["Restaurantes de pescado",null,"2,322 clics · pos. 5.87"],
+      ["Mejores brunch en Bogotá 2026",null,"1,396 clics · pos. 6.00"]],
+    verdict:"fix", vtxt:"No tocar el tráfico — cambiar la pieza",
+    how:["<b>Firma editorial en la entrada:</b> no “los 20 mejores restaurantes”, sino la selección de Diners con criterio explícito de quién eligió y por qué. Hoy es indistinguible de un agregador.","<b>Puente interno obligatorio:</b> cada listicle cierra enlazando a una pieza de Zona D o Perfiles. Es lo que convierte tráfico de paso en descubrimiento de marca — y ataca el 1.20 de páginas por sesión.","<b>Autor visible con credencial</b> y <b>fecha de actualización</b>: señal E-E-A-T para Google y razón para volver.","<b>Captura de audiencia</b> en estas 7 páginas: son el inventario de mayor apalancamiento que existe hoy, y ya está pago."] }
+};
+
+const DATA = {
+  axxis:{ color:"var(--accent-axxis)",
+    label:"Junio: 103,433 sesiones · 24.35% de interacción · 12s — el 79.3% viene de Paid Social, que dura 5 segundos",
+    canales:{
+      lead:"GA4 junio, 103,433 sesiones y 25,181 con interacción. El índice compara cada canal contra el promedio de la cuenta (24.35%). La columna de tiempo es la que manda: es lo único que distingue un lector de un rebote.",
+      rows:[["Referral",140,83,39],["Organic Search",9295,5285,43],["Email",2440,1334,98],["AI Assistant",127,55,19],
+        ["Organic Social",3015,978,20],["Display",65,21,14],["Paid Other",154,49,5],["Direct",5204,1495,21],
+        ["Paid Social",82008,15255,5],["Unassigned",1837,158,20]], totalT:12,
+      dec:"<b>5 segundos.</b> Ese es el tiempo de interacción del canal que trae 8 de cada 10 sesiones de AXXIS. Nadie lee un artículo de arquitectura en 5 segundos: es un toque accidental o un rebote inmediato. <b>Sin Paid Social, AXXIS pasaría de 24.35% a 46.33% de interacción y de 12s a 40s de tiempo medio.</b> El orgánico dura 9× más y el email 20× más. Y hay una brecha que no se puede ignorar: <b>AXXIS no tiene Paid Search</b> — el canal que en Diners es el mejor de todos (67.25%). Está invirtiendo 79% en el peor canal y 0% en el mejor." },
+    verdicts:[
+      { t:"Aumentar el presupuesto de pauta digital", v:"kill", vt:"Frenar",
+        why:"Ahora está probado con la columna de GA4: el Paid Social de AXXIS es <b>79.3% del tráfico e interactúa 5 segundos</b>, con 18.6% de ER. Nadie lee arquitectura en 5 segundos. Subir el presupuesto compra más de lo único que ya sabemos que no funciona. La meta de 140,000 visitas con esta mezcla no es una meta de crecimiento: es una orden de compra — requiere ~25% más de pauta que junio, y esas visitas durarían 5 segundos cada una.",
+        fix:"<b>No es “apagar la pauta”, es cambiar dónde se pone.</b> (1) Reasignar presupuesto de Paid Social a <b>Paid Search</b>: AXXIS tiene todas sus campañas de Google Ads detenidas, y en Diners ese canal rinde <b>67.25%</b> — el mejor de los diez. (2) Congelar Paid Social hasta que su tiempo de interacción supere 20s. (3) Cambiar la métrica de la meta: de <b>sesiones</b> a <b>sesiones con interacción</b> — con la meta actual, comprar Paid Social barato siempre gana." },
+      { t:"Contratar freelancers + aumentar producción de notas", v:"fix", vt:"Reformular",
+        why:"En junio ya se subió la carga de artículos +7% y la duración de sesión cayó −21.4%. Más notas no produjeron más lectura. Además Arquitectura ya concentra el 74% de las vistas: el problema no es cuánto se publica, es que quien entra lee una sola página (1.20) y se va.",
+        fix:"Antes de contratar por volumen: <b>arreglar el enlazado interno y los relacionados</b>. Si se contrata, que sea para <b>profundidad en el tema que ya gana</b> — arquitectura con memoria, naturaleza y sostenibilidad, que es el patrón de las 4 mejores piezas de IG y de los artículos más leídos." },
+      { t:"Nuevo formato en video con videógrafo freelance", v:"kill", vt:"Frenar",
+        why:"AXXIS ya tiene <b>2 formatos definidos y ninguno lanzado</b>: “Proyectos que hablan” (podcast) y “Connect And Collab” (conversatorio), este último sin cadencia desde hace meses. Crear un tercero antes de lanzar los dos que existen dispersa el recurso que ya es escaso.",
+        fix:"<b>Lanzar “Proyectos que hablan” en julio</b> y ponerle fecha a Connect And Collab. Si hay presupuesto de videógrafo, que produzca esos dos — no un formato nuevo. El podcast ya tiene concepto, distribución y cápsulas de 60s definidas." },
+      { t:"Conquistar al segmento joven con reels y TikToks", v:"kill", vt:"Frenar",
+        why:"Contradice los datos por partida doble. <b>La audiencia web de AXXIS es 44.5% mayor de 55 años</b> (27.9% en 55-64 + 16.6% en 65+); el 18-24 es apenas 5.2%. En Instagram el 18-24 es 1.3%. Y el reel es su <b>peor formato</b> (3.19% vs 4.94% del carrusel), con 3 de las 5 peores piezas del mes. Es perseguir un segmento que no existe con un formato que su audiencia real rechaza.",
+        fix:"<b>Servir a la audiencia que sí tienen.</b> El bloque 55-64 es el más grande y el de mayor poder adquisitivo para arquitectura y diseño — coincide con el perfil de la base Privilegios (mediana 44 años, mayor bloque 51+). Doblar en carrusel y en profundidad editorial. Si se quiere probar público joven, que sea un experimento medido con presupuesto acotado, no el eje de la estrategia." },
+      { t:"Benchmark de AD Magazine: “video-first”", v:"fix", vt:"Leído al revés",
+        why:"El informe usa a AD para justificar la apuesta por reels y TikTok. Pero <b>AD es 2.9× más grande en Instagram (467K vs 161K) y 8.3× en Facebook (1.3M vs 157K)</b>, publica 17 veces al día en FB y sostiene una marca global de Condé Nast. Copiar las tácticas de una marca de otra escala y otra audiencia es cargo cult, no benchmark. Y AXXIS no tiene YouTube ni X, que es donde AD cierra su funnel.",
+        fix:"<b>El insight de AD que sí sirve está siendo ignorado:</b> “los usuarios piden datos sobre diseñadores, materiales o dónde comprar — oportunidad de enlaces a ficha técnica en la web”. Eso es exactamente lo que ataca el <b>1.20 páginas por sesión</b>. Una ficha técnica por proyecto (materiales, estudio, proveedores) da la segunda página que hoy no existe. El otro insight útil, “before/after y close-ups de materiales, valoran la especificidad técnica”, es <b>carrusel</b>, no video." }
+    ],
+    channels:[
+      { name:"SEO", phase:"f0", goal:"La búsqueda orgánica cayó −23% en junio mientras la pauta tapaba el hueco.",
+        items:["Solo 10.9% del tráfico es orgánico — el canal ganado se está muriendo","Auditoría técnica: Core Web Vitals (88% móvil), backlinks, cadencia","Discrepancia a revisar: GSC reporta 4,974 clics en junio, GA4 reporta 10,596 sesiones de orgánico — 2.1×"] },
+      { name:"Web / UX", phase:"f0", goal:"1.20 páginas por sesión y 52 segundos: el destino no retiene.",
+        items:["<b>Ficha técnica por proyecto</b> (materiales, estudio, proveedores) — es la segunda página que hoy no existe, y responde a lo que la audiencia ya pregunta","Enlazado interno y bloque de relacionados en los artículos top","Velocidad móvil — 88% del tráfico","Meta de 1 min de sesión: hoy 52s y bajando (−21.4%)"] },
+      { name:"Orgánico", phase:"f1", goal:"El tema ganador es el mismo en WEB y en IG: casa + naturaleza + memoria.",
+        items:["<b>62% del top 5 de artículos</b> es casa+naturaleza/memoria — mismo patrón que El Arca, Memphremagog, Babel y Subachoque en IG","'El Especial' (sostenibilidad) como eje Autoridad — ya coincide con lo que gana","Escalar 'Aquí/Allá' con banco fotográfico de proyectos","Bajar cobertura de eventos: Vassar es el fondo absoluto de la cuenta (1.21% y 2.89%)"] },
+      { name:"Formatos y podcast", phase:"f1", goal:"2 formatos, 0 lanzados. Producción: Mateo Arias Ortiz + Paola Nossa.",
+        items:["'Proyectos que hablan' — lanzar en julio, no crear un formato nuevo","'Connect And Collab' — definir cadencia (sin fecha hoy)","Guide de IG '10 proyectos del semestre' — costo cero con el banco existente"] },
+      { name:"Redes sociales", phase:"f1", goal:"El carrusel gana por 1.75 pts. Dejar de forzar reels.",
+        items:["Carrusel 4.94% — subir su cuota","Reels 3.19% — reducir y reservarlos para 'El Especial'","Alcance +17.4% con interacciones −28.2%: el alcance comprado no engancha","Stories con stickers · Destacados por eje · Broadcast Channel · Collabs con estudios"] },
+      { name:"Meta Ads", phase:"f0", goal:"Consolidar y reconciliar — el CTR es sano, el problema es dependencia y destino.",
+        items:["Consolidar 25 campañas en 2-3","Congelar presupuesto hasta que el rebote baje de 70%","Discrepancia 10× con la agencia entre lo declarado y lo ejecutado — sin resolver"] },
+      { name:"Google Ads", phase:"f0", goal:"La brecha más grande de AXXIS: 79% en el peor canal, 0% en el mejor.",
+        items:["<b>Paid Search en Diners rinde 67.25%</b> — el mejor de los 10 canales. AXXIS lo tiene en $0, todo detenido","Reactivar con presupuesto reasignado desde Paid Social, no con presupuesto nuevo","Empezar por marca ('axxis', 'revista axxis') y keywords de arquitectura de alta intención","Es además la red de seguridad mientras se resuelve la caída orgánica de −23%"] },
+      { name:"Paid Social", phase:"f0", goal:"5 segundos de interacción y 79.3% del tráfico. Es la decisión más grande de julio.",
+        items:["ER 18.6% vs 56.86% del orgánico · índice 0.76× contra el promedio de la cuenta","Sin él, AXXIS pasaría de 24.35% a 46.33% de interacción y de 12s a 40s de tiempo medio","Dejar de comprar volumen y empezar a comprar intención: segmentación real y destino con ficha técnica y relacionados","Medir por sesiones con interacción y tiempo, nunca por sesiones"] }
+    ] },
+  diners:{ color:"var(--accent-diners)",
+    label:"Junio: 158,107 sesiones · 40.21% de interacción — Paid Social es el 52% del tráfico y el peor canal de los 10",
+    listicle:true,
+    canales:{
+      lead:"GA4 junio, 158,107 sesiones y 63,570 con interacción. El índice compara cada canal contra el promedio de la cuenta (40.21%): arriba de 1.00 aporta calidad, abajo la resta.",
+      rows:[["Paid Search",8124,5463],["Organic Search",41466,27569],["AI Assistant",345,211],["Referral",323,195],
+        ["Email",1915,1076],["Direct",18222,9899],["Cross-network",650,281],["Organic Social",2119,657],
+        ["Paid Other",53,15],["Paid Social",82272,18495]],
+      dec:"<b>El orgánico entrega 9,074 sesiones con interacción MÁS que Paid Social — con 40,806 sesiones MENOS. Y gratis.</b> El patrón de fondo no es paid vs. orgánico: es <b>búsqueda vs. redes</b>. La búsqueda interactúa 2.9× mejor (66.61% vs 22.69%), porque el que busca “termales cerca a Bogotá” quiere ese contenido y el que scrollea Instagram no. Hoy el 53% del tráfico de Diners viene del canal de menor intención que existe." },
+    verdicts:[
+      { t:"“Cultura lidera porque nuestro foco es viajes y gastronomía”", v:"kill", vt:"Incoherente",
+        why:"La frase del informe no se sostiene: Cultura lidera <b>a pesar</b> del foco, no gracias a él. Y si el foco declarado es gastronomía, esa sección es justo la que <b>más cayó (−47.4%)</b>. Cultura también bajó −42.2%. Se está reportando como éxito lo que es una caída en las dos secciones principales.",
+        fix:"Nombrar la caída y explicarla: −42% en Cultura y −47% en Gastronomía es el hallazgo del mes, no una nota al pie. Revisar si es efecto de la coyuntura del Mundial desplazando tráfico o de menor cadencia en esas secciones." },
+      { t:"Formatos visuales, carruseles, entrevistas y recomendaciones curadas", v:"keep", vt:"Mantener",
+        why:"Es la única propuesta de las dos revistas que está alineada con sus datos. El carrusel rinde 6.41% y las piezas de autoridad (entrevistas, reconocimiento) son el top: Kafka 10.37%, 1921 Express 9.51%, Bar World 9.38%, Carmine 7.29%.",
+        fix:"Concretarla con un número: <b>subir la cuota de “Colombia reconocida en el mundo”</b> y recortar el listicle genérico de IG, que es 33% del calendario rindiendo 2.47 pts bajo el promedio." }
+    ],
+    channels:[
+      { name:"SEO", phase:"f1", goal:"Convertir volumen en autoridad de marca — 26% orgánico es la base más sana de las dos.",
+        items:["Reasignar el 60% del gasto en Google Ads que paga por keywords ya rankeadas orgánico","Crear categorías 'Zona D' y 'Perfiles'","Solo 2 de 10 keywords top son de marca"] },
+      { name:"Web / UX", phase:"f0", goal:"1.23 páginas por sesión: mismo problema de destino que AXXIS.",
+        items:["Puente interno desde los listicle hacia Zona D / Perfiles","Velocidad móvil — 86% del tráfico","Captura de audiencia en las 7 páginas listicle del top 10"] },
+      { name:"Orgánico", phase:"f1", goal:"Mezcla 35% Artículos / 25% Autoridad / 25% Coyuntura / 15% Beneficios.",
+        items:["Subir la cuota del tema emergente: 'Colombia reconocida en el mundo'","Sección fija 'Voz experta' en redes y newsletter","Recortar el listicle genérico en IG — es el bottom completo"] },
+      { name:"Formatos y podcast", phase:"f1", goal:"9 formatos inventariados. Producción: Simón Granja + Paola Nossa.",
+        items:["Activos: Detrás de la barra · Los favoritos del chef · En la terraza · Entrevistas","Nuevos H2: La Mesa de Diners (podcast, ago) · Maridaje Sonoro","Intermitente: Narración de exposiciones — reactivar","Descontinuado: Recomendación de libros — evaluar versión remota"] },
+      { name:"Redes sociales", phase:"f1", goal:"Publicar 6+ reels en julio para decidir el formato ganador con muestra real.",
+        items:["Carrusel 6.41% — base sólida","Reels: n=3, sin muestra para concluir","Stories con stickers · Destacados por eje · Broadcast Channel · Collabs con chefs"] },
+      { name:"Meta Ads", phase:"f0", goal:"Consolidar campañas y arreglar el tracking de conversión.",
+        items:["Consolidar 25 campañas en 2-3","62.7% del tráfico es pauta — menos que AXXIS pero alto","Pausar campañas sin conversión trackeada hasta cerrar Fase 0"] },
+      { name:"Google Ads", phase:"f1", goal:"CORRECCIÓN: Paid Search es el mejor canal de la cuenta (67.25%). Mi recomendación anterior de recortarlo 60% no se sostiene.",
+        items:["<b>No recortar a ciegas.</b> Paid Search interactúa mejor que el propio orgánico (67.25% vs 66.49%) — es tráfico de alta intención","El argumento de canibalización es de <b>incrementalidad</b>, no de calidad: hay que <b>probarlo</b>, no asumirlo","<b>Test:</b> pausar 2 semanas las keywords donde ya se rankea en posición 2-4 y medir si el orgánico absorbe el tráfico. Si lo absorbe, recortar. Si no, era incremental","Revisar la PMax detenida por assets rechazados","Nueva campaña de marca: 'revista diners'"] },
+      { name:"Paid Social", phase:"f0", goal:"El peor canal de los 10 y el 52% del tráfico. Es la decisión más grande de julio.",
+        items:["22.48% de interacción vs 66.49% del orgánico — índice 0.56× contra el promedio de la cuenta","Diluye el engagement de toda la cuenta en 19.2 puntos","<b>No es “apagar la pauta”:</b> es dejar de comprar volumen y empezar a comprar intención — segmentación por interés real, destino con ficha/relacionados, y medir por sesiones con interacción, no por sesiones","Reasignar parte del presupuesto a Paid Search, que rinde 3× mejor"] }
+    ] },
+  conjunta:{ color:"var(--accent-conjunta)",
+    label:"Infraestructura y reglas compartidas por ambas revistas",
+    channels:[
+      { name:"Búsqueda vs. redes", phase:"f0", goal:"El hallazgo estructural de junio: la intención del canal define la calidad, no el formato ni el tema.",
+        items:["<b>Búsqueda 66.61% de interacción · Redes 22.69%</b> — 2.9× de diferencia (Diners, GA4 junio)","Aplica a paid y a orgánico por igual: Organic Social rinde 31.01%, casi tan mal como Paid Social","El que busca quiere el contenido; el que scrollea, no. Ningún creativo arregla eso","<b>Implicación:</b> las redes sirven para alcance y marca, no para tráfico de calidad. Medir cada canal por lo que sabe hacer"] },
+      { name:"Dependencia de pauta", phase:"f0", goal:"Las dos revistas viven de tráfico alquilado — y del canal de peor calidad.",
+        items:["AXXIS 76.8% · Diners 52% de Paid Social — si se apaga, el tráfico se desploma","Ninguna meta de visitas es defendible sin declarar qué parte es comprada","<b>Cambiar la métrica de la meta:</b> de sesiones a sesiones con interacción. Con la meta actual, comprar Paid Social barato siempre 'gana'","Fijar un objetivo de % de tráfico propio, no solo de volumen total"] },
+      { name:"Destino web", phase:"f0", goal:"1.20 y 1.23 páginas por sesión: el problema común más grande y el más barato de arreglar.",
+        items:["Enlazado interno y relacionados en los artículos de mayor tráfico","Velocidad móvil (88% AXXIS / 86% Diners)","Es la palanca que multiplica todo el tráfico ya pago"] },
+      { name:"Medición — Tracking", phase:"f0", goal:"Resolver la brecha de conversión antes de escalar cualquier canal.",
+        items:["Auditar Pixel + CAPI de Meta en el sitio","Instalar página de confirmación con píxel (pendiente: Juanda)","Google Ads: 0% de conversión en toda la cuenta"] },
+      { name:"Calidad del reporte", phase:"f1", goal:"Los informes de junio traen errores que invalidan conclusiones.",
+        items:["AXXIS: usuarios nuevos duplicados (71,219 × 2 = 142,438)","Diners: usuarios nuevos (252,802) > usuarios totales (140,161) — imposible","Benchmark de IG comparado contra tabla de Facebook","Unificar fuente única de verdad antes de presentar a Catalina"] },
+      { name:"Newsletter", phase:"f1", goal:"CORRECCIÓN: dije que era baja palanca por su volumen. Es el canal de MAYOR calidad de la casa.",
+        items:["<b>Email AXXIS: 98 segundos de interacción y 54.67% de ER.</b> Un lector de email vale <b>20 sesiones de Paid Social</b> en tiempo de atención","Es solo 2.4% del tráfico de AXXIS y 1.2% de Diners — está muerto de hambre, no muerto","Juzgarlo por volumen fue el error: en un negocio de relevancia, el tiempo de atención es la moneda","AXXIS quincenal (visual) · Diners semanal (agenda + 'Sabores') · capturar open rate y CTR desde el primer envío post-HubSpot"] },
+      { name:"Autopauta", phase:"fc", goal:"Sistematizar el paso orgánico → pauta como proceso quincenal.",
+        items:["Umbral: ER por encima del promedio de la propia cuenta — nunca alcance solo","Escalar en incrementos de 20-30%, esperando 3-5 días","Priorizar piezas con alto ratio de saves/shares"] }
+    ] }
+};
+
+const kw = document.getElementById('kpis');
+KPIS.forEach(k=>{
+  const rows = k.rows.map(r=>'<tr><th>'+r[0]+'</th><td'+(r[3]?' class="pend"':'')+'>'+r[1]+'</td><td'+(r[3]?' class="pend"':'')+'>'+r[2]+'</td></tr>').join('');
+  const tag = k.tag==='ok' ? '<span class="tag ok">Junio cerrado</span>' : '<span class="tag prelim">Preliminar · 30jun–6jul</span>';
+  const el = document.createElement('div');
+  el.className='kpi';
+  el.innerHTML='<h3><span>'+k.h+'</span>'+tag+'</h3><table><thead><tr><th></th><td>AXXIS</td><td>Diners</td></tr></thead><tbody>'+rows+'</tbody></table><p class="dec">→ '+k.dec+'</p>';
+  kw.appendChild(el);
+});
+
+const app = document.getElementById('app');
+Object.keys(DATA).forEach(key=>{
+  const s = DATA[key];
+  const sec = document.createElement('section');
+  sec.className='scheme'+(key==='axxis'?' active':'');
+  sec.id='s-'+key;
+  sec.setAttribute('role','tabpanel');
+  let h = '<div class="scheme-head"><span class="dot" style="background:'+s.color+'"></span><h2>'+lbl(key)+'</h2><span>'+s.label+'</span></div>';
+
+  if(s.verdicts){
+    h += '<h2 class="sec">Revisión crítica de la propuesta de julio</h2>';
+    h += s.verdicts.map(v=>'<div class="verdict"><h4>'+v.t+'<span class="vt '+v.v+'">'+v.vt+'</span></h4>'+
+      '<p class="why">'+v.why+'</p><p class="fixit">→ '+v.fix+'</p></div>').join('');
+  }
+
+  if(s.canales){
+    const C=s.canales, TS=C.rows.reduce((a,r)=>a+r[1],0), TE=C.rows.reduce((a,r)=>a+r[2],0), AVG=TE/TS;
+    const hasT = C.rows[0].length>3;
+    const secs=t=>t>=60?Math.floor(t/60)+'m '+(t%60)+'s':t+'s';
+    const body=C.rows.map(r=>{
+      const er=r[2]/r[1], idx=er/AVG;
+      const cls = idx>=1.2?'up':(idx<0.85?'down':'');
+      const tcell = hasT ? '<td class="'+(r[3]>=40?'up':(r[3]<=10?'down':''))+'">'+secs(r[3])+'</td>' : '';
+      return '<tr><th>'+r[0]+'</th><td>'+r[1].toLocaleString('es')+'</td><td>'+(r[1]/TS*100).toFixed(1)+'%</td>'+
+        '<td class="'+cls+'">'+(er*100).toFixed(2)+'%</td>'+tcell+
+        '<td class="'+cls+'"><span class="bar"><i style="width:'+Math.round(er*100)+'%"></i></span> '+idx.toFixed(2)+'×</td></tr>';
+    }).join('');
+    const th = hasT ? '<th>Tiempo</th>' : '';
+    const tf = hasT ? '<td>'+secs(C.totalT)+'</td>' : '';
+    h += '<h2 class="sec">Calidad del tráfico por canal <span class="tag ok">Junio cerrado · GA4</span></h2>'+
+      '<div class="datacard" style="margin-bottom:14px"><p class="lead">'+C.lead+'</p>'+
+      '<div style="overflow-x:auto"><table class="chtab"><thead><tr><th>Canal</th><th>Sesiones</th><th>% del total</th><th>Interacción</th>'+th+'<th>Índice vs. cuenta</th></tr></thead><tbody>'+body+
+      '</tbody><tfoot><tr><th>TOTAL</th><td>'+TS.toLocaleString('es')+'</td><td>100%</td><td>'+(AVG*100).toFixed(2)+'%</td>'+tf+'<td>1.00×</td></tr></tfoot></table></div>'+
+      '<p class="dec">→ '+C.dec+'</p></div>';
+  }
+
+  if(s.listicle){
+    h += '<h2 class="sec">Listicle genérico — se comporta al revés en cada canal</h2><div class="datagrid">';
+    ['ig','web'].forEach(ch=>{
+      const L = LISTICLE[ch];
+      const items = L.items.map(i=>'<li>'+i[0]+(i[1]!==null?'<span class="n">'+i[1].toFixed(2)+'%</span>':'')+'<br><span style="font-size:12px;color:var(--text-3)">'+i[2]+'</span></li>').join('');
+      const how = L.how.map(x=>'<li>'+x+'</li>').join('');
+      h += '<div class="datacard"><h3><span class="chan '+ch+'">'+(ch==='ig'?'INSTAGRAM':'WEB / SEO')+'</span>'+(ch==='ig'?'Peor formato':'Motor de tráfico')+'</h3>'+
+        '<p class="lead">'+L.lead+'</p><ol>'+items+'</ol>'+
+        '<h4 style="margin:4px 0 8px;font-size:13px"><span class="vt '+L.verdict+'">'+L.vtxt+'</span></h4><ul>'+how+'</ul></div>';
+    });
+    h += '</div>';
+  }
+
+  h += '<h2 class="sec">Acciones por canal</h2><div class="grid">'+
+    s.channels.map(c=>'<div class="card"><h3>'+c.name+'<span class="phase '+c.phase+'">'+ph(c.phase)+'</span></h3>'+
+      '<p class="goal">'+c.goal+'</p><ul>'+c.items.map(i=>'<li>'+i+'</li>').join('')+'</ul></div>').join('')+'</div>';
+  sec.innerHTML=h;
+  app.appendChild(sec);
+});
+
+function lbl(k){ return k==='conjunta'?'Base Conjunta':k==='diners'?'Revista Diners':'Revista AXXIS'; }
+function ph(p){ return {f0:'Fase 0',f1:'Fase 1',f2:'Fase 2',fc:'Continuo'}[p]; }
+
+document.querySelectorAll('nav.tabs button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('nav.tabs button').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-selected','false');});
+    b.classList.add('active'); b.setAttribute('aria-selected','true');
+    document.querySelectorAll('.scheme').forEach(x=>x.classList.remove('active'));
+    document.getElementById('s-'+b.dataset.s).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
