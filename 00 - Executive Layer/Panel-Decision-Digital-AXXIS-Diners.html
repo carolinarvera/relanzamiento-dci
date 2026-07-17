@@ -136,7 +136,7 @@
   <h1>Panel de Decisión Digital — AXXIS &amp; Diners</h1>
   <p class="sub">Corte: <b>junio 1–30, 2026</b>, contra mayo. Objetivo: relevancia digital. Cada bloque cierra con la decisión que cambia el próximo mes, no con el dato.</p>
   <p class="rule">Regla del panel: si un dato no responde <b>“qué hacemos distinto el próximo mes”</b>, no va aquí. Las métricas de vanidad solo aparecen para desmontarlas.</p>
-  <p class="rule alert"><b>Titular de junio:</b> el artículo que el informe de AXXIS presenta como <b>“el más leído del mes”</b> —el CAM de Chía— tuvo <b>2,560 sesiones de pauta y 0 segundos de interacción</b>. Nadie lo leyó. Las 10 páginas donde aterriza su pauta promedian <b>3.1 segundos</b>; ninguna supera los 10. Y en Diners quedó demostrado por qué importa: <b>los ingresos siguen al tiempo, no a las sesiones.</b> Kristen Stewart trajo 6,934 sesiones y generó 289; aguas termales trajo 1,923 sesiones menos y generó 11,894 — <b>41× más</b>, porque se quedan 84 segundos en vez de 2.</p>
+  <p class="rule alert"><b>Titular de junio — la prueba definitiva.</b> Mismo artículo, mismo mes, distinto canal: <b>Kristen Stewart por Paid Social dura 0.6 segundos; por Email, 122 segundos.</b> El contenido es idéntico — lo único que cambia es de dónde viene la gente. Y no es un problema de AXXIS: el Paid Social de Diners promedia <b>4.2s</b> y el de AXXIS <b>3.1s</b>. Las dos compran el mismo tráfico que no lee. Mientras tanto <b>Paid Search genera el 97% de los ingresos de Paid Social con 12.5× menos sesiones</b>.</p>
 
   <h2 class="sec">Panel de control</h2>
   <div class="kpigrid" id="kpis"></div>
@@ -295,7 +295,14 @@ const DATA = {
           ["/cultura/michael-jackson-5-canciones",6940,27,7152],["/lo-ultimo/rolex-oyster-100-anos",3983,13,2655],
           ["/lo-ultimo/natalia-cano-docokids-cartier",4048,5,606],["/cultura/kristen-stewart-cronologia",6934,2,289],
           ["/cultura/toy-story-5-tecnologia-infancia",2777,2,160],["/lo-ultimo/mejores-canciones-mundiales-futbol",3011,1,109]],
-        dec:"<b>Los ingresos siguen al tiempo, no a las sesiones.</b> Kristen Stewart trajo 6,934 sesiones y generó $289. Aguas termales trajo 1,923 sesiones MENOS y generó <b>$11,894: 41× más</b>. Por sesión la brecha es de <b>57×</b> ($2.37 vs $0.04). La diferencia no es el tráfico — es que uno se queda 84 segundos y el otro 2.<br><br><b>Y el listicle vuelve a ganar en WEB:</b> aguas termales (84s) y restaurantes a las afueras (81s) son las dos páginas que más retienen de todo el sitio, con $2.13 por sesión. Mientras tanto <b>Cultura —la sección que el informe celebra— promedia 10 segundos y $0.46</b>: Kristen Stewart 2s, Toy Story 2s. Trae volumen que no lee." } },
+        dec:"<b>Los ingresos siguen al tiempo, no a las sesiones.</b> Kristen Stewart trajo 6,934 sesiones y generó $289. Aguas termales trajo 1,923 sesiones MENOS y generó <b>$11,894: 41× más</b>. Por sesión la brecha es de <b>57×</b> ($2.37 vs $0.04). La diferencia no es el tráfico — es que uno se queda 84 segundos y el otro 2.<br><br><b>Y el listicle vuelve a ganar en WEB:</b> aguas termales (84s) y restaurantes a las afueras (81s) son las dos páginas que más retienen de todo el sitio, con $2.13 por sesión. Mientras tanto <b>Cultura —la sección que el informe celebra— promedia 10 segundos y $0.46</b>: Kristen Stewart 2s, Toy Story 2s. Trae volumen que no lee." },
+      experimento:{
+        lead:"El export completo de junio (18,764 páginas) traía las comparaciones de canal apiladas sin etiqueta. Reconstruidas y validadas contra el informe de canales (dif &lt;1% en los tres), permiten el experimento que faltaba: <b>la misma página, servida por canales distintos</b>.",
+        rows:[["/cultura/kristen-stewart-cronologia","0.6s · 5,361 ses","122s · 67 ses","—"],
+          ["/cultura/gracias-botero-cortometraje","0.7s · 5,315 ses","34s · 1 ses","—"],
+          ["/estilo-de-vida/restaurantes-a-las-afueras","35.8s · 768 ses","—","81s · 971 ses"],
+          ["/estilo-de-vida/aguas-termales-cerca-bogota","—","—","86s · 2,541 ses"]],
+        dec:"<b>Kristen Stewart: 0.6 segundos por Paid Social, 122 segundos por Email.</b> Mismo artículo, mismo mes. La variable no es el contenido: es la intención de quien llega.<br><br><b>Y hay un matiz que cambia la recomendación:</b> el Paid Social apuntado a Estilo de Vida rinde <b>7.5s</b>; apuntado a Cultura, <b>2.7s</b>. Tres veces peor. Pero están mandando <b>2.9× más pauta a Cultura (38,624 sesiones) que a Estilo de Vida (13,162)</b>. El canal es débil de origen, sí — pero además le están apuntando al contenido que menos retiene." } },
     verdicts:[
       { t:"“Cultura lidera porque nuestro foco es viajes y gastronomía”", v:"kill", vt:"Incoherente",
         why:"La frase no se sostiene: Cultura lidera <b>a pesar</b> del foco, no gracias a él. Y si el foco declarado es gastronomía, esa sección es justo la que <b>más cayó (−47.4%)</b>. Pero el problema real es más grave: <b>Cultura lidera en visitas y pierde en lectura</b> — promedia 10 segundos y $0.46 por sesión (Kristen Stewart 2s, Toy Story 2s). Estilo de Vida promedia 82s y $2.13. Se está celebrando la sección que trae volumen que no lee.",
@@ -317,10 +324,10 @@ const DATA = {
         items:["Carrusel 6.41% — base sólida","Reels: n=3, sin muestra para concluir","Stories con stickers · Destacados por eje · Broadcast Channel · Collabs con chefs"] },
       { name:"Meta Ads", phase:"f0", goal:"Consolidar campañas y arreglar el tracking de conversión.",
         items:["Consolidar 25 campañas en 2-3","62.7% del tráfico es pauta — menos que AXXIS pero alto","Pausar campañas sin conversión trackeada hasta cerrar Fase 0"] },
-      { name:"Google Ads", phase:"f1", goal:"CORRECCIÓN: Paid Search es el mejor canal de la cuenta (67.25%). Mi recomendación anterior de recortarlo 60% no se sostiene.",
-        items:["<b>No recortar a ciegas.</b> Paid Search interactúa mejor que el propio orgánico (67.25% vs 66.49%) — es tráfico de alta intención","El argumento de canibalización es de <b>incrementalidad</b>, no de calidad: hay que <b>probarlo</b>, no asumirlo","<b>Test:</b> pausar 2 semanas las keywords donde ya se rankea en posición 2-4 y medir si el orgánico absorbe el tráfico. Si lo absorbe, recortar. Si no, era incremental","Revisar la PMax detenida por assets rechazados","Nueva campaña de marca: 'revista diners'"] },
-      { name:"Paid Social", phase:"f0", goal:"El peor canal de los 10 y el 52% del tráfico. Es la decisión más grande de julio.",
-        items:["22.48% de interacción vs 66.49% del orgánico — índice 0.56× contra el promedio de la cuenta","Diluye el engagement de toda la cuenta en 19.2 puntos","<b>No es “apagar la pauta”:</b> es dejar de comprar volumen y empezar a comprar intención — segmentación por interés real, destino con ficha/relacionados, y medir por sesiones con interacción, no por sesiones","Reasignar parte del presupuesto a Paid Search, que rinde 3× mejor"] }
+      { name:"Google Ads", phase:"f0", goal:"CORRECCIÓN CONFIRMADA: Paid Search es donde está el dinero. Mi recomendación de recortarlo 60% era un error.",
+        items:["<b>Paid Search: 7,608 sesiones → 11,546 de ingresos. Paid Social: 94,977 sesiones → 11,944.</b> Casi los mismos ingresos con <b>12.5× menos tráfico</b>","Por sesión: 1.52 vs 0.13 — <b>12× mejor</b>. Y dura 65s vs 4.2s","<b>Acción de julio: subir Paid Search, no recortarlo.</b> Es el canal pago que sí lleva lectores","La canibalización sigue sin probarse: <b>test</b> de 2 semanas pausando keywords ya rankeadas en posición 2-4, antes de asumir nada","Revisar la PMax detenida por assets rechazados"] },
+      { name:"Paid Social", phase:"f0", goal:"4.2 segundos y 52% del tráfico. Probado: el problema es el canal, no la marca.",
+        items:["<b>Diners 4.2s · AXXIS 3.1s.</b> Las dos compran el mismo tráfico que no lee. No es que AXXIS compre mal","<b>Genera 0.13 por sesión</b>; Paid Search genera 1.52 — <b>12× más</b>","Apuntado a Estilo de Vida rinde 7.5s; a Cultura, 2.7s — y le mandan 2.9× más pauta a Cultura","<b>Acción de julio:</b> redirigir la pauta que hoy va a Cultura hacia el listicle de Estilo de Vida, y bajar el volumen total"] }
     ] },
   conjunta:{ color:"var(--accent-conjunta)",
     label:"Infraestructura y reglas compartidas por ambas revistas",
@@ -406,6 +413,16 @@ Object.keys(DATA).forEach(key=>{
         '<div style="overflow-x:auto"><table class="chtab"><thead><tr><th>Página de destino</th><th>Sesiones</th><th></th><th>Tiempo</th>'+mh+'</tr></thead><tbody>'+dbody+'</tbody></table></div>'+
         (D.note?'<p style="font-size:12px;color:var(--text-3);margin:0 0 10px">'+D.note+'</p>':'')+
         '<p class="dec">→ '+D.dec+'</p></div>';
+    }
+
+    if(C.experimento){
+      const E=C.experimento;
+      const ebody=E.rows.map(r=>'<tr><th style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px">'+r[0]+'</th>'+
+        '<td class="down" style="font-weight:700">'+r[1]+'</td><td class="up" style="font-weight:700">'+r[2]+'</td><td class="up" style="font-weight:700">'+r[3]+'</td></tr>').join('');
+      h += '<div class="datacard" style="margin-bottom:14px"><h3>La misma página, distinto canal <span class="tag ok">Experimento natural</span></h3>'+
+        '<p class="lead">'+E.lead+'</p>'+
+        '<div style="overflow-x:auto"><table class="chtab"><thead><tr><th>Página</th><th>Paid Social</th><th>Email</th><th>Paid Search</th></tr></thead><tbody>'+ebody+'</tbody></table></div>'+
+        '<p class="dec">→ '+E.dec+'</p></div>';
     }
   }
 
