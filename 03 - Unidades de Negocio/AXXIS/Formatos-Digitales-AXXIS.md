@@ -7,7 +7,7 @@ tags: [axxis, formatos-digitales, contenido, ns03]
 ---
 
 ## For future Claude
-Inventario de formatos digitales activos de AXXIS. Ambos son nuevos (lanzamiento H2 2026) y están orientados a audiencia B2B — los invitados son anunciantes potenciales o empresas del sector arq/diseño. Owner de producción: [[Ernesto Rodriguez]] + [[Paola Gordillo]]. Relacionado con [[NS03 Relevancia Digital]] y [[NS01 Pauta B2B]].
+Inventario de formatos digitales activos de AXXIS. Ambos son nuevos (lanzamiento H2 2026) y están orientados a audiencia B2B — los invitados son anunciantes potenciales o empresas del sector arq/diseño. Owner de producción: [[Mateo Arias Ortiz]] + [[Paola Nossa]] (actualizado 2026-07-16; antes Ernesto Rodriguez + Paola Gordillo). Relacionado con [[NS03 Relevancia Digital]] y [[NS01 Pauta B2B]].
 
 # Formatos Digitales — AXXIS
 
@@ -20,7 +20,7 @@ Inventario de formatos digitales activos de AXXIS. Ambos son nuevos (lanzamiento
 - **Cadencia:** 1 episodio/mes
 - **Concepto:** Entrevistas a actores del sector arquitectura y diseño. Invitados = anunciantes potenciales — el formato sirve como herramienta de relacionamiento comercial a la vez que genera contenido de valor editorial.
 - **Oportunidad comercial:** Patrocinio por episodio / temporada. Integración de marca en contenido.
-- **Owner producción:** [[Ernesto Rodriguez]]
+- **Owner producción:** [[Mateo Arias Ortiz]] + [[Paola Nossa]]
 
 ---
 
@@ -31,4 +31,4 @@ Inventario de formatos digitales activos de AXXIS. Ambos son nuevos (lanzamiento
 - **Cadencia:** Por definir
 - **Concepto:** Historias de empresas. Conversatorio humanizado que combina formato presencial con transmisión en vivo. Enfoque: humanizar marcas del sector a través del relato de sus proyectos y equipos.
 - **Oportunidad comercial:** Empresa protagonista = anunciante. Cobertura editorial AXXIS + distribución digital.
-- **Owner producción:** [[Ernesto Rodriguez]]
+- **Owner producción:** [[Mateo Arias Ortiz]] + [[Paola Nossa]]

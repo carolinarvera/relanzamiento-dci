@@ -94,7 +94,7 @@ El riesgo es real y ya lo confirmamos con datos: el contenido que más tráfico 
 
 ## Pilar 3 — Formatos Digitales Comerciales
 
-**Corrección de alcance:** las revistas **ya tienen 11 formatos digitales inventariados** (2 AXXIS + 9 Diners), con nombre, estado, distribución y oportunidad de patrocinio ya definidos. Fuente: [Formatos-Digitales-AXXIS](../03%20-%20Unidades%20de%20Negocio/AXXIS/Formatos-Digitales-AXXIS.md) y [Formatos-Digitales-Diners](../03%20-%20Unidades%20de%20Negocio/Diners/Formatos-Digitales-Diners.md). Owner de producción: Ernesto Rodriguez + Paola Gordillo.
+**Corrección de alcance:** las revistas **ya tienen 11 formatos digitales inventariados** (2 AXXIS + 9 Diners), con nombre, estado, distribución y oportunidad de patrocinio ya definidos. Fuente: [Formatos-Digitales-AXXIS](../03%20-%20Unidades%20de%20Negocio/AXXIS/Formatos-Digitales-AXXIS.md) y [Formatos-Digitales-Diners](../03%20-%20Unidades%20de%20Negocio/Diners/Formatos-Digitales-Diners.md). Producción: Mateo Arias Ortiz (AXXIS) / Simón Granja (Diners) + Paola Nossa (actualizado 2026-07-16).
 
 **El trabajo de esta estrategia no es inventar formatos — es activarlos, distribuirlos y conectarlos a los ejes de contenido.** La opción de patrocinio ya está definida en cada ficha; este plan no la desarrolla (no es estrategia comercial), solo la respeta como atributo del formato.
 

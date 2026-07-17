@@ -7,7 +7,7 @@ tags: [diners, formatos-digitales, contenido, ns03]
 ---
 
 ## For future Claude
-Inventario completo de 9 formatos digitales de Diners. Algunos ya están comercializados (Detrás de la barra → licores), otros son nuevos para H2 2026 (La Mesa de Diners, Maridaje Sonoro). "Recomendación de libros" está descontinuado por logística — evaluar si simplificar. Owner de producción: [[Ernesto Rodriguez]] + [[Paola Gordillo]]. Relacionado con [[NS03 Relevancia Digital]] y [[NS01 Pauta B2B]] (el media kit de formatos segmentados los usa como argumento de venta).
+Inventario completo de 9 formatos digitales de Diners. Algunos ya están comercializados (Detrás de la barra → licores), otros son nuevos para H2 2026 (La Mesa de Diners, Maridaje Sonoro). "Recomendación de libros" está descontinuado por logística — evaluar si simplificar. Owner de producción: [[Simon Granja]] + [[Paola Nossa]] (actualizado 2026-07-16; antes Ernesto Rodriguez + Paola Gordillo). Relacionado con [[NS03 Relevancia Digital]] y [[NS01 Pauta B2B]] (el media kit de formatos segmentados los usa como argumento de venta).
 
 # Formatos Digitales — Diners
 
