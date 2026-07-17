@@ -8,7 +8,7 @@
   :root{
     --bg:#faf9f7; --card:#ffffff; --border:#e6e2da; --border-strong:#d3ccc0;
     --text:#1c1a17; --text-2:#5c574d; --text-3:#6b6558;
-    --web:#3a5a40; --cm:#7a2e6e; --mkt:#94500a; --brief:#15529c;
+    --web:#3a5a40; --cm:#7a2e6e; --mkt:#94500a; --nl:#2f6d6a; --brief:#15529c;
     --f0:#a31e17; --fc:#1f6b45;
     --why-bg:#fbf1f0; --why-bd:#a31e17;
     --radius:12px;
@@ -17,7 +17,7 @@
     :root{
       --bg:#15130f; --card:#1e1c17; --border:#332f27; --border-strong:#453f34;
       --text:#f1eee7; --text-2:#c9c3b5; --text-3:#948d7c;
-      --web:#8fb896; --cm:#c78ab8; --mkt:#f3a85e; --brief:#6fa8f0;
+      --web:#8fb896; --cm:#c78ab8; --mkt:#f3a85e; --nl:#6fb0ab; --brief:#6fa8f0;
       --f0:#ff7b70; --fc:#5fcf94;
       --why-bg:#2a1a18; --why-bd:#ff7b70;
     }
@@ -25,14 +25,14 @@
   :root[data-theme="dark"]{
     --bg:#15130f; --card:#1e1c17; --border:#332f27; --border-strong:#453f34;
     --text:#f1eee7; --text-2:#c9c3b5; --text-3:#948d7c;
-    --web:#8fb896; --cm:#c78ab8; --mkt:#f3a85e; --brief:#6fa8f0;
+    --web:#8fb896; --cm:#c78ab8; --mkt:#f3a85e; --nl:#6fb0ab; --brief:#6fa8f0;
     --f0:#ff7b70; --fc:#5fcf94;
     --why-bg:#2a1a18; --why-bd:#ff7b70;
   }
   :root[data-theme="light"]{
     --bg:#faf9f7; --card:#ffffff; --border:#e6e2da; --border-strong:#d3ccc0;
     --text:#1c1a17; --text-2:#5c574d; --text-3:#6b6558;
-    --web:#3a5a40; --cm:#7a2e6e; --mkt:#94500a; --brief:#15529c;
+    --web:#3a5a40; --cm:#7a2e6e; --mkt:#94500a; --nl:#2f6d6a; --brief:#15529c;
     --f0:#a31e17; --fc:#1f6b45;
     --why-bg:#fbf1f0; --why-bd:#a31e17;
   }
@@ -109,6 +109,13 @@ const PLAN = [
       { t:"Diners: publicar 6 o más reels en julio", rev:"di", ev:"Hoy no se puede decidir el formato ganador: solo hubo 3 reels y uno era atípico. Con 6+ tenemos muestra para concluir con datos, no con intuición." },
       { t:"Cortar el listicle genérico en Instagram", rev:"di", ev:"En IG el listicle es el <b>bottom de la cuenta</b> (4.80% vs 7.27% del resto). Ese slot va al tema que gana: 'Colombia reconocida en el mundo' (Kafka, 1921 Express, Bar World)." },
       { t:"Activar Stories con stickers, Destacados por eje y Broadcast Channel", rev:"both", ev:"Hoy se usa una fracción de Instagram. Broadcast Channel y Destacados organizados por eje son gratis y no están en uso." }
+    ] },
+  { owner:"Newsletter — Email", who:"Paola Gordillo (HubSpot)", color:"var(--nl)",
+    acts:[
+      { t:"Poner el punto de registro en las páginas que más retienen", rev:"both", ev:"El listicle es donde la gente sí se queda (aguas termales <b>85s</b>, restaurantes afueras <b>81s</b>): es ahí donde el registro convierte, no en la home. Coordinar con editores web el registro ligero." },
+      { t:"Parrilla definida: AXXIS quincenal · Diners semanal", rev:"both", ev:"AXXIS visual (curaduría de diseño). Diners los viernes AM con agenda de fin de semana + sección 'Sabores'. Es reutilizar contenido ya publicado, no producir nuevo." },
+      { t:"Sección fija 'Voz experta' en cada envío", rev:"both", ev:"El eje de autoridad que hoy falta. Entrevista o análisis con firma — exclusivo del newsletter, como gancho para abrir." },
+      { t:"Capturar open rate y CTR desde el primer envío post-HubSpot", rev:"both", ev:"Hoy no hay línea base. Email es el canal de <b>mayor calidad</b> (98s, ER 54.67% en AXXIS): un lector de email vale 20 sesiones de pauta. Depende de la migración HubSpot (semana 3-4 jul)." }
     ] },
   { owner:"Marketing — Formatos + Brief de Pauta", who:"Paola Nossa", color:"var(--mkt)",
     acts:[
