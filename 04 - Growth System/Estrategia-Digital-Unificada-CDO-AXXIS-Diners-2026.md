@@ -92,18 +92,44 @@ El riesgo es real y ya lo confirmamos con datos: el contenido que más tráfico 
 
 ---
 
-## Pilar 3 — Nuevos Formatos Digitales
+## Pilar 3 — Formatos Digitales Comerciales
 
-**Con presupuesto limitado, la prioridad es reutilizar contenido ya producido antes que crear formatos nuevos desde cero. El objetivo de cada formato es relevancia y engagement, no venta de espacio.**
+**Corrección de alcance:** las revistas **ya tienen 11 formatos digitales inventariados** (2 AXXIS + 9 Diners), con nombre, estado, distribución y oportunidad de patrocinio ya definidos. Fuente: [Formatos-Digitales-AXXIS](../03%20-%20Unidades%20de%20Negocio/AXXIS/Formatos-Digitales-AXXIS.md) y [Formatos-Digitales-Diners](../03%20-%20Unidades%20de%20Negocio/Diners/Formatos-Digitales-Diners.md). Owner de producción: Ernesto Rodriguez + Paola Gordillo.
 
-| Formato | Costo de producción | Prioridad | Nota |
+**El trabajo de esta estrategia no es inventar formatos — es activarlos, distribuirlos y conectarlos a los ejes de contenido.** La opción de patrocinio ya está definida en cada ficha; este plan no la desarrolla (no es estrategia comercial), solo la respeta como atributo del formato.
+
+### Inventario AXXIS — 2 formatos, ambos nuevos y sin lanzar
+
+| Formato | Estado | Tipo | Distribución | Eje que alimenta |
+|---|---|---|---|---|
+| **Proyectos que hablan** | Nuevo · 1 ep/mes | Podcast (audio + video) | YouTube · Spotify · cápsulas 60s (IG, TikTok) | Autoridad |
+| **Connect And Collab** | Nuevo · cadencia sin definir | Conversatorio presencial + streaming | YouTube (vivo + grabación) · IG (clips) | Autoridad + Comunidad |
+
+**Lectura crítica:** AXXIS tiene 2 formatos vs. 9 de Diners, y ninguno lanzado. Es la brecha de repertorio más grande de las dos marcas, y coincide con su caída de tráfico de -37%. Definir la cadencia de Connect And Collab es acción de Fase 1 — hoy está en el aire.
+
+### Inventario Diners — 9 formatos, 4 ya activos
+
+| Formato | Estado | Tipo | Eje que alimenta |
 |---|---|---|---|
-| Guides de Instagram (curadurías temáticas) | Casi cero — reutiliza posts existentes | **Fase 1 (ya definida en Plan de Implementación)** | AXXIS: "10 proyectos del semestre". Diners: "Ruta gastronómica curada" |
-| Newsletter "Sabores"/resumen semanal | Cero producción nueva — es curaduría de lo ya publicado | **Fase 1** | Ver Pilar 4 |
-| Serie de video estilo "Open Door" (recorrido por proyecto/restaurante) | Medio — requiere grabación pero reutiliza acceso editorial ya existente | **Fase 2 (mes 4-6)**, piloto de 1 episodio antes de comprometer serie | Formato con opción de patrocinio a futuro — evaluar solo si el piloto valida audiencia |
-| Podcast temático de nicho | Medio-bajo (audio es más barato que video) | **Fase 2**, piloto de 3 episodios | Diners tiene más territorio natural (Zona D, Perfiles) que AXXIS |
-| Recorridos virtuales 3D | Alto — requiere tecnología y capacitación | **Fase 3 (mes 9-12), solo con patrocinio dedicado** | No autofinanciar con presupuesto propio |
-| Video-recetas interactivas | Alto (producción + desarrollo interactivo) | **Fase 3, evaluar solo si el podcast/Open Door validan audiencia** | No es prioridad con recurso actual |
+| **Detrás de la barra** | Activo · ya comercializado | Video | Artículos / Sabores |
+| **Los favoritos del chef** | Activo · 1x/mes | Video corto | Ruta Gastronómica |
+| **En la terraza** | Activo | Video | Zona D |
+| **Entrevistas (capítulos)** | Activo | Video largo segmentado | Perfiles |
+| **La Mesa de Diners** | Nuevo · lanza ago 2026 | Podcast (video + audio) | Autoridad (Zona D / Perfiles) |
+| **Maridaje Sonoro** | Nuevo | Video estético | Sabores |
+| **Narración de exposiciones** | Intermitente | Video documental | Zona D |
+| **Proyectos especiales** (CocreA, Puentes de paz) | Especial · no recurrente | Transmedia | Especial / Coyuntura |
+| **Recomendación de libros** | Descontinuado por logística | Video | Zona D |
+
+### Prioridad con recurso limitado
+
+1. **Fase 1 — lanzar lo que ya está definido:** La Mesa de Diners (ago) y Proyectos que hablan. No requieren invención, requieren calendario y distribución.
+2. **Fase 1 — definir cadencia de Connect And Collab.** Es el único formato de AXXIS que puede construir comunidad presencial, y hoy no tiene fecha.
+3. **Fase 1 — Guides de Instagram.** El único formato nuevo que vale la pena sumar: costo casi cero, reutiliza el banco fotográfico ya publicado, y suma repertorio a AXXIS que es donde falta.
+4. **Fase 2 — reactivar Narración de exposiciones** (intermitente) y evaluar **Recomendación de libros** simplificado (grabación remota o en estudio, que era el cuello de botella logístico).
+5. **Los 4 activos de Diners no se tocan** — están funcionando. Lo único a mejorar es conectarlos explícitamente a los ejes y al newsletter.
+
+**Nota sobre formatos que propuse antes y retiro:** "Open Door" es redundante con Connect And Collab y En la terraza. "Recorridos 3D" y "video-recetas interactivas" son invención sin base — no hay recurso ni evidencia de demanda, y el repertorio existente está subutilizado. Priorizar lo que ya existe y no se está explotando es mejor uso del recurso limitado.
 
 ---
 
@@ -176,6 +202,7 @@ Encaja naturalmente con el comportamiento de búsqueda visual de diseño/arquite
 | Debilidad actual | Tráfico cayendo -37%, sin inversión activa en Google Ads | Autoridad de marca casi nula (1.4%), funnel de suscripción invisible (0.04%) |
 | Prioridad SEO | Diagnóstico técnico de la caída | Construir categorías de autoridad (Zona D, Perfiles) |
 | Prioridad contenido | Escalar Aquí/Allá (ya validado), invertir en El Especial como eje Autoridad | Puente sistemático de Viajes/Ruta Gastronómica hacia Zona D/Perfiles |
+| Formatos digitales | **2 formatos, 0 lanzados** — brecha de repertorio crítica. Lanzar los dos es Fase 1 | **9 formatos, 4 activos** — no crear nuevos, activar los nuevos y reactivar los intermitentes |
 | Redes nuevas a pilotar | Pinterest | LinkedIn |
 | Pauta | Reactivar Google Ads (hoy en $0) | Reasignar el 60% que canibaliza SEO propio |
 | Newsletter | Quincenal, visual | Semanal, agenda de fin de semana |
@@ -184,9 +211,9 @@ Encaja naturalmente con el comportamiento de búsqueda visual de diseño/arquite
 
 | Horizonte | AXXIS | Diners | Transversal |
 |---|---|---|---|
-| **3 meses** | Auditoría técnica de caída de tráfico; reactivar Google Ads de marca; Guides + Broadcast Channel en IG | Reasignar presupuesto Google Ads (dejar de pagar por SEO propio); crear categorías Zona D/Perfiles; puente Coyuntura→Autoridad en cada pieza | Fase 0 del funnel (pixel + página de confirmación); newsletter con secciones fijas; reconciliar cifras con agencia Meta |
-| **6 meses** | Piloto Pinterest; primer Open Door en video | Piloto LinkedIn; primer podcast (3 episodios); lead magnets premium activos | Journeys HubSpot completos; escalar creativos validados a pauta (Fase 1B/2 Estrategia 360) |
-| **12 meses** | Evaluar recorridos 3D solo si hay patrocinio dedicado; escalar lo que valide de Pinterest/Open Door | Evaluar video-recetas interactivas solo si podcast valida audiencia; escalar LinkedIn si genera tracción sostenida | Revisión completa de funnel con datos de un año; decisión de inversión 2027 basada en resultados, no en supuestos |
+| **3 meses** | Auditoría técnica de caída de tráfico; reactivar Google Ads de marca; **lanzar "Proyectos que hablan"**; **definir cadencia de Connect And Collab**; Guides + Broadcast Channel en IG | Reasignar presupuesto Google Ads (dejar de pagar por SEO propio); **lanzar "La Mesa de Diners" (ago)**; crear categorías Zona D/Perfiles; puente Coyuntura→Autoridad en cada pieza | Fase 0 del funnel (pixel + página de confirmación); newsletter con secciones fijas; reconciliar cifras con agencia Meta |
+| **6 meses** | Piloto Pinterest; primeras ediciones de Connect And Collab con cadencia estable | Piloto LinkedIn; **lanzar Maridaje Sonoro**; **reactivar Narración de exposiciones**; lead magnets premium activos | Journeys HubSpot completos; escalar creativos validados a pauta (Fase 1B/2 Estrategia 360) |
+| **12 meses** | Escalar lo que valide de Pinterest y Connect And Collab; evaluar sumar un tercer formato solo si los dos actuales tienen cadencia sostenida | **Evaluar Recomendación de libros simplificado** (grabación remota/estudio); escalar LinkedIn si genera tracción sostenida | Revisión completa de funnel con datos de un año; decisión de inversión 2027 basada en resultados, no en supuestos |
 
 ## Entregable 3 — KPIs y línea base
 
