@@ -22,7 +22,6 @@ Gate: no se publica nada nuevo hasta cerrar esto.
 | Entregable | Detalle |
 |---|---|
 | Auditoría de assets existentes | Qué templates, fuentes, iconografía y banco fotográfico ya existen por BU |
-| Brand kit de "Beneficios Suscriptores" | Badge/sello visual, paleta y tipografía dedicada — hoy no existe una identidad visual para este eje, por eso es invisible en el feed |
 | Plantillas de producción (Canva/Figma) | Una por formato: carrusel Artículos, carrusel Autoridad, cover Reels, plantilla Story con sticker de countdown/link | 
 | Estructura de Highlights por eje | Reorganizar destacados de perfil: Autoridad / Beneficios Suscriptores / Coyuntura archivada |
 | Alineación con migración HubSpot (en curso esta semana) | El eje Newsletter de este plan depende de que los journeys de suscriptores estén montados — no duplicar trabajo, sincronizar con esa migración |
@@ -49,7 +48,7 @@ Gate: performance por encima del promedio de cuenta antes de escalar formato.
 ### Fase D — Optimización (mes 3+)
 | Entregable | Detalle |
 |---|---|
-| Revisión quincenal de qué formato/eje convierte mejor a `/suscripciones/` (no solo engagement) | El KPI real no es likes, es el puente a suscripción — ver Ejes de Contenido §0 |
+| Revisión quincenal de qué formato/eje genera tráfico calificado y autoridad de marca (no solo engagement) | El KPI real no es likes, es relevancia digital — ver Ejes de Contenido §0 |
 | Escalar Guides y Broadcast Channel si Fase B/C valida | Ambos formatos tienen costo de producción bajo y alto potencial para Beneficios del Club |
 | Decisión go/no-go de TikTok y LinkedIn con datos propios | Ya no hipótesis — datos de 2 meses de piloto |
 
@@ -57,9 +56,10 @@ Gate: performance por encima del promedio de cuenta antes de escalar formato.
 
 ## 2. Assets a producir (por fase, priorizados)
 
+> El brand kit visual de Beneficios Suscriptores **no vive en este plan** — es tarea general de Revistas (`#46RE` en el master de tareas), no estrategia digital. Este plan lo consume cuando exista, no lo produce.
+
 | Asset | Fase | Eje que sirve | Nota |
 |---|---|---|---|
-| Badge/sello "Beneficios Suscriptores" | A | Beneficios del Club | Sin esto el eje es indistinguible visualmente del resto del feed |
 | Plantilla carrusel (Artículos) | A | Artículos | Ya existe implícitamente (formato probado: Finca Subachoque, El Arca) — formalizar como plantilla reusable |
 | Plantilla carrusel/cover (Autoridad) | A | Autoridad | Formato cita + retrato del entrevistado — no existe hoy |
 | Plantilla Reel — intro 3s (gancho visual+verbal+texto) | A | Todos, especialmente Coyuntura | El reel de mejor performance de la sesión (MAZ, 53.7% view rate a 3s) valida que el gancho importa más que la producción |
@@ -134,7 +134,6 @@ Gate: performance por encima del promedio de cuenta antes de escalar formato.
 
 ## 5. Checklist de lanzamiento (Fase A, antes de publicar algo nuevo)
 
-- [ ] Badge/identidad visual de Beneficios Suscriptores lista
 - [ ] Plantillas de carrusel (Artículos y Autoridad) aprobadas
 - [ ] Highlights reorganizados por eje
 - [ ] Broadcast Channel creado (aunque el primer envío sea en Fase B)

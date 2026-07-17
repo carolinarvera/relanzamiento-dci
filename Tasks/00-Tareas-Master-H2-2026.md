@@ -402,6 +402,9 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🔴 `#20RE` **Propuesta de valor para suscriptores** · NS02 · Consideración
   Qué obtiene el suscriptor que no obtiene el lector casual. Paola Nossa define contenido; **Jeison Montero coordina** con HubSpot y plataforma.
 
+- [ ] 🟡 `#46RE` **Brand kit visual Beneficios Suscriptores** · NS02 · Infraestructura
+  Badge/sello, paleta y tipografía dedicada. Hoy no existe identidad visual propia, por eso el beneficio es invisible en cualquier pieza. Expresión visual de `#20RE` — ejecutar después de que la propuesta de valor esté definida.
+
 - [ ] 🔴 `#26RE` **Validar estructura de comunicaciones y customer journey** · NS02 · Infraestructura
   Ejecutar ANTES de cargar bases en HubSpot.
 
