@@ -136,7 +136,7 @@
   <h1>Panel de Decisión Digital — AXXIS &amp; Diners</h1>
   <p class="sub">Corte: <b>junio 1–30, 2026</b>, contra mayo. Objetivo: relevancia digital. Cada bloque cierra con la decisión que cambia el próximo mes, no con el dato.</p>
   <p class="rule">Regla del panel: si un dato no responde <b>“qué hacemos distinto el próximo mes”</b>, no va aquí. Las métricas de vanidad solo aparecen para desmontarlas.</p>
-  <p class="rule alert"><b>Titular de junio — probado, no inferido:</b> el tráfico de Paid Social de AXXIS dura <b>5 segundos</b>. No es una métrica floja: es 79.3% de todo su tráfico interactuando 5 segundos, contra 43s del orgánico y 98s del email. <b>Sin Paid Social, AXXIS pasaría de 24.35% a 46.33% de interacción y de 12s a 40s.</b> La relación se confirma en las dos revistas: a más Paid Social, menos engagement (AXXIS 79.3% → 24.35%; Diners 52% → 40.21%). El +41.3% de junio compró gente que no llegó a leer el titular.</p>
+  <p class="rule alert"><b>Titular de junio:</b> el artículo que el informe presenta como <b>“el más leído del mes”</b> —el CAM de Chía— tuvo <b>2,560 sesiones de pauta y 0 segundos de interacción</b>. Nadie lo leyó. Y no es un caso aislado: las 10 páginas donde aterriza la pauta promedian <b>3.1 segundos</b> y ninguna supera los 10. El Paid Social es <b>79.3% del tráfico de AXXIS</b> y dura 5 segundos, contra 43s del orgánico y 98s del email. <b>Sin él, AXXIS pasaría de 24.35% a 46.33% de interacción y de 12s a 40s.</b> El +41.3% de junio compró gente que no llegó a leer el titular.</p>
 
   <h2 class="sec">Panel de control</h2>
   <div class="kpigrid" id="kpis"></div>
@@ -160,7 +160,8 @@
       <li><b>AXXIS — Arquitectura con dos cifras.</b> 86,429 vistas en el bloque de métricas, 59,030 en la tabla del top 5. Misma sección, mismo mes.</li>
       <li><b>AXXIS — seguidores de Facebook.</b> 156,950 en un slide, 157,950 en otro.</li>
       <li><b>AXXIS — benchmark equivocado.</b> El engagement de <b>Instagram</b> (6.1%) se califica contra la tabla de <b>Facebook</b> (bueno &gt;1%) y se concluye “muy por encima”. Son escalas distintas: infla el resultado. Además el slide de Instagram está titulado “Redes sociales - Facebook”.</li>
-      <li><b>AXXIS — el “artículo más leído” no está en el top 5.</b> El informe declara “CAM de Chía” como el más leído, pero el top 5 abre con “Casa con arquitectura abierta” (3,567) y CAM de Chía no aparece. El pico de 4,628 del 27-jun es de <b>sección</b>, no del artículo.</li>
+      <li><b>AXXIS — el “artículo más leído” no está en el top 5, y además nadie lo leyó.</b> El informe declara “CAM de Chía” como el más leído, pero el top 5 abre con “Casa con arquitectura abierta” (3,567) y CAM de Chía no aparece. El pico de 4,628 del 27-jun es de <b>sección</b>, no del artículo. Y en la tabla de destinos de pauta, esa página registra <b>0 segundos</b> de interacción sobre 2,560 sesiones.</li>
+      <li><b>AXXIS — “vistas” se está usando como sinónimo de “leído”.</b> El top 5 de artículos del informe es, en su mayoría, pauta que rebotó: el granero es 79% pauta a 3s, Albornoz 89% pauta a 1s. Mientras la tabla diga “más leídos” en vez de “más servidos”, cada decisión editorial que salga de ahí va a estar sesgada.</li>
     </ul>
   </div>
 
@@ -231,6 +232,14 @@ const DATA = {
       rows:[["Referral",140,83,39],["Organic Search",9295,5285,43],["Email",2440,1334,98],["AI Assistant",127,55,19],
         ["Organic Social",3015,978,20],["Display",65,21,14],["Paid Other",154,49,5],["Direct",5204,1495,21],
         ["Paid Social",82008,15255,5],["Unassigned",1837,158,20]], totalT:12,
+      destinos:{
+        lead:"Las 10 páginas donde aterrizan las 82,008 sesiones de Paid Social (32.3% de ellas). <b>Tiempo medio ponderado: 3.1 segundos. Ninguna supera los 10.</b>",
+        rows:[["/arquitectura/sede-de-la-seleccion-colombia",4803,2],["/decoracion/diseno-sala-minimalista-apartamento",2652,5],
+          ["/arquitectura/diseno-pisos-albornoz",2625,1],["/arquitectura/diseno-casa-en-indonesia",2611,2],
+          ["/arquitectura/arquitectura-edificio-cam-chia",2560,0],["/arquitectura/renovacion-granero-en-vivienda",2466,3],
+          ["/arquitectura/bano-tendencia-diseno-corona",2323,5],["/arquitectura/casa-santander-vegetacion",2216,6],
+          ["/arquitectura/vivienda-abierta-en-tenjo",2167,8],["/arquitectura/poliform-productos-arquitectonico",2039,1]],
+        dec:"<b>El informe de junio se cae aquí.</b> Declara “artículo más leído: CAM de Chía” — esa página tuvo <b>2,560 sesiones de pauta y 0 segundos</b>: nadie lo leyó. Declara “contenidos del Mundial con muy buenos resultados” — la sede de la Selección es la página #1 de toda la pauta con <b>4,803 sesiones y 2 segundos</b>. Y el “top 5 de artículos más leídos” resulta ser tráfico comprado que no leyó: el granero es <b>79% pauta a 3s</b> y Albornoz <b>89% pauta a 1s</b>. <b>No es que el contenido sea malo — es que a esta gente nunca le interesó.</b> El contenido no falló: la compra de audiencia sí." },
       dec:"<b>5 segundos.</b> Ese es el tiempo de interacción del canal que trae 8 de cada 10 sesiones de AXXIS. Nadie lee un artículo de arquitectura en 5 segundos: es un toque accidental o un rebote inmediato. <b>Sin Paid Social, AXXIS pasaría de 24.35% a 46.33% de interacción y de 12s a 40s de tiempo medio.</b> El orgánico dura 9× más y el email 20× más. Y hay una brecha que no se puede ignorar: <b>AXXIS no tiene Paid Search</b> — el canal que en Diners es el mejor de todos (67.25%). Está invirtiendo 79% en el peor canal y 0% en el mejor." },
     verdicts:[
       { t:"Aumentar el presupuesto de pauta digital", v:"kill", vt:"Frenar",
@@ -252,8 +261,10 @@ const DATA = {
     channels:[
       { name:"SEO", phase:"f0", goal:"La búsqueda orgánica cayó −23% en junio mientras la pauta tapaba el hueco.",
         items:["Solo 10.9% del tráfico es orgánico — el canal ganado se está muriendo","Auditoría técnica: Core Web Vitals (88% móvil), backlinks, cadencia","Discrepancia a revisar: GSC reporta 4,974 clics en junio, GA4 reporta 10,596 sesiones de orgánico — 2.1×"] },
-      { name:"Web / UX", phase:"f0", goal:"1.20 páginas por sesión y 52 segundos: el destino no retiene.",
-        items:["<b>Ficha técnica por proyecto</b> (materiales, estudio, proveedores) — es la segunda página que hoy no existe, y responde a lo que la audiencia ya pregunta","Enlazado interno y bloque de relacionados en los artículos top","Velocidad móvil — 88% del tráfico","Meta de 1 min de sesión: hoy 52s y bajando (−21.4%)"] },
+      { name:"Web / UX", phase:"f0", goal:"Antes de retener hay que descartar lo obvio: a 0-2 segundos, puede que ni cargue.",
+        items:["<b>Medir velocidad móvil en las 10 páginas de destino de pauta</b> (88% del tráfico es móvil). A 0s en CAM de Chía y 1s en Albornoz, la hipótesis de página lenta es tan válida como la de mala segmentación — y es gratis de descartar","<b>Ficha técnica por proyecto</b> (materiales, estudio, proveedores) — la segunda página que hoy no existe, y responde a lo que la audiencia ya pregunta","Enlazado interno y relacionados en los artículos top","Meta de 1 min de sesión: hoy 52s de duración y 12s de interacción"] },
+      { name:"Medición", phase:"f0", goal:"14 eventos clave en 103,433 sesiones. GA4 tampoco mide nada.",
+        items:["<b>Tasa de evento clave: 0.0135%. Ingresos: $0.</b> No hay eventos de conversión configurados","Paid Social: 4 eventos clave en 82,008 sesiones","Es el mismo agujero que ya vimos en Google Ads (0% conversión) y Meta (sin Purchase) — confirmado desde la tercera plataforma","1,837 sesiones en 'Unassigned' con 8.6% de ER: UTMs mal configurados"] },
       { name:"Orgánico", phase:"f1", goal:"El tema ganador es el mismo en WEB y en IG: casa + naturaleza + memoria.",
         items:["<b>62% del top 5 de artículos</b> es casa+naturaleza/memoria — mismo patrón que El Arca, Memphremagog, Babel y Subachoque en IG","'El Especial' (sostenibilidad) como eje Autoridad — ya coincide con lo que gana","Escalar 'Aquí/Allá' con banco fotográfico de proyectos","Bajar cobertura de eventos: Vassar es el fondo absoluto de la cuenta (1.21% y 2.89%)"] },
       { name:"Formatos y podcast", phase:"f1", goal:"2 formatos, 0 lanzados. Producción: Mateo Arias Ortiz + Paola Nossa.",
@@ -366,6 +377,21 @@ Object.keys(DATA).forEach(key=>{
       '<div style="overflow-x:auto"><table class="chtab"><thead><tr><th>Canal</th><th>Sesiones</th><th>% del total</th><th>Interacción</th>'+th+'<th>Índice vs. cuenta</th></tr></thead><tbody>'+body+
       '</tbody><tfoot><tr><th>TOTAL</th><td>'+TS.toLocaleString('es')+'</td><td>100%</td><td>'+(AVG*100).toFixed(2)+'%</td>'+tf+'<td>1.00×</td></tr></tfoot></table></div>'+
       '<p class="dec">→ '+C.dec+'</p></div>';
+
+    if(C.destinos){
+      const D=C.destinos, mx=Math.max.apply(null,D.rows.map(r=>r[1]));
+      const dbody=D.rows.map(r=>{
+        const tc = r[2]<=2?'down':(r[2]>=8?'':'');
+        return '<tr><th style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px">'+r[0]+'</th>'+
+          '<td>'+r[1].toLocaleString('es')+'</td>'+
+          '<td><span class="bar" style="width:70px"><i style="width:'+Math.round(r[1]/mx*100)+'%"></i></span></td>'+
+          '<td class="'+tc+'" style="font-weight:700">'+r[2]+'s</td></tr>';
+      }).join('');
+      h += '<div class="datacard" style="margin-bottom:14px"><h3>Dónde aterriza la pauta <span class="tag prelim">Paid Social · 82,008 sesiones</span></h3>'+
+        '<p class="lead">'+D.lead+'</p>'+
+        '<div style="overflow-x:auto"><table class="chtab"><thead><tr><th>Página de destino</th><th>Sesiones</th><th></th><th>Tiempo</th></tr></thead><tbody>'+dbody+'</tbody></table></div>'+
+        '<p class="dec">→ '+D.dec+'</p></div>';
+    }
   }
 
   if(s.listicle){
