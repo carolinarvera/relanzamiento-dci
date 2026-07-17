@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan de Acción — Editorial + Redes + Marketing · Julio 2026</title>
+<style>
+  :root{
+    --bg:#faf9f7; --card:#ffffff; --border:#e6e2da; --border-strong:#d3ccc0;
+    --text:#1c1a17; --text-2:#5c574d; --text-3:#6b6558;
+    --web:#3a5a40; --cm:#7a2e6e; --mkt:#94500a; --brief:#15529c;
+    --f0:#a31e17; --fc:#1f6b45;
+    --why-bg:#fbf1f0; --why-bd:#a31e17;
+    --radius:12px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#15130f; --card:#1e1c17; --border:#332f27; --border-strong:#453f34;
+      --text:#f1eee7; --text-2:#c9c3b5; --text-3:#948d7c;
+      --web:#8fb896; --cm:#c78ab8; --mkt:#f3a85e; --brief:#6fa8f0;
+      --f0:#ff7b70; --fc:#5fcf94;
+      --why-bg:#2a1a18; --why-bd:#ff7b70;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#15130f; --card:#1e1c17; --border:#332f27; --border-strong:#453f34;
+    --text:#f1eee7; --text-2:#c9c3b5; --text-3:#948d7c;
+    --web:#8fb896; --cm:#c78ab8; --mkt:#f3a85e; --brief:#6fa8f0;
+    --f0:#ff7b70; --fc:#5fcf94;
+    --why-bg:#2a1a18; --why-bd:#ff7b70;
+  }
+  :root[data-theme="light"]{
+    --bg:#faf9f7; --card:#ffffff; --border:#e6e2da; --border-strong:#d3ccc0;
+    --text:#1c1a17; --text-2:#5c574d; --text-3:#6b6558;
+    --web:#3a5a40; --cm:#7a2e6e; --mkt:#94500a; --brief:#15529c;
+    --f0:#a31e17; --fc:#1f6b45;
+    --why-bg:#fbf1f0; --why-bd:#a31e17;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.5}
+  .wrap{max-width:1120px;margin:0 auto;padding:32px 20px 80px}
+  h1{font-size:25px;font-weight:600;margin:0 0 6px;letter-spacing:-0.01em}
+  .sub{margin:0;color:var(--text-2);font-size:15px;max-width:760px}
+  .why{font-size:13.5px;background:var(--why-bg);border-left:3px solid var(--why-bd);padding:11px 14px;border-radius:0 6px 6px 0;margin:16px 0 0;max-width:820px}
+  .why b{font-weight:600}
+
+  .owner{margin-top:28px;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+  .owner-head{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border)}
+  .owner-head .bar{width:4px;align-self:stretch;border-radius:3px}
+  .owner-head h2{font-size:17px;font-weight:600;margin:0}
+  .owner-head .who{font-size:13px;color:var(--text-3);margin-left:auto;text-align:right}
+  .acts{padding:6px 18px 14px}
+  .act{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--border)}
+  .act:last-child{border-bottom:none}
+  .chk{flex-shrink:0;width:18px;height:18px;border:1.5px solid var(--border-strong);border-radius:5px;margin-top:2px;cursor:pointer;transition:background .12s,border-color .12s;position:relative}
+  .chk.done{background:var(--fc);border-color:var(--fc)}
+  .chk.done::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+  @media (prefers-color-scheme: dark){ .chk.done::after{border-color:#15130f} }
+  :root[data-theme="dark"] .chk.done::after{border-color:#15130f}
+  .act .body{flex:1}
+  .act.done .title{text-decoration:line-through;color:var(--text-3)}
+  .title{font-size:14.5px;font-weight:600;margin:0 0 3px}
+  .title .rev{font-size:11px;font-weight:700;padding:1px 7px;border-radius:999px;margin-left:8px;vertical-align:1px}
+  .rev.ax{color:var(--web);border:1px solid var(--web)}
+  .rev.di{color:var(--cm);border:1px solid var(--cm)}
+  .rev.both{color:var(--text-3);border:1px solid var(--border-strong)}
+  .ev{font-size:12.5px;color:var(--text-2);margin:0}
+  .ev b{color:var(--f0);font-weight:600}
+  .brief-box{background:color-mix(in srgb, var(--brief) 7%, transparent);border-left:3px solid var(--brief);border-radius:0 6px 6px 0;padding:10px 13px;margin:2px 0 0}
+  .brief-box .tag{font-size:10px;font-weight:700;color:var(--brief);text-transform:uppercase;letter-spacing:.04em}
+
+  .measure{margin-top:30px;border:1px solid var(--fc);border-radius:var(--radius);padding:16px 18px;background:color-mix(in srgb, var(--fc) 6%, transparent)}
+  .measure h3{font-size:13px;font-weight:600;margin:0 0 8px;text-transform:uppercase;letter-spacing:.04em}
+  .measure p{margin:0;font-size:14px}
+  .measure b{font-weight:600}
+  footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:var(--text-3)}
+  @media print{ .chk{border-color:#999} body{background:#fff} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Plan de Acción — Julio 2026</h1>
+  <p class="sub">Editores web · CM · Marketing. Cada acción trae el número que la justifica. Marca las que quedan asignadas en la reunión.</p>
+  <p class="why"><b>Por qué estamos aquí, en una frase:</b> en junio compramos mucho tráfico que no lee. La misma nota de Kristen Stewart dura <b>0.6 segundos</b> cuando llega por pauta de redes y <b>122 segundos</b> cuando llega por email. El contenido es bueno — el problema es a quién se lo mostramos y a dónde lo mandamos. Julio se trata de <b>retener, no de sumar visitas</b>.</p>
+
+  <div id="app"></div>
+
+  <div class="measure">
+    <h3>Cómo medimos julio</h3>
+    <p>Dejamos de reportar por <b>visitas</b> y empezamos a reportar por <b>tiempo de interacción y páginas por sesión</b>. Meta del mes: subir el tiempo medio del sitio y llevar las páginas por sesión por encima de 1.5. Una visita de 2 segundos no cuenta como resultado.</p>
+  </div>
+
+  <footer>Ediciones Gamma · Growth System · Fuente: GA4, GSC, Metricool e informes de junio 2026. Respaldo completo en el Panel de Decisión Digital. Producción de formatos: Mateo Arias Ortiz (AXXIS) / Simón Granja (Diners) + Paola Nossa.</footer>
+</div>
+
+<script>
+const PLAN = [
+  { owner:"Editores Web", who:"Mateo Arias Ortiz (AXXIS) · Simón Granja (Diners)", color:"var(--web)",
+    acts:[
+      { t:"Ficha técnica al final de cada proyecto", rev:"ax", ev:"Materiales, estudio, proveedores. Es la segunda página que hoy no existe: AXXIS tiene <b>1.20 páginas por sesión</b> y la audiencia ya pregunta por estos datos en redes." },
+      { t:"Enlazado interno + relacionados en las páginas de mayor tráfico", rev:"both", ev:"Ataca directo las páginas por sesión. Empezar por las que más visitas reciben, que es donde más se pierde gente." },
+      { t:"Firma editorial en los listicle de Diners", rev:"di", ev:"Hoy son indistinguibles de un blog de turismo: solo <b>2 de 10 keywords</b> son de marca. Autor visible, criterio de por qué se eligió, fecha de actualización." },
+      { t:"AXXIS: concentrar en 'casa + naturaleza + memoria'", rev:"ax", ev:"Es el <b>62% del top real</b> de artículos leídos y coincide con lo que gana en redes. No buscar temas nuevos — profundizar el que ya funciona." },
+      { t:"Puente interno obligatorio: cada listicle enlaza a Zona D o Perfiles", rev:"di", ev:"Convierte el tráfico de paso en descubrimiento de marca. El listicle ya retiene (aguas termales <b>85s</b>): aprovechar esa atención para llevar a contenido de autoridad." }
+    ] },
+  { owner:"Community Manager — Redes Orgánicas", who:"Paola Gordillo", color:"var(--cm)",
+    acts:[
+      { t:"AXXIS: dejar de forzar reels, priorizar carrusel", rev:"ax", ev:"El carrusel gana por <b>1.75 puntos</b> (4.94% vs 3.19%) y 3 de las 5 peores piezas del mes son reels. La audiencia de AXXIS premia el carrusel." },
+      { t:"Diners: publicar 6 o más reels en julio", rev:"di", ev:"Hoy no se puede decidir el formato ganador: solo hubo 3 reels y uno era atípico. Con 6+ tenemos muestra para concluir con datos, no con intuición." },
+      { t:"Cortar el listicle genérico en Instagram", rev:"di", ev:"En IG el listicle es el <b>bottom de la cuenta</b> (4.80% vs 7.27% del resto). Ese slot va al tema que gana: 'Colombia reconocida en el mundo' (Kafka, 1921 Express, Bar World)." },
+      { t:"Activar Stories con stickers, Destacados por eje y Broadcast Channel", rev:"both", ev:"Hoy se usa una fracción de Instagram. Broadcast Channel y Destacados organizados por eje son gratis y no están en uso." }
+    ] },
+  { owner:"Marketing — Formatos + Brief de Pauta", who:"Paola Nossa", color:"var(--mkt)",
+    acts:[
+      { t:"Lanzar los formatos ya definidos, no crear nuevos", rev:"both", ev:"Diners tiene 9 formatos y AXXIS 2. 'La Mesa de Diners' (podcast, agosto) y 'Proyectos que hablan' ya tienen concepto y distribución. Ejecutar, no inventar." },
+      { t:"Ponerle fecha a 'Connect And Collab' (AXXIS)", rev:"ax", ev:"Es el único formato que le puede construir comunidad presencial a AXXIS, y lleva meses sin cadencia definida." },
+      { t:"BRIEF A SEBASTIÁN — mover la pauta de Cultura a Paid Search", rev:"di", brief:true, ev:"El molde ya existe en la cuenta: aguas termales se pauta por <b>Search (85s)</b> y recibe 0 de Social; Kristen Stewart al revés, por Social muere en <b>0s</b>. No es apagar pauta, es corregir el canal por tipo de contenido." },
+      { t:"BRIEF A SEBASTIÁN — subir Paid Search, no recortarlo", rev:"both", brief:true, ev:"Paid Search genera <b>casi los mismos ingresos que Paid Social con 12.5× menos tráfico</b>. En AXXIS está en $0 (todo detenido). Es el canal pago que sí lleva lectores." }
+    ] }
+];
+
+const app = document.getElementById('app');
+PLAN.forEach((o,oi)=>{
+  const sec=document.createElement('div'); sec.className='owner';
+  const acts=o.acts.map((a,ai)=>{
+    const rev = a.rev==='ax'?'<span class="rev ax">AXXIS</span>':a.rev==='di'?'<span class="rev di">Diners</span>':'<span class="rev both">Ambas</span>';
+    const ev = a.brief ? '<div class="brief-box"><span class="tag">Brief a Sebastián · agencia</span><p class="ev" style="margin-top:4px">'+a.ev+'</p></div>' : '<p class="ev">'+a.ev+'</p>';
+    return '<div class="act" id="a'+oi+'-'+ai+'"><span class="chk" role="checkbox" aria-checked="false" tabindex="0" data-o="'+oi+'" data-a="'+ai+'"></span>'+
+      '<div class="body"><p class="title">'+a.t+rev+'</p>'+ev+'</div></div>';
+  }).join('');
+  sec.innerHTML='<div class="owner-head"><span class="bar" style="background:'+o.color+'"></span><h2>'+o.owner+'</h2><span class="who">'+o.who+'</span></div><div class="acts">'+acts+'</div>';
+  app.appendChild(sec);
+});
+
+function toggle(el){
+  const done=el.classList.toggle('done');
+  el.setAttribute('aria-checked',done);
+  document.getElementById('a'+el.dataset.o+'-'+el.dataset.a).classList.toggle('done',done);
+}
+document.querySelectorAll('.chk').forEach(c=>{
+  c.addEventListener('click',()=>toggle(c));
+  c.addEventListener('keydown',e=>{ if(e.key===' '||e.key==='Enter'){e.preventDefault();toggle(c);} });
+});
+</script>
+</body>
+</html>
