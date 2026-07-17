@@ -136,7 +136,7 @@
   <h1>Panel de Decisión Digital — AXXIS &amp; Diners</h1>
   <p class="sub">Corte: <b>junio 1–30, 2026</b>, contra mayo. Objetivo: relevancia digital. Cada bloque cierra con la decisión que cambia el próximo mes, no con el dato.</p>
   <p class="rule">Regla del panel: si un dato no responde <b>“qué hacemos distinto el próximo mes”</b>, no va aquí. Las métricas de vanidad solo aparecen para desmontarlas.</p>
-  <p class="rule alert"><b>Titular de junio:</b> el artículo que el informe presenta como <b>“el más leído del mes”</b> —el CAM de Chía— tuvo <b>2,560 sesiones de pauta y 0 segundos de interacción</b>. Nadie lo leyó. Y no es un caso aislado: las 10 páginas donde aterriza la pauta promedian <b>3.1 segundos</b> y ninguna supera los 10. El Paid Social es <b>79.3% del tráfico de AXXIS</b> y dura 5 segundos, contra 43s del orgánico y 98s del email. <b>Sin él, AXXIS pasaría de 24.35% a 46.33% de interacción y de 12s a 40s.</b> El +41.3% de junio compró gente que no llegó a leer el titular.</p>
+  <p class="rule alert"><b>Titular de junio:</b> el artículo que el informe de AXXIS presenta como <b>“el más leído del mes”</b> —el CAM de Chía— tuvo <b>2,560 sesiones de pauta y 0 segundos de interacción</b>. Nadie lo leyó. Las 10 páginas donde aterriza su pauta promedian <b>3.1 segundos</b>; ninguna supera los 10. Y en Diners quedó demostrado por qué importa: <b>los ingresos siguen al tiempo, no a las sesiones.</b> Kristen Stewart trajo 6,934 sesiones y generó 289; aguas termales trajo 1,923 sesiones menos y generó 11,894 — <b>41× más</b>, porque se quedan 84 segundos en vez de 2.</p>
 
   <h2 class="sec">Panel de control</h2>
   <div class="kpigrid" id="kpis"></div>
@@ -157,6 +157,7 @@
       <li><b>Diners — dos informes del mismo mes no cuadran.</b> El demográfico reporta 164,280 sesiones; el de canales, 158,107. La diferencia mayor está en Paid Social: <b>95,468 vs 82,272 (−13,196)</b>. Antes de decidir presupuesto hay que saber cuál es la cifra buena.</li>
       <li><b>AXXIS — mismo problema, mismo mes.</b> Un informe reporta 97,699 sesiones y 22.79% de interacción; el de canales, 103,433 y 24.35%. Paid Social: <b>74,918 vs 82,008 (+7,090)</b>. Las dos revistas tienen dos versiones de junio circulando.</li>
       <li><b>AXXIS — tracking sin asignar.</b> 1,837 sesiones caen en “Unassigned” con 8.6% de interacción, el peor índice de la cuenta (0.35×). Son UTMs mal configurados: hay que arreglarlos antes de que contaminen más decisiones.</li>
+      <li><b>Diners — la moneda de los ingresos está sin declarar.</b> GA4 reporta “81.473 $” en junio. Si fueran dólares serían ~$326 millones COP, imposible para AdSense sobre 158K sesiones; y en la reunión del 15-jul se dijo que los ingresos de Google se depositan al llegar a <b>100 dólares</b>, lo que sugiere montos chicos. Muy probablemente son <b>pesos</b> mal etiquetados por la propiedad. La comparación entre páginas (41× / 57×) se sostiene igual porque es relativa — pero antes de reportar cifras absolutas a Catalina hay que confirmar la moneda.</li>
       <li><b>AXXIS — Arquitectura con dos cifras.</b> 86,429 vistas en el bloque de métricas, 59,030 en la tabla del top 5. Misma sección, mismo mes.</li>
       <li><b>AXXIS — seguidores de Facebook.</b> 156,950 en un slide, 157,950 en otro.</li>
       <li><b>AXXIS — benchmark equivocado.</b> El engagement de <b>Instagram</b> (6.1%) se califica contra la tabla de <b>Facebook</b> (bueno &gt;1%) y se concluye “muy por encima”. Son escalas distintas: infla el resultado. Además el slide de Instagram está titulado “Redes sociales - Facebook”.</li>
@@ -286,11 +287,19 @@ const DATA = {
       rows:[["Paid Search",8124,5463],["Organic Search",41466,27569],["AI Assistant",345,211],["Referral",323,195],
         ["Email",1915,1076],["Direct",18222,9899],["Cross-network",650,281],["Organic Social",2119,657],
         ["Paid Other",53,15],["Paid Social",82272,18495]],
-      dec:"<b>El orgánico entrega 9,074 sesiones con interacción MÁS que Paid Social — con 40,806 sesiones MENOS. Y gratis.</b> El patrón de fondo no es paid vs. orgánico: es <b>búsqueda vs. redes</b>. La búsqueda interactúa 2.9× mejor (66.61% vs 22.69%), porque el que busca “termales cerca a Bogotá” quiere ese contenido y el que scrollea Instagram no. Hoy el 53% del tráfico de Diners viene del canal de menor intención que existe." },
+      dec:"<b>El orgánico entrega 9,074 sesiones con interacción MÁS que Paid Social — con 40,806 sesiones MENOS. Y gratis.</b> El patrón de fondo no es paid vs. orgánico: es <b>búsqueda vs. redes</b>. La búsqueda interactúa 2.9× mejor (66.61% vs 22.69%), porque el que busca “termales cerca a Bogotá” quiere ese contenido y el que scrollea Instagram no. Hoy el 53% del tráfico de Diners viene del canal de menor intención que existe.",
+      destinos:{ money:true, note:"Nota: este export es de la cuenta completa, no filtrado a Paid Social como el de AXXIS. La comparación entre páginas es válida; la comparación directa contra AXXIS, no.",
+        lead:"Las 10 páginas de destino de junio, ordenadas por tiempo de interacción. La última columna es la que convierte esta tabla en un argumento de negocio.",
+        rows:[["/estilo-de-vida/aguas-termales-cerca-bogota",5011,84,11894],["/estilo-de-vida/restaurantes-a-las-afueras-de-bogota",3023,81,5227],
+          ["/gastronomia/donde-comer/1921-express-bogota",10502,45,9698],["/ (Home)",7116,35,1056],
+          ["/cultura/michael-jackson-5-canciones",6940,27,7152],["/lo-ultimo/rolex-oyster-100-anos",3983,13,2655],
+          ["/lo-ultimo/natalia-cano-docokids-cartier",4048,5,606],["/cultura/kristen-stewart-cronologia",6934,2,289],
+          ["/cultura/toy-story-5-tecnologia-infancia",2777,2,160],["/lo-ultimo/mejores-canciones-mundiales-futbol",3011,1,109]],
+        dec:"<b>Los ingresos siguen al tiempo, no a las sesiones.</b> Kristen Stewart trajo 6,934 sesiones y generó $289. Aguas termales trajo 1,923 sesiones MENOS y generó <b>$11,894: 41× más</b>. Por sesión la brecha es de <b>57×</b> ($2.37 vs $0.04). La diferencia no es el tráfico — es que uno se queda 84 segundos y el otro 2.<br><br><b>Y el listicle vuelve a ganar en WEB:</b> aguas termales (84s) y restaurantes a las afueras (81s) son las dos páginas que más retienen de todo el sitio, con $2.13 por sesión. Mientras tanto <b>Cultura —la sección que el informe celebra— promedia 10 segundos y $0.46</b>: Kristen Stewart 2s, Toy Story 2s. Trae volumen que no lee." } },
     verdicts:[
       { t:"“Cultura lidera porque nuestro foco es viajes y gastronomía”", v:"kill", vt:"Incoherente",
-        why:"La frase del informe no se sostiene: Cultura lidera <b>a pesar</b> del foco, no gracias a él. Y si el foco declarado es gastronomía, esa sección es justo la que <b>más cayó (−47.4%)</b>. Cultura también bajó −42.2%. Se está reportando como éxito lo que es una caída en las dos secciones principales.",
-        fix:"Nombrar la caída y explicarla: −42% en Cultura y −47% en Gastronomía es el hallazgo del mes, no una nota al pie. Revisar si es efecto de la coyuntura del Mundial desplazando tráfico o de menor cadencia en esas secciones." },
+        why:"La frase no se sostiene: Cultura lidera <b>a pesar</b> del foco, no gracias a él. Y si el foco declarado es gastronomía, esa sección es justo la que <b>más cayó (−47.4%)</b>. Pero el problema real es más grave: <b>Cultura lidera en visitas y pierde en lectura</b> — promedia 10 segundos y $0.46 por sesión (Kristen Stewart 2s, Toy Story 2s). Estilo de Vida promedia 82s y $2.13. Se está celebrando la sección que trae volumen que no lee.",
+        fix:"Dejar de medir las secciones por vistas y medirlas por <b>tiempo e ingresos por sesión</b>. Con esa lente, la sección líder de Diners no es Cultura: es Estilo de Vida. Y la caída de −42% importa mucho menos que el hecho de que ese tráfico no se quedaba." },
       { t:"Formatos visuales, carruseles, entrevistas y recomendaciones curadas", v:"keep", vt:"Mantener",
         why:"Es la única propuesta de las dos revistas que está alineada con sus datos. El carrusel rinde 6.41% y las piezas de autoridad (entrevistas, reconocimiento) son el top: Kafka 10.37%, 1921 Express 9.51%, Bar World 9.38%, Carmine 7.29%.",
         fix:"Concretarla con un número: <b>subir la cuota de “Colombia reconocida en el mundo”</b> y recortar el listicle genérico de IG, que es 33% del calendario rindiendo 2.47 pts bajo el promedio." }
@@ -380,16 +389,22 @@ Object.keys(DATA).forEach(key=>{
 
     if(C.destinos){
       const D=C.destinos, mx=Math.max.apply(null,D.rows.map(r=>r[1]));
+      const secs2=t=>t>=60?Math.floor(t/60)+'m '+(t%60)+'s':t+'s';
       const dbody=D.rows.map(r=>{
-        const tc = r[2]<=2?'down':(r[2]>=8?'':'');
+        const tc = r[2]<=5?'down':(r[2]>=40?'up':'');
+        const money = D.money ? '<td>'+r[3].toLocaleString('es')+'</td><td class="'+(r[3]/r[1]>=1?'up':(r[3]/r[1]<=0.1?'down':''))+'" style="font-weight:700">'+(r[3]/r[1]).toFixed(2)+'</td>' : '';
         return '<tr><th style="font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px">'+r[0]+'</th>'+
           '<td>'+r[1].toLocaleString('es')+'</td>'+
           '<td><span class="bar" style="width:70px"><i style="width:'+Math.round(r[1]/mx*100)+'%"></i></span></td>'+
-          '<td class="'+tc+'" style="font-weight:700">'+r[2]+'s</td></tr>';
+          '<td class="'+tc+'" style="font-weight:700">'+secs2(r[2])+'</td>'+money+'</tr>';
       }).join('');
-      h += '<div class="datacard" style="margin-bottom:14px"><h3>Dónde aterriza la pauta <span class="tag prelim">Paid Social · 82,008 sesiones</span></h3>'+
+      const mh = D.money ? '<th>Ingresos</th><th>Por sesión</th>' : '';
+      const tit = D.money ? 'Dónde aterriza el tráfico <span class="tag ok">Cuenta completa · 158,107 sesiones</span>'
+                          : 'Dónde aterriza la pauta <span class="tag prelim">Paid Social · 82,008 sesiones</span>';
+      h += '<div class="datacard" style="margin-bottom:14px"><h3>'+tit+'</h3>'+
         '<p class="lead">'+D.lead+'</p>'+
-        '<div style="overflow-x:auto"><table class="chtab"><thead><tr><th>Página de destino</th><th>Sesiones</th><th></th><th>Tiempo</th></tr></thead><tbody>'+dbody+'</tbody></table></div>'+
+        '<div style="overflow-x:auto"><table class="chtab"><thead><tr><th>Página de destino</th><th>Sesiones</th><th></th><th>Tiempo</th>'+mh+'</tr></thead><tbody>'+dbody+'</tbody></table></div>'+
+        (D.note?'<p style="font-size:12px;color:var(--text-3);margin:0 0 10px">'+D.note+'</p>':'')+
         '<p class="dec">→ '+D.dec+'</p></div>';
     }
   }
