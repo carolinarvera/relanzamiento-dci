@@ -103,7 +103,10 @@
 <body>
 <div class="wrap">
   <h1>Plan de Acción — Julio 2026</h1>
-  <p class="why"><b>Por qué estamos aquí, en una frase:</b> en junio compramos mucho tráfico que no lee. La misma nota de Kristen Stewart dura <b>0.6 segundos</b> cuando llega por pauta de redes y <b>122 segundos</b> cuando llega por email. El contenido es bueno — el problema es a quién se lo mostramos y a dónde lo mandamos. Julio se trata de <b>retener, no de sumar visitas</b>.</p>
+  <div class="measure">
+    <h3>Cómo medimos julio</h3>
+    <p>Dejamos de reportar por <b>visitas</b> y empezamos a reportar por <b>tiempo de interacción y páginas por sesión</b>. Meta del mes: subir el tiempo medio del sitio y llevar las páginas por sesión por encima de 1.5. Una visita de 2 segundos no cuenta como resultado.</p>
+  </div>
 
   <div class="fmtcard" style="margin-top:18px">
     <h3>Estrategia de Tráfico al Sitio Web — la meta que amarra SEO, SEM, Pauta y Newsletter</h3>
@@ -125,16 +128,11 @@
     <button role="tab" data-t="axxis" class="active" aria-selected="true">AXXIS<span class="c" id="c-axxis"></span></button>
     <button role="tab" data-t="diners" aria-selected="false">Diners<span class="c" id="c-diners"></span></button>
   </nav>
-  <p class="tabhint" id="tabhint"></p>
+  <p class="why" id="why-axxis"><b>Por qué estamos aquí, en una frase:</b> AXXIS pone 79.3% del tráfico en Paid Social y ese canal interactúa <b>5 segundos</b> — nadie lee un artículo de arquitectura en 5 segundos. Sin Paid Social, AXXIS pasaría de 24.35% a 46.33% de interacción y de 12s a 40s de tiempo medio. El email dura 20× más que el Paid Social y AXXIS no tiene Paid Search: está invirtiendo 79% en el peor canal y 0% en el mejor. Julio se trata de <b>retener, no de sumar visitas</b>.</p>
+
+  <p class="why" id="why-diners" style="display:none"><b>Por qué estamos aquí, en una frase:</b> en junio compramos mucho tráfico que no lee. La misma nota de Kristen Stewart dura <b>0.6 segundos</b> cuando llega por pauta de redes y <b>122 segundos</b> cuando llega por email. El contenido es bueno — el problema es a quién se lo mostramos y a dónde lo mandamos. Julio se trata de <b>retener, no de sumar visitas</b>.</p>
 
   <div id="app"></div>
-
-  <div class="measure">
-    <h3>Cómo medimos julio</h3>
-    <p>Dejamos de reportar por <b>visitas</b> y empezamos a reportar por <b>tiempo de interacción y páginas por sesión</b>. Meta del mes: subir el tiempo medio del sitio y llevar las páginas por sesión por encima de 1.5. Una visita de 2 segundos no cuenta como resultado.</p>
-  </div>
-
-  <footer>Ediciones Gamma · Growth System · Fuente: GA4, GSC, Metricool e informes de junio 2026. Respaldo completo en el Panel de Decisión Digital. Web: Mateo Arias Ortiz (AXXIS) / Simón Granja (Diners) · SEO técnico: Juan David · Redes: Paola Gordillo · Marketing: Paola Nossa · Newsletter: owner por definir.</footer>
 </div>
 
 <script>
@@ -372,7 +370,8 @@ function fmtTable(F){
 }
 
 function render(tab){
-  document.getElementById('tabhint').textContent = TASKS[tab].length + ' tareas · ' + HINT[tab];
+  document.getElementById('why-axxis').style.display = tab==='axxis' ? '' : 'none';
+  document.getElementById('why-diners').style.display = tab==='diners' ? '' : 'none';
   app.innerHTML='';
   TYPES.forEach(([ty,label,desc])=>{
     const items=TASKS[tab].filter(t=>TY[t.id]===ty);
