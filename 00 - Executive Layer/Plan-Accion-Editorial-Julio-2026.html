@@ -44,7 +44,16 @@
   .why{font-size:13.5px;background:var(--why-bg);border-left:3px solid var(--why-bd);padding:11px 14px;border-radius:0 6px 6px 0;margin:16px 0 0;max-width:820px}
   .why b{font-weight:600}
 
-  .owner{margin-top:28px;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+  nav.tabs{display:flex;gap:8px;margin:6px 0 4px;flex-wrap:wrap}
+  nav.tabs button{font:inherit;font-size:14px;font-weight:600;padding:9px 22px;border-radius:999px;border:1px solid var(--border-strong);background:var(--card);color:var(--text-2);cursor:pointer}
+  nav.tabs button:hover{background:var(--border)}
+  nav.tabs button:focus-visible{outline:2px solid var(--brief);outline-offset:2px}
+  nav.tabs button.active{background:var(--text);color:var(--bg);border-color:var(--text)}
+  nav.tabs button[data-t="axxis"].active{background:var(--web);border-color:var(--web);color:#fff}
+  nav.tabs button[data-t="diners"].active{background:var(--cm);border-color:var(--cm);color:#fff}
+  nav.tabs .c{font-size:12px;opacity:.75;margin-left:6px;font-weight:500}
+  .tabhint{font-size:12.5px;color:var(--text-3);margin:0 0 4px}
+  .owner{margin-top:20px;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
   .owner-head{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border)}
   .owner-head .bar{width:4px;align-self:stretch;border-radius:3px}
   .owner-head h2{font-size:17px;font-weight:600;margin:0}
@@ -80,9 +89,15 @@
 <body>
 <div class="wrap">
   <h1>Plan de Acción — Julio 2026</h1>
-  <p class="sub">Editores web · CM · Marketing. Cada acción trae el número que la justifica. Marca las que quedan asignadas en la reunión.</p>
+  <p class="sub">Separado por revista. Cada acción trae el número que la justifica y su dueño. Marca las que quedan asignadas en la reunión.</p>
   <p class="why"><b>Por qué estamos aquí, en una frase:</b> en junio compramos mucho tráfico que no lee. La misma nota de Kristen Stewart dura <b>0.6 segundos</b> cuando llega por pauta de redes y <b>122 segundos</b> cuando llega por email. El contenido es bueno — el problema es a quién se lo mostramos y a dónde lo mandamos. Julio se trata de <b>retener, no de sumar visitas</b>.</p>
 
+  <nav class="tabs" role="tablist" aria-label="Revista">
+    <button role="tab" data-t="axxis" class="active" aria-selected="true">AXXIS<span class="c" id="c-axxis"></span></button>
+    <button role="tab" data-t="diners" aria-selected="false">Diners<span class="c" id="c-diners"></span></button>
+    <button role="tab" data-t="ambas" aria-selected="false">Transversal<span class="c" id="c-ambas"></span></button>
+  </nav>
+  <p class="tabhint" id="tabhint"></p>
   <div id="app"></div>
 
   <div class="measure">
@@ -137,27 +152,62 @@ const PLAN = [
 ];
 
 const app = document.getElementById('app');
-PLAN.forEach((o,oi)=>{
-  const sec=document.createElement('div'); sec.className='owner';
-  const acts=o.acts.map((a,ai)=>{
-    const rev = a.rev==='ax'?'<span class="rev ax">AXXIS</span>':a.rev==='di'?'<span class="rev di">Diners</span>':'<span class="rev both">Ambas</span>';
-    const ev = a.brief ? '<div class="brief-box"><span class="tag">Brief a Sebastián · agencia</span><p class="ev" style="margin-top:4px">'+a.ev+'</p></div>' : '<p class="ev">'+a.ev+'</p>';
-    return '<div class="act" id="a'+oi+'-'+ai+'"><span class="chk" role="checkbox" aria-checked="false" tabindex="0" data-o="'+oi+'" data-a="'+ai+'"></span>'+
-      '<div class="body"><p class="title">'+a.t+rev+'</p>'+ev+'</div></div>';
-  }).join('');
-  sec.innerHTML='<div class="owner-head"><span class="bar" style="background:'+o.color+'"></span><h2>'+o.owner+'</h2><span class="who">'+o.who+'</span></div><div class="acts">'+acts+'</div>';
-  app.appendChild(sec);
-});
+const FILT = { axxis:'ax', diners:'di', ambas:'both' };
+const HINT = {
+  axxis:"Acciones específicas de AXXIS. Su reto: tiene marca fuerte pero poco contenido que rankee — construir, no solo optimizar.",
+  diners:"Acciones específicas de Diners. Su reto: mucho tráfico y retención, pero casi cero marca — subir posiciones y firmar el contenido.",
+  ambas:"Trabajo transversal que aplica a las dos revistas por igual: medición, newsletter, meta-títulos y briefs de pauta."
+};
 
-function toggle(el){
-  const done=el.classList.toggle('done');
-  el.setAttribute('aria-checked',done);
-  document.getElementById('a'+el.dataset.o+'-'+el.dataset.a).classList.toggle('done',done);
+function count(tag){ return PLAN.reduce((n,o)=>n+o.acts.filter(a=>a.rev===tag).length,0); }
+document.getElementById('c-axxis').textContent='· '+count('ax');
+document.getElementById('c-diners').textContent='· '+count('di');
+document.getElementById('c-ambas').textContent='· '+count('both');
+
+function render(tab){
+  const tag=FILT[tab];
+  document.getElementById('tabhint').textContent=HINT[tab];
+  app.innerHTML='';
+  PLAN.forEach((o,oi)=>{
+    const items=o.acts.map((a,ai)=>({a,ai})).filter(x=>x.a.rev===tag);
+    if(!items.length) return;
+    const sec=document.createElement('div'); sec.className='owner';
+    const acts=items.map(({a,ai})=>{
+      const rev = a.rev==='ax'?'<span class="rev ax">AXXIS</span>':a.rev==='di'?'<span class="rev di">Diners</span>':'<span class="rev both">Ambas</span>';
+      const ev = a.brief ? '<div class="brief-box"><span class="tag">Brief a Sebastián · agencia</span><p class="ev" style="margin-top:4px">'+a.ev+'</p></div>' : '<p class="ev">'+a.ev+'</p>';
+      const done = CHK.has(oi+'-'+ai) ? ' done' : '';
+      const ar = CHK.has(oi+'-'+ai) ? 'true':'false';
+      return '<div class="act'+done+'" id="a'+oi+'-'+ai+'"><span class="chk'+done+'" role="checkbox" aria-checked="'+ar+'" tabindex="0" data-o="'+oi+'" data-a="'+ai+'"></span>'+
+        '<div class="body"><p class="title">'+a.t+rev+'</p>'+ev+'</div></div>';
+    }).join('');
+    sec.innerHTML='<div class="owner-head"><span class="bar" style="background:'+o.color+'"></span><h2>'+o.owner+'</h2><span class="who">'+o.who+'</span></div><div class="acts">'+acts+'</div>';
+    app.appendChild(sec);
+  });
+  bindChecks();
 }
-document.querySelectorAll('.chk').forEach(c=>{
-  c.addEventListener('click',()=>toggle(c));
-  c.addEventListener('keydown',e=>{ if(e.key===' '||e.key==='Enter'){e.preventDefault();toggle(c);} });
+
+const CHK=new Set();
+function toggle(el){
+  const key=el.dataset.o+'-'+el.dataset.a;
+  const done = CHK.has(key) ? (CHK.delete(key),false) : (CHK.add(key),true);
+  el.classList.toggle('done',done);
+  el.setAttribute('aria-checked',done);
+  document.getElementById('a'+key).classList.toggle('done',done);
+}
+function bindChecks(){
+  document.querySelectorAll('.chk').forEach(c=>{
+    c.addEventListener('click',()=>toggle(c));
+    c.addEventListener('keydown',e=>{ if(e.key===' '||e.key==='Enter'){e.preventDefault();toggle(c);} });
+  });
+}
+document.querySelectorAll('nav.tabs button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('nav.tabs button').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-selected','false');});
+    b.classList.add('active'); b.setAttribute('aria-selected','true');
+    render(b.dataset.t);
+  });
 });
+render('axxis');
 </script>
 </body>
 </html>
