@@ -400,7 +400,7 @@ function render(tab){
     h+=items.map(t=>{
       const done=CHK.has(t.id);
       const ev = t.brief
-        ? '<div class="brief-box"><span class="tag">Brief a Sebastián · agencia</span><p class="ev" style="margin-top:4px">'+t.ev+'</p></div>'
+        ? '<div class="brief-box"><p class="ev">'+t.ev+'</p></div>'
         : '<p class="ev">'+t.ev+'</p>';
       return '<div class="act'+(done?' done':'')+'" id="row-'+t.id+'">'+
         '<span class="chk'+(done?' done':'')+'" role="checkbox" aria-checked="'+done+'" tabindex="0" data-id="'+t.id+'"></span>'+
