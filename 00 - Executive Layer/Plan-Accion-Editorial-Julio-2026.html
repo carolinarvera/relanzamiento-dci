@@ -129,8 +129,8 @@ const TIERS = {
   3:["Nivel 3 · Mes 2+","Nuevo o requiere implementación — se lanza por olas y cada formato se valida con su KPI o se mata."]
 };
 const HINT = {
-  axxis:"Lista completa AXXIS — 18 tareas. Su reto: marca fuerte pero poco contenido que rankee, y 79% del tráfico comprado durando 5 segundos.",
-  diners:"Lista completa Diners — 18 tareas. Su reto: tráfico y retención de sobra, pero casi cero marca — subir posiciones y firmar el contenido."
+  axxis:"Lista completa AXXIS. Su reto: marca fuerte pero poco contenido que rankee, y 79% del tráfico comprado durando 5 segundos.",
+  diners:"Lista completa Diners. Su reto: tráfico y retención de sobra, pero casi cero marca — subir posiciones y firmar el contenido."
 };
 
 const TASKS = {
@@ -156,6 +156,10 @@ axxis:[
   ev:"<b>1.20 páginas por sesión</b>: quien entra lee una página y se va. Empezar por las de mayor tráfico, que es donde más se pierde gente."},
  {id:"ax10",tier:2,t:"Ficha técnica por proyecto (materiales, estudio, proveedores)",ow:"Mateo",oc:"ow-web",
   ev:"La segunda página que hoy no existe — responde lo que la audiencia ya pregunta (insight AD Magazine) y es la base de 'Detrás del Plano' y 'El Producto del Mes' del portafolio."},
+ {id:"ax19",tier:2,t:"Landing de categoría 'Revistas de arquitectura y diseño' enlazada a /suscripciones/",ow:"Mateo",oc:"ow-web",
+  ev:"Consultas de categoría con intención altísima de suscripción que hoy no tienen página propia: 'revistas de diseño de interiores' <b>33.3% CTR</b> (pos. 2.9), 'revistas de arquitectura' 17.9% (pos. 4.0), 'revista de arquitectura' 18.2% (pos. 4.1). Y /suscripciones/ ya rankea en pos. 1.4 — la landing cierra el circuito."},
+ {id:"ax20",tier:2,t:"Ganar el SERP de la propia marca",ow:"Mateo + Juan David",oc:"ow-seo",
+  ev:"'axxis' a secas rankea en <b>pos. 5.2</b> con 16.8% de CTR sobre 1,931 impresiones — el SERP de la marca lo ganan otros. Schema Organization, sitelinks limpios y página 'Sobre nosotros' robusta. El brief de SEM de marca (tarea 6) lo blinda mientras el orgánico se acomoda."},
  {id:"ax11",tier:2,t:"Stories con stickers + Destacados por eje + Broadcast Channel",ow:"Paola Gordillo",oc:"ow-cm",
   ev:"Hoy se usa una fracción de Instagram. Broadcast Channel y Destacados organizados por eje son gratis y no están en uso."},
  {id:"ax12",tier:2,t:"Newsletter AXXIS quincenal: 'Voz experta' + registro en las páginas que retienen",ow:"Owner por definir",oc:"ow-nl",
@@ -163,8 +167,8 @@ axxis:[
  {id:"ax13",tier:2,t:"Lanzar 'Proyectos que Hablan' — episodio 1",ow:"Paola Nossa + Mateo",oc:"ow-mkt",
   ev:"Ya tiene concepto, distribución (Spotify + cápsulas de 60s + transcripción en web) y KPI real (>10 min de escucha). Ejecutar, no rediseñar — es el formato del portafolio más cercano a estar listo."},
 
- {id:"ax14",tier:3,t:"Construir contenido que rankee fuera de la marca",ow:"Mateo + Juan David",oc:"ow-web",
-  ev:"El orgánico de AXXIS vive del home: <b>994 clics, 49% del total</b>; la mejor página de contenido trae 127. Es trabajo continuo de profundidad en el tema ganador — no un sprint."},
+ {id:"ax14",tier:3,t:"Hub 'Arquitectos de Colombia' — primeros 5 perfiles",ow:"Mateo + Juan David",oc:"ow-web",
+  ev:"El oro E-E-A-T de AXXIS: Google ya le da CTRs de <b>17–25%</b> en consultas de nombre — Ernesto Jiménez (20.8%, pos. 1.6), Guillermo Fischer (25%, pos. 2.6), Mauricio Zapata, Miguel Soto, Gregorio Cuartas. Una página profunda por arquitecto con schema Person, bio, obra y proyectos enlazados. Nadie más puede escribirlo con acceso directo, y alimenta 'Proyectos que Hablan'. Es la respuesta al problema de fondo: el home es el 49% de los clics y la mejor página de contenido trae 127."},
  {id:"ax15",tier:3,t:"Portafolio 2026 — ola 1: 'El Producto del Mes' + 'Cubrimiento AXXIS'",ow:"Paola Nossa",oc:"ow-mkt",
   ev:"Reutilizan los formatos que ya dominan (carrusel 4.94% + stories) y monetizan con tarifa fija de exhibición y cobertura patrocinada. Cubrimiento selectivo: nada de eventos masivos tipo Vassar — <b>1.21% de ER</b>, el fondo de la cuenta."},
  {id:"ax16",tier:3,t:"Portafolio — ola 2: 'Detrás del Plano' + 'Tour AXXIS' (video)",ow:"Paola Nossa",oc:"ow-mkt",
@@ -196,6 +200,10 @@ diners:[
   ev:"'Restaurantes a las afueras': <b>83,852 impresiones a pos. 6</b> y retiene 81s. Subir las 5 grandes a pos. 3 suma <b>~10,000 clics/mes gratis</b>, de la misma calidad. Vale más que escribir notas nuevas."},
  {id:"di10",tier:2,t:"Crear las categorías 'Zona D' y 'Perfiles' en el sitio",ow:"Simón + Juan David",oc:"ow-seo",
   ev:"Brecha de marca confirmada en junio: <b>17% en Diners vs 84% en AXXIS</b>. Google necesita estructura para leer la autoridad temática que el contenido ya tiene."},
+ {id:"di19",tier:2,t:"Refresh E-E-A-T de la serie 'restaurantes en [ciudad]' — Bucaramanga y Pereira primero",ow:"Simón",oc:"ow-web",
+  ev:"La serie ya rankea sin trabajo E-E-A-T: Bucaramanga <b>2,763 impresiones a 0.6% CTR</b> (pos. 8.8), Pereira 2,368 a 2.0% (6.5), Manizales 1,813 a 1.1% (8.6). Mayor upside donde peor CTR. Requisito: colaborador local nombrado o visita documentada — sin experiencia de primera mano, estas páginas no suben del 6–9."},
+ {id:"di20",tier:2,t:"Ganar el SERP de la propia marca",ow:"Simón + Juan David",oc:"ow-seo",
+  ev:"'revista diners' rankea pos. <b>2.3</b> con 55.3% de CTR — bajo para marca propia (AXXIS: pos. 1.0, 67.4%) — y 'diners' a secas está en pos. 4.8. Schema Organization, sitelinks y 'Sobre nosotros' robusta. Junto con las categorías Zona D/Perfiles le dan a Google la entidad editorial, no un blog."},
  {id:"di11",tier:2,t:"Publicar 6 o más reels en julio",ow:"Paola Gordillo",oc:"ow-cm",
   ev:"Hoy no se puede declarar formato ganador: solo hubo 3 reels y uno era atípico (MAZ). Con 6+ se decide con muestra real, no con intuición."},
  {id:"di12",tier:2,t:"Stories con stickers + Destacados por eje + Broadcast Channel",ow:"Paola Gordillo",oc:"ow-cm",
@@ -211,6 +219,8 @@ diners:[
   ev:"Diners tiene <b>9 formatos inventariados, 4 activos</b>. Activar los definidos antes de crear nada nuevo — ver tabla del inventario abajo."},
  {id:"di17",tier:3,t:"Evaluar 'Recomendación de libros' en versión remota o estudio",ow:"Paola Nossa",oc:"ow-mkt",
   ev:"Se descontinuó por logística de coordinación en librerías. La versión remota elimina esa fricción — evaluar con un piloto, no relanzar a ciegas."},
+ {id:"di21",tier:3,t:"Desarrollar el cluster 'relojes y lujo'",ow:"Simón + Paola Nossa",oc:"ow-web",
+  ev:"Diners ya recibe clics por 'rolex' (<b>97 clics, pos. 8.2</b>) y 'citizen' (85, pos. 6.1), y la página de Rolex Oyster generó <b>$2,655 en junio</b>. Es el único territorio genérico que coincide con el gap de anunciantes (relojería internacional, auditoría de competencia): autoridad E-E-A-T y argumento comercial B2B en el mismo cluster."},
  {id:"di18",tier:3,t:"Línea base de open rate y CTR del newsletter",ow:"Owner por definir",oc:"ow-nl",
   ev:"Depende del cierre de la migración HubSpot. El primer envío post-migración define el baseline — hoy no hay dato."}
 ]
@@ -264,7 +274,7 @@ function fmtTable(F){
 }
 
 function render(tab){
-  document.getElementById('tabhint').textContent = HINT[tab];
+  document.getElementById('tabhint').textContent = TASKS[tab].length + ' tareas · ' + HINT[tab];
   app.innerHTML='';
   let n=0;
   [1,2,3].forEach(tier=>{
