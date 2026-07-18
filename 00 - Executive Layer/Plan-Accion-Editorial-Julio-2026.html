@@ -103,7 +103,7 @@
 <body>
 <div class="wrap">
   <h1>Plan de Acción — Julio 2026</h1>
-  <p class="sub">Una pestaña por revista con su lista completa e independiente — lo compartido se repite en ambas para que Mateo y Simón tengan todas sus tareas en un solo lugar. Ordenado de lo más sencillo a lo que requiere implementación.</p>
+  <p class="sub">Una pestaña por revista, agrupado por canal: SEO · SEM · Pauta · Redes · Newsletter · Formatos. Lo compartido se repite en ambas para que Mateo y Simón tengan su lista completa e independiente.</p>
   <p class="why"><b>Por qué estamos aquí, en una frase:</b> en junio compramos mucho tráfico que no lee. La misma nota de Kristen Stewart dura <b>0.6 segundos</b> cuando llega por pauta de redes y <b>122 segundos</b> cuando llega por email. El contenido es bueno — el problema es a quién se lo mostramos y a dónde lo mandamos. Julio se trata de <b>retener, no de sumar visitas</b>.</p>
 
   <nav class="tabs" role="tablist" aria-label="Revista">
@@ -123,10 +123,26 @@
 </div>
 
 <script>
-const TIERS = {
-  1:["Nivel 1 · Esta semana","Decisiones y quick wins — se resuelven en la sala o en horas."],
-  2:["Nivel 2 · Próximas 2–4 semanas","Ejecución que requiere coordinación entre áreas."],
-  3:["Nivel 3 · Mes 2+","Nuevo o requiere implementación — se lanza por olas y cada formato se valida con su KPI o se mata."]
+const TYPES = [
+  ["seo","SEO — Contenido y Búsqueda Orgánica","El motor de tráfico de calidad. Cada tarea trae su keyword y su métrica de junio. Mapa completo de clusters al final del grupo."],
+  ["sem","SEM — Google Ads (Paid Search)","El mejor canal pago: 67% de interacción, $1.52/sesión. Reasignar presupuesto desde Paid Social, no pedir nuevo."],
+  ["pauta","Pauta — Meta (Paid Social)","El peor canal (4–5s) y el que más volumen recibe. Comprar intención, no volumen."],
+  ["social","Redes Sociales — Orgánico","Canal de marca y comunidad, no de tráfico. Medir por engagement y saves, nunca por vistas."],
+  ["nl","Newsletter — Email","El canal de mayor calidad (98–127s) y el más hambriento. Cierra el circuito de audiencia propia."],
+  ["fmt","Formatos Digitales","Portafolio comercial con KPIs reales. Lanzar por olas: primero lo que reusa formatos que ya dominan."]
+];
+const TYC = { seo:"var(--seo)", sem:"var(--brief)", pauta:"var(--f0)", social:"var(--cm)", nl:"var(--nl)", fmt:"var(--mkt)" };
+const TY = {
+  ax04:"seo",ax05:"seo",ax08:"seo",ax09:"seo",ax10:"seo",ax14:"seo",ax19:"seo",ax20:"seo",
+  ax06:"sem", ax21:"pauta",
+  ax02:"social",ax03:"social",ax11:"social",
+  ax01:"nl",ax12:"nl",ax18:"nl",
+  ax07:"fmt",ax13:"fmt",ax15:"fmt",ax16:"fmt",ax17:"fmt",
+  di05:"seo",di06:"seo",di07:"seo",di09:"seo",di10:"seo",di13:"seo",di19:"seo",di20:"seo",di21:"seo",
+  di08:"pauta",
+  di02:"social",di03:"social",di04:"social",di11:"social",di12:"social",
+  di01:"nl",di14:"nl",di18:"nl",
+  di15:"fmt",di16:"fmt",di17:"fmt"
 };
 const HINT = {
   axxis:"Lista completa AXXIS. Su reto: marca fuerte pero poco contenido que rankee, y 79% del tráfico comprado durando 5 segundos.",
@@ -147,6 +163,8 @@ axxis:[
   ev:"Torres del Parque: pos. 6.9, <b>1,418 impresiones, CTR 0.6%</b>. Plaza de toros: 930 a 1.3%. Living 127: 535 a 0.9%. Ya rankean — el clic se pierde en el título. Es el quick win de mayor retorno."},
  {id:"ax06",tier:1,t:"Brief a Sebastián: reactivar Paid Search de AXXIS (hoy en $0)",ow:"Paola Nossa",oc:"ow-mkt",brief:true,
   ev:"Todas las campañas de Google Ads están detenidas mientras el 79.3% del tráfico viene del canal que dura <b>5 segundos</b>. En Diners, Paid Search rinde 67.25% de interacción y genera casi los mismos ingresos que Paid Social con 12.5× menos tráfico. Reasignar presupuesto, no pedir nuevo."},
+ {id:"ax21",tier:1,t:"Brief a Sebastián: congelar Paid Social hasta que supere 20s de interacción",ow:"Paola Nossa",oc:"ow-mkt",brief:true,
+  ev:"El 79.3% del tráfico de AXXIS es Paid Social a <b>5 segundos</b> (ER 18.6%). Congelar el gasto en el nivel de junio y mover cada peso nuevo a Paid Search. No es apagar pauta — es dejar de comprar el canal que no lee mientras se arregla el destino."},
  {id:"ax07",tier:1,t:"Ponerle fecha a 'Connect & Collab'",ow:"Paola Nossa",oc:"ow-mkt",
   ev:"El formato B2B de leads calificados lleva meses sin cadencia. Es una decisión de calendario, no de producción: fijar la fecha del primer episodio en la sala."},
 
@@ -324,24 +342,22 @@ function fmtTable(F){
 function render(tab){
   document.getElementById('tabhint').textContent = TASKS[tab].length + ' tareas · ' + HINT[tab];
   app.innerHTML='';
-  let n=0;
-  [1,2,3].forEach(tier=>{
-    const items=TASKS[tab].filter(t=>t.tier===tier);
+  TYPES.forEach(([ty,label,desc])=>{
+    const items=TASKS[tab].filter(t=>TY[t.id]===ty);
     if(!items.length) return;
     const sec=document.createElement('div'); sec.className='tier';
-    let h='<div class="tier-head"><h2>'+TIERS[tier][0]+'</h2><span>'+TIERS[tier][1]+'</span></div>';
+    let h='<div class="tier-head" style="border-bottom-color:'+TYC[ty]+'"><span class="bar" style="display:inline-block;width:10px;height:10px;border-radius:2px;background:'+TYC[ty]+';margin-right:2px"></span><h2>'+label+'</h2><span>'+desc+'</span></div>';
     h+=items.map(t=>{
-      n++;
       const done=CHK.has(t.id);
       const ev = t.brief
         ? '<div class="brief-box"><span class="tag">Brief a Sebastián · agencia</span><p class="ev" style="margin-top:4px">'+t.ev+'</p></div>'
         : '<p class="ev">'+t.ev+'</p>';
       return '<div class="act'+(done?' done':'')+'" id="row-'+t.id+'">'+
         '<span class="chk'+(done?' done':'')+'" role="checkbox" aria-checked="'+done+'" tabindex="0" data-id="'+t.id+'"></span>'+
-        '<div class="body"><p class="title"><span class="num">'+n+'.</span>'+t.t+'<span class="ow '+t.oc+'">'+t.ow+'</span></p>'+ev+'</div></div>';
+        '<div class="body"><p class="title">'+t.t+'<span class="ow '+t.oc+'">'+t.ow+'</span></p>'+ev+'</div></div>';
     }).join('');
-    if(tier===1){ h += kwCard(tab); }
-    if(tier===3){ h += fmtTable(tab==='axxis'?FMT_AX:FMT_DI); }
+    if(ty==='seo'){ h += kwCard(tab); }
+    if(ty==='fmt'){ h += fmtTable(tab==='axxis'?FMT_AX:FMT_DI); }
     sec.innerHTML=h;
     app.appendChild(sec);
   });
