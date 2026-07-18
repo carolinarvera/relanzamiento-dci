@@ -159,16 +159,17 @@ El mejor canal pago y el gran subutilizado: **67.25% de interacción, 65s, $1.52
 ### 3.1 Estado actual
 El peor canal de los diez y el que más volumen recibe: AXXIS **79.3% del tráfico a 5s** (18.6% interacción), Diners **52% a 4.2s** (22.5%). La prueba definitiva: la misma nota rinde 0.6s por Paid Social y 122s por email — es la intención del canal, no el contenido. Además: 25 campañas fragmentadas por cuenta, discrepancia de 10× entre presupuesto declarado y ejecutado con la agencia, y 0 conversiones medibles.
 
-### 3.2 Estrategia — comprar intención, no volumen
-1. **Congelar el gasto total en el nivel de junio** hasta que el tiempo de interacción del canal supere 20s. Cada peso nuevo va a Paid Search.
-2. **Regla de contenido por canal (el molde ya existe):** Estilo de Vida/listicle por Social rinde 7.5s; Cultura por Social, 2.7s — y hoy Cultura recibe 2.9× más pauta. **Mover toda la pauta de Cultura a Search** (como ya se hace con termales: 85s) y dejar en Social solo lo visual de alta intención.
-3. **Autopauta con umbral:** solo sube a pauta el contenido orgánico con ER > promedio de su cuenta (AXXIS 4.44% / Diners 6.45%) y saves/shares altos. El alcance NO califica (caso "Estatuas": 49,636 alcance, ER bajo el promedio).
-4. **Destino obligatorio:** ninguna pauta aterriza en página sin relacionados/ficha — primero se arregla el destino (Nivel 2 del plan), después se compra el tráfico.
-5. **Consolidación:** 25 campañas → 2-3 por marca (Tráfico-Contenido / Conversión), para salir de aprendizaje.
-6. **Higiene de cuenta:** reconciliar cifras con Sebastián (10× presupuesto, 2.5× conteo de anuncios), separar pauta de cliente (Colchones El Dorado) del reporting propio, excluir suscriptores activos de campañas de adquisición.
-7. **Medición:** sesiones con interacción y tiempo — nunca sesiones ni clics. Los "77,400 clics" de Facebook de junio son las mismas 82,008 sesiones de 5s de GA4.
+### 3.2 Estrategia — bajar, reasignar y afinar segmentación (sin perder tráfico)
+1. **Bajar el presupuesto de Paid Social de forma escalonada y reasignar lo liberado a Google Ads (Paid Search).** No es apagarlo de golpe — es rebalancear hacia el canal que sí lleva lectores (67% vs 18-22% de interacción) conservando el volumen que funciona.
+2. **Analizar las campañas actuales y su segmentación antes de recortar.** Pedir a Sebastián el desglose por campaña/segmento e identificar qué trae los 4-5s y qué retiene más. El objetivo es subir el tiempo de interacción — segmentación por interés real (no alcance amplio) + destino con relacionados/ficha — sin tumbar el tráfico bueno junto con el malo.
+3. **Regla de contenido por canal (el molde ya existe):** Estilo de Vida/listicle por Social rinde 7.5s; Cultura por Social, 2.7s — y hoy Cultura recibe 2.9× más pauta. **Mover la pauta de Cultura a Search** (como ya se hace con termales: 85s) y dejar en Social solo lo visual de alta intención.
+4. **Autopauta con umbral:** solo sube a pauta el contenido orgánico con ER > promedio de su cuenta (AXXIS 4.44% / Diners 6.45%) y saves/shares altos. El alcance NO califica (caso "Estatuas": 49,636 alcance, ER bajo el promedio).
+5. **Destino obligatorio:** ninguna pauta aterriza en página sin relacionados/ficha — primero se arregla el destino, después se compra el tráfico.
+6. **Consolidación:** 25 campañas → 2-3 por marca (Tráfico-Contenido / Conversión), para salir de aprendizaje.
+7. **Higiene de cuenta:** reconciliar cifras con Sebastián (10× presupuesto, 2.5× conteo de anuncios), separar pauta de cliente (Colchones El Dorado) del reporting propio, excluir suscriptores activos de campañas de adquisición.
+8. **Medición:** sesiones con interacción y tiempo — nunca sesiones ni clics. Los "77,400 clics" de Facebook de junio son las mismas 82,008 sesiones de 5s de GA4.
 
-**KPIs Paid Media:** tiempo de interacción del canal 4-5s → >20s · % del tráfico total desde Paid Social 52–79% → <40% · $/sesión 0.13 → >0.50 · 0 pauta en contenido de Cultura vía Social.
+**KPIs Paid Media:** tiempo de interacción del canal 4-5s → >20s (sin caída de tráfico total) · % del tráfico desde Paid Social 52–79% → <40%, con lo reasignado subiendo Paid Search · $/sesión 0.13 → >0.50 · presupuesto Cultura vía Social → cerca de 0.
 
 ---
 
