@@ -24,6 +24,65 @@ Toda cifra de este documento sale de data real de junio 2026 (GSC, GA4, Meta Bus
 
 ---
 
+## 0. Estrategia de Tráfico al Sitio Web — la vista que amarra todos los canales
+
+No es un canal más — es el objetivo que persiguen SEO, SEM, Paid Media y Newsletter a la vez. Cada uno de esos 4 canales aparece en esta sección solo por lo que aporta al tráfico web; Social orgánico queda fuera a propósito (es canal de marca, no de tráfico — ver §4).
+
+### 0.1 Mezcla actual de tráfico (GA4, junio)
+
+| Canal | AXXIS | Diners |
+|---|---|---|
+| Paid Social | **79.3%** | **52.0%** |
+| Organic Search | 9.0% | 26.2% |
+| Direct | 5.0% | 11.5% |
+| Paid Search | 0.1% ($0 activo) | 5.1% |
+| Email | 2.4% | 1.2% |
+| Organic Social | 2.9% | 1.3% |
+
+**El problema no es de volumen, es de forma.** Las dos cuentas están sostenidas por el canal que peor retiene.
+
+### 0.2 Mezcla objetivo — fin de Q3 2026
+
+| Canal | AXXIS hoy → meta | Diners hoy → meta | Cómo se mueve |
+|---|---|---|---|
+| Paid Social | 79.3% → **≤50%** | 52.0% → **≤35%** | Pilar 3: bajar y reasignar (Plan de Acción, grupo Pauta) |
+| Organic Search | 9.0% → **15%** | 26.2% → **35%** | Pilar 1: clusters de keywords + subir posición 6→3 (Diners) y construir contenido que rankee (AXXIS) |
+| Paid Search | 0.1% → **10%** | 5.1% → **10%** | Pilar 2: SEM 1-6 (AXXIS desde cero), campaña de marca en ambas |
+| Email | 2.4% → **5%** | 1.2% → **5%** | Pilar 5: newsletter con owner y registro donde el sitio ya retiene |
+| Direct | 5.0% → **~8%** | 11.5% → **~10%** | Consecuencia natural de subir marca (búsqueda + email), no se trabaja directo |
+
+No es una meta de más tráfico total — es una meta de **composición**. El primer mes (julio) el volumen total puede no crecer mientras se reasigna; el tiempo de interacción sí debe subir desde el primer corte.
+
+### 0.3 Dónde debe aterrizar el tráfico (no todo el sitio es igual de bueno)
+
+| Destino | Evidencia de que retiene | Rol en la estrategia |
+|---|---|---|
+| **Diners — cluster "Bogotá y alrededores"** | 77–85s de interacción, ya en pos. 1–3 | Destino prioritario de SEO y SEM de contenido — no se necesita crear nada nuevo, solo dirigir tráfico aquí |
+| **AXXIS — hub "Arquitectos de Colombia" + ficha técnica** | Hoy no existe (la mejor página de contenido trae 127 clics) | Se construye en paralelo — sin este destino, cualquier tráfico nuevo cae en páginas de 1.20 páginas/sesión |
+| **`/suscripciones/` (ambas)** | AXXIS pos. 1.4; Diners invisible | Destino de conversión — solo recibe pauta una vez el gate de conversión esté resuelto (SEM 4) |
+| **Home** | AXXIS: 49% de los clics, CTR 20.1% | Ya funciona para marca — no es destino de campañas de contenido, es destino de campañas de marca |
+
+### 0.4 El embudo completo
+
+```
+SEO (keywords de intención)  ─┐
+SEM (donde el orgánico aún no llega) ─┼─→  Destinos que retienen (0.3)  ─→  Newsletter (registro)  ─→  Suscripción
+Paid Social (solo lo ya validado) ─┘                                            ↑
+                                                                    Social orgánico alimenta marca y comunidad,
+                                                                    no aterriza tráfico directo aquí
+```
+
+### 0.5 KPI de tráfico único (el que se reporta en la reunión mensual)
+
+**Sesiones con interacción por canal**, no sesiones totales. Es la métrica que ya gobierna "Cómo medimos julio" en el Plan de Acción — esta sección solo le pone la meta de composición por canal para que cada equipo sepa cuánto debe crecer su pedazo.
+
+| Meta de julio (primer corte, no el trimestre completo) | AXXIS | Diners |
+|---|---|---|
+| Sesiones con interacción totales | 25,181 → **≥28,000** | 63,570 → **≥70,000** |
+| % desde canales propios (SEO+Direct+Email) | 16.4% → **20%** | 39.0% → **45%** |
+
+---
+
 ## 1. SEO — Búsqueda Orgánica
 
 ### 1.1 Estado actual (junio, GSC)
