@@ -8,7 +8,7 @@
   :root{
     --bg:#faf9f7; --card:#ffffff; --border:#e6e2da; --border-strong:#d3ccc0;
     --text:#1c1a17; --text-2:#5c574d; --text-3:#6b6558;
-    --web:#3a5a40; --cm:#7a2e6e; --mkt:#94500a; --nl:#2f6d6a; --brief:#15529c;
+    --web:#3a5a40; --cm:#7a2e6e; --mkt:#94500a; --nl:#2f6d6a; --seo:#4a4a8f; --brief:#15529c;
     --f0:#a31e17; --fc:#1f6b45;
     --why-bg:#fbf1f0; --why-bd:#a31e17;
     --radius:12px;
@@ -17,7 +17,7 @@
     :root{
       --bg:#15130f; --card:#1e1c17; --border:#332f27; --border-strong:#453f34;
       --text:#f1eee7; --text-2:#c9c3b5; --text-3:#948d7c;
-      --web:#8fb896; --cm:#c78ab8; --mkt:#f3a85e; --nl:#6fb0ab; --brief:#6fa8f0;
+      --web:#8fb896; --cm:#c78ab8; --mkt:#f3a85e; --nl:#6fb0ab; --seo:#a3a3e0; --brief:#6fa8f0;
       --f0:#ff7b70; --fc:#5fcf94;
       --why-bg:#2a1a18; --why-bd:#ff7b70;
     }
@@ -25,14 +25,14 @@
   :root[data-theme="dark"]{
     --bg:#15130f; --card:#1e1c17; --border:#332f27; --border-strong:#453f34;
     --text:#f1eee7; --text-2:#c9c3b5; --text-3:#948d7c;
-    --web:#8fb896; --cm:#c78ab8; --mkt:#f3a85e; --nl:#6fb0ab; --brief:#6fa8f0;
+    --web:#8fb896; --cm:#c78ab8; --mkt:#f3a85e; --nl:#6fb0ab; --seo:#a3a3e0; --brief:#6fa8f0;
     --f0:#ff7b70; --fc:#5fcf94;
     --why-bg:#2a1a18; --why-bd:#ff7b70;
   }
   :root[data-theme="light"]{
     --bg:#faf9f7; --card:#ffffff; --border:#e6e2da; --border-strong:#d3ccc0;
     --text:#1c1a17; --text-2:#5c574d; --text-3:#6b6558;
-    --web:#3a5a40; --cm:#7a2e6e; --mkt:#94500a; --nl:#2f6d6a; --brief:#15529c;
+    --web:#3a5a40; --cm:#7a2e6e; --mkt:#94500a; --nl:#2f6d6a; --seo:#4a4a8f; --brief:#15529c;
     --f0:#a31e17; --fc:#1f6b45;
     --why-bg:#fbf1f0; --why-bd:#a31e17;
   }
@@ -102,6 +102,14 @@ const PLAN = [
       { t:"Firma editorial en los listicle de Diners", rev:"di", ev:"Hoy son indistinguibles de un blog de turismo: solo <b>2 de 10 keywords</b> son de marca. Autor visible, criterio de por qué se eligió, fecha de actualización." },
       { t:"AXXIS: concentrar en 'casa + naturaleza + memoria'", rev:"ax", ev:"Es el <b>62% del top real</b> de artículos leídos y coincide con lo que gana en redes. No buscar temas nuevos — profundizar el que ya funciona." },
       { t:"Puente interno obligatorio: cada listicle enlaza a Zona D o Perfiles", rev:"di", ev:"Convierte el tráfico de paso en descubrimiento de marca. El listicle ya retiene (aguas termales <b>85s</b>): aprovechar esa atención para llevar a contenido de autoridad." }
+    ] },
+  { owner:"Búsqueda Orgánica — SEO", who:"Editores web (contenido) · owner técnico por definir", color:"var(--seo)",
+    acts:[
+      { t:"Diners: expandir el molde de listicle que ya rankea Y retiene", rev:"di", ev:"Aguas termales (pos. ~5 en GSC, <b>84s</b>) y restaurantes a las afueras (pos. 6, <b>81s</b>) rankean alto en búsquedas de alta intención Y son las páginas que más retienen del sitio. Es la joya: crear más del mismo tipo y actualizar los existentes." },
+      { t:"Diners: cerrar la brecha de marca", rev:"di", ev:"Solo <b>1.4% de las búsquedas son de marca</b> (vs 15.8% en AXXIS). El contenido rankea, la marca no. Firma editorial en los listicle + crear categorías 'Zona D' y 'Perfiles' para que Google entienda la autoridad temática." },
+      { t:"AXXIS: diagnosticar la caída orgánica −25%", rev:"ax", ev:"El canal orgánico de AXXIS cae mientras la pauta tapa el hueco. Es <b>técnico</b> (Core Web Vitals, indexación, enlaces) — no editorial. Necesita un owner técnico; hoy no lo tiene." },
+      { t:"Ambas: actualizar fecha y meta-título de las 10 páginas top", rev:"both", ev:"Quick win de SEO sobre páginas que ya rankean: señal de frescura para Google y mejor CTR desde el resultado. Cuesta poco y aplica a tráfico ya ganado." },
+      { t:"Replicar en Diners la página de suscripción de AXXIS", rev:"both", ev:"En AXXIS /suscripciones/ rankea en <b>posición 1.56</b>; en Diners está invisible (pos. ~250). Copiar la estructura que ya funciona en AXXIS." }
     ] },
   { owner:"Community Manager — Redes Orgánicas", who:"Paola Gordillo", color:"var(--cm)",
     acts:[
