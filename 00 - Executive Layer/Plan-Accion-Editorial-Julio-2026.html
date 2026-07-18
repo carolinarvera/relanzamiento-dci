@@ -40,48 +40,62 @@
   body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.5}
   .wrap{max-width:1120px;margin:0 auto;padding:32px 20px 80px}
   h1{font-size:25px;font-weight:600;margin:0 0 6px;letter-spacing:-0.01em}
-  .sub{margin:0;color:var(--text-2);font-size:15px;max-width:760px}
-  .why{font-size:13.5px;background:var(--why-bg);border-left:3px solid var(--why-bd);padding:11px 14px;border-radius:0 6px 6px 0;margin:16px 0 0;max-width:820px}
+  .sub{margin:0;color:var(--text-2);font-size:15px;max-width:780px}
+  .why{font-size:13.5px;background:var(--why-bg);border-left:3px solid var(--why-bd);padding:11px 14px;border-radius:0 6px 6px 0;margin:16px 0 0;max-width:840px}
   .why b{font-weight:600}
 
-  nav.tabs{display:flex;gap:8px;margin:6px 0 4px;flex-wrap:wrap}
-  nav.tabs button{font:inherit;font-size:14px;font-weight:600;padding:9px 22px;border-radius:999px;border:1px solid var(--border-strong);background:var(--card);color:var(--text-2);cursor:pointer}
+  nav.tabs{display:flex;gap:8px;margin:20px 0 4px;flex-wrap:wrap}
+  nav.tabs button{font:inherit;font-size:15px;font-weight:600;padding:10px 26px;border-radius:999px;border:1px solid var(--border-strong);background:var(--card);color:var(--text-2);cursor:pointer}
   nav.tabs button:hover{background:var(--border)}
   nav.tabs button:focus-visible{outline:2px solid var(--brief);outline-offset:2px}
-  nav.tabs button.active{background:var(--text);color:var(--bg);border-color:var(--text)}
   nav.tabs button[data-t="axxis"].active{background:var(--web);border-color:var(--web);color:#fff}
   nav.tabs button[data-t="diners"].active{background:var(--cm);border-color:var(--cm);color:#fff}
   nav.tabs .c{font-size:12px;opacity:.75;margin-left:6px;font-weight:500}
-  .tabhint{font-size:12.5px;color:var(--text-3);margin:0 0 4px}
-  .owner{margin-top:20px;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
-  .owner-head{display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border)}
-  .owner-head .bar{width:4px;align-self:stretch;border-radius:3px}
-  .owner-head h2{font-size:17px;font-weight:600;margin:0}
-  .owner-head .who{font-size:13px;color:var(--text-3);margin-left:auto;text-align:right}
-  .acts{padding:6px 18px 14px}
-  .act{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--border)}
+  .tabhint{font-size:12.5px;color:var(--text-3);margin:6px 0 0}
+
+  .tier{margin-top:26px}
+  .tier-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;border-bottom:2px solid var(--border-strong);padding-bottom:6px;margin-bottom:4px}
+  .tier-head h2{font-size:15px;font-weight:600;margin:0}
+  .tier-head span{font-size:12.5px;color:var(--text-3)}
+
+  .act{display:flex;gap:12px;padding:13px 2px;border-bottom:1px solid var(--border)}
   .act:last-child{border-bottom:none}
-  .chk{flex-shrink:0;width:18px;height:18px;border:1.5px solid var(--border-strong);border-radius:5px;margin-top:2px;cursor:pointer;transition:background .12s,border-color .12s;position:relative}
+  .chk{flex-shrink:0;width:18px;height:18px;border:1.5px solid var(--border-strong);border-radius:5px;margin-top:2px;cursor:pointer;position:relative}
   .chk.done{background:var(--fc);border-color:var(--fc)}
   .chk.done::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
   @media (prefers-color-scheme: dark){ .chk.done::after{border-color:#15130f} }
   :root[data-theme="dark"] .chk.done::after{border-color:#15130f}
   .act .body{flex:1}
   .act.done .title{text-decoration:line-through;color:var(--text-3)}
+  .num{color:var(--text-3);font-weight:600;margin-right:7px;font-variant-numeric:tabular-nums}
   .title{font-size:14.5px;font-weight:600;margin:0 0 3px}
-  .title .rev{font-size:11px;font-weight:700;padding:1px 7px;border-radius:999px;margin-left:8px;vertical-align:1px}
-  .rev.ax{color:var(--web);border:1px solid var(--web)}
-  .rev.di{color:var(--cm);border:1px solid var(--cm)}
-  .rev.both{color:var(--text-3);border:1px solid var(--border-strong)}
+  .ow{font-size:11px;font-weight:600;padding:1px 8px;border-radius:999px;margin-left:8px;vertical-align:1px;border:1px solid;white-space:nowrap}
+  .ow-web{color:var(--web);border-color:var(--web)}
+  .ow-seo{color:var(--seo);border-color:var(--seo)}
+  .ow-cm{color:var(--cm);border-color:var(--cm)}
+  .ow-nl{color:var(--nl);border-color:var(--nl)}
+  .ow-mkt{color:var(--mkt);border-color:var(--mkt)}
   .ev{font-size:12.5px;color:var(--text-2);margin:0}
   .ev b{color:var(--f0);font-weight:600}
   .brief-box{background:color-mix(in srgb, var(--brief) 7%, transparent);border-left:3px solid var(--brief);border-radius:0 6px 6px 0;padding:10px 13px;margin:2px 0 0}
   .brief-box .tag{font-size:10px;font-weight:700;color:var(--brief);text-transform:uppercase;letter-spacing:.04em}
 
+  .fmtcard{margin-top:18px;border:1px solid var(--border-strong);border-radius:var(--radius);background:var(--card);padding:16px 18px}
+  .fmtcard h3{font-size:13.5px;font-weight:600;margin:0 0 4px;text-transform:uppercase;letter-spacing:.04em}
+  .fmtcard .lead{font-size:12.5px;color:var(--text-2);margin:0 0 12px}
+  .ftab{width:100%;border-collapse:collapse;font-size:12.5px;min-width:760px}
+  .ftab th,.ftab td{padding:7px 10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+  .ftab thead th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--text-3);font-weight:600}
+  .ftab tbody th{font-weight:600;white-space:nowrap}
+  .ftab tr:last-child th,.ftab tr:last-child td{border-bottom:none}
+  .st{font-size:10px;font-weight:700;padding:1px 7px;border-radius:999px;white-space:nowrap}
+  .st.on{color:var(--fc);border:1px solid var(--fc)}
+  .st.new{color:var(--brief);border:1px solid var(--brief)}
+  .st.off{color:var(--text-3);border:1px solid var(--border-strong)}
+
   .measure{margin-top:30px;border:1px solid var(--fc);border-radius:var(--radius);padding:16px 18px;background:color-mix(in srgb, var(--fc) 6%, transparent)}
   .measure h3{font-size:13px;font-weight:600;margin:0 0 8px;text-transform:uppercase;letter-spacing:.04em}
   .measure p{margin:0;font-size:14px}
-  .measure b{font-weight:600}
   footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:var(--text-3)}
   @media print{ .chk{border-color:#999} body{background:#fff} }
 </style>
@@ -89,15 +103,15 @@
 <body>
 <div class="wrap">
   <h1>Plan de Acción — Julio 2026</h1>
-  <p class="sub">Separado por revista. Cada acción trae el número que la justifica y su dueño. Marca las que quedan asignadas en la reunión.</p>
+  <p class="sub">Una pestaña por revista con su lista completa e independiente — lo compartido se repite en ambas para que Mateo y Simón tengan todas sus tareas en un solo lugar. Ordenado de lo más sencillo a lo que requiere implementación.</p>
   <p class="why"><b>Por qué estamos aquí, en una frase:</b> en junio compramos mucho tráfico que no lee. La misma nota de Kristen Stewart dura <b>0.6 segundos</b> cuando llega por pauta de redes y <b>122 segundos</b> cuando llega por email. El contenido es bueno — el problema es a quién se lo mostramos y a dónde lo mandamos. Julio se trata de <b>retener, no de sumar visitas</b>.</p>
 
   <nav class="tabs" role="tablist" aria-label="Revista">
     <button role="tab" data-t="axxis" class="active" aria-selected="true">AXXIS<span class="c" id="c-axxis"></span></button>
     <button role="tab" data-t="diners" aria-selected="false">Diners<span class="c" id="c-diners"></span></button>
-    <button role="tab" data-t="ambas" aria-selected="false">Transversal<span class="c" id="c-ambas"></span></button>
   </nav>
   <p class="tabhint" id="tabhint"></p>
+
   <div id="app"></div>
 
   <div class="measure">
@@ -105,96 +119,184 @@
     <p>Dejamos de reportar por <b>visitas</b> y empezamos a reportar por <b>tiempo de interacción y páginas por sesión</b>. Meta del mes: subir el tiempo medio del sitio y llevar las páginas por sesión por encima de 1.5. Una visita de 2 segundos no cuenta como resultado.</p>
   </div>
 
-  <footer>Ediciones Gamma · Growth System · Fuente: GA4, GSC, Metricool e informes de junio 2026. Respaldo completo en el Panel de Decisión Digital. Producción de formatos: Mateo Arias Ortiz (AXXIS) / Simón Granja (Diners) + Paola Nossa.</footer>
+  <footer>Ediciones Gamma · Growth System · Fuente: GA4, GSC, Metricool e informes de junio 2026. Respaldo completo en el Panel de Decisión Digital. Web: Mateo Arias Ortiz (AXXIS) / Simón Granja (Diners) · SEO técnico: Juan David · Redes: Paola Gordillo · Marketing: Paola Nossa · Newsletter: owner por definir.</footer>
 </div>
 
 <script>
-const PLAN = [
-  { owner:"Editores Web", who:"Mateo Arias Ortiz (AXXIS) · Simón Granja (Diners)", color:"var(--web)",
-    acts:[
-      { t:"Ficha técnica al final de cada proyecto", rev:"ax", ev:"Materiales, estudio, proveedores. Es la segunda página que hoy no existe: AXXIS tiene <b>1.20 páginas por sesión</b> y la audiencia ya pregunta por estos datos en redes." },
-      { t:"Enlazado interno + relacionados en las páginas de mayor tráfico", rev:"both", ev:"Ataca directo las páginas por sesión. Empezar por las que más visitas reciben, que es donde más se pierde gente." },
-      { t:"Firma editorial en los listicle de Diners", rev:"di", ev:"Hoy son indistinguibles de un blog de turismo: solo <b>2 de 10 keywords</b> son de marca. Autor visible, criterio de por qué se eligió, fecha de actualización." },
-      { t:"AXXIS: concentrar en 'casa + naturaleza + memoria'", rev:"ax", ev:"Es el <b>62% del top real</b> de artículos leídos y coincide con lo que gana en redes. No buscar temas nuevos — profundizar el que ya funciona." },
-      { t:"Puente interno obligatorio: cada listicle enlaza a Zona D o Perfiles", rev:"di", ev:"Convierte el tráfico de paso en descubrimiento de marca. El listicle ya retiene (aguas termales <b>85s</b>): aprovechar esa atención para llevar a contenido de autoridad." }
-    ] },
-  { owner:"Búsqueda Orgánica — SEO", who:"Editores web (contenido) · Juan David (técnico)", color:"var(--seo)",
-    acts:[
-      { t:"Diners: subir las listicles de la posición 6 a la 3 (la palanca #1)", rev:"di", ev:"El sitio vive en <b>posición media 5.9</b> — nada en top 3. En junio recibió <b>542,000 impresiones y solo 17,100 clics (CTR 3.2%)</b>. 'Restaurantes a las afueras' es la #1: <b>83,852 impresiones a pos. 6</b>, y retiene 81s. Subir solo las 5 listicles grandes de pos. 6 a pos. 3 sumaría <b>~10,000 clics/mes gratis</b>, de la misma calidad. Vale más que escribir notas nuevas: optimizar (enlaces internos, profundidad, actualización) lo que ya rankea y retiene." },
-      { t:"Diners: cerrar la brecha de marca", rev:"di", ev:"Confirmado en junio puro: en el head de consultas, la marca es <b>17% en Diners vs 84% en AXXIS</b>. El contenido rankea (termales, rooftop, restaurantes en pos. 2-3), pero la marca no existe en la búsqueda. Firma editorial en los listicle + categorías 'Zona D' y 'Perfiles' para que Google entienda la autoridad temática." },
-      { t:"AXXIS: construir contenido que rankee (el problema es el opuesto al de Diners)", rev:"ax", ev:"El orgánico de AXXIS vive de su <b>home (marca): 994 clics, 49% del total</b>. La mejor página de contenido trae solo 127. Diners tiene volumen de contenido y le falta marca; AXXIS tiene marca y le falta contenido que ranquee. Dos recetas distintas. Para AXXIS: profundidad en el tema que ya gana (proyectos + arquitectos con nombre) + diagnosticar la caída −25% (técnico: Core Web Vitals, indexación — <b>Juan David</b>)." },
-      { t:"Ambas: reescribir meta-título de las páginas que rankean pero no reciben clic", rev:"both", ev:"GSC junio AXXIS lo muestra concreto: <b>Torres del Parque rankea pos. 6.9 con 1,418 impresiones y CTR 0.6%</b>; plaza de toros Cartagena, 930 impresiones a 1.3%; Living 127, 535 a 0.9%. Ya rankean — el clic se pierde en el título. Reescribirlo es el quick win de mayor retorno: tráfico ya ganado que hoy se fuga." },
-      { t:"Replicar en Diners la página de suscripción de AXXIS", rev:"both", ev:"En AXXIS /suscripciones/ rankea en <b>posición 1.56</b>; en Diners está invisible (pos. ~250). Copiar la estructura que ya funciona en AXXIS." }
-    ] },
-  { owner:"Community Manager — Redes Orgánicas", who:"Paola Gordillo", color:"var(--cm)",
-    acts:[
-      { t:"Medir el contenido por engagement, nunca por vistas", rev:"both", ev:"Regla de lectura para todo dashboard de Meta. En junio, el dashboard coronó a Kristen Stewart #1 por vistas (103.5K), pero su engagement fue <b>0.44%</b>; Manuela Álvarez (trajes Selección) tuvo menos vistas y <b>~11%</b>. Ordenar por vistas es lo que lleva a producir más de lo que no sirve." },
-      { t:"AXXIS: dejar de forzar reels, priorizar carrusel", rev:"ax", ev:"El carrusel gana por <b>1.75 puntos</b> (4.94% vs 3.19%) y 3 de las 5 peores piezas del mes son reels. La audiencia de AXXIS premia el carrusel." },
-      { t:"Diners: publicar 6 o más reels en julio", rev:"di", ev:"Hoy no se puede decidir el formato ganador: solo hubo 3 reels y uno era atípico. Con 6+ tenemos muestra para concluir con datos, no con intuición." },
-      { t:"Cortar el listicle genérico y doblar en el tema que ya gana", rev:"di", ev:"En IG el listicle es el <b>bottom de la cuenta</b> (4.80% vs 7.27% del resto). El tema que gana es 'Colombia reconocida en el mundo': Manuela Álvarez/Selección (1.8K shares), Jean Trinh/Bar World, 1921 Express. <b>Coyuntura vacía a evitar:</b> Michael Jackson probado como humo por 4 fuentes — 70,725 impresiones en Google a 0.2% CTR, 2s en web, 0.44% en IG, 0 de marca." },
-      { t:"Menos volumen, más del tema ganador (calidad sobre cantidad)", rev:"di", ev:"Prueba dura: Diners publicó <b>−22.5% en junio y las interacciones subieron +38.9%</b>. Menos posts, más enganche. El camino no es producir más notas — es producir más del tema que conecta. Diners IG orgánico (80% orgánico, engagement subiendo) es el <b>caso de éxito</b> de que la estrategia funciona sin pauta." },
-      { t:"Activar Stories con stickers, Destacados por eje y Broadcast Channel", rev:"both", ev:"Hoy se usa una fracción de Instagram. Broadcast Channel y Destacados organizados por eje son gratis y no están en uso." }
-    ] },
-  { owner:"Newsletter — Email", who:"Sin owner — DEFINIR en la reunión (HubSpot)", color:"var(--nl)",
-    acts:[
-      { t:"Poner el punto de registro en las páginas que más retienen", rev:"both", ev:"El listicle es donde la gente sí se queda (aguas termales <b>85s</b>, restaurantes afueras <b>81s</b>): es ahí donde el registro convierte, no en la home. Coordinar con editores web el registro ligero." },
-      { t:"Parrilla definida: AXXIS quincenal · Diners semanal", rev:"both", ev:"AXXIS visual (curaduría de diseño). Diners los viernes AM con agenda de fin de semana + sección 'Sabores'. Es reutilizar contenido ya publicado, no producir nuevo." },
-      { t:"Sección fija 'Voz experta' en cada envío", rev:"both", ev:"El eje de autoridad que hoy falta. Entrevista o análisis con firma — exclusivo del newsletter, como gancho para abrir." },
-      { t:"Capturar open rate y CTR desde el primer envío post-HubSpot", rev:"both", ev:"Hoy no hay línea base. Email es el canal de <b>mayor calidad</b> (98s, ER 54.67% en AXXIS): un lector de email vale 20 sesiones de pauta. Depende de la migración HubSpot (semana 3-4 jul)." }
-    ] },
-  { owner:"Marketing — Formatos + Brief de Pauta", who:"Paola Nossa", color:"var(--mkt)",
-    acts:[
-      { t:"Lanzar los formatos ya definidos, no crear nuevos", rev:"both", ev:"Diners tiene 9 formatos y AXXIS 2. 'La Mesa de Diners' (podcast, agosto) y 'Proyectos que hablan' ya tienen concepto y distribución. Ejecutar, no inventar." },
-      { t:"Ponerle fecha a 'Connect And Collab' (AXXIS)", rev:"ax", ev:"Es el único formato que le puede construir comunidad presencial a AXXIS, y lleva meses sin cadencia definida." },
-      { t:"BRIEF A SEBASTIÁN — mover la pauta de Cultura a Paid Search", rev:"di", brief:true, ev:"El molde ya existe en la cuenta: aguas termales se pauta por <b>Search (85s)</b> y recibe 0 de Social; Kristen Stewart al revés, por Social muere en <b>0s</b>. No es apagar pauta, es corregir el canal por tipo de contenido." },
-      { t:"BRIEF A SEBASTIÁN — subir Paid Search, no recortarlo", rev:"both", brief:true, ev:"Paid Search genera <b>casi los mismos ingresos que Paid Social con 12.5× menos tráfico</b>. En AXXIS está en $0 (todo detenido). Es el canal pago que sí lleva lectores." }
-    ] }
-];
-
-const app = document.getElementById('app');
-const FILT = { axxis:'ax', diners:'di', ambas:'both' };
+const TIERS = {
+  1:["Nivel 1 · Esta semana","Decisiones y quick wins — se resuelven en la sala o en horas."],
+  2:["Nivel 2 · Próximas 2–4 semanas","Ejecución que requiere coordinación entre áreas."],
+  3:["Nivel 3 · Mes 2+","Nuevo o requiere implementación — se lanza por olas y cada formato se valida con su KPI o se mata."]
+};
 const HINT = {
-  axxis:"Acciones específicas de AXXIS. Su reto: tiene marca fuerte pero poco contenido que rankee — construir, no solo optimizar.",
-  diners:"Acciones específicas de Diners. Su reto: mucho tráfico y retención, pero casi cero marca — subir posiciones y firmar el contenido.",
-  ambas:"Trabajo transversal que aplica a las dos revistas por igual: medición, newsletter, meta-títulos y briefs de pauta."
+  axxis:"Lista completa AXXIS — 18 tareas. Su reto: marca fuerte pero poco contenido que rankee, y 79% del tráfico comprado durando 5 segundos.",
+  diners:"Lista completa Diners — 18 tareas. Su reto: tráfico y retención de sobra, pero casi cero marca — subir posiciones y firmar el contenido."
 };
 
-function count(tag){ return PLAN.reduce((n,o)=>n+o.acts.filter(a=>a.rev===tag).length,0); }
-document.getElementById('c-axxis').textContent='· '+count('ax');
-document.getElementById('c-diners').textContent='· '+count('di');
-document.getElementById('c-ambas').textContent='· '+count('both');
+const TASKS = {
+axxis:[
+ {id:"ax01",tier:1,t:"Definir el owner del Newsletter (HubSpot)",ow:"Decisión de reunión",oc:"ow-nl",
+  ev:"Es el canal de mayor calidad de la casa (<b>98s</b> de interacción, ER 54.67%) y hoy no tiene dueño. Sin owner, las tareas de newsletter de esta lista quedan huérfanas."},
+ {id:"ax02",tier:1,t:"Adoptar la regla de medición: engagement y tiempo, nunca vistas",ow:"Paola Gordillo",oc:"ow-cm",
+  ev:"Junio AXXIS: alcance +17.4% pero interacciones <b>−28.2%</b>, visitas al perfil −2.3%, seguidores −10.7%. Cuando sube el alcance y cae todo lo demás, es pauta inflando humo — la regla evita celebrarlo."},
+ {id:"ax03",tier:1,t:"Calendario IG: priorizar carrusel, dejar de forzar reels",ow:"Paola Gordillo",oc:"ow-cm",
+  ev:"El carrusel gana por <b>1.75 puntos</b> (4.94% vs 3.19%) y 3 de las 5 peores piezas del mes son reels. La audiencia de AXXIS premia el carrusel."},
+ {id:"ax04",tier:1,t:"Concentrar el calendario editorial en 'casa + naturaleza + memoria'",ow:"Mateo",oc:"ow-web",
+  ev:"Es el <b>62% del top real</b> de artículos leídos y el mismo patrón que gana en IG (Subachoque, El Arca, Memphremagog). No buscar temas nuevos — profundizar el que ya funciona."},
+ {id:"ax05",tier:1,t:"Reescribir meta-títulos de las páginas que rankean sin clic",ow:"Mateo + Juan David",oc:"ow-seo",
+  ev:"Torres del Parque: pos. 6.9, <b>1,418 impresiones, CTR 0.6%</b>. Plaza de toros: 930 a 1.3%. Living 127: 535 a 0.9%. Ya rankean — el clic se pierde en el título. Es el quick win de mayor retorno."},
+ {id:"ax06",tier:1,t:"Brief a Sebastián: reactivar Paid Search de AXXIS (hoy en $0)",ow:"Paola Nossa",oc:"ow-mkt",brief:true,
+  ev:"Todas las campañas de Google Ads están detenidas mientras el 79.3% del tráfico viene del canal que dura <b>5 segundos</b>. En Diners, Paid Search rinde 67.25% de interacción y genera casi los mismos ingresos que Paid Social con 12.5× menos tráfico. Reasignar presupuesto, no pedir nuevo."},
+ {id:"ax07",tier:1,t:"Ponerle fecha a 'Connect & Collab'",ow:"Paola Nossa",oc:"ow-mkt",
+  ev:"El formato B2B de leads calificados lleva meses sin cadencia. Es una decisión de calendario, no de producción: fijar la fecha del primer episodio en la sala."},
+
+ {id:"ax08",tier:2,t:"Auditoría técnica de la caída orgánica −25%",ow:"Juan David",oc:"ow-seo",
+  ev:"Core Web Vitals, indexación y velocidad móvil (88% del tráfico). A <b>0s</b> en CAM de Chía y 1s en Albornoz hay que descartar que la página no cargue antes de culpar a la segmentación de pauta."},
+ {id:"ax09",tier:2,t:"Enlazado interno + bloque de relacionados en los artículos top",ow:"Mateo",oc:"ow-web",
+  ev:"<b>1.20 páginas por sesión</b>: quien entra lee una página y se va. Empezar por las de mayor tráfico, que es donde más se pierde gente."},
+ {id:"ax10",tier:2,t:"Ficha técnica por proyecto (materiales, estudio, proveedores)",ow:"Mateo",oc:"ow-web",
+  ev:"La segunda página que hoy no existe — responde lo que la audiencia ya pregunta (insight AD Magazine) y es la base de 'Detrás del Plano' y 'El Producto del Mes' del portafolio."},
+ {id:"ax11",tier:2,t:"Stories con stickers + Destacados por eje + Broadcast Channel",ow:"Paola Gordillo",oc:"ow-cm",
+  ev:"Hoy se usa una fracción de Instagram. Broadcast Channel y Destacados organizados por eje son gratis y no están en uso."},
+ {id:"ax12",tier:2,t:"Newsletter AXXIS quincenal: 'Voz experta' + registro en las páginas que retienen",ow:"Owner por definir",oc:"ow-nl",
+  ev:"Un lector de email vale <b>20 sesiones de Paid Social</b> en tiempo de atención (98s vs 5s). El punto de registro va donde la gente se queda, no en la home."},
+ {id:"ax13",tier:2,t:"Lanzar 'Proyectos que Hablan' — episodio 1",ow:"Paola Nossa + Mateo",oc:"ow-mkt",
+  ev:"Ya tiene concepto, distribución (Spotify + cápsulas de 60s + transcripción en web) y KPI real (>10 min de escucha). Ejecutar, no rediseñar — es el formato del portafolio más cercano a estar listo."},
+
+ {id:"ax14",tier:3,t:"Construir contenido que rankee fuera de la marca",ow:"Mateo + Juan David",oc:"ow-web",
+  ev:"El orgánico de AXXIS vive del home: <b>994 clics, 49% del total</b>; la mejor página de contenido trae 127. Es trabajo continuo de profundidad en el tema ganador — no un sprint."},
+ {id:"ax15",tier:3,t:"Portafolio 2026 — ola 1: 'El Producto del Mes' + 'Cubrimiento AXXIS'",ow:"Paola Nossa",oc:"ow-mkt",
+  ev:"Reutilizan los formatos que ya dominan (carrusel 4.94% + stories) y monetizan con tarifa fija de exhibición y cobertura patrocinada. Cubrimiento selectivo: nada de eventos masivos tipo Vassar — <b>1.21% de ER</b>, el fondo de la cuenta."},
+ {id:"ax16",tier:3,t:"Portafolio — ola 2: 'Detrás del Plano' + 'Tour AXXIS' (video)",ow:"Paola Nossa",oc:"ow-mkt",
+  ev:"Requieren videógrafo y proceso nuevo. Regla de validación: el reel editorial de AXXIS rinde <b>3.19%</b> — estos videos se miden por su KPI real (clics a ficha técnica, retención de video), nunca por ER, y se matan si no validan en 2 meses."},
+ {id:"ax17",tier:3,t:"Portafolio — ola 3: vivos y eventos ('Conversando Con', 'AXXIS Invita', 'Conexión Virtual')",ow:"Paola Nossa",oc:"ow-mkt",
+  ev:"Los de mayor logística y mayor valor de datos (muro de registro, base de asistentes). AXXIS Invita es 100% experiencial — <b>cero página impresa</b>. Solo arrancan cuando las olas 1-2 tengan cadencia estable."},
+ {id:"ax18",tier:3,t:"Línea base de open rate y CTR del newsletter",ow:"Owner por definir",oc:"ow-nl",
+  ev:"Depende del cierre de la migración HubSpot. El primer envío post-migración define el baseline — hoy no hay dato."}
+],
+diners:[
+ {id:"di01",tier:1,t:"Definir el owner del Newsletter (HubSpot)",ow:"Decisión de reunión",oc:"ow-nl",
+  ev:"Es el canal de mayor calidad de la casa (email Diners: <b>127s</b> de interacción media) y hoy no tiene dueño. Sin owner, las tareas de newsletter de esta lista quedan huérfanas."},
+ {id:"di02",tier:1,t:"Adoptar la regla de medición: engagement y tiempo, nunca vistas",ow:"Paola Gordillo",oc:"ow-cm",
+  ev:"El dashboard coronó a Kristen Stewart #1 por vistas (103.5K) con <b>0.44%</b> de engagement; Manuela Álvarez tuvo menos vistas y <b>~11%</b>. Ordenar por vistas lleva a producir más de lo que no sirve."},
+ {id:"di03",tier:1,t:"Cortar el listicle genérico en IG y doblar 'Colombia reconocida en el mundo'",ow:"Paola Gordillo",oc:"ow-cm",
+  ev:"En IG el listicle es el <b>bottom de la cuenta</b> (4.80% vs 7.27% del resto). El tema que gana: Manuela Álvarez/Selección (1.8K shares), Jean Trinh/Bar World, 1921 Express. Michael Jackson probado como humo por 4 fuentes."},
+ {id:"di04",tier:1,t:"Sostener menos volumen, más tema ganador",ow:"Paola Gordillo",oc:"ow-cm",
+  ev:"Prueba dura de junio: Diners publicó <b>−22.5% y las interacciones subieron +38.9%</b>, con 80% de visualizaciones orgánicas. Es el caso de éxito de la casa — calidad sobre cantidad, sin pauta."},
+ {id:"di05",tier:1,t:"Firma editorial en los listicle",ow:"Simón",oc:"ow-web",
+  ev:"Solo <b>2 de 10 keywords</b> top son de marca. Autor visible con credencial, criterio de selección explícito y fecha de actualización — hoy son indistinguibles de un blog de turismo."},
+ {id:"di06",tier:1,t:"Puente interno: cada listicle enlaza a Zona D o Perfiles",ow:"Simón",oc:"ow-web",
+  ev:"El listicle ya retiene (termales <b>85s</b>): usar esa atención para llevar al lector a contenido de autoridad y convertir tráfico de paso en descubrimiento de marca."},
+ {id:"di07",tier:1,t:"Reescribir meta-títulos de las listicles (posición 4–6)",ow:"Simón + Juan David",oc:"ow-seo",
+  ev:"El sitio vive en posición media <b>5.9</b> con CTR 3.2%. Mientras sube la posición, el título es la palanca más barata para ganar el clic que hoy se fuga."},
+ {id:"di08",tier:1,t:"Briefs a Sebastián: mover la pauta de Cultura a Paid Search + subir Paid Search",ow:"Paola Nossa",oc:"ow-mkt",brief:true,
+  ev:"El molde ya existe: termales se pauta por <b>Search (85s)</b> y recibe 0 de Social; Kristen Stewart al revés, por Social muere en <b>0.6s</b>. Paid Search genera casi los mismos ingresos que Paid Social con <b>12.5× menos tráfico</b>."},
+
+ {id:"di09",tier:2,t:"Subir las 5 listicles grandes de posición 6 a 3",ow:"Simón + Juan David",oc:"ow-seo",
+  ev:"'Restaurantes a las afueras': <b>83,852 impresiones a pos. 6</b> y retiene 81s. Subir las 5 grandes a pos. 3 suma <b>~10,000 clics/mes gratis</b>, de la misma calidad. Vale más que escribir notas nuevas."},
+ {id:"di10",tier:2,t:"Crear las categorías 'Zona D' y 'Perfiles' en el sitio",ow:"Simón + Juan David",oc:"ow-seo",
+  ev:"Brecha de marca confirmada en junio: <b>17% en Diners vs 84% en AXXIS</b>. Google necesita estructura para leer la autoridad temática que el contenido ya tiene."},
+ {id:"di11",tier:2,t:"Publicar 6 o más reels en julio",ow:"Paola Gordillo",oc:"ow-cm",
+  ev:"Hoy no se puede declarar formato ganador: solo hubo 3 reels y uno era atípico (MAZ). Con 6+ se decide con muestra real, no con intuición."},
+ {id:"di12",tier:2,t:"Stories con stickers + Destacados por eje + Broadcast Channel",ow:"Paola Gordillo",oc:"ow-cm",
+  ev:"Hoy se usa una fracción de Instagram. Broadcast Channel y Destacados organizados por eje son gratis y no están en uso."},
+ {id:"di13",tier:2,t:"Página de suscripción replicando la estructura de AXXIS",ow:"Simón + Juan David",oc:"ow-seo",
+  ev:"En AXXIS /suscripciones/ rankea en <b>posición 1.4</b>; en Diners está invisible. Copiar la estructura que ya funciona."},
+ {id:"di14",tier:2,t:"Newsletter Diners semanal (viernes): 'Sabores' + 'Voz experta' + registro donde retiene",ow:"Owner por definir",oc:"ow-nl",
+  ev:"El registro va en termales y afueras (<b>81–85s</b>), no en la home. Reutiliza contenido ya publicado — curaduría, no producción nueva."},
+ {id:"di15",tier:2,t:"Lanzar 'La Mesa de Diners' (agosto)",ow:"Paola Nossa + Simón",oc:"ow-mkt",
+  ev:"Ya definido: 3 personalidades en conversación, distribución YouTube/Podcast/IG/TikTok. Alimenta el eje de autoridad (Zona D/Perfiles) — el más débil de Diners."},
+
+ {id:"di16",tier:3,t:"Activar el resto del inventario: 'Maridaje Sonoro' + reactivar 'Narración de exposiciones'",ow:"Paola Nossa",oc:"ow-mkt",
+  ev:"Diners tiene <b>9 formatos inventariados, 4 activos</b>. Activar los definidos antes de crear nada nuevo — ver tabla del inventario abajo."},
+ {id:"di17",tier:3,t:"Evaluar 'Recomendación de libros' en versión remota o estudio",ow:"Paola Nossa",oc:"ow-mkt",
+  ev:"Se descontinuó por logística de coordinación en librerías. La versión remota elimina esa fricción — evaluar con un piloto, no relanzar a ciegas."},
+ {id:"di18",tier:3,t:"Línea base de open rate y CTR del newsletter",ow:"Owner por definir",oc:"ow-nl",
+  ev:"Depende del cierre de la migración HubSpot. El primer envío post-migración define el baseline — hoy no hay dato."}
+]
+};
+
+const FMT_AX = {
+ title:"Portafolio Digital AXXIS 2026 — 9 formatos comerciales",
+ lead:"Mapa comercial completo (propuesto — se valida en esta reunión). KPIs reales, no de vanidad. Orden de lanzamiento: olas 1→3 según las tareas de arriba.",
+ head:["Formato comercial","Canal principal","Audiencia objetivo","KPI de éxito real","Monetización"],
+ rows:[
+  ["Proyectos que Hablan","Podcast / Spotify + Web","Arquitectos, diseñadores y clientes VIP","Tiempo medio de escucha (>10 min)","Patrocinio de temporada o cuñas nativas"],
+  ["Connect & Collab","Web + LinkedIn + YouTube","Marcas del sector y oficinas de diseño","Páginas vistas por sesión y leads B2B","Publirreportaje digital + leads calificados"],
+  ["Detrás del Plano","Reels / Instagram + Web","Estudiantes, profesionales y aficionados","Clics a la ficha técnica en web","Cobranding con constructoras y acabados"],
+  ["Tour AXXIS","YouTube / Reels + Web","Compradores de alta gama y aficionados","Retención de video y tiempo en web","Product placement de marcas de lujo"],
+  ["Conversando Con / Un Café…","IG Live / YouTube + Web","Comunidad general y profesionales","Interacciones reales (preguntas / guardados)","Patrocinio de segmento / marca aliada"],
+  ["El Producto del Mes","IG Carrusel + Newsletter + Web","Especificadores y compradores","CTR hacia la web y descargas de PDF","Tarifa fija de exhibición técnica (B2B)"],
+  ["Cubrimiento AXXIS","Stories / Web (especial)","Comunidad general","Tasa de interacción y CTR","Cobertura patrocinada por la feria/marca"],
+  ["AXXIS Invita","Evento físico + registro web","Suscriptores premium y clientes VIP","Asistencia y base de datos generada","Patrocinio de experiencia (cero impreso)"],
+  ["Conexión / Evento Virtual","Streaming (Web/YT)","Audiencia nacional e internacional","Asistentes en vivo y leads registrados","Patrocinio principal + registro de leads"]
+ ]
+};
+const FMT_DI = {
+ title:"Inventario de formatos Diners — estado actual",
+ lead:"9 formatos inventariados. La regla sigue: activar y reactivar antes de crear.",
+ head:["Formato","Estado","Canal","Oportunidad comercial"],
+ rows:[
+  ["Detrás de la barra",'<span class="st on">Activo · comercializado</span>',"Video · IG/YouTube","Licores — escalar a marcas premium"],
+  ["Los favoritos del chef",'<span class="st on">Activo · 1×/mes</span>',"Video corto · IG/TikTok","Restaurantes, reservas, marcas gastro"],
+  ["En la terraza",'<span class="st on">Activo</span>',"Video · IG/YouTube","Moda, cultura, lifestyle premium"],
+  ["Entrevistas por capítulos",'<span class="st on">Activo</span>',"Video segmentado · IG/TikTok","Integración según perfil del invitado"],
+  ["La Mesa de Diners",'<span class="st new">Lanza agosto</span>',"Podcast · YT/Spotify/IG","Lujo / vinos / automóviles"],
+  ["Maridaje Sonoro",'<span class="st new">Nuevo</span>',"Video estético · IG/YouTube","Licores y destilados premium"],
+  ["Narración de exposiciones",'<span class="st off">Intermitente — reactivar</span>',"Video documental · YT/IG","Patrocinador cultural (bancos, fundaciones)"],
+  ["Proyectos especiales",'<span class="st off">No recurrente</span>',"Transmedia","Sponsor principal multicanal"],
+  ["Recomendación de libros",'<span class="st off">Descontinuado — evaluar</span>',"Video · IG","Editoriales / librerías (versión remota)"]
+ ]
+};
+
+const app = document.getElementById('app');
+const CHK = new Set();
+
+function count(tab){ return TASKS[tab].length; }
+document.getElementById('c-axxis').textContent='· '+count('axxis');
+document.getElementById('c-diners').textContent='· '+count('diners');
+
+function fmtTable(F){
+  const head=F.head.map(h=>'<th>'+h+'</th>').join('');
+  const rows=F.rows.map(r=>'<tr><th>'+r[0]+'</th>'+r.slice(1).map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('');
+  return '<div class="fmtcard"><h3>'+F.title+'</h3><p class="lead">'+F.lead+'</p>'+
+    '<div style="overflow-x:auto"><table class="ftab"><thead><tr>'+head+'</tr></thead><tbody>'+rows+'</tbody></table></div></div>';
+}
 
 function render(tab){
-  const tag=FILT[tab];
-  document.getElementById('tabhint').textContent=HINT[tab];
+  document.getElementById('tabhint').textContent = HINT[tab];
   app.innerHTML='';
-  PLAN.forEach((o,oi)=>{
-    const items=o.acts.map((a,ai)=>({a,ai})).filter(x=>x.a.rev===tag);
+  let n=0;
+  [1,2,3].forEach(tier=>{
+    const items=TASKS[tab].filter(t=>t.tier===tier);
     if(!items.length) return;
-    const sec=document.createElement('div'); sec.className='owner';
-    const acts=items.map(({a,ai})=>{
-      const rev = a.rev==='ax'?'<span class="rev ax">AXXIS</span>':a.rev==='di'?'<span class="rev di">Diners</span>':'<span class="rev both">Ambas</span>';
-      const ev = a.brief ? '<div class="brief-box"><span class="tag">Brief a Sebastián · agencia</span><p class="ev" style="margin-top:4px">'+a.ev+'</p></div>' : '<p class="ev">'+a.ev+'</p>';
-      const done = CHK.has(oi+'-'+ai) ? ' done' : '';
-      const ar = CHK.has(oi+'-'+ai) ? 'true':'false';
-      return '<div class="act'+done+'" id="a'+oi+'-'+ai+'"><span class="chk'+done+'" role="checkbox" aria-checked="'+ar+'" tabindex="0" data-o="'+oi+'" data-a="'+ai+'"></span>'+
-        '<div class="body"><p class="title">'+a.t+rev+'</p>'+ev+'</div></div>';
+    const sec=document.createElement('div'); sec.className='tier';
+    let h='<div class="tier-head"><h2>'+TIERS[tier][0]+'</h2><span>'+TIERS[tier][1]+'</span></div>';
+    h+=items.map(t=>{
+      n++;
+      const done=CHK.has(t.id);
+      const ev = t.brief
+        ? '<div class="brief-box"><span class="tag">Brief a Sebastián · agencia</span><p class="ev" style="margin-top:4px">'+t.ev+'</p></div>'
+        : '<p class="ev">'+t.ev+'</p>';
+      return '<div class="act'+(done?' done':'')+'" id="row-'+t.id+'">'+
+        '<span class="chk'+(done?' done':'')+'" role="checkbox" aria-checked="'+done+'" tabindex="0" data-id="'+t.id+'"></span>'+
+        '<div class="body"><p class="title"><span class="num">'+n+'.</span>'+t.t+'<span class="ow '+t.oc+'">'+t.ow+'</span></p>'+ev+'</div></div>';
     }).join('');
-    sec.innerHTML='<div class="owner-head"><span class="bar" style="background:'+o.color+'"></span><h2>'+o.owner+'</h2><span class="who">'+o.who+'</span></div><div class="acts">'+acts+'</div>';
+    if(tier===3){ h += fmtTable(tab==='axxis'?FMT_AX:FMT_DI); }
+    sec.innerHTML=h;
     app.appendChild(sec);
   });
-  bindChecks();
+  bind();
 }
 
-const CHK=new Set();
 function toggle(el){
-  const key=el.dataset.o+'-'+el.dataset.a;
-  const done = CHK.has(key) ? (CHK.delete(key),false) : (CHK.add(key),true);
+  const id=el.dataset.id;
+  const done = CHK.has(id) ? (CHK.delete(id),false) : (CHK.add(id),true);
   el.classList.toggle('done',done);
   el.setAttribute('aria-checked',done);
-  document.getElementById('a'+key).classList.toggle('done',done);
+  document.getElementById('row-'+id).classList.toggle('done',done);
 }
-function bindChecks(){
+function bind(){
   document.querySelectorAll('.chk').forEach(c=>{
     c.addEventListener('click',()=>toggle(c));
     c.addEventListener('keydown',e=>{ if(e.key===' '||e.key==='Enter'){e.preventDefault();toggle(c);} });
