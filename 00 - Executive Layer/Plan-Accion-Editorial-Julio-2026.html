@@ -402,17 +402,19 @@ function render(tab){
     if(!items.length) return;
     const sec=document.createElement('div'); sec.className='tier';
     let h='<div class="tier-head" style="border-bottom-color:'+TYC[ty]+'"><span class="bar" style="display:inline-block;width:10px;height:10px;border-radius:2px;background:'+TYC[ty]+';margin-right:2px"></span><h2>'+label+'</h2><span>'+desc+'</span></div>';
-    h+=items.map(t=>{
-      const done=CHK.has(t.id);
-      const ev = t.brief
-        ? '<div class="brief-box"><p class="ev">'+t.ev+'</p></div>'
-        : '<p class="ev">'+t.ev+'</p>';
-      return '<div class="act'+(done?' done':'')+'" id="row-'+t.id+'">'+
-        '<span class="chk'+(done?' done':'')+'" role="checkbox" aria-checked="'+done+'" tabindex="0" data-id="'+t.id+'"></span>'+
-        '<div class="body"><p class="title">'+t.t+'<span class="ow '+t.oc+'">'+t.ow+'</span></p>'+ev+'</div></div>';
-    }).join('');
-    if(ty==='seo'){ h += kwCard(tab); }
     if(ty==='fmt'){ h += fmtTable(tab==='axxis'?FMT_AX:FMT_DI); }
+    if(ty!=='fmt'){
+      h+=items.map(t=>{
+        const done=CHK.has(t.id);
+        const ev = t.brief
+          ? '<div class="brief-box"><p class="ev">'+t.ev+'</p></div>'
+          : '<p class="ev">'+t.ev+'</p>';
+        return '<div class="act'+(done?' done':'')+'" id="row-'+t.id+'">'+
+          '<span class="chk'+(done?' done':'')+'" role="checkbox" aria-checked="'+done+'" tabindex="0" data-id="'+t.id+'"></span>'+
+          '<div class="body"><p class="title">'+t.t+'<span class="ow '+t.oc+'">'+t.ow+'</span></p>'+ev+'</div></div>';
+      }).join('');
+    }
+    if(ty==='seo'){ h += kwCard(tab); }
     sec.innerHTML=h;
     app.appendChild(sec);
   });
