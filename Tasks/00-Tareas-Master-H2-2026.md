@@ -496,6 +496,11 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🔴 `#1EG` **Estrategia contenidos sombrilla Ediciones Gamma — pauta Meta** · NS01 · Conversión
   Libros / colecciones específicas. Gamma como especialistas del sector: Arquitectura, Diseño y cultural. Carolina define; Ernesto produce.
 
+### Juan David — Infraestructura Analítica (AXXIS + Diners)
+
+- [ ] 🟢 `#47RE` **Ajustar ventana de 'sesión con interacción' en GA4 de 10s a 60s** · NS01 · Infraestructura
+  GA4 marca como interacción cualquier visita >10s por defecto — el mínimo posible, infla la métrica en sitios de lectura larga. Ajuste de configuración (no código): Admin → Flujos de datos → Configurar etiquetado de medición mejorada → Ajustes de sesión, subir a 60s en AXXIS y Diners. Documentar la fecha del cambio para no comparar meses pre/post ajuste con la misma vara.
+
 ### Jeison Montero (PM) — Cross-BU
 
 - [ ] 🟡 `#5EG` **Brand guidelines Ediciones Gamma — identidad sombrilla** · NS01 · Infraestructura
