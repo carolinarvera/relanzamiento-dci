@@ -164,12 +164,12 @@ const TY = {
   ax06:"sem",ax23:"sem",ax24:"sem",ax25:"sem",ax26:"sem",ax27:"sem",ax28:"sem",
   ax21:"pauta", ax22:"pauta", ax30:"pauta",
   ax02:"social",ax03:"social",ax11:"social",
-  ax12:"nl",ax18:"nl",ax31:"nl",
+  ax12:"nl",ax18:"nl",ax31:"nl",ax32:"nl",
   ax07:"fmt",ax13:"fmt",ax15:"fmt",ax16:"fmt",ax17:"fmt",
   di05:"seo",di06:"seo",di07:"seo",di09:"seo",di10:"seo",di13:"seo",di19:"seo",di20:"seo",di21:"seo",di23:"seo",
   di26:"pauta", di08:"pauta", di22:"pauta", di24:"pauta",
   di02:"social",di03:"social",di04:"social",di11:"social",di12:"social",
-  di01:"nl",di14:"nl",di18:"nl",di25:"nl",
+  di01:"nl",di14:"nl",di18:"nl",di25:"nl",di32:"nl",
   di15:"fmt",di16:"fmt",di17:"fmt"
 };
 const HINT = {
@@ -226,7 +226,7 @@ axxis:[
  {id:"ax14",tier:3,t:"Hub 'Arquitectos de Colombia' — primeros 5 perfiles",ow:"Mateo + Juan David",oc:"ow-web",
   ev:"El oro E-E-A-T de AXXIS: Google ya le da CTRs de <b>17–25%</b> en consultas de nombre — Ernesto Jiménez (20.8%, pos. 1.6), Guillermo Fischer (25%, pos. 2.6), Mauricio Zapata, Miguel Soto, Gregorio Cuartas. Una página profunda por arquitecto con schema Person, bio, obra y proyectos enlazados. Nadie más puede escribirlo con acceso directo, y alimenta 'Proyectos que Hablan'. Es la respuesta al problema de fondo: el home es el 49% de los clics y la mejor página de contenido trae 127."},
  {id:"ax15",tier:3,t:"Portafolio 2026 — ola 1: 'El Producto del Mes' + 'Cubrimiento AXXIS'",ow:"Paola Nossa",oc:"ow-mkt",
-  ev:"Reutilizan los formatos que ya dominan (carrusel 4.94% + stories) y monetizan con tarifa fija de exhibición y cobertura patrocinada. Cubrimiento selectivo: nada de eventos masivos tipo Vassar — <b>1.21% de ER</b>, el fondo de la cuenta."},
+  ev:"Reutilizan los formatos que ya dominan (carrusel 4.94% + stories) y monetizan con tarifa fija de exhibición y cobertura patrocinada. Cubrimiento selectivo: nada de eventos masivos tipo Vassar — <b>1.21% de ER</b>, el fondo de la cuenta.<br><br><b>Ejemplo de 'El Producto del Mes' con formato conversatorio:</b> 'El aluminio en las fachadas' — no ficha técnica plana, sino conversatorio corto con el especificador/proveedor sobre una mirada distinta del material (durabilidad, sostenibilidad, tendencia de diseño), recortado en cápsulas para carrusel + newsletter + web con PDF descargable. Da una plantilla replicable mes a mes: material → ángulo diferente → conversatorio → distribución en los 3 formatos que ya dominan."},
  {id:"ax16",tier:3,t:"Portafolio — ola 2: 'Detrás del Plano' + 'Tour AXXIS' (video)",ow:"Paola Nossa",oc:"ow-mkt",
   ev:"Requieren videógrafo y proceso nuevo. Regla de validación: el reel editorial de AXXIS rinde <b>3.19%</b> — estos videos se miden por su KPI real (clics a ficha técnica, retención de video), nunca por ER, y se matan si no validan en 2 meses."},
  {id:"ax17",tier:3,t:"Portafolio — ola 3: vivos y eventos ('Conversando Con', 'AXXIS Invita', 'Conexión Virtual')",ow:"Paola Nossa",oc:"ow-mkt",
@@ -235,6 +235,8 @@ axxis:[
   ev:"Depende del cierre de la migración HubSpot. El primer envío post-migración define el baseline — hoy no hay dato."},
  {id:"ax31",tier:3,t:"Test A/B de plantilla de contenido del newsletter",ow:"Juan David",oc:"ow-nl",
   ev:"Una vez exista la línea base (ax18): probar plantilla vs. plantilla — formato visual (imagen grande vs. varias pequeñas), longitud de resumen y orden de secciones. Medir por <b>CTR y tiempo de interacción del clic</b>, no por opens. Requiere volumen mínimo de envíos para ser válido — no correr antes del baseline."},
+ {id:"ax32",tier:2,t:"Activar notificaciones push en el navegador",ow:"Juan David",oc:"ow-nl",
+  ev:"Canal propio adicional, en paralelo al newsletter — captura al lector directo sin depender de email ni de algoritmo de redes. Implementación técnica sobre el sitio (permiso de suscripción push + integración con el CMS). Empezar enviando solo en publicación de contenido del cluster prioritario del mes (casa + naturaleza + memoria), no en cada nota, para no quemar la tasa de opt-in."},
  {id:"ax29",tier:2,t:"Embeber el video de IG dentro del artículo web relacionado",ow:"Mateo + Juan David",oc:"ow-web",
   ev:"Teoría a probar: el video alarga el tiempo de lectura — el lector se detiene a verlo antes de seguir bajando, lo que sube el tiempo de interacción y las páginas por sesión de la nota, no solo del reel. Empezar con los 3 artículos del cluster 'casa + naturaleza + memoria' (ax04) que ya tienen video propio en IG y no lo tienen embebido en el sitio. Medir tiempo en página antes/después como natural experiment."},
  {id:"ax19",tier:2,t:"Landing de categoría 'Revistas de arquitectura y diseño' enlazada a /suscripciones/",ow:"Juan David",oc:"ow-seo",
@@ -295,6 +297,8 @@ diners:[
   ev:"Depende del cierre de la migración HubSpot. El primer envío post-migración define el baseline — hoy no hay dato."},
  {id:"di25",tier:3,t:"Test A/B de plantilla de contenido del newsletter",ow:"Owner por definir",oc:"ow-nl",
   ev:"Una vez exista la línea base (di18): probar plantilla vs. plantilla — formato visual (imagen grande vs. varias pequeñas), longitud de resumen y orden de secciones ('Sabores' arriba vs. abajo). Medir por <b>CTR y tiempo de interacción del clic</b>, no por opens. Requiere volumen mínimo de envíos para ser válido — no correr antes del baseline."},
+ {id:"di32",tier:2,t:"Activar notificaciones push en el navegador",ow:"Juan David",oc:"ow-nl",
+  ev:"Canal propio adicional, en paralelo al newsletter — captura al lector directo sin depender de email ni de algoritmo de redes. Implementación técnica sobre el sitio (permiso de suscripción push + integración con el CMS). Empezar enviando solo en publicación de contenido del cluster prioritario del mes (termales, restaurantes a las afueras), no en cada nota, para no quemar la tasa de opt-in."},
  {id:"di23",tier:2,t:"Embeber el video de IG dentro del artículo web relacionado",ow:"Simón + Paola Gordillo",oc:"ow-web",
   ev:"Teoría a probar: el video alarga el tiempo de lectura — el lector se detiene a verlo antes de seguir bajando, lo que sube el tiempo de interacción y las páginas por sesión de la nota, no solo del reel. Empezar con el tema ganador de junio ('Colombia reconocida en el mundo', di03) que ya tiene video propio en IG y no lo tiene embebido en el sitio. Medir tiempo en página antes/después como natural experiment."}
 ]
