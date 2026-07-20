@@ -26,30 +26,46 @@ Basado en auditoría real a jun 30, 2026: GA4, GSC, auditoría RRSS, email Eloqu
 
 ---
 
-## 0. Diagnóstico consolidado — los 3 hallazgos que cambian todo
+## 0. Diagnóstico consolidado — los 4 hallazgos que cambian todo
 
-### Hallazgo 1: El tráfico viene casi exclusivamente de email. Google apenas pesa.
-| Canal | Sesiones jun 2026 | % del total |
-|---|---|---|
-| Email (Eloqua) | ~8,136 | 45.2% |
-| Google orgánico | ~4,176 | 23.2% |
-| Directo | ~2,610 | 14.5% |
-| Redes sociales | ~1,800 | ~10% |
-| Pauta (Performix) | estimado <5% | Parcialmente no atribuido |
-| **(not set) / sin atribución** | ~1,080 | **6% — principalmente pauta con UTMs rotos** |
+### Hallazgo 1: Social es el canal de adquisición. Email es el canal de retención. Son roles distintos.
 
-**Consecuencia:** El email está cargando solo el crecimiento. Si Eloqua falla o los suscriptores se van, el sitio colapsa. Google orgánico (23%) debería ser el canal dominante — hoy está 3x debajo de lo posible.
+| Canal | Sesiones | % sesiones | Usuarios nuevos | % nuevos | Sesiones/usuario nuevo |
+|---|---|---|---|---|---|
+| Organic Social | 15,427 | **35.5%** | 12,804 | **52.9%** | 1.2 — casi de una visita |
+| Email | 12,974 | **29.9%** | 3,047 | **12.6%** | **4.3 — usuarios que vuelven** |
+| Direct | 4,375 | 10.1% | 2,361 | 9.8% | 1.9 |
+| Organic Search | 4,336 | 9.9% | 1,463 | 6.0% | 3.0 |
+| Paid Search | 4,149 | 9.6% | 3,582 | 14.8% | 1.2 |
+| Unassigned | 1,223 | 2.8% | 455 | 1.9% | — |
+| AI Assistant | 59 | 0.1% | 42 | 0.2% | — |
 
-### Hallazgo 2: El sitio no invita a quedarse ni a seguir leyendo.
-- Páginas/sesión: **1.34** — casi nadie lee un segundo artículo
-- No existen botones "compartir" ni "leer más relacionados" en los artículos
-- OG tags incompletas: cuando alguien comparte un artículo en WhatsApp o X, no aparece imagen ni resumen
-- La sección con más tráfico (Para empezar el día, 130K sesiones/año) tiene **solo 6,327 suscriptores** — tasa de conversión implícita: 4.8%
+**Total sesiones: ~43,400 | Total usuarios nuevos: ~24,210**
 
-### Hallazgo 3: Los datos de contenido están ciegos.
-- **2,046,282 eventos GA4** con `article_id = (not set)` — el evento "informe de interés" dispara pero no pasa el parámetro del artículo. Nadie sabe qué artículos específicos generan más engagement.
-- **~6,013 sesiones** con source `(not set)` y 98% de rebote — tráfico de pauta (Performix) sin UTMs correctos entra como sin fuente.
-- Nombres de eventos de email en Eloqua incluyen números ("12.0 Cerrar", "8.0 Abrir") — imposible comparar campañas automáticamente.
+**Lectura:** Social trae nuevos usuarios que no vuelven (1.2 sesiones). Email fideliza: cada suscriptor genera 4.3 sesiones. Son dos máquinas distintas — optimizarlas con la misma métrica es un error. SEO orgánico (6% nuevos, 9.9% sesiones) es el canal con mayor potencial sin explotar.
+
+**Dato inesperado:** AI Assistant ya genera 59 sesiones y 42 usuarios nuevos — ChatGPT, Perplexity y Google AI Overviews ya están citando Visión. Hay que acelerar esa capa.
+
+### Hallazgo 2: La conversión a suscriptor es casi inexistente.
+- `form_start` total en el período: **64 eventos** — en un sitio con 43,400 sesiones
+- Tasa de inicio de formulario: **0.14%** — el CTA de suscripción no está siendo visto
+- `file_download`: 1 evento total — el contenido no está siendo descargado ni compartido
+- `click` trackeable: solo 143 — casi no hay navegación interna
+- La tabla de **eventos clave está vacía** — GA4 no tiene ninguna conversión configurada. La pauta (4,149 sesiones pagadas) es completamente ciega: nadie sabe si convierte
+
+### Hallazgo 3: La retención desde redes sociales es mínima.
+Análisis de cohorte (últimas 6 semanas):
+- Semana 0 (nuevos): ~5,000 usuarios/semana
+- Semana 1: ~100-200 (2-4% retención)
+- Semana 4: 40-84 (0.8-1.7%)
+
+Los usuarios de Social llegan una vez y no vuelven. El loop de fidelización está roto: llegan por un artículo compartido, leen, y no encuentran razón para quedarse (sin artículos relacionados, sin CTA de newsletter).
+
+### Hallazgo 4: Los datos de contenido están ciegos.
+- **2,046,282 eventos GA4** con `article_id = (not set)` — el evento dispara pero no pasa el parámetro del artículo. Nadie sabe qué artículos específicos generan más engagement.
+- **UTMs de pauta rotos** (1,223 sesiones Unassigned) — presupuesto de Paid Search invisible en GA4.
+- Nombres de eventos Eloqua con números ("12.0 Cerrar") — imposible comparar campañas.
+- **Página no encontrada: 151 vistas** — hay links rotos o páginas movidas sin redirect.
 
 ---
 
@@ -60,10 +76,12 @@ Ninguna optimización de pauta, contenido ni SEO tiene sentido hasta resolver es
 | # | Acción | Owner | Por qué |
 |---|---|---|---|
 | 1 | **Leo/Brace:** pasar `informe_id` y `article_title` como parámetro en el evento GA4 "informe_de_interes" | Leo (Brace CMS) | Sin esto, 2M+ events son inútiles — no sabemos qué contenido genera interés |
-| 2 | **Performix/Jeison:** estandarizar UTMs de pauta — `utm_source=performix&utm_medium=paid_social&utm_campaign=[nombre]` en todos los creativos | Jeison + Alejandro Bojacá | $9.9M de presupuesto sin atribución válida = decisión ciega de inversión |
-| 3 | **Estefanía/Eloqua:** renombrar eventos de email: "Apertura_Informe_[nombre]", "Clic_CTA_[nombre]" — sin números | Estefanía | Actual "12.0 Cerrar" no es comparable entre campañas |
+| 2 | **Leo/Brace:** configurar eventos clave (conversiones) en GA4 — mínimo: `form_start`, `form_submit` (suscripción), `EventosVision` | Leo (Brace CMS) | La tabla de eventos clave está vacía — 4,149 sesiones de pauta pagada sin saber si convierten |
+| 3 | **Performix/Jeison:** estandarizar UTMs — `utm_source=performix&utm_medium=paid_social&utm_campaign=[nombre]` en todos los creativos | Jeison + Alejandro Bojacá | Presupuesto de pauta invisible en GA4 (Unassigned = 1,223 sesiones) |
+| 4 | **Leo:** redirigir (301) las páginas con "Página no encontrada" (151 vistas) — auditar con GSC Coverage report | Leo (Brace CMS) | Links rotos dañan SEO y experiencia del usuario |
+| 5 | **Estefanía/Eloqua:** renombrar eventos de email: "Apertura_Informe_[nombre]", "Clic_CTA_[nombre]" — sin números | Estefanía | Actual "12.0 Cerrar" no es comparable entre campañas |
 
-**Checkpoint:** Carolina verifica con Jeison que los 3 fixes están en producción antes de liberar Fase 1.
+**Checkpoint:** Carolina verifica con Jeison que los 5 fixes están en producción antes de liberar Fase 1.
 
 ---
 
@@ -256,34 +274,38 @@ La sección con más tráfico (Para empezar el día) tiene 130K sesiones y solo 
 ## KPIs consolidados — qué medimos y cuándo
 
 ### Canal Sitio Web (north star: tráfico)
-| Métrica | Baseline (jun 2026) | Meta jul | Meta dic |
-|---|---|---|---|
-| Sesiones totales/mes | ~18,000 | 22,000 | 45,000 |
-| Sesiones orgánicas Google/mes | ~4,176 | 6,000 | 15,000 |
-| Páginas/sesión | 1.34 | 1.7 | 2.5 |
-| CTR medio GSC | 1.5% | 2% | 3% |
-| Páginas indexadas | 2,676 | 3,500 | 7,000 |
+| Métrica | Baseline (panorámico jul 2026) | Meta dic |
+|---|---|---|
+| Sesiones totales/mes | ~43,400 | 70,000 |
+| Sesiones orgánicas Google/mes | ~4,336 | 15,000 |
+| Sesiones desde Social/mes | ~15,427 | 20,000 |
+| Sesiones desde Email/mes | ~12,974 | 18,000 |
+| CTR medio GSC | 1.5% | 3% |
+| Páginas indexadas | 2,676 | 7,000 |
+| Páginas no encontradas | 151 vistas | 0 |
 
 ### Canal Email
 | Métrica | Baseline | Meta |
 |---|---|---|
 | CTOR | 2.5% | 5% |
 | Open rate | 61% | Mantener >55% |
-| Sesiones desde email/mes | ~8,136 | 10,000 |
+| Sesiones/usuario email | 4.3 (retención fuerte) | Mantener >4.0 |
+| Sesiones desde email/mes | ~12,974 | 18,000 |
 
 ### Canal Social
-| Métrica | Baseline | Meta jul | Meta dic |
-|---|---|---|---|
-| Sesiones desde RRSS/mes | ~1,800 | 2,500 | 5,000 |
-| Guardados IG | ~39 | 60 | 150 |
-| Impresiones X (hilo semanal) | 0 (sin estrategia) | 10,000 | 40,000 |
-| Videos YouTube con link sitio | 0/77 | 40/77 | 77/77 |
+| Métrica | Baseline | Meta dic |
+|---|---|---|
+| Sesiones desde Social/mes | 15,427 | 20,000 |
+| Sesiones/usuario nuevo desde social | 1.2 (una sola visita) | 1.8 (conversión a suscriptor) |
+| Videos YouTube con link sitio | 0/77 | 77/77 |
 
-### Canal Suscripción (conversión)
+### Canal Suscripción (conversión — el más roto)
 | Métrica | Baseline | Meta |
 |---|---|---|
-| Suscriptores nuevos/mes | Desconocido (dato GA4 roto) | 500/mes |
-| Tasa conversión visita→suscriptor | 4.8% implícita (PPED) | 8% |
+| form_start eventos/mes | **64** en ~43K sesiones | 2,000/mes |
+| Tasa form_start/sesión | **0.14%** | 5% |
+| Eventos clave configurados en GA4 | **0** (tabla vacía) | Mínimo 3 |
+| AI Assistant sesiones | 59 | 500 |
 
 ### Señales de alerta
 - CTOR email < 3% por 4 semanas consecutivas → revisar asuntos y formato
