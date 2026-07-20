@@ -125,22 +125,49 @@ Ninguna de estas tiene un título en SERP que invite a hacer clic — están ah�
 
 **Dato inesperado:** "inflacion el salvador 2025" e "inflacion de el salvador 2025" → posición #1. Visión tiene presencia orgánica internacional (Centroamérica) sin haberla buscado. Confirma la fortaleza editorial — los analistas generan EEAT natural.
 
-#### Oportunidades CTR — artículos con títulos a reescribir (prioridad inmediata)
+#### Oportunidades CTR — artículos con títulos a reescribir (prioridad por impacto)
 
-| URL (fragmento) | Impresiones | CTR actual | CTR meta | Clics adicionales/mes |
-|---|---|---|---|---|
-| déficit-fiscal-colombia-2026 | **26,183** | 0.15% | 3% | **+733** |
-| Colombia-2025-crecimiento-inflacion | **14,268** | 0.4% | 2% | +228 |
-| marco-fiscal-mediano-plazo-2026 | 10,026 | 1.12% | 3% | +188 |
-| dividendos-ecopetrol-2026 | 9,055 | 0.96% | 3% | +185 |
-| gobierno-meta-deficit-fiscal-junio | 6,083 | 1.05% | 3% | +122 |
-| **Total potencial** | | | | **+1,456 clics/mes** |
+Ranking actualizado con datos CSV completo de GSC (19-jul-2026):
 
-Título ejemplo antes/después:
-- Antes: `"Déficit Fiscal Colombia 2026 - Meta 5.1% PIB"` (genérico, sin gancho)
-- Después: `"¿A cuánto llegará el déficit fiscal de Colombia en 2026? Meta del gobierno: 5.1% del PIB"` (pregunta + dato + fuente)
+| # | URL (fragmento) | Query principal | Impresiones | CTR actual | CTR meta | Clics ganados |
+|---|---|---|---|---|---|---|
+| 1 | inflacion-en-colombia-2025 | "inflacion en colombia 2025" | **1,390** | **0.07%** | 3% | **+41** directos pero es el peor rendimiento del sitio |
+| 2 | déficit-fiscal-colombia-2026 | "deficit fiscal colombia 2026" | **686 + 450** | 1.3-1.8% | 5% | **+55** (400x más impresiones en GSC completo: 26,183) |
+| 3 | dividendos-ecopetrol-2026 | "dividendos ecopetrol 2026" | **673** | 1.49% | 8% | **+44** |
+| 4 | Colombia-2025-crecimiento-inflacion | varias | estimado 14,268 | 0.4% | 2% | +228 |
+| 5 | marco-fiscal-mediano-plazo-2026 | "marco fiscal de mediano plazo 2026" | 450 en CSV / 10,026 GSC | 6.9% en CSV | mejorar | — |
 
-**Regla para todos los títulos:** keyword principal en las primeras 3 palabras + número concreto o fecha + promesa de lo que aprenderás.
+**Nota sobre la discrepancia de datos:** Los números de impresiones del CSV de consultas son menores que los de la vista de páginas en GSC — es normal, porque una página puede rankear para miles de consultas y el CSV solo muestra las principales. El artículo de déficit fiscal aparece con 26,183 impresiones vía páginas pero la consulta "deficit fiscal colombia 2026" específica tiene 686 imp en el CSV de queries.
+
+**Caso más urgente: "inflacion en colombia 2025" = 1,390 impresiones, 0.07% CTR**
+
+Este artículo rankea para una de las búsquedas más frecuentes del sitio pero no convierte. Diagnóstico probable: el título es genérico o usa el del homepage (bug C2). Acción: reescribir como `"Inflación en Colombia 2025: ¿cuánto subieron los precios? Datos BanRep"`.
+
+**Título ejemplo — déficit fiscal antes/después:**
+- Antes: `"Déficit Fiscal Colombia 2026 - Meta 5.1% PIB"` (genérico)
+- Después: `"Déficit fiscal Colombia 2026: el gobierno sube la meta a 5.1% del PIB — ¿qué significa?"` (número + pregunta + implicación)
+
+**Regla para todos los títulos:** keyword principal en las primeras 3 palabras + número concreto o fecha + promesa explícita.
+
+#### Hallazgo de ruido: queries de conversión y operadores en GSC — señal de alerta de autoridad temática
+
+El CSV contiene queries como "3500 cop", "29*3600", "3800 usd to cop", "25000 pesos chilenos a colombianos", y queries con operadores de investigación de medios (`""banco de occidente"" -site:reddit.com...`). Esto significa:
+
+1. **Google piensa que Visión es relevante para conversión de moneda** — porque los artículos mencionan cifras en pesos sin contexto suficiente para distinguirlos de una calculadora
+2. **Herramientas de media intelligence** están scrappeando Google con Visión en los resultados — señal de presencia pero ruido en GSC
+
+Impacto: diluye la señal de especialización temática. Google no puede construir un perfil limpio de "sitio de análisis económico" si también rankea para conversiones de moneda.
+
+**Acción (Leo):** Verificar si hay páginas con tablas de tipos de cambio o convertidores implícitos. Si existen, agregar canonical o noindex a esas páginas. Si no existen, el problema es que artículos mencionan precios y números sin suficiente contexto editorial — los analistas deben escribir "el tipo de cambio USD/COP fue de $3,500" (con contexto) en lugar de solo "3,500".
+
+#### Confusión de marca: "davivienda es grupo aval" — necesita corrección editorial
+
+| Query | Impresiones | CTR | Posición |
+|---|---|---|---|
+| davivienda es grupo aval | 135 | 0.7% | 7.3 |
+| davivienda pertenece al grupo aval | 177 | 0.6% | 9.2 |
+
+312 personas por mes buscan si Davivienda es Grupo Aval (es Grupo Bolívar). Visión aparece sin dar la respuesta correcta con claridad. Los artículos que rankean para estas queries deben incluir una oración explícita: "Davivienda es parte del Grupo Bolívar, no del Grupo Aval."
 
 #### Páginas con CTR alto pero pocas impresiones (expandir con contenido)
 
@@ -155,16 +182,24 @@ Título ejemplo antes/después:
 
 #### Cluster de dividendos — el nicho más fuerte de Visión en orgánico
 
-Visión domina las búsquedas de dividendos en Colombia. Todos estos queries convierten bien (CTR 7-28%):
+Visión domina las búsquedas de dividendos en Colombia. Datos exactos del CSV de consultas GSC:
 
-| Query | Clics | CTR | Posición |
-|---|---|---|---|
-| dividendos 2026 colombia | 2 | 14.29% | 2.64 |
-| fecha dividendos ecopetrol 2026 | 2 | 28.57% | 3.29 |
-| dividendos bvc 2026 | 2 | 25% | 7.38 |
-| dividendos 2026 | 2 | 9.09% | 3.68 |
-| calendario dividendos colombia 2026 | 88 | 13.33% | 4.24 |
-| dividendos de ecopetrol 2026 | 2 | 2.17% | 3.6 |
+| Query | Clics | Impresiones | CTR | Posición |
+|---|---|---|---|---|
+| calendario dividendos colombia 2026 | 13 | 53 | **24.5%** | 2.49 |
+| calendario dividendos 2026 colombia | 9 | 33 | **27.3%** | 2.61 |
+| dividendos colombia 2026 | 6 | 27 | **22.2%** | 3.19 |
+| dividendos 2026 colombia | 2 | 14 | **14.3%** | 2.64 |
+| fecha dividendos ecopetrol 2026 | 2 | 7 | **28.6%** | 3.29 |
+| dividendos bvc 2026 | 2 | 8 | **25%** | 7.38 |
+| dividendos 2026 | 2 | 22 | 9.1% | 3.68 |
+| dividendos ecopetrol 2026 | 10 | 673 | **1.49%** | 4.26 |
+| pago dividendos ecopetrol 2026 | 4 | 224 | 1.79% | 4.67 |
+| cuando pagan los dividendos de ecopetrol 2026 | 2 | 62 | 3.23% | 2.68 |
+
+**Lectura clave:** Las queries con formato "calendario dividendos" tienen 22-28% CTR (excelente). Las queries de Ecopetrol específico tienen 1.5-3% CTR — el mismo tema pero el formato de artículo no convierte. El hub consolidado resuelve ambos.
+
+**"vision davivienda corredores" = 14 clics, pos 1.08** — dato nuevo del CSV: hay usuarios que buscan específicamente "vision davivienda corredores" como sub-marca. La página `/en-que-invertir/davivienda-corredores` propuesta abajo captura este query además del referral.
 
 **Acción:** Crear un hub de dividendos — página consolidada actualizada mensualmente con todos los pagos de dividendos del año (Ecopetrol, Grupo Sura, Bancolombia, etc.) con fechas ex-dividendo, fechas de pago y monto por acción. Este hub puede capturar el 80% de estas búsquedas desde una sola URL.
 
