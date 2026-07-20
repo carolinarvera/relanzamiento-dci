@@ -1,7 +1,7 @@
 ---
 date: 2026-07-19
 type: funnel-vs
-tags: [vs01, vision-davivienda, funnel, trafico, suscriptores, newsletter, eloqua]
+tags: [vs01, vision-davivienda, funnel, trafico, suscriptores, newsletter, braze]
 related-people: [natalia-otalora, carolina-ramirez, estefania-ochoa, jeison-montero, leo-brace]
 related-projects: [vision-davivienda]
 sources: [Vision_Estrategia_Digital_360_2026]
@@ -10,12 +10,12 @@ confidence: high
 ---
 
 ## For future Claude
-VS01 para Visión Davivienda: funnel principal de tráfico + suscripción al newsletter. North Star dividido en 2 objetivos: (1) 90% del esfuerzo → llevar tráfico al sitio, (2) 10% del esfuerzo → convertir visitantes en suscriptores Eloqua. Email es el canal #1 de tráfico hoy (45.2%). Google orgánico (23%) tiene el mayor potencial de crecimiento. Problema central: 1.34 páginas/sesión — casi nadie lee un segundo artículo. Creado 2026-07-19.
+VS01 para Visión Davivienda: funnel principal de tráfico + suscripción al newsletter. North Star: (1) 90% → tráfico al sitio, (2) 10% → suscriptores Braze. Canal #1 por sesiones = Organic Social (35.5%, 15,427 sesiones) pero con engagement 0-3s y 80-85% rebote porque las campañas AON aterrizan en categorías genéricas. Email/Braze = canal #1 por calidad (4.3 sesiones/usuario, 45s-1:33 engagement). SEO orgánico (9.9%) = mayor potencial sin explotar. Baseline: 43,400 sesiones/mes. form_start: 64 eventos = suscripción casi invisible. Creado 2026-07-19, actualizado con datos de campañas 2026-07-19.
 
 ---
 
 # VS01 — Funnel Tráfico + Suscriptores (OBJ1 + OBJ2)
-**Fecha:** 2026-07-19 | **Owner:** Carolina Ramirez + Natalia Otálora | **Plataforma email:** Eloqua
+**Fecha:** 2026-07-19 | **Owner:** Carolina Ramirez + Natalia Otálora | **Plataforma email:** Braze (Estefanía Ochoa)
 
 ---
 
@@ -23,8 +23,8 @@ VS01 para Visión Davivienda: funnel principal de tráfico + suscripción al new
 
 | Objetivo | Métrica | Baseline jun 2026 | Meta dic 2026 |
 |---|---|---|---|
-| OBJ1: Tráfico | Sesiones/mes | ~18,000 | 45,000 |
-| OBJ2: Suscripción | Suscriptores nuevos/mes | Desconocido (dato roto) | 500/mes |
+| OBJ1: Tráfico | Sesiones/mes | **~43,400** (jul 2026) | 70,000 |
+| OBJ2: Suscripción | form_start/mes | **64** (dato roto — CTA inexistente) | 500 suscriptores nuevos/mes |
 
 ---
 
@@ -41,13 +41,32 @@ VS01 para Visión Davivienda: funnel principal de tráfico + suscripción al new
 
 **Objetivo:** que el usuario encuentre Visión antes que a la competencia, en el canal correcto.
 
-### Canal Email — #1 hoy (45.2% sesiones)
+### Canal Social (FB/AON) — #1 por volumen (35.5%), pero calidad cero
+
+**El problema de fondo:** Las campañas AON de Facebook (2-AON-VISION_CSD y 4-AON-VISION_CSD) generan 15,000+ sesiones, pero aterrizan en páginas de categoría genéricas.
+
+| Campaña | Sesiones | Engagement | Rebote | Landing page actual | Landing page correcto |
+|---|---|---|---|---|---|
+| 2-AON-VISION_CSD / FB Social | 13,643 | **0-1s** | **80-85%** | `/`, `/estar-actualizado` | Artículo específico |
+| 4-AON-VISION_CSD / FB Social | 1,381 | **2-3s** | **77-81%** | `/macroeconomia`, `/estar-actualizado` | Artículo específico |
+
+Fix inmediato: cambiar landing page de cada pauta a artículo publicado en las últimas 48h. Sin cambio de presupuesto.
+
+### Canal Email/Braze — #1 por calidad (4.3 sesiones/usuario nuevo)
 | Acción | Estado | Gap |
 |---|---|---|
 | Email de informe (trigger 1-2h post-publicación) | ⚠️ Existe, sin A/B | Sin test de asunto; CTOR 2.5% vs meta 5% |
 | Email semanal (martes 8AM) | ❌ No existe | Canal sin activar — mayor oportunidad inmediata |
 | A/B test de asunto en cada envío | ❌ No existe | Sin esto, no mejora el open rate ni el CTOR |
-| UTMs estándar en todos los links del email | ⚠️ Parcial | Nombres de eventos con números ("12.0 Cerrar") — ilegibles |
+| Naming de campañas actualizado | ❌ Obsoleto | Código "20250828" activo desde ago 2025 — inútil para comparación |
+
+**Dato de campaña (GA4 exploración):**
+| Tipo email | Rebote | Engagement | Acción |
+|---|---|---|---|
+| Para empezar el día | **40-43%** | 38s-1:19 | Ampliar frecuencia — el mejor formato |
+| Boletin quincenal (3189_IEC) | **37-55%** | 57s-1:33 | Escalar — mayor engagement del sitio |
+| Expectativa semanal | 57-63% | 54-59s | Mantener |
+| Visión macro / Seguimiento BanRep | 43-72% | 32s-1:02 | Variable — optimizar asunto |
 
 ### Canal Google Orgánico — #2 hoy (23.2%), mayor potencial
 | Acción | Estado | Gap |
@@ -98,7 +117,7 @@ VS01 para Visión Davivienda: funnel principal de tráfico + suscripción al new
 
 ## ETAPA 3 — CONVERSIÓN (BOFU)
 
-**Objetivo:** convertir visitante en suscriptor del newsletter Eloqua.
+**Objetivo:** convertir visitante en suscriptor del newsletter Braze.
 
 ### Formulario de suscripción
 | Elemento | Estado | Gap |
@@ -122,7 +141,7 @@ El CTA debe prometer algo concreto:
 | Acción | Owner | Estado |
 |---|---|---|
 | Email semanal de curación (martes 8AM) | Estefanía | ❌ No existe |
-| Segmentación por interés (macro / empresas / mercados / Centroamérica) | Estefanía + Eloqua | ❌ No segmentado |
+| Segmentación por interés (macro / empresas / mercados / Centroamérica) | Estefanía + Braze | ❌ No segmentado |
 | Módulo "Dato de la semana" fijo en cada email | Estefanía | ❌ No existe |
 | Limpieza de lista inactivos >180 días | Estefanía | ❌ No realizada (afecta deliverability) |
 | Re-engagement de inactivos 90-180 días | Estefanía | ❌ No existe |
@@ -173,4 +192,4 @@ El CTA debe prometer algo concreto:
 ## Relacionado
 [[Vision_Estrategia_Digital_360_2026]] · [[Vision_EstrategiaSEO_CRO_2026-06]] · [[Vision_EstrategiaEmail_2026-06]] · [[Vision Dashboard Estratégico]]
 
-#vision-davivienda #vs01 #funnel #trafico #suscriptores #newsletter #eloqua
+#vision-davivienda #vs01 #funnel #trafico #suscriptores #newsletter #braze

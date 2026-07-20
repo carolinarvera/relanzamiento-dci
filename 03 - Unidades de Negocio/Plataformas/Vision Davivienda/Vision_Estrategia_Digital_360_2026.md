@@ -22,7 +22,7 @@ confidence: high
 # Estrategia Digital 360 — Visión Davivienda
 **Tráfico al sitio (90%) + Suscriptores newsletter (10%)**
 
-Basado en auditoría real a jun 30, 2026: GA4, GSC, auditoría RRSS, email Eloqua, pauta Performix/Starcom. No es un plan genérico — cada acción está anclada a un número real.
+Basado en auditoría real a jun 30, 2026: GA4, GSC, auditoría RRSS, email Braze, pauta Performix/Starcom. No es un plan genérico — cada acción está anclada a un número real.
 
 ---
 
@@ -64,7 +64,7 @@ Los usuarios de Social llegan una vez y no vuelven. El loop de fidelización est
 ### Hallazgo 4: Los datos de contenido están ciegos.
 - **2,046,282 eventos GA4** con `article_id = (not set)` — el evento dispara pero no pasa el parámetro del artículo. Nadie sabe qué artículos específicos generan más engagement.
 - **UTMs de pauta rotos** (1,223 sesiones Unassigned) — presupuesto de Paid Search invisible en GA4.
-- Nombres de eventos Eloqua con números ("12.0 Cerrar") — imposible comparar campañas.
+- Nombres de eventos Braze con números ("12.0 Cerrar") — imposible comparar campañas. Naming de campañas usa código "20250828" (agosto 2025) — no actualizado en casi un año.
 - **Página no encontrada: 151 vistas** — hay links rotos o páginas movidas sin redirect.
 
 ---
@@ -79,7 +79,7 @@ Ninguna optimización de pauta, contenido ni SEO tiene sentido hasta resolver es
 | 2 | **Leo/Brace:** configurar eventos clave (conversiones) en GA4 — mínimo: `form_start`, `form_submit` (suscripción), `EventosVision` | Leo (Brace CMS) | La tabla de eventos clave está vacía — 4,149 sesiones de pauta pagada sin saber si convierten |
 | 3 | **Performix/Jeison:** estandarizar UTMs — `utm_source=performix&utm_medium=paid_social&utm_campaign=[nombre]` en todos los creativos | Jeison + Alejandro Bojacá | Presupuesto de pauta invisible en GA4 (Unassigned = 1,223 sesiones) |
 | 4 | **Leo:** redirigir (301) las páginas con "Página no encontrada" (151 vistas) — auditar con GSC Coverage report | Leo (Brace CMS) | Links rotos dañan SEO y experiencia del usuario |
-| 5 | **Estefanía/Eloqua:** renombrar eventos de email: "Apertura_Informe_[nombre]", "Clic_CTA_[nombre]" — sin números | Estefanía | Actual "12.0 Cerrar" no es comparable entre campañas |
+| 5 | **Estefanía/Braze:** renombrar campañas y eventos de email con fecha actual: "[YYYYMMDD]_[tipo]_[tema]" — eliminar código "20250828" que lleva activo desde ago 2025 | Estefanía | Sin naming correcto no hay comparación cross-campaign |
 
 **Checkpoint:** Carolina verifica con Jeison que los 5 fixes están en producción antes de liberar Fase 1.
 
@@ -138,7 +138,7 @@ ChatGPT, Perplexity y Google AI Overviews ya responden preguntas de economía co
 
 ---
 
-### Canal 2: Email (Eloqua)
+### Canal 2: Email (Braze)
 **Owner: Estefanía Ochoa | 135,000 suscriptores activos | Open rate: 61% | CTOR: 2.5%**
 
 #### El diagnóstico
@@ -168,7 +168,7 @@ ChatGPT, Perplexity y Google AI Overviews ya responden preguntas de economía co
 | Segmentar por sector de interés (macro, acciones, renta fija) | +0.5-1 punto CTOR para segmentos relevantes |
 | Limpiar lista: desuscribir inactivos >180 días | Mejora deliverability, métricas más reales |
 
-**Acción esta semana:** Medir CTR de los últimos 3 emails en Eloqua por tipo de contenido (macro vs empresas vs mercados) y reportar a Carolina.
+**Acción esta semana:** Medir CTR de los últimos 3 emails en Braze por tipo de contenido (macro vs empresas vs mercados) y reportar a Carolina. Confirmar naming vigente de campañas.
 
 ---
 
@@ -222,34 +222,79 @@ ChatGPT, Perplexity y Google AI Overviews ya responden preguntas de economía co
 ### Canal 4: Pauta (Performix / Starcom)
 **Owner: Alejandro Bojacá (Performix) | Coordinación: Natalia Otálora + Jeison**
 
-#### El diagnóstico de pauta
-De $27M de presupuesto total, $9.9M gastados en objetivos que no alimentan el norte estratégico:
-- Campañas con objetivo "interacción" → generan likes, no tráfico
-- Campañas con objetivo "visitas al perfil" → llevan a IG, no al sitio
-- Campañas con objetivo "lead gen" → suscriptores a formulario de IG, no al newsletter de Eloqua
+#### El diagnóstico real (datos GA4 — sesiones por campaña)
 
-#### Acciones correctivas
+Los AON de Facebook son el peor tráfico de todo el sitio — peor que bots:
 
-| Acción | Detalle |
-|---|---|
-| Redirigir 100% de pauta paid social hacia objetivo "tráfico al sitio" | Clic debe llegar a artículo específico en vision.davivianda.com — no a homepage |
-| Eliminar campañas de "interacción" y "visitas al perfil" | No alimentan ninguno de los 2 objetivos estratégicos |
-| Implementar UTMs en todos los creativos (ver Fase 0) | Sin UTMs, el presupuesto es invisible en GA4 |
-| Pauta solo se activa sobre artículos publicados | Primero el artículo, luego el paid — nunca al revés |
-| Meta de pauta: CPV ≤ $350 COP | Actual: $395 COP — revisar segmentación de audiencia |
+| Campaña | Sesiones | Tiempo engagement | Rebote | Landing page |
+|---|---|---|---|---|
+| 2-AON-VISION_CSD / FB Social | 8,955 + 4,427 + 261 = **13,643** | **0-1 segundo** | **80-85%** | `/`, `/estar-actualizado`, `/monedas` |
+| 4-AON-VISION_CSD / FB Social | 793 + 588 = **1,381** | **2-3 segundos** | **77-81%** | `/macroeconomia`, `/estar-actualizado` |
+| **Total FB Social AON** | **~15,024 sesiones** | **<3s** | **~83%** | Páginas de categoría genéricas |
+
+Comparado con Google CPC (misma campaña AON, distinto canal):
+
+| Landing page CPC | Sesiones | Tiempo | Rebote |
+|---|---|---|---|
+| /en-que-invertir (categoría) | 2,561 | 14s | 42.9% |
+| /en-que-invertir/renta-fija | 335 | 28s | **0%** |
+| /en-que-invertir/acciones | 260 | 28s | **0%** |
+| /en-que-invertir/monedas | 147 | 18s | **0%** |
+
+**Diagnóstico:** El problema no es el canal de Facebook — es que las campañas AON mandan tráfico a categorías genéricas (`/`, `/estar-actualizado`) sin contenido específico. Un usuario que llega a `/macroeconomia` no sabe qué leer y rebota en 2 segundos. Google CPC funciona donde llega a subcategorías con artículos visibles.
+
+#### Acciones correctivas — pauta
+
+| # | Acción | Detalle | Impacto |
+|---|---|---|---|
+| 1 | **Cambiar landing pages de todos los AON de Facebook** | Nunca a `/` ni categorías genéricas — siempre a artículo específico publicado en las últimas 48h | Es el fix más importante; elimina el rebote de 83% sin cambiar el presupuesto |
+| 2 | **Pauta FB solo sobre artículo específico** | El creativo lleva la imagen del artículo, el CTA lleva al artículo — no a la home | Reduce rebote de 83% a proyección 50-60% |
+| 3 | **Corregir /en-que-invertir (categoría)** de CPC | 2,561 sesiones con 42.9% rebote — cambiar a subcategoría o artículo | Ya funciona bien en subcategorías (0% rebote) |
+| 4 | **Implementar UTMs estándar (Fase 0)** | Campaña AON actualmente sin diferenciación de artículo en UTMs | Sin esto no se puede saber qué creativos generan engagement |
+| 5 | **Configurar conversión en GA4 antes de optimizar CPC** | 0 eventos clave = Google Ads no puede hacer smart bidding real | Prioridad de Fase 0 |
+
+#### Naming de campañas email — problema detectado
+Las campañas `20250828` en Braze = código de agosto 28, **2025** — los naming no se han actualizado en casi un año. Esto impide comparar campañas por fecha y por tipo. Parte del fix de Fase 0 de Estefanía.
+
+#### Mejor contenido por canal (dato empírico de esta tabla)
+| Tipo de contenido | Canal | Rebote | Engagement | Acción |
+|---|---|---|---|---|
+| Para empezar el día | Email/Braze | **40-43%** | 38s-1:19 | Ampliar frecuencia — es el mejor formato |
+| Boletin quincenal | Email/Braze | **55.8%** | **1:33** | El mayor engagement del sitio — escalar |
+| Expectativa semanal | Email/Braze | 57-63% | 54s-59s | Mantener |
+| Artículo específico | CPC (subcategoría) | **0%** | 18-28s | Modelo correcto para CPC |
+| Categoría genérica | FB Social | **80-85%** | 0-3s | Eliminar como landing |
 
 #### Segmentación sugerida (Colombia, finanzas)
 - Intereses: economía, inversiones, bolsa de valores, banca
-- Comportamiento: usuarios que visitan sitios de noticias económicas
-- Lookalike: de la base de suscriptores Eloqua (exportar lista y subir a Meta/Google)
+- Lookalike: de la base de suscriptores Braze (exportar lista y subir a Meta)
 - Excluir: audiencias de banco competidor (regla Grupo Bolívar)
+- Meta de pauta: CPV ≤ $350 COP (actual: $395 COP)
+
+### Canal 5: Referral Estratégico — daviviendacorredores.com
+
+Dato nuevo de GA4 sesiones por campaña:
+
+| Fuente | Sesiones | Engagement | Rebote |
+|---|---|---|---|
+| daviviendacorredores.com / referral | 211 | 21s | 50.7% |
+| davivienda-corredores / redirected | 126 | 17s | 25.4% |
+
+**337 sesiones combinadas** de Davivienda Corredores — audiencia financiera altamente calificada (clientes de corredora de bolsa de Davivienda). 25.4% de rebote en el canal redirected es el más bajo de todo el sitio excepto subcategorías de CPC.
+
+**Acción:** Proponer a Natalia Otálora formalizar la relación con Davivienda Corredores: banner permanente en su sitio, sección compartida de análisis, o boletín cruzado. Ya están enviando tráfico — solo falta un acuerdo formal.
+
+#### Bing Organic — no medido, ya genera tráfico
+- 107 sesiones / 19% rebote — audiencia de calidad
+- Sin intervención activa (cero esfuerzo dedicado)
+- Acción: pedir acceso a Bing Webmaster Tools + enviar sitemap (1 hora de trabajo, resultado permanente)
 
 ---
 
 ## Fase 2 — Conversión: de tráfico a suscriptor
 
 ### Funnel VS01 — Suscriptor Newsletter
-**Norte:** 10% de los visitantes nuevos se suscriben al newsletter de Eloqua
+**Norte:** 10% de los visitantes nuevos se suscriben al newsletter de Braze
 
 #### El problema de conversión actual
 La sección con más tráfico (Para empezar el día) tiene 130K sesiones y solo 6,327 suscriptores convertidos: **4.8% de conversión implícita**. El formulario de suscripción no está siendo promovido activamente en el punto de mayor tráfico.
@@ -260,14 +305,14 @@ La sección con más tráfico (Para empezar el día) tiene 130K sesiones y solo 
 |---|---|---|
 | Artículo (cualquier página) | Módulo de suscripción inline (al 50% del scroll) + al final del artículo | Leo/Brace |
 | Para empezar el día (top de tráfico) | CTA fija arriba del artículo: "Recíbelo a las 6 AM — suscríbete gratis" | Leo/Brace |
-| Email trigger | Cada informe nuevo enviado incluye "¿Lo recibiste de un colega? Suscríbete aquí" | Estefanía/Eloqua |
+| Email trigger | Cada informe nuevo enviado incluye "¿Lo recibiste de un colega? Suscríbete aquí" | Estefanía/Braze |
 | RRSS | Bio Instagram + Bio X con link directo al formulario de suscripción | Estefanía |
 | Pop-up de salida | Cuando detecta que el usuario va a abandonar — oferta: newsletter semanal | Leo/Brace |
 
 #### Meta de suscripción
 - Baseline: ~6,327 suscriptores desde "Para empezar el día" (dato jun 2026)
 - Meta julio: +500 suscriptores nuevos
-- Meta dic: +5,000 suscriptores nuevos (total 140,000+ activos en Eloqua)
+- Meta dic: +5,000 suscriptores nuevos (total 140,000+ activos en Braze)
 
 ---
 
@@ -319,7 +364,7 @@ La sección con más tráfico (Para empezar el día) tiene 130K sesiones y solo 
 | Canal | Owner estratégico | Owner técnico/ejecución | Coordinación |
 |---|---|---|---|
 | Sitio web / SEO | Carolina | Leo (Brace CMS) | Jeison (escalada técnica) |
-| Email | Carolina | Estefanía Ochoa (Eloqua) | Natalia Otálora |
+| Email | Carolina | Estefanía Ochoa (Braze) | Natalia Otálora |
 | Instagram | Carolina | Estefanía Ochoa | — |
 | X / Twitter | Carolina | Estefanía Ochoa | — |
 | YouTube | Carolina | Leo (técnico) + Analistas (grabación) | Natalia |
@@ -335,7 +380,7 @@ La sección con más tráfico (Para empezar el día) tiene 130K sesiones y solo 
 - Contenido de otras BUs (MFxInvertir, MFxMiNegocio) — son plataformas separadas
 - Datos de otras plataformas mezclados — Vision = Vision únicamente
 - Mencionar banca competidora (Bancolombia, BBVA, Banco de Bogotá, Itaú)
-- HubSpot — Visión usa Eloqua como plataforma de email
+- HubSpot — Visión usa Braze como plataforma de email (no Eloqua, no HubSpot)
 
 ---
 
