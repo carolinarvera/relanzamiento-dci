@@ -101,30 +101,98 @@ Estos no son mejoras — son bugs activos que limitan indexación y CTR:
 | C4 | JS rendering delay — 988 páginas en soft 404 | 24% del sitio indexado (2,676 / ~11,000 páginas) | Semana 2-3 |
 | C5 | Sitemap.xml retorna 403 | Google no puede descubrir páginas nuevas sistemáticamente | Semana 1 |
 
-#### Oportunidades SEO inmediatas (CTR y título)
-Las páginas con más impresiones y CTR bajo son las primeras a optimizar — sin crear contenido nuevo:
+#### Métricas SEO actuales (junio 2026)
 
-| URL (fragmento) | Impresiones | CTR actual | CTR meta | Clics adicionales |
+| Métrica | Actual | KPI target | Estado |
+|---|---|---|---|
+| Sesiones orgánicas/mes | 4,336 | — | -9.1% vs período anterior |
+| Usuarios orgánicos | 1,944 | — | -9.8% |
+| AVR Position | 7.01 | 6.62 | Fuera de meta |
+| % Rebote orgánico | 46.31% | <44.3% | Fuera de meta |
+| **Tiempo en visita** | **5:47** | — | **+20.7% — señal positiva** |
+| Sesiones orgánicas acumuladas 2026 | ~30,807 | 138,000 anual | 22.3% del año |
+
+El tiempo en visita de 5:47 confirma que el contenido es bueno — el problema es atraer al usuario, no retenerlo.
+
+#### El activo oculto: 918 queries en posición #1
+
+Visión rankea primero para ~918 consultas y en las posiciones 4-10 para otras 1,317. El problema: CTR bajo porque los títulos no son clicables. Quien llega, se queda (5:47 avg). El cuello de botella está antes del clic.
+
+Muestra de queries en posición #1:
+- "inflacion del 2024 al 2025", "deficit fiscal en colombia en los últimos 10 años", "cuando bajan las tasas de interés en colombia", "proyeccion inflacion junio 2026", "puede subir el dolar en colombia", "que deuda dejo petro"
+
+Ninguna de estas tiene un título en SERP que invite a hacer clic — están ahí por relevancia de contenido, no por optimización de título.
+
+**Dato inesperado:** "inflacion el salvador 2025" e "inflacion de el salvador 2025" → posición #1. Visión tiene presencia orgánica internacional (Centroamérica) sin haberla buscado. Confirma la fortaleza editorial — los analistas generan EEAT natural.
+
+#### Oportunidades CTR — artículos con títulos a reescribir (prioridad inmediata)
+
+| URL (fragmento) | Impresiones | CTR actual | CTR meta | Clics adicionales/mes |
 |---|---|---|---|---|
-| déficit-fiscal-colombia-2026 | 26,183 | **0.15%** | 2% | +471 |
-| Colombia-2025-crecimiento-inflacion | 14,268 | **0.4%** | 2% | +228 |
-| utilidades-bancos-colombia-enero-2026 | 7,110 | **0.25%** | 2% | +124 |
-| dividendos-ecopetrol-2026 | 9,055 | **0.96%** | 3% | +182 |
-| seguimiento-banco-republica (varias) | ~15,000 | ~0.3% | 2% | +255 |
-| **Total potencial** | | | | **+1,260 clics/mes** |
+| déficit-fiscal-colombia-2026 | **26,183** | 0.15% | 3% | **+733** |
+| Colombia-2025-crecimiento-inflacion | **14,268** | 0.4% | 2% | +228 |
+| marco-fiscal-mediano-plazo-2026 | 10,026 | 1.12% | 3% | +188 |
+| dividendos-ecopetrol-2026 | 9,055 | 0.96% | 3% | +185 |
+| gobierno-meta-deficit-fiscal-junio | 6,083 | 1.05% | 3% | +122 |
+| **Total potencial** | | | | **+1,456 clics/mes** |
+
+Título ejemplo antes/después:
+- Antes: `"Déficit Fiscal Colombia 2026 - Meta 5.1% PIB"` (genérico, sin gancho)
+- Después: `"¿A cuánto llegará el déficit fiscal de Colombia en 2026? Meta del gobierno: 5.1% del PIB"` (pregunta + dato + fuente)
+
+**Regla para todos los títulos:** keyword principal en las primeras 3 palabras + número concreto o fecha + promesa de lo que aprenderás.
+
+#### Páginas con CTR alto pero pocas impresiones (expandir con contenido)
+
+| Categoría | CTR actual | Impresiones | Señal |
+|---|---|---|---|
+| Así Cierran los Mercados (sección) | **43.06%** | 72 | Casi nadie la encuentra; quien la encuentra siempre hace clic |
+| Para empezar el día (artículos específicos) | **9.2%** | 348 | El formato diario genera alta intención |
+| Calendario dividendos Colombia 2026 | **13.33%** | 660 | Escalable: agregar más calendarios por empresa |
+| Para empezar el día (sección) | 3.22% | 807 | Posición 1.81 — ya en top |
+
+**Acción:** Publicar "así cierran los mercados [fecha]" y "para empezar el día [fecha]" con URL y formato estándar todos los días hábiles. Cada publicación genera un URL nuevo indexable — el volumen acumulado construye el canal orgánico.
+
+#### Cluster de dividendos — el nicho más fuerte de Visión en orgánico
+
+Visión domina las búsquedas de dividendos en Colombia. Todos estos queries convierten bien (CTR 7-28%):
+
+| Query | Clics | CTR | Posición |
+|---|---|---|---|
+| dividendos 2026 colombia | 2 | 14.29% | 2.64 |
+| fecha dividendos ecopetrol 2026 | 2 | 28.57% | 3.29 |
+| dividendos bvc 2026 | 2 | 25% | 7.38 |
+| dividendos 2026 | 2 | 9.09% | 3.68 |
+| calendario dividendos colombia 2026 | 88 | 13.33% | 4.24 |
+| dividendos de ecopetrol 2026 | 2 | 2.17% | 3.6 |
+
+**Acción:** Crear un hub de dividendos — página consolidada actualizada mensualmente con todos los pagos de dividendos del año (Ecopetrol, Grupo Sura, Bancolombia, etc.) con fechas ex-dividendo, fechas de pago y monto por acción. Este hub puede capturar el 80% de estas búsquedas desde una sola URL.
+
+#### Queries en posición 11 a empujar a página 1
+
+| Query | Posición | Por qué importa |
+|---|---|---|
+| finanzas en colombia | 11 | Query genérico de alto volumen — entrar a top 10 = salto de tráfico |
+| banrep tasas | 11 | Alta intención financiera — Visión debería ser la referencia |
+| ipc y ipp | 11 | Terminología técnica = audiencia de analistas |
+| interés bancario corriente colombia 2026 | 11 | Query con fecha = alta intención actual |
+
+Para estos, pasar de posición 11 a posición 7-10 típicamente duplica el CTR.
+
+#### "corredores davivienda": la conexión entre SEO y referral
+
+- Query: "corredores davivienda" → posición 7.08 → 1,184 impresiones → **0.08% CTR** (1 clic)
+- Este mismo usuario llega por referral desde daviviendacorredores.com
+
+**Diagnóstico:** Visión aparece para búsquedas de Davivienda Corredores pero el título no dice nada relevante para ese usuario. El usuario busca Corredores, encuentra Visión, no hace clic porque el título no matchea.
+
+**Acción:** Crear una página `/en-que-invertir/davivienda-corredores` con análisis de mercados orientado a clientes de corredora. Beneficio doble: +tráfico orgánico "corredores davivienda" + pieza de partnership para la propuesta a Davivienda Corredores.
+
+#### Queries a NO optimizar (intención incorrecta)
+
+Visión aparece en posición 4 para "noticias de colombia última hora" — ese usuario quiere breaking news, no análisis. No añadir este keyword en ningún título ni meta description. Lo mismo aplica para "y quienes son los dueños", "dame porcentajes", "como reaccionaron" — queries conversacionales sin intención editorial definida.
 
 **Acción concreta:** Reescribir títulos y meta descriptions de estas páginas con promesa explícita + keyword principal al inicio. Ejemplo: `"Déficit fiscal Colombia 2026: meta 5.1% del PIB — análisis Davivienda"` reemplaza cualquier título genérico.
-
-#### Páginas con CTR alto pero pocas impresiones (expandir)
-Estas páginas ya tienen tráfico de alta intención — necesitan más volumen de contenido similar:
-
-| Categoría | CTR actual | Señal |
-|---|---|---|
-| Así Cierran los Mercados (categoría) | **43%** | 72 imp — casi nadie la encuentra, pero quien la encuentra hace clic |
-| Expectativa Semanal (categoría) | **25%** | 60 imp — mismo patrón |
-| Calendario Dividendos Colombia 2026 | **13.3%** | 660 imp — oportunidad de escalar con más calendarios |
-
-**Acción:** Más artículos del tipo "así cierran los mercados [fecha]" y "expectativa semanal [fecha]" — formato estandarizado con fecha en título, publicación constante.
 
 #### Capa IA/LLMs (Leo)
 ChatGPT, Perplexity y Google AI Overviews ya responden preguntas de economía colombiana. Visión tiene el mejor análisis primario — solo falta que los bots lo encuentren:
