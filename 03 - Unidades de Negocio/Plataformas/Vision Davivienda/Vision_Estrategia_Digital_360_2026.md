@@ -40,11 +40,43 @@ Basado en auditoría real a jun 30, 2026: GA4, GSC, auditoría RRSS, email Braze
 | Unassigned | 1,223 | 2.8% | 455 | 1.9% | — |
 | AI Assistant | 59 | 0.1% | 42 | 0.2% | — |
 
-**Total sesiones: ~43,400 | Total usuarios nuevos: ~24,210**
+**Total sesiones: 44,828 | Total usuarios: 28,051 | Duración media sesión: 2:33 (-21.9%) | Rebote: 64.76%**
 
-**Lectura:** Social trae nuevos usuarios que no vuelven (1.2 sesiones). Email fideliza: cada suscriptor genera 4.3 sesiones. Son dos máquinas distintas — optimizarlas con la misma métrica es un error. SEO orgánico (6% nuevos, 9.9% sesiones) es el canal con mayor potencial sin explotar.
+Nota: el reporte de exploración (Informe Panorámico) mostraba ~43,400 sesiones — la diferencia con 44,828 es de rango de fechas o filtros. El reporte de junio 2026 (1-30 jun) es la fuente oficial.
+
+**Fuentes reales (junio 2026 — reporte general):**
+
+| Fuente / medio | Sesiones | Usuarios |
+|---|---|---|
+| FB / SOCIAL | 15,207 | 12,080 |
+| Email / Emarsys ⚠️ | 12,508 | 5,286 |
+| (direct) | 4,375 | 2,637 |
+| google / cpc | 4,149 | 3,725 |
+| google / organic | 3,873 | 1,056 |
+| newsletter_quincenal / boletin | 554 | 545 |
+| **Total** | **44,828** | **28,051** |
+
+⚠️ GA4 muestra "Email / Emarsys" pero la plataforma real es **Braze**. El UTM source en Braze está configurado como "emarsys" — error de naming a corregir (Fase 0, ítem 5).
+
+**Lectura:** Social trae usuarios nuevos que no vuelven. Email (Braze) fideliza — 5,286 usuarios generan 12,508 sesiones = 2.4 sesiones/usuario. SEO orgánico: solo 1,056 usuarios únicos = canal con mayor potencial sin explotar.
 
 **Dato inesperado:** AI Assistant ya genera 59 sesiones y 42 usuarios nuevos — ChatGPT, Perplexity y Google AI Overviews ya están citando Visión. Hay que acelerar esa capa.
+
+**Perfil de audiencia (junio 2026):**
+
+| Dimensión | Dato | Implicación |
+|---|---|---|
+| Colombia | 89.6% | Audiencia local; Bogotá 41.4%, Medellín 6.3%, Cali 5% |
+| USA | 3.4% (1,535 ses.) | Diáspora financiera colombiana + analistas internacionales |
+| Singapore | 0.66% | Probablemente institutional investors con exposición Colombia |
+| Windows desktop | 49.5% | Audiencia profesional — acceden en horario laboral desde oficina |
+| Android | 35% | Consumo móvil secundario — optimizar para lectura rápida |
+| iOS | 11.4% | Menor que Android — inusual, refuerza perfil corporativo (Windows) |
+| Nuevos usuarios | 58.8% | Alta tasa de adquisición; mayoría no vuelve sin email |
+| Recurrentes | 30.3% | El núcleo leal — son los suscriptores Braze activos |
+
+**Alerta de duración: 2:33 (-21.9%)**
+El tiempo medio de sesión cayó casi 22%. Con FB Social representando el 34% de sesiones con 0-3s de engagement, ese canal arrastra el promedio hacia abajo. Sin el fix de landing pages de pauta, esta métrica seguirá bajando.
 
 ### Hallazgo 2: La conversión a suscriptor es casi inexistente.
 - `form_start` total en el período: **64 eventos** — en un sitio con 43,400 sesiones
@@ -79,7 +111,8 @@ Ninguna optimización de pauta, contenido ni SEO tiene sentido hasta resolver es
 | 2 | **Leo/Brace:** configurar eventos clave (conversiones) en GA4 — mínimo: `form_start`, `form_submit` (suscripción), `EventosVision` | Leo (Brace CMS) | La tabla de eventos clave está vacía — 4,149 sesiones de pauta pagada sin saber si convierten |
 | 3 | **Performix/Jeison:** estandarizar UTMs — `utm_source=performix&utm_medium=paid_social&utm_campaign=[nombre]` en todos los creativos | Jeison + Alejandro Bojacá | Presupuesto de pauta invisible en GA4 (Unassigned = 1,223 sesiones) |
 | 4 | **Leo:** redirigir (301) las páginas con "Página no encontrada" (151 vistas) — auditar con GSC Coverage report | Leo (Brace CMS) | Links rotos dañan SEO y experiencia del usuario |
-| 5 | **Estefanía/Braze:** renombrar campañas y eventos de email con fecha actual: "[YYYYMMDD]_[tipo]_[tema]" — eliminar código "20250828" que lleva activo desde ago 2025 | Estefanía | Sin naming correcto no hay comparación cross-campaign |
+| 5 | **Estefanía/Braze:** corregir UTM source en plantillas de Braze de `emarsys` → `braze` — GA4 reporta "Email / Emarsys" pero la plataforma real es Braze | Estefanía | Confunde plataformas en cualquier reporte GA4; afecta atribución |
+| 6 | **Estefanía/Braze:** renombrar campañas con fecha actual: "[YYYYMMDD]_[tipo]_[tema]" — eliminar código "20250828" activo desde ago 2025 | Estefanía | Sin naming correcto no hay comparación cross-campaign |
 
 **Checkpoint:** Carolina verifica con Jeison que los 5 fixes están en producción antes de liberar Fase 1.
 
@@ -437,7 +470,11 @@ Dato nuevo de GA4 sesiones por campaña:
 | daviviendacorredores.com / referral | 211 | 21s | 50.7% |
 | davivienda-corredores / redirected | 126 | 17s | 25.4% |
 
-**337 sesiones combinadas** de Davivienda Corredores — audiencia financiera altamente calificada (clientes de corredora de bolsa de Davivienda). 25.4% de rebote en el canal redirected es el más bajo de todo el sitio excepto subcategorías de CPC.
+**~870 sesiones combinadas** de Davivienda Corredores en junio — más alto de lo que mostraba el reporte de exploración:
+- `daviviendacorredores.com / referral`: 211 sesiones (exploración) / 697 sesiones (reporte general)
+- `evd-dominio-corredores_v1 / Unassigned`: 172 sesiones — campaña de redirección de dominio propia de Davivienda Corredores, etiquetada como "evd" (evento de dominio)
+
+Audiencia financiera altamente calificada. 697 sesiones de referral directo confirman que Davivienda Corredores tiene un link activo hacia Visión.
 
 **Acción:** Proponer a Natalia Otálora formalizar la relación con Davivienda Corredores: banner permanente en su sitio, sección compartida de análisis, o boletín cruzado. Ya están enviando tráfico — solo falta un acuerdo formal.
 
