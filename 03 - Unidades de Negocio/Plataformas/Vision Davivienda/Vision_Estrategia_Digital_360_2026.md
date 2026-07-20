@@ -265,6 +265,64 @@ Las campañas `20250828` en Braze = código de agosto 28, **2025** — los namin
 | Artículo específico | CPC (subcategoría) | **0%** | 18-28s | Modelo correcto para CPC |
 | Categoría genérica | FB Social | **80-85%** | 0-3s | Eliminar como landing |
 
+#### Presupuesto y ejecución (junio 2026 — dato oficial Performix)
+
+| Métrica | Valor |
+|---|---|
+| Presupuesto planeado | $5.749M COP |
+| Presupuesto consumido | $2.997M COP |
+| **% ejecución presupuestal** | **52%** — pacing roto |
+| Meta sesiones mensual | 19,355 |
+| Sesiones logradas | 19,206 |
+| Cumplimiento sesiones | ~99% mensual / ~36% acumulado anual |
+| Split canal pagado | FB/Social 70.3% · Google CPC 29.5% · GOSEM 0.2% |
+
+$2.75M sin gastar en junio = no es eficiencia, es problema de entrega. Revisar con Performix si el presupuesto restante se puede redirigir a Google CPC (mejor calidad de tráfico) o acumular para julio.
+
+#### Evolución mensual sesiones pagadas (ene-jul 2026)
+
+| Mes | Sesiones | Vistas |
+|---|---|---|
+| Enero | 14,831 | 17,235 |
+| Febrero | **3,491** | 6,407 |
+| Marzo | 3,480 | 6,619 |
+| Abril | 8,200 | 12,050 |
+| Mayo | 12,937 | 18,844 |
+| Junio | 19,376 | 25,466 |
+| Julio (parcial al 19/7) | 8,296 | 9,968 |
+
+**Alerta: caída feb-marzo de 14,831 → 3,491 = -76% en un mes.** No es estacional. Pedir a Performix explicación de qué pasó en febrero (¿pausa de campañas? ¿presupuesto bloqueado? ¿cambio de plataforma?).
+
+#### Análisis de keywords Search (Google CPC)
+
+**Keywords que funcionan (CTR alto + intención clara):**
+| Keyword | Clics | CTR | Impresiones | Audiencia |
+|---|---|---|---|---|
+| cdt davivienda | 757 | **41%** | 1,859 | INVERSIÓN |
+| vision davivienda (ind.) | 2,636 | **38%** | 6,891 | INDICADORES |
+| cdt simulador | 1,131 | **27%** | 4,214 | INVERSIÓN |
+| vision davivienda (2) | 680 | 32% | 2,145 | INVERSIÓN |
+| vision davivienda (3) | 361 | 31% | 1,160 | VISION |
+| cdt | 1,657 | **13%** | 12,817 | INVERSIÓN |
+| fondos indexados | 3,473 | 7% | 51,645 | INVERSIÓN |
+
+**Keywords que desperdician presupuesto (CTR bajo + intención incorrecta):**
+| Keyword | Clics | CTR | Impresiones | Problema |
+|---|---|---|---|---|
+| noticias economicas | 3,455 | 2% | 199,337 | Buscan noticias, no análisis |
+| en que puedo invertir mi dinero... | 745 | 2% | 30,761 | Consulta genérica, no Visión |
+| noticias de hoy | 435 | 2% | 28,639 | Off-topic |
+| noticias | 384 | **1%** | 26,681 | El peor CTR — cortar |
+| economia colombiana | 360 | 2% | 17,440 | Bajo intent |
+
+"Noticias economicas" sola consume 199K impresiones con 2% CTR. El usuario que busca "noticias" no busca análisis financiero de profundidad — ese es un keyword equivocado para Visión.
+
+**Acciones sobre keywords:**
+1. Pausar o excluir "noticias", "noticias de hoy" inmediatamente
+2. Aumentar bid en CDT keywords (41%, 27% CTR — audiencia de alto valor)
+3. Redirigir presupuesto liberado a "fondos indexados" y branded
+4. Agregar negativos: "breaking news", "última hora", "hoy", "Colombia hoy"
+
 #### Segmentación sugerida (Colombia, finanzas)
 - Intereses: economía, inversiones, bolsa de valores, banca
 - Lookalike: de la base de suscriptores Braze (exportar lista y subir a Meta)
