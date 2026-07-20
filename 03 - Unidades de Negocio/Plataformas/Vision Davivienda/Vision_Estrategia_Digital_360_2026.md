@@ -114,71 +114,67 @@ Estos no son mejoras — son bugs activos que limitan indexación y CTR:
 
 El tiempo en visita de 5:47 confirma que el contenido es bueno — el problema es atraer al usuario, no retenerlo.
 
+#### Tipología de contenido: coyuntura vs tendencia vs evergreen
+
+Visión es un sitio de coyuntura, actualidad y tendencia — no de contenido evergreen. Esto determina completamente la estrategia SEO. **No tiene sentido optimizar títulos de artículos de 2025 con datos financieros de 2025 para usuarios que buscan en 2026.** El CTR bajo de esos artículos no es un problema de título — es el comportamiento correcto: el contenido está desactualizado.
+
+La estrategia SEO debe operar en tres capas con reglas distintas:
+
+| Tipo | Ejemplos en Visión | Vida útil SEO | Estrategia |
+|---|---|---|---|
+| **Coyuntura** | "Para empezar el día [fecha]", "Así cierran los mercados [fecha]", expectativas semanales | 1-7 días | Volumen y consistencia. Cada URL es indexable y acumula señal agregada. Optimizar el título del DÍA — no el del año pasado. |
+| **Tendencia** | "Perspectivas sector construcción 2026", "Déficit fiscal Colombia 2026", seguimiento BanRep | 3-12 meses (año calendario) | Actualizar el artículo existente cuando cambien los datos — no crear uno nuevo. Un solo URL que acumule autoridad todo el año. |
+| **Evergreen de ciclo** | Calendario dividendos, Indicadores económicos, MFMP, PMI | Anual (renovar cada enero) | Mantener la misma URL año tras año, actualizando el año en el contenido. No crear "calendario-dividendos-2026", "calendario-dividendos-2027" — usar "/calendario-dividendos" que se actualiza cada año. |
+
+**Consecuencia directa:** los artículos de 2025 con CTR bajo en julio de 2026 son coyuntura caducada — no son candidatos a optimización, son candidatos a redirección 301 hacia el artículo equivalente de 2026 si existe, o a dejar que Google los archive naturalmente.
+
 #### El activo oculto: 918 queries en posición #1
 
-Visión rankea primero para ~918 consultas y en las posiciones 4-10 para otras 1,317. El problema: CTR bajo porque los títulos no son clicables. Quien llega, se queda (5:47 avg). El cuello de botella está antes del clic.
+Visión rankea primero para ~918 consultas. Estas posiciones son el resultado de la calidad editorial acumulada — los analistas generan EEAT natural. El CTR de estas posiciones no es bajo porque los títulos sean malos: muchas son queries de coyuntura donde el artículo ya pasó su vigencia o donde la intención del buscador no encaja con análisis de profundidad.
 
-Muestra de queries en posición #1:
-- "inflacion del 2024 al 2025", "deficit fiscal en colombia en los últimos 10 años", "cuando bajan las tasas de interés en colombia", "proyeccion inflacion junio 2026", "puede subir el dolar en colombia", "que deuda dejo petro"
+Muestra de queries en posición #1: "deficit fiscal en colombia en los últimos 10 años", "cuando bajan las tasas de interés en colombia", "proyeccion inflacion junio 2026", "puede subir el dolar en colombia" — estos SÍ son candidatos a optimización porque son preguntas que Visión puede responder con contenido tendencia o evergreen vigente.
 
-Ninguna de estas tiene un título en SERP que invite a hacer clic — están ahí por relevancia de contenido, no por optimización de título.
+**Dato inesperado:** "inflacion el salvador 2025" → posición #1. Visión tiene presencia orgánica en Centroamérica sin haberla buscado — señal de EEAT que Google transfiere entre geografías relacionadas.
 
-**Dato inesperado:** "inflacion el salvador 2025" e "inflacion de el salvador 2025" → posición #1. Visión tiene presencia orgánica internacional (Centroamérica) sin haberla buscado. Confirma la fortaleza editorial — los analistas generan EEAT natural.
+#### Oportunidades SEO reales — solo contenido vigente o evergreen
 
-#### Oportunidades CTR — artículos con títulos a reescribir (prioridad por impacto)
+Descartados los artículos de 2025 sobre datos de 2025, las oportunidades reales son:
 
-Ranking actualizado con datos CSV completo de GSC (19-jul-2026):
+**Contenido tendencia 2026 con títulos a mejorar:**
 
-| # | URL (fragmento) | Query principal | Impresiones | CTR actual | CTR meta | Clics ganados |
-|---|---|---|---|---|---|---|
-| 1 | inflacion-en-colombia-2025 | "inflacion en colombia 2025" | **1,390** | **0.07%** | 3% | **+41** directos pero es el peor rendimiento del sitio |
-| 2 | déficit-fiscal-colombia-2026 | "deficit fiscal colombia 2026" | **686 + 450** | 1.3-1.8% | 5% | **+55** (400x más impresiones en GSC completo: 26,183) |
-| 3 | dividendos-ecopetrol-2026 | "dividendos ecopetrol 2026" | **673** | 1.49% | 8% | **+44** |
-| 4 | Colombia-2025-crecimiento-inflacion | varias | estimado 14,268 | 0.4% | 2% | +228 |
-| 5 | marco-fiscal-mediano-plazo-2026 | "marco fiscal de mediano plazo 2026" | 450 en CSV / 10,026 GSC | 6.9% en CSV | mejorar | — |
-
-**Nota sobre la discrepancia de datos:** Los números de impresiones del CSV de consultas son menores que los de la vista de páginas en GSC — es normal, porque una página puede rankear para miles de consultas y el CSV solo muestra las principales. El artículo de déficit fiscal aparece con 26,183 impresiones vía páginas pero la consulta "deficit fiscal colombia 2026" específica tiene 686 imp en el CSV de queries.
-
-**Caso más urgente: "inflacion en colombia 2025" = 1,390 impresiones, 0.07% CTR**
-
-Este artículo rankea para una de las búsquedas más frecuentes del sitio pero no convierte. Diagnóstico probable: el título es genérico o usa el del homepage (bug C2). Acción: reescribir como `"Inflación en Colombia 2025: ¿cuánto subieron los precios? Datos BanRep"`.
-
-**Título ejemplo — déficit fiscal antes/después:**
-- Antes: `"Déficit Fiscal Colombia 2026 - Meta 5.1% PIB"` (genérico)
-- Después: `"Déficit fiscal Colombia 2026: el gobierno sube la meta a 5.1% del PIB — ¿qué significa?"` (número + pregunta + implicación)
-
-**Regla para todos los títulos:** keyword principal en las primeras 3 palabras + número concreto o fecha + promesa explícita.
-
-#### Hallazgo de ruido: queries de conversión y operadores en GSC — señal de alerta de autoridad temática
-
-El CSV contiene queries como "3500 cop", "29*3600", "3800 usd to cop", "25000 pesos chilenos a colombianos", y queries con operadores de investigación de medios (`""banco de occidente"" -site:reddit.com...`). Esto significa:
-
-1. **Google piensa que Visión es relevante para conversión de moneda** — porque los artículos mencionan cifras en pesos sin contexto suficiente para distinguirlos de una calculadora
-2. **Herramientas de media intelligence** están scrappeando Google con Visión en los resultados — señal de presencia pero ruido en GSC
-
-Impacto: diluye la señal de especialización temática. Google no puede construir un perfil limpio de "sitio de análisis económico" si también rankea para conversiones de moneda.
-
-**Acción (Leo):** Verificar si hay páginas con tablas de tipos de cambio o convertidores implícitos. Si existen, agregar canonical o noindex a esas páginas. Si no existen, el problema es que artículos mencionan precios y números sin suficiente contexto editorial — los analistas deben escribir "el tipo de cambio USD/COP fue de $3,500" (con contexto) en lugar de solo "3,500".
-
-#### Confusión de marca: "davivienda es grupo aval" — necesita corrección editorial
-
-| Query | Impresiones | CTR | Posición |
+| Artículo | Impresiones | CTR actual | Por qué aplica |
 |---|---|---|---|
-| davivienda es grupo aval | 135 | 0.7% | 7.3 |
-| davivienda pertenece al grupo aval | 177 | 0.6% | 9.2 |
+| déficit-fiscal-colombia-2026 | 26,183 (GSC páginas) | 0.15% | Contenido 2026 vigente — el dato sigue siendo relevante |
+| dividendos-ecopetrol-2026 | 9,055 | 0.96% | El calendario 2026 sigue vigente |
+| marco-fiscal-mediano-plazo-2026 | 10,026 | 1.12% | El MFMP 2026 es el documento fiscal del año |
+| perspectivas-sector-construccion-2026 | 1,920 | 2.55% | Tendencia anual, no coyuntura |
 
-312 personas por mes buscan si Davivienda es Grupo Aval (es Grupo Bolívar). Visión aparece sin dar la respuesta correcta con claridad. Los artículos que rankean para estas queries deben incluir una oración explícita: "Davivienda es parte del Grupo Bolívar, no del Grupo Aval."
+**Regla para títulos de contenido tendencia:** keyword + año + número concreto o pregunta que el lector quiere responder.
+- Antes: `"Déficit Fiscal Colombia 2026 - Meta 5.1% PIB"`
+- Después: `"Déficit fiscal Colombia 2026: meta sube a 5.1% del PIB — qué implica para los mercados"`
 
-#### Páginas con CTR alto pero pocas impresiones (expandir con contenido)
+**Contenido coyuntura — optimizar hacia adelante, no hacia atrás:**
 
-| Categoría | CTR actual | Impresiones | Señal |
+| Categoría | CTR actual | Impresiones | Acción |
 |---|---|---|---|
-| Así Cierran los Mercados (sección) | **43.06%** | 72 | Casi nadie la encuentra; quien la encuentra siempre hace clic |
-| Para empezar el día (artículos específicos) | **9.2%** | 348 | El formato diario genera alta intención |
-| Calendario dividendos Colombia 2026 | **13.33%** | 660 | Escalable: agregar más calendarios por empresa |
-| Para empezar el día (sección) | 3.22% | 807 | Posición 1.81 — ya en top |
+| Así Cierran los Mercados (sección) | **43.06%** | 72 | Publicar con URL fija `/asi-cierran-los-mercados/[fecha]` todos los días hábiles |
+| Para empezar el día (artículos hoy) | **9.2%** | 348 | Formato y URL estándar: `/para-empezar-el-dia/[fecha]` |
+| Para empezar el día (sección) | 3.22% | 807 | Ya en posición 1.81 — mantener |
 
-**Acción:** Publicar "así cierran los mercados [fecha]" y "para empezar el día [fecha]" con URL y formato estándar todos los días hábiles. Cada publicación genera un URL nuevo indexable — el volumen acumulado construye el canal orgánico.
+Cada artículo de coyuntura publicado con URL correcta es una URL indexable. El volumen acumulado de coyuntura bien publicada es lo que construye el canal orgánico — no la optimización retrospectiva.
+
+#### Hallazgo de ruido: queries de conversión en GSC
+
+El CSV incluye "3500 cop", "3800 usd to cop", "29*3600", etc. — usuarios haciendo cálculos de moneda que Google asocia con artículos de Visión porque mencionan cifras sin contexto suficiente. No es un problema urgente, pero cuando se actualicen artículos de tendencia, los analistas deben escribir cifras con contexto explícito: "el tipo de cambio cerró en $3,500 pesos por dólar" — no "$3,500" solo.
+
+#### Confusión de marca: "davivienda es grupo aval"
+
+| Query | Impresiones | CTR |
+|---|---|---|
+| davivienda es grupo aval | 135 | 0.7% |
+| davivienda pertenece al grupo aval | 177 | 0.6% |
+
+312 búsquedas/mes con información incorrecta. Los artículos que rankean para esto deben incluir explícitamente: "Davivienda pertenece al Grupo Bolívar, no al Grupo Aval."
 
 #### Cluster de dividendos — el nicho más fuerte de Visión en orgánico
 
