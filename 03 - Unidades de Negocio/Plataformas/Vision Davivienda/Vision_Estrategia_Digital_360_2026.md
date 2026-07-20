@@ -532,12 +532,157 @@ La sección con más tráfico (Para empezar el día) tiene 130K sesiones y solo 
 
 ---
 
+## Plan de acción — Tráfico al sitio (norte único)
+
+**Objetivo:** 44,828 sesiones/mes (jun 2026) → 70,000 sesiones/mes (dic 2026)
+**Gap:** +25,172 sesiones (+56%)
+**Regla:** toda acción se evalúa por su contribución a sesiones en vision.davivienda.com
+
+---
+
+### De dónde vienen las sesiones adicionales
+
+| Fuente | Sesiones actuales | Meta | Acciones clave |
+|---|---|---|---|
+| Email / Braze | 12,886 | 20,000 | Email semanal martes + mejorar CTOR 2.5%→5% |
+| Google CPC | 4,149 | 6,500 | Pausar keywords noticias, redirigir $2.75M sin ejecutar |
+| Google Organic | 3,973 | 8,000 | Publicación diaria coyuntura + fix C1-C5 + hub dividendos |
+| FB Social (AON) | 15,207 | 16,000 | Mismo presupuesto, landing a artículo específico |
+| Referral (Corredores + otros) | ~500 | 1,200 | Formalizar acuerdo Davivienda Corredores |
+| Newsletter quincenal | 654 | 1,000 | Escalar frecuencia o volumen de lista |
+| AI Assistant | 85 | 500 | llms.txt + schema NewsArticle |
+| **Total** | **~44,828** | **~70,000** | |
+
+---
+
+### Semana 1 — Destapar los datos (sin esto nada se puede medir)
+**Owner: Leo + Estefanía | Checkpoint: Carolina + Jeison el viernes**
+
+| # | Acción | Owner | Impacto en sesiones |
+|---|---|---|---|
+| D1 | Excluir `braze-05-shareable-preview` de GA4 (filtro de IP/hostname) | Leo | Elimina 26 sesiones falsas — limpia baseline |
+| D2 | Configurar eventos clave GA4: `form_start`, `form_submit`, `scroll_50`, `article_view` | Leo | Sin esto, la pauta de $5.7M es ciega |
+| D3 | Pasar `article_title` como parámetro en evento GA4 `informe_de_interes` | Leo | Hace legibles los 2M+ eventos de contenido |
+| D4 | Redirect 301: `vision-anterior.dav.ac` → `vision.davivienda.com` | Leo | Recupera 24 sesiones y evita pérdida de PageRank |
+| D5 | Corregir UTM source en Braze: `emarsys` → `braze` en todas las plantillas | Estefanía | GA4 deja de reportar plataforma incorrecta |
+| D6 | Guía de UTMs para RRSS: 1 página con las 4 combinaciones válidas (source/medium en minúsculas) | Estefanía | Consolida las 15 variantes actuales; hace visible el canal orgánico de RRSS |
+
+---
+
+### Semana 2-3 — Cambios sin crear contenido nuevo (mayor ROI inmediato)
+**Owner: Alejandro Bojacá (Performix) + Leo | Coordinación: Carolina**
+
+| # | Acción | Owner | Impacto estimado en sesiones |
+|---|---|---|---|
+| P1 | **Cambiar landing pages de AON Facebook** a artículo específico publicado ≤48h — nunca a `/`, `/estar-actualizado`, `/macroeconomia` | Performix | Mismas 15K sesiones, engagement pasa de 0-3s a >30s. No sube el conteo pero sí la calidad medida por KPI duración |
+| P2 | **Pausar keywords**: "noticias", "noticias economicas", "noticias de hoy" (250K impresiones, 1-2% CTR) | Performix | Libera presupuesto → redirigir a CDT keywords (41% CTR) |
+| P3 | **Ejecutar el presupuesto**: $2.75M sin gastar en junio — verificar con Performix por qué y corregir pacing para julio | Performix + Natalia | +1,500-2,000 sesiones CPC/mes si se ejecuta al 100% |
+| P4 | **Agregar keywords negativas**: "última hora", "breaking", "hoy colombia" en campañas Google CPC | Performix | Mejora calidad de tráfico CPC |
+| C1 | **Fix canonical tags** (bug C1) en todo el sitio | Leo | Desbloquea acumulación de PageRank; efecto en organic en 4-6 semanas |
+| C2 | **Fix títulos únicos por página** (bug C2) — al menos en las 20 páginas con más impresiones GSC | Leo | Mejora CTR en páginas que ya tienen impresiones; proyección +400-600 sesiones orgánicas |
+| C5 | **Fix sitemap.xml** (retorna 403) | Leo | Google puede descubrir nuevas páginas sistemáticamente |
+
+---
+
+### Semana 4 — Activar el canal de email semanal
+**Owner: Estefanía Ochoa | Fecha de primer envío: martes de semana 4**
+
+Este es el mayor generador de sesiones incrementales disponible. La base de 135K suscriptores con 61% open rate ya existe. Solo falta el email semanal.
+
+| # | Acción | Detalle | Impacto estimado |
+|---|---|---|---|
+| E1 | **Email semanal — martes 8AM** | 2-3 artículos curados + 1 dato de la semana. Template simple, link al artículo completo en cada ítem | +2,500-4,000 sesiones/mes (135K × 61% × 3% CTOR × 4 envíos) |
+| E2 | **A/B test de asunto** en cada envío de informe | 10% A + 10% B → 2h → ganador al 80% | CTOR 2.5% → meta 5% = duplica sesiones por email sin más suscriptores |
+| E3 | **Renombrar campañas** con formato `[YYYYMMDD]_[tipo]_[tema]` | Estefanía elimina código "20250828" | Hace medibles las campañas entre sí |
+
+---
+
+### Mes 2 — Motor de contenido coyuntura (volumen de URLs indexables)
+**Owner: Analistas + Estefanía | Revisión semanal: lunes**
+
+La SEO de coyuntura no se optimiza retroactivamente — se construye con volumen hacia adelante. Cada URL publicada con formato correcto es una URL indexable que acumula señal.
+
+| Formato | Frecuencia | URL tipo | Sesiones orgánicas por URL (3-6 meses) |
+|---|---|---|---|
+| Para empezar el día | Diario (lunes-viernes) | `/para-empezar-el-dia/YYYY-MM-DD` | 30-80 sesiones acumuladas |
+| Así cierran los mercados | Diario (lunes-viernes) | `/asi-cierran-los-mercados/YYYY-MM-DD` | 40-100 sesiones (43% CTR cuando indexado) |
+| Expectativa semanal | Semanal (lunes) | `/expectativa-semanal/YYYY-MM-DD` | 50-120 sesiones |
+| Seguimiento BanRep | Cada reunión (~8/año) | URL específica por reunión | 200-600 sesiones por evento |
+
+A 3 meses: 60 URLs × 50 sesiones promedio = **+3,000 sesiones orgánicas adicionales/mes**
+
+| # | Acción | Owner |
+|---|---|---|
+| M1 | Definir y comunicar formato de URL estándar para todos los formatos de coyuntura | Leo + Analistas |
+| M2 | Publicar sin excepción "Para empezar el día" todos los lunes-viernes | Analistas |
+| M3 | Publicar "Así cierran los mercados" todos los días hábiles | Analistas |
+| M4 | Reescribir títulos y meta descriptions de las 5 páginas de **tendencia 2026** con CTR bajo: déficit fiscal, dividendos Ecopetrol, marco fiscal, perspectivas construcción | Analistas + Leo |
+
+---
+
+### Mes 2-3 — Hub de dividendos (evergreen de ciclo — mayor CTR del sitio)
+**Owner: Analistas (contenido) + Leo (técnico) | 1 página, URL permanente**
+
+Los queries de dividendos tienen 22-28% CTR — el más alto del sitio. El formato hub consolida toda la demanda en una URL que acumula autoridad año tras año.
+
+| # | Acción | Detalle |
+|---|---|---|
+| H1 | Crear `/en-que-invertir/calendario-dividendos-colombia` (URL permanente, sin año) | Tabla actualizada mensualmente: empresa, fecha ex-dividendo, fecha pago, monto/acción |
+| H2 | Incluir: Ecopetrol, Grupo Sura, Preferencial Bancolombia, Grupo Argos, Cemargos, ISA, Grupo Energía Bogotá, PEI | Los 8 emisores con mayor búsqueda según GSC |
+| H3 | Actualizar tabla cada vez que se publique un dividendo nuevo | Owner: analistas — 15 min de mantenimiento por actualización |
+| H4 | Redirect de todas las URLs `/dividendos-[empresa]-2026` existentes hacia esta URL principal | Leo | 
+
+---
+
+### Mes 3 — Formalizar Davivienda Corredores como canal
+**Owner: Carolina (propuesta) + Natalia Otálora (aprobación)**
+
+Davivienda Corredores ya envía ~440 sesiones/mes sin acuerdo formal. Con un acuerdo mínimo:
+
+| # | Acción | Estimado |
+|---|---|---|
+| R1 | Proponer banner de análisis semanal en `daviviendacorredores.com` | +200-400 sesiones referral adicionales/mes |
+| R2 | Crear landing `/en-que-invertir/davivienda-corredores` con análisis orientado a clientes de corredora | Captura query "vision davivienda corredores" (pos 1.08) + "corredores davivienda" (1,184 imp) |
+| R3 | Proponer boletín cruzado: análisis de Visión en newsletter de Corredores | +500-800 sesiones/mes si la lista de Corredores recibe un link mensual |
+
+---
+
+### Mes 3-6 — Capa AI (sin costo, efecto compuesto)
+**Owner: Leo (técnico) + Analistas (contenido)**
+
+Ya hay 85 sesiones/mes desde AI sin ninguna optimización. Con estas acciones:
+
+| # | Acción | Owner | Impacto |
+|---|---|---|---|
+| AI1 | Verificar `robots.txt`: GPTBot, ClaudeBot, PerplexityBot NO bloqueados | Leo | Si están bloqueados, los LLMs no pueden citarnos |
+| AI2 | Implementar schema `NewsArticle` + `Person` en todos los artículos | Leo | Author = analista con credenciales; mejora citabilidad en AI Overviews |
+| AI3 | Crear `/llms.txt` con descripción del sitio y lista de analistas | Leo | Protocolo adoptado por Claude, Perplexity, ChatGPT |
+| AI4 | Resumen ejecutivo en primeras 2-3 oraciones de cada artículo | Analistas | Lo que los LLMs extraen y citan como fuente |
+
+---
+
+### Resumen ejecutivo por semana
+
+| Semana | Acción crítica | Owner | Sesiones adicionales |
+|---|---|---|---|
+| S1 | Datos: filtro Braze, eventos GA4, UTM guide | Leo + Estefanía | Baseline limpio |
+| S2 | Pauta: landing pages FB a artículo + pausar keywords noticias | Performix | +1,500-2,000 calidad |
+| S3 | Fix C1 canonical + C5 sitemap + redirect vision-anterior | Leo | +400 organic (4-6 semanas) |
+| S4 | Primer email semanal martes 8AM | Estefanía | +2,500-4,000/mes |
+| M2 | Publicación diaria "Para empezar el día" + "Así cierran" | Analistas | +500-1,000/mes (crece) |
+| M2 | Hub dividendos publicado | Analistas + Leo | +300-600/mes |
+| M3 | Acuerdo Davivienda Corredores | Carolina | +400-800/mes |
+| M3-6 | AI layer: llms.txt + schema | Leo | +200-500/mes (crece) |
+| **Total acumulado mes 6** | | | **~+25,000 sesiones/mes** |
+
+---
+
 ## KPIs consolidados — qué medimos y cuándo
 
 ### Canal Sitio Web (north star: tráfico)
-| Métrica | Baseline (panorámico jul 2026) | Meta dic |
+| Métrica | Baseline (jun 2026) | Meta dic |
 |---|---|---|
-| Sesiones totales/mes | ~43,400 | 70,000 |
+| Sesiones totales/mes | 44,828 | 70,000 |
 | Sesiones orgánicas Google/mes | ~4,336 | 15,000 |
 | Sesiones desde Social/mes | ~15,427 | 20,000 |
 | Sesiones desde Email/mes | ~12,974 | 18,000 |
