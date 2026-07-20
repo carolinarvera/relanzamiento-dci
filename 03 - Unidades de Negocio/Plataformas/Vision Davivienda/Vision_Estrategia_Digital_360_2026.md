@@ -60,7 +60,23 @@ Nota: el reporte de exploración (Informe Panorámico) mostraba ~43,400 sesiones
 
 **Lectura:** Social trae usuarios nuevos que no vuelven. Email (Braze) fideliza — 5,286 usuarios generan 12,508 sesiones = 2.4 sesiones/usuario. SEO orgánico: solo 1,056 usuarios únicos = canal con mayor potencial sin explotar.
 
-**Dato inesperado:** AI Assistant ya genera 59 sesiones y 42 usuarios nuevos — ChatGPT, Perplexity y Google AI Overviews ya están citando Visión. Hay que acelerar esa capa.
+**AI Assistant: ~85 sesiones confirmadas (dato completo del CSV de fuentes)**
+
+| Fuente AI | Sesiones | Usuarios |
+|---|---|---|
+| gemini.google.com / ai-assistant | 33 | 25 |
+| chatgpt.com (total) | ~41 | ~28 |
+| claude.ai / ai-assistant | 7 | 5 |
+| notebooklm.google.com | 4 | 2 |
+
+Gemini lidera, no ChatGPT. NotebookLM (investigación) y Claude confirman que el contenido es procesado por herramientas de análisis, no solo buscadores. Acelerar la capa de AI/LLMs es prioritario — hay tráfico sin esfuerzo activo.
+
+**Señales de distribución corporativa B2B (CSV de fuentes):**
+- `statics.teams.cdn.office.net`: 85 sesiones — links compartidos en Microsoft Teams dentro de empresas
+- `view.genially.com`: 88 sesiones — contenido de Visión usado en presentaciones corporativas/educativas
+- `udearroba.udea.edu.co`: 35 sesiones — Universidad de Antioquia enlazando contenido de Visión
+- `securities.jira.com`: 28 sesiones — probable Jira de Davivienda Corredores (división de valores)
+- `jpmc.rogo.ai`: 1 sesión — JP Morgan Chase usando Rogo AI, que citó Visión
 
 **Perfil de audiencia (junio 2026):**
 
@@ -96,8 +112,12 @@ Los usuarios de Social llegan una vez y no vuelven. El loop de fidelización est
 ### Hallazgo 4: Los datos de contenido están ciegos.
 - **2,046,282 eventos GA4** con `article_id = (not set)` — el evento dispara pero no pasa el parámetro del artículo. Nadie sabe qué artículos específicos generan más engagement.
 - **UTMs de pauta rotos** (1,223 sesiones Unassigned) — presupuesto de Paid Search invisible en GA4.
-- Nombres de eventos Braze con números ("12.0 Cerrar") — imposible comparar campañas. Naming de campañas usa código "20250828" (agosto 2025) — no actualizado en casi un año.
+- Nombres de eventos Braze con números ("12.0 Cerrar") — imposible comparar campañas. Naming usa código "20250828" — activo desde agosto 2025.
 - **Página no encontrada: 151 vistas** — hay links rotos o páginas movidas sin redirect.
+- **`vision-anterior.dav.ac`: 24 sesiones** — dominio anterior sin redirect completo a vision.davivienda.com.
+- **`braze-05-shareable-preview-us.s3.amazonaws.com`: 26 sesiones** — previews internos de Braze contaminando GA4 como tráfico real.
+- **`Eloqua / email`: 56 sesiones residuales** — migración a Braze incompleta; campañas Eloqua antiguas aún activas.
+- **UTM chaos sistémico:** Instagram = 5 variantes de source/medium distintas; X = 5; WhatsApp = 5. El tráfico orgánico de RRSS está atomizado — imposible medir el canal real sin estandarizar.
 
 ---
 
@@ -110,9 +130,11 @@ Ninguna optimización de pauta, contenido ni SEO tiene sentido hasta resolver es
 | 1 | **Leo/Brace:** pasar `informe_id` y `article_title` como parámetro en el evento GA4 "informe_de_interes" | Leo (Brace CMS) | Sin esto, 2M+ events son inútiles — no sabemos qué contenido genera interés |
 | 2 | **Leo/Brace:** configurar eventos clave (conversiones) en GA4 — mínimo: `form_start`, `form_submit` (suscripción), `EventosVision` | Leo (Brace CMS) | La tabla de eventos clave está vacía — 4,149 sesiones de pauta pagada sin saber si convierten |
 | 3 | **Performix/Jeison:** estandarizar UTMs — `utm_source=performix&utm_medium=paid_social&utm_campaign=[nombre]` en todos los creativos | Jeison + Alejandro Bojacá | Presupuesto de pauta invisible en GA4 (Unassigned = 1,223 sesiones) |
-| 4 | **Leo:** redirigir (301) las páginas con "Página no encontrada" (151 vistas) — auditar con GSC Coverage report | Leo (Brace CMS) | Links rotos dañan SEO y experiencia del usuario |
-| 5 | **Estefanía/Braze:** corregir UTM source en plantillas de Braze de `emarsys` → `braze` — GA4 reporta "Email / Emarsys" pero la plataforma real es Braze | Estefanía | Confunde plataformas en cualquier reporte GA4; afecta atribución |
-| 6 | **Estefanía/Braze:** renombrar campañas con fecha actual: "[YYYYMMDD]_[tipo]_[tema]" — eliminar código "20250828" activo desde ago 2025 | Estefanía | Sin naming correcto no hay comparación cross-campaign |
+| 4 | **Leo:** redirigir (301) páginas con "Página no encontrada" (151 vistas) + redirect `vision-anterior.dav.ac` → `vision.davivienda.com` | Leo (Brace CMS) | Links rotos dañan SEO; dominio anterior sigue generando 24 sesiones sin redirect |
+| 5 | **Leo:** excluir `braze-05-shareable-preview-us.s3.amazonaws.com` vía filtro GA4 | Leo | Previews internos de Braze contaminan datos como tráfico real |
+| 6 | **Estefanía/Braze:** estandarizar UTM source/medium para todos los canales — guía: `braze/email`, `instagram/post`, `x/post`, `whatsapp/post` (minúsculas, sin variantes) | Estefanía | Instagram tiene 5 variantes, X tiene 5, WhatsApp tiene 5 — imposible medir RRSS orgánico |
+| 7 | **Estefanía/Braze:** renombrar campañas con fecha actual: "[YYYYMMDD]_[tipo]_[tema]" — eliminar código "20250828" activo desde ago 2025 | Estefanía | Sin naming correcto no hay comparación cross-campaign |
+| 8 | **Natalia Otálora (verificar):** `misfinanzasparainvertir.com` envía 35 sesiones a Visión + `mfi / trafico_banner` = 2 sesiones — ¿el link/banner entre MFxInvertir y Visión es intencional? | Natalia Otálora | Plataformas Davivienda deben mantenerse separadas según regla de no mezcla |
 
 **Checkpoint:** Carolina verifica con Jeison que los 5 fixes están en producción antes de liberar Fase 1.
 
