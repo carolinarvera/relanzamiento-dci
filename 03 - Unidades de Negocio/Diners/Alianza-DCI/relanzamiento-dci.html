@@ -24,7 +24,7 @@
   .slide{
     min-height:100vh;scroll-snap-align:start;position:relative;
     display:flex;flex-direction:column;justify-content:center;
-    padding:8vh 7vw;
+    padding:6vh 7vw;
     background:radial-gradient(120% 120% at 80% 0%, #0d2c4d 0%, var(--navy) 45%, var(--navy-deep) 100%);
     border-bottom:1px solid rgba(0,0,0,.3);
   }
@@ -41,7 +41,7 @@
   }
   .eyebrow::after{content:"";height:1px;flex:1;max-width:120px;background:var(--line)}
   h1{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.02;font-weight:600;letter-spacing:-.01em}
-  h2{font-size:clamp(1.7rem,3.8vw,2.7rem);line-height:1.08;font-weight:600;letter-spacing:-.01em;margin-bottom:1.2rem}
+  h2{font-size:clamp(1.7rem,3.8vw,2.7rem);line-height:1.08;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem}
   h3{font-size:1.15rem;font-weight:600;color:var(--gold);margin-bottom:.5rem}
   p{font-size:clamp(1rem,1.6vw,1.22rem);line-height:1.55;color:rgba(244,241,234,.9);max-width:62ch}
   .lead{font-size:clamp(1.15rem,2vw,1.5rem);color:var(--parchment)}
@@ -57,15 +57,15 @@
   .brandline{font-family:var(--sans);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);padding-top:1.1rem;display:inline-block}
 
   /* grids */
-  .grid{display:grid;gap:1.1rem;margin-top:1.6rem}
+  .grid{display:grid;gap:.85rem;margin-top:1.1rem}
   .g2{grid-template-columns:repeat(2,1fr)}
   .g3{grid-template-columns:repeat(3,1fr)}
   .g4{grid-template-columns:repeat(4,1fr)}
   .card{
     background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:3px;
-    padding:1.4rem 1.35rem;
+    padding:1.05rem 1.15rem;
   }
-  .card h3{margin-bottom:.55rem}
+  .card h3{margin-bottom:.4rem}
   .card p{font-size:.98rem;line-height:1.5;color:rgba(244,241,234,.8)}
   .card.hl{border-color:var(--gold);background:rgba(210,168,85,.08)}
   .card.team-wide{grid-column:1 / -1;display:grid;grid-template-columns:.85fr 1.6fr;gap:1.6rem;align-items:center}
@@ -156,11 +156,23 @@
 
   /* bulleted option lists (categoría → opciones → acción) */
   .card .catlabel{font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze);display:block;margin-bottom:.15rem}
-  .blist{list-style:none;margin:.4rem 0 0;padding:0}
-  .blist li{position:relative;padding:.3rem 0 .3rem 1rem;font-size:.88rem;line-height:1.42;color:rgba(244,241,234,.85)}
-  .blist li::before{content:"";position:absolute;left:0;top:.66rem;width:5px;height:5px;border-radius:50%;background:var(--bronze)}
+  .blist{list-style:none;margin:.3rem 0 0;padding:0}
+  .blist li{position:relative;padding:.2rem 0 .2rem .95rem;font-size:.85rem;line-height:1.36;color:rgba(244,241,234,.85)}
+  .blist li::before{content:"";position:absolute;left:0;top:.56rem;width:4px;height:4px;border-radius:50%;background:var(--bronze)}
   .blist li strong{color:#fff;font-weight:600}
-  .action{display:block;font-family:var(--sans);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-top:.85rem;padding-top:.6rem;border-top:1px solid var(--line)}
+  .action{display:block;font-family:var(--sans);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-top:.65rem;padding-top:.45rem;border-top:1px solid var(--line)}
+
+  /* modelo de inversión */
+  .natag{font-family:var(--sans);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:.18rem .5rem;border:1px solid var(--gold);border-radius:2px;color:var(--gold);display:inline-block;margin-bottom:.4rem}
+  .natag.pass{color:var(--muted);border-color:rgba(244,241,234,.22)}
+  .alloc{margin-top:1.4rem}
+  .allocrow{display:grid;grid-template-columns:1fr auto;gap:.6rem;align-items:baseline}
+  .allocrow .lbl{font-size:.95rem;color:rgba(244,241,234,.9)}
+  .allocrow .pct{font-family:var(--sans);color:var(--gold);font-weight:700;font-size:.95rem}
+  .track{height:6px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin:.3rem 0 1rem}
+  .fill{height:100%;background:linear-gradient(90deg,var(--bronze),var(--gold))}
+  .flag{border-left:2px solid var(--wine);background:rgba(140,58,58,.12);padding:.8rem 1rem;margin-top:1.2rem;border-radius:2px}
+  .flag p{font-family:var(--sans);font-size:.8rem;line-height:1.45;color:rgba(244,241,234,.85);max-width:none}
 
   /* rtb pillars */
   .rtb{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1.4rem}
@@ -656,10 +668,225 @@
     </div>
   </section>
 
+  <!-- ============ MÓDULO 6 · MODELO DE INVERSIÓN ============ -->
+
+  <!-- DIVIDER MÓDULO 6 -->
+  <section class="slide divider">
+    <div class="wrap">
+      <div class="modkicker">Módulo 6</div>
+      <div class="modnum">06</div>
+      <div class="modkicker" style="margin-top:1.2rem;color:var(--gold)">Modelo de inversión y fee</div>
+      <h2 class="tagline">Separar lo que es <em>honorario</em> de lo que es <em>medio</em>.</h2>
+      <p>El presupuesto se estructura en cuatro bloques con naturaleza distinta: dos de <strong>honorario Gamma</strong> (estrategia y operación), uno de <strong>publicidad en el ecosistema propio</strong> y uno de <strong>posicionamiento vía terceros</strong> (vallas, aeropuertos, eventos), que es inversión pass-through. Cada bloque se contrata, se mide y se factura por separado.</p>
+      <div class="modindex">Módulo 6 cubre → <b>estructura de 4 bloques</b> · <b>publicidad ecosistema Gamma</b> · <b>terceros</b> · <b>distribución %</b></div>
+    </div>
+  </section>
+
+  <!-- ESTRUCTURA DE INVERSIÓN · 4 BLOQUES -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 6 · Estructura de inversión</div>
+      <h2>Cuatro bloques, cuatro naturalezas.</h2>
+      <p class="subhead">Claridad contractual: qué es honorario de Gamma, qué es medio propio y qué es inversión en terceros.</p>
+      <div class="grid g2">
+        <div class="card hl">
+          <span class="natag">Honorario Gamma</span><h3>A · Estrategia</h3>
+          <ul class="blist">
+            <li>Dirección estratégica, concepto creativo y territorio de marca</li>
+            <li>Arquitectura de beneficios y diseño del programa (AON + Interesting Life)</li>
+            <li>Planeación de medios, medición y gobierno del proyecto</li>
+          </ul>
+          <span class="action">Modelo → fee de proyecto o retainer mensual</span>
+        </div>
+        <div class="card hl">
+          <span class="natag">Honorario Gamma</span><h3>B · Operación</h3>
+          <ul class="blist">
+            <li>Project management, curaduría y consecución de aliados</li>
+            <li>Producción editorial, de contenido y de experiencias</li>
+            <li>Operación de la plataforma de beneficios, servicio y reportería</li>
+          </ul>
+          <span class="action">Modelo → fee mensual de operación + variable por volumen</span>
+        </div>
+        <div class="card">
+          <span class="natag">Medio propio · ingreso Gamma</span><h3>C · Publicidad ecosistema Gamma</h3>
+          <ul class="blist">
+            <li>Pauta y branded content en revistas, web, redes, newsletter y podcast</li>
+            <li>Se cotiza por <strong>tipología de formato</strong> según tarifario</li>
+            <li>Costo marginal favorable: el inventario es propio</li>
+          </ul>
+          <span class="action">Modelo → tarifario por formato o paquete anual</span>
+        </div>
+        <div class="card">
+          <span class="natag pass">Pass-through · terceros</span><h3>D · Posicionamiento vía terceros</h3>
+          <ul class="blist">
+            <li>Vallas, aeropuertos, eventos, programática, CTV, cine, influencers</li>
+            <li><strong>No es ingreso de Gamma</strong>: se factura al costo del proveedor</li>
+            <li>Gamma puede gestionarlo con un <strong>fee de administración (% a definir)</strong></li>
+          </ul>
+          <span class="action">Modelo → inversión directa o gestionada con fee admin</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C · PUBLICIDAD ECOSISTEMA GAMMA POR TIPOLOGÍA -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 6 · Bloque C · Ecosistema Gamma</div>
+      <h2>Publicidad en medios propios, por tipología.</h2>
+      <p class="subhead">Inventario propio → mejor costo por impacto cualificado y control editorial total.</p>
+      <div class="grid g3">
+        <div class="card">
+          <span class="catlabel">Tipología</span><h3>Impreso</h3>
+          <ul class="blist">
+            <li>Publirreportaje a doble página</li>
+            <li>Portadas y ediciones especiales</li>
+            <li>Encartes e inserciones dirigidas</li>
+            <li>Sponsor de secciones fijas</li>
+          </ul>
+          <span class="action">Alto valor percibido · autoridad</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Tipología</span><h3>Digital &amp; web</h3>
+          <ul class="blist">
+            <li>Display y formatos de alto impacto</li>
+            <li>Branded content en revistadiners.com.co</li>
+            <li>Contenido premium / zona exclusiva</li>
+          </ul>
+          <span class="action">Tráfico cualificado · trazable</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Tipología</span><h3>Redes sociales</h3>
+          <ul class="blist">
+            <li>Contenido co-branded en IG y FB</li>
+            <li>Amplificación pagada sobre audiencia propia</li>
+            <li>Colaboraciones con la marca</li>
+          </ul>
+          <span class="action">Alcance con afinidad heredada</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Tipología</span><h3>Newsletter &amp; podcast</h3>
+          <ul class="blist">
+            <li>Espacio de marca en envíos segmentados</li>
+            <li>Patrocinio de <strong>La Mesa de Diners</strong></li>
+          </ul>
+          <span class="action">Intimidad · open rate 26–28%</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Tipología</span><h3>Transmedia / video</h3>
+          <ul class="blist">
+            <li>Historias Diners (micro-documentales)</li>
+            <li>Diners Club Recomienda (video-entrevistas)</li>
+          </ul>
+          <span class="action">Storytelling nativo de marca</span>
+        </div>
+        <div class="card hl">
+          <span class="catlabel">Tipología</span><h3>Data &amp; prospección</h3>
+          <ul class="blist">
+            <li>Segmentación sobre base editorial propia</li>
+            <li>Look-alikes de lectores de alto valor</li>
+          </ul>
+          <span class="action">Convierte audiencia en tarjetahabientes</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- D · POSICIONAMIENTO VÍA TERCEROS POR TIPOLOGÍA -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 6 · Bloque D · Terceros (pass-through)</div>
+      <h2>Posicionamiento de marca vía terceros, por tipología.</h2>
+      <p class="subhead">Inversión que no es ingreso de Gamma — se factura al costo del proveedor, con o sin fee de administración.</p>
+      <div class="grid g3">
+        <div class="card">
+          <span class="catlabel">Tipología</span><h3>OOH · vallas y DOOH</h3>
+          <ul class="blist">
+            <li>Vallas y pantallas LED en corredores premium</li>
+            <li>Mupis indoor en centros comerciales de lujo</li>
+            <li>Domination temporal por corredor</li>
+          </ul>
+          <span class="action">Proveedor externo · costo por circuito</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Tipología</span><h3>Aeropuertos &amp; salas VIP</h3>
+          <ul class="blist">
+            <li>Branding en salas VIP El Dorado y JMC</li>
+            <li>Jet-bridges, priority y fast-track</li>
+            <li>Revistas de a bordo y pantallas de transfer</li>
+          </ul>
+          <span class="action">Concesionario aeroportuario · alto CPM</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Tipología</span><h3>Eventos &amp; patrocinios</h3>
+          <ul class="blist">
+            <li>Producción de Mesas Diners y pop-ups</li>
+            <li>Patrocinios: golf, ARTBO, festivales</li>
+            <li>Venues, chefs, catering y logística</li>
+          </ul>
+          <span class="action">Productora + venue · costo por evento</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Tipología</span><h3>Programática, CTV &amp; cine</h3>
+          <ul class="blist">
+            <li>PMP / deals premium y display externo</li>
+            <li>Connected TV / OTT segmentado</li>
+            <li>Salas de cine premium (VIP / Gold)</li>
+          </ul>
+          <span class="action">Trading desk / agencia de medios</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Tipología</span><h3>Influencers &amp; creators</h3>
+          <ul class="blist">
+            <li>Honorarios de talento gourmet, viajes y negocios</li>
+            <li>Producción de contenido asociado</li>
+          </ul>
+          <span class="action">Talento externo · fee por entregable</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Tipología</span><h3>Audio &amp; prensa externa</h3>
+          <ul class="blist">
+            <li>Patrocinio de podcasts top y emisoras premium</li>
+            <li>Pauta en medios de negocios y lifestyle</li>
+          </ul>
+          <span class="action">Medio externo · tarifa comercial</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISTRIBUCIÓN PRESUPUESTAL -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 6 · Distribución presupuestal</div>
+      <h2>Cómo se reparte la inversión.</h2>
+      <p class="subhead">Rangos indicativos de referencia para un relanzamiento premium a 12 meses en Colombia.</p>
+      <div class="alloc">
+        <div class="allocrow"><span class="lbl">D · Posicionamiento vía terceros — ATL (vallas, aeropuertos, prensa)</span><span class="pct">28–32%</span></div>
+        <div class="track"><div class="fill" style="width:30%"></div></div>
+
+        <div class="allocrow"><span class="lbl">D · Experiencias, eventos y BTL (producción y patrocinios)</span><span class="pct">20–24%</span></div>
+        <div class="track"><div class="fill" style="width:22%"></div></div>
+
+        <div class="allocrow"><span class="lbl">D · Digital externo (performance, programática, CTV, influencers)</span><span class="pct">20–24%</span></div>
+        <div class="track"><div class="fill" style="width:22%"></div></div>
+
+        <div class="allocrow"><span class="lbl">C · Publicidad en el ecosistema Gamma (medios propios)</span><span class="pct">14–18%</span></div>
+        <div class="track"><div class="fill" style="width:16%"></div></div>
+
+        <div class="allocrow"><span class="lbl">A + B · Fee Gamma (estrategia + operación)</span><span class="pct">8–12%</span></div>
+        <div class="track"><div class="fill" style="width:10%"></div></div>
+      </div>
+      <div class="flag">
+        <p><strong>Rangos indicativos, no cifras aprobadas.</strong> El monto absoluto en COP y el fee de administración sobre terceros se dimensionan con Catalina y Finanzas antes de cualquier presentación externa. La fase 1 concentra ATL y BTL; a partir del mes 5 la inversión rota hacia ecosistema Gamma y always-on.</p>
+      </div>
+    </div>
+  </section>
+
 </div>
 
 <div class="dots" id="dots"></div>
-<div class="pageno" id="pageno">01 / 18</div>
+<div class="pageno" id="pageno">01 / 23</div>
 <div class="conf">Confidencial · Ediciones Gamma</div>
 
 <script>
