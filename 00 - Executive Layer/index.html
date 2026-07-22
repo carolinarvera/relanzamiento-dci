@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plan de Acción — Editorial + Redes + Marketing · Julio 2026</title>
+<style>
+  :root{
+    --bg:#faf9f7; --card:#ffffff; --border:#e6e2da; --border-strong:#d3ccc0;
+    --text:#1c1a17; --text-2:#5c574d; --text-3:#6b6558;
+    --web:#3a5a40; --cm:#7a2e6e; --mkt:#94500a; --nl:#2f6d6a; --seo:#4a4a8f; --brief:#15529c;
+    --f0:#a31e17; --fc:#1f6b45;
+    --why-bg:#fbf1f0; --why-bd:#a31e17;
+    --radius:12px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#15130f; --card:#1e1c17; --border:#332f27; --border-strong:#453f34;
+      --text:#f1eee7; --text-2:#c9c3b5; --text-3:#948d7c;
+      --web:#8fb896; --cm:#c78ab8; --mkt:#f3a85e; --nl:#6fb0ab; --seo:#a3a3e0; --brief:#6fa8f0;
+      --f0:#ff7b70; --fc:#5fcf94;
+      --why-bg:#2a1a18; --why-bd:#ff7b70;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#15130f; --card:#1e1c17; --border:#332f27; --border-strong:#453f34;
+    --text:#f1eee7; --text-2:#c9c3b5; --text-3:#948d7c;
+    --web:#8fb896; --cm:#c78ab8; --mkt:#f3a85e; --nl:#6fb0ab; --seo:#a3a3e0; --brief:#6fa8f0;
+    --f0:#ff7b70; --fc:#5fcf94;
+    --why-bg:#2a1a18; --why-bd:#ff7b70;
+  }
+  :root[data-theme="light"]{
+    --bg:#faf9f7; --card:#ffffff; --border:#e6e2da; --border-strong:#d3ccc0;
+    --text:#1c1a17; --text-2:#5c574d; --text-3:#6b6558;
+    --web:#3a5a40; --cm:#7a2e6e; --mkt:#94500a; --nl:#2f6d6a; --seo:#4a4a8f; --brief:#15529c;
+    --f0:#a31e17; --fc:#1f6b45;
+    --why-bg:#fbf1f0; --why-bd:#a31e17;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.5}
+  .wrap{max-width:1120px;margin:0 auto;padding:32px 20px 80px}
+  h1{font-size:25px;font-weight:600;margin:0 0 6px;letter-spacing:-0.01em}
+  .sub{margin:0;color:var(--text-2);font-size:15px;max-width:780px}
+  .why{font-size:13.5px;background:var(--why-bg);border-left:3px solid var(--why-bd);padding:11px 14px;border-radius:0 6px 6px 0;margin:16px 0 0;max-width:840px}
+  .why b{font-weight:600}
+
+  nav.tabs{display:flex;gap:8px;margin:20px 0 4px;flex-wrap:wrap}
+  nav.tabs button{font:inherit;font-size:15px;font-weight:600;padding:10px 26px;border-radius:999px;border:1px solid var(--border-strong);background:var(--card);color:var(--text-2);cursor:pointer}
+  nav.tabs button:hover{background:var(--border)}
+  nav.tabs button:focus-visible{outline:2px solid var(--brief);outline-offset:2px}
+  nav.tabs button[data-t="axxis"].active{background:var(--web);border-color:var(--web);color:#fff}
+  nav.tabs button[data-t="diners"].active{background:var(--cm);border-color:var(--cm);color:#fff}
+  nav.tabs .c{font-size:12px;opacity:.75;margin-left:6px;font-weight:500}
+  .tabhint{font-size:12.5px;color:var(--text-3);margin:6px 0 0}
+
+  .tier{margin-top:26px}
+  .tier-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;border-bottom:2px solid var(--border-strong);padding-bottom:6px;margin-bottom:4px}
+  .tier-head h2{font-size:15px;font-weight:600;margin:0}
+  .tier-head span{font-size:12.5px;color:var(--text-3)}
+
+  .act{display:flex;gap:12px;padding:13px 2px;border-bottom:1px solid var(--border)}
+  .act:last-child{border-bottom:none}
+  .chk{flex-shrink:0;width:18px;height:18px;border:1.5px solid var(--border-strong);border-radius:5px;margin-top:2px;cursor:pointer;position:relative}
+  .chk.done{background:var(--fc);border-color:var(--fc)}
+  .chk.done::after{content:"";position:absolute;left:5px;top:1px;width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+  @media (prefers-color-scheme: dark){ .chk.done::after{border-color:#15130f} }
+  :root[data-theme="dark"] .chk.done::after{border-color:#15130f}
+  .act .body{flex:1}
+  .act.done .title{text-decoration:line-through;color:var(--text-3)}
+  .num{color:var(--text-3);font-weight:600;margin-right:7px;font-variant-numeric:tabular-nums}
+  .title{font-size:14.5px;font-weight:600;margin:0 0 3px}
+  .ow{font-size:11px;font-weight:600;padding:1px 8px;border-radius:999px;margin-left:8px;vertical-align:1px;border:1px solid;white-space:nowrap}
+  .ow-web{color:var(--web);border-color:var(--web)}
+  .ow-seo{color:var(--seo);border-color:var(--seo)}
+  .ow-cm{color:var(--cm);border-color:var(--cm)}
+  .ow-nl{color:var(--nl);border-color:var(--nl)}
+  .ow-mkt{color:var(--mkt);border-color:var(--mkt)}
+  .ev{font-size:12.5px;color:var(--text-2);margin:0}
+  .ev b{color:var(--f0);font-weight:600}
+  .brief-box{background:color-mix(in srgb, var(--brief) 7%, transparent);border-left:3px solid var(--brief);border-radius:0 6px 6px 0;padding:10px 13px;margin:2px 0 0}
+  .brief-box .tag{font-size:10px;font-weight:700;color:var(--brief);text-transform:uppercase;letter-spacing:.04em}
+
+  .fmtcard{margin-top:18px;border:1px solid var(--border-strong);border-radius:var(--radius);background:var(--card);padding:16px 18px}
+  .fmtcard h3{font-size:13.5px;font-weight:600;margin:0 0 4px;text-transform:uppercase;letter-spacing:.04em}
+  .fmtcard .lead{font-size:12.5px;color:var(--text-2);margin:0 0 12px}
+  .ftab{width:100%;border-collapse:collapse;font-size:12.5px;min-width:760px}
+  .ftab th,.ftab td{padding:7px 10px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+  .ftab thead th{font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--text-3);font-weight:600}
+  .ftab tbody th{font-weight:600;white-space:nowrap}
+  .ftab tr:last-child th,.ftab tr:last-child td{border-bottom:none}
+  .st{font-size:10px;font-weight:700;padding:1px 7px;border-radius:999px;white-space:nowrap}
+  .st.on{color:var(--fc);border:1px solid var(--fc)}
+  .st.new{color:var(--brief);border:1px solid var(--brief)}
+  .st.off{color:var(--text-3);border:1px solid var(--border-strong)}
+
+  .measure{margin-top:30px;border:1px solid var(--fc);border-radius:var(--radius);padding:16px 18px;background:color-mix(in srgb, var(--fc) 6%, transparent)}
+  .measure h3{font-size:13px;font-weight:600;margin:0 0 8px;text-transform:uppercase;letter-spacing:.04em}
+  .measure p{margin:0;font-size:14px}
+  footer{margin-top:26px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:var(--text-3)}
+  @media print{ .chk{border-color:#999} body{background:#fff} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Plan de Acción — Julio 2026</h1>
+  <div class="measure">
+    <h3>Cómo medimos julio</h3>
+    <p>Dejamos de reportar por <b>visitas</b> y empezamos a reportar por <b>tiempo de interacción y páginas por sesión</b>. Meta del mes: subir el tiempo medio del sitio y llevar las páginas por sesión por encima de 1.5. Una visita de 2 segundos no cuenta como resultado.</p>
+  </div>
+
+  <div class="fmtcard" style="margin-top:18px">
+    <p class="lead">Meta de julio: mismo volumen o más, pero moviendo de dónde viene y la calidad del segmento.</p>
+    <p class="ev" style="margin-top:0"><b>Qué mide cada %:</b> la participación de ese canal sobre el total de sesiones del sitio (no visitas absolutas, no presupuesto). No es que baje el tráfico total — es que cada canal deje de estar desbalanceado. La meta final es una <b>mezcla más sana</b>: menos dependencia de Paid Social (peor calidad, 5s de interacción) y más peso de los canales que sí retienen.</p>
+    <ul style="margin:6px 0 12px 18px;padding:0;font-size:13px;color:var(--text-2)">
+      <li style="margin-bottom:4px"><b>Paid Social</b> — hoy 79 de cada 100 sesiones de AXXIS (52 en Diners) vienen de pauta en redes. Meta: que no pasen de 50 (35 en Diners) de cada 100.</li>
+      <li style="margin-bottom:4px"><b>Organic Search</b> — hoy 9 de cada 100 sesiones de AXXIS (26 en Diners) llegan por búsqueda orgánica. Meta: subir a 15 (35 en Diners) de cada 100.</li>
+      <li style="margin-bottom:4px"><b>Paid Search</b> — hoy prácticamente 0 de cada 100 sesiones de AXXIS vienen de Google Ads (5 en Diners). Meta: llegar a 10 de cada 100 en ambas.</li>
+      <li><b>Email</b> — hoy 2 de cada 100 sesiones de AXXIS (1 en Diners) vienen del newsletter. Meta: subir a 5 de cada 100 en ambas.</li>
+    </ul>
+    <div style="overflow-x:auto"><table class="ftab" style="min-width:640px">
+      <thead><tr><th>Canal</th><th>AXXIS — % de sesiones hoy → meta Q3</th><th>Diners — % de sesiones hoy → meta Q3</th><th>Quién lo mueve</th></tr></thead>
+      <tbody>
+        <tr><th>Paid Social</th><td>79.3% → <b>≤50%</b></td><td>52.0% → <b>≤35%</b></td><td>Pauta</td></tr>
+        <tr><th>Organic Search</th><td>9.0% → <b>15%</b></td><td>26.2% → <b>35%</b></td><td>SEO</td></tr>
+        <tr><th>Paid Search</th><td>0.1% → <b>10%</b></td><td>5.1% → <b>10%</b></td><td>SEM</td></tr>
+        <tr><th>Email</th><td>2.4% → <b>5%</b></td><td>1.2% → <b>5%</b></td><td>Newsletter</td></tr>
+      </tbody>
+    </table></div>
+    <p class="lead" style="margin-top:10px"><b>Dónde debe aterrizar:</b></p>
+    <div style="overflow-x:auto"><table class="ftab" style="min-width:640px">
+      <thead><tr><th>Revista</th><th>Destino</th><th>Estado</th></tr></thead>
+      <tbody>
+        <tr><th>Diners</th><td>Cluster "Bogotá y alrededores"</td><td>Ya retiene 77–85s — no crear nada nuevo, solo dirigir tráfico</td></tr>
+        <tr><th>AXXIS</th><td>Hub de arquitectos + ficha técnica</td><td>Destino que hoy no existe — construirlo es la condición para que el tráfico nuevo no caiga en 1.20 páginas/sesión</td></tr>
+        <tr><th>Ambas</th><td>/suscripciones/</td><td>Solo una vez resuelto el gate de conversión (SEM 4)</td></tr>
+      </tbody>
+    </table></div>
+    <p class="lead" style="margin-top:14px"><b>KPI único de julio — sesiones con interacción, no sesiones totales:</b></p>
+    <div style="overflow-x:auto"><table class="ftab" style="min-width:480px">
+      <thead><tr><th>Métrica</th><th>AXXIS</th><th>Diners</th></tr></thead>
+      <tbody>
+        <tr><th>Sesiones con interacción</th><td>25,181 → <b>≥28,000</b></td><td>63,570 → <b>≥70,000</b></td></tr>
+        <tr><th>% desde canales propios (SEO+Direct+Email)</th><td>16.4% → <b>20%</b></td><td>39.0% → <b>45%</b></td></tr>
+      </tbody>
+    </table></div>
+  </div>
+
+  <nav class="tabs" role="tablist" aria-label="Revista">
+    <button role="tab" data-t="axxis" class="active" aria-selected="true">AXXIS<span class="c" id="c-axxis"></span></button>
+    <button role="tab" data-t="diners" aria-selected="false">Diners<span class="c" id="c-diners"></span></button>
+  </nav>
+  <p class="why" id="why-axxis">AXXIS pone 79.3% del tráfico en Paid Social y ese canal interactúa <b>5 segundos</b> — nadie lee un artículo de arquitectura en 5 segundos. Paid Social es lo que baja el promedio del sitio a <b>24.35% de interacción y 12s de tiempo medio</b>; sin ese canal, subiría a 46.33% y 40s. La teoría a validar: no es el formato, es la segmentación y los lugares de publicación — a quién le mostramos el anuncio y en qué placement. El email dura 20× más que el Paid Social y AXXIS no tiene Paid Search: está invirtiendo 79% en el peor canal y 0% en el mejor. Julio se trata de <b>retener, el reto es mantener visitas</b>.</p>
+
+  <p class="why" id="why-diners" style="display:none">en junio compramos mucho tráfico que no lee. La misma nota de Kristen Stewart dura <b>0.6 segundos</b> cuando llega por pauta de redes y <b>122 segundos</b> cuando llega por email. El contenido es bueno — el problema es a quién se lo mostramos y a dónde lo mandamos. Julio se trata de <b>retener, el reto es mantener visitas</b>.</p>
+
+  <div id="app"></div>
+</div>
+
+<script>
+const TYPES = [
+  ["seo","SEO — Contenido y Búsqueda Orgánica","El motor de tráfico de calidad. Cada tarea trae su keyword y su métrica de junio. Mapa completo de clusters al final del grupo."],
+  ["sem","SEM — Google Ads (Paid Search)","El mejor canal pago: 67% de interacción, $1.52/sesión. Reasignar presupuesto desde Paid Social, no pedir nuevo."],
+  ["pauta","Pauta — Meta (Paid Social)","El peor canal (4–5s) y el que más volumen recibe. Bajar y reasignar a Google Ads, afinando segmentación para subir el tiempo sin perder tráfico."],
+  ["social","Redes Sociales — Orgánico","Canal de marca y comunidad, no de tráfico. Medir por engagement y saves, nunca por vistas."],
+  ["nl","Newsletter — Email","El canal de mayor calidad (98–127s) y el más hambriento. Cierra el circuito de audiencia propia."],
+  ["fmt","Formatos Digitales","Portafolio comercial con KPIs reales. Lanzar por olas: primero lo que reusa formatos que ya dominan."]
+];
+const TYC = { seo:"var(--seo)", sem:"var(--brief)", pauta:"var(--f0)", social:"var(--cm)", nl:"var(--nl)", fmt:"var(--mkt)" };
+const TY = {
+  ax04:"seo",ax05:"seo",ax08:"seo",ax09:"seo",ax10:"seo",ax14:"seo",ax19:"seo",ax20:"seo",ax29:"seo",ax33:"seo",ax35:"seo",
+  ax06:"sem",ax23:"sem",ax24:"sem",ax25:"sem",ax26:"sem",ax27:"sem",ax28:"sem",
+  ax21:"pauta", ax22:"pauta", ax30:"pauta",
+  ax02:"social",ax03:"social",ax11:"social",
+  ax12:"nl",ax18:"nl",ax31:"nl",ax32:"nl",
+  ax07:"fmt",ax13:"fmt",ax15:"fmt",ax16:"fmt",ax17:"fmt",
+  di05:"seo",di06:"seo",di07:"seo",di09:"seo",di10:"seo",di13:"seo",di19:"seo",di20:"seo",di21:"seo",di23:"seo",di33:"seo",
+  di26:"pauta", di08:"pauta", di22:"pauta", di24:"pauta",
+  di02:"social",di03:"social",di04:"social",di11:"social",di12:"social",
+  di01:"nl",di14:"nl",di18:"nl",di25:"nl",di32:"nl",
+  di15:"fmt",di16:"fmt",di17:"fmt"
+};
+const HINT = {
+  axxis:"Lista completa AXXIS. Su reto: marca fuerte pero poco contenido que rankee, y 79% del tráfico comprado durando 5 segundos.",
+  diners:"Lista completa Diners. Su reto: tráfico y retención de sobra, pero casi cero marca — subir posiciones y firmar el contenido."
+};
+
+const TASKS = {
+axxis:[
+ {id:"ax02",tier:1,t:"Adoptar la regla de medición: engagement y tiempo, nunca vistas",ow:"Paola Gordillo",oc:"ow-cm",
+  ev:"Junio AXXIS: alcance +17.4% pero interacciones <b>−28.2%</b>, visitas al perfil −2.3%, seguidores −10.7%. Cuando sube el alcance y cae todo lo demás, es pauta inflando humo — la regla evita celebrarlo."},
+ {id:"ax03",tier:1,t:"Calendario IG: carrusel enfocado en tráfico y KPIs, reforzar y probar el reel (no descartarlo)",ow:"Paola Gordillo",oc:"ow-cm",
+  ev:"El carrusel gana por <b>1.75 puntos</b> (4.94% vs 3.19%), pero eso no significa apagar el reel — significa que hoy se está usando sin propósito. La corrección no es de volumen, es de enfoque: cada pieza debe apuntar a apoyo de tráfico y a una métrica específica, no a ER genérico.<br><br><b>Enfoque por tipo de contenido:</b><div style=\"overflow-x:auto\"><table class=\"ftab\" style=\"min-width:520px;margin:6px 0\"><thead><tr><th>Tipo de contenido</th><th>Enfoque principal</th><th>Métrica que persigue</th></tr></thead><tbody><tr><th>Educativo</th><td>Listas, herramientas, errores comunes</td><td>Guardados (alto valor)</td></tr><tr><th>Inspiracional</th><td>Historia, mentalidad, lecciones</td><td>Compartidos en Stories</td></tr><tr><th>Interactivo</th><td>Juegos, \"A o B\", adivinanzas</td><td>Comentarios (engagement)</td></tr></tbody></table></div><b>Ángulos de carrusel para empujar tráfico a la web:</b><div style=\"overflow-x:auto\"><table class=\"ftab\" style=\"min-width:640px;margin:6px 0\"><thead><tr><th>Ángulo</th><th>Psicología</th><th>Estrategia</th><th>Métrica clave</th><th>CTA</th></tr></thead><tbody><tr><th>A. El paso incompleto</th><td>Curiosidad (cliffhanger)</td><td>Pasos 1 y 2 en el carrusel, el paso clave solo en la web</td><td>Clics al enlace / DMs</td><td>\"Lee el paso 3 completo en el link de la bio\"</td></tr><tr><th>B. La herramienta</th><td>Deseo de utilidad</td><td>Problema + plantilla/recurso descargable dentro del artículo</td><td>Descargas / leads</td><td>\"Comenta 'PLANTILLA' y te envío el recurso de la web\"</td></tr><tr><th>C. El contraste</th><td>Debate / validación</td><td>Desmentir un mito con datos visuales, análisis profundo en el blog</td><td>Compartidos / tráfico</td><td>\"Mira el estudio completo en nuestra web\"</td></tr></tbody></table></div>Probar el reel con este mismo criterio — un formato, un propósito, una métrica — antes de decidir si se refuerza o se reduce."},
+ {id:"ax04",tier:1,t:"Concentrar el calendario editorial en 'casa + naturaleza + memoria'",ow:"Mateo",oc:"ow-web",
+  ev:"Es el <b>62% del top real</b> de artículos leídos y el mismo patrón que gana en IG (Subachoque, El Arca, Memphremagog). No se trata de dejar de buscar temas nuevos — somos medio de noticias — sino de priorizar, dentro de ese patrón, ángulos y enfoques distintos sobre el mismo eje: otra fuente, otra época, otro caso, otra pregunta. Profundizar el tema que ya funciona, no repetirlo."},
+ {id:"ax05",tier:1,t:"Reescribir meta-títulos de las páginas que rankean sin clic",ow:"Mateo + Juan David",oc:"ow-seo",
+  ev:"Ya rankean en posición media (5–10) con impresiones altas — el clic se pierde en el título. Es el quick win de mayor retorno: ~7,000 clics adicionales/año sin tocar el contenido, solo reescribiendo &lt;title&gt; y meta description. Fórmula (cluster 3, mapa de keywords): [Proyecto] + dato único/gancho + AXXIS. Top 10 por impresiones, con propuesta de meta-título a validar con Mateo antes de publicar:<div style=\"overflow-x:auto\"><table class=\"ftab\" style=\"min-width:820px;margin-top:8px\"><thead><tr><th>#</th><th>Página</th><th>Impr.</th><th>CTR hoy</th><th>Pos.</th><th>Meta-título propuesto</th></tr></thead><tbody><tr><th>1</th><td>/restauracion-la-serrezuela-cartagena/</td><td>86,269</td><td>2.2%</td><td>7.3</td><td>La Serrezuela, Cartagena: de plaza de toros a centro cultural | AXXIS</td></tr><tr><th>2</th><td>/mejores-hoteles-de-cartagena/</td><td>83,481</td><td>1.0%</td><td>9.9</td><td>Los mejores hoteles de diseño en Cartagena, según AXXIS</td></tr><tr><th>3</th><td>/las-torres-del-parque-salmona/</td><td>79,249</td><td>1.0%</td><td>6.5</td><td>Torres del Parque: el ícono de Rogelio Salmona en Bogotá | AXXIS</td></tr><tr><th>4</th><td>/ecoparque-cienaga-de-mallorquin/</td><td>50,284</td><td>0.8%</td><td>6.1</td><td>Ecoparque Ciénaga de Mallorquín: el pulmón verde de Barranquilla | AXXIS</td></tr><tr><th>5</th><td>/asi-funciona-el-pendulo-taipei-101/</td><td>47,596</td><td>0.7%</td><td>—</td><td>Así funciona el péndulo del Taipei 101 contra los terremotos | AXXIS</td></tr><tr><th>6</th><td>/debi-tirar-mas-fotos/</td><td>46,115</td><td>0.8%</td><td>6.4</td><td>'Debí tirar más fotos': la nostalgia como género arquitectónico | AXXIS</td></tr><tr><th>7</th><td>/5-casas-por-las-que-vale-la-pena-vivir-en-colombia/</td><td>42,232</td><td>1.4%</td><td>7.2</td><td>5 casas en Colombia que vale la pena visitar | AXXIS</td></tr><tr><th>8</th><td>/conozca-los-cinco-aeropuertos-mas-bonitos-del-mundo/</td><td>36,302</td><td>2.9%</td><td>5.7</td><td>Los 5 aeropuertos más bonitos del mundo, según AXXIS</td></tr><tr><th>9</th><td>/panoptico-de-ibague/</td><td>35,950</td><td>1.3%</td><td>7.6</td><td>El Panóptico de Ibagué: de cárcel a ícono arquitectónico | AXXIS</td></tr><tr><th>10</th><td>/cefe-edificio-chapinero-bogota/</td><td>27,311</td><td>1.8%</td><td>8.3</td><td>Edificio CEFE en Chapinero: arquitectura brutalista bogotana | AXXIS</td></tr></tbody></table></div>Fuente: Auditoría SEO AXXIS, junio 2026. Los títulos propuestos son punto de partida — Mateo valida contra el contenido real de cada artículo antes de publicar. Empezar por las 3 primeras: solas suman ~250K impresiones."},
+ {id:"ax06",tier:1,t:"SEM 1 · Reactivar Google Ads de AXXIS con presupuesto reasignado de Paid Social",ow:"Paola Nossa + Sebastián",oc:"ow-mkt",brief:true,
+  ev:"Umbrella del plan SEM: todo el canal está en <b>$0, detenido</b>, mientras el 79.3% del tráfico es Paid Social a 5s. En Diners, Paid Search rinde 67.25% y $1.52/sesión — 12× mejor. Se financia con lo que baja de Paid Social, no con presupuesto nuevo. Las tareas de abajo son el detalle, en orden."},
+ {id:"ax24",tier:1,t:"SEM 2 · Estructura de cuenta: 3 campañas temáticas, no una sola bolsa",ow:"Sebastián",oc:"ow-mkt",brief:true,
+  ev:"(1) <b>Marca</b> defensiva · (2) <b>Suscripción</b> → /suscripciones/ · (3) <b>Diseño e interiorismo</b> (tráfico calificado). PMax queda fuera de esta estructura inicial — se relanza en fase posterior (SEM 7), previa validación. Se define primero para que cada campaña que sigue tenga su lugar — no repetir la bolsa fragmentada de Meta."},
+ {id:"ax25",tier:1,t:"SEM 3 · Campaña de Marca defensiva",ow:"Sebastián",oc:"ow-mkt",brief:true,
+  ev:"Blinda el SERP mientras el orgánico se acomoda: 'axxis' rankea solo <b>pos. 5.2</b> en su propia marca. Keywords exactas: [axxis], [revista axxis], [axxis arquitectura], [revista axxis suscripción/precio]. Presupuesto mínimo, CPC bajísimo — defensivo, no de volumen. Es la única campaña que puede arrancar sin esperar el gate de conversión (ax23)."},
+ {id:"ax23",tier:1,t:"SEM 4 · Prerequisito: página de confirmación con evento de conversión (gate)",ow:"Juan David",oc:"ow-seo",
+  ev:"Hoy la cuenta mide <b>0% de conversión</b> porque no hay página de '¡gracias por tu compra!' con píxel. <b>Ninguna campaña de suscripción arranca sin esto</b> — sin evento no se puede optimizar ni saber si funciona. Es el mismo gate que bloquea Meta. Se resuelve aquí, antes de las campañas 5 y 6."},
+ {id:"ax26",tier:2,t:"SEM 5 · Campaña de Suscripción a /suscripciones/",ow:"Sebastián + Mateo",oc:"ow-mkt",brief:true,
+  ev:"La demanda ya está probada en orgánico: 'revistas de diseño de interiores' <b>33.3% CTR</b>, 'revista de arquitectura' 18.2%, 'revistas de arquitectura' 17.9%, 'revista axxis precio'. Destino: /suscripciones/ (rankea 1.4). Objetivo = conversión (requiere el gate de ax23 ya resuelto). Negativos: 'gratis', 'pdf gratis', 'descargar'."},
+ {id:"ax28",tier:2,t:"SEM · Medición continua: CPA por suscripción + test de incrementalidad vs. orgánico",ow:"Paola Nossa + Sebastián",oc:"ow-mkt",brief:true,
+  ev:"Una vez las 4 campañas estén corriendo: medir por <b>CPA de suscripción y sesiones con interacción</b>, nunca por clics. Regla anti-canibalización: NO pujar donde el orgánico ya está en pos. 1–3; sí donde está en pos. ≥5. Test de 2 semanas: pausar keywords ya rankeadas y ver si el orgánico absorbe. Escalar 20-30% cada 3-5 días según CPA."},
+ {id:"ax27",tier:3,t:"SEM 7 · Relanzar PMax 'Suscriptores' — fase posterior, previa validación de estrategia",ow:"Sebastián",oc:"ow-mkt",brief:true,
+  ev:"La PMax fue rechazada por assets antes. No se relanza junto con las campañas 1–5: se deja para una fase posterior, una vez estén corriendo y midiendo (ax28) y se valide la estrategia con el volumen real de conversión. Al relanzar: assets conformes, brand exclusions (no canibalizar marca) y negativos de campaña. Bidding: arrancar en <b>Maximizar clics</b> con CPC tope, migrar a <b>Smart Bidding (tCPA)</b> cuando haya volumen. Nunca ECPC (obsoleto)."},
+ {id:"ax21",tier:1,t:"Brief a Sebastián: bajar el presupuesto de Paid Social y reasignarlo a Google Ads",ow:"Paola Nossa",oc:"ow-mkt",brief:true,
+  ev:"El 79.3% del tráfico de AXXIS es Paid Social a <b>5 segundos</b> (ER 18.6%). Reducir el presupuesto de forma escalonada y mover lo liberado a <b>Paid Search</b>, que rinde 67% de interacción y $1.52/sesión. No es apagarlo de golpe — es rebalancear hacia el canal que sí lleva lectores, sin cortar el volumen de golpe."},
+ {id:"ax22",tier:1,t:"Analizar campañas y segmentación actuales para bajar el rebote sin perder tráfico",ow:"Paola Nossa + Sebastián",oc:"ow-mkt",brief:true,
+  ev:"Antes de recortar a ciegas: pedir el desglose de campañas y revisar <b>qué segmentos traen los 5 segundos y cuáles retienen más</b>. El objetivo es subir el tiempo de interacción — segmentación por interés real (no alcance amplio) + destino con relacionados/ficha técnica — conservando el volumen que sí funciona. Sin este análisis, recortar puede tumbar tráfico bueno junto con el malo."},
+ {id:"ax30",tier:2,t:"Probar Advantage+ como test controlado, no como reemplazo de la segmentación manual",ow:"Paola Nossa + Sebastián",oc:"ow-mkt",brief:true,
+  ev:"Correr Advantage+ (Shopping/Sales Campaign) en paralelo a las campañas segmentadas manualmente, con presupuesto acotado — no migrar el gasto completo. Comparar contra el baseline de ax22 por <b>tiempo de interacción y CPA</b>, no por alcance ni CPM. Si Advantage+ no supera el baseline en 2-3 semanas, se descarta; si lo supera, se escala gradualmente."},
+ {id:"ax07",tier:1,t:"Ponerle fecha a 'Connect & Collab'",ow:"Paola Nossa",oc:"ow-mkt",
+  ev:"El formato B2B de leads calificados lleva meses sin cadencia. Es una decisión de calendario, no de producción: fijar la fecha del primer episodio en la sala."},
+
+ {id:"ax08",tier:2,t:"Auditoría técnica de la caída orgánica −25%",ow:"Juan David",oc:"ow-seo",
+  ev:"Core Web Vitals, indexación y velocidad móvil (88% del tráfico). A <b>0s</b> en CAM de Chía y 1s en Albornoz hay que descartar que la página no cargue antes de culpar a la segmentación de pauta."},
+ {id:"ax09",tier:2,t:"Hacer relevante el bloque 'Otros artículos' + enlaces internos en el cuerpo del texto",ow:"Mateo",oc:"ow-web",
+  ev:"<b>1.20 páginas por sesión</b>: quien entra lee una página y se va. El bloque 'Otros artículos' <b>ya existe</b> al final de cada nota — el problema no es crearlo, es que hoy no es relevante: en un artículo de arquitectura sobre un edificio en Grecia, mostró Pantone, cocinas y un hotel Marriott. Parece poblarse por 'últimos publicados', no por tema. Dos correcciones, no una construcción nueva: (1) que 'Otros artículos' filtre por categoría/tag del artículo actual, no por fecha; (2) agregar 2–3 enlaces internos dentro del cuerpo del texto (hoy no hay ninguno) a contenido relacionado real. Empezar por las de mayor tráfico, que es donde más se pierde gente. Top 20 por clics — arreglar de inmediato (home queda fuera, tiene su propia navegación):<div style=\"overflow-x:auto\"><table class=\"ftab\" style=\"min-width:640px;margin-top:8px\"><thead><tr><th>#</th><th>Página</th><th>Clics</th><th>Impr.</th><th>CTR</th><th>Pos.</th></tr></thead><tbody><tr><th>1</th><td>/ (homepage)</td><td>15,550</td><td>64,490</td><td>24.1%</td><td>9.1</td></tr><tr><th>2</th><td>/restauracion-la-serrezuela-cartagena/</td><td>1,857</td><td>86,269</td><td>2.2%</td><td>7.3</td></tr><tr><th>3</th><td>/conozca-los-cinco-aeropuertos-mas-bonitos-del-mundo/</td><td>1,055</td><td>36,302</td><td>2.9%</td><td>5.7</td></tr><tr><th>4</th><td>/santa-maria-de-los-cerros/</td><td>852</td><td>25,489</td><td>3.3%</td><td>7.8</td></tr><tr><th>5</th><td>/mejores-hoteles-de-cartagena/</td><td>804</td><td>83,481</td><td>1.0%</td><td>9.9</td></tr><tr><th>6</th><td>/las-torres-del-parque-salmona/</td><td>766</td><td>79,249</td><td>1.0%</td><td>6.5</td></tr><tr><th>7</th><td>/la-catedral-de-nuestra-senora-de-la-pobreza/</td><td>700</td><td>17,506</td><td>4.0%</td><td>7.8</td></tr><tr><th>8</th><td>/holztek-pisos-piedras-enchapes-homecenter/</td><td>651</td><td>21,331</td><td>3.1%</td><td>5.3</td></tr><tr><th>9</th><td>/noticia834_la-casa-en-monterrey/</td><td>641</td><td>11,132</td><td>5.8%</td><td>6.1</td></tr><tr><th>10</th><td>/5-casas-por-las-que-vale-la-pena-vivir-en-colombia/</td><td>602</td><td>42,232</td><td>1.4%</td><td>7.2</td></tr><tr><th>11</th><td>/estudios-arquitectura-diseno-medellin/</td><td>579</td><td>20,393</td><td>2.8%</td><td>15.5</td></tr><tr><th>12</th><td>/5-interioristas-colombianos-para-seguir/</td><td>553</td><td>14,021</td><td>3.9%</td><td>24.1</td></tr><tr><th>13</th><td>/proyectos-arquitectonicos-sostenibles-en-colombia/</td><td>541</td><td>16,651</td><td>3.2%</td><td>24.4</td></tr><tr><th>14</th><td>/cefe-edificio-chapinero-bogota/</td><td>490</td><td>27,311</td><td>1.8%</td><td>8.3</td></tr><tr><th>15</th><td>/edificio-vessel-nueva-york/</td><td>487</td><td>13,182</td><td>3.7%</td><td>9.3</td></tr><tr><th>16</th><td>/panoptico-de-ibague/</td><td>453</td><td>35,950</td><td>1.3%</td><td>7.6</td></tr><tr><th>17</th><td>/diseno-apartamento-laura-tobon/</td><td>417</td><td>4,611</td><td>9.0%</td><td>4.6</td></tr><tr><th>18</th><td>/hotel-panorama-eslovaquia/</td><td>400</td><td>14,046</td><td>2.8%</td><td>7.6</td></tr><tr><th>19</th><td>/debi-tirar-mas-fotos/</td><td>388</td><td>46,115</td><td>0.8%</td><td>6.4</td></tr><tr><th>20</th><td>/ecoparque-cienaga-de-mallorquin/</td><td>387</td><td>50,284</td><td>0.8%</td><td>6.1</td></tr></tbody></table></div>Fuente: Auditoría SEO AXXIS, junio 2026 (top páginas por clics). En cada una: 'Otros artículos' filtrado por tema + mínimo 2-3 enlaces internos contextuales en el cuerpo."},
+ {id:"ax20",tier:2,t:"Ganar el SERP de la propia marca",ow:"Mateo + Juan David",oc:"ow-seo",
+  ev:"'axxis' a secas rankea en <b>pos. 5.2</b> con 16.8% de CTR sobre 1,931 impresiones — el SERP de la marca lo ganan otros. Schema Organization, sitelinks limpios y página 'Sobre nosotros' robusta. El brief de SEM de marca (tarea 6) lo blinda mientras el orgánico se acomoda."},
+ {id:"ax35",tier:2,t:"Crear contenido para 'Mi perfil' (/mi-perfil/)",ow:"Mateo",oc:"ow-web",
+  ev:"Hoy la página solo muestra 'Contenido restringido — inicie sesión o suscríbase', sin nada construido para el suscriptor que ya inició sesión. Es el área de cuenta del lector pagador y hoy está vacía — la primera impresión post-pago es una pantalla sin valor. Definir qué ve un suscriptor logueado: estado de suscripción, historial de artículos guardados/leídos, accesos a Beneficios Suscriptores, y contenido exclusivo (adelantos, newsletter 'Voz experta'). Prioridad: que el suscriptor sienta que pagó por algo, no solo que dejó de ver un muro."},
+ {id:"ax33",tier:2,t:"AEO/GEO — optimizar para que los LLM citen a AXXIS (ChatGPT, AI Overviews, Perplexity)",ow:"Mateo + Juan David",oc:"ow-seo",
+  ev:"El tráfico ya no es solo de Google clásico — cada vez más gente pregunta directo en ChatGPT/Gemini/Perplexity y esos motores citan fuentes. Tips con ejemplo aplicado a AXXIS:<ul style=\"margin:6px 0 0 18px;padding:0\"><li><b>Respuesta directa en las primeras 2-3 líneas del artículo</b> — antes del storytelling. Ej: en 'Torres del Parque', abrir con '¿Quién diseñó las Torres del Parque? Rogelio Salmona, en 1970...' en vez de empezar con la anécdota.</li><li><b>Formato pregunta-respuesta explícito</b> para consultas de arquitecto (cluster 2, ya rankea 17-25% CTR): sección '¿Quién es [arquitecto]?' con 2-3 líneas factuales antes de la biografía extendida — es el bloque que un LLM cita textual.</li><li><b>Schema FAQPage y Article con autor</b> en las páginas del hub 'Arquitectos de Colombia' (ax14) — sin autor/fecha estructurada, los LLM no la tratan como fuente confiable. Ejemplo revelado: hoy la página de Guillermo Fischer no declara <code>author</code> ni <code>datePublished</code> en el HTML — para Google y para un LLM eso es indistinguible de contenido anónimo sin trazabilidad, aunque el texto visible sí tenga firma. <b>Se resuelve nativo en RankMath, sin código:</b> pestaña Schema del post → tipo Article; RankMath jala el autor del perfil de usuario de WordPress y las fechas de publicación/modificación automáticamente. Condición: el usuario de WP debe tener el nombre completo de Mateo configurado (no un login genérico tipo 'admin'), o el schema sale vacío igual. Para el bloque pregunta-respuesta: usar el bloque FAQ nativo de RankMath (Gutenberg), que genera el schema FAQPage solo. <code>llms.txt</code> es aparte — no lo genera RankMath, se sube como archivo a la raíz del sitio.</li><li><b>Datos únicos y verificables</b> (año, material, m², premio) en texto plano, no solo en imagen — un LLM no puede citar lo que solo está en una foto.</li><li><b>llms.txt</b> en la raíz del sitio señalando las secciones de mayor autoridad (hub de arquitectos, ficha técnica) como fuente preferente.</li></ul>Se ejecuta junto con ax14 y ax05 — mismo contenido, formato adicional para ser citable, no una reescritura aparte."},
+ {id:"ax11",tier:2,t:"Stories con stickers + Destacados por eje + Broadcast Channel",ow:"Paola Gordillo",oc:"ow-cm",
+  ev:"Hoy se usa una fracción de Instagram. Broadcast Channel y Destacados organizados por eje son gratis y no están en uso."},
+ {id:"ax12",tier:2,t:"Newsletter AXXIS quincenal: 'Voz experta' + registro en las páginas que retienen",ow:"Owner por definir",oc:"ow-nl",
+  ev:"Un lector de email vale <b>20 sesiones de Paid Social</b> en tiempo de atención (98s vs 5s). El punto de registro va donde la gente se queda, no en la home."},
+ {id:"ax13",tier:2,t:"Lanzar 'Proyectos que Hablan' — episodio 1",ow:"Paola Nossa + Mateo",oc:"ow-mkt",
+  ev:"Ya tiene concepto, distribución (Spotify + cápsulas de 60s + transcripción en web) y KPI real (>10 min de escucha). Ejecutar, no rediseñar — es el formato del portafolio más cercano a estar listo."},
+
+ {id:"ax14",tier:3,t:"Hub 'Arquitectos de Colombia' — primeros 5 perfiles",ow:"Mateo + Juan David",oc:"ow-web",
+  ev:"El oro E-E-A-T de AXXIS: Google ya le da CTRs de <b>17–25%</b> en consultas de nombre. Una página profunda por arquitecto con schema Person, bio, obra y proyectos enlazados. Nadie más puede escribirlo con acceso directo, y alimenta 'Proyectos que Hablan'. Es la respuesta al problema de fondo: el home es el 49% de los clics y la mejor página de contenido trae 127. Las 5 para empezar, en orden de CTR:<div style=\"overflow-x:auto\"><table class=\"ftab\" style=\"min-width:640px;margin-top:8px\"><thead><tr><th>#</th><th>Arquitecto</th><th>CTR / Pos.</th><th>Sugerencia de contenido</th></tr></thead><tbody><tr><th>1</th><td>Guillermo Fischer</td><td>25.0% · pos. 2.6</td><td>Mayor CTR del cluster — abrir con su obra más reconocida y 2-3 líneas factuales tipo ficha (dónde estudió, década de mayor producción, sello distintivo) antes de la biografía extendida.</td></tr><tr><th>2</th><td>Ernesto Jiménez</td><td>20.8% · pos. 1.6</td><td>Ya rankea #1 en su nombre — reforzar con proyectos enlazados a fichas técnicas reales (ax10) para que la autoridad se reparta, no se quede solo en esta página.</td></tr><tr><th>3</th><td>Mauricio Zapata</td><td>16.7% · pos. 4.0</td><td>Peor posición del grupo con CTR alto — hay demanda pero la página no es lo bastante profunda para sostener el puesto. Priorizar obra + testimonios/citas directas si hay entrevista disponible.</td></tr><tr><th>4</th><td>Miguel Soto</td><td>17.4% · pos. 1.2</td><td>Ya en pos. 1 — el trabajo aquí es profundidad, no ranking: ampliar el portafolio de proyectos enlazados para que la página retenga más de una visita.</td></tr><tr><th>5</th><td>Gregorio Cuartas</td><td>12.5% · pos. 2.2</td><td>El único no-arquitecto del grupo (pintor) — usarlo para probar si el hub funciona también para otras disciplinas de diseño/arte antes de expandir el hub más allá de arquitectura.</td></tr></tbody></table></div>Fuente: mapa de keywords GSC, cluster 'Arquitectos colombianos' (ver tabla completa más abajo en esta pestaña)."},
+ {id:"ax15",tier:3,t:"Portafolio 2026 — ola 1: 'El Producto del Mes' + 'Cubrimiento AXXIS'",ow:"Paola Nossa",oc:"ow-mkt",
+  ev:"Reutilizan los formatos que ya dominan (carrusel 4.94% + stories) y monetizan con tarifa fija de exhibición y cobertura patrocinada. Cubrimiento selectivo: nada de eventos masivos tipo Vassar — <b>1.21% de ER</b>, el fondo de la cuenta.<br><br><b>Ejemplo de 'El Producto del Mes' con formato conversatorio:</b> 'El aluminio en las fachadas' — no ficha técnica plana, sino conversatorio corto con el especificador/proveedor sobre una mirada distinta del material (durabilidad, sostenibilidad, tendencia de diseño), recortado en cápsulas para carrusel + newsletter + web con PDF descargable. Da una plantilla replicable mes a mes: material → ángulo diferente → conversatorio → distribución en los 3 formatos que ya dominan."},
+ {id:"ax16",tier:3,t:"Portafolio — ola 2: 'Detrás del Plano' + 'Tour AXXIS' (video)",ow:"Paola Nossa",oc:"ow-mkt",
+  ev:"Requieren videógrafo y proceso nuevo. Regla de validación: el reel editorial de AXXIS rinde <b>3.19%</b> — estos videos se miden por su KPI real (clics a ficha técnica, retención de video), nunca por ER, y se matan si no validan en 2 meses."},
+ {id:"ax17",tier:3,t:"Portafolio — ola 3: vivos y eventos ('Conversando Con', 'AXXIS Invita', 'Conexión Virtual')",ow:"Paola Nossa",oc:"ow-mkt",
+  ev:"Los de mayor logística y mayor valor de datos (muro de registro, base de asistentes). AXXIS Invita es 100% experiencial — <b>cero página impresa</b>. Solo arrancan cuando las olas 1-2 tengan cadencia estable."},
+ {id:"ax18",tier:3,t:"Línea base de open rate y CTR del newsletter",ow:"Owner por definir",oc:"ow-nl",
+  ev:"Depende del cierre de la migración HubSpot. El primer envío post-migración define el baseline — hoy no hay dato."},
+ {id:"ax31",tier:3,t:"Test A/B de plantilla de contenido del newsletter",ow:"Juan David",oc:"ow-nl",
+  ev:"Una vez exista la línea base (ax18): probar plantilla vs. plantilla — formato visual (imagen grande vs. varias pequeñas), longitud de resumen y orden de secciones. Medir por <b>CTR y tiempo de interacción del clic</b>, no por opens. Requiere volumen mínimo de envíos para ser válido — no correr antes del baseline."},
+ {id:"ax32",tier:2,t:"Activar notificaciones push en el navegador",ow:"Juan David",oc:"ow-nl",
+  ev:"Canal propio adicional, en paralelo al newsletter — captura al lector directo sin depender de email ni de algoritmo de redes. Implementación técnica sobre el sitio (permiso de suscripción push + integración con el CMS). Empezar enviando solo en publicación de contenido del cluster prioritario del mes (casa + naturaleza + memoria), no en cada nota, para no quemar la tasa de opt-in."},
+ {id:"ax29",tier:2,t:"Embeber el video de IG dentro del artículo web relacionado",ow:"Mateo + Juan David",oc:"ow-web",
+  ev:"Teoría a probar: el video alarga el tiempo de lectura — el lector se detiene a verlo antes de seguir bajando, lo que sube el tiempo de interacción y las páginas por sesión de la nota, no solo del reel. Empezar con los 3 artículos del cluster 'casa + naturaleza + memoria' (ax04) que ya tienen video propio en IG y no lo tienen embebido en el sitio. Medir tiempo en página antes/después como natural experiment."},
+ {id:"ax19",tier:2,t:"Landing de categoría 'Revistas de arquitectura y diseño' enlazada a /suscripciones/",ow:"Juan David",oc:"ow-seo",
+  ev:"Consultas de categoría con intención altísima de suscripción que hoy no tienen página propia: 'revistas de diseño de interiores' <b>33.3% CTR</b> (pos. 2.9), 'revistas de arquitectura' 17.9% (pos. 4.0), 'revista de arquitectura' 18.2% (pos. 4.1). Y /suscripciones/ ya rankea en pos. 1.4 — la landing cierra el circuito."},
+ {id:"ax10",tier:3,t:"Ficha técnica por proyecto (materiales, estudio, proveedores)",ow:"Mateo",oc:"ow-web",
+  ev:"Proyecto nuevo, no ajuste — requiere producción (levantamiento de datos por obra con el estudio/proveedores). Va al final de la lista por eso. Responde lo que la audiencia ya pregunta (insight AD Magazine) y es la base de 'Detrás del Plano' y 'El Producto del Mes' del portafolio; también es el destino que hoy falta para las páginas de proyecto (ver estrategia de tráfico, arriba)."}
+],
+diners:[
+ {id:"di01",tier:1,t:"Definir el owner del Newsletter (HubSpot)",ow:"Decisión de reunión",oc:"ow-nl",
+  ev:"Es el canal de mayor calidad de la casa (email Diners: <b>127s</b> de interacción media) y hoy no tiene dueño. Sin owner, las tareas de newsletter de esta lista quedan huérfanas."},
+ {id:"di02",tier:1,t:"Adoptar la regla de medición: engagement y tiempo, nunca vistas",ow:"Paola Gordillo",oc:"ow-cm",
+  ev:"El dashboard coronó a Kristen Stewart #1 por vistas (103.5K) con <b>0.44%</b> de engagement; Manuela Álvarez tuvo menos vistas y <b>~11%</b>. Ordenar por vistas lleva a producir más de lo que no sirve."},
+ {id:"di03",tier:1,t:"Cortar el listicle genérico en IG y doblar 'Colombia reconocida en el mundo'",ow:"Paola Gordillo",oc:"ow-cm",
+  ev:"En IG el listicle es el <b>bottom de la cuenta</b> (4.80% vs 7.27% del resto). Michael Jackson probado como humo por 4 fuentes. Ejemplos reales de junio (la muestra disponible no llega a 10 por categoría — esto es lo que hay, no relleno):<div style=\"overflow-x:auto\"><table class=\"ftab\" style=\"min-width:520px;margin-top:8px\"><thead><tr><th>Cortar — listicle genérico</th><th>ER</th></tr></thead><tbody><tr><th>Estatuas más impresionantes del mundo</th><td>6.10% (única excepción — 'viajó', 511 saves)</td></tr><tr><th>Ciudades europeas pet-friendly</th><td>5.17%</td></tr><tr><th>Restaurantes ficticios de la cultura pop</th><td>4.58%</td></tr><tr><th>Montañas rusas más extremas</th><td>4.31%</td></tr><tr><th>Lugares que desafían la gravedad</th><td>3.84%</td></tr></tbody></table></div><div style=\"overflow-x:auto\"><table class=\"ftab\" style=\"min-width:520px;margin-top:8px\"><thead><tr><th>Doblar — 'Colombia reconocida en el mundo' / autoridad</th><th>Resultado</th></tr></thead><tbody><tr><th>Manuela Álvarez — trajes Selección Colombia (reel)</th><td>1,830 compartidos, 517 follows nuevos, 39s de reproducción promedio</td></tr><tr><th>Franz Kafka (película)</th><td>10.37% ER, 26,370 views, 1,640 interacciones</td></tr><tr><th>1921 Express (Alejandro Riaño)</th><td>9.51% ER, 6,622 views, 51.7s engagement en web</td></tr><tr><th>Bar World 100 (coctelería)</th><td>9.38% ER, 25,310 views, 1,230 interacciones</td></tr><tr><th>Fortezza (Chef Carmine)</th><td>7.29% ER, 6,420 views, 188 interacciones</td></tr><tr><th>VASSAR Festival</th><td>4,540 views, 145 interacciones (piso de referencia)</td></tr></tbody></table></div>Fórmula que se repite en el lado que gana: identidad colombiana + detalle inédito/detrás de cámaras contado en los primeros 3 segundos.<br><br><b>Qué hacer, a la fija:</b><ol style=\"margin:6px 0 0 18px;padding:0\"><li>Cortar el listicle-carrusel genérico de la parrilla — libera el 33% del calendario que hoy rinde 2.47 pts bajo el promedio.</li><li>Ese espacio pasa a piezas de identidad/orgullo colombiano con nombre propio (persona, lugar o marca real), nunca listas anónimas tipo 'top 10 en el mundo'.</li><li>Cada pieza abre con el detalle inédito en los primeros 3 segundos (el 'dato detrás de cámaras') — es lo que repiten Kafka, 1921 Express y Manuela Álvarez.</li><li>Formato reel, no carrusel, cuando haya video disponible: el reel de Manuela Álvarez retuvo 39s promedio, muy por encima del carrusel.</li><li>CTA explícito de guardar ('Guarda este video para...') — es la señal más débil hoy (347 saves en el mejor reel) y la que más le importa a Meta para distribución orgánica.</li><li>Si el listicle debe publicarse igual por su valor de tráfico a la web (ver di05/di06): una sola historia del listado, contada a fondo, con link — nunca el carrusel-lista completo.</li></ol>"},
+ {id:"di04",tier:1,t:"Sostener menos volumen, más tema ganador",ow:"Paola Gordillo",oc:"ow-cm",
+  ev:"Prueba dura de junio: Diners publicó <b>−22.5% y las interacciones subieron +38.9%</b>, con 80% de visualizaciones orgánicas. Es el caso de éxito de la casa — calidad sobre cantidad, sin pauta."},
+ {id:"di05",tier:1,t:"Firma editorial en los listicle",ow:"Simón",oc:"ow-web",
+  ev:"Solo <b>2 de 10 keywords</b> top son de marca. Autor visible con credencial, criterio de selección explícito y fecha de actualización — hoy son indistinguibles de un blog de turismo. Top 20 listicles por clics — agregar firma primero en estos:<div style=\"overflow-x:auto\"><table class=\"ftab\" style=\"min-width:560px;margin-top:8px\"><thead><tr><th>#</th><th>Página</th><th>Clics</th><th>Impr.</th></tr></thead><tbody><tr><th>1</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-a-las-afueras-de-bogota/\" target=\"_blank\">restaurantes-a-las-afueras-de-bogota</a></td><td>7,227</td><td>183,637</td></tr><tr><th>2</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/58511_destinos-aguas-termales-cerca-bogota/\" target=\"_blank\">destinos-aguas-termales-cerca-bogota</a></td><td>4,203</td><td>69,363</td></tr><tr><th>3</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/gastronomia-61731_restaurantes-tematicos-en-bogota/\" target=\"_blank\">restaurantes-tematicos-en-bogota</a></td><td>3,030</td><td>49,462</td></tr><tr><th>4</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-pescado/\" target=\"_blank\">restaurantes-pescado</a></td><td>2,439</td><td>44,688</td></tr><tr><th>5</th><td><a href=\"https://revistadiners.com.co/gastronomia/donde-comer/mejores-brunch-en-bogota-2026/\" target=\"_blank\">mejores-brunch-en-bogota-2026</a></td><td>1,389</td><td>67,455</td></tr><tr><th>6</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/mejores-rooftop-bogota/\" target=\"_blank\">mejores-rooftop-bogota</a></td><td>1,149</td><td>38,437</td></tr><tr><th>7</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-en-usaquen/\" target=\"_blank\">restaurantes-en-usaquen</a></td><td>902</td><td>20,798</td></tr><tr><th>8</th><td><a href=\"https://revistadiners.com.co/tendencias/plan-para-el-fin-de-semana-cinco-lugares-para-correr-karts-en-bogota-mejores-pistas/\" target=\"_blank\">karts-en-bogota</a></td><td>745</td><td>31,819</td></tr><tr><th>9</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/ciudad-montes-restaurantes/\" target=\"_blank\">ciudad-montes-restaurantes</a></td><td>684</td><td>20,219</td></tr><tr><th>10</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-en-pereira/\" target=\"_blank\">restaurantes-en-pereira</a></td><td>605</td><td>28,085</td></tr><tr><th>11</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-en-tunja/\" target=\"_blank\">restaurantes-en-tunja</a></td><td>494</td><td>19,573</td></tr><tr><th>12</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-pet-friendly-bogota/\" target=\"_blank\">restaurantes-pet-friendly-bogota</a></td><td>451</td><td>10,725</td></tr><tr><th>13</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/los-mejores-restaurantes-bucaramanga/\" target=\"_blank\">los-mejores-restaurantes-bucaramanga</a></td><td>345</td><td>21,761</td></tr><tr><th>14</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/brunch-bogota/\" target=\"_blank\">brunch-bogota</a></td><td>340</td><td>10,543</td></tr><tr><th>15</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-en-santa-fe-de-antioquia/\" target=\"_blank\">restaurantes-en-santa-fe-de-antioquia</a></td><td>307</td><td>6,981</td></tr><tr><th>16</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/5-poligonos-bogota/\" target=\"_blank\">5-poligonos-bogota</a></td><td>302</td><td>9,311</td></tr><tr><th>17</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-de-la-calera/\" target=\"_blank\">restaurantes-de-la-calera</a></td><td>300</td><td>13,061</td></tr><tr><th>18</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-en-armenia/\" target=\"_blank\">restaurantes-en-armenia</a></td><td>254</td><td>17,126</td></tr><tr><th>19</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-en-monteria/\" target=\"_blank\">restaurantes-en-monteria</a></td><td>197</td><td>15,766</td></tr><tr><th>20</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-de-manizales/\" target=\"_blank\">restaurantes-de-manizales</a></td><td>185</td><td>12,302</td></tr></tbody></table></div>Sugerencia: nombre del editor/colaborador + una línea de credencial ('Simón Granja, editor de Diners, visitó X locales para esta selección'), criterio de selección explícito (¿cómo se eligieron?) y fecha de última actualización visible. Sin esto, Google y el lector no distinguen esto de un blog de turismo genérico."},
+ {id:"di06",tier:1,t:"Puente interno: cada listicle enlaza a Zona D o Perfiles",ow:"Simón",oc:"ow-web",
+  ev:"El listicle ya retiene (termales <b>85s</b>): usar esa atención para llevar al lector a contenido de autoridad y convertir tráfico de paso en descubrimiento de marca."},
+ {id:"di07",tier:1,t:"Reescribir meta-títulos de las listicles (posición 4–6)",ow:"Simón + Juan David",oc:"ow-seo",
+  ev:"El sitio vive en posición media <b>5.9</b> con CTR 3.2%. Mientras sube la posición, el título es la palanca más barata para ganar el clic que hoy se fuga. Mismo top 20 de di05 (ya rankean, el problema es el título) — prioridad por mayor CTR-gap:<div style=\"overflow-x:auto\"><table class=\"ftab\" style=\"min-width:640px;margin-top:8px\"><thead><tr><th>#</th><th>Página</th><th>CTR hoy</th><th>Pos.</th><th>Sugerencia</th></tr></thead><tbody><tr><th>1</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-en-monteria/\" target=\"_blank\">restaurantes-en-monteria</a></td><td>1.25%</td><td>8.4</td><td>Añadir número + año: '15 restaurantes en Montería que no te puedes perder (2026)'</td></tr><tr><th>2</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/los-mejores-restaurantes-bucaramanga/\" target=\"_blank\">los-mejores-restaurantes-bucaramanga</a></td><td>1.59%</td><td>8.1</td><td>Especificidad: reemplazar 'los mejores' genérico por criterio concreto (ej. 'para grupos', 'con terraza')</td></tr><tr><th>3</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-en-armenia/\" target=\"_blank\">restaurantes-en-armenia</a></td><td>1.48%</td><td>8.0</td><td>Agregar gancho local: '...según quienes viven ahí'</td></tr><tr><th>4</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-de-manizales/\" target=\"_blank\">restaurantes-de-manizales</a></td><td>1.5%</td><td>9.2</td><td>Título muy plano — agregar número exacto de opciones + ángulo (café, montaña)</td></tr><tr><th>5</th><td><a href=\"https://revistadiners.com.co/gastronomia/donde-comer/mejores-brunch-en-bogota-2026/\" target=\"_blank\">mejores-brunch-en-bogota-2026</a></td><td>2.06%</td><td>6.1</td><td>Ya tiene año — probar con precio/rango ('desde $X') para diferenciar en SERP</td></tr><tr><th>6</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/mejores-rooftop-bogota/\" target=\"_blank\">mejores-rooftop-bogota</a></td><td>2.99%</td><td>6.9</td><td>Agregar temporada/ocasión: 'para ver el atardecer', 'para una cita'</td></tr><tr><th>7</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-en-pereira/\" target=\"_blank\">restaurantes-en-pereira</a></td><td>2.15%</td><td>6.9</td><td>Mismo patrón que Bucaramanga/Armenia: especificidad + número exacto</td></tr><tr><th>8</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/5-poligonos-bogota/\" target=\"_blank\">5-poligonos-bogota</a></td><td>3.24%</td><td>7.5</td><td>Aclarar qué es (tiro deportivo) en el título — 'polígono' es ambiguo fuera de contexto</td></tr></tbody></table></div>Fórmula general: número + especificidad + gancho (año, precio, ocasión) — nunca 'los mejores' sin más. Fuente: GSC Diners, reporte completo junio 2026."},
+ {id:"di26",tier:1,t:"Corrección del Píxel de Meta: evento de Scroll 50% + 45s de permanencia en GTM",ow:"Juan David + Sebastián",oc:"ow-seo",
+  ev:"Implementar de inmediato en Google Tag Manager el evento que mide <b>Scroll 50% + 45 segundos de permanencia</b>. Todo el Paid Social de Cultura y Estilo de Vida pivota a este objetivo este mismo mes — es la condición para dejar de comprar tráfico de 2 segundos y empezar a optimizar hacia lectores reales, no hacia clics."},
+ {id:"di08",tier:1,t:"Brief a Sebastián: bajar Paid Social en Cultura y reasignar a Paid Search",ow:"Paola Nossa",oc:"ow-mkt",brief:true,
+  ev:"El molde ya existe: termales se pauta por <b>Search (85s)</b> y recibe 0 de Social; Kristen Stewart al revés, por Social muere en <b>0.6s</b>. Bajar el presupuesto de Social en Cultura y reasignarlo a Paid Search, que genera casi los mismos ingresos con <b>12.5× menos tráfico</b>. Reducir, no apagar."},
+ {id:"di22",tier:1,t:"Analizar campañas y segmentación por sección para subir el tiempo sin perder tráfico",ow:"Paola Nossa + Sebastián",oc:"ow-mkt",brief:true,
+  ev:"El dato ya orienta el análisis: Paid Social a Estilo de Vida rinde <b>7.5s</b>, a Cultura <b>2.7s</b> — y hoy Cultura recibe 2.9× más pauta. Pedir el desglose de campañas, redirigir por tipo de contenido y afinar segmentación para subir el tiempo de interacción conservando el alcance que sí convierte."},
+ {id:"di24",tier:2,t:"Probar Advantage+ como test controlado, no como reemplazo de la segmentación manual",ow:"Paola Nossa + Sebastián",oc:"ow-mkt",brief:true,
+  ev:"Correr Advantage+ (Shopping/Sales Campaign) en paralelo a las campañas segmentadas manualmente, con presupuesto acotado — no migrar el gasto completo. Comparar contra el baseline de di22 por <b>tiempo de interacción y CPA</b>, no por alcance ni CPM. Si Advantage+ no supera el baseline en 2-3 semanas, se descarta; si lo supera, se escala gradualmente."},
+
+ {id:"di09",tier:2,t:"Subir las 5 listicles grandes de posición 6 a 3",ow:"Simón + Juan David",oc:"ow-seo",
+  ev:"'Restaurantes a las afueras': <b>83,852 impresiones a pos. 6</b> y retiene 81s. Subir las 5 grandes a pos. 3 suma <b>~10,000 clics/mes gratis</b>, de la misma calidad. Vale más que escribir notas nuevas. Las 5:<div style=\"overflow-x:auto\"><table class=\"ftab\" style=\"min-width:560px;margin-top:8px\"><thead><tr><th>#</th><th>Página</th><th>Impr.</th><th>Pos. hoy</th></tr></thead><tbody><tr><th>1</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-a-las-afueras-de-bogota/\" target=\"_blank\">restaurantes-a-las-afueras-de-bogota</a></td><td>183,637</td><td>6.03</td></tr><tr><th>2</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/gastronomia-61731_restaurantes-tematicos-en-bogota/\" target=\"_blank\">restaurantes-tematicos-en-bogota</a></td><td>49,462</td><td>6.55</td></tr><tr><th>3</th><td><a href=\"https://revistadiners.com.co/gastronomia/donde-comer/mejores-brunch-en-bogota-2026/\" target=\"_blank\">mejores-brunch-en-bogota-2026</a></td><td>67,455</td><td>6.08</td></tr><tr><th>4</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-en-usaquen/\" target=\"_blank\">restaurantes-en-usaquen</a></td><td>20,798</td><td>6.08</td></tr><tr><th>5</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/mejores-rooftop-bogota/\" target=\"_blank\">mejores-rooftop-bogota</a></td><td>38,437</td><td>6.92</td></tr></tbody></table></div>Sugerencia: no reescribir de cero — refresh de fecha + fotos propias, ampliar de 5-8 a 10-12 opciones, agregar mapa embebido y enlaces internos a Zona D. Son señales de profundidad que Google premia en pos. 4-6, no contenido nuevo."},
+ {id:"di10",tier:2,t:"Crear las categorías 'Zona D' y 'Perfiles' en el sitio",ow:"Simón + Juan David",oc:"ow-seo",
+  ev:"Brecha de marca confirmada en junio: <b>17% en Diners vs 84% en AXXIS</b>. Google necesita estructura para leer la autoridad temática que el contenido ya tiene."},
+ {id:"di19",tier:2,t:"Refresh E-E-A-T de la serie 'restaurantes en [ciudad]' — Bucaramanga y Pereira primero",ow:"Simón",oc:"ow-web",
+  ev:"La serie ya rankea sin trabajo E-E-A-T: Bucaramanga <b>2,763 impresiones a 0.6% CTR</b> (pos. 8.8), Pereira 2,368 a 2.0% (6.5), Manizales 1,813 a 1.1% (8.6). Mayor upside donde peor CTR. Requisito: colaborador local nombrado o visita documentada — sin experiencia de primera mano, estas páginas no suben del 6–9. Orden de la serie completa, por impresiones:<div style=\"overflow-x:auto\"><table class=\"ftab\" style=\"min-width:560px;margin-top:8px\"><thead><tr><th>#</th><th>Ciudad</th><th>Impr.</th><th>CTR</th><th>Pos.</th></tr></thead><tbody><tr><th>1</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/los-mejores-restaurantes-bucaramanga/\" target=\"_blank\">Bucaramanga</a></td><td>21,761</td><td>1.59%</td><td>8.1</td></tr><tr><th>2</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-en-pereira/\" target=\"_blank\">Pereira</a></td><td>28,085</td><td>2.15%</td><td>6.9</td></tr><tr><th>3</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-en-armenia/\" target=\"_blank\">Armenia</a></td><td>17,126</td><td>1.48%</td><td>8.0</td></tr><tr><th>4</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-en-monteria/\" target=\"_blank\">Montería</a></td><td>15,766</td><td>1.25%</td><td>8.4</td></tr><tr><th>5</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-de-manizales/\" target=\"_blank\">Manizales</a></td><td>12,302</td><td>1.5%</td><td>9.2</td></tr><tr><th>6</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-de-la-calera/\" target=\"_blank\">La Calera</a></td><td>13,061</td><td>2.3%</td><td>6.0</td></tr><tr><th>7</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-en-santa-fe-de-antioquia/\" target=\"_blank\">Santa Fe de Antioquia</a></td><td>6,981</td><td>4.4%</td><td>5.7</td></tr><tr><th>8</th><td><a href=\"https://revistadiners.com.co/estilo-de-vida/restaurantes-en-tunja/\" target=\"_blank\">Tunja</a></td><td>19,573</td><td>2.52%</td><td>6.9</td></tr></tbody></table></div>Sugerencia por página: nombre de colaborador local + evidencia de visita (fotos propias, fecha de la visita), 1-2 datos que solo alguien de la ciudad sabría, y actualizar precios/horarios. Empezar por Bucaramanga y Pereira: mayor volumen combinado con peor CTR."},
+ {id:"di20",tier:2,t:"Ganar el SERP de la propia marca",ow:"Simón + Juan David",oc:"ow-seo",
+  ev:"'revista diners' rankea pos. <b>2.3</b> con 55.3% de CTR — bajo para marca propia (AXXIS: pos. 1.0, 67.4%) — y 'diners' a secas está en pos. 4.8. Schema Organization, sitelinks y 'Sobre nosotros' robusta. Junto con las categorías Zona D/Perfiles le dan a Google la entidad editorial, no un blog."},
+ {id:"di33",tier:2,t:"AEO/GEO — optimizar para que los LLM citen a Diners (ChatGPT, AI Overviews, Perplexity)",ow:"Simón + Juan David",oc:"ow-seo",
+  ev:"Cada vez más gente pregunta directo en ChatGPT/Gemini/Perplexity en vez de buscar en Google, y esos motores citan fuentes. Tips con ejemplo aplicado a Diners:<ul style=\"margin:6px 0 0 18px;padding:0\"><li><b>Respuesta directa en las primeras 2-3 líneas</b> antes de la narrativa. Ej: en 'Restaurantes a las afueras de Bogotá', abrir con '¿Cuáles son los mejores restaurantes a las afueras de Bogotá? Estos son los 12 que recomienda Diners...' antes del storytelling.</li><li><b>Formato pregunta-respuesta explícito</b> en la serie 'restaurantes en [ciudad]' (di19): sección '¿Dónde comer en Pereira?' con 2-3 líneas factuales — es el bloque que un LLM cita textual, no el párrafo narrativo.</li><li><b>Schema FAQPage y Article con autor</b> en los listicles con firma editorial (di05) — sin autor/fecha estructurada, los LLM no la tratan como fuente confiable. Ejemplo revelado: 'Restaurantes a las afueras de Bogotá' no declara <code>author</code> ni <code>dateModified</code> en el HTML — aunque el texto tenga la firma de Simón visible en pantalla, el LLM no la lee ahí, la busca en el schema. <b>Se resuelve nativo en RankMath, sin código:</b> pestaña Schema del post → tipo Article; RankMath jala el autor del perfil de usuario de WordPress y las fechas de publicación/modificación automáticamente. Condición: el usuario de WP debe tener el nombre completo de Simón configurado (no un login genérico), o el schema sale vacío igual. Para el bloque pregunta-respuesta: usar el bloque FAQ nativo de RankMath (Gutenberg), que genera el schema FAQPage solo. <code>llms.txt</code> es aparte — no lo genera RankMath, se sube como archivo a la raíz del sitio.</li><li><b>Datos verificables en texto plano</b> (dirección, rango de precio, horario) — no solo en fotos del carrusel.</li><li><b>llms.txt</b> en la raíz señalando Zona D/Perfiles (di10) como sección de mayor autoridad.</li></ul>Se ejecuta junto con di05 y di19 — mismo contenido, formato adicional para ser citable, no una reescritura aparte."},
+ {id:"di11",tier:2,t:"Publicar 6 o más reels en julio",ow:"Paola Gordillo",oc:"ow-cm",
+  ev:"Hoy no se puede declarar formato ganador: solo hubo 3 reels y uno era atípico (MAZ). Con 6+ se decide con muestra real, no con intuición."},
+ {id:"di12",tier:2,t:"Stories con stickers + Destacados por eje + Broadcast Channel",ow:"Paola Gordillo",oc:"ow-cm",
+  ev:"Hoy se usa una fracción de Instagram. Broadcast Channel y Destacados organizados por eje son gratis y no están en uso."},
+ {id:"di13",tier:2,t:"Página de suscripción replicando la estructura de AXXIS",ow:"Simón + Juan David",oc:"ow-seo",
+  ev:"En AXXIS /suscripciones/ rankea en <b>posición 1.4</b>; en Diners está invisible. Copiar la estructura que ya funciona."},
+ {id:"di14",tier:2,t:"Newsletter Diners semanal (viernes): 'Sabores' + 'Voz experta' + registro donde retiene",ow:"Owner por definir",oc:"ow-nl",
+  ev:"El registro va en termales y afueras (<b>81–85s</b>), no en la home. Reutiliza contenido ya publicado — curaduría, no producción nueva."},
+ {id:"di15",tier:2,t:"Lanzar 'La Mesa de Diners' (agosto)",ow:"Paola Nossa + Simón",oc:"ow-mkt",
+  ev:"Ya definido: 3 personalidades en conversación, distribución YouTube/Podcast/IG/TikTok. Alimenta el eje de autoridad (Zona D/Perfiles) — el más débil de Diners."},
+
+ {id:"di16",tier:3,t:"Activar el resto del inventario: 'Maridaje Sonoro' + reactivar 'Narración de exposiciones'",ow:"Paola Nossa",oc:"ow-mkt",
+  ev:"Diners tiene <b>9 formatos inventariados, 4 activos</b>. Activar los definidos antes de crear nada nuevo — ver tabla del inventario abajo."},
+ {id:"di17",tier:3,t:"Evaluar 'Recomendación de libros' en versión remota o estudio",ow:"Paola Nossa",oc:"ow-mkt",
+  ev:"Se descontinuó por logística de coordinación en librerías. La versión remota elimina esa fricción — evaluar con un piloto, no relanzar a ciegas."},
+ {id:"di21",tier:3,t:"Desarrollar el cluster 'relojes y lujo'",ow:"Simón + Paola Nossa",oc:"ow-web",
+  ev:"Diners ya recibe clics por 'rolex' (<b>97 clics, pos. 8.2</b>) y 'citizen' (85, pos. 6.1), y la página de Rolex Oyster generó <b>$2,655 en junio</b>. Es el único territorio genérico que coincide con el gap de anunciantes (relojería internacional, auditoría de competencia): autoridad E-E-A-T y argumento comercial B2B en el mismo cluster. Páginas actuales del cluster:<div style=\"overflow-x:auto\"><table class=\"ftab\" style=\"min-width:520px;margin-top:8px\"><thead><tr><th>Página</th><th>Clics</th><th>Impr.</th><th>Pos.</th></tr></thead><tbody><tr><th><a href=\"https://revistadiners.com.co/lo-ultimo/rolex-oyster-100-anos-reloj-iconico/\" target=\"_blank\">rolex-oyster-100-anos-reloj-iconico</a></th><td>99</td><td>4,107</td><td>9.3</td></tr><tr><th><a href=\"https://revistadiners.com.co/lo-ultimo/citizen-star-wars/\" target=\"_blank\">citizen-star-wars</a></th><td>98</td><td>4,564</td><td>6.4</td></tr><tr><th><a href=\"https://revistadiners.com.co/lo-ultimo/rolex-oyster/\" target=\"_blank\">rolex-oyster</a></th><td>43</td><td>1,103</td><td>15.8</td></tr></tbody></table></div>Sugerencia: no son artículos aislados de novedad — convertirlas en un hub 'Relojes y alta relojería' con guías por marca (Rolex, Citizen, Patek, Omega) y un ángulo de inversión/colección. Cross-link entre las 3 páginas existentes (hoy no se enlazan entre sí) y usarlo como argumento comercial ante marcas de relojería en la propuesta B2B."},
+ {id:"di18",tier:3,t:"Línea base de open rate y CTR del newsletter",ow:"Owner por definir",oc:"ow-nl",
+  ev:"Depende del cierre de la migración HubSpot. El primer envío post-migración define el baseline — hoy no hay dato."},
+ {id:"di25",tier:3,t:"Test A/B de plantilla de contenido del newsletter",ow:"Owner por definir",oc:"ow-nl",
+  ev:"Una vez exista la línea base (di18): probar plantilla vs. plantilla — formato visual (imagen grande vs. varias pequeñas), longitud de resumen y orden de secciones ('Sabores' arriba vs. abajo). Medir por <b>CTR y tiempo de interacción del clic</b>, no por opens. Requiere volumen mínimo de envíos para ser válido — no correr antes del baseline."},
+ {id:"di32",tier:2,t:"Activar notificaciones push en el navegador",ow:"Juan David",oc:"ow-nl",
+  ev:"Canal propio adicional, en paralelo al newsletter — captura al lector directo sin depender de email ni de algoritmo de redes. Implementación técnica sobre el sitio (permiso de suscripción push + integración con el CMS). Empezar enviando solo en publicación de contenido del cluster prioritario del mes (termales, restaurantes a las afueras), no en cada nota, para no quemar la tasa de opt-in."},
+ {id:"di23",tier:2,t:"Embeber el video de IG dentro del artículo web relacionado",ow:"Simón + Paola Gordillo",oc:"ow-web",
+  ev:"Teoría a probar: el video alarga el tiempo de lectura — el lector se detiene a verlo antes de seguir bajando, lo que sube el tiempo de interacción y las páginas por sesión de la nota, no solo del reel. Empezar con el tema ganador de junio ('Colombia reconocida en el mundo', di03) que ya tiene video propio en IG y no lo tiene embebido en el sitio. Medir tiempo en página antes/después como natural experiment."}
+]
+};
+
+const FMT_AX = {
+ title:"Portafolio Digital AXXIS 2026 — 9 formatos comerciales",
+ lead:"Mapa comercial completo (propuesto — se valida en esta reunión). KPIs reales, no de vanidad. Orden de lanzamiento: olas 1→3 según las tareas de arriba.",
+ head:["Formato comercial","Canal principal","Audiencia objetivo","KPI de éxito real","Monetización"],
+ rows:[
+  ["Proyectos que Hablan","Podcast / Spotify + Web","Arquitectos, diseñadores y clientes VIP","Tiempo medio de escucha (>10 min)","Patrocinio de temporada o cuñas nativas"],
+  ["Connect & Collab","Web + LinkedIn + YouTube","Marcas del sector y oficinas de diseño","Páginas vistas por sesión y leads B2B","Publirreportaje digital + leads calificados"],
+  ["Detrás del Plano","Reels / Instagram + Web","Estudiantes, profesionales y aficionados","Clics a la ficha técnica en web","Cobranding con constructoras y acabados"],
+  ["Tour AXXIS","YouTube / Reels + Web","Compradores de alta gama y aficionados","Retención de video y tiempo en web","Product placement de marcas de lujo"],
+  ["Conversando Con / Un Café…","IG Live / YouTube + Web","Comunidad general y profesionales","Interacciones reales (preguntas / guardados)","Patrocinio de segmento / marca aliada"],
+  ["El Producto del Mes","IG Carrusel + Newsletter + Web","Especificadores y compradores","CTR hacia la web y descargas de PDF","Tarifa fija de exhibición técnica (B2B)"],
+  ["Cubrimiento AXXIS","Stories / Web (especial)","Comunidad general","Tasa de interacción y CTR","Cobertura patrocinada por la feria/marca"],
+  ["AXXIS Invita","Evento físico + registro web","Suscriptores premium y clientes VIP","Asistencia y base de datos generada","Patrocinio de experiencia (cero impreso)"],
+  ["Conexión / Evento Virtual","Streaming (Web/YT)","Audiencia nacional e internacional","Asistentes en vivo y leads registrados","Patrocinio principal + registro de leads"]
+ ]
+};
+const FMT_DI = {
+ title:"Inventario de formatos Diners — estado actual",
+ lead:"9 formatos inventariados. La regla sigue: activar y reactivar antes de crear.",
+ head:["Formato","Estado","Canal","Oportunidad comercial"],
+ rows:[
+  ["Detrás de la barra",'<span class="st on">Activo · comercializado</span>',"Video · IG/YouTube","Licores — escalar a marcas premium"],
+  ["Los favoritos del chef",'<span class="st on">Activo · 1×/mes</span>',"Video corto · IG/TikTok","Restaurantes, reservas, marcas gastro"],
+  ["En la terraza",'<span class="st on">Activo</span>',"Video · IG/YouTube","Moda, cultura, lifestyle premium"],
+  ["Entrevistas por capítulos",'<span class="st on">Activo</span>',"Video segmentado · IG/TikTok","Integración según perfil del invitado"],
+  ["La Mesa de Diners",'<span class="st new">Lanza agosto</span>',"Podcast · YT/Spotify/IG","Lujo / vinos / automóviles"],
+  ["Maridaje Sonoro",'<span class="st new">Nuevo</span>',"Video estético · IG/YouTube","Licores y destilados premium"],
+  ["Narración de exposiciones",'<span class="st off">Intermitente — reactivar</span>',"Video documental · YT/IG","Patrocinador cultural (bancos, fundaciones)"],
+  ["Proyectos especiales",'<span class="st off">No recurrente</span>',"Transmedia","Sponsor principal multicanal"],
+  ["Recomendación de libros",'<span class="st off">Descontinuado — evaluar</span>',"Video · IG","Editoriales / librerías (versión remota)"]
+ ]
+};
+
+const KW = {
+axxis:{
+ title:"Mapa de keywords GSC — junio · base para contenido E-E-A-T (AXXIS)",
+ lead:"Cada cluster trae la jugada y sus keywords con métricas reales de junio. Detalle completo y checklist E-E-A-T en Estrategia-Digital-por-Canal-2026.",
+ clusters:[
+  {n:"1 · Marca — defender y arreglar el SERP",play:"'axxis' a secas lo ganan otros (pos. 5.2). Schema Organization + sitelinks + 'Sobre nosotros'. Ojo: 'revista axxis precio' señala intención de compra directa.",
+   rows:[["axxis","325","1,931","16.8%","5.2"],["revista axxis","229","340","67.4%","1.0"],["axxis revista","107","165","64.8%","1.0"],["revista axxis colombia","46","78","59.0%","1.1"],["revista axis","34","66","51.5%","1.5"],["revista axxis última edición","7","14","50.0%","1.1"],["revista axxis precio","5","17","29.4%","1.1"]]},
+  {n:"2 · Arquitectos colombianos — el oro E-E-A-T",play:"Hub 'Arquitectos de Colombia': una página profunda por arquitecto con schema Person, bio, obra y proyectos enlazados. Google ya trata a AXXIS como autoridad en estas consultas.",
+   rows:[["guillermo fischer arquitecto","5","20","25.0%","2.6"],["ernesto jimenez arquitecto","5","24","20.8%","1.6"],["miguel soto arquitecto","4","23","17.4%","1.2"],["mauricio zapata arquitecto","5","30","16.7%","4.0"],["gregorio cuartas pintor","3","24","12.5%","2.2"]]},
+  {n:"3 · Proyectos icónicos — CTR fugado, arreglar el título",play:"Ya rankean; el clic se pierde en el meta-título. Fórmula: [Proyecto]: historia + dato único + AXXIS. El modelo a imitar es Santa María (17.9%).",
+   rows:[["torres del parque","9","1,418","0.6%","6.9"],["plaza de toros cartagena","12","930","1.3%","5.2"],["parque central bavaria","4","680","0.6%","8.1"],["living 127 / 127 living","9","993","0.9%","6.4–7.5"],["pendulo taipei 101","4","88","4.5%","1.4"],["santa maria de los cerros","10","56","17.9%","2.9"]]},
+  {n:"4 · Categoría 'revistas de arquitectura' — intención de suscripción",play:"Landing de categoría propia (hoy no existe) enlazada a /suscripciones/ (pos. 1.4). CTRs altísimos = la demanda ya existe.",
+   rows:[["revistas de diseño de interiores","5","15","33.3%","2.9"],["revista de arquitectura","8","44","18.2%","4.1"],["revistas de arquitectura","7","39","17.9%","4.0"]]},
+  {n:"5 · Hoteles y viajes con ángulo de diseño — decidir",play:"Solo vale si el ángulo es arquitectura/diseño (el modelo: 'aeropuerto más bonito' a pos. 2). Si no hay ángulo, despriorizar — no competir con portales de viajes.",
+   rows:[["mejores hoteles en cartagena (+variantes)","21","1,085","~1.9%","5.8–7.1"],["hotel panorama slovakia (+esl.)","9","364","2.5%","3.5–4.7"],["cual es el aeropuerto mas bonito del mundo","12","244","5.0%","2.0–2.2"]]},
+  {n:"6 · Celebridad-casa — gancho con puente obligatorio",play:"Funciona como puerta de entrada (James Rodríguez = 119 clics de página). Regla: siempre con puente interno a proyectos/arquitectos — nunca como fin en sí mismo.",
+   rows:[["donde vive james rodríguez","3","604","0.5%","5.8"],["james rodríguez casa","4","33","12.1%","4.7"],["casa de silvestre en urumita","4","41","9.8%","3.3"]]}
+ ]},
+diners:{
+ title:"Mapa de keywords GSC — junio · base para contenido E-E-A-T (Diners)",
+ lead:"Cada cluster trae la jugada y sus keywords con métricas reales de junio. Detalle completo y checklist E-E-A-T en Estrategia-Digital-por-Canal-2026.",
+ clusters:[
+  {n:"1 · La joya: Bogotá y alrededores — mantener y subir",play:"Pos. 1–3 con CTR excepcional y 77–85s de retención en el sitio. Refresh E-E-A-T (autor, criterio, fecha, fotos propias), nunca reescribir. 'brunch bogota' a pos. 5.4 es la subida más valiosa.",
+   rows:[["termales cerca a bogotá","220","2,257","9.7%","2.1"],["rooftop bogota","182","1,751","10.4%","2.7"],["brunch bogota","155","2,377","6.5%","5.4"],["restaurantes tematicos bogota","151","915","16.5%","2.1"],["termales cerca de bogota","149","1,201","12.4%","2.1"],["restaurantes campestres cerca a bogota","143","858","16.7%","2.3"],["termales","141","2,630","5.4%","4.4"],["restaurantes usaquen","103","1,474","7.0%","3.4"],["restaurantes fuera de bogota","65","291","22.3%","2.0"],["aguas termales cerca a bogota","53","781","6.8%","2.8"],["restaurantes a las afueras de bogota","48","147","32.7%","1.1"],["restaurantes ciudad montes","43","444","9.7%","2.1"],["restaurantes pet friendly bogota","35","255","13.7%","3.4"],["pescaderia bogota","31","676","4.6%","5.2"],["poligono bogota","29","633","4.6%","5.9"],["karts bogota","23","457","5.0%","4.1"]]},
+  {n:"2 · Expansión ciudades — el molde viaja",play:"La serie 'restaurantes en [ciudad]' ya rankea 4–9 sin trabajo E-E-A-T. Prioridad: Bucaramanga y Pereira (más impresiones, peor CTR = mayor upside). Requisito: colaborador local nombrado o visita documentada.",
+   rows:[["restaurantes tunja","51","1,457","3.5%","3.9"],["restaurantes pereira","47","2,368","2.0%","6.5"],["restaurantes santa fe de antioquia","21","309","6.8%","3.4"],["restaurantes la calera","20","399","5.0%","3.5"],["restaurantes manizales","20","1,813","1.1%","8.6"],["restaurantes monteria","19","1,062","1.8%","7.6"],["mejores restaurantes santa marta","19","319","6.0%","6.8"],["restaurantes en la mesa cundinamarca","18","170","10.6%","4.5"],["restaurantes bucaramanga","16","2,763","0.6%","8.8"],["restaurantes armenia","16","1,204","1.3%","8.2"]]},
+  {n:"3 · Autoridad cultural con firma — donde nace la marca",play:"Gabo es la prueba de que la autoridad cultural rankea #1 con CTRs de 25–35%. Expandir con firma editorial: poetas, series con análisis propio — no listas genéricas.",
+   rows:[["poemas de gabriel garcia marquez","142","443","32.1%","1.4"],["gabriel garcia marquez poemas","96","370","25.9%","1.1"],["poemas gabriel garcia marquez","63","182","34.6%","1.4"],["cual es la serie mas larga del mundo","70","1,920","3.6%","3.0"],["series colombianas","68","3,384","2.0%","6.1"],["vigilados serie","25","201","12.4%","2.3"],["series mas largas de la historia","20","173","11.6%","1.9"]]},
+  {n:"4 · Relojes y lujo — cluster nuevo con ángulo comercial",play:"Ya reciben clics sin estrategia. La página Rolex Oyster generó $2,655 en junio. Coincide con el gap de anunciantes de relojería (auditoría de competencia): autoridad E-E-A-T + argumento B2B en el mismo territorio.",
+   rows:[["rolex","97","1,680","5.8%","8.2"],["citizen","85","809","10.5%","6.1"]]},
+  {n:"5 · Marca — el déficit estructural",play:"El SERP propio no está ganado: pos. 2.3 en 'revista diners' y 4.8 en 'diners'. Schema Organization + sitelinks + categorías Zona D/Perfiles para que Google lea entidad editorial.",
+   rows:[["revista diners","319","577","55.3%","2.3"],["diners","99","1,190","8.3%","4.8"],["revista diners colombia","51","70","72.9%","1.0"],["diners revista","38","75","50.7%","1.7"],["revista dinners","29","56","51.8%","2.1"]]},
+  {n:"6 · Anti-cluster — NO perseguir (probado vacío)",play:"Coyuntura de celebridad global: impresiones enormes, CTR basura, 0–2s de retención, 0 marca. Solo se cubre con ángulo Colombia y firma — nunca como apuesta de tráfico.",
+   rows:[["michael jackson","87","53,121","0.2%","8.0"],["santorini colombiano","16","9,987","0.2%","4.3"],["marjane satrapi","28","3,278","0.9%","3.2"],["camisas colombia (+variantes)","51","4,734","~1.1%","8.8–9.3"],["canciones de la novicia rebelde","20","856","2.3%","6.1"]]}
+ ]}
+};
+
+function kwCard(tab){
+  const K=KW[tab];
+  const cl=K.clusters.map(c=>{
+    const rows=c.rows.map(r=>'<tr><th>'+r[0]+'</th><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td><td>'+r[4]+'</td></tr>').join('');
+    return '<div style="margin-top:14px"><h4 style="font-size:13px;font-weight:600;margin:0 0 2px">'+c.n+'</h4>'+
+      '<p class="lead" style="margin:0 0 8px">'+c.play+'</p>'+
+      '<div style="overflow-x:auto"><table class="ftab" style="min-width:560px"><thead><tr><th>Keyword</th><th>Clics</th><th>Impr.</th><th>CTR</th><th>Pos.</th></tr></thead><tbody>'+rows+'</tbody></table></div></div>';
+  }).join('');
+  return '<div class="fmtcard"><h3>'+K.title+'</h3><p class="lead">'+K.lead+'</p>'+cl+'</div>';
+}
+
+const app = document.getElementById('app');
+const CHK = new Set();
+
+function count(tab){ return TASKS[tab].length; }
+document.getElementById('c-axxis').textContent='· '+count('axxis');
+document.getElementById('c-diners').textContent='· '+count('diners');
+
+function fmtTable(F){
+  const head=F.head.map(h=>'<th>'+h+'</th>').join('');
+  const rows=F.rows.map(r=>'<tr><th>'+r[0]+'</th>'+r.slice(1).map(c=>'<td>'+c+'</td>').join('')+'</tr>').join('');
+  return '<div class="fmtcard"><h3>'+F.title+'</h3><p class="lead">'+F.lead+'</p>'+
+    '<div style="overflow-x:auto"><table class="ftab"><thead><tr>'+head+'</tr></thead><tbody>'+rows+'</tbody></table></div></div>';
+}
+
+function render(tab){
+  document.getElementById('why-axxis').style.display = tab==='axxis' ? '' : 'none';
+  document.getElementById('why-diners').style.display = tab==='diners' ? '' : 'none';
+  app.innerHTML='';
+  TYPES.forEach(([ty,label,desc])=>{
+    const items=TASKS[tab].filter(t=>TY[t.id]===ty);
+    if(!items.length) return;
+    const sec=document.createElement('div'); sec.className='tier';
+    let h='<div class="tier-head" style="border-bottom-color:'+TYC[ty]+'"><span class="bar" style="display:inline-block;width:10px;height:10px;border-radius:2px;background:'+TYC[ty]+';margin-right:2px"></span><h2>'+label+'</h2><span>'+desc+'</span></div>';
+    if(ty==='fmt'){ h += fmtTable(tab==='axxis'?FMT_AX:FMT_DI); }
+    if(ty!=='fmt'){
+      h+=items.map(t=>{
+        const done=CHK.has(t.id);
+        const ev = t.brief
+          ? '<div class="brief-box"><p class="ev">'+t.ev+'</p></div>'
+          : '<p class="ev">'+t.ev+'</p>';
+        return '<div class="act'+(done?' done':'')+'" id="row-'+t.id+'">'+
+          '<span class="chk'+(done?' done':'')+'" role="checkbox" aria-checked="'+done+'" tabindex="0" data-id="'+t.id+'"></span>'+
+          '<div class="body"><p class="title">'+t.t+'<span class="ow '+t.oc+'">'+t.ow+'</span></p>'+ev+'</div></div>';
+      }).join('');
+    }
+    if(ty==='seo'){ h += kwCard(tab); }
+    sec.innerHTML=h;
+    app.appendChild(sec);
+  });
+  bind();
+}
+
+function toggle(el){
+  const id=el.dataset.id;
+  const done = CHK.has(id) ? (CHK.delete(id),false) : (CHK.add(id),true);
+  el.classList.toggle('done',done);
+  el.setAttribute('aria-checked',done);
+  document.getElementById('row-'+id).classList.toggle('done',done);
+}
+function bind(){
+  document.querySelectorAll('.chk').forEach(c=>{
+    c.addEventListener('click',()=>toggle(c));
+    c.addEventListener('keydown',e=>{ if(e.key===' '||e.key==='Enter'){e.preventDefault();toggle(c);} });
+  });
+}
+document.querySelectorAll('nav.tabs button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('nav.tabs button').forEach(x=>{x.classList.remove('active');x.setAttribute('aria-selected','false');});
+    b.classList.add('active'); b.setAttribute('aria-selected','true');
+    render(b.dataset.t);
+  });
+});
+render('axxis');
+</script>
+</body>
+</html>
