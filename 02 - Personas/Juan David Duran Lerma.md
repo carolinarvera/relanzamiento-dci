@@ -1,43 +1,53 @@
 ---
 date: 2026-07-01
 type: person
-tags: [persona, desarrollo, tecnologia, beneficios-suscriptores, pwa]
-related-projects: [Beneficios-Suscriptores, PWA-360]
+tags: [person, seo, web, digital, axxis, diners, libros, desarrollo, beneficios-suscriptores, pwa]
+related-people: [Carolina Ramirez, Ernesto Rodriguez, Jeison Montero, Sebastian Diaz]
+related-projects: [Estrategia-Digital, Plan-Comercial-Libros, Beneficios-Suscriptores, PWA-360]
 ai-first: true
 confidence: medium
 ---
 
 ## For future Claude
-Juan David Duran Lerma ("Juandy") — perfil técnico evaluado para el desarrollo interno de la plataforma Beneficios Suscriptores (as of 2026-07-01). Participó en la reunión de definición de arquitectura y UX con Carolina y Jeison Montero. Está siendo evaluado para determinar si el desarrollo puede hacerse internamente con él o requiere contratación externa. Estado de la evaluación: pendiente (Carolina + Juandy deben analizar fases y alcance).
+Juan David Duran Lerma ("Juandy") — SEO y web execution lead de Ediciones Gamma (H2 2026). Ejecuta SEO técnico en AXXIS, Diners y Libros; implementa integraciones web (HubSpot forms, Meta Pixel, PWA landing pages). Adicionalmente está siendo evaluado para el desarrollo interno de la plataforma Beneficios Suscriptores (as of 2026-07-01) — Carolina + Jeison Montero participaron en la reunión de definición de arquitectura. Estado evaluación: pendiente (Carolina + Juandy deben analizar fases y alcance técnico del MVP). Reporta a [[Carolina Ramirez]].
 
 ---
 
 # Juan David Duran Lerma
 
 > **Alias:** Juandy
-> **Rol potencial:** Desarrollador interno — plataforma Beneficios Suscriptores
-> **Estado:** En evaluación para desarrollo interno (as of 2026-07-01)
+> **Cargo:** SEO & Web — Ediciones Gamma
+> **Área:** Digital / Plataformas
+> **Reporta a:** [[Carolina Ramirez]]
 
 ---
 
-## Contexto
+## Responsabilidades H2 2026
 
-- Participó en reunión de landing y flujo de Beneficios Suscriptores (2026-07-01)
-- Siendo evaluado para determinar viabilidad de desarrollo interno vs. externo
-- Próximo paso: Carolina + Juandy analizan fases y alcance técnico del MVP
+### SEO
+- SEO técnico y contenido editorial en axxis.com.co y revistadiners.com
+- Optimización de 29 páginas de producto Libros (keywords longtail por categoría)
+- Auditorías SEO completas por BU
+- Core Web Vitals, velocidad mobile, schema markup
+- Link building con medios especializados
 
-## Pendiente
+### Web e Integraciones
+- Embed formularios HubSpot en webs AXXIS y Diners
+- Instalación y configuración Meta Pixel
+- Implementación landings de suscripción (P0 AXXIS y Diners)
+- Reproductores video/podcast en web
+- QR editorial "Vive la Revista" — landing de beneficios
 
-- [ ] Reunión Carolina + Juandy: evaluar alcance, fases y viabilidad de construcción interna
-- [ ] Determinar stack con el que trabaja y compatibilidad con arquitectura propuesta
+### Pauta digital (apoyo técnico)
+- Sincronización audiencias Pixel Meta ↔ HubSpot (con [[Sebastián Díaz]])
+
+### Beneficios Suscriptores (evaluación en curso)
+- Evaluado para desarrollo interno del MVP de la plataforma
+- Participó en reunión de arquitectura y UX (2026-07-01) con [[Jeison Montero]]
+- Próximo paso: analizar fases, alcance y stack con [[Carolina Ramirez]]
 
 ---
 
 ## Relacionado
 
-[[Jeison Montero]] · [[Carolina Ramirez]] · [[Arquitectura-Navegacion-ViveBeneficios]] · [[06 - Meetings/Experiencias/2026-07-01 Carolina-Jeison-Juandy - Landing Vive Beneficios]]
-
----
-
-## Tags
-#persona #desarrollo #tecnologia #beneficios-suscriptores
+[[Ernesto Rodriguez]] · [[Jeison Montero]] · [[Sebastián Díaz]] · [[Carolina Ramirez]]
