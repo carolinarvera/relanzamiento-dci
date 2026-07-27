@@ -19,7 +19,9 @@ ai-first: true
 |---|---|
 | `00 - Executive Layer/` | CEO Dashboard, Plan-Growth-H2-2026.html (vercel: gamma-growth-plan.vercel.app) |
 | `01 - Empresa/` | Identidad Ediciones Gamma, organigrama |
-| `02 - Personas/` | Una nota por persona |
+| `_personas.md` | **Índice compacto de personas** — leer esto, NO abrir 02 - Personas/ |
+| `_proyectos.md` | **Índice compacto de proyectos** — leer esto, NO abrir 05 - PMO/ |
+| `02 - Personas/` | Detalle individual — solo si necesitas historial o contacto específico |
 | `03 - Unidades de Negocio/` | AXXIS, Diners, Libros, Experiencias, Plataformas |
 | `04 - Growth System/` | Frameworks, metodologías |
 | `05 - PMO/` | Portfolio proyectos |
