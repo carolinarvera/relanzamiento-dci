@@ -1,80 +1,48 @@
 ---
-date: 2026-07-06
+date: 2026-07-31
 type: tasks-hot
 scope: urgentes-esta-semana
-last-updated: 2026-07-08
+last-updated: 2026-07-31
 ai-first: true
 tags: [tasks, urgente, hot, semana-actual]
 ---
 
 ## For future Claude
-Solo las tareas urgentes o con deadline esta semana. Leer este archivo primero al inicio de sesión — NO el master completo. Actualizar al cierre de cada sesión. Plan completo (122 tareas): `Tasks/00-Tareas-Master-H2-2026.md`.
+Solo las tareas urgentes o con deadline esta semana. Leer este archivo primero al inicio de sesión — NO el master completo. Actualizar al cierre de cada sesión. Plan completo: `Tasks/00-Tareas-Master-H2-2026.md`.
 
-**Completado sesión 2026-07-06:** Optimización 30 notas de reuniones (06 - Meetings/) — todas reescritas al formato slim (For future Claude / Decisiones / Tareas / Pendientes). Commit `b26e361`.
-
----
-
-# Tareas Urgentes — Semana 6-12 Jul 2026
+**Contexto semana 31 jul:** Club Beneficios Suscriptores operativo en modo manual (3 aliados live). Foco esta semana: bienvenida aliados + media kit + comunicaciones + licencias HubSpot.
 
 ---
 
-## ⚡ PRE-VACACIONES — Contratos Plataformas Davivienda (Jul 8)
+# Tareas Urgentes — Semana 31 Jul - 6 Ago 2026
+
+---
+
+## 🔴 P0 — Esta semana sin falta (Beneficios Suscriptores)
 
 | Tarea | Owner | Contexto |
 |---|---|---|
-| Mapear recursos Visión — inventario tareas + costos + tiempos de dedicación | **Carolina** | Base para toda la propuesta comercial nueva. Deadline duro: antes de vacaciones |
-| Negociar contrato Leo — basado en inventario de recursos | **Carolina** | Espira = servidor+seg / Leo = SEO+WordPress. No negociar sin tener los datos |
-| Reunirse con Torres (Davivienda) — presentar propuesta recursos y estrategia Visión | **Carolina** | Interlocutor banco para contrato Visión. Agendar esta semana |
-| Contactar abogada — reemplazo RRHH de María Isabel | **Carolina** | Proceso de personal pendiente |
+| Actualizar landing — cambiar vigencia a 30 ago en 3 aliados destacados | Nicolás + Paola Nossa | Coordinar con Juan David. Urgente para coherencia con aliados |
+| Compartir slides presentación con Carolina | Paola Nossa | Bloqueante para actualizar slide audiencia |
+| Recopilar logos de todos los aliados | Paola Nossa | Bloqueante para media kit + presentación |
+| Agregar slide aliados actuales + pasados (con logos) a presentación | Paola Nossa | Esta semana |
+| Actualizar slide de audiencia con datos reales de base | Carolina | Una vez recibidas las slides de Paola |
+| Ajustar diseño media kit | Paola Nossa | Fortalecer sección audiencia |
+| Armar paquetes personalizados de bienvenida por aliado | Carolina + Nicolás | Incluir media kit ajustado |
+| Enviar correos bienvenida con media kit a aliados (3 activos) | Carolina + Nicolás | Después de ajustar media kit |
+| Presentar datos revistero + aceptación a Catalina | Paola Nossa | Aprobación formal requerida antes de formalizar con aliados |
 
 ---
 
-## 🔴 P0 — Esta semana sin falta
-
-| Tarea | Owner | Due | Contexto |
-|---|---|---|---|
-| Enviar base suscriptores activos a Sebastián | Carolina | 2026-07-04 ⚠️ VENCIDA | Para excluir suscriptores activos de campañas Meta |
-| Conversación 1:1 Natalia Castaño — performance | Carolina | Esta semana | AXXIS impreso 14%, digital 17% H1, 0% junio. Decisión: ¿reasignar cartera? |
-| Diagnóstico Clara Vergara — Diners digital $0 | Carolina | Esta semana | $38M presupuesto sin ejecutar. Identificar bloqueante específico |
-| Cambiar campaña Meta a objetivo conversiones | Sebastián Díaz | 2026-07-07 | Campaña activa NO se apaga — preservar aprendizaje |
-| Actualizar anuncios con video Reels | Sebastián Díaz | 2026-07-07 | Reemplazar imágenes sin CTA |
-| Validar pixel Ediciones Gamma | Sebastián Díaz | 2026-07-07 | Confirmar recolección de datos |
-| Verificar carrito de compras | Sebastián Díaz | 2026-07-07 | Asegurar que genera datos correctos |
-| **[URGENTE] Revisar renovación automática pasarela IO** | Jeison Montero | Esta semana | 9 personas llegaron a checkout en jun-jul, $0 revenue — pasarela probablemente rota |
-| Activar Meta Lead Ads → HubSpot | Sebastián Díaz | 2026-07-10 | 702 clics mayo, 0 leads en HubSpot |
-| Desarrollar landing pages (3 segmentos) | Sebastián Díaz + Juan David | 2026-07-11 | 3 páginas: seguidores, lookalike, Privilegios |
-
----
-
----
-
-## 📋 Nuevas — Review Revistas Jul 6
-
-| Tarea | Owner | Due |
-|---|---|---|
-| Subir contenidos J Albornos + Jorge Lisarazo | Natalia Castaño | 2026-07-10 |
-| Alinear proceso solicitudes contenido (comercial ↔ editorial) | Paola Nossa + Jeison | 2026-07-10 |
-| Listar e ingresar competidores en Metricool (hasta 10) | Paola Gordillo | 2026-07-10 |
-| Listar formatos digitales para pauta comercial | Paola Nossa | 2026-07-10 |
-| Implementar registro centralizado compromisos comerciales | **Carolina** | 2026-07-10 |
-| Agendar reunión HubSpot automatizaciones | **Carolina** | 2026-07-10 |
-| Auditar web empresa + Diners + plan de acción | Paola Gordillo | 2026-07-13 |
-| Crear calendario transversal RRSS | Paola Gordillo | 2026-07-13 |
-| Fijar fechas optimización perfiles RRSS | Paola Gordillo | 2026-07-13 |
-| Crear formulario B2B para eventos/ferias | Grupo | 2026-07-15 |
-| Propuesta editorial integral → Catalina (lujo accesible + formatos) | Carolina + Grupo | 2026-07-20 |
-
----
-
-## 🟠 P1 — Esta semana si es posible
+## 📋 P1 — Primera semana agosto
 
 | Tarea | Owner | Contexto |
 |---|---|---|
-| Limpiar lifecycle stages HubSpot | Carolina | 64K contactos en etapa custom bloquean workflows |
-| Crear 7 propiedades contacto HubSpot | Carolina | Prerequisito de journeys de renovación |
-| Embed HubSpot form en landing /suscribirse/ AXXIS | Juan David | Sin esto, 100% de clics Meta sin registro en CRM |
-| Campo "fuente de origen" en HubSpot — Fase 1 medición | Jeison Montero | Protocolo call center + equipo comercial |
-| Reunión stakeholders — presentar nuevo modelo Experiencias | Paola Pantaleon | Dos ramas: Corporativa + Always On |
+| Evaluar licencias HubSpot: quién necesita acceso marketing | Grupo | Nicolás seguro · revisar licencia Stefi · 1ra semana ago |
+| Reunión: definir email templates + frecuencia comunicaciones | Carolina | Citar a Nico + Paola Nossa |
+| Coordinar segmentación suscriptores con Juan David | Jeison | Nuevos / activos / con vigencia vencida → para CRM flows |
+| Presentar proceso onboarding aliados a Nico | Carolina | Mapa de vinculación antes de citar a grupo ampliado |
+| Reunión con María Claudia Vargas | Carolina | Definir rol + proceso actualización bases de datos |
 
 ---
 
@@ -82,11 +50,13 @@ Solo las tareas urgentes o con deadline esta semana. Leer este archivo primero a
 
 | Bloqueador | Quién desbloquea |
 |---|---|
-| Precios paquetes corporativos Libros | Nicolas Serna |
-| Precios Paquete Legado y Centenario | Nicolas Serna |
-| Nombre inspiracional Beneficios Suscriptores | Carolina → Catalina |
-| Claridad estrategia Ed. Financiera | María Angélica Navarro |
+| Slides presentación sin compartir | Paola Nossa → Carolina |
+| Logos aliados sin recopilar | Paola Nossa |
+| Licencias HubSpot sin definir | Grupo — 1ra semana ago |
+| Revistero sin aprobación formal | Paola Nossa → Catalina |
+| Segmentación CRM suscriptores sin claridad | Jeison + Juan David |
+| MVP plataforma | Juan David — mediados sep 2026 |
 
 ---
 
-*Plan completo: `Tasks/00-Tareas-Master-H2-2026.md` · Actualizado: 2026-07-06*
+*Plan completo: `Tasks/00-Tareas-Master-H2-2026.md` · Actualizado: 2026-07-31*

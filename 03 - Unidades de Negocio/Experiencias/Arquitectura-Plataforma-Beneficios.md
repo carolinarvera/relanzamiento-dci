@@ -7,11 +7,15 @@ related-projects: [Beneficios-Suscriptores]
 ai-first: true
 confidence: high
 status: borrador
-version: v1.4
+version: v1.5
 ---
 
 ## For future Claude
-Documento maestro único de la Plataforma de Programa de Beneficios (Beneficios Suscriptores). **Alcance: solo Rama Alianzas (always-on).** El BU Experiencias tiene 2 ramas diferenciadas: (1) Alianzas = club de beneficios suscriptores always-on — es lo que cubre este doc; (2) Experiencias = banca privada + VIP corporativo = one-time, NO vive en esta plataforma. Hay 2 tipos de aliado: Aliado Beneficios (long-term, siempre en catálogo) y Aliado VIP/Banca Privada (one-time, no en catálogo). Decisiones 2026-07-03: desarrollo interno confirmado (se rechaza proveedor externo), QR descartado, se prefieren billeteras virtuales (Apple/Google Wallet) — puede anticiparse a V1 en lugar de V2. Ref: [[06 - Meetings/Experiencias/2026-07-03 Review-Avances-Experiencias]] · [[06 - Meetings/Experiencias/2026-07-01 Carolina-Jeison-Juandy - Landing Vive Beneficios]] · [[06 - Meetings/Experiencias/2026-07-01 Equipo-Catalina - Propuesta Plataforma Lealtad]]
+Documento maestro único de la Plataforma de Programa de Beneficios (Beneficios Suscriptores). **Alcance: solo Rama Alianzas (always-on).** El BU Experiencias tiene 2 ramas: (1) Alianzas = club de beneficios suscriptores always-on — es lo que cubre este doc; (2) Experiencias = banca privada + VIP corporativo = one-time, NO vive en esta plataforma. Hay 2 tipos de aliado: Aliado Beneficios (long-term, siempre en catálogo) y Aliado VIP/Banca Privada (one-time, no en catálogo).
+
+**ESTADO AL 2026-07-31:** Club OPERATIVO en modo manual. 3 aliados publicados (Oliveto, La Cabrera, Cafeto). Validación actual = Google Sheets (aliado busca cédula). MVP por Juan David: mediados septiembre. Las billeteras virtuales (Apple/Google Wallet) siguen siendo la meta de V1/V2 — aún no están implementadas. Identidad visual fijada: minimalista B&N, premium editorial.
+
+Ref: [[06 - Meetings/Experiencias/2026-07-31 Review-Avances-Experiencias]] · [[06 - Meetings/Experiencias/2026-07-03 Review-Avances-Experiencias]] · [[06 - Meetings/Experiencias/2026-07-01 Equipo-Catalina - Propuesta Plataforma Lealtad]]
 
 ---
 
@@ -22,6 +26,26 @@ Documento maestro único de la Plataforma de Programa de Beneficios (Beneficios 
 > **Tipo de beneficios:** Descuentos y alianzas con restaurantes, comercios y experiencias curadas
 > **Alcance inicial:** MVP web y móvil (PWA — Progressive Web App) · desarrollo interno (Juandy)
 > **Owner producto:** [[Carolina Ramirez]] · **Owner técnico:** [[Jeison Montero]]
+
+---
+
+## Estado Actual — Operación Manual (al 2026-07-31)
+
+> **El club está LIVE.** La plataforma definitiva (MVP) no existe aún. Mientras tanto, operamos con una landing informativa + validación manual.
+
+| Ítem | Estado real |
+|---|---|
+| **Plataforma** | Landing page informativa en zona privada Diners — no es el PWA definitivo |
+| **Validación** | Manual — aliado ingresa al Google Sheets y verifica cédula del suscriptor |
+| **MVP definitivo** | Desarrollo por Juan David · estimado mediados septiembre 2026 |
+| **Aliados live** | 3 publicados: Oliveto · La Cabrera · Cafeto |
+| **Aliados en proceso** | 8 en documentación → meta 11 para agosto: Hashtag Pollos, Mundo Orgánico, Maestri Milano, Granel, Merlada, Kivas, Saubatch, Frenchi |
+| **Vigencia beneficios** | 3 destacados: hasta 30 ago 2026. Resto en pipeline: hasta 2027 |
+| **CRM aliados** | HubSpot — formularios para registro y documentación (licencias en evaluación ago 2026) |
+| **Comunicaciones** | No iniciadas — definir templates + frecuencia (1ra semana agosto) |
+| **Identidad visual** | Minimalista B&N, premium editorial — aprobada |
+| **Billeteras virtuales** | Meta de V1/V2 — AÚN NO implementadas |
+| **Plugin newsletter** | Error de conflicto Meta pixel — resuelto (jul 2026) |
 
 ---
 
@@ -57,7 +81,8 @@ El BU Experiencias opera con **3 líneas diferenciadas**. Esta plataforma cubre 
 | v1.1b | 2026-07-01 | Fusión con doc de producto: KPIs, user journeys, stack tecnológico, fases |
 | v1.2 | 2026-07-02 | Benchmark competitivo Club Vivamos (El Tiempo) — geolocalización de aliados y beneficiarios familiares como consideraciones adicionales para el MVP |
 | v1.3 | 2026-07-03 | Reunión review avances: estructura 3 líneas BU + 2 tipos aliado · desarrollo interno confirmado · billeteras virtuales preferidas sobre QR · prospección por exclusividad, no descuentos |
-| v1.4 | 2026-07-02 (registrado 2026-07-03) | Reunión equipo completo (landing): geolocalización de aliados confirmada · filtros ampliados (descuento min/max, relevancia, fecha, calificación) · badges visuales tipo Amazon · formulario Excel interino para carga de aliados · calificación 1-5 estrellas sin comentarios por ahora · **abierto:** si fase 1 usa activación simple y difiere reservas/calendario a fase 2. Nota: esta reunión propuso QR para redención — descartado al día siguiente (ver v1.3). Ref: [[06 - Meetings/Experiencias/2026-07-02 Equipo-Experiencias - Landing Beneficios Suscriptores]] |
+| v1.4 | 2026-07-02 (registrado 2026-07-03) | Reunión equipo completo (landing): geolocalización de aliados confirmada · filtros ampliados · badges visuales tipo Amazon · formulario Excel interino · calificación 1-5 estrellas sin comentarios. Nota: esta reunión propuso QR — descartado al día siguiente (v1.3). Ref: [[06 - Meetings/Experiencias/2026-07-02 Equipo-Experiencias - Landing Beneficios Suscriptores]] |
+| v1.5 | 2026-07-31 | Actualización estado real: club OPERATIVO en modo manual desde ~jul 11. 3 aliados live (Oliveto, La Cabrera, Cafeto). Validación = Google Sheets manual. MVP sep 2026 (Juandy). Identidad visual fijada: B&N minimalista. 8 aliados en documentación (meta 11 agosto). HubSpot para registro aliados. Billeteras virtuales = aún meta futura (no implementadas). Ref: [[06 - Meetings/Experiencias/2026-07-31 Review-Avances-Experiencias]] |
 
 ---
 
