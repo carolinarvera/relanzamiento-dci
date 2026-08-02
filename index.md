@@ -113,6 +113,7 @@ Mapa de navegación del vault. Usar para localizar archivos — los detalles est
 
 - [[06 - Meetings/libros/2026-07-15 Carolina - Review Avances Libros]] — Review Libros jul 15: precios escalonados B2B, landing ventas corporativas, popup newsletter, prioridad conversion
 - [[06 - Meetings/libros/2026-07-01 Carolina - Review Avances y Tareas Libros]] — Review Libros jul 1: Instagram Shop descartado, WhatsApp Business titulos seleccionados, HubSpot CRM compradores
+- [[06 - Meetings/Revistas/2026-06-30 Carolina - Review Avances Revistas y BUs]] — Primera review BUs jun 30: estructura por unidades, HubSpot transversal, Beneficios Suscriptores vs Experiencias, media kits
 - [[06 - Meetings/CEO/2026-06-05-Lineamientos Catalina Obregón y direccionamiento]] — Lineamientos estratégicos CEO jun 2026
 - [[06 - Meetings/Experiencias/2026-06-12 Carolina-Paola - Club Beneficios y Vivir la Revista]] — Modelo nuevo experiencias: club beneficios, Banca Privada
 - [[06 - Meetings/Proveedores/2026-05-31 Informe Pauta Mayo 2026 - Sebastian Diaz]] — Informe pauta digital mayo: Meta + AdSense AXXIS/Diners
