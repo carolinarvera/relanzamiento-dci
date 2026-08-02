@@ -276,6 +276,35 @@ Antes de exigir más ventas, ajustar cuotas a niveles reales (bajar Natalia y Pa
 
 ---
 
+## 7. Presupuesto Septiembre 2026 — Punto de partida gestión impreso (inicio 2026-08-03)
+
+> Septiembre es el mes más grande del H2. El equipo empieza hoy (3 ago) a construir pipeline para sep. Impreso: toda la gestión debe cerrar antes del 31 ago. Digital: puede gestionarse en paralelo.
+
+| Línea | Claudia | Clara | Natalia | Paola | Total equipo |
+|---|---|---|---|---|---|
+| AXXIS Impreso | **$52.6M** | **$52.6M** | $30.8M | $22.8M | **$158.7M** |
+| AXXIS Digital | $21.1M | $21.1M | $12.4M | $9.2M | $63.7M |
+| Diners Impreso | $29.2M | $29.2M | $17.1M | $12.6M | $88.1M |
+| Diners Digital | $7.5M | $7.5M | $4.7M | $3.5M | $23.2M |
+| **TOTAL** | **$110.4M** | **$110.4M** | **$64.9M** | **$48.1M** | **$333.7M** |
+
+**Vs agosto:** +35% equipo total (+$91M). Claudia y Clara +35%, Natalia +33%, Paola +55%.
+
+### Pipeline mínimo requerido por ejecutiva (agosto → septiembre)
+
+| Ejecutiva | Meta sep | Ofertado requerido (÷ tasa cierre) | Propuestas a enviar | Contactos agosto |
+|---|---|---|---|---|
+| Claudia | $110.4M | ~$127M | ~22 propuestas | ~40 contactos |
+| Clara | $110.4M | ~$130M | ~24 propuestas | ~38 contactos |
+| Natalia | $64.9M | ~$100M* | ~18 propuestas | ~42 contactos |
+| Paola | $48.1M | ~$90M* | ~16 propuestas | ~36 contactos |
+
+*Tasas de cierre de Natalia y Paola son bajas históricamente → requieren más ofertado para compensar.
+
+**Alerta Diners:** Claudia necesita $34.4M ofertado Diners impreso sep (vs $0 en ago). Requiere 6 propuestas Diners esta semana. Sin actividad inmediata, septiembre repite el patrón de julio-agosto.
+
+---
+
 ## Relacionado
 
 **Estrategia y acciones (no se duplican aquí):**
