@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Por qué el contenido digital tiene que cambiar — AXXIS y Diners</title>
+<style>
+:root{
+  --bg:#faf9f7;--card:#fff;--border:#e6e2da;--bs:#d3ccc0;
+  --text:#1c1a17;--t2:#5c574d;--t3:#6b6558;
+  --f0:#a31e17;--fc:#1f6b45;--mkt:#94500a;--brief:#15529c;--seo:#4a4a8f;--radius:12px;
+}
+@media(prefers-color-scheme:dark){:root{--bg:#15130f;--card:#1e1c17;--border:#332f27;--bs:#453f34;--text:#f1eee7;--t2:#c9c3b5;--t3:#948d7c;--f0:#ff7b70;--fc:#5fcf94;--mkt:#f3a85e;--brief:#6fa8f0;--seo:#a3a3e0}}
+:root[data-theme="dark"]{--bg:#15130f;--card:#1e1c17;--border:#332f27;--bs:#453f34;--text:#f1eee7;--t2:#c9c3b5;--t3:#948d7c;--f0:#ff7b70;--fc:#5fcf94;--mkt:#f3a85e;--brief:#6fa8f0;--seo:#a3a3e0}
+:root[data-theme="light"]{--bg:#faf9f7;--card:#fff;--border:#e6e2da;--bs:#d3ccc0;--text:#1c1a17;--t2:#5c574d;--t3:#6b6558;--f0:#a31e17;--fc:#1f6b45;--mkt:#94500a;--brief:#15529c;--seo:#4a4a8f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.55}
+.wrap{max-width:940px;margin:0 auto;padding:36px 20px 90px}
+.eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--t3);margin:0 0 6px}
+h1{font-size:29px;font-weight:600;margin:0 0 10px;letter-spacing:-.02em;line-height:1.2}
+.dek{font-size:16px;color:var(--t2);margin:0 0 4px;max-width:720px}
+.meta{font-size:12px;color:var(--t3);margin:14px 0 0}
+
+.hero{border:1px solid var(--f0);background:color-mix(in srgb,var(--f0) 6%,transparent);border-radius:var(--radius);padding:22px 24px;margin-top:26px}
+.hero .n{font-size:46px;font-weight:600;letter-spacing:-.03em;line-height:1;color:var(--f0);font-variant-numeric:tabular-nums}
+.hero .c{font-size:15px;margin:8px 0 0;max-width:660px}
+
+h2.step{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--brief);margin:36px 0 8px;display:flex;align-items:center;gap:9px}
+h2.step::before{content:attr(data-n);width:22px;height:22px;border-radius:50%;background:var(--brief);color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+h3{font-size:19px;font-weight:600;margin:0 0 8px;letter-spacing:-.01em}
+p{font-size:14.5px;margin:0 0 12px}
+p.src{font-size:11.5px;color:var(--t3);margin:8px 0 0}
+
+.card{border:1px solid var(--bs);border-radius:var(--radius);background:var(--card);padding:16px 18px;margin:14px 0}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:left}
+thead th{font-size:10.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--t3);font-weight:600}
+td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tr:last-child td,tr:last-child th{border-bottom:none}
+
+.barrow{display:flex;align-items:center;gap:10px;margin:5px 0}
+.barrow .lb{font-size:12.5px;width:74px;flex-shrink:0;color:var(--t2);font-variant-numeric:tabular-nums}
+.barrow .tr{flex:1;height:19px;background:var(--border);border-radius:4px;overflow:hidden}
+.barrow .tr i{display:block;height:100%;border-radius:4px}
+.barrow .vl{font-size:12.5px;width:46px;text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+
+.pull{border-left:3px solid var(--fc);background:color-mix(in srgb,var(--fc) 7%,transparent);border-radius:0 8px 8px 0;padding:14px 17px;margin:16px 0;font-size:14.5px}
+.warn{border-left:3px solid var(--f0);background:color-mix(in srgb,var(--f0) 7%,transparent);border-radius:0 8px 8px 0;padding:14px 17px;margin:16px 0;font-size:14.5px}
+.note{border-left:3px solid var(--brief);background:color-mix(in srgb,var(--brief) 6%,transparent);border-radius:0 8px 8px 0;padding:11px 15px;margin:14px 0;font-size:12.5px;color:var(--t2)}
+
+.ask{border:2px solid var(--fc);border-radius:var(--radius);padding:20px 22px;margin-top:20px;background:var(--card)}
+.ask h3{margin-bottom:12px}
+ol.a{margin:0;padding:0;list-style:none;counter-reset:k}
+ol.a li{counter-increment:k;position:relative;padding:11px 0 11px 34px;border-bottom:1px solid var(--border)}
+ol.a li:last-child{border-bottom:none;padding-bottom:0}
+ol.a li::before{content:counter(k);position:absolute;left:0;top:11px;width:23px;height:23px;border-radius:50%;background:var(--fc);color:#fff;font-size:11.5px;font-weight:700;display:flex;align-items:center;justify-content:center}
+ol.a .t{font-size:14.5px;font-weight:600;margin:0 0 2px}
+ol.a .d{font-size:13px;color:var(--t2);margin:0}
+.sc{overflow-x:auto}
+footer{margin-top:34px;padding-top:16px;border-top:1px solid var(--border);font-size:11.5px;color:var(--t3)}
+</style>
+</head>
+<body><div class="wrap">
+
+<p class="eyebrow">Nota para Catalina Obregón · Growth</p>
+<h1>El contenido digital nos está envejeciendo la audiencia justo cuando necesitamos rejuvenecerla</h1>
+<p class="dek">La demanda de 35 a 45 años ya existe y la estamos pagando en publicidad. Lo que no tenemos es contenido que la retenga.</p>
+<p class="meta">Carolina Ramirez · julio 2026 · Fuentes: GA4, Google Search Console, Google Ads, Meta Ads Manager, base Privilegios</p>
+
+<div class="hero">
+  <div class="n">48.7%</div>
+  <p class="c">de la audiencia digital de AXXIS tiene <b>55 años o más</b> — y el 30.1% supera los 65. El bloque que necesitamos, 35 a 44, es apenas el <b>15.6%</b>.</p>
+</div>
+
+<h2 class="step" data-n="1">El problema</h2>
+<h3>No estamos hablándole a quien compra</h3>
+<p>La distribución de edad de la audiencia web de AXXIS está invertida respecto a donde está el negocio. Más de la mitad del tráfico viene de un segmento que no renueva suscripciones digitales ni es el que buscan los anunciantes de las categorías que queremos abrir.</p>
+
+<div class="card">
+  <p style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--t3);margin:0 0 10px">AXXIS — audiencia web por edad</p>
+  <div class="barrow"><span class="lb">18–24</span><span class="tr"><i style="width:29%;background:var(--bs)"></i></span><span class="vl">8.6%</span></div>
+  <div class="barrow"><span class="lb">25–34</span><span class="tr"><i style="width:46%;background:var(--bs)"></i></span><span class="vl">13.7%</span></div>
+  <div class="barrow"><span class="lb">35–44</span><span class="tr"><i style="width:52%;background:var(--fc)"></i></span><span class="vl">15.6%</span></div>
+  <div class="barrow"><span class="lb">45–54</span><span class="tr"><i style="width:54%;background:var(--fc)"></i></span><span class="vl">16.4%</span></div>
+  <div class="barrow"><span class="lb">55–64</span><span class="tr"><i style="width:62%;background:var(--f0)"></i></span><span class="vl">18.6%</span></div>
+  <div class="barrow"><span class="lb">65+</span><span class="tr"><i style="width:100%;background:var(--f0)"></i></span><span class="vl">30.1%</span></div>
+  <p class="src">Informe web AXXIS, febrero 2026 (GA4). Es el reporte mensual más reciente que incluye desglose por edad — los de marzo a junio no lo traen, lo cual ya es en sí un problema de seguimiento. La tabla original suma 103% por redondeo del proveedor.</p>
+</div>
+
+<p>El Media Kit confirma el mismo perfil desde otra fuente: <b>la mayor concentración de audiencia digital de AXXIS son baby boomers de 55 a 64 años (31%)</b>. No es un dato aislado de un mes.</p>
+
+<h2 class="step" data-n="2">La evidencia de que la demanda joven ya existe</h2>
+<h3>Cuando pagamos por llegar, llega gente de 35 a 44</h3>
+<p>Diners tiene el dato que desarma el argumento de "nuestra audiencia es así". En Google Ads, el bloque de <b>35 a 44 años es el primero</b>, por encima de todos los demás. Y el segmento individual más grande es <b>mujer de 35 a 44</b>.</p>
+
+<div class="card"><div class="sc"><table>
+<thead><tr><th>Rango</th><th>Mujer</th><th>Hombre</th><th>Total impresiones</th></tr></thead>
+<tbody>
+<tr><td>18–24</td><td class="n">4.06%</td><td class="n">3.33%</td><td class="n">7.39%</td></tr>
+<tr><td>25–34</td><td class="n">15.38%</td><td class="n">11.41%</td><td class="n">26.86%</td></tr>
+<tr style="background:color-mix(in srgb,var(--fc) 9%,transparent)"><td><b>35–44</b></td><td class="n"><b>17.43%</b></td><td class="n">11.04%</td><td class="n"><b>28.50% — 1º</b></td></tr>
+<tr><td>45–54</td><td class="n">12.77%</td><td class="n">7.72%</td><td class="n">20.52%</td></tr>
+<tr><td>55–64</td><td class="n">7.39%</td><td class="n">4.29%</td><td class="n">11.71%</td></tr>
+<tr><td>65+</td><td class="n">3.02%</td><td class="n">2.16%</td><td class="n">5.19%</td></tr>
+</tbody></table></div>
+<p class="src">Google Ads Diners, junio 2026.</p></div>
+
+<div class="pull"><b>La conclusión incómoda:</b> el público de 35 a 45 sí quiere lo que publicamos — lo suficiente para hacer clic. Lo que no hay es contenido que lo retenga y lo convierta en suscriptor. <b>Estamos pagando por atraer a la audiencia correcta y perdiéndola en la página.</b></div>
+
+<h2 class="step" data-n="3">Por qué no los retenemos</h2>
+<h3>El problema es de contenido, no de alcance</h3>
+<p>AXXIS compra el 79.3% de su tráfico en redes pagas, y ese tráfico interactúa <b>5 segundos</b>. El sitio promedia <b>1.20 páginas por sesión</b>: entran a un artículo y se van. Sin ese canal comprado, la interacción del sitio subiría de 24.35% a 46.33% y el tiempo medio de 12 a 40 segundos.</p>
+<p>Y el contraste dentro de Diners muestra exactamente qué tipo de contenido retiene a este perfil:</p>
+
+<div class="card"><div class="sc"><table>
+<thead><tr><th>Contenido</th><th>Tiempo de lectura</th><th>Ingresos generados</th></tr></thead>
+<tbody>
+<tr style="background:color-mix(in srgb,var(--fc) 9%,transparent)"><td><b>Aguas termales cerca de Bogotá</b> — servicio, plan local</td><td class="n"><b>84 s</b></td><td class="n"><b>$11,894</b></td></tr>
+<tr style="background:color-mix(in srgb,var(--fc) 9%,transparent)"><td><b>Restaurantes a las afueras de Bogotá</b> — servicio, plan local</td><td class="n"><b>81 s</b></td><td class="n">—</td></tr>
+<tr style="background:color-mix(in srgb,var(--f0) 8%,transparent)"><td>Kristen Stewart — coyuntura de celebridad global</td><td class="n">2 s</td><td class="n">$289</td></tr>
+<tr style="background:color-mix(in srgb,var(--f0) 8%,transparent)"><td>Michael Jackson — coyuntura de celebridad global</td><td class="n">0–2 s</td><td class="n">—</td></tr>
+</tbody></table></div>
+<p class="src">GA4 Diners, junio 2026. Aguas termales generó <b>41 veces más ingresos</b> que Kristen Stewart con 1,923 sesiones menos. La sección Cultura promedia 10 segundos y $0.46 por sesión; Estilo de Vida promedia 82 segundos y $2.13.</p></div>
+
+<p>El patrón es consistente: <b>gana el contenido de utilidad y planeación local con criterio editorial propio</b> — precisamente lo que consume alguien de 35 a 45 que organiza su fin de semana. Pierde la coyuntura de celebridad internacional, que trae volumen y nada más. El análisis de horarios lo confirma: el pico de consumo de Diners es sábado y domingo por la mañana, en modo "planeación de fin de semana".</p>
+
+<h2 class="step" data-n="4">La prueba de que sí se puede mover</h2>
+<h3>Ya lo demostramos en junio, sin pauta</h3>
+<p>Diners publicó <b>22.5% menos contenido</b> en junio y las interacciones subieron <b>38.9%</b>, con 80% de visualizaciones orgánicas. No fue presupuesto: fue selección de tema.</p>
+
+<div class="card"><div class="sc"><table>
+<thead><tr><th>Pieza</th><th>Resultado</th></tr></thead>
+<tbody>
+<tr><td><b>Manuela Álvarez</b> — trajes de la Selección Colombia</td><td>1,830 compartidos · <b>517 seguidores nuevos</b> · 39 s de reproducción</td></tr>
+<tr><td><b>Franz Kafka</b> — la película</td><td>10.37% de interacción · 26,370 reproducciones</td></tr>
+<tr><td><b>1921 Express</b> — restaurante de Alejandro Riaño</td><td>9.51% de interacción · 51.7 s de lectura en la web</td></tr>
+<tr style="background:color-mix(in srgb,var(--f0) 8%,transparent)"><td>Listicle genérico ("top 10 del mundo")</td><td>4.80% — el piso de la cuenta</td></tr>
+</tbody></table></div>
+<p class="src">Metricool e informes de junio 2026. La fórmula que se repite en el lado que gana: identidad colombiana con nombre propio y un detalle inédito en los primeros 3 segundos.</p></div>
+
+<h2 class="step" data-n="5">Lo que cuesta no hacerlo</h2>
+<h3>La base actual no se renueva sola</h3>
+<p>Privilegios Davivienda cerró en junio y era el <b>70% de los ingresos de Revistas</b>. La base que queda tiene <b>45.3 años de promedio</b> y su bloque más grande es 51+ años. Sin una audiencia digital de 35 a 45 no hay pipeline de suscriptores nuevos ni argumento comercial para las categorías que hoy nos faltan.</p>
+
+<div class="warn"><b>El vínculo con revenue es directo:</b> la auditoría de competencia identificó que el mayor hueco de anunciantes está en <b>automotriz de lujo y relojería internacional</b>. Esas categorías compran audiencia de 35 a 50 con capacidad de compra. Hoy no podemos venderles AXXIS con una audiencia digital que es 48.7% mayor de 55 años.</div>
+
+<div class="note"><b>Sobre la calidad del dato:</b> los informes mensuales de AXXIS dejaron de reportar desglose por edad después de febrero. Recomiendo volverlo obligatorio en el informe del proveedor — sin ese dato no podemos medir si la estrategia está funcionando, que es justamente lo que esta propuesta necesita demostrar mes a mes.</div>
+
+<div class="ask">
+<h3>Lo que pido</h3>
+<ol class="a">
+<li><p class="t">Reenfocar el calendario editorial a los clusters que ya prueban retención en este perfil</p><p class="d">Servicio y planeación local con firma editorial, no coyuntura de celebridad. El dato existe: 84 segundos contra 2. No requiere presupuesto nuevo, requiere decisión editorial.</p></li>
+<li><p class="t">Producción de formatos propios en vez de más pauta</p><p class="d">La auditoría de Meta de julio encontró 1.31 millones de pesos (35% del presupuesto) en campañas que no producen. Ese dinero rinde más en producción de contenido que en comprar tráfico de 5 segundos.</p></li>
+<li><p class="t">Restablecer el reporte de edad mensual y fijarlo como KPI</p><p class="d">Meta a diciembre: subir el bloque 35–44 de 15.6% a 25% en AXXIS, y sostener el 28.5% que Diners ya alcanza en pauta pero pierde en orgánico.</p></li>
+<li><p class="t">Aprobar el plan de acción editorial de julio ya construido</p><p class="d">Está desglosado por revista, canal y responsable, con evidencia por tarea. Este documento es el porqué; ese plan es el cómo.</p></li>
+</ol>
+</div>
+
+<footer>Ediciones Gamma · Growth · Fuentes: GA4 (informes web AXXIS feb 2026 y Diners jun 2026), Google Search Console, Google Ads Diners jun 2026, Meta Ads Manager jul 2026, Metricool jun-jul 2026, base Privilegios Davivienda (5,853 registros, jul 2026), Media Kit AXXIS 2026, auditoría de competencia de anunciantes 2026.</footer>
+
+</div></body></html>
