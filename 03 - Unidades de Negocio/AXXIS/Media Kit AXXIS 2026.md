@@ -264,11 +264,86 @@ El kit asume que el cliente ya decidió pautar aquí. En realidad AXXIS compite 
 
 ---
 
+## 11. Paquetes Comerciales Temáticos (anclados al calendario editorial)
+
+> Insumo para conversaciones comerciales. Anclan la oferta a una edición concreta y facilitan el primer ticket. Precios brutas + IVA. Fecha de cierre = aprox. 6 semanas antes de la edición.
+
+---
+
+### Paquete "Diseño en Movimiento" — Edición Octubre (ed. 382)
+**Cierre comercial: ~9 septiembre 2026**
+*Automóviles, aerolíneas, arquitectura efímera — audiencia premium con poder adquisitivo alto*
+
+| Nivel | Contenido | Valor |
+|-------|-----------|-------|
+| **Entrada** | 1 página corriente impresa + 1 Content web + Newsletter | $29.800.000 |
+| **Presencia** | Doble página impresa + Tour AXXIS + Newsletter + Display 7 días | $57.800.000 |
+| **Protagonismo** | Portada interior + Doble página + Tour AXXIS con personaje + AXXIS Invita + Newsletter + Display 30 días | $107.900.000 |
+
+---
+
+### Paquete "Bienestar" — Edición Julio (ed. 379)
+**Cierre comercial: ~finales mayo 2026**
+*Renovación y sostenibilidad — materiales, acabados, bienestar en el hogar*
+
+| Nivel | Contenido | Valor |
+|-------|-----------|-------|
+| **Entrada** | 1 página corriente impresa + 1 Content web + Newsletter | $29.800.000 |
+| **Presencia** | Doble página impresa + El Producto del Mes + Newsletter + Display 7 días | $52.400.000 |
+| **Protagonismo** | Portada interior + Doble página + Tour AXXIS + AXXIS Conversando con... + Newsletter + Display 30 días | $95.400.000 |
+
+---
+
+### Paquete "Lujo del Mañana" — Edición Septiembre (ed. 381)
+**Cierre comercial: ~9 agosto 2026**
+*Lujo y cocinas — marcas premium, arquitectura de alto valor*
+
+| Nivel | Contenido | Valor |
+|-------|-----------|-------|
+| **Entrada** | 1 página corriente impresa + 1 Content web + Newsletter | $29.800.000 |
+| **Presencia** | Doble página impresa + AXXIS Conversando con... + Newsletter | $51.200.000 |
+| **Protagonismo** | Portada interior + Doble página + Tour AXXIS con personaje + Cubrimiento AXXIS + Newsletter + Display 30 días | $106.000.000 |
+
+---
+
+### Paquete "Aniversario #36" — Edición Diciembre (ed. 384)
+**Cierre comercial: ~octubre 2026**
+*Gran edición aniversario — oportunidad de asociación a hito editorial*
+
+| Nivel | Contenido | Valor |
+|-------|-----------|-------|
+| **Presencia** | Doble página impresa + Content con header + Newsletter | $47.200.000 |
+| **Protagonismo** | Portada interior + Doble página + En la Historia de... (temporada) + AXXIS Invita + Newsletter | A cotizar |
+
+---
+
+### Paquete Digital Evergreen
+*Sin dependencia de edición — activa en cualquier momento del año*
+
+| Contenido | Valor |
+|-----------|-------|
+| Newsletter patrocinado (1 envío) | $2.650.000 |
+| Content web + Newsletter | $7.950.000 |
+| El Producto del Mes + Newsletter + Display 7 días | $9.800.000 |
+| Tour AXXIS + Content + Newsletter | $14.350.000 |
+
+---
+
+### Notas de uso de paquetes
+
+- Los precios son brutos de lista — aplicar descuento comercial según política vigente.
+- Paquetes de Protagonismo incluyen exclusividad de categoría dentro de la edición (confirmar con Paola Nossa).
+- "En la Historia de..." no tiene precio publicado — cotizar separado hasta definir tarifa.
+- AXXIS Connect excluido de paquetes hasta aclarar definición del formato.
+
+---
+
 ## Relacionado
 
-[[AXXIS]] · [[Diners]] · [[Paola Nossa]] · [[Cronograma de Eventos y Marketing 2026]] · [[2026-06-16 Presentación Actividades de Marketing Sesión 2]] · [[Ayudaventas — Formato Comercial por Edición]]
+[[AXXIS]] · [[Diners]] · [[Paola Nossa]] · [[Cronograma de Eventos y Marketing 2026]] · [[2026-06-16 Presentación Actividades de Marketing Sesión 2]] · [[Ayudaventas — Formato Comercial por Edición]] · [[Formatos-Digitales-AXXIS]]
 
 ---
 
 *Generado por Claude — 2026-06-16, a partir de "Media kit 2026 AXXIS_V1.pptx" compartido por Carolina Ramirez.*
 *Auditoría comercial añadida por Claude — 2026-06-21, revisión completa del kit (33 páginas).*
+*Paquetes comerciales temáticos añadidos por Claude — 2026-08-02, sesión estrategia AXXIS H2 2026.*
