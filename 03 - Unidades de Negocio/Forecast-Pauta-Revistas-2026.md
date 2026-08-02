@@ -31,6 +31,16 @@ confidence: high
 | — **Diners digital** | $152.5M | $48.9M | -$103.6M | **32%** |
 | — AXXIS digital | $252.1M | $159.2M | -$92.9M | 63% |
 
+### Consolidado por BU (impreso + digital)
+
+| BU | Presupuesto | Ventas | Diferencia | Cumpl |
+|---|---|---|---|---|
+| DINERS | $569.0M | $359.9M | -$209.2M | **63%** |
+| AXXIS | $1,120.6M | $797.7M | -$322.9M | **71%** |
+| **TOTAL** | **$1,689.6M** | **$1,157.5M** | **-$532.0M** | **69%** |
+
+> AXXIS tiene mejor tasa (71%) pero el mayor hueco en pesos (-$322.9M, porque es el 66% del presupuesto). Diners tiene peor tasa (63%), arrastrada por su digital al 32%.
+
 ### Cumplimiento mensual (consolidado por BU)
 
 | Mes | Diners | AXXIS |
