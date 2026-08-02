@@ -111,6 +111,7 @@ Mapa de navegación del vault. Usar para localizar archivos — los detalles est
 
 ## 06 - Meetings
 
+- [[06 - Meetings/libros/2026-07-29 Carolina - Review Avances Libros]] — Review Libros jul 29: empaque tela bolsas costo cero, cajas Panamericana cotizadas, Jorge Tadeo firmado, pipeline contenidos Ernesto
 - [[06 - Meetings/libros/2026-07-15 Carolina - Review Avances Libros]] — Review Libros jul 15: precios escalonados B2B, landing ventas corporativas, popup newsletter, prioridad conversion
 - [[06 - Meetings/libros/2026-07-01 Carolina - Review Avances y Tareas Libros]] — Review Libros jul 1: Instagram Shop descartado, WhatsApp Business titulos seleccionados, HubSpot CRM compradores
 - [[06 - Meetings/Revistas/2026-06-30 Carolina - Review Avances Revistas y BUs]] — Primera review BUs jun 30: estructura por unidades, HubSpot transversal, Beneficios Suscriptores vs Experiencias, media kits
