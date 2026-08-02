@@ -765,8 +765,9 @@ tr:hover td { background: #FAFAFF; }
         </div>
       </div>
 
-      <!-- 8 BU CARDS -->
-      <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:12px;" data-reveal>
+      <!-- BU CARDS — visibles: AXXIS, Diners, Beneficios Suscriptores, Libros, Ediciones Gamma -->
+      <!-- Ocultas del overview: Visión Davivienda, Educación Financiera, Experiencias Banca Privada (ver secciones propias abajo) -->
+      <div style="display:grid; grid-template-columns: repeat(3,1fr); gap:12px;" data-reveal>
 
         <!-- AXXIS -->
         <div class="card" style="border-top: 3px solid var(--yellow); padding:16px;">
@@ -949,8 +950,8 @@ tr:hover td { background: #FAFAFF; }
           </ul>
         </div>
 
-        <!-- VISION DAVIVIENDA -->
-        <div class="card" style="border-top: 3px solid var(--green);">
+        <!-- VISION DAVIVIENDA — oculta del overview; ver sección propia -->
+        <div class="card" style="display:none; border-top: 3px solid var(--green);">
           <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
             <div style="font-size:13px; font-weight:700; color:var(--text);">Visión Davivienda</div>
             <span class="badge badge-verde"><span class="badge-dot"></span>Verde</span>
@@ -962,8 +963,8 @@ tr:hover td { background: #FAFAFF; }
           </div>
         </div>
 
-        <!-- EDUCACION FINANCIERA -->
-        <div class="card" style="border-top: 3px solid var(--red);">
+        <!-- EDUCACION FINANCIERA — oculta del overview; ver sección propia -->
+        <div class="card" style="display:none; border-top: 3px solid var(--red);">
           <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:10px;">
             <div style="font-size:13px; font-weight:700; color:var(--text);">Educacion Financiera</div>
             <span class="badge badge-rojo"><span class="badge-dot"></span>Critico</span>
@@ -975,8 +976,8 @@ tr:hover td { background: #FAFAFF; }
           </div>
         </div>
 
-        <!-- EXPERIENCIAS -->
-        <div class="card" style="border-top: 3px solid var(--purple); padding:16px;">
+        <!-- EXPERIENCIAS BANCA PRIVADA — oculta del overview; ver sección propia -->
+        <div class="card" style="display:none; border-top: 3px solid var(--purple); padding:16px;">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
             <div style="font-size:14px; font-weight:800; color:var(--text); letter-spacing:-.02em;">Experiencias</div>
             <span class="badge badge-purple" style="font-size:10px;"><span class="badge-dot"></span>En ejecución</span>
