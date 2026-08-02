@@ -10,7 +10,7 @@ tags: [tasks, urgente, hot, semana-actual]
 ## For future Claude
 Solo las tareas urgentes o con deadline esta semana. Leer este archivo primero al inicio de sesión — NO el master completo. Actualizar al cierre de cada sesión. Plan completo: `Tasks/00-Tareas-Master-H2-2026.md`.
 
-**Contexto semana 31 jul:** Club Beneficios Suscriptores operativo en modo manual (3 aliados live). Foco esta semana: bienvenida aliados + media kit + comunicaciones + licencias HubSpot.
+**Contexto semana 31 jul:** Club Beneficios Suscriptores operativo en modo manual. Estado aliados: 3 activos · 8 en documentación. **Meta: 20 aliados funcionales al 30 ago.** Foco esta semana: bienvenida aliados + media kit + comunicaciones + licencias HubSpot.
 
 ---
 
