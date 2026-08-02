@@ -143,6 +143,63 @@ Antes de exigir más ventas, ajustar cuotas a niveles reales (bajar Natalia y Pa
 
 ---
 
+## 6. Pipeline Claudia Grandas — Jun · Jul · Ago 2026
+
+> Fuente: Forecasts individuales (imágenes 2026-07-30). Primer dataset de pipeline por ejecutiva disponible.
+
+### Datos por mes
+
+| Línea | Jun Ofertado | Jun Ordenado | Jun Ppto | Jun % |
+|---|---|---|---|---|
+| AXXIS Impreso | $52.8M | $52.9M | $44.3M | **119%** |
+| AXXIS Digital | $9.6M | $12.8M | $11.2M | **115%** |
+| Diners Impreso | $30.7M | $31.6M | $19.3M | **164%** |
+| Diners Digital | $9.1M | $9.0M | $7.9M | **114%** |
+| **TOTAL JUN** | **$101.7M** | **$106.3M** | **$82.7M** | **129%** |
+
+| Línea | Jul Ofertado | Jul Proyectado | Jul Ordenado | Jul Ppto | Jul % |
+|---|---|---|---|---|---|
+| AXXIS Impreso | $37.3M | $9.2M | $28.3M | $38.9M | **73%** |
+| AXXIS Digital | $35.2M | $13.2M | $12.4M | $9.8M | **126%** |
+| Diners Impreso | $0 | $0 | $0 | $18.9M | **0%** |
+| Diners Digital | $0 | $0 | $0 | $6.1M | **0%** |
+| **TOTAL JUL** | **$72.5M** | **$22.4M** | **$40.7M** | **$73.7M** | **55%** |
+
+| Línea | Ago Ofertado | Ago Proyectado | Ago Ordenado | Ago Ppto | Ago % (al 30-jul) |
+|---|---|---|---|---|---|
+| AXXIS Impreso | $56.7M | $5.6M | $51.1M | $47.4M | **108%** ✅ |
+| AXXIS Digital | $31.9M | $7.4M | $24.5M | $12.0M | **205%** ✅ |
+| Diners Impreso | $0 | $0 | $0 | $16.0M | **0%** ❌ |
+| Diners Digital | $8.0M | $8.0M | $0 | $6.1M | **0%** (en proceso) |
+| **TOTAL AGO** | **$96.6M** | **$21.0M** | **$75.6M** | **$81.5M** | **93%** |
+
+### Tasa de cierre (Ofertado → Ordenado)
+
+| Mes | AXXIS Imp | AXXIS Dig | Diners Imp | Diners Dig | Global |
+|---|---|---|---|---|---|
+| Junio | 100% | 134%* | 103% | 99% | **105%** |
+| Julio | 76% | 35% | — | — | **56%** (solo AXXIS) |
+| Agosto (parcial) | 90% | 77% | — | — | **~83%** |
+
+*Upsell / adicionales no contemplados en el ofertado inicial.
+
+**Tasa de cierre base para calcular volumen requerido: 85% en AXXIS (cuando hay ofertado activo).**
+
+### Hallazgos críticos
+
+1. **Claudia abandonó Diners completamente en julio y agosto.** En junio tuvo Diners impreso al 164% ($31.6M ordenado). En julio y agosto: $0 ofertado. No es incapacidad — es ausencia de actividad. Bloqueante desconocido (¿conflicto con cliente, agencia, editorial?).
+2. **AXXIS agosto ya está cerrado.** Al 30 de julio ya tenía AXXIS impreso 108% y digital 205% del presupuesto agosto. Sin esfuerzo adicional en AXXIS este mes.
+3. **El gap de agosto está en Diners: -$22M** ($16M impreso + $6.1M digital sin cubrir por Claudia). Diners digital tiene $8M ofertado pero aún en proyectado.
+4. **Implicación para el pipeline framework:** Con tasa de cierre ~85%, Claudia necesita ofertar ~1.2x el ppto mensual de cada línea para cerrarla. El problema no es conversión — es que no está generando ofertado para Diners.
+
+### Acción requerida
+
+- **Conversación urgente:** ¿Por qué $0 ofertado Diners impreso en julio y agosto? En junio lo cerró al 164%.
+- Diners digital agosto: $8M ofertado = 131% del ppto si cierra. Confirmar estado esta semana.
+- Diners impreso agosto: alguien más debe cubrir los $16M o el mes cierra en rojo para esa línea.
+
+---
+
 ## Relacionado
 
 **Estrategia y acciones (no se duplican aquí):**
