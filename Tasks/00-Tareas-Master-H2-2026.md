@@ -2,147 +2,15 @@
 type: tasks-master
 scope: all-bus
 periodo: H2 2026
-last-updated: 2026-06-29
+last-updated: 2026-08-02
 ai-first: true
 tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-gamma]
 ---
 
 ## For future Claude
-**THIS IS THE ONLY SOURCE OF TRUTH FOR ALL TASKS.** Do not look for tasks in AXXIS.md, Diners.md, Revistas.md, Libros.md or Experiencias.md — those files are now context-only stubs. Adding a task anywhere else creates duplication and hallucination risk. Structure: (1) Ejecución Inmediata = operational tasks with due dates July 2026; (2) H2 strategic tasks by BU = 122 initiatives. Blockers: #7LI and #12LI (precios Libros — Nicolas Serna). Urgentes: 9 tareas. HTML para equipo: `00 - Executive Layer/Tasks-H2-2026-Equipo.html`.
+**THIS IS THE ONLY SOURCE OF TRUTH FOR STRATEGIC H2 TASKS.** Do not look for tasks in AXXIS.md, Diners.md, Revistas.md, Libros.md or Experiencias.md — those files are now context-only stubs. Tareas operativas de la semana actual: ver `Tasks/00-Tareas-Hot.md`. Tareas de equipo en tiempo real: `00 - Executive Layer/Tasks-H2-2026-Equipo.html`. Bloqueadores: #7LI y #12LI (precios Libros — Nicolas Serna). Tareas BS01-BS14 (Beneficios Suscriptores semana 31 jul - 8 ago) viven en el HTML del equipo y en Hot.
 
----
-
-# Plan Maestro de Tareas — H2 2026
-
----
-
-## Ejecución Inmediata — Julio 2026
-
-> Tareas operativas con fecha límite definida. Fuente: reuniones y auditorías jun 2026.
-
-### Carolina Ramirez
-
-- [ ] 🔴 **Enviar base suscriptores activos a Sebastián** · due 2026-07-04 · Pauta
-  Fuente: Reunión pauta técnica 2026-07-01 · Necesaria para excluir suscriptores activos y vencidos de las campañas Meta. Sin esto, presupuesto impacta a quienes ya compraron.
-
-- [ ] 🔴 **Limpiar lifecycle stages HubSpot — migrar "Contacto" → "Lead"** · CRM
-  Fuente: HubSpot CRM Audit 2026-06-23 · 64,162 contactos atrapados en etapa custom que bloquea todo workflow. Sin esto, nurturing nunca corre.
-
-- [ ] 🔴 **Crear propiedades contacto HubSpot (7 propiedades)** · CRM
-  Fuente: HubSpot CRM Audit 2026-06-23 · `subscription_type` · `subscription_start_date` · `subscription_end_date` · `ltv_cumulative_cop` · `nps_score` · `churn_risk` · `referral_source_contact`. Prerequisito de workflows de renovación y LTV.
-
-- [ ] 🔴 **Crear WF-01 Lead Nurturing AXXIS** · CRM
-  Fuente: HubSpot CRM Audit 2026-06-23 · Secuencia 4 emails / 7 días. Trigger: lifecycle = Lead. Con 77K leads y CR 5% = ~3,850 suscriptores sin gasto adicional.
-
-- [ ] 🔴 **Crear WF-03 Onboarding 30 días** · CRM
-  Fuente: HubSpot CRM Audit 2026-06-23 · 5 emails post-compra: D+0 bienvenida · D+3 top artículos · D+7 beneficios · D+14 equipo editorial · D+30 NPS. Meta NPS >50.
-
-- [ ] 🔴 **Aplicar WF-01 nurturing — adaptar para base Diners** · CRM
-  Fuente: HubSpot CRM Audit 2026-06-23 · Una vez activo en AXXIS, adaptar tono a Diners (gastronomía, cultura, lifestyle). Bases AXXIS y Diners NUNCA mezcladas en HubSpot.
-
-- [ ] 🟠 **Crear WF-06 Renovación anticipada** · CRM
-  Fuente: HubSpot CRM Audit 2026-06-23 · 4 emails: -60d primer aviso · -30d gancho contenido · -15d urgencia precio · -3d cierre. Meta renewal rate año 1: 65-70%.
-
-- [ ] 🔴 **Implementar registro centralizado de compromisos comerciales** · due 2026-07-10 · Comercial
-  Fuente: Review Revistas 2026-07-06 · Documento: cliente + ejecutivo + tipo contenido + estado. Elimina silos entre comercial y editorial.
-
-- [ ] 🔴 **Agendar reunión HubSpot automatizaciones** · due 2026-07-10 · CRM
-  Fuente: Review Revistas 2026-07-06 · Ejecutivos comerciales = responsables de contactos completos. IA (ChatGPT/Gemini) para enriquecer prospectos.
-
-- [ ] 🔴 **Preparar propuesta editorial integral para Catalina** · due 2026-07-20 · Estrategia
-  Fuente: Review Revistas 2026-07-06 · Integra comercial + editorial: "lujo accesible" + nuevos formatos digitales + campañas transmedia. Con datos sólidos.
-
-- [ ] 🔴 **Mapear recursos Visión — inventario tareas + costos + tiempos** · due Esta semana · Plataformas
-  Fuente: Reunión Contratos Plataformas 2026-07-08 con Catalina · Base para la nueva propuesta comercial Davivienda. Incluir Carolina + Jeison + Ernesto. Deadline duro pre-vacaciones.
-
-- [ ] 🔴 **Negociar contrato Leo — basado en inventario de recursos** · due Esta semana · Plataformas
-  Fuente: Reunión Contratos Plataformas 2026-07-08 · Espira = servidor+seguridad / Leo = SEO+WordPress. No negociar sin tener datos de inventario. Brecha técnica entre ambos a resolver.
-
-- [ ] 🔴 **Reunirse con Torres (Davivienda) — propuesta recursos + estrategia Visión** · due Esta semana · Plataformas
-  Fuente: Reunión Contratos Plataformas 2026-07-08 · Presentar nuevo esquema: fee recurrente + proyectos especiales. KPIs: tráfico + suscripciones + relevancia digital.
-
-- [ ] 🟠 **Contactar abogada — reemplazo RRHH de María Isabel** · due Esta semana · RRHH
-  Fuente: Reunión Contratos Plataformas 2026-07-08 · Proceso de personal pendiente.
-
-### Juan David
-
-- [ ] 🔴 **Embed HubSpot form en landing /suscribirse/ (AXXIS)** · CRM + Web
-  Fuente: HubSpot CRM Audit 2026-06-23 · Sin esto, 100% de clics Meta se pierden sin registro en CRM. Prerequisito: landing URL ya corregida a `/suscribirse/`.
-
-### Sebastián Díaz
-
-- [ ] 🔴 **Activar Meta Lead Ads nativo → HubSpot** · due 2026-07-10 · CRM + Pauta
-  Fuente: HubSpot CRM Audit 2026-06-23 · 702 clics en mayo, 0 leads en HubSpot. CPL = ∞. Integrar vía Meta → HubSpot en Configuración de cuenta.
-
-- [ ] 🔴 **Cambiar campaña a objetivo conversiones** · due 2026-07-07 · Pauta
-  Fuente: Reunión pauta técnica 2026-07-01 · Campaña activa NO se apaga — preservar aprendizaje algoritmo Meta.
-
-- [ ] 🔴 **Actualizar anuncios — reemplazar activo por video (Reels)** · due 2026-07-07 · Pauta
-  Fuente: Reunión pauta técnica 2026-07-01 · Reemplazar activos de bajo rendimiento (imágenes sin CTA) por Reels usando video de portada.
-
-- [ ] 🔴 **Actualizar proceso de suscripciones** según acordado · due 2026-07-07 · Pauta
-  Fuente: Reunión pauta técnica 2026-07-01
-
-- [ ] 🔴 **Desarrollar landing pages** — reunirse con Juan para diseño · due 2026-07-11 · Pauta + Web
-  Fuente: Reunión pauta técnica 2026-07-01 · 3 páginas independientes por segmento (seguidores, lookalike, Privilegios). No indexadas. Con descuentos personalizados por segmento.
-
-- [ ] 🔴 **Validar pixel Ediciones Gama** — confirmar recolección adecuada de datos · due 2026-07-07 · Técnico
-  Fuente: Reunión pauta técnica 2026-07-01
-
-- [ ] 🔴 **Verificar carrito de compras** — asegurar que el sistema genere datos correctamente · due 2026-07-07 · Técnico
-  Fuente: Reunión pauta técnica 2026-07-01
-
-- [ ] 🔴 **Revisar sistema revistas** — integridad de datos · due 2026-07-07 · Técnico
-  Fuente: Reunión pauta técnica 2026-07-01
-
-- [ ] 🟡 **Analizar LinkedIn Ads** — viabilidad, segmentación y costos para B2B Q4 · due 2026-07-31 · Pauta
-  Fuente: Reunión pauta técnica 2026-07-01 · Costo mínimo $10 USD/campaña. Segmentar por cargos + ciudades principales.
-
-### Natalia Castaño
-
-- [ ] 🔴 **Subir contenidos J Albornos + Jorge Lisarazo** · due 2026-07-10 · Contenido
-  Fuente: Review Revistas 2026-07-06 · Contenido sobre pisos del proyecto con Jorge Lisarazo. Publicar esta semana.
-
-### Paola Nossa
-
-- [ ] 🔴 **Alinear proceso solicitudes/realización/ejecución de contenidos** · due 2026-07-10 · Coordinación
-  Fuente: Review Revistas 2026-07-06 · Toda solicitud incluye: J (Jeison) + Sebastián + Mateo + editores correspondientes.
-
-- [ ] 🔴 **Listar formatos digitales disponibles para pauta comercial** · due 2026-07-10 · Comercial
-  Fuente: Review Revistas 2026-07-06 · Insumo para Media Kit AXXIS y propuesta a Catalina.
-
-### Paola Gordillo
-
-- [ ] 🔴 **Auditar web empresa y Diners + plan de acción** · due 2026-07-13 · Digital
-  Fuente: Review Revistas 2026-07-06
-
-- [ ] 🔴 **Crear calendario transversal RRSS** · due 2026-07-13 · Contenido
-  Fuente: Review Revistas 2026-07-06 · Carruseles + historias + encuestas. Transversal AXXIS + Diners.
-
-- [ ] 🔴 **Listar e ingresar competidores en Metricool** (hasta 10) · due 2026-07-10 · Analytics
-  Fuente: Review Revistas 2026-07-06 · Revistas arq/diseño + creadores de contenido relevantes.
-
-- [ ] 🟡 **Fijar fechas optimización perfiles RRSS** · due 2026-07-13 · Digital
-  Fuente: Review Revistas 2026-07-06
-
-### Grupo Revistas
-
-- [ ] 🔴 **Crear formulario B2B para eventos/ferias** · due 2026-07-15 · Comercial
-  Fuente: Review Revistas 2026-07-06 · Captura estandarizada B2B (ej. Expocamacol).
-
-- [ ] 🔴 **Propuesta nuevos formatos digitales → Catalina** · due 2026-07-20 · Estrategia
-  Fuente: Review Revistas 2026-07-06 · Ejemplos transmedia. Sin precios en el PDF.
-
-- [ ] 🔴 **Proponer sección "lujo accesible" a Catalina** · due 2026-07-20 · Comercial
-  Fuente: Review Revistas 2026-07-06 · Nueva sección AXXIS. Agrupa talento joven/small biz con paquetes digitales accesibles.
-
-### Paola Pantaleon
-
-- [ ] 🔴 **Reunión stakeholders — presentar nuevo modelo Experiencias** · Dirección
-  Fuente: Reunión Unidad Experiencias 2026-06-17 · Dos ramas: Corporativa + Always On.
-
-- [ ] 🔴 **Criterios selección aliados + estructura niveles Club** · due 2026-07-30 · Alianzas
-  Fuente: Reunión Unidad Experiencias 2026-06-17 · Formalizar condiciones exclusividad, descuentos y comisiones por nivel Básico/Premium/Plus.
+> Tareas Ejecución Inmediata julio 2026 (EJ01-EJ31 y equivalentes) completadas o en curso — viven en `Tasks-H2-2026-Equipo.html`. Removidas del Master 2026-08-02 para reducir tokens.
 
 ---
 
@@ -415,7 +283,7 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
   Avisar a Carolina cuando comience la carga a HubSpot.
 
 - [ ] 🔴 `#29RE` **SLA de atención RRSS — tiempos de respuesta CM** · NS02 · Infraestructura
-  Meta: máximo 3 horas para consultas en Instagram.
+  Meta: máximo 3 horas para consultas en Instagram. Owner: Paola Gordillo.
 
 - [ ] 🔴 `#31RE` **Embeds formularios HubSpot en webs** · NS02 · Infraestructura
   Integrar formularios en revistaaxxis.com.co y revistadiner.com. Juan David implementa
