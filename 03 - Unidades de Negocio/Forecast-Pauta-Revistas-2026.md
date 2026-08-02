@@ -104,20 +104,42 @@ confidence: high
 | Diners Digital | $280.6M | $48.9M | 17% |
 | AXXIS Digital | $496.8M | $146.8M | 30% |
 
-> ⚠️ **Discrepancia de presupuesto a reconciliar:** las metas anuales del informe H1 ($3,340M meta ejecutivas) no cuadran con el presupuesto del corte julio ($1,689.6M acumulado). Son versiones distintas de presupuesto. Definir UNA versión oficial de metas 2026/2027 con Catalina antes del cierre de año.
+> ✅ **Discrepancia resuelta:** son dos denominadores del mismo presupuesto. El **ppto anual global ≈ $3,168.3M** (suma de cuotas por ejecutiva, ver sección 5); el **$1,689.6M es la porción prorrateada ene-jul**. Por eso el mismo revenue da 69% contra el corte ene-jul y 37% contra el año completo. Ambos correctos.
 
 ---
 
-## 5. Estado por ejecutiva
+## 5. Estado por ejecutiva (ventas ene-jul vs ppto anual global)
 
-Corte más reciente con desglose por ejecutiva = H1 (junio). El corte julio consolidado no trae desglose individual; pedir el detalle por ejecutiva de julio para actualizar.
+> Fuente: Ventas a Julio vs Presupuesto Global 2026. El % es contra el ppto ANUAL completo (por eso los números son menores que el 69% del corte ene-jul).
 
-| Ejecutiva | Estado H1 | Nota |
-|---|---|---|
-| Claudia Grandas | Top performer (Diners imp 117%, AXXIS imp 120%) | Sostiene el resultado; riesgo si Rolex/Kevins pausan |
-| Clara Vergara | AXXIS imp 101%, AXXIS dig 100% — **Diners digital $0** | El hoyo de Diners digital es su territorio |
-| Natalia Castaño | AXXIS imp 14%, digital 17% — crítico | **Meta reducida 40% (14-jul), modelo progresivo.** Palancas: reactivar históricos Medellín (data Jimena) + ExpoCamacol agosto |
-| Paola Pantaleón | Diners imp 0%, AXXIS imp 42% | Rol principal Experiencias/Alianzas — revisar si su ppto comercial está bien asignado |
+| Ejecutiva | Ventas ene-jul | Ppto anual | Cumpl | % del total vendido |
+|---|---|---|---|---|
+| **Claudia Grandas** | $527.0M | $997.5M | **53%** | **46%** |
+| **Clara Vergara** | $432.5M | $997.5M | 43% | 37% |
+| **Natalia Castaño** | $134.6M | $726.1M | **19%** | 12% |
+| **Paola Pantaleón** | $63.4M | $447.2M | **14%** | 5% |
+| **Total** | **$1,157.5M** | **$3,168.3M** | **37%** | 100% |
+
+### Detalle por línea (cumplimiento vs ppto anual)
+
+| Ejecutiva | Diners imp | AXXIS imp | Diners dig | AXXIS dig |
+|---|---|---|---|---|
+| Claudia Grandas | 50% | 58% | 40% | 48% |
+| Clara Vergara | 39% | 52% | **0%** | 45% |
+| Natalia Castaño | 50% | **8%** | 9% | 9% |
+| Paola Pantaleón | **0%** | 18% | 24% | 18% |
+
+### Diagnóstico
+
+- **Claudia + Clara = 83% de las ventas.** Claudia sola = 46% del total. Riesgo de concentración en una persona (análogo a KEVINS). Prioridad: retención y no sobrecarga.
+- **Natalia + Paola tienen el 37% del ppto ($1,173M) y entregan el 17%.** El gap es en gran parte presupuesto mal dimensionado, no solo ejecución.
+- **Natalia AXXIS impreso 8%** ($28.3M de $375M) = hueco de -$347M en una línea. El recorte del 40% (14-jul) es correcto pero probablemente insuficiente.
+- **Paola = problema de asignación, no de desempeño.** Rol real Experiencias/Alianzas; su cuota comercial de $447M infla el gap del equipo. Reasignar o reclasificar.
+- **Clara Diners digital $0 de $82M = problema de producto.** Vende digital bien en AXXIS (45%). El $0 en Diners digital confirma que falta propuesta de valor digital vendible en Diners, no capacidad. Arreglo más rápido del negocio.
+
+### Recomendación de rebalanceo (conversación Catalina)
+
+Antes de exigir más ventas, ajustar cuotas a niveles reales (bajar Natalia y Paola). Convierte el -$532M en objetivo alcanzable + base honesta 2027. En paralelo: destrabar Diners digital (Clara) + blindar a Claudia.
 
 ---
 
