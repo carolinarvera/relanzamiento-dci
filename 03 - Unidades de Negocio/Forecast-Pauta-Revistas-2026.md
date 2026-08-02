@@ -143,7 +143,83 @@ Antes de exigir más ventas, ajustar cuotas a niveles reales (bajar Natalia y Pa
 
 ---
 
-## 6. Pipeline Claudia Grandas — Jun · Jul · Ago 2026
+## 6. Pipeline por ejecutiva — Jul · Ago 2026
+
+> Fuente: Informes Forecast Ejecutivas Comerciales julio y agosto 2026 (archivos originales). Corte: 2026-07-30.
+
+### Agosto 2026 — Estado al 30 de julio
+
+| Ejecutiva | Línea | Ofertado | Proyectado | Ordenado | Ppto | % |
+|---|---|---|---|---|---|---|
+| **Claudia** | AXXIS Impreso | $56.7M | $5.6M | **$51.1M** | $47.4M | **108%** ✅ |
+| | AXXIS Digital | $31.9M | $7.4M | **$24.5M** | $12.0M | **205%** ✅ |
+| | Diners Impreso | $0 | $0 | **$0** | $16.0M | **0%** ❌ |
+| | Diners Digital | $8.0M | $8.0M | $0 | $6.1M | **0%** (en proceso) |
+| | **TOTAL** | **$96.6M** | **$21.0M** | **$75.6M** | **$81.5M** | **93%** |
+| **Clara** | AXXIS Impreso | $0 | $0 | **$66.9M** | $47.4M | **141%** ✅ |
+| | AXXIS Digital | $31.7M | $21.1M | **$25.2M** | $12.0M | **210%** ✅ |
+| | Diners Impreso | $35.5M | $8.5M | **$12.5M** | $16.0M | **79%** (en proceso) |
+| | Diners Digital | $14.1M | $6.1M | $0 | $6.1M | **0%** (en proceso) |
+| | **TOTAL** | **$81.3M** | **$35.7M** | **$104.6M** | **$81.5M** | **128%** ✅ |
+| **Natalia** | AXXIS Impreso | $54.1M | $45.1M | **$0** | $27.8M | **0%** ⚠ |
+| | AXXIS Digital | $13.5M | $13.5M | **$0** | $7.0M | **0%** ⚠ |
+| | Diners Impreso | $0 | $9.7M | **$0** | $9.3M | **0%** ⚠ |
+| | Diners Digital | $0 | $5.0M | **$0** | $4.7M | **0%** ⚠ |
+| | **TOTAL** | **$67.6M** | **$73.3M** | **$0** | **$48.8M** | **0%** ⚠ |
+| **Paola** | AXXIS Impreso | $9.5M | $9.5M | **$0** | $20.6M | **0%** ⚠ |
+| | AXXIS Digital | $3.5M | $0 | **$0** | $0 | — |
+| | Diners Impreso | $37.5M | $37.5M | **$0** | $6.9M | **0%** ⚠ |
+| | Diners Digital | $0 | $0 | **$0** | $3.5M | **0%** ⚠ |
+| | **TOTAL** | **$50.5M** | **$47.0M** | **$0** | **$31.0M** | **0%** ⚠ |
+
+**Outlook agosto equipo:** Ordenado $180.2M + Proyectado $177M → si Proyectado convierte al 50%, total estimado $268.7M vs $242.8M ppto total = **111%**. Clara y Claudia cubren AXXIS. El riesgo está en Natalia y Paola ($0 ordenado con mes avanzado) y en Diners en general.
+
+### Julio 2026 — Resultado
+
+| Ejecutiva | Línea | Ofertado | Proyectado | Ordenado | Ppto | % |
+|---|---|---|---|---|---|---|
+| **Claudia** | AXXIS Impreso | $37.3M | $9.2M | $28.3M | $38.9M | 73% |
+| | AXXIS Digital | $35.2M | $13.2M | $12.4M | $9.8M | 126% |
+| | Diners Impreso | $0 | $0 | $0 | $18.9M | **0%** ❌ |
+| | Diners Digital | $0 | $0 | $0 | $6.1M | **0%** ❌ |
+| | **TOTAL** | $72.5M | $22.4M | $40.7M | $73.7M | **55%** |
+| **Clara** | AXXIS Impreso | $0 | $85.2M | $40.8M | $38.9M | 105% |
+| | AXXIS Digital | $33.1M | $21.1M | $4.1M | $9.8M | 42% |
+| | Diners Impreso | $36.8M | $0 | $12.5M | $18.9M | 66% |
+| | Diners Digital | $19.6M | $0 | $0 | $6.1M | **0%** ❌ |
+| | **TOTAL** | $89.5M | $106.3M | $57.5M | $73.7M | **78%** |
+| **Natalia** | AXXIS Impreso | $0 | $0 | $0 | $22.8M | **0%** ❌ |
+| | AXXIS Digital | $0 | $0 | $0 | $5.7M | **0%** ❌ |
+| | Diners Impreso | $0 | $0 | $18.9M | $11.0M | **171%** ✅ |
+| | Diners Digital | $0 | $0 | $0 | $4.7M | **0%** ❌ |
+| | **TOTAL** | $0 | $0 | $18.9M | $44.3M | **43%** |
+| **Paola** | AXXIS Impreso | $17.0M | $17.0M | $0 | $16.9M | **0%** ❌ |
+| | AXXIS Digital | $3.5M | $0 | $0 | $0 | — |
+| | Diners Impreso | $0 | $0 | $0 | $8.2M | **0%** ❌ |
+| | Diners Digital | $0 | $0 | $0 | $3.5M | **0%** ❌ |
+| | **TOTAL** | $20.5M | $17.0M | $0 | $28.5M | **0%** ❌ |
+
+### Tasas de cierre (Ofertado → Ordenado) — inferidas
+
+| Ejecutiva | AXXIS Impreso | AXXIS Digital | Diners Impreso | Diners Digital | Patrón |
+|---|---|---|---|---|---|
+| **Claudia** | ~85% | ~55% | ~99%* / 0%** | ~99%* / 0%** | Excelente cuando activa; abandona Diners jul-ago |
+| **Clara** | Carryover (sin ofertado) | ~25-40% | ~34-70% | 0% (no cierra) | AXXIS impreso por cartera antigua; Diners digital no convierte |
+| **Natalia** | 0% (no prospecta AXXIS) | 0% | Carryover directo | 0% | Solo Diners impreso vía cartera; AXXIS no activo |
+| **Paola** | ~0% (prospecta, no cierra) | — | ~0% | 0% | Problema de cierre o de perfil de rol |
+
+*Datos junio 2026 (mes donde tenía pipeline activo en Diners).
+**Julio-agosto: $0 ofertado = problema de actividad, no de conversión.
+
+### Hallazgos críticos (agosto)
+
+1. **Clara tiene $104.6M ya ordenado** en agosto con mes sin terminar — el mejor mes individual del equipo en lo que va del año. Todo AXXIS cubierto. El gap está en Diners Digital ($6.1M sin cerrar pese a $14.1M ofertado — el mismo patrón de jul).
+2. **Natalia: $0 ordenado con $140.9M en pipeline.** No hay precedente de conversión tan alta en su historial. Riesgo real de que el proyectado no cierre. En julio tuvo $18.9M Diners impreso de cartera sin haber generado ofertado visible → sus cierres son carryover, no pipeline nuevo.
+3. **Paola: $37.5M Diners impreso ofertado** vs ppto de $6.9M. O hay un deal inusualmente grande, o el presupuesto asignado es incorrecto para su rol real (Experiencias/Alianzas).
+4. **Diners Digital no cierra en nadie:** Clara tiene $14.1M ofertado/$0 ordenado agosto + $19.6M/$0 julio. Claudia $0 activa en esa línea. Confirma que el producto digital de Diners no tiene propuesta de valor vendible hoy.
+5. **El equipo en conjunto cubre agosto** si Natalia cierra al 50% del proyectado. La concentración en Claudia y Clara sigue siendo el riesgo estructural.
+
+### Pipeline Claudia Grandas — Jun · Jul · Ago 2026
 
 > Fuente: Forecasts individuales (imágenes 2026-07-30). Primer dataset de pipeline por ejecutiva disponible.
 
