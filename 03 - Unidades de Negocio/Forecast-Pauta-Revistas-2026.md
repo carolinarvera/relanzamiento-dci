@@ -51,7 +51,9 @@ confidence: high
 | Abril | 96% | 82% |
 | Mayo | 47% | 89% |
 | Junio | 64% | 79% |
-| **Julio** | **41%** | **56%** |
+| **Julio** | **28%** | **38%** |
+
+> ⚠️ Julio recalculado con presupuesto agosto (mes real de gestión — impreso trabaja mes adelante). Ppto julio anterior subestimaba los targets; se reemplaza con las cuotas de agosto.
 
 ---
 
@@ -176,28 +178,30 @@ Antes de exigir más ventas, ajustar cuotas a niveles reales (bajar Natalia y Pa
 
 ### Julio 2026 — Resultado
 
-| Ejecutiva | Línea | Ofertado | Proyectado | Ordenado | Ppto | % |
+> Ppto corregido con presupuesto agosto (cuotas reales para gestión de julio — impreso cierra mes antes).
+
+| Ejecutiva | Línea | Ofertado | Proyectado | Ordenado | Ppto ago | % |
 |---|---|---|---|---|---|---|
-| **Claudia** | AXXIS Impreso | $37.3M | $9.2M | $28.3M | $38.9M | 73% |
-| | AXXIS Digital | $35.2M | $13.2M | $12.4M | $9.8M | 126% |
-| | Diners Impreso | $0 | $0 | $0 | $18.9M | **0%** ❌ |
-| | Diners Digital | $0 | $0 | $0 | $6.1M | **0%** ❌ |
-| | **TOTAL** | $72.5M | $22.4M | $40.7M | $73.7M | **55%** |
-| **Clara** | AXXIS Impreso | $0 | $85.2M | $40.8M | $38.9M | 105% |
-| | AXXIS Digital | $33.1M | $21.1M | $4.1M | $9.8M | 42% |
-| | Diners Impreso | $36.8M | $0 | $12.5M | $18.9M | 66% |
-| | Diners Digital | $19.6M | $0 | $0 | $6.1M | **0%** ❌ |
-| | **TOTAL** | $89.5M | $106.3M | $57.5M | $73.7M | **78%** |
-| **Natalia** | AXXIS Impreso | $0 | $0 | $0 | $22.8M | **0%** ❌ |
-| | AXXIS Digital | $0 | $0 | $0 | $5.7M | **0%** ❌ |
-| | Diners Impreso | $0 | $0 | $18.9M | $11.0M | **171%** ✅ |
+| **Claudia** | AXXIS Impreso | $37.3M | $9.2M | $28.3M | $52.6M | **54%** |
+| | AXXIS Digital | $35.2M | $13.2M | $12.4M | $21.1M | **59%** |
+| | Diners Impreso | $0 | $0 | $0 | $29.2M | **0%** ❌ |
+| | Diners Digital | $0 | $0 | $0 | $7.5M | **0%** ❌ |
+| | **TOTAL** | $72.5M | $22.4M | $40.7M | $110.4M | **37%** |
+| **Clara** | AXXIS Impreso | $0 | $85.2M | $40.8M | $52.6M | **78%** |
+| | AXXIS Digital | $33.1M | $21.1M | $4.1M | $21.1M | **19%** |
+| | Diners Impreso | $36.8M | $0 | $12.5M | $29.2M | **43%** |
+| | Diners Digital | $19.6M | $0 | $0 | $7.5M | **0%** ❌ |
+| | **TOTAL** | $89.5M | $106.3M | $57.5M | $110.4M | **52%** |
+| **Natalia** | AXXIS Impreso | $0 | $0 | $0 | $30.8M | **0%** ❌ |
+| | AXXIS Digital | $0 | $0 | $0 | $12.4M | **0%** ❌ |
+| | Diners Impreso | $0 | $0 | $18.9M | $17.1M | **111%** ✅ |
 | | Diners Digital | $0 | $0 | $0 | $4.7M | **0%** ❌ |
-| | **TOTAL** | $0 | $0 | $18.9M | $44.3M | **43%** |
-| **Paola** | AXXIS Impreso | $17.0M | $17.0M | $0 | $16.9M | **0%** ❌ |
-| | AXXIS Digital | $3.5M | $0 | $0 | $0 | — |
-| | Diners Impreso | $0 | $0 | $0 | $8.2M | **0%** ❌ |
+| | **TOTAL** | $0 | $0 | $18.9M | $64.9M | **29%** |
+| **Paola** | AXXIS Impreso | $17.0M | $17.0M | $0 | $22.8M | **0%** ❌ |
+| | AXXIS Digital | $3.5M | $0 | $0 | $9.2M | **0%** ❌ |
+| | Diners Impreso | $0 | $0 | $0 | $12.6M | **0%** ❌ |
 | | Diners Digital | $0 | $0 | $0 | $3.5M | **0%** ❌ |
-| | **TOTAL** | $20.5M | $17.0M | $0 | $28.5M | **0%** ❌ |
+| | **TOTAL** | $20.5M | $17.0M | $0 | $48.1M | **0%** ❌ |
 
 ### Tasas de cierre (Ofertado → Ordenado) — inferidas
 
@@ -276,9 +280,9 @@ Antes de exigir más ventas, ajustar cuotas a niveles reales (bajar Natalia y Pa
 
 ---
 
-## 7. Presupuesto Septiembre 2026 — Punto de partida gestión impreso (inicio 2026-08-03)
+## 7. Presupuesto Agosto 2026 — Base de gestión julio (cuotas reales corregidas)
 
-> Septiembre es el mes más grande del H2. El equipo empieza hoy (3 ago) a construir pipeline para sep. Impreso: toda la gestión debe cerrar antes del 31 ago. Digital: puede gestionarse en paralelo.
+> Agosto impreso se gestiona en julio. Estas son las cuotas reales del equipo para el cierre de julio — reemplazan los targets anteriores del mes. Impreso: gestión debía cerrar antes del 31 jul. Digital: en paralelo.
 
 | Línea | Claudia | Clara | Natalia | Paola | Total equipo |
 |---|---|---|---|---|---|
@@ -288,9 +292,9 @@ Antes de exigir más ventas, ajustar cuotas a niveles reales (bajar Natalia y Pa
 | Diners Digital | $7.5M | $7.5M | $4.7M | $3.5M | $23.2M |
 | **TOTAL** | **$110.4M** | **$110.4M** | **$64.9M** | **$48.1M** | **$333.7M** |
 
-**Vs agosto:** +35% equipo total (+$91M). Claudia y Clara +35%, Natalia +33%, Paola +55%.
+**Ppto agosto total equipo: $333.7M.** Claudia $110.4M · Clara $110.4M · Natalia $64.9M · Paola $48.1M.
 
-### Pipeline mínimo requerido por ejecutiva (agosto → septiembre)
+### Pipeline mínimo requerido por ejecutiva (julio → agosto)
 
 | Ejecutiva | Meta sep | Ofertado requerido (÷ tasa cierre) | Propuestas a enviar | Contactos agosto |
 |---|---|---|---|---|
@@ -301,7 +305,7 @@ Antes de exigir más ventas, ajustar cuotas a niveles reales (bajar Natalia y Pa
 
 *Tasas de cierre de Natalia y Paola son bajas históricamente → requieren más ofertado para compensar.
 
-**Alerta Diners:** Claudia necesita $34.4M ofertado Diners impreso sep (vs $0 en ago). Requiere 6 propuestas Diners esta semana. Sin actividad inmediata, septiembre repite el patrón de julio-agosto.
+**Alerta Diners:** Claudia llegó a julio con $0 ofertado Diners impreso ($29.2M de cuota). Repite el patrón de abandono de esa línea — conversación pendiente con ella.
 
 ---
 
