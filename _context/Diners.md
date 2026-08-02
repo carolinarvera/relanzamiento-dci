@@ -49,4 +49,4 @@ Estimado con pasarela funcional + optimización: ~86 suscripciones/mes del tráf
 - `Diners/SEO/` — GSC reporte completo, auditoría SEO
 - `Diners/Diners_MediaKit_2026.md` — media kit en producción
 - `Diners/Propuesta-Comercial-Paquetes-2026.md` — paquetes B2B
-- `Pauta-B2B-H1-2026.md` — datos comerciales H1
+- `Forecast-Pauta-Revistas-2026.md` — forecast único de pauta (corte julio + histórico H1)

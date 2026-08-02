@@ -10,7 +10,7 @@ version: 3.0
 
 # Auditoría Competitiva — Prospectos + Tabla de Contactos 2026
 
-> For future Claude: Mapa completo de marcas que pautas en medios competidores (Esquire CO, AD LATAM, BFW 2026, Semana) o que tienen presupuesto activo en el mercado de lujo colombiano, pero no están confirmadas como clientes de AXXIS/Diners. Contactos verificados vía prensa, LinkedIn y webs oficiales. Confianza: media (verificar cargo antes de contactar — algunos fueron nombrados en 2025-2026). PRIORIDAD: filiales Grupo Bolívar (Constructora, Seguros, Fiduciaria). EXCLUIDOS: Bancolombia, Banco de Bogotá, BBVA, Itaú y cualquier banco competidor de Davivienda. Ref: [[Estrategia-Leads-Nuevos-Clientes-2026]] · [[Auditoria-Revenue-Pauta-Jun-2026]].
+> For future Claude: Mapa completo de marcas que pautas en medios competidores (Esquire CO, AD LATAM, BFW 2026, Semana) o que tienen presupuesto activo en el mercado de lujo colombiano, pero no están confirmadas como clientes de AXXIS/Diners. Contactos verificados vía prensa, LinkedIn y webs oficiales. Confianza: media (verificar cargo antes de contactar — algunos fueron nombrados en 2025-2026). PRIORIDAD: filiales Grupo Bolívar (Constructora, Seguros, Fiduciaria). EXCLUIDOS: Bancolombia, Banco de Bogotá, BBVA, Itaú y cualquier banco competidor de Davivienda. Ref: [[Estrategia-Leads-Nuevos-Clientes-2026]] · [[Forecast-Pauta-Revistas-2026]].
 
 ---
 
@@ -220,4 +220,4 @@ version: 3.0
 
 ---
 
-*Documento activo — 51 prospectos · 24 contactos con nombre verificado · actualizar a medida que se avanza en negociaciones. Próxima revisión: jul 7 2026. Integrar cierres en [[Auditoria-Revenue-Pauta-Jun-2026]].*
+*Documento activo — 51 prospectos · 24 contactos con nombre verificado · actualizar a medida que se avanza en negociaciones. Próxima revisión: jul 7 2026. Integrar cierres en [[Forecast-Pauta-Revistas-2026]].*

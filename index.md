@@ -54,7 +54,7 @@ Mapa de navegación del vault. Usar para localizar archivos — los detalles est
 ## 03 - Unidades de Negocio
 
 ### Revistas
-- [[03 - Unidades de Negocio/Pauta-B2B-H1-2026]] — Pauta B2B H1 2026: 107% semestral, Natalia Castaño crítica (14-17%), Clara Vergara Diners digital $0
+- [[03 - Unidades de Negocio/Forecast-Pauta-Revistas-2026]] — Forecast único de pauta: corte julio ($1,157.5M vs $1,689.6M = 69%, gap -$532M) + histórico H1 + concentración clientes
 - [[03 - Unidades de Negocio/Suscripciones-Revistas-2024-2026]] — Suscripciones históricas AXXIS/Diners 2024-2026: caída Privilegios, plan 360
 - [[03 - Unidades de Negocio/Zona-Premium-Suscriptores-AXXIS-Diners]] — Doc maestro: 2 pilares valor no-precio (contenido exclusivo, Beneficios Suscriptores), decisiones pendientes, cronograma jul-oct
 - [[03 - Unidades de Negocio/Perfil-Demografico-Base-Privilegios-2026]] — Análisis real 5,853 registros: promedio 45.3 años (no 39), segmento y ciudad, sin nombres/emails

@@ -41,5 +41,5 @@ ai-first: true
 - `AXXIS/AXXIS.md` — hub BU completo
 - `AXXIS/AXXIS Dashboard Estratégico.md` — KPIs y score
 - `AXXIS/Media Kit AXXIS 2026.md` — V2 en producción
-- `Pauta-B2B-H1-2026.md` — datos comerciales H1
+- `Forecast-Pauta-Revistas-2026.md` — forecast único de pauta (corte julio + histórico H1)
 - `Suscripciones-Revistas-2024-2026.md` — histórico suscripciones

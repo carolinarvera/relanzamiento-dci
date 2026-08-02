@@ -9,7 +9,7 @@ confidence: high
 ---
 
 ## For future Claude
-Estrategia completa de prospección y nuevos clientes para AXXIS y DINERS H2 2026. Objetivo: cerrar $341.6M de gap anual diversificando más allá de joyería/construcción (hoy 63% del revenue). Prioridad absoluta: filiales Grupo Bolívar (Constructora, Seguros, Fiduciaria). Sectores con mayor potencial sin explotar: gastronomía premium (Diners natural), turismo/hotelería, moda premium, automotriz de lujo, smart home (AXXIS). Sistema de scoring 4D incluido. Ver también [[Auditoria-Revenue-Pauta-Jun-2026]] para el estado actual del pipeline. Los items de acción son referencia estratégica — tareas rastreadas activas en [[Tasks/00-Tareas-Master-H2-2026]] (sección NS01, Compartidas AXXIS + Diners).
+Estrategia completa de prospección y nuevos clientes para AXXIS y DINERS H2 2026. Objetivo: cerrar $341.6M de gap anual diversificando más allá de joyería/construcción (hoy 63% del revenue). Prioridad absoluta: filiales Grupo Bolívar (Constructora, Seguros, Fiduciaria). Sectores con mayor potencial sin explotar: gastronomía premium (Diners natural), turismo/hotelería, moda premium, automotriz de lujo, smart home (AXXIS). Sistema de scoring 4D incluido. Ver también [[Forecast-Pauta-Revistas-2026]] para el estado actual del pipeline. Los items de acción son referencia estratégica — tareas rastreadas activas en [[Tasks/00-Tareas-Master-H2-2026]] (sección NS01, Compartidas AXXIS + Diners).
 
 ---
 
@@ -504,6 +504,6 @@ Crear en HubSpot un pipeline específico para nuevos clientes (separado del pipe
 
 ## Relacionado
 
-[[Auditoria-Revenue-Pauta-Jun-2026]] · [[03 - Unidades de Negocio/AXXIS/AXXIS]] · [[03 - Unidades de Negocio/Diners/Diners]] · [[02 - Personas/Paola Nossa]] · [[02 - Personas/Paola Pantaleon]] · [[05 - PMO/Portfolio Proyectos]] · [[Media Kit AXXIS 2026]]
+[[Forecast-Pauta-Revistas-2026]] · [[03 - Unidades de Negocio/AXXIS/AXXIS]] · [[03 - Unidades de Negocio/Diners/Diners]] · [[02 - Personas/Paola Nossa]] · [[02 - Personas/Paola Pantaleon]] · [[05 - PMO/Portfolio Proyectos]] · [[Media Kit AXXIS 2026]]
 
 #leads #nuevos-clientes #revenue #h2-2026 #prospección #pauta
