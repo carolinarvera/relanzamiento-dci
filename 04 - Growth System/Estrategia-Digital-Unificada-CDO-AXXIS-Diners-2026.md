@@ -25,13 +25,13 @@ Todo cruza contra la línea base real medida en jun-jul 2026, no contra benchmar
 | Tráfico orgánico (90 días) | 17,948 clics — **cayendo -37%** (abr→jul) | 90,167 clics — **creciendo +50%** |
 | Búsqueda de marca | 15.8% (fuerte) | 1.4% (casi inexistente) |
 | Tráfico → página suscripción | 0.84% (funciona, proporcional) | 0.04% (invisible) |
-| Pauta Meta (mensual, jun-jul) | ⟨R1⟩, 25 anuncios, CTR 3.84% | ⟨R2⟩, 25 anuncios, CTR 3.84% |
+| Pauta Meta (mensual, jun-jul) | 25 anuncios, CTR 3.84% | 25 anuncios, CTR 3.84% (inversión casi idéntica a AXXIS) |
 | Conversión de suscripción trackeada (Meta + Google Ads) | 0 | 0 |
 | Engagement orgánico IG (promedio) | 4-9% | 4-10% |
 | Demografía IG | 80.75% Colombia, Bogotá 28.8% | 53.54% Colombia, más diverso LatAm |
-| Presupuesto Meta declarado por agencia (reunión 15-jul) | ⟨R3⟩ meta | vs. ⟨R4⟩ real ejecutado — **discrepancia sin reconciliar, ver nota abajo** |
+| Presupuesto Meta declarado por agencia (reunión 15-jul) | Lo declarado es 10× lo ejecutado | Misma brecha — **discrepancia sin reconciliar, ver nota abajo** |
 
-**Nota crítica de la reunión del 15-jul (Sebastián Díaz, agencia Meta):** hay una discrepancia de 10x entre el presupuesto meta declarado (⟨R3⟩ por revista) y lo que el export real de la cuenta mostró (⟨R4⟩ por revista), y de 2.5x entre el conteo de anuncios declarado (130-134/mes) y lo que vimos activo (52 total cuenta). Antes de planear escalado de pauta con esta agencia, **reconciliar estos números con un export fresco** — no asumir que el presupuesto meta ⟨R3⟩ ya se está ejecutando.
+**Nota crítica de la reunión del 15-jul (Sebastián Díaz, agencia Meta):** hay una discrepancia de 10x entre el presupuesto que la agencia declaró como meta por revista y lo que el export real de la cuenta mostró, y de 2.5x entre el conteo de anuncios declarado (130-134/mes) y lo que vimos activo (52 total cuenta). Antes de planear escalado de pauta con esta agencia, **reconciliar estos números con un export fresco** — no asumir que el presupuesto meta que declaran ya se está ejecutando.
 
 **El problema no es de volumen de tráfico — Diners tiene tráfico de sobra. Es de convertir ese tráfico en relevancia de marca: audiencia que reconoce, busca y vuelve a Diners, no visitantes de paso que llegan por una guía genérica y se van.** Todo este documento se organiza alrededor de esa asimetría entre volumen y relevancia.
 
@@ -177,7 +177,7 @@ Encaja naturalmente con el comportamiento de búsqueda visual de diseño/arquite
 
 ## Pilar 6 — Pauta Digital y Tráfico Pagado
 
-**Antes de cualquier decisión de este pilar: reconciliar la discrepancia de presupuesto/volumen de anuncios con la agencia (ver nota crítica en §0). No planear sobre la cifra ⟨R3⟩ que no está confirmada en el export real.**
+**Antes de cualquier decisión de este pilar: reconciliar la discrepancia de presupuesto/volumen de anuncios con la agencia (ver nota crítica en §0). No planear sobre el presupuesto que declara la agencia mientras no esté confirmado en el export real.**
 
 ### Segmentación premium — Colombia
 
@@ -189,7 +189,7 @@ Encaja naturalmente con el comportamiento de búsqueda visual de diseño/arquite
 | Objetivo | AXXIS | Diners | Por qué |
 |---|---|---|---|
 | Tráfico a artículos | Mantener nivel actual | Reducir el 60% que canibaliza SEO propio, reasignar | Diners no necesita más tráfico pagado — necesita que el tráfico que ya tiene (pagado y orgánico) convierta |
-| Conversión-Suscripción | Activar solo cuando Fase 0 esté verificada | Activar solo cuando Fase 0 esté verificada | Cualquier gasto aquí hoy es gasto ciego — ya lo demostró el account real (⟨R5⟩ sin una conversión) |
+| Conversión-Suscripción | Activar solo cuando Fase 0 esté verificada | Activar solo cuando Fase 0 esté verificada | Cualquier gasto aquí hoy es gasto ciego — ya lo demostró el account real, que gastó en estas campañas sin una sola conversión |
 | Captación de newsletter | Nueva línea, presupuesto mínimo de prueba | Nueva línea, presupuesto mínimo de prueba | Es el objetivo más barato de lograr y el que más rápido genera 1P data aprovechable |
 
 ---
@@ -204,7 +204,7 @@ Encaja naturalmente con el comportamiento de búsqueda visual de diseño/arquite
 | Prioridad contenido | Escalar Aquí/Allá (ya validado), invertir en El Especial como eje Autoridad | Puente sistemático de Viajes/Ruta Gastronómica hacia Zona D/Perfiles |
 | Formatos digitales | **2 formatos, 0 lanzados** — brecha de repertorio crítica. Lanzar los dos es Fase 1 | **9 formatos, 4 activos** — no crear nuevos, activar los nuevos y reactivar los intermitentes |
 | Redes nuevas a pilotar | Pinterest | LinkedIn |
-| Pauta | Reactivar Google Ads (hoy en $0) | Reasignar el 60% que canibaliza SEO propio |
+| Pauta | Reactivar Google Ads (hoy sin inversión) | Reasignar el 60% que canibaliza SEO propio |
 | Newsletter | Quincenal, visual | Semanal, agenda de fin de semana |
 
 ## Entregable 2 — Roadmap 3 / 6 / 12 meses
