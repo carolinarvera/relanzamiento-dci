@@ -20,7 +20,7 @@ updated: 2026-07-27
 | **Paola Pantaleon** | Experiencias y Alianzas | Experiencias | — |
 | **Nicolas Serna** | Comercial Libros | Libros | — |
 | **Natalia Castaño** | Ejecutiva Comercial | AXXIS + Diners | Performance crítico: 14% H1 AXXIS |
-| **Paola Gordillo** | CM Integral | AXXIS + Diners + Libros + Gamma | HubSpot, email, redes. NO Visión ni Davivienda |
+| **Paola Gordillo** | Community Manager | AXXIS + Diners + Libros + Gamma | **Solo redes sociales orgánico. NO newsletter ni email.** NO Visión ni Davivienda |
 | **Maria Claudia Vargas Pardo** | Jefe de Suscripciones | AXXIS + Diners | Migración HubSpot jul 2026. MCVP |
 | **Juan David Duran Lerma** | SEO & Web (alias: Juandy) | AXXIS + Diners + Libros | También evaluado para dev Beneficios Suscriptores |
 | **Ernesto Rodriguez** | Líder Editorial | Ediciones Gamma + Libros + Visión (contenido) | Genera artículos para Gamma. **NO es editor de AXXIS ni Diners** |

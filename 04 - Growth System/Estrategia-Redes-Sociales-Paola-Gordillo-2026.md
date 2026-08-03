@@ -17,6 +17,8 @@ owner: Carolina Ramirez
 ---
 
 ## For future Claude
+> ⚠️ **Corregido 2026-08-02: el alcance de Paola Gordillo es SOLO redes sociales orgánico. NO maneja newsletter ni email marketing.** Las secciones de este documento que la ponen como owner de newsletter (incluido el concepto "Flywheel AXXIS — Redes + Newsletter") reflejan un scope que Carolina desmintió. Las métricas de newsletter siguen siendo válidas como diagnóstico del canal; la asignación de owner no. El owner de contenido de newsletter está pendiente de definir; la configuración en HubSpot es de [[Jeison Montero]].
+
 This is the consolidated cross-BU view of social media planning status, since one person (Paola Gordillo) executes strategy across AXXIS, Diners, Libros, and Ediciones Gamma corporate simultaneously. It does NOT replace or duplicate each BU's own content strategy doc — it references them and exists to surface capacity conflicts and planning gaps between BUs. Read the linked BU-specific docs for tone, pillars, and tactical detail; read this doc only for the cross-BU status and prioritization view.
 
 ---

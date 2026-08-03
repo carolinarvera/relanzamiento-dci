@@ -103,7 +103,10 @@ No es 50/50 ni genérico — responde a que AXXIS necesita defender su ventaja d
 | Coyuntura | Pauta táctica de corta duración, alineada a fechas del evento — presupuesto ya asignado a esto de forma implícita (Vassar tiene 3 variantes activas) |
 | Beneficios del Club | Es el creativo que debe poblar la campaña "Conversión-Suscripción" de Meta y la PMax "Suscriptores" de Google Ads una vez reactivadas (Fase 0 de la Estrategia 360) — hoy no existe una sola pieza de pauta con este mensaje |
 
-### 3.4 Newsletter (HubSpot, owner Paola Gordillo)
+### 3.4 Newsletter (HubSpot — owner de contenido por definir)
+
+> ⚠️ Corregido 2026-08-02: **Paola Gordillo NO maneja newsletter ni email**, solo redes sociales orgánico. La configuración en HubSpot es de [[Jeison Montero]]; el owner del contenido del newsletter está pendiente de definir.
+
 
 Es el canal donde Beneficios del Club debe vivir con más peso — a diferencia de redes (alcance masivo, mensaje breve), el newsletter llega a gente que ya dio su email, más cerca de la decisión de suscribirse.
 
