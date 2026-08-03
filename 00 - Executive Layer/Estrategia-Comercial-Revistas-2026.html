@@ -112,12 +112,20 @@ tr:last-child td{ border-bottom:none; }
 .cad .when{ font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--purple); margin-bottom:6px; }
 .cad .what{ font-size:12.5px; color:var(--text2); line-height:1.45; }
 
-.journey{ display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-bottom:14px; }
+.journey{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:14px; }
 .stage{ background:var(--card); border:1px solid var(--border); border-top:3px solid var(--purple); border-radius:12px; padding:14px 15px 16px; box-shadow:var(--shadow); }
 .stage .st-n{ font-size:10px; font-weight:700; color:var(--purple); letter-spacing:.1em; }
 .stage .st-t{ font-size:13.5px; font-weight:700; margin:5px 0 6px; letter-spacing:-.01em; }
 .stage .st-d{ font-size:11.5px; color:var(--text2); line-height:1.45; }
-.stage .st-p{ display:inline-block; margin-top:10px; font-size:10.5px; font-weight:700; color:var(--purple-mid); background:var(--purple-light); padding:2px 9px; border-radius:12px; }
+.stage .st-p{ display:inline-block; margin-top:10px; font-size:10px; font-weight:700; color:var(--purple-mid); background:var(--purple-light); padding:2px 9px; border-radius:12px; letter-spacing:.02em; }
+.st-p.pr{ background:var(--yellow-bg); color:var(--orange); }
+.st-p.or{ background:var(--green-bg); color:var(--green); }
+.stage .st-x{ margin-top:11px; padding-top:10px; border-top:1px dashed rgba(91,79,212,.18); }
+.stage .st-xl{ font-size:9.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--purple); margin-bottom:3px; }
+.stage .st-xd{ font-size:11px; color:var(--text2); line-height:1.4; }
+.subh{ font-size:14.5px; font-weight:800; margin:2px 0 4px; letter-spacing:-.01em; display:flex; align-items:center; gap:9px; }
+.subh .tag{ font-size:10px; font-weight:700; color:#fff; background:var(--purple); padding:3px 9px; border-radius:6px; letter-spacing:.04em; }
+.subh-sub{ font-size:12.5px; color:var(--text2); margin-bottom:14px; line-height:1.5; max-width:820px; }
 
 .footer{ font-size:11.5px; color:var(--text3); text-align:center; margin-top:50px; padding-top:20px; border-top:1px solid var(--border); }
 
@@ -221,16 +229,32 @@ tr:last-child td{ border-bottom:none; }
 
   <!-- PIPELINE -->
   <section id="pipeline">
-    <h2><span class="num">03</span> Pipeline y journey del cliente B2B</h2>
-    <p class="sub">Cada cliente B2B (anunciante) recorre estas etapas en HubSpot. El deal avanza una por una desde el primer contacto — nunca se crea directo en Cerrado ganado. Los suscriptores (B2C) van por un pipeline aparte.</p>
+    <h2><span class="num">03</span> Pipelines en HubSpot: de lead a cierre</h2>
+    <p class="sub">Dos pipelines encadenados. Primero calificamos el lead hasta volverlo prospecto; luego el prospecto recorre el pipeline de negocio hasta el cierre. Cada etapa tiene su acción de comunicación y su paso del sistema de ventas.</p>
+
+    <div class="subh"><span class="tag">PIPELINE 1</span> De Lead a Prospecto</div>
+    <div class="subh-sub">Journey de calificación del lead. Cada etapa define qué comunicación y seguimiento hacer antes de convertirlo en prospecto del pipeline de negocio.</div>
     <div class="journey">
-      <div class="stage"><div class="st-n">ETAPA 1</div><div class="st-t">Prospecto</div><div class="st-d">Identificado y con primer contacto. El deal se crea el mismo día.</div><span class="st-p">10%</span></div>
-      <div class="stage"><div class="st-n">ETAPA 2</div><div class="st-t">Cita agendada</div><div class="st-d">Reunión o visita con fecha confirmada.</div><span class="st-p">25%</span></div>
-      <div class="stage"><div class="st-n">ETAPA 3</div><div class="st-t">Seguimiento</div><div class="st-d">Visita hecha, cotización enviada, en negociación.</div><span class="st-p">50%</span></div>
-      <div class="stage"><div class="st-n">ETAPA 4</div><div class="st-t">En cierre</div><div class="st-d">Propuesta aceptada; en trámite de proveedor y crédito.</div><span class="st-p">80%</span></div>
-      <div class="stage"><div class="st-n">ETAPA 5</div><div class="st-t">Cerrado ganado</div><div class="st-d">Orden o contrato firmado, facturable.</div><span class="st-p">100%</span></div>
+      <div class="stage"><div class="st-n">LEAD 1</div><div class="st-t">Nuevo Lead</div><div class="st-d">Lead sin contactar (formulario, evento, base o referido).</div><div class="st-x"><div class="st-xl">Comunicación y seguimiento</div><div class="st-xd">Primer toque en menos de 24h. Bienvenida por email/WhatsApp y asignación de owner.</div></div></div>
+      <div class="stage"><div class="st-n">LEAD 2</div><div class="st-t">Intentando contactar</div><div class="st-d">En proceso de contacto, aún sin respuesta.</div><div class="st-x"><div class="st-xl">Comunicación y seguimiento</div><div class="st-xd">Secuencia de 3-4 intentos por canales distintos (llamada, email, WhatsApp) en 5 días hábiles.</div></div></div>
+      <div class="stage"><div class="st-n">LEAD 3</div><div class="st-t">Conectado</div><div class="st-d">Se logró la conversación; se está calificando.</div><div class="st-x"><div class="st-xl">Comunicación y seguimiento</div><div class="st-xd">Llamada de calificación: entender necesidad, presupuesto y timing.</div></div></div>
+      <div class="stage"><div class="st-n">LEAD 4</div><div class="st-t">Ganado</div><div class="st-d">Lead calificado con interés real → se convierte en Prospecto.</div><div class="st-x"><div class="st-xl">Comunicación y seguimiento</div><div class="st-xd">Agendar reunión comercial y crear el deal en el pipeline de negocio.</div></div></div>
+      <div class="stage"><div class="st-n">LEAD 5</div><div class="st-t">Automatizar</div><div class="st-d">Con potencial pero sin timing ahora mismo.</div><div class="st-x"><div class="st-xl">Comunicación y seguimiento</div><div class="st-xd">Workflow de nurturing (newsletter, contenido). Revisar en 60-90 días.</div></div></div>
+      <div class="stage"><div class="st-n">LEAD 6</div><div class="st-t">No interesado</div><div class="st-d">Sin interés o fuera de perfil.</div><div class="st-x"><div class="st-xl">Comunicación y seguimiento</div><div class="st-xd">Cerrar con motivo. Opción de re-contacto si cambia el contexto.</div></div></div>
     </div>
-    <div class="callout info"><span class="ic">📌</span><div><b>Reglas del pipeline.</b> Todo prospecto contactado se crea como deal el día 1 · segmento Cliente B2B (nunca suscriptores) · ningún deal en seguimiento pasa más de 7 días sin actividad · un cierre perdido siempre registra el motivo.</div></div>
+
+    <div class="subh" style="margin-top:26px"><span class="tag">PIPELINE 2</span> De Prospecto a Cierre</div>
+    <div class="subh-sub">El deal avanza etapa por etapa. El valor pasa por tres estados: <b>OFERTADO</b> (propuesto al cliente), <b>PROYECTADO</b> (ponderado en el forecast) y <b>ORDENADO</b> (venta firmada). Cada etapa tiene su paso del sistema de ventas.</div>
+    <div class="journey">
+      <div class="stage"><div class="st-n">ETAPA 1</div><div class="st-t">Prospecto</div><div class="st-d">Identificado y con primer contacto. El deal se crea el mismo día.</div><span class="st-p of">OFERTADO · 10%</span><div class="st-x"><div class="st-xl">Sistema de ventas</div><div class="st-xd">Research previo e identificar al decisor.</div></div></div>
+      <div class="stage"><div class="st-n">ETAPA 2</div><div class="st-t">Cita agendada</div><div class="st-d">Reunión o visita con fecha confirmada.</div><span class="st-p of">OFERTADO · 25%</span><div class="st-x"><div class="st-xl">Sistema de ventas</div><div class="st-xd">Preguntas de indagación para entender la necesidad real.</div></div></div>
+      <div class="stage"><div class="st-n">ETAPA 3</div><div class="st-t">Seguimiento</div><div class="st-d">Visita hecha, cotización enviada, en negociación.</div><span class="st-p pr">PROYECTADO · 50%</span><div class="st-x"><div class="st-xl">Sistema de ventas</div><div class="st-xd">Propuesta con formato ancla y manejo de objeciones.</div></div></div>
+      <div class="stage"><div class="st-n">ETAPA 4</div><div class="st-t">Propuesta enviada</div><div class="st-d">Aceptada; en trámite de cierre.</div><span class="st-p pr">PROYECTADO · 80%</span><div class="st-x"><div class="st-xl">Sistema de ventas</div><div class="st-xd">Creación de proveedor y plan de crédito en paralelo (documentación día 1).</div></div></div>
+      <div class="stage"><div class="st-n">ETAPA 5</div><div class="st-t">Closed Won · Ganados</div><div class="st-d">Orden o contrato firmado, facturable.</div><span class="st-p or">ORDENADO · 100%</span><div class="st-x"><div class="st-xl">Sistema de ventas</div><div class="st-xd">Orden de compra y facturación.</div></div></div>
+      <div class="stage"><div class="st-n">ETAPA 6</div><div class="st-t">Cierre perdido · Perdidos</div><div class="st-d">No se concretó la venta.</div><span class="st-p">Sin valor · 0%</span><div class="st-x"><div class="st-xl">Sistema de ventas</div><div class="st-xd">Registrar el motivo de pérdida para aprender y reactivar más adelante.</div></div></div>
+    </div>
+
+    <div class="callout info" style="margin-top:16px"><span class="ic">📌</span><div><b>Reglas.</b> El lead se trabaja hasta "Ganado" y ahí nace el prospecto · todo prospecto se crea como deal el día 1 · segmento Cliente B2B (nunca suscriptores) · ningún deal pasa más de 7 días sin actividad · el forecast del viernes se lee por estado: ofertado, proyectado y ordenado.</div></div>
   </section>
 
   <!-- PLANES -->
