@@ -22,6 +22,8 @@ Organizational chart for Ediciones Gamma as of 2026-06-16, rebuilt directly from
 
 **1. [[Catalina Obregon]]** — Jefe / Dirección General
 
+- **1.1 Ramón Nivia** — Editor de Revista AXXIS · reporta directo a 1
+
 **2. [[Carolina Ramirez]]** — Head of Growth Marketing · reporta a 1
 
 - **2.1 [[Jeison Montero]]** — Líder Transversal de Plataformas / Project Management
@@ -34,10 +36,10 @@ Organizational chart for Ediciones Gamma as of 2026-06-16, rebuilt directly from
     - 2.2.1.2 Periodista EF + Visión (María Isabel)
     - 2.2.1.3 Diseñador Gráfico EF + Visión (Pipe)
     - 2.2.1.4 Video Manager / Animación 2D (Caro) — ⚠️ recurso de agencia [[Proveedor Agencia Leo|Leo]], no headcount directo de Gamma
-  - 2.2.2 Área AXXIS + Diners + Ediciones Gamma
+  - 2.2.2 Área Ediciones Gamma + Libros
     - Sandra Martínez — Editora de Diners
-    - Ramón Nivia — Editor de AXXIS
     - [[Paola Gordillo]] — CM Libros / Ediciones Gamma / AXXIS / Diners *(placement inferido — confirmar)*
+    - ⚠️ Ernesto **no** lidera la editorial de AXXIS ni Diners. Genera artículos para Ediciones Gamma. Ramón Nivia (AXXIS) reporta a 1.
 
 - **2.3 [[Nicolas Serna]]** — Líder de Libros / Estrategia de Marca y Alianzas Editoriales
 
@@ -57,7 +59,7 @@ Organizational chart for Ediciones Gamma as of 2026-06-16, rebuilt directly from
 ## Por Unidad de Negocio
 
 ### [[AXXIS]]
-- Editorial: Ramón Nivia (editor) — bajo liderazgo técnico de [[Ernesto Rodriguez]]
+- Editorial: Ramón Nivia (editor) — reporta directo a [[Catalina Obregon]]
 - Comercial: Lilo · Clara · [[Natalia Castaño]]
 - Marketing: [[Paola Nossa]]
 - Experiencias: [[Paola Pantaleon]]

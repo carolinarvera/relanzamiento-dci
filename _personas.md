@@ -26,7 +26,7 @@ updated: 2026-07-27
 | **Ernesto Rodriguez** | Líder Editorial | Ediciones Gamma + Libros + Visión (contenido) | Genera artículos para Gamma. **NO es editor de AXXIS ni Diners** |
 | **Mateo Arias Ortiz** | Editor Web | AXXIS | Solo editorial, no técnico |
 | **Simon Granja** | Editor Web | Diners | Solo editorial, no técnico |
-| **Ramon Nivia** | Editor Revista | AXXIS | Reporta a Ernesto |
+| **Ramon Nivia** | Editor Revista | AXXIS | **Reporta directo a Catalina**, no a Ernesto |
 | **Sandra Martinez** | Editora General | Diners (impreso + web) | Solo contenido. NO owner técnico ni checkout |
 | **Nidia Alexandra Rodriguez** | Jefe Financiera | Gamma | — |
 | **Duvan Hernandez** | — | — | — |

@@ -146,7 +146,7 @@ Aquí tienes la tabla final con la columna del link directo a cada una de las re
 
 **Contenido Editorial:**
 - [[Ernesto Rodriguez]] — Líder Técnico de Contenido (transversal)
-- [[Ramon Nivia]] — Editor AXXIS (impreso + digital), reporta a [[Ernesto Rodriguez]]
+- [[Ramon Nivia]] — Editor AXXIS (impreso + digital), reporta directo a [[Catalina Obregon]]
 - Mateo — Diseño / video editorial de alta calidad (piezas especiales)
 - Videógrafo (externo) — recorridos en video con arquitectos
 
