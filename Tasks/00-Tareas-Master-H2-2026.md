@@ -8,9 +8,9 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 ---
 
 ## For future Claude
-**THIS IS THE ONLY SOURCE OF TRUTH FOR STRATEGIC H2 TASKS.** Do not look for tasks in AXXIS.md, Diners.md, Revistas.md, Libros.md or Experiencias.md — those files are now context-only stubs. Tareas operativas de la semana actual: ver `Tasks/00-Tareas-Hot.md`. Tareas de equipo en tiempo real: `00 - Executive Layer/Tasks-H2-2026-Equipo.html`. Bloqueadores: #7LI y #12LI (precios Libros — Nicolas Serna). Tareas BS01-BS14 (Beneficios Suscriptores semana 31 jul - 8 ago) viven en el HTML del equipo y en Hot.
+**THIS IS THE ONLY SOURCE OF TRUTH FOR STRATEGIC H2 TASKS.** Do not look for tasks in AXXIS.md, Diners.md, Revistas.md, Libros.md or Experiencias.md — those files are now context-only stubs. Tareas operativas de la semana actual: ver `Tasks/00-Tareas-Hot.md`. Tareas de equipo en tiempo real: **tareas-growth-mkt.vercel.app** (fuente única). Bloqueadores: #7LI y #12LI (precios Libros — Nicolas Serna). Tareas BS01-BS14 (Beneficios Suscriptores semana 31 jul - 8 ago) viven en el HTML del equipo y en Hot.
 
-> Tareas Ejecución Inmediata julio 2026 (EJ01-EJ31 y equivalentes) completadas o en curso — viven en `Tasks-H2-2026-Equipo.html`. Removidas del Master 2026-08-02 para reducir tokens.
+> Tareas Ejecución Inmediata julio 2026 (EJ01-EJ31 y equivalentes) completadas o en curso — viven en **tareas-growth-mkt.vercel.app**. Removidas del Master 2026-08-02 para reducir tokens.
 
 ---
 
@@ -31,7 +31,7 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - `#12LI` Definir precios Paquete Legado y Centenario — Nicolas Serna
 
 **Archivos BU:** [[Tasks/AXXIS]] · [[Tasks/Diners]] · [[Tasks/Revistas]] · [[Tasks/Libros]] · [[Tasks/Experiencias]]
-**Herramienta equipo:** [[00 - Executive Layer/Tasks-H2-2026-Equipo]]
+**Herramienta equipo:** tareas-growth-mkt.vercel.app
 
 ---
 

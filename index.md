@@ -20,7 +20,7 @@ Mapa de navegación del vault. Usar para localizar archivos — los detalles est
 
 - [[00 - Executive Layer/CEO Dashboard]] — Dashboard ejecutivo: revenue, alertas, proyectos activos, decisiones pendientes
 - [[00 - Executive Layer/Plan-Growth-H2-2026.html]] — Plan Growth H2 2026 · URL equipo: https://gamma-growth-plan.vercel.app
-- [[00 - Executive Layer/Tasks-H2-2026-Equipo.html]] — Dashboard de tareas del equipo por BU
+- Dashboard de tareas del equipo por BU → **tareas-growth-mkt.vercel.app** (fuente única, en vivo. La copia HTML del vault se borró 2026-08-02 por estar desactualizada)
 - [[00 - Executive Layer/2026-06-29 Auditoria Vault - Duplicados y Optimizacion]] — Auditoría vault jun 2026
 
 ---
