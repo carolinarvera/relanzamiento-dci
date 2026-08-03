@@ -1877,25 +1877,36 @@ tr:hover td { background: #FAFAFF; }
       </div>
 
       <!-- NORTH STARS -->
-      <div class="grid-2" data-reveal>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;" data-reveal>
         <div class="ns-card orange-top">
           <div class="ns-num">NS 01</div>
-          <div class="ns-title">Ventas canal directo</div>
-          <div class="ns-body">Unidades vendidas por canal (directa · B2B · intermediarios). Activar tienda online, WhatsApp Business y newsletter como motores de conversión directa.</div>
+          <div class="ns-title">Ventas canal directo · Página web</div>
+          <div class="ns-body">Unidades vendidas por canal propio — tienda online, WhatsApp y newsletter.</div>
           <div class="ns-kpi-list">
-            <div class="kpi-row"><span class="kpi-label">Unidades vendidas · Canal web</span><span class="kpi-val purple">tracking</span></div>
-            <div class="kpi-row"><span class="kpi-label">Unidades vendidas · Canal B2B</span><span class="kpi-val purple">tracking</span></div>
-            <div class="kpi-row"><span class="kpi-label">Unidades vendidas · Suscripciones</span><span class="kpi-val purple">tracking</span></div>
+            <div class="kpi-row"><span class="kpi-label">Total libros vendidos web</span><span class="kpi-val purple">tracking</span></div>
+            <div class="kpi-row"><span class="kpi-label">Unidades · WhatsApp</span><span class="kpi-val purple">tracking</span></div>
+            <div class="kpi-row"><span class="kpi-label">Unidades · Suscripciones</span><span class="kpi-val purple">tracking</span></div>
           </div>
         </div>
         <div class="ns-card">
           <div class="ns-num">NS 02</div>
-          <div class="ns-title">Libros por Encargo</div>
-          <div class="ns-body">Proyectos de alto ticket financiados por el cliente. Gamma aporta proceso editorial, diseño e ISBN. Motor de prospecting: Estrategia de prospeccion activa.</div>
+          <div class="ns-title">Ventas B2B · Directo y Consignación</div>
+          <div class="ns-body">Volumen por canal B2B — venta directa corporativa y librerías en consignación.</div>
+          <div class="ns-kpi-list">
+            <div class="kpi-row"><span class="kpi-label">Total libros en consignación</span><span class="kpi-val purple">tracking</span></div>
+            <div class="kpi-row"><span class="kpi-label">Total vendidos post consignación</span><span class="kpi-val purple">tracking</span></div>
+            <div class="kpi-row"><span class="kpi-label">Top 5 libros vendidos en consignación</span><span class="kpi-val purple">tracking</span></div>
+            <div class="kpi-row"><span class="kpi-label">Top 5 librerías · ventas consignación</span><span class="kpi-val purple">tracking</span></div>
+          </div>
+        </div>
+        <div class="ns-card">
+          <div class="ns-num">NS 03</div>
+          <div class="ns-title">Ventas B2B · Libros por Encargo</div>
+          <div class="ns-body">Proyectos de alto ticket financiados por el cliente. Gamma aporta proceso editorial, diseño e ISBN.</div>
           <div class="ns-kpi-list">
             <div class="kpi-row"><span class="kpi-label">Proyectos cerrados / trimestre</span><span class="kpi-val purple">pipeline</span></div>
             <div class="kpi-row"><span class="kpi-label">Revenue acumulado</span><span class="kpi-val purple">tracking</span></div>
-            <div class="kpi-row"><span class="kpi-label">Prospectos A+B activos (HTAC)</span><span class="kpi-val orange">prioritario</span></div>
+            <div class="kpi-row"><span class="kpi-label">Prospectos activos</span><span class="kpi-val orange">prioritario</span></div>
             <div class="kpi-row"><span class="kpi-label">Ciclo prospecto → cierre</span><span class="kpi-val purple">a medir</span></div>
           </div>
         </div>
@@ -1904,13 +1915,14 @@ tr:hover td { background: #FAFAFF; }
       <!-- CANALES DE VENTA -->
       <div data-reveal>
         <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;">
-          <div style="font-size:10px; font-weight:800; color:#fff; background:var(--orange); border-radius:20px; padding:2px 10px; letter-spacing:.05em; flex-shrink:0;">NS 01</div>
-          <div style="font-size:10px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:.07em;">Ventas canal directo</div>
+          <div style="font-size:10px; font-weight:800; color:#fff; background:var(--orange); border-radius:20px; padding:2px 10px; letter-spacing:.05em; flex-shrink:0;">NS 01 · NS 02</div>
+          <div style="font-size:10px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:.07em;">Canales de venta</div>
         </div>
-        <div class="sub-title">Canales de venta: Canal propio + B2B</div>
+        <div class="sub-title">Canales de venta: Canal propio + B2B + Consignación</div>
         <div class="grid-2" style="margin-top:12px;">
           <div class="card" style="padding:18px 20px;">
-            <div style="font-size:12px; font-weight:700; color:var(--purple); text-transform:uppercase; letter-spacing:.07em; margin-bottom:10px;">Venta directa — Canal propio</div>
+            <div style="font-size:12px; font-weight:700; color:var(--purple); text-transform:uppercase; letter-spacing:.07em; margin-bottom:8px;">Venta directa — Canal propio</div>
+            <div class="kpi-row" style="margin-bottom:10px;"><span class="kpi-label">Total libros vendidos web</span><span class="kpi-val purple">tracking</span></div>
             <div style="display:flex; flex-direction:column; gap:8px; font-size:13px; color:var(--text2); line-height:1.45;">
               <div><strong style="color:var(--text);">Tienda online edicionesgamma.com</strong> — SEO por título, categoría y autor; fichas con extracto; envío a todo Colombia. Empaque: bolsas de tela AXXIS/Diners (inventario existente, costo cero). Caja regalo = add-on en checkout (costo al cliente).</div>
               <div><strong style="color:var(--text);">WhatsApp Business</strong> — catálogo con los 29 títulos, precio y link de compra; atención directa al comprador</div>
@@ -1922,7 +1934,7 @@ tr:hover td { background: #FAFAFF; }
             </div>
           </div>
           <div class="card" style="padding:18px 20px;">
-            <div style="font-size:12px; font-weight:700; color:var(--purple); text-transform:uppercase; letter-spacing:.07em; margin-bottom:10px;">Paquetes B2B corporativo — sin consignación</div>
+            <div style="font-size:12px; font-weight:700; color:var(--purple); text-transform:uppercase; letter-spacing:.07em; margin-bottom:10px;">Paquetes B2B corporativo</div>
             <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:8px;">
               <div style="background:var(--bg); border:1px solid var(--border); border-radius:8px; padding:10px; text-align:center;">
                 <div style="font-size:11px; font-weight:800; color:var(--text2); margin-bottom:4px;">Básico</div>
@@ -1967,6 +1979,20 @@ tr:hover td { background: #FAFAFF; }
                 </div>
               </div>
             </div>
+            <!-- Consignación -->
+            <div style="margin-top:16px; border-top:1px solid var(--border); padding-top:14px;">
+              <div style="font-size:12px; font-weight:700; color:var(--purple); text-transform:uppercase; letter-spacing:.07em; margin-bottom:8px;">Consignación</div>
+              <div style="display:flex; flex-direction:column; gap:4px;">
+                <div class="kpi-row"><span class="kpi-label">Total libros en consignación</span><span class="kpi-val purple">tracking</span></div>
+                <div class="kpi-row"><span class="kpi-label">Total vendidos post consignación</span><span class="kpi-val purple">tracking</span></div>
+                <div class="kpi-row"><span class="kpi-label">Top 5 libros vendidos en consignación</span><span class="kpi-val purple">tracking</span></div>
+                <div class="kpi-row"><span class="kpi-label">Top 5 librerías · ventas consignación</span><span class="kpi-val purple">tracking</span></div>
+              </div>
+            </div>
+            <!-- Libros por Encargo -->
+            <div style="margin-top:16px; border-top:1px solid var(--border); padding-top:14px;">
+              <div style="font-size:12px; font-weight:700; color:var(--purple); text-transform:uppercase; letter-spacing:.07em; margin-bottom:8px;">Libros por Encargo</div>
+            </div>
           </div>
         </div>
       </div>
@@ -1974,7 +2000,7 @@ tr:hover td { background: #FAFAFF; }
       <!-- LIBROS POR ENCARGO -->
       <div data-reveal>
         <div style="display:flex; align-items:center; gap:10px; margin-bottom:4px;">
-          <div style="font-size:10px; font-weight:800; color:#fff; background:var(--purple); border-radius:20px; padding:2px 10px; letter-spacing:.05em; flex-shrink:0;">NS 02</div>
+          <div style="font-size:10px; font-weight:800; color:#fff; background:var(--purple); border-radius:20px; padding:2px 10px; letter-spacing:.05em; flex-shrink:0;">NS 03</div>
           <div style="font-size:10px; font-weight:600; color:var(--text3); text-transform:uppercase; letter-spacing:.07em;">Libros por Encargo</div>
         </div>
         <div class="sub-title">Libros por Encargo: el cliente financia la produccion completa</div>
