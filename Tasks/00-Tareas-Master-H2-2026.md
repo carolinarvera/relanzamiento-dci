@@ -8,7 +8,7 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 ---
 
 ## For future Claude
-**THIS IS THE ONLY SOURCE OF TRUTH FOR STRATEGIC H2 TASKS.** Do not look for tasks in AXXIS.md, Diners.md, Revistas.md, Libros.md or Experiencias.md — those files are now context-only stubs. Tareas operativas de la semana actual: ver `Tasks/00-Tareas-Hot.md`. Tareas de equipo en tiempo real: **tareas-growth-mkt.vercel.app** (fuente única). Bloqueadores: #7LI y #12LI (precios Libros — Nicolas Serna). Tareas BS01-BS14 (Beneficios Suscriptores semana 31 jul - 8 ago) viven en el HTML del equipo y en Hot.
+**THIS IS THE ONLY SOURCE OF TRUTH FOR STRATEGIC H2 TASKS.** Do not look for tasks in AXXIS.md, Diners.md, Revistas.md, Libros.md or Experiencias.md — those files are now context-only stubs. Tareas operativas de la semana actual: ver `Tasks/00-Tareas-Hot.md`. Tareas de equipo en tiempo real: **tareas-growth-mkt.vercel.app** (fuente única). Bloqueador activo: #12LI (precios Paquete Legado y Centenario — Nicolas Serna). #7LI se desbloqueó: precios definidos, queda llevarlos al media kit. Tareas BS01-BS14 (Beneficios Suscriptores semana 31 jul - 8 ago) viven en el HTML del equipo y en Hot.
 
 > Tareas Ejecución Inmediata julio 2026 (EJ01-EJ31 y equivalentes) completadas o en curso — viven en **tareas-growth-mkt.vercel.app**. Removidas del Master 2026-08-02 para reducir tokens.
 
@@ -20,14 +20,13 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 |----|-------|---------|------------|
 | AXXIS | 21 | — | — |
 | Diners | 20 | — | — |
-| Compartidas AX+DI | 45 | 2 | — |
-| Ediciones Gamma | 5 | 2 | — |
-| Libros | 16 | 3 | 2 |
-| Experiencias | 15 | 2 | — |
-| **Total** | **122** | **9** | **2** |
+| Compartidas AXXIS + Diners | 43 | — | — |
+| Ediciones Gamma | 3 | — | — |
+| Libros | 12 | — | — |
+| Experiencias Banca Privada & Experiencias VIP | 10 | — | — |
+| **Total** | **109** | **86** | **1** |
 
 **Bloqueadores activos:**
-- `#7LI` Definir precios paquetes corporativos — Nicolas Serna
 - `#12LI` Definir precios Paquete Legado y Centenario — Nicolas Serna
 
 **Archivos BU:** [[Tasks/AXXIS]] · [[Tasks/Diners]] · [[Tasks/Revistas]] · [[Tasks/Libros]] · [[Tasks/Experiencias]]
@@ -59,8 +58,8 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🔴 `#11AX` **Publicación en redes y newsletter — AXXIS** · NS03 · Atracción
   Ejecución del calendario en todos los canales.
 
-- [ ] 🟡 `#12AX` **Métricas de comunidad — baseline AXXIS** · NS03 · Infraestructura
-  Levantar seguidores, alcance orgánico y engagement rate por plataforma.
+- [x] 🟡 `#12AX` **Métricas de comunidad — baseline AXXIS** · NS03 · Infraestructura
+  ✅ Cerrado con el informe de Instagram de julio (Metricool 1-31 jul): 162,380 seguidores (+634), ER orgánico 4.51%, 1.55M visualizaciones, alcance diario 26,272, 619 guardados y 51 compartidos. Demografía: 35-44 = 34.92%, Bogotá 28.63%, Medellín 9.73%. Falta el equivalente de Facebook.
 
 ### Juan David + Ernesto Rodriguez — Digital / SEO
 
@@ -68,7 +67,7 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
   URL limpia, propuesta de valor, formulario HubSpot y social proof. Juan David desarrolla; Ernesto produce el copy.
 
 - [ ] 🔴 `#16AX` **Plan de contenido SEO editorial — AXXIS** · NS03 · Atracción
-  Artículos evergreen informes del sector arq/diseño. Juan David ejecuta; Ernesto realiza el contenido.
+  Artículos evergreen informes del sector arq/diseño. **Mateo Arias ejecuta** (editorial y contenido). Juan David da soporte técnico SEO, no revisa ni decide contenido. Jeison comunica avance, no aprueba.
 
 - [ ] 🟡 `#17AX` **Embeds y reproductor web — AXXIS** · NS03 · Infraestructura
   Integrar reproductores de video y podcast en axxis.com.co. Juan David implementa.
@@ -91,7 +90,7 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
   Newsletter gratuito para lectores no-suscriptores. Objetivo: convertir en suscriptor.
 
 - [ ] 🔴 `#8AX` **Ejes de contenido por red social — AXXIS** · NS03 · Atracción
-  Pilares temáticos por plataforma. Ernesto define los ejes editoriales.
+  Pilares temáticos por plataforma. **Paola Gordillo define con Mateo** (Ernesto no lleva redes de AXXIS). Insumo de julio: en Instagram el bloque 35-44 ya es el **34.92%** de la audiencia — el eje no es rejuvenecer la cuenta sino llevar ese perfil a la web. Formato ganador probado: proyectos residenciales con lugar identificable (Finca Subachoque, 1,170 interacciones).
 
 - [ ] 🔴 `#9AX` **Calendario parrilla AXXIS** · NS03 · Atracción
   Parrilla mensual con temas, fechas, formato y plataforma.
@@ -144,8 +143,8 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🔴 `#6DI` **Optimizar perfiles de redes sociales Diners** · NS01 · Atracción
   Coherencia visual y de bio entre IG, Facebook, LinkedIn y YouTube.
 
-- [ ] 🟡 `#13DI` **Métricas de comunidad — baseline Diners** · NS03 · Infraestructura
-  Seguidores, alcance orgánico y engagement rate por plataforma.
+- [x] 🟡 `#13DI` **Métricas de comunidad — baseline Diners** · NS03 · Infraestructura
+  ✅ Cerrado con el informe de Instagram de julio (Metricool 1-31 jul): 99,930 seguidores (+2,103), ER posts 6.9% y reels 8.81%, 2.24M visualizaciones, alcance diario 46,225, 5,712 guardados y 4,406 compartidos. 69% del alcance viene de no seguidores. Demografía: 35-44 ≈ 35.5%, Bogotá 24.09%. Falta el equivalente de Facebook.
 
 ### Juan David + Ernesto — Digital / SEO
 
@@ -196,7 +195,7 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 
 ---
 
-## Compartidas AXXIS + Diners — 45 tareas
+## Compartidas AXXIS + Diners — 43 tareas
 
 > Aplican a ambas revistas. Ver detalle completo: [[Tasks/Revistas]]
 
@@ -325,17 +324,14 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🔴 `#36RE` **Crear propiedad HubSpot "Revista de interés"** · HubSpot · Infraestructura
   Propiedad AXXIS / Diners / Ambas. Crítica para disparar journeys diferenciados.
 
-- [ ] 🔴 `#37RE` **Separar listas B2B y B2C en HubSpot** · HubSpot · Infraestructura
-  Crear listas limpias: anunciantes (B2B) vs suscriptores (B2C).
+- [ ] 🔴 `#37RE` **Separar bases en HubSpot y configurar el pipeline B2B** · HubSpot · Infraestructura
+  Cuatro bases limpias y separadas: (1) anunciantes B2B de pauta, (2) aliados de Beneficios Suscriptores, (3) suscriptores B2C, (4) compradores de libros en web — esta última es base nueva. Incluye configurar el pipeline de deals B2B con etapas Prospecto → Contactado → Propuesta → Negociación → Ganado/Perdido. **Absorbe la antigua #39RE**, que era la misma tarea.
 
 - [ ] 🔴 `#38RE` **Configurar lead scoring B2B en HubSpot** · HubSpot · Infraestructura
   Puntuación por comportamiento: email (+5), visita (+3), media kit (+10), cotización (+20).
 
-- [ ] 🔴 `#39RE` **Configurar pipeline de deals B2B** · HubSpot · Infraestructura
-  Etapas: Prospecto → Contactado → Propuesta → Negociación → Ganado/Perdido.
-
-- [ ] 🔴 `#40RE` **Configurar alerta anunciantes inactivos +45 días** · HubSpot · Retención
-  Notificar al ejecutivo comercial si un anunciante no tiene actividad en 45 días.
+- [ ] ⏸️ `#40RE` **Configurar alerta anunciantes inactivos +45 días** · HubSpot · Retención
+  **Diferida.** Depende de que el pipeline B2B de #37RE esté configurado — sin etapas no hay contra qué medir inactividad. Retomar después de ese cierre.
 
 - [ ] 🔴 `#41RE` **Emails en el funnel HubSpot** · HubSpot · Consideración
   Ernesto produce el copy. Jeison y Juan David configuran. Subtareas: D+0 Bienvenida · D+3 Caso de éxito · D+7 Oferta rompe hielo · Alerta -15 días · Winback 3 toques.
@@ -343,18 +339,15 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🔴 `#42RE` **Configurar score de engagement B2C** · HubSpot · Infraestructura
   Puntuar comportamiento del suscriptor. Identifica suscriptores en riesgo de churn.
 
-- [ ] 🔴 `#43RE` **Workflow post-cierre B2B** · HubSpot · Retención
-  Al marcar un deal ganado: email bienvenida al anunciante + cronograma publicación.
-
 - [ ] 🔴 `#44RE` **Integración ManyChat → HubSpot** · HubSpot · Infraestructura
   Leads desde IG/FB entran como nuevos contactos con propiedad 'fuente: ManyChat'.
 
-- [ ] 🟡 `#45RE` **Integración WhatsApp (Menat) ↔ HubSpot** · HubSpot · Infraestructura
-  Conversaciones de WhatsApp registradas en el timeline del contacto en HubSpot.
+- [ ] ⏸️ `#45RE` **Integración WhatsApp (Menat) ↔ HubSpot** · HubSpot · Infraestructura
+  **Reservada para septiembre.** Conversaciones de WhatsApp registradas en el timeline del contacto en HubSpot.
 
 ---
 
-## Ediciones Gamma — 5 tareas
+## Ediciones Gamma — 3 tareas
 
 > Ver detalle: [[03 - Unidades de Negocio/Ediciones Gamma]]
 
@@ -372,18 +365,18 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 ### Jeison Montero (PM) — Cross-BU
 
 - [ ] 🟡 `#5EG` **Brand guidelines Ediciones Gamma — identidad sombrilla** · NS01 · Infraestructura
-  Guía de identidad visual y verbal para alinear AXXIS, Diners, Libros y Experiencias. **Jeison Montero PM** — coordina: Ernesto (tono verbal), Juan David (identidad digital), Paola Nossa (materiales comerciales).
+  Guía de identidad visual y verbal para alinear AXXIS, Diners, Libros y Experiencias. La parte de identidad visual la lleva **Nicolás (art director)**. **Jeison Montero** coordina y comunica; **Paola Nossa** aporta los materiales comerciales. Ernesto sale del alcance.
 
 ---
 
-## Libros — 16 tareas
+## Libros — 12 tareas
 
 > Ver detalle completo: [[Tasks/Libros]] · [[03 - Unidades de Negocio/Libros/Libros]]
 
 ### ⚠️ BLOQUEADORES — Nicolas Serna (resolver primero)
 
-- [ ] 🔴 🚧 `#7LI` **[BLOQUEADOR] Definir precios paquetes corporativos (Básico / Premium / Elite)** · NS01 · Infraestructura
-  Sin precio no hay media kit ni campaña a los 77 anunciantes. Básico: 50u · Premium: 100u · Elite: 200u.
+- [ ] 🟡 `#7LI` **Llevar los precios de paquetes corporativos al media kit** · NS01 · Infraestructura
+  ✅ Precios ya definidos (Básico 50u · Premium 100u · Elite 200u) — deja de ser bloqueador. Lo que falta: incorporarlos al media kit para poder salir a los 77 anunciantes.
 
 - [ ] 🔴 🚧 `#12LI` **[BLOQUEADOR] Definir precios Paquete Legado y Centenario** · NS01 · Infraestructura
   Sin precio no hay deck de pitch ni propuesta a Ecopetrol. Ref. Villegas: $140K–$546K COP/ejemplar.
@@ -392,22 +385,19 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 - [ ] 🟡 `#4LI` **Revisar flujo de empaque regalo en tienda online** · NS02 · Conversión
   Validar que el flujo comunique claramente la opción de regalo. Mejora directa en conversión.
 
-- [ ] 🟡 `#5LI` **Validación de Descuento exclusivo 10-15% para suscriptores AXXIS/Diners** · NS02 · Fidelización
-  Cross-sell estratégico. Coordinar mecánica web con Juan David.
+- [ ] 🟡 `#5LI` **Descuento exclusivo 10-15% para suscriptores AXXIS/Diners — validar y comunicar** · NS02 · Fidelización
+  Cross-sell estratégico. **Juan David** implementa la mecánica en web; **Paola Gordillo** lleva la comunicación del descuento en redes y newsletter. Sin plan de comunicación el descuento no se entera nadie.
 
 - [ ] 🔴 `#6LI` **Media Kit catálogo B2B — intermediarios** · NS01 · Consideración
   29 títulos por categoría, precios unitarios, descuentos por volumen y opciones de empaque.
   
-- [ ]  🟡 `#2LI` **WhatsApp Business catálogo — 29 títulos** · NS02 · Conversión
-  Flujo: consulta → ficha del libro → precio → link pago.
+- [ ] ⏸️ `#2LI` **WhatsApp Business catálogo — 29 títulos** · NS02 · Conversión
+  **Reservada para septiembre.** Flujo: consulta → ficha del libro → precio → link pago.
 
 ### Nicolas Serna — Foco 2: Gift Book Corporativo
 
 - [ ] 🔴 `#8LI` **Media Kit Corporativo Gift Book — PDF 2 páginas** · NS01 · Consideración
   3 paquetes con precios, condiciones y opciones de brandeo. Requiere #7LI resuelto.
-
-- [ ] 🟡 `#11LI` **Activar intermediarios — hoteles boutique, inmobiliarias, clubs** · NS01 · Atracción
-  Descuento escalado por cantidad. Activar primeros intermediarios en Bogotá.
 
 - [ ] 🟡 `#10LI` **Campaña Gift Book a 77 anunciantes HubSpot** · NS01 · Conversión
   Relación preexistente = conversión más fácil. Email en octubre para compras de diciembre.
@@ -416,9 +406,6 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 
 - [ ] 🔴 `#13LI` **Precios de paquetes** · NS01 · Atracción
   Diferenciadores de lbrs sobre pedidos
-
-- [ ] 🔴 `#14LI` **Lista de empresas Scoring HTAC + carga prospectos en HubSpot** · NS01 · Consideración
-  H+T+A+C. Prospectos A (17-20 pts) → contacto inmediato.
 
 - [ ] 🔴 `#16LI` **Media KIT y deck presentación Libros por Encargo** · NS01 · Consideración
   Requiere Definición de precios Paquetes y segmentación de empresas con propuesta definida
@@ -433,7 +420,7 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 
 ---
 
-## Experiencias Banca Privada & Experiencias VIP — 15 tareas
+## Experiencias Banca Privada & Experiencias VIP — 10 tareas
 
 > Ver detalle completo: [[Tasks/Experiencias]] · [[03 - Unidades de Negocio/Experiencias/Experiencias]]
 
