@@ -19,9 +19,9 @@ Basado en diagnóstico real de datos (jun-jul 2026): Meta Ads Manager, Metricool
 
 | Canal | Evidencia |
 |---|---|
-| Meta Ads | Campañas "ventas: suscripción" (AXXIS + Diners) — $73,263 COP gastados, **0 conversiones trackeadas** |
+| Meta Ads | Campañas "ventas: suscripción" (AXXIS + Diners) — ⟨R1⟩ gastados, **0 conversiones trackeadas** |
 | Social orgánico | 1 de 30 posts/reels analizados (AXXIS+Diners) menciona suscripción |
-| Google Ads | Campaña Performance Max **"Suscriptores"** ($4,000/día) — **detenida**, "se rechazó la mayoría de los grupos de recursos" |
+| Google Ads | Campaña Performance Max **"Suscriptores"** (⟨R2⟩) — **detenida**, "se rechazó la mayoría de los grupos de recursos" |
 | SEO Diners | Página `/suscripciones/`: 36 clics de 90,167 totales (**0.04%** del tráfico orgánico del trimestre) |
 | SEO AXXIS | Página `/suscripciones/`: 151 clics de 17,948 (**0.84%**) — funciona proporcionalmente 20x mejor que Diners, pero el tráfico total de AXXIS cae -37% |
 
@@ -36,7 +36,7 @@ No se libera presupuesto nuevo de pauta hasta cerrar esto.
 | # | Acción | Owner sugerido | Por qué |
 |---|---|---|---|
 | 1 | Auditar Meta Pixel + Conversions API en checkout de suscripción (AXXIS y Diners) — verificar si el evento `Purchase` dispara | Plataformas (Jeison) | Sin esto, Meta no puede optimizar hacia venta ni sabemos qué campañas funcionan |
-| 2 | Investigar por qué se rechazaron los asset groups de la PMax "Suscriptores" en Google Ads y volver a lanzarla con recursos conformes | Growth / agencia Google Ads | Presupuesto ya aprobado ($4,000/día) sin usar hace semanas |
+| 2 | Investigar por qué se rechazaron los asset groups de la PMax "Suscriptores" en Google Ads y volver a lanzarla con recursos conformes | Growth / agencia Google Ads | Presupuesto ya aprobado (⟨R2⟩) sin usar hace semanas |
 | 3 | Verificar conversion tracking de Google Ads a nivel de cuenta — 0.00% de conversión en TODAS las campañas (no solo suscripción) sugiere un problema de tag, no solo de checkout | Growth / agencia Google Ads | Sin esto ninguna campaña de Google Ads es optimizable |
 | 4 | Confirmar con el equipo técnico que el checkout procesa pago de principio a fin | Jeison / equipo técnico | Root cause — todo lo demás es síntoma |
 | 5 | Auditar la página `/suscripciones/` con marco CRO: claridad de propuesta de valor, CTA, señales de confianza, fricción en el formulario | Growth | 9 personas llegaron a checkout y no completaron — probablemente no es solo tracking |
@@ -49,7 +49,7 @@ No se libera presupuesto nuevo de pauta hasta cerrar esto.
 
 ### Google Ads
 
-**Hallazgo estructural:** el 60% del gasto activo de Diners ($56,594 de $94,624 en la semana medida) paga por keywords donde Diners **ya rankea orgánico en posición 2-4** (termales cerca a Bogotá, restaurantes candelaria, karts). Es presupuesto pagando por tráfico gratis.
+**Hallazgo estructural:** el 60% del gasto activo de Diners (⟨R3⟩ de ⟨R4⟩ en la semana medida) paga por keywords donde Diners **ya rankea orgánico en posición 2-4** (termales cerca a Bogotá, restaurantes candelaria, karts). Es presupuesto pagando por tráfico gratis.
 
 | Acción | Detalle |
 |---|---|
@@ -57,7 +57,7 @@ No se libera presupuesto nuevo de pauta hasta cerrar esto.
 | Migrar bid strategy de las 6 campañas con "configuración incorrecta" a Smart Bidding (tCPA) — solo después de Fase 0 | Manual CPC / Maximizar clics sin conversión trackeada es gasto ciego |
 | Reactivar presencia de AXXIS en Google Ads (hoy: $0, todo detenido) | AXXIS cae -37% en orgánico; pauta debería ser la red de seguridad mientras se investiga la caída |
 | Nueva campaña de marca ("axxis", "revista axxis", "revista diners") con budget mínimo | Ninguna campaña activa cubre términos de marca — están regalando ese tráfico a competidores en el auction |
-| Reservar el presupuesto liberado (~$25-30K COP/semana) para relanzar "Suscriptores" PMax una vez resuelta Fase 0 | El único campaign con intención de compra directa no está corriendo |
+| Reservar el presupuesto liberado (⟨R5⟩) para relanzar "Suscriptores" PMax una vez resuelta Fase 0 | El único campaign con intención de compra directa no está corriendo |
 
 ### Meta Ads
 

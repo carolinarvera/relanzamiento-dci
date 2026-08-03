@@ -16,9 +16,9 @@ Toda cifra de este documento sale de data real de junio 2026 (GSC, GA4, Meta Bus
 |---|---|---|---|---|
 | **Newsletter (email)** | 54.7–56.2% | **98–127s** | el más alto en atención | Mejor canal, muerto de hambre |
 | **Búsqueda orgánica (SEO)** | 56.9–66.5% | 43–81s | $ probado (Diners) | El motor — subutilizado |
-| **SEM (Paid Search)** | 67.3% | 65s | **$1.52/sesión** | Mejor canal pago — AXXIS lo tiene en $0 |
+| **SEM (Paid Search)** | 67.3% | 65s | **⟨R1⟩** | Mejor canal pago — AXXIS lo tiene en $0 |
 | **Social orgánico** | 31–32% | 20s | bajo | Sirve para marca, no para tráfico |
-| **Paid Media (Paid Social)** | 18.6–22.5% | **4–5s** | $0.13/sesión | El peor — 52–79% del tráfico actual |
+| **Paid Media (Paid Social)** | 18.6–22.5% | **4–5s** | ⟨R2⟩ | El peor — 52–79% del tráfico actual |
 
 **La estrategia en una frase:** invertir la pirámide — hoy el canal de peor calidad recibe casi todo el volumen y los dos mejores casi nada.
 
@@ -137,7 +137,7 @@ El patrón "restaurantes en [ciudad]" ya rankea pos. 4–9 sin trabajo E-E-A-T. 
 | **rolex** | **97** | **1,680** | 5.8% | 8.2 |
 | **citizen** | **85** | **809** | 10.5% | 6.1 |
 
-**Hallazgo nuevo — cluster "relojes y lujo":** Diners ya recibe clics por `rolex` y `citizen`, y la página de Rolex Oyster generó $2,655 en junio. Es el único territorio genérico que además **coincide con el gap de anunciantes** identificado en la auditoría de competencia (relojería internacional). Desarrollarlo con E-E-A-T (historia, especificaciones, voz experta) construye a la vez autoridad y argumento comercial B2B.
+**Hallazgo nuevo — cluster "relojes y lujo":** Diners ya recibe clics por `rolex` y `citizen`, y la página de Rolex Oyster generó ⟨R3⟩ en junio. Es el único territorio genérico que además **coincide con el gap de anunciantes** identificado en la auditoría de competencia (relojería internacional). Desarrollarlo con E-E-A-T (historia, especificaciones, voz experta) construye a la vez autoridad y argumento comercial B2B.
 
 #### Cluster D — Marca (el déficit estructural)
 `revista diners` rankea pos. **2.3** con CTR 55.3% — para una consulta de marca propia, ambas cifras son bajas (AXXIS: pos. 1.0, 67.4%). `diners` a secas está en pos. **4.8**. **El SERP de la propia marca no está ganado.** Acciones: schema Organization, sitelinks limpios, página "Sobre nosotros" robusta, y las categorías Zona D/Perfiles para que Google lea entidad editorial, no blog.
@@ -199,7 +199,7 @@ Ya rankean — el clic se pierde en el meta-título. Reescritura con fórmula: `
 ## 2. SEM — Paid Search (Google Ads)
 
 ### 2.1 Estado actual
-El mejor canal pago y el gran subutilizado: **67.25% de interacción, 65s, $1.52/sesión — 12× mejor que Paid Social**. Genera el 97% de los ingresos de Paid Social con 12.5× menos sesiones. AXXIS: **$0 invertidos, todas las campañas detenidas**. Cuenta con problemas técnicos: 0% de conversión medida (sin página de confirmación), 6 campañas con bid strategy mal configurada, PMax "Suscriptores" rechazada.
+El mejor canal pago y el gran subutilizado: **67.25% de interacción, 65s, ⟨R1⟩ — 12× mejor que Paid Social**. Genera el 97% de los ingresos de Paid Social con 12.5× menos sesiones. AXXIS: **$0 invertidos, todas las campañas detenidas**. Cuenta con problemas técnicos: 0% de conversión medida (sin página de confirmación), 6 campañas con bid strategy mal configurada, PMax "Suscriptores" rechazada.
 
 ### 2.2 Estrategia
 1. **Reactivar AXXIS desde cero** con presupuesto reasignado de Paid Social (no nuevo): campaña de marca (`axxis`, `revista axxis`, `revista de arquitectura`) + keywords del cluster de arquitectos y proyectos.
