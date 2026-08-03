@@ -112,13 +112,20 @@ tr:last-child td{ border-bottom:none; }
 .cad .when{ font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--purple); margin-bottom:6px; }
 .cad .what{ font-size:12.5px; color:var(--text2); line-height:1.45; }
 
+.journey{ display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-bottom:14px; }
+.stage{ background:var(--card); border:1px solid var(--border); border-top:3px solid var(--purple); border-radius:12px; padding:14px 15px 16px; box-shadow:var(--shadow); }
+.stage .st-n{ font-size:10px; font-weight:700; color:var(--purple); letter-spacing:.1em; }
+.stage .st-t{ font-size:13.5px; font-weight:700; margin:5px 0 6px; letter-spacing:-.01em; }
+.stage .st-d{ font-size:11.5px; color:var(--text2); line-height:1.45; }
+.stage .st-p{ display:inline-block; margin-top:10px; font-size:10.5px; font-weight:700; color:var(--purple-mid); background:var(--purple-light); padding:2px 9px; border-radius:12px; }
+
 .footer{ font-size:11.5px; color:var(--text3); text-align:center; margin-top:50px; padding-top:20px; border-top:1px solid var(--border); }
 
 @media(max-width:860px){
   .sidebar{ display:none; }
   .main{ margin-left:0; max-width:100%; }
   .wrap{ padding:24px 18px 60px; }
-  .hero-kpis,.grid3,.grid4,.cadence{ grid-template-columns:1fr 1fr; }
+  .hero-kpis,.grid3,.grid4,.cadence,.journey{ grid-template-columns:1fr 1fr; }
   .grid2{ grid-template-columns:1fr; }
   .rep-head{ flex-wrap:wrap; }
   .rep-head .focus{ margin-left:0; max-width:100%; }
@@ -137,6 +144,7 @@ tr:last-child td{ border-bottom:none; }
     <div class="sidebar-section-label">Contexto</div>
     <a class="nav-item" href="#estrategia"><span class="dot"></span>3 Pilares</a>
     <a class="nav-item" href="#sistema"><span class="dot"></span>Sistema de ventas</a>
+    <a class="nav-item" href="#pipeline"><span class="dot"></span>Pipeline B2B</a>
   </nav>
   <nav class="sidebar-section">
     <div class="sidebar-section-label">Planes por comercial</div>
@@ -211,9 +219,23 @@ tr:last-child td{ border-bottom:none; }
     </div>
   </section>
 
+  <!-- PIPELINE -->
+  <section id="pipeline">
+    <h2><span class="num">03</span> Pipeline y journey del cliente B2B</h2>
+    <p class="sub">Cada cliente B2B (anunciante) recorre estas etapas en HubSpot. El deal avanza una por una desde el primer contacto — nunca se crea directo en Cerrado ganado. Los suscriptores (B2C) van por un pipeline aparte.</p>
+    <div class="journey">
+      <div class="stage"><div class="st-n">ETAPA 1</div><div class="st-t">Prospecto</div><div class="st-d">Identificado y con primer contacto. El deal se crea el mismo día.</div><span class="st-p">10%</span></div>
+      <div class="stage"><div class="st-n">ETAPA 2</div><div class="st-t">Cita agendada</div><div class="st-d">Reunión o visita con fecha confirmada.</div><span class="st-p">25%</span></div>
+      <div class="stage"><div class="st-n">ETAPA 3</div><div class="st-t">Seguimiento</div><div class="st-d">Visita hecha, cotización enviada, en negociación.</div><span class="st-p">50%</span></div>
+      <div class="stage"><div class="st-n">ETAPA 4</div><div class="st-t">En cierre</div><div class="st-d">Propuesta aceptada; en trámite de proveedor y crédito.</div><span class="st-p">80%</span></div>
+      <div class="stage"><div class="st-n">ETAPA 5</div><div class="st-t">Cerrado ganado</div><div class="st-d">Orden o contrato firmado, facturable.</div><span class="st-p">100%</span></div>
+    </div>
+    <div class="callout info"><span class="ic">📌</span><div><b>Reglas del pipeline.</b> Todo prospecto contactado se crea como deal el día 1 · segmento Cliente B2B (nunca suscriptores) · ningún deal en seguimiento pasa más de 7 días sin actividad · un cierre perdido siempre registra el motivo.</div></div>
+  </section>
+
   <!-- PLANES -->
   <section id="claudia">
-    <h2><span class="num">03</span> Plan de acción por comercial</h2>
+    <h2><span class="num">04</span> Plan de acción por comercial</h2>
     <p class="sub">Cada plan reúne tus plazas y sectores asignados (por revista), tu foco del semestre y las actividades concretas para lograrlo.</p>
 
     <!-- CLAUDIA -->
@@ -326,7 +348,7 @@ tr:last-child td{ border-bottom:none; }
 
   <!-- METAS -->
   <section id="metas">
-    <h2><span class="num">04</span> Metas y cadencia de gestión</h2>
+    <h2><span class="num">05</span> Metas y cadencia de gestión</h2>
     <p class="sub">Las mismas metas de actividad para todas; la cadencia hace que el forecast salga de HubSpot y que nos apoyemos donde haga falta.</p>
 
     <div class="callout info" style="margin-bottom:16px"><span class="ic">🗓️</span><div><b>Corte mensual adelantado.</b> El forecast se gestiona un mes antes: al cerrar la revista del mes en curso (alrededor del día 4), el día 5 arranca la gestión del presupuesto del mes siguiente. Al planear tu semana, trabaja siempre sobre el mes que viene, no sobre el que se está cerrando.</div></div>
