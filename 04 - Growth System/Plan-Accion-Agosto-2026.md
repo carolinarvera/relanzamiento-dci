@@ -62,6 +62,97 @@ Basado en análisis 360 julio 2026. Foco: estructura + destinos + tracking. No e
 # SEO — Contenido y Búsqueda Orgánica
 
 **Objetivo agosto:** +3K sesiones interacción AXXIS, mejorar posiciones, armar Hub Arquitectos  
+
+## 👥 AUDIENCIAS Y EDAD (Datos reales julio 2026)
+
+### AXXIS — Perfil demográfico (Instagram)
+
+| Variable | Dato |
+|---|---|
+| **Edad principal** | 35–44 años (34.92%) |
+| **Edad secundaria** | 45–54 años (~24%) |
+| **Tercer grupo** | 25–34 años (~23%) |
+| **Género** | Predominante mujer |
+| **Ubicación #1** | Bogotá (28.63%) |
+| **Ubicación #2** | Medellín (9.73%) |
+| **Ubicación #3** | Cali (4.4%) |
+| **Dispositivo** | Mobile 83% |
+| **Seguidores mes** | +859 (99.93K total) |
+| **Engagement Rate** | 6.99% (posts) |
+| **Reel performance** | 115.75K views (11 reels) |
+
+**Insight:** Audiencia profesional madura (35-54 = 59% del total). Concentrada urbana (Bogotá + Medellín + Cali = 42.76%). Fuerte en mobile. Reel es canal complementario (no primario vs posts).
+
+---
+
+### DINERS — Perfil demográfico (GA4 + Instagram)
+
+| Variable | Dato |
+|---|---|
+| **Edad principal** | 35–44 años (35.5–36.7%) |
+| **Edad secundaria** | 25–34 años (22.84%) |
+| **Tercer grupo** | 45–54 años (~23%) |
+| **Género** | 59% mujeres, 41% hombres |
+| **Ubicación #1** | Bogotá (24.09% IG, 24% web) |
+| **Ubicación #2** | Medellín (4%) |
+| **Ubicación #3** | Cali (2.65%) |
+| **Dispositivo** | Mobile 81% |
+| **Canales web** | Organic Search 43%, Paid Social 30%, Email 4% |
+| **Tiempo medio sesión** | 69.9s (GA4, julio) |
+| **Top contenido** | Patrimonio UNESCO (90.6s), Gastronomía (47.6s) |
+| **Seguidores mes** | +2,103 (99.93K total) |
+
+**Insight:** Audiencia femenina premium (59% mujeres, 35-44 años = hub). Geografía: Bogotá = 24% pero 76% del tráfico web es resto Colombia + international. Organic Search fuerte (43%) — gastronomía y viajes son ganadores. Email subutilizado (4%, meta 5%).
+
+---
+
+### Estrategia de contenido y pauta por audiencia
+
+#### AXXIS (profesional, 35-54, urbana, móvil-first)
+
+**Tono y formato:**
+- Directo, técnico, con autoridad editorial
+- Arquitectos/diseñadores buscan referencia, no entretenimiento
+- Móvil 83% — prioritizar contenido vertical (Reels, Stories, vertical video)
+
+**CTAs recomendados:**
+- Suscriptores: "Conoce los proyectos que definieron la arquitectura colombiana"
+- Pauta: "Especifica mejor — acceso a fichas técnicas de proyecto"
+
+**Canales por importancia:**
+1. **Instagram** (Reel + Stories): contenido quick-reference + detrás-de-proyecto
+2. **Web/SEO**: artículos long-form para 35-44 profesionales que buscan "arquitectura sostenible 2026"
+3. **Email**: newsletter profesional (quincenal o mensual de calidad)
+4. **LinkedIn**: B2B de especificadores (materiales, constructoras)
+
+**Pauta strategy:**
+- Dirige a 35-54 años, arquitectos/diseñadores, ciudades capitales
+- Objetivo: suscripción + especificación de marca en pauta "Connect & Collab"
+
+---
+
+#### DINERS (femenina, 35-54, premium lifestyle, balanced mobile)
+
+**Tono y formato:**
+- Inspiración + utilidad (gastronomía, viajes)
+- 59% mujeres — pero 41% hombres = incluir ángulos para ambos
+- Mobile 81% pero web fuerte (Organic 43%) — balance contenido web + social
+
+**CTAs recomendados:**
+- Suscriptores: "Descubre los mejores lugares que solo Diners conoce"
+- Pauta: "Acceso exclusivo a guías gastronómicas y planes de fin de semana"
+
+**Canales por importancia:**
+1. **Web (Organic)**: guías SEO "restaurantes Bogotá", "aguas termales", "viajes" — 43% del tráfico
+2. **Instagram**: Reels de destinos/gastronomía (aspiracional)
+3. **Email**: Alto potencial (4% actual, meta 5%) — B2C + B2B anunciantes
+4. **Paid Social**: 30% del tráfico actual — optimizar segmentación edad + género
+
+**Pauta strategy:**
+- Dirige a 35-44 mujeres (primaria) + 45-54 (secundaria)
+- Geografía: Bogotá primary, test Medellín + Cali
+- Objetivo: suscripción + events (restaurant openings, experiencias premium)
+
 **Owner:** Mateo Arias Ortiz (editor web AXXIS) + Juan David (técnico)
 
 ## Quick wins (Semana 2-3)
