@@ -8,7 +8,7 @@ confidence: high
 ---
 
 ## For future Claude
-Ramón Andrés Nivia es el Editor de la Revista AXXIS, reporta a [[Ernesto Rodriguez]] (Líder Técnico de Contenido, posición 2.2.2 del organigrama). Primera reunión con Carolina el 2026-06-17. Perfil técnico-editorial fuerte: conoce bien el producto, ya tiene iniciativas propias (videógrafo para recorridos, filtro de contenido 2h/viernes, análisis de competencia AD México/Manera). Postura clara sobre IA: no la usan para imágenes — priorizan proyectos reales terminados. Propuso el modelo de marketplace como catálogo fase 1 (sin pasarela de pagos) por complejidad técnico-legal. Alias: "Ramón", "Ramón Andrés".
+Ramón Andrés Nivia es el Editor de la Revista AXXIS y **reporta directo a [[Catalina Obregon]]** (posición 1.1 del organigrama). NO reporta a [[Ernesto Rodriguez]] — ese dato del organigrama de jun-2026 era falso, corregido 2026-08-02. Primera reunión con Carolina el 2026-06-17. Perfil técnico-editorial fuerte: conoce bien el producto, ya tiene iniciativas propias (videógrafo para recorridos, filtro de contenido 2h/viernes, análisis de competencia AD México/Manera). Postura clara sobre IA: no la usan para imágenes — priorizan proyectos reales terminados. Propuso el modelo de marketplace como catálogo fase 1 (sin pasarela de pagos) por complejidad técnico-legal. Alias: "Ramón", "Ramón Andrés".
 
 ---
 
@@ -22,7 +22,7 @@ Ramón Andrés Nivia es el Editor de la Revista AXXIS, reporta a [[Ernesto Rodri
 Editor de AXXIS
 
 ## Área
-Contenido Editorial — AXXIS (reporta a [[Ernesto Rodriguez]], área 2.2.2 del organigrama)
+Contenido Editorial — AXXIS (reporta directo a [[Catalina Obregon]], posición 1.1 del organigrama)
 
 ## Reporta a
 [[Ernesto Rodriguez]]

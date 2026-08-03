@@ -27,7 +27,7 @@ updated: 2026-07-27
 | **Mateo Arias Ortiz** | Editor Web | AXXIS | Solo editorial, no técnico |
 | **Simon Granja** | Editor Web | Diners | Solo editorial, no técnico |
 | **Ramon Nivia** | Editor Revista | AXXIS | **Reporta directo a Catalina**, no a Ernesto |
-| **Sandra Martinez** | Editora General | Diners (impreso + web) | Solo contenido. NO owner técnico ni checkout |
+| **Sandra Martinez** | Editora General | Diners (impreso + web) | **Reporta directo a Catalina**, no a Ernesto. Solo contenido, NO owner técnico ni checkout |
 | **Nidia Alexandra Rodriguez** | Jefe Financiera | Gamma | — |
 | **Duvan Hernandez** | — | — | — |
 | **Estefania Ochoa Fonseca** | CM Visión + Plataformas Davivienda | Visión | Braze (email); redes Visión. NO HubSpot |

@@ -169,7 +169,7 @@ Fuentes: Dashboard Diners_Tabs_2026-06 (9 tabs, as of 2026-06-16) + Informe Web 
 
 **Contenido Editorial:**
 - [[Ernesto Rodriguez]] — Líder Técnico de Contenido (transversal AXXIS/Diners/Gamma)
-- [[Sandra Martinez]] — Editora General de Diners (impreso + web), reporta a [[Ernesto Rodriguez]]
+- [[Sandra Martinez]] — Editora General de Diners (impreso + web), reporta directo a [[Catalina Obregon]]
 - Simón Granja — Editor Web (colabora con Sandra)
 - Lina, Mateo — Diseño (apoyan también mercadeo y privilegios)
 
