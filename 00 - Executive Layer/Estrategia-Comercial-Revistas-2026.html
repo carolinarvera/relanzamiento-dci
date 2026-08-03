@@ -129,6 +129,9 @@ tr:last-child td{ border-bottom:none; }
 .stage .st-a{ margin-top:10px; padding:9px 11px 10px; background:var(--purple-soft); border-radius:8px; }
 .stage .st-a .lbl{ font-size:9.5px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--purple-mid); margin-bottom:3px; }
 .stage .st-a .txt{ font-size:11px; color:var(--text2); line-height:1.4; }
+.strat{ background:linear-gradient(135deg,rgba(91,79,212,.12),rgba(91,79,212,.04)); border:1px solid rgba(91,79,212,.16); border-radius:10px; padding:13px 16px; margin-bottom:4px; }
+.strat .lbl{ font-size:10px; font-weight:700; letter-spacing:.07em; text-transform:uppercase; color:var(--purple); margin-bottom:4px; }
+.strat .txt{ font-size:12.8px; color:var(--text); line-height:1.5; }
 
 .footer{ font-size:11.5px; color:var(--text3); text-align:center; margin-top:50px; padding-top:20px; border-top:1px solid var(--border); }
 
@@ -239,12 +242,13 @@ tr:last-child td{ border-bottom:none; }
     <div class="subh-sub">Journey de calificación del lead. Cada etapa define qué comunicación y seguimiento hacer antes de convertirlo en prospecto del pipeline de negocio.</div>
     <div class="journey">
       <div class="stage"><div class="st-n">LEAD 1</div><div class="st-t">Nuevo Lead</div><div class="st-d">Lead sin contactar (formulario, evento, base o referido).</div><div class="st-x"><div class="st-xl">Comunicación y seguimiento</div><div class="st-xd">Primer toque en menos de 24h. Bienvenida por email/WhatsApp y asignación de owner.</div></div><div class="st-a"><div class="lbl">⚙ Automatización HubSpot</div><div class="txt">Rotar owner por territorio/sector · email de bienvenida automático · crear tarea "contacto &lt;24h" · notificación interna al comercial.</div></div></div>
-      <div class="stage"><div class="st-n">LEAD 2</div><div class="st-t">Intentando contactar</div><div class="st-d">En proceso de contacto, aún sin respuesta.</div><div class="st-x"><div class="st-xl">Comunicación y seguimiento</div><div class="st-xd">Secuencia de 3-4 intentos por canales distintos (llamada, email, WhatsApp) en 5 días hábiles.</div></div><div class="st-a"><div class="lbl">⚙ Automatización HubSpot</div><div class="txt">Inscribir en secuencia de 3-4 toques · si 5 días hábiles sin respuesta → mover a Automatizar.</div></div></div>
+      <div class="stage"><div class="st-n">LEAD 2</div><div class="st-t">Intentando contactar</div><div class="st-d">En proceso de contacto, aún sin respuesta.</div><div class="st-x"><div class="st-xl">Comunicación y seguimiento</div><div class="st-xd">Secuencia de 3-4 intentos por canales distintos (llamada, email, WhatsApp) en 5 días hábiles.</div></div><div class="st-a"><div class="lbl">⚙ Automatización HubSpot</div><div class="txt">Inscribir en secuencia de 3-4 toques · si 5 días hábiles sin respuesta → pausar (No interesado).</div></div></div>
       <div class="stage"><div class="st-n">LEAD 3</div><div class="st-t">Conectado</div><div class="st-d">Se logró la conversación; se está calificando.</div><div class="st-x"><div class="st-xl">Comunicación y seguimiento</div><div class="st-xd">Llamada de calificación: entender necesidad, presupuesto y timing.</div></div><div class="st-a"><div class="lbl">⚙ Automatización HubSpot</div><div class="txt">Crear tarea de llamada de calificación · enviar media kit por email · recordatorio si no hay actividad en 3 días.</div></div></div>
       <div class="stage"><div class="st-n">LEAD 4</div><div class="st-t">Ganado</div><div class="st-d">Lead calificado con interés real → se convierte en Prospecto.</div><div class="st-x"><div class="st-xl">Comunicación y seguimiento</div><div class="st-xd">Agendar reunión comercial y crear el deal en el pipeline de negocio.</div></div><div class="st-a"><div class="lbl">⚙ Automatización HubSpot</div><div class="txt">Crear el deal en pipeline de negocio (Prospecto) copiando sector/territorio · lifecycle = SQL · notificar al comercial.</div></div></div>
-      <div class="stage"><div class="st-n">LEAD 5</div><div class="st-t">Automatizar</div><div class="st-d">Con potencial pero sin timing ahora mismo.</div><div class="st-x"><div class="st-xl">Comunicación y seguimiento</div><div class="st-xd">Workflow de nurturing (newsletter, contenido). Revisar en 60-90 días.</div></div><div class="st-a"><div class="lbl">⚙ Automatización HubSpot</div><div class="txt">Inscribir en workflow de nurturing · delay 60-90 días → tarea "revisar si maduró" · re-scoring.</div></div></div>
-      <div class="stage"><div class="st-n">LEAD 6</div><div class="st-t">No interesado</div><div class="st-d">Sin interés o fuera de perfil.</div><div class="st-x"><div class="st-xl">Comunicación y seguimiento</div><div class="st-xd">Cerrar con motivo. Opción de re-contacto si cambia el contexto.</div></div><div class="st-a"><div class="lbl">⚙ Automatización HubSpot</div><div class="txt">Motivo obligatorio · sacar de secuencias activas · workflow de re-engagement a 6 meses.</div></div></div>
+      <div class="stage"><div class="st-n">LEAD 5</div><div class="st-t">No interesado</div><div class="st-d">Sin interés o fuera de perfil.</div><div class="st-x"><div class="st-xl">Comunicación y seguimiento</div><div class="st-xd">Cerrar con motivo. Opción de re-contacto si cambia el contexto.</div></div><div class="st-a"><div class="lbl">⚙ Automatización HubSpot</div><div class="txt">Motivo obligatorio · sacar de secuencias activas · workflow de re-engagement a 6 meses.</div></div></div>
     </div>
+
+    <div class="callout info" style="margin-bottom:8px"><span class="ic">📈</span><div><b>KPI clave del lead:</b> número de citas pre-agendadas vs. citas concretadas. Mide la efectividad del paso Conectado → Ganado y la calidad del agendamiento; una brecha alta señala citas mal calificadas o mal confirmadas.</div></div>
 
     <div class="subh" style="margin-top:26px"><span class="tag">PIPELINE 2</span> De Prospecto a Cierre</div>
     <div class="subh-sub">El deal avanza etapa por etapa. El valor pasa por tres estados: <b>OFERTADO</b> (propuesto al cliente), <b>PROYECTADO</b> (ponderado en el forecast) y <b>ORDENADO</b> (venta firmada). Cada etapa tiene su paso del sistema de ventas.</div>
@@ -291,6 +295,7 @@ tr:last-child td{ border-bottom:none; }
           <div class="terr-row"><span class="pl rv">AXXIS</span><span class="se">Agro/industria/construcción · Real Estate · Electrodomésticos · Hogar y Decoración · Mobiliario · Moda · Retail · Salud y Bienestar · Servicios · Servicios Profesionales</span></div>
           <div class="terr-row"><span class="pl rv">DINERS</span><span class="se">Alimentos y Bebidas · Licores y Tabaco · Comercio · Gobierno · Moda · Retail · Turismo y Hospitalidad</span></div>
         </div>
+        <div class="strat"><div class="lbl">★ Estrategia ideal</div><div class="txt">Fidelización y renovación temprana de cuentas ancla (KEVINS, Rolex, Cartier) + ampliar a digital a sus clientes internacionales de impreso. Pocas cuentas, alto ticket.</div></div>
         <div class="rep-plan">
           <h4>Actividades del semestre</h4>
           <ul class="actions">
@@ -319,6 +324,7 @@ tr:last-child td{ border-bottom:none; }
           <div class="terr-row"><span class="pl rv">AXXIS</span><span class="se">Acabados/carpintería · Automotriz · Licores · Construcción y Real Estate · Construcción y Tecnología · Hogar y Decoración · Iluminación · Moda · Retail · Tecnología · Turismo y Hotelería</span></div>
           <div class="terr-row"><span class="pl rv">DINERS</span><span class="se">Automotriz · Licores · Belleza y Cuidado Personal · Moda · Retail · Salud y Bienestar · Turismo y Hospitalidad</span></div>
         </div>
+        <div class="strat"><div class="lbl">★ Estrategia ideal</div><div class="txt">Cross-sell de DINERS digital sobre su base de impreso: vender paquetes crossmedia mes a mes a clientes que hoy solo compran impreso + cerrar el pipeline pendiente de Costa y Bogotá.</div></div>
         <div class="rep-plan">
           <h4>Actividades del semestre</h4>
           <ul class="actions">
@@ -346,6 +352,7 @@ tr:last-child td{ border-bottom:none; }
           <div class="terr-row"><span class="pl rv">Ambas</span><span class="se">Alimentos y Bebidas (Medellín)</span></div>
           <div class="terr-row"><span class="se">Base de clientes en reconstrucción: foco en reactivar históricos de Medellín y abrir sus sectores AXXIS.</span></div>
         </div>
+        <div class="strat"><div class="lbl">★ Estrategia ideal</div><div class="txt">Tres frentes: reactivación de históricos + búsqueda de cuentas en Medellín + gran movimiento de prospección de clientes nuevos con paquetes de entrada — AXXIS Starter ($3M) y DINERS básico digital ($5.1M). Estrategia de volumen con ticket bajo.</div></div>
         <div class="rep-plan">
           <h4>Actividades del semestre</h4>
           <ul class="actions">
@@ -374,6 +381,7 @@ tr:last-child td{ border-bottom:none; }
           <div class="terr-row"><span class="pl rv">AXXIS</span><span class="se">Construcción y Real Estate · Hogar y Decoración</span></div>
           <div class="terr-row"><span class="pl rv">DINERS</span><span class="se">Alimentos y Bebidas · Turismo y Hospitalidad</span></div>
         </div>
+        <div class="strat"><div class="lbl">★ Estrategia ideal</div><div class="txt">Convertir alianzas y experiencias en pauta + foco en su mejor línea (DINERS digital) + abrir cuentas de Centro Sur. Aprovechar relaciones existentes antes que prospección fría.</div></div>
         <div class="rep-plan">
           <h4>Actividades del semestre</h4>
           <ul class="actions">
