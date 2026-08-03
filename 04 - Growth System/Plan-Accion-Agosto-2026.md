@@ -30,7 +30,7 @@ Basado en análisis 360 julio 2026. Foco: estructura + destinos + tracking. No e
 
 **P2 — Quick wins (Semana 2-3):** Bajo costo, ROI alto
 - Reescribir meta-títulos AXXIS top 3 (250K impresiones)
-- Brand defensiva SEM AXXIS ($500-1K/día, CPC bajo)
+- Brand defensiva SEM AXXIS (inversión acotada, CPC bajo)
 - Aumentar compartidos IG AXXIS (51 en julio → 100+ en agosto)
 - Publicar perfiles 1-3 Hub Arquitectos
 
@@ -251,7 +251,7 @@ Estado julio: 52% Paid Social, 26.2% orgánico → meta 35% orgánico. Paola Gor
 
 | Tarea | Deadline | KPI | Owner |
 |---|---|---|---|
-| Pedir desglose 52 campañas actuales | 10 ago | Excel: presupuesto, segmentación, CPA, ER, tiempo | Paola Nossa |
+| Pedir desglose 52 campañas actuales | 10 ago | Excel: % de inversión, segmentación, CPA relativo, ER, tiempo | Paola Nossa |
 | Analizar qué segmentos traen 5s vs retienen | 12 ago | Informe: segmentos ganadores + perdedores | Paola Nossa + Sebastián |
 | Proponer reducción escalonada AXXIS | 13 ago | Plan: -10% sem1, -15% sem2, -20% sem3 | Paola Nossa + Carolina |
 
@@ -295,7 +295,7 @@ Razón: 79.3% tráfico AXXIS es Paid Social a 5s interacción (peor canal). Emai
 
 # SEM — Google Ads
 
-**Objetivo agosto:** Reactivar Google Ads AXXIS ($0→presupuesto reasignado), estructurar 3 campañas, validar tracking  
+**Objetivo agosto:** Reactivar Google Ads AXXIS (cuenta inactiva → inversión reasignada desde Meta), estructurar 3 campañas, validar tracking  
 **Owner:** Sebastián (ads manager) + Paola Nossa
 
 ## Bloqueante crítico: Gate conversión (SEM 4)
@@ -322,13 +322,13 @@ Razón: 79.3% tráfico AXXIS es Paid Social a 5s interacción (peor canal). Emai
 
 **SEM 3 Marca defensiva:** Única que arranca sin esperar gate
 - Keywords: [axxis], [revista axxis], [axxis arquitectura], [revista axxis suscripción/precio]
-- Meta: pos. 1 en marca, CTR >50%, CPC <$0.50
+- Meta: pos. 1 en marca, CTR >50%, CPC por debajo del promedio de cuenta
 
 ### SEM 5-6: Campañas de demanda (después gate resuelto)
 
 | Campaña | Keywords | Destino | Objetivo | KPI |
 |---|---|---|---|---|
-| SEM 5: Suscripción | "revistas arquitectura" (33% CTR), "revista axxis precio" | /suscripciones/ | Conversión | CPA <$15 |
+| SEM 5: Suscripción | "revistas arquitectura" (33% CTR), "revista axxis precio" | /suscripciones/ | Conversión | CPA por debajo del de Meta |
 | SEM 6: Diseño+Interiorismo | "arquitectura bogotá", "interiorismo colombiano" | /categoría/ → /suscripciones/ | Tráfico calificado | Interacción >20s |
 
 **Demanda ya validada en orgánico:**
