@@ -28,7 +28,16 @@ ai-first: true
 | `06 - Meetings/` | Minutas por BU |
 | `07 - Marketing y Eventos/` | Plan marketing, cronograma eventos, media kits |
 | `Tasks/` | `00-Tareas-Hot.md` (urgentes esta semana) · `00-Tareas-Master-H2-2026.md` (archivo completo) |
-| `_context/` | Tarjetas de orientación por BU — leer al inicio de trabajo en una BU específica |
+| `_context/` | Tarjetas de orientación por BU (AXXIS, Diners, Libros, Experiencias, Plataformas) — leer ESTO antes de abrir la nota BU completa |
+
+---
+
+## ⚡ Regla de lectura eficiente
+
+1. **Personas/proyectos** → `_personas.md` o `_proyectos.md`. Nunca abrir archivos individuales salvo que necesites historial.
+2. **Trabajo en una BU** → leer `_context/<BU>.md` primero. Solo abrir la nota BU completa si la tarjeta no alcanza.
+3. **Archivos grandes** (`Diners.md`, `AXXIS Dashboard Estratégico.md`) → tienen mapa de secciones al inicio. Leer con `offset`/`limit`, nunca completo.
+4. **Tareas** → `Tasks/00-Tareas-Hot.md`. El master solo si necesitas el archivo histórico.
 
 ---
 

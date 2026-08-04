@@ -23,6 +23,27 @@ Fuentes: Dashboard Diners_Tabs_2026-06 (9 tabs, as of 2026-06-16) + Informe Web 
 
 ---
 
+## ⚡ Mapa de secciones (leer solo el rango que necesitas — NO el archivo completo)
+
+| Tema | Líneas |
+|---|---|
+| Identidad · Revenue · Planes suscripción | 32–120 |
+| Situación actual · Propuesta valor · KPIs · Equipo | 120–185 |
+| Eventos confirmados y potenciales | 185–197 |
+| Paid Media + Tráfico web histórico | 197–239 |
+| GA4 canales de adquisición YTD | 239–289 |
+| GA4 top páginas y diagnóstico contenido | 289–346 |
+| GA4 páginas por ruta (jun–jul) | 346–430 |
+| Analytics Metricool junio (fuente de verdad) | 430–571 |
+| Newsletter "La Mesa de Diners" | 571–602 |
+| Auditoría CRO página suscripciones | 602–687 |
+| SEO — GSC reporte completo | 687–1009 |
+| Google Ads auditoría jun + YTD | 1009–1159 |
+| Oportunidades · Riesgos · Proyectos activos | 1159–1193 |
+| Next Steps — backlog crecimiento | 1193–1305 |
+
+---
+
 # 🍽️ Diners
 
 > Revista de Cultura, Gastronomía, Viajes y Estilo de Vida · +60 años de trayectoria

@@ -14,6 +14,30 @@ confidence: high
 
 ---
 
+## ⚡ Mapa de secciones (leer solo el rango que necesitas — NO el archivo completo)
+
+| Sección | Líneas |
+|---|---|
+| 1. Executive Summary (estado, hallazgos, riesgos, oportunidades) | 17–87 |
+| 2. Business Performance (revenue, comercial) | 87–160 |
+| 3. Auditoría de Marca (posicionamiento, benchmark) | 160–218 |
+| 4. Auditoría Redes Sociales (por plataforma, score, plan 90d) | 218–338 |
+| 5. Auditoría de Contenido (calidad, clasificación, score) | 338–394 |
+| 6. Auditoría SEO (técnico, on/off page, clusters) | 394–493 |
+| 7. Auditoría GEO (presencia en IA) | 493–522 |
+| 8. Auditoría AEO (motores de respuesta) | 522–551 |
+| 9. Auditoría CRO (conversión, CTAs, quick wins) | 551–587 |
+| 10. Auditoría Web (sitio, navegación) | 587–624 |
+| 11. Auditoría Meta Ads (campañas, CPC, audiencias) | 624–709 |
+| 12. Auditoría de Creativos | 709–740 |
+| 13. Growth Opportunities (matriz impacto/esfuerzo) | 740–783 |
+| 14. Dashboard de KPIs | 783–855 |
+| 15. PMO — Roadmap AXXIS | 855–959 |
+| 16. Plan de Trabajo por Responsable | 959–1103 |
+| 17. Dashboard Ejecutivo para Dirección | 1103–1212 |
+
+---
+
 # 1. EXECUTIVE SUMMARY
 
 ## Estado General de AXXIS
