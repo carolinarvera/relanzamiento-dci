@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diners Club International · Relanzamiento 360 Colombia</title>
+<style>
+  :root{
+    --navy:#0A2540; --navy-deep:#061a30; --ink:#12233a;
+    --parchment:#0A2540; --parchment-soft:#12233a;
+    --bronze:#8C6A2E; --gold:#8A6B1F; --gold-fill:#D2A855; --wine:#8C3A3A;
+    --muted:rgba(18,35,58,.62); --line:rgba(10,37,64,.16);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--serif); color:var(--ink);
+    background:#FFFFFF;
+    -webkit-font-smoothing:antialiased;
+  }
+  .deck{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+  .slide{
+    min-height:100vh;scroll-snap-align:start;position:relative;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:6vh 7vw;
+    background:#FFFFFF;
+    border-bottom:1px solid rgba(10,37,64,.1);
+  }
+  .slide::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(60% 50% at 15% 90%, rgba(140,106,46,.05), transparent 60%),
+      linear-gradient(180deg, rgba(10,37,64,0), rgba(10,37,64,.02));
+  }
+  .wrap{max-width:1040px;margin:0 auto;width:100%;position:relative;z-index:1}
+  .eyebrow{
+    font-family:var(--sans);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold);font-weight:700;margin-bottom:1.4rem;display:flex;align-items:center;gap:.9rem;
+  }
+  .eyebrow::after{content:"";height:1px;flex:1;max-width:120px;background:var(--line)}
+  h1{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.02;font-weight:600;letter-spacing:-.01em;color:var(--navy)}
+  h2{font-size:clamp(1.7rem,3.8vw,2.7rem);line-height:1.08;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;color:var(--navy)}
+  h3{font-size:1.15rem;font-weight:700;color:var(--gold);margin-bottom:.5rem}
+  p{font-size:clamp(1rem,1.6vw,1.22rem);line-height:1.55;color:rgba(18,35,58,.88)}
+  .lead{font-size:clamp(1.15rem,2vw,1.5rem);color:var(--ink)}
+  .muted{color:var(--muted)}
+  .accent{color:var(--gold)}
+  .wine{color:#8C3A3A;font-weight:600}
+  strong{color:var(--navy);font-weight:700}
+
+  /* cover */
+  .cover h1{margin:.4rem 0 1.6rem}
+  .cover .x{color:var(--bronze);font-style:italic;font-weight:400}
+  .cover-sub{font-size:clamp(1.05rem,1.9vw,1.4rem);color:var(--ink);max-width:58ch;margin-bottom:2.4rem}
+  .brandline{font-family:var(--sans);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);padding-top:1.1rem;display:inline-block}
+
+  /* grids */
+  .grid{display:grid;gap:.85rem;margin-top:1.1rem}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .card{
+    background:#F7F5F0;border:1px solid var(--line);border-radius:3px;
+    padding:1.05rem 1.15rem;
+  }
+  .card h3{margin-bottom:.4rem}
+  .card p{font-size:.98rem;line-height:1.5;color:rgba(18,35,58,.78)}
+  .card.hl{border-color:var(--gold);background:rgba(154,111,31,.08)}
+  .card.team-wide{grid-column:1 / -1;display:grid;grid-template-columns:.85fr 1.6fr;gap:1.6rem;align-items:center}
+  .card.team-wide h3{margin-bottom:0}
+  .card.team-wide p{font-size:.98rem}
+  @media(max-width:760px){.card.team-wide{grid-template-columns:1fr;gap:.6rem}}
+  .card.sm{padding:1rem 1.05rem}
+  .card.sm h3{font-size:1rem;margin-bottom:.35rem}
+  .card.sm p{font-size:.84rem;line-height:1.38}
+  .tier-own{font-family:var(--sans);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.5rem}
+  .card.hl .tier-own{color:var(--gold)}
+  .sublabel{font-family:var(--sans);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bronze);margin:1.4rem 0 .2rem}
+  .translabel{font-family:var(--serif);font-size:clamp(1.05rem,1.7vw,1.35rem);font-weight:600;color:var(--gold);margin:1.5rem 0 .3rem;display:flex;align-items:center;gap:.9rem}
+  .translabel::after{content:"";height:1px;flex:1;background:var(--line)}
+  .subhead{font-family:var(--sans);font-size:.95rem;color:var(--gold);margin-top:.6rem;letter-spacing:.01em;font-weight:600}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:1.2rem}
+  .stats.stats-5{grid-template-columns:repeat(5,1fr)}
+  .stat .n{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:var(--navy);line-height:1}
+  .stat .l{font-family:var(--sans);font-size:.75rem;letter-spacing:.03em;color:var(--muted);margin-top:.5rem;line-height:1.32}
+
+  /* table */
+  .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:1.4rem}
+  .tscroll.compact table th,.tscroll.compact table td{padding:.32rem .6rem}
+  .tscroll.compact table{font-size:.68rem}
+  .tscroll table{margin-top:0;min-width:560px}
+  table{width:100%;border-collapse:collapse;margin-top:1.4rem;font-size:.96rem}
+  th,td{text-align:left;padding:.7rem 1rem;border-bottom:1px solid rgba(10,37,64,.14);vertical-align:top}
+  th{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  td{color:rgba(18,35,58,.85)}
+  tr.us td{background:rgba(154,111,31,.06)}
+  tr.us td:first-child{color:var(--gold);font-weight:700;font-family:var(--serif)}
+  .td-strong{color:var(--navy);font-weight:700}
+
+  /* statement (tesis block) */
+  .tesis{margin-top:1.4rem;border-left:2px solid var(--gold);padding-left:1.2rem}
+  .tesis .big{font-size:clamp(1.2rem,2.2vw,1.6rem);color:var(--navy);font-weight:600;line-height:1.2}
+  .tesis .sub{font-size:1rem;color:rgba(18,35,58,.78);margin-top:.5rem;max-width:64ch}
+
+  /* ask */
+  .ask{background:#F7F5F0}
+  .ask ol{margin:1.4rem 0 0;padding-left:0;list-style:none;counter-reset:a}
+  .ask li{counter-increment:a;position:relative;padding:.7rem 0 .7rem 3rem;border-bottom:1px solid var(--line);font-size:1.02rem;color:var(--ink);max-width:74ch;line-height:1.45}
+  .ask li::before{content:counter(a);position:absolute;left:0;top:.7rem;font-family:var(--sans);font-size:.85rem;font-weight:700;color:#fff;background:var(--navy);width:1.6rem;height:1.6rem;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .closing{margin-top:1.6rem;font-style:italic;font-size:clamp(1.05rem,1.9vw,1.35rem);color:var(--gold);max-width:60ch}
+
+  /* nav dots */
+  .dots{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;gap:9px}
+  .dots button{width:9px;height:9px;border-radius:50%;border:1px solid var(--navy);background:transparent;cursor:pointer;padding:0;transition:.25s}
+  .dots button.active{background:var(--navy);border-color:var(--navy);transform:scale(1.25)}
+  .pageno{position:fixed;left:24px;bottom:20px;font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;color:var(--muted);z-index:20}
+  .conf{position:fixed;right:24px;bottom:20px;font-family:var(--sans);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(18,35,58,.4);z-index:20}
+
+  .note{font-family:var(--sans);font-size:.78rem;color:var(--muted);margin-top:1.2rem;letter-spacing:.01em}
+
+  /* module divider */
+  .divider{background:#F7F5F0;text-align:left}
+  .modnum{font-family:var(--sans);font-size:clamp(4rem,14vw,9rem);font-weight:800;line-height:.9;color:transparent;-webkit-text-stroke:1.5px var(--navy);letter-spacing:-.02em}
+  .modkicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--bronze);margin-bottom:.6rem;font-weight:700}
+  .tagline{font-size:clamp(1.6rem,3.4vw,2.6rem);font-weight:600;line-height:1.08;color:var(--navy);margin:1.2rem 0 .5rem}
+  .tagline em{color:var(--gold);font-style:italic}
+  .modindex{font-family:var(--sans);font-size:.82rem;color:var(--muted);margin-top:1rem;line-height:1.9;letter-spacing:.02em}
+  .modindex b{color:var(--gold);font-weight:700}
+
+  /* bulleted option lists (categoría → opciones → acción) */
+  .card .catlabel{font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze);display:block;margin-bottom:.15rem;font-weight:700}
+  .blist{list-style:none;margin:.3rem 0 0;padding:0}
+  .blist li{position:relative;padding:.2rem 0 .2rem .95rem;font-size:.85rem;line-height:1.36;color:rgba(18,35,58,.85)}
+  .blist li::before{content:"";position:absolute;left:0;top:.56rem;width:4px;height:4px;border-radius:50%;background:var(--bronze)}
+  .blist li strong{color:var(--navy);font-weight:700}
+  .action{display:block;font-family:var(--sans);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-top:.65rem;padding-top:.45rem;border-top:1px solid var(--line);font-weight:700}
+
+  /* modelo de inversión */
+  .natag{font-family:var(--sans);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:.18rem .5rem;border:1px solid var(--gold);border-radius:2px;color:var(--gold);display:inline-block;margin-bottom:.4rem;font-weight:700}
+  .natag.pass{color:var(--muted);border-color:rgba(18,35,58,.22)}
+  .alloc{margin-top:1.4rem}
+  .allocrow{display:grid;grid-template-columns:1fr auto;gap:.6rem;align-items:baseline}
+  .allocrow .lbl{font-size:.95rem;color:rgba(18,35,58,.9)}
+  .allocrow .pct{font-family:var(--sans);color:var(--gold);font-weight:700;font-size:.95rem}
+  .track{height:6px;background:rgba(10,37,64,.08);border-radius:2px;overflow:hidden;margin:.3rem 0 1rem}
+  .fill{height:100%;background:linear-gradient(90deg,var(--bronze),var(--gold-fill))}
+  .flag{border-left:2px solid var(--wine);background:rgba(140,58,58,.08);padding:.8rem 1rem;margin-top:1.2rem;border-radius:2px}
+  .flag p{font-family:var(--sans);font-size:.8rem;line-height:1.45;color:rgba(18,35,58,.85);max-width:none}
+
+  @media(max-width:760px){
+    .slide{padding:7vh 8vw;min-height:auto;padding-top:12vh;padding-bottom:12vh}
+    .g2,.g3,.g4,.stats,.stats.stats-5{grid-template-columns:1fr 1fr}
+    .dots{display:none}
+    .pageno,.conf{display:none}
+    table{min-width:480px}
+  }
+  @media(max-width:560px){
+    .slide{padding:10vh 6vw}
+    .g2,.g3,.g4,.stats,.stats.stats-5{grid-template-columns:1fr}
+    .card.team-wide{grid-template-columns:1fr}
+    h1{font-size:clamp(2rem,9vw,3rem)}
+    .stat .n{font-size:clamp(1.3rem,6vw,2rem)}
+    .ask li{padding-left:2.6rem}
+    .brandline{letter-spacing:.12em}
+  }
+  @media(max-width:400px){
+    .slide{padding:9vh 5vw}
+    h2{font-size:clamp(1.4rem,7vw,2rem)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .deck{scroll-behavior:auto}
+  }
+
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <!-- 1 · COVER -->
+  <section class="slide cover">
+    <div class="wrap">
+      <div class="eyebrow">Diners Club Internacional y Ediciones Gamma</div>
+      <h1 style="font-size:clamp(1.7rem,4.6vw,3.4rem)">Recuperando el territorio:<br><strong style="color:var(--gold)">Interesting Life.</strong></h1>
+      <p class="cover-sub">Relanzamiento de marca y estrategia de posicionamiento mediante programa de beneficios que articula estatus y pertenencia a través del ecosistema de Ediciones Gamma.</p>
+      <span class="brandline">Diners Club International · Ediciones Gamma 2026</span>
+    </div>
+  </section>
+
+  <!-- 2 · AUDIENCIA ACTUAL DCI COLOMBIA -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Diagnóstico · Portafolio Actual</div>
+      <h2 style="font-size:clamp(1.4rem,3vw,2.1rem)">Quién es hoy el tarjetahabiente DCI.</h2>
+      <p style="font-size:.95rem;max-width:70ch;margin-bottom:1.2rem;color:var(--ink)">No es un perfil joven ni aspiracional enfocado en modas pasajeras, sino un consumidor maduro que usa la tarjeta por costumbre histórica, pero que requiere estímulos renovados para mantenerla en el primer lugar de su billetera (Top of Wallet).</p>
+      <div class="stats" style="margin-top:.6rem">
+        <div class="stat"><div class="n">169K</div><div class="l">universo exclusivo y de nicho</div></div>
+        <div class="stat"><div class="n">89%</div><div class="l">Blue · producto de entrada</div></div>
+        <div class="stat"><div class="n">11%</div><div class="l">Black · 18.4K tarjetahabientes</div></div>
+        <div class="stat"><div class="n">45+</div><div class="l">edad promedio, mayor bloque 51+</div></div>
+      </div>
+      <div class="grid g2" style="margin-top:1rem">
+        <div class="card hl">
+          <span class="tier-own">Arquetipo: El Cliente de Valor Senior</span>
+          <ul class="blist">
+            <li><strong>Perfil:</strong> Directivo senior, empresario o profesional consolidado. Relación de años con Davivienda.</li>
+            <li><strong>Vínculo:</strong> Mantiene relación bancaria de años (o décadas). Concibe la tarjeta como parte del paquete integral de servicios.</li>
+            <li><strong>Comportamiento:</strong> Uso inercial. Cargos automáticos. Ausencia de entusiasmo hacia marca.</li>
+            <li><strong>Fricción:</strong> Compara constantemente con Visa/Mastercard. Percibe mayor aceptabilidad, lounges con menor fricción y beneficios más visibles.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tier-own">Consumo y Decisión</span>
+          <ul class="blist">
+            <li><strong>Categorías:</strong> Viajes, restaurantes premium, supermercados select, salud, tecnología de gama alta.</li>
+            <li><strong>Estilo:</strong> Pragmático. Servicio impecable, beneficios claros, cero complejidad.</li>
+            <li><strong>Capacidad:</strong> Liquidez alta, riesgo crediticio bajo. Sobra capital, falta motivación.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="flag" style="margin-top:.7rem">
+        <p><strong>Activo de altísimo valor y bajo riesgo.</strong> La brecha no es capacidad de gasto sino ausencia de motivos diferenciadores en punto de pago.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · POSICIONAMIENTO ESTRATÉGICO -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Estrategia de Relanzamiento</div>
+      <h2 style="font-size:clamp(1.5rem,3.2vw,2.3rem);line-height:1.1">Diners Club reclama su territorio en Experiencias:<br><em style="color:var(--gold);font-style:italic">Interesting Life</em></h2>
+      <p style="font-size:.92rem;max-width:none;margin-top:1rem;margin-bottom:1.2rem">Visa y Mastercard compiten por ubicuidad: mismo descuento, mismo comercio, opción por defecto. Diners invierte en la estrategia inversa — abrir puertas inaccesibles para la ubicuidad. Interesting Life es el territorio donde esa diferencia se materializa.</p>
+      <div class="grid g2" style="margin-top:.9rem">
+        <div class="card hl">
+          <h3>1 · Relanzamiento de Marca DCI</h3>
+          <p style="font-size:.86rem;max-width:none">Construir Lifetime Value (qué justifica pertenencia) versus transaccionalidad de descuento. Decisión que separa marca de posicionamiento de marca transaccional.</p>
+          <ul class="blist" style="margin-top:.5rem">
+            <li>Definición de audiencia</li>
+            <li>Estrategia de alcance y territorio</li>
+          </ul>
+        </div>
+        <div class="card hl">
+          <h3>2 · Posicionamiento de Beneficios DCI</h3>
+          <p style="font-size:.86rem;max-width:none">AON convierte beneficio en activo de fidelización, no costo de retención. OBI convierte pago con tarjeta en señal social visible.</p>
+          <ul class="blist" style="margin-top:.5rem">
+            <li>Beneficios AON</li>
+            <li>Experiencias Only by Invite</li>
+            <li>Patrocinios</li>
+          </ul>
+        </div>
+      </div>
+      <div class="modindex" style="margin-top:1rem">Dos frentes complementarios detallados en módulos siguientes.</div>
+    </div>
+  </section>
+
+  <!-- 4 · AUDIENCIAS OBJETIVO -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 1 · Estrategia de Relanzamiento</div>
+      <h2 style="font-size:clamp(1.3rem,2.6vw,1.9rem)">A quién le hablamos.</h2>
+      <p class="subhead" style="margin-top:0">Tres arquetipos dentro del portafolio actual. Misma tarjeta, motivaciones distintas.</p>
+      <div class="grid g3" style="margin-top:.6rem">
+        <div class="card sm hl">
+          <span class="catlabel">Consumidor Estratégico · Black 11%</span>
+          <p style="font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:.3rem">El cliente de alto patrimonio que busca que el mundo se adapte a él, no al revés.</p>
+          <ul class="blist">
+            <li><strong>Perfil:</strong> 45–55 años. Alta gerencia, socios de firmas o empresarios consolidados. Poder adquisitivo extremo, alta liquidez.</li>
+            <li><strong>Contexto Vital:</strong> Vida financiera resuelta. Su activo más valioso no es dinero, es tiempo. Busca confort absoluto, estatus discreto y optimización en cada interacción.</li>
+            <li><strong>Consumo:</strong> Tiquetes ejecutivos, hoteles premium, fine dining, seguros internacionales, golf/clubes privados.</li>
+            <li><strong>Afinidades:</strong> Avianca LifeMiles, Marriott Bonvoy, Rolex, BMW. Portafolio, La República, The Economist, LinkedIn, círculo cerrado de pares.</li>
+            <li><strong>Reto Diners:</strong> Tiene por estatus, riesgo de preferir Mastercard Black o Visa Infinite. Oportunidad = superioridad en trato VIP, zero fricción.</li>
+          </ul>
+        </div>
+        <div class="card sm">
+          <span class="catlabel">El Tradicional Leal · Blue 51+</span>
+          <p style="font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:.3rem">El motor transaccional silencioso. Usa la tarjeta por inercia y lealtad institucional.</p>
+          <ul class="blist">
+            <li><strong>Perfil:</strong> 51+ años. Pensionados altos ingresos, propietarios negocios tradicionales o profesionales larga trayectoria.</li>
+            <li><strong>Contexto Vital:</strong> Enfocados en familia, disfrute de legado, viajes planificados, rutinas establecidas. Valoran estabilidad.</li>
+            <li><strong>Consumo:</strong> Carulla, Éxito Wow, salud, clubes sociales, farmacias, restaurantes tradicionales fin de semana.</li>
+            <li><strong>Afinidades:</strong> Marcas de toda la vida, TV tradicional, cadenas WhatsApp, prensa impresa/digital, Facebook.</li>
+            <li><strong>Reto Diners:</strong> Uso pasivo. Riesgo = dejarla solo para débitos automáticos. Oportunidad = anclarla a cotidianidad (supermercados, farmacias) para volumen constante.</li>
+          </ul>
+        </div>
+        <div class="card sm">
+          <span class="catlabel">Consumidor de Valor Activo · Blue 45–50</span>
+          <p style="font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:.3rem">El cliente hiper-racional. Tiene nivel de gasto para ser Black, atrapado en Blue.</p>
+          <ul class="blist">
+            <li><strong>Perfil:</strong> 45–50 años. Directores de área, gerentes medios-altos, profesionales independientes exitosos.</li>
+            <li><strong>Contexto Vital:</strong> Pico productivo. Equilibra carga laboral pesada con vida familiar (hijos adolescentes/universitarios).</li>
+            <li><strong>Consumo:</strong> Alto gasto hogar, colegios/universidades, tecnología gama alta, plataformas digitales, restaurantes tendencia fin de semana.</li>
+            <li><strong>Afinidades:</strong> Apple, Netflix, Spotify, Amazon. LinkedIn, El Tiempo, Instagram, boletines del banco si prometen valor.</li>
+            <li><strong>Reto Diners:</strong> Segmento crítico. Análisis costo/beneficio vs Visa/MC. Oportunidad = Upgrade a Black, mostrando que ya ganó derecho a mejores beneficios.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · ECOSISTEMA GAMMA -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Ecosistema y Máquina de Marketing</div>
+      <h2>Todo un ecosistema listo para co-crear.</h2>
+      <p style="font-size:.82rem;max-width:none">Costo más alto en marketing premium no es medio sino construcción de credibilidad desde cero. Gamma posee afinidad real, inaccesible a replicación corto plazo.</p>
+      <div class="grid g4" style="margin-top:.6rem">
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Impreso</h3><p style="font-size:.78rem">Revista mensual. Secciones especiales y formatos doble página alto impacto.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Web + Display</h3><p style="font-size:.78rem">revistadiners.com.co. Contenido editorial y formatos digitales premium.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Redes</h3><p style="font-size:.78rem">Instagram, Facebook, TikTok, LinkedIn. Multiplataforma segmento premium.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Newsletters</h3><p style="font-size:.78rem">La Mesa de Diners y envíos segmentados. Open rate sobre benchmark editorial.</p></div>
+      </div>
+      <div class="translabel" style="margin:.9rem 0 .2rem">Formatos Transmedia</div>
+      <div class="grid g4" style="margin-top:.2rem">
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">La Mesa de Diners</h3><p style="font-size:.78rem">Podcast gastronomía, arte, vida contemporánea. Spotify, YouTube, IG, TikTok.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Historias Diners</h3><p style="font-size:.78rem">Narrativa de marca en micro-documentales. IG, web, newsletter.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Diners Recomienda</h3><p style="font-size:.78rem">Curaduría estacional ligada a beneficio canjeable. Video, revista, edición coleccionable.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Interesting Life</h3><p style="font-size:.78rem">Paraguas experiencial. Eventos y gastronomía de autor pagando con tarjeta, todos canales.</p></div>
+      </div>
+      <div class="translabel" style="margin:.9rem 0 .2rem">CRM / Inbound</div>
+      <div class="grid g2" style="margin-top:.2rem">
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Prospección y Activación</h3><p style="font-size:.78rem">Journeys de activación, prospección calificada, scoring tarjetahabientes.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Mensajería Directa</h3><p style="font-size:.78rem">WhatsApp y Messenger 1:1. Recordatorios, soporte, conversión.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · REVISTA DINERS -->
+  <section class="slide" style="padding-top:4vh;padding-bottom:4vh">
+    <div class="wrap" style="max-width:1180px">
+      <div class="eyebrow">Autoridad Editorial · Media Kit</div>
+      <h2 style="font-size:clamp(1.3rem,2.6vw,1.9rem);margin-bottom:.4rem">Revista Diners: El escenario natural para generar afinidad.</h2>
+      <div class="grid g3" style="align-items:start">
+        <div class="card hl">
+          <span class="tier-own">Revista Diners · 12 ediciones/año</span>
+          <p style="font-size:.82rem">Conexión natural con audiencias alto perfil interesadas en gastronomía, viajes, cultura, estilo de vida en entorno premium de estándar visual alto.</p>
+          <p style="font-size:.78rem;margin-top:.5rem"><strong style="color:var(--navy)">Curaduría profunda:</strong> cada crónica es validación editorial que fortalece credibilidad de marcas.</p>
+        </div>
+        <div class="card">
+          <span class="tier-own">Perfil de Audiencia</span>
+          <ul class="blist">
+            <li>Sibaritas y viajeros</li>
+            <li>Consumidores lujo, moda premium, vehículos gama alta, productos exclusivos</li>
+            <li>Líderes de opinión, vanguardia cultural</li>
+          </ul>
+        </div>
+        <div class="card hl">
+          <span class="tier-own">Alcance Multiplataforma Mensual</span>
+          <div style="font-size:1.7rem;font-weight:700;color:var(--navy);line-height:1;margin:.3rem 0 .1rem">+1.133.000</div>
+          <p class="muted" style="font-size:.68rem;letter-spacing:.03em;text-transform:uppercase;margin-bottom:0">Comunidad cautiva calificada</p>
+        </div>
+      </div>
+
+      <div class="translabel" style="margin:1rem 0 .2rem;font-size:.9rem">Demografía del Lector</div>
+      <div class="grid g4" style="margin-top:.2rem">
+        <div class="card sm" style="padding:.6rem .75rem"><span class="catlabel">Género</span><ul class="blist"><li>Mujeres 54%</li><li>Hombres 46%</li></ul></div>
+        <div class="card sm" style="padding:.6rem .75rem"><span class="catlabel">Edad</span><ul class="blist"><li>20–30: 15%</li><li>31–40: 24%</li><li>41–60: 39%</li><li>60+: 22%</li></ul></div>
+        <div class="card sm" style="padding:.6rem .75rem"><span class="catlabel">NSE</span><ul class="blist"><li>Alto 45%</li><li>Medio-Alto 39%</li><li>Medio 16%</li></ul></div>
+        <div class="card sm" style="padding:.6rem .75rem"><span class="catlabel">Distribución</span><ul class="blist"><li>Bogotá/C·marca 55%</li><li>Antioquia 12%</li><li>Costa Caribe 10%</li><li>Otros 23%</li></ul></div>
+      </div>
+
+      <div class="translabel" style="margin:1rem 0 .2rem;font-size:.9rem">Alcance por Canal</div>
+      <div class="grid g4" style="margin-top:.2rem">
+        <div class="card sm" style="padding:.6rem .75rem"><span class="catlabel">Revista Impresa</span><div style="font-size:1.15rem;font-weight:700;color:var(--navy)">+146.000</div><p style="font-size:.72rem;margin-top:.1rem" class="muted">Ejemplares · 90% suscriptores activos</p></div>
+        <div class="card sm" style="padding:.6rem .75rem"><span class="catlabel">Página Web</span><div style="font-size:1.15rem;font-weight:700;color:var(--navy)">+737.000</div><p style="font-size:.72rem;margin-top:.1rem" class="muted">Usuarios únicos · 941.000 páginas vistas</p></div>
+        <div class="card sm" style="padding:.6rem .75rem"><span class="catlabel">Redes Sociales</span><div style="font-size:1.15rem;font-weight:700;color:var(--navy)">+210.000</div><p style="font-size:.72rem;margin-top:.1rem" class="muted">Seguidores · 6,78% engagement IG</p></div>
+        <div class="card sm" style="padding:.6rem .75rem"><span class="catlabel">Newsletter</span><div style="font-size:1.15rem;font-weight:700;color:var(--navy)">+40.000</div><p style="font-size:.72rem;margin-top:.1rem" class="muted">Contactos · 31,8% apertura · 3,6% CTR</p></div>
+      </div>
+
+      <div class="flag" style="margin-top:.7rem">
+        <p><strong>Presencia activa en eventos, ferias y experiencias en Colombia.</strong> Nivel de influencia capaz de transformar recomendaciones en reservas inmediatas, tráfico físico y ventas directas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · ESTRATEGIA DE ACTIVACIÓN POR CANAL -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 1 · Estrategia de Relanzamiento GAMMA + Externos</div>
+      <h2>Estrategia 360 de activación por canal.</h2>
+      <p class="subhead">Cada canal con su objetivo: contenido orgánico, presencia física, tráfico digital, relación directa.</p>
+      <div class="grid g3" style="margin-bottom:1rem">
+        <div class="card">
+          <span class="catlabel">Editorial Premium</span><h3>Revista Diners + AXXIS</h3>
+          <ul class="blist" style="font-size:.8rem">
+            <li>Valida marca en entorno de máxima credibilidad</li>
+            <li>Lector busca experiencias curadas, no descuentos</li>
+          </ul>
+          <span class="action">Objetivo → posicionamiento editorial</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Digital + Display</span><h3>Web Diners y Axxis</h3>
+          <ul class="blist" style="font-size:.8rem">
+            <li>Capta intención de compra en usuario ya interesado</li>
+            <li>Hub de conversión en entorno aspiracional</li>
+          </ul>
+          <span class="action">Objetivo → tráfico cualificado</span>
+        </div>
+        <div class="card hl">
+          <span class="catlabel">Redes Sociales</span><h3>Instagram, Facebook, YouTube, TikTok</h3>
+          <ul class="blist" style="font-size:.8rem">
+            <li>Amplifica Interesting Life en rutina digital</li>
+            <li>Genera social proof y estatus visible</li>
+          </ul>
+          <span class="action">Objetivo → alcance transmedia</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">CRM + Proximidad</span><h3>Activación 1:1 y Presencia Física</h3>
+          <ul class="blist" style="font-size:.8rem">
+            <li>Anticipa necesidades en momentos de decisión</li>
+            <li>Relación personalizada vs transaccional</li>
+          </ul>
+          <span class="action">Objetivo → retención + punto de decisión</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Exterior ATL</span><h3>Vallas y Dominación</h3>
+          <ul class="blist" style="font-size:.8rem">
+            <li>Omnipresencia en corredores premium</li>
+            <li>Comunica solvencia, éxito y permanencia</li>
+          </ul>
+          <span class="action">Objetivo → densidad premium</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Aeropuertos &amp; Travel</span><h3>Salas VIP y Circuitos Priority</h3>
+          <ul class="blist" style="font-size:.8rem">
+            <li>Momento de máxima apertura a exclusividad</li>
+            <li>Resuelve estrés del viaje premium</li>
+          </ul>
+          <span class="action">Objetivo → presencia en viaje</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 · PERTENECER, EXCLUSIVIDAD, ESTATUS -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 2 · Posicionamiento de Beneficios y Experiencias</div>
+      <h2>Pertenecer, Exclusividad y Estatus.</h2>
+      <p class="subhead" style="margin-top:0"><strong>AON</strong> = pertenencia constante vía descuentos activos · <strong>OBI</strong> = insignia de estatus de quienes acceden · <strong>Patrocinios</strong> refuerzan ambos pilares.</p>
+      <div class="grid g3" style="margin-top:.6rem">
+        <div class="card">
+          <span class="catlabel">Pertenecer</span><h3>AON — Always On</h3>
+          <ul class="blist">
+            <li>Descuentos especiales en categorías seleccionadas</li>
+            <li>Descuentos adicionales por pagos con tarjeta DCI</li>
+            <li>Early access en productos de aliados</li>
+          </ul>
+        </div>
+        <div class="card hl">
+          <span class="catlabel">Exclusividad</span><h3>OBI, Pop-ups &amp; Experiencias Efímeras</h3>
+          <ul class="blist">
+            <li>Formato insignia de "Interesting Life", replicable ciudad por ciudad</li>
+            <li>Cenas privadas con chef's table y menús de degustación ocultos</li>
+            <li>Catas privadas y maridajes de autor por temporada</li>
+            <li>Pop-ups gastronómicos privados</li>
+            <li>"Joyas ocultas" locales activadas por temporada</li>
+            <li>Experiencias curadas tipo boutique</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="catlabel">Estatus</span><h3>Patrocinios</h3>
+          <ul class="blist">
+            <li>Activaciones de marca en salas VIP de aeropuerto y espacios priority</li>
+            <li>Alianzas con hoteles boutique y clubes sociales</li>
+            <li>Torneos de golf en clubes campestres; polo y ecuestre</li>
+            <li>Ferias de arte de referencia (tipo ARTBO) y subastas</li>
+            <li>Festivales gastronómicos top con presencia curada</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 · LOS EXPERTOS DETRÁS DE LA ESTRATEGIA -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Somos Ediciones Gamma</div>
+      <h2>Los expertos detrás de la estrategia.</h2>
+      <p style="font-size:.92rem;max-width:none">Editorial de Banco Davivienda y Grupo Bolívar. 15+ años construyendo audiencias de alto valor con contenido, beneficios, alianzas y experiencias. Base que se canaliza al servicio de Diners Club.</p>
+      <div class="grid g3" style="margin-top:.85rem">
+        <div class="card hl" style="padding:.8rem 1rem"><span class="tier-own">Ediciones Gamma</span><h3 style="font-size:1rem">Ecosistema y Máquina Marketing</h3><p style="font-size:.85rem">Un solo motor transmedia y multiformato: revistas, web, podcast, video, redes, pauta, newsletter, mensajería, CRM, experiencias y alianzas.</p></div>
+        <div class="card" style="padding:.8rem 1rem"><span class="tier-own">Revista Diners</span><h3 style="font-size:1rem">La Brújula del Estilo de Vida y el Buen Vivir</h3><p style="font-size:.85rem">Marca con autoridad editorial y comunidad propia en cultura, gastronomía, viajes y arte. Escenario natural para generar afinidad.</p></div>
+        <div class="card" style="padding:.8rem 1rem"><span class="tier-own">Revista AXXIS</span><h3 style="font-size:1rem">Vanguardia en Arquitectura y Diseño</h3><p style="font-size:.85rem">Medio líder en Colombia en arquitectura, diseño y decoración. Mirada curada que inspira a quienes valoran el buen diseño.</p></div>
+        <div class="card team-wide" style="padding:.8rem 1rem"><div><span class="tier-own">Equipo Multidisciplinario Experto</span><h3 style="font-size:1rem">Mente Editorial + Marketing Estratégico + Gestión en Ejecución + Herramientas Tecnológicas</h3></div><p style="font-size:.85rem">Periodistas, hubs creativos y tecnológico, estrategas de marketing, personal administrativo-logístico y de soporte, gestores de alianzas que convierten los objetivos de negocio en historias, experiencias y activaciones.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 · ROADMAP & ESTRUCTURA DE EJECUCIÓN -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Roadmap</div>
+      <h2>Plan de acción y estructura de ejecución.</h2>
+      <div class="grid g3">
+        <div class="card hl">
+          <span class="catlabel">Paso 1</span><h3>Alcance de Interesting Life</h3>
+          <ul class="blist">
+            <li>Definición del stack de beneficios: AON + OBI + Patrocinios</li>
+            <li>Dirección estratégica y territorio de marca</li>
+            <li>Arquitectura de beneficios y diseño del programa</li>
+          </ul>
+          <span class="action">Modelo → Fee de proyecto o retainer mensual</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Paso 2</span><h3>Aprobación de Estructura</h3>
+          <ul class="blist">
+            <li>Claridad contractual: qué es honorario Gamma, qué es medio propio, qué es inversión terceros</li>
+            <li>Definición de presupuesto</li>
+            <li>Project management, curaduría y consecución de aliados</li>
+          </ul>
+          <span class="action">Modelo → Fee mensual de operación + variable por volumen</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Paso 3</span><h3>Puesta en Marcha de Acciones</h3>
+          <ul class="blist">
+            <li>Pauta y branded content en revistas, web, redes, newsletter, podcast</li>
+            <li>Activaciones en centros comerciales, aeropuertos, eventos y aliados</li>
+            <li>Ejecución, operación y administración del programa</li>
+          </ul>
+          <span class="action">Modelo → Tarifario + inversión directa o gestionada con fee admin</span>
+        </div>
+      </div>
+      <div class="flag" style="margin-top:.8rem;padding:.5rem .8rem">
+        <p style="font-size:.7rem"><strong>Operación interna Gamma:</strong> Producción editorial, contenidos y experiencias · Plataforma de beneficios, servicio y reportería · Experiencias OBI · Planeación de medios, medición y gobierno del proyecto.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · ESQUEMA 360 GAMMA -->
+  <section class="slide" style="padding-top:4vh;padding-bottom:4vh">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 3 · Equipo y Recursos</div>
+      <h2 style="font-size:clamp(1.3rem,2.6vw,1.9rem);margin-bottom:.2rem">Esquema 360 del ecosistema Gamma.</h2>
+      <p class="subhead" style="margin-bottom:.3rem;margin-top:0">Roles, dedicación y herramientas para operar estrategia dentro de Ediciones Gamma — estratégico, creativo, marketing, tecnológico, administrativo-logístico y soporte.</p>
+      <div class="tscroll compact">
+      <table style="margin-top:0">
+        <thead>
+          <tr><th>Rol</th><th>Frente</th><th>Dedicación</th><th>Horas/mes</th><th>Herramientas</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-strong" colspan="5" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Estratégico</td></tr>
+          <tr class="us"><td>Director(a) de Estrategia · Growth Manager</td><td>Estrategia</td><td>Parcial (retainer)</td><td>110</td><td>—</td></tr>
+          <tr><td class="td-strong" colspan="5" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Especialistas &amp; Coordinadores</td></tr>
+          <tr class="us"><td>Project Manager (PM)</td><td>Gestión de proyecto</td><td>Tiempo completo</td><td>220</td><td>—</td></tr>
+          <tr class="us"><td>Coordinador(a) de Alianzas</td><td>Vinculación de aliados</td><td>Tiempo completo</td><td>220</td><td>Plataforma Beneficios + HubSpot</td></tr>
+          <tr class="us"><td>Coordinador(a) Administrativo y Facturación</td><td>Administrativo</td><td>Parcial</td><td>110</td><td>—</td></tr>
+          <tr class="us"><td>Editor de Contenido (periodista)</td><td>Editorial</td><td>Parcial</td><td>110</td><td>—</td></tr>
+          <tr class="us"><td>Estratega de Marketing</td><td>Marketing</td><td>Parcial</td><td>110</td><td>—</td></tr>
+          <tr><td class="td-strong" colspan="5" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Operativos</td></tr>
+          <tr class="us"><td>Diseñador(a) Gráfico</td><td>Diseño</td><td>Parcial</td><td>110</td><td>Suite Adobe</td></tr>
+          <tr class="us"><td>Community Manager</td><td>Redes sociales</td><td>Tiempo completo</td><td>220</td><td>Metricool</td></tr>
+          <tr class="us"><td>Administrador(a) de Pauta</td><td>Pauta</td><td>Parcial</td><td>110</td><td>—</td></tr>
+          <tr class="us"><td>Administrador(a) Plataforma Beneficios · Web Master</td><td>Tecnológico</td><td>Tiempo completo</td><td>220</td><td>Elementor + SEMrush</td></tr>
+          <tr class="us"><td>Videógrafo(a)</td><td>Contenido audiovisual</td><td>Parcial</td><td>110</td><td>—</td></tr>
+          <tr><td class="td-strong" colspan="5" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Soporte &amp; Servicio al Cliente</td></tr>
+          <tr class="us"><td>Agente de Servicio al Cliente</td><td>Beneficiarios</td><td>Tiempo completo</td><td>220</td><td>HubSpot</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="flag" style="margin-top:.4rem;padding:.5rem .8rem">
+        <p style="font-size:.68rem"><strong>Solo equipo interno de Ediciones Gamma.</strong> Próxima fase: esquema de recursos y costos con aliados y proveedores externos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 · PRESUPUESTO ECOSISTEMA GAMMA -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 3 · Desglose Detallado (1 de 4)</div>
+      <h2 style="font-size:clamp(1.3rem,2.6vw,1.8rem);margin-bottom:.3rem">Presupuesto Ecosistema Gamma.</h2>
+      <div class="tscroll compact">
+      <table style="margin-top:0">
+        <thead>
+          <tr><th>Acción</th><th>Ubicación</th><th>Frecuencia</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-strong" colspan="3" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Editorial (Impreso)</td></tr>
+          <tr class="us"><td>Publirreportaje 2 páginas ("Interesting Life")</td><td>Revista Diners + AXXIS</td><td>4 ediciones/año</td></tr>
+          <tr class="us"><td>Portada falsa exclusiva suscriptores</td><td>Revista Diners</td><td>1–2 ediciones/año</td></tr>
+          <tr class="us"><td>Cuadernillo / edición especial</td><td>Revista Diners</td><td>1 edición/año</td></tr>
+          <tr class="us"><td>Postales físicas y coleccionables</td><td>Base tarjetahabientes seleccionada</td><td>2 envíos/año</td></tr>
+          <tr><td class="td-strong" colspan="3" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Web y Redes</td></tr>
+          <tr class="us"><td>Web display / branded content</td><td>revistadiners.com.co</td><td>12 meses</td></tr>
+          <tr class="us"><td>Landing dedicada + retargeting</td><td>Digital propio</td><td>12 meses</td></tr>
+          <tr class="us"><td>Contenido co-branded IG/FB</td><td>Redes propias (~98K IG, ~142K FB)</td><td>12 meses</td></tr>
+          <tr><td class="td-strong" colspan="3" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Transmedia</td></tr>
+          <tr class="us"><td>Historias Diners (micro-documental)</td><td>YouTube, TikTok, IG</td><td>Tres videos</td></tr>
+          <tr class="us"><td>Diners Recomienda (video-entrevista)</td><td>YouTube, TikTok, IG</td><td>Por pieza</td></tr>
+          <tr class="us"><td>La Mesa de Diners (podcast)</td><td>Spotify, YouTube, IG, TikTok</td><td>12 meses</td></tr>
+          <tr class="us"><td>Newsletter espacio de marca</td><td>Envíos segmentados (~22,2K)</td><td>12 meses</td></tr>
+          <tr><td class="td-strong" colspan="3" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">CRM / Mensajería</td></tr>
+          <tr class="us"><td>Journeys de activación</td><td>Base actual de tarjetahabientes</td><td>12 meses</td></tr>
+          <tr class="us"><td>WhatsApp / Messenger 1:1</td><td>Mensajería directa</td><td>12 meses</td></tr>
+          <tr><td class="td-strong" colspan="3" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Display</td></tr>
+          <tr class="us"><td>Barra fija + banner vertical</td><td>revistadiners.com.co</td><td>3 meses/año</td></tr>
+          <tr class="us"><td>Billboard + banner vertical</td><td>revistadiners.com.co</td><td>3 meses/año</td></tr>
+          <tr class="us"><td>Toma de la web</td><td>revistadiners.com.co</td><td>3 meses/año</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="flag" style="margin-top:.4rem;padding:.5rem .8rem">
+        <p style="font-size:.68rem"><strong>Tarifa preferencial negociada.</strong> Journeys y WhatsApp/Messenger dependen del volumen de contactos a impactar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 · PATROCINIOS Y EVENTOS -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 3 · Desglose Detallado (2 de 4)</div>
+      <h2 style="font-size:clamp(1.3rem,2.6vw,1.8rem);margin-bottom:.3rem">Patrocinios y Eventos.</h2>
+      <p class="subhead" style="margin-bottom:.3rem;margin-top:0">Valores de mercado, referenciales. PPD = Pendiente Por Definir.</p>
+      <div class="grid g2" style="margin-top:.8rem;margin-bottom:1rem">
+        <div class="card hl">
+          <span class="tier-own">Qué Comunicamos</span>
+          <ul class="blist" style="font-size:.8rem">
+            <li>Brand Management y PR de alto perfil</li>
+            <li>Momento de máxima apertura a exclusividad</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tier-own">Audiencia a Impactar</span>
+          <ul class="blist" style="font-size:.8rem">
+            <li>Consumidor Estratégico (Black) en eventos seleccionados</li>
+            <li>Líderes de opinión y vanguardia cultural</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tscroll compact">
+      <table style="margin-top:0">
+        <thead>
+          <tr><th>Acción</th><th>Ubicación</th><th>Frecuencia</th></tr>
+        </thead>
+        <tbody>
+          <tr class="us"><td>Diners Club Recomienda · sponsor sección editorial</td><td>Revista Diners + AXXIS</td><td>4 ediciones/año</td></tr>
+          <tr class="us"><td>Catas privadas y maridajes de autor</td><td>Ciudad rotativa</td><td>Trimestral</td></tr>
+          <tr class="us"><td>Valet parking patrocinado</td><td>Restaurantes y eventos aliados</td><td>12 meses</td></tr>
+          <tr class="us"><td>Patrocinio suscripciones Revista Diners</td><td>Base de tarjetahabientes</td><td>12 meses</td></tr>
+          <tr class="us"><td>Patrocinio torneo de golf</td><td>Clubes campestres</td><td>1–2 eventos/año</td></tr>
+          <tr class="us"><td>Festival gastronómico</td><td>Festival top nacional</td><td>1 evento/año</td></tr>
+          <tr class="us"><td>Feria de arte (tipo ARTBO / MAMBO)</td><td>Bogotá</td><td>1 evento/año</td></tr>
+          <tr class="us"><td>Alianza hoteles boutique</td><td>Red de hoteles aliados</td><td>12 meses</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="flag" style="margin-top:.4rem;padding:.5rem .8rem">
+        <p style="font-size:.68rem"><strong>Requiere cotizar.</strong> Frecuencias son supuestos de planeación a validar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 · AEROPUERTO E INDOOR -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 3 · Desglose Detallado (3 de 4)</div>
+      <h2 style="font-size:clamp(1.3rem,2.6vw,1.8rem);margin-bottom:.3rem">Aeropuerto e Indoor.</h2>
+      <p class="subhead" style="margin-bottom:.3rem;margin-top:0">Valores de mercado, referenciales. PPD = Pendiente Por Definir.</p>
+      <div class="grid g2" style="margin-top:.8rem;margin-bottom:1rem">
+        <div class="card">
+          <span class="tier-own">Qué Comunicamos</span>
+          <ul class="blist">
+            <li>Acceso VIP y exclusividad</li>
+            <li>Zero fricción en momentos de viaje</li>
+            <li>Beneficios tangibles en punto de uso</li>
+            <li>Pertenencia a élite de viajeros premium</li>
+          </ul>
+        </div>
+        <div class="card hl">
+          <span class="tier-own">Audiencia a Impactar</span>
+          <ul class="blist">
+            <li>Consumidor Estratégico (Black 11%)</li>
+            <li>Profesional Maduro en viajes frecuentes (Blue 45–50)</li>
+            <li>Tradicionalista Leal con viajes anuales (Blue 51+)</li>
+            <li>Viajeros de cabotaje y conexiones internacionales</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tscroll compact">
+      <table style="margin-top:0">
+        <thead>
+          <tr><th>Sección</th><th>Acción</th><th>Ubicación</th><th>Frecuencia</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-strong" colspan="4" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Aeropuerto</td></tr>
+          <tr class="us"><td>Branding</td><td>Branding sala VIP</td><td>El Dorado (nac/int)</td><td>12 meses</td></tr>
+          <tr class="us"><td>Branding</td><td>Branding sala VIP</td><td>José María Córdova</td><td>12 meses</td></tr>
+          <tr class="us"><td>Mangas/Priority</td><td>Mangas de abordaje / priority</td><td>El Dorado + José María Córdova</td><td>12 meses</td></tr>
+          <tr class="us"><td>Pantallas</td><td>Pantallas Llegadas/Nacional</td><td>Circuitos Premium/Gold</td><td>12 meses</td></tr>
+          <tr class="us"><td>Acceso</td><td>Acceso sala VIP tarjetahabiente</td><td>El Dorado + José María Córdova</td><td>Por pase</td></tr>
+          <tr><td class="td-strong" colspan="4" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Indoor</td></tr>
+          <tr class="us"><td>Mupi</td><td>Mupi / pantalla CC</td><td>Andino</td><td>12 meses</td></tr>
+          <tr class="us"><td>Mupi</td><td>Mupi / pantalla CC</td><td>El Retiro</td><td>12 meses</td></tr>
+          <tr class="us"><td>Mupi</td><td>Mupi / pantalla CC</td><td>Fontanar</td><td>12 meses</td></tr>
+          <tr class="us"><td>Branded</td><td>Piezas branded menús/mesas</td><td>Red de restaurantes aliados AON</td><td>12 meses</td></tr>
+          <tr class="us"><td>Señalización</td><td>Señalización valet / parqueaderos</td><td>Restaurantes y eventos aliados</td><td>12 meses</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="flag" style="margin-top:.4rem;padding:.5rem .8rem">
+        <p style="font-size:.68rem"><strong>Requiere cotizar.</strong> Frecuencias son supuestos de planeación a validar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 · EXTERIOR Y DIGITAL EXTERNO -->
+  <section class="slide" style="padding-top:4vh;padding-bottom:4vh">
+    <div class="wrap">
+      <div class="eyebrow" style="margin-bottom:.7rem">Módulo 3 · Desglose Detallado (4 de 4)</div>
+      <h2 style="font-size:clamp(1.2rem,2.4vw,1.6rem);margin-bottom:.2rem">Exterior y Digital Externo.</h2>
+      <p class="subhead" style="margin-bottom:.3rem;margin-top:0">Valores de mercado, referenciales. PPD = Pendiente Por Definir.</p>
+      <div class="grid g2" style="margin-top:.8rem;margin-bottom:1rem">
+        <div class="card hl">
+          <span class="tier-own">Qué Comunicamos</span>
+          <ul class="blist">
+            <li>Omnipresencia de marca en corredores premium</li>
+            <li>Solvencia, éxito y permanencia</li>
+            <li>Estatus diferenciador vs Visa/Mastercard</li>
+            <li>Interesting Life como territorio exclusivo</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tier-own">Audiencia a Impactar</span>
+          <ul class="blist">
+            <li>Consumidor Estratégico (Black) en corredores premium</li>
+            <li>Profesional Maduro (Blue 45–50) en zonas aspiracionales</li>
+            <li>Hogares altos ingresos alcanzados por CTV/OTT</li>
+            <li>Audiencias de lujo, gastronomía y viajes en display</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tscroll compact">
+      <table style="margin-top:0">
+        <thead>
+          <tr><th>Sección</th><th>Acción</th><th>Ubicación</th><th>Frecuencia</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-strong" colspan="4" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Exterior</td></tr>
+          <tr class="us"><td>Valla LED</td><td>Valla gran formato LED</td><td>Zona T, Parque 93, Usaquén (Bogotá)</td><td>12 meses</td></tr>
+          <tr class="us"><td>Valla LED</td><td>Valla premium / LED</td><td>El Poblado, Provenza, Milla de Oro (Medellín)</td><td>12 meses</td></tr>
+          <tr class="us"><td>Valla</td><td>Valla exterior</td><td>Granada, Ciudad Jardín (Cali)</td><td>12 meses</td></tr>
+          <tr class="us"><td>Valla</td><td>Valla exterior</td><td>Zona norte (Barranquilla)</td><td>12 meses</td></tr>
+          <tr class="us"><td>Dominación</td><td>Dominación temporal (lanzamiento)</td><td>3 ciudades, corredor gastronómico</td><td>1 mes</td></tr>
+          <tr><td class="td-strong" colspan="4" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Digital Externo</td></tr>
+          <tr class="us"><td>Programática</td><td>Programática / display</td><td>Audiencias altos ingresos</td><td>12 meses</td></tr>
+          <tr class="us"><td>CTV/OTT</td><td>CTV / OTT segmentado</td><td>Hogares altos ingresos</td><td>12 meses</td></tr>
+          <tr class="us"><td>Cine</td><td>Cine premium (VIP / Gold)</td><td>Salas premium principales ciudades</td><td>12 meses</td></tr>
+          <tr class="us"><td>Influencers</td><td>Influencers / creators</td><td>Gourmet, viajes, negocios</td><td>Por campaña</td></tr>
+          <tr class="us"><td>Search</td><td>Search de marca / intención</td><td>Google / buscadores</td><td>12 meses</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="flag" style="margin-top:.4rem;padding:.5rem .8rem">
+        <p style="font-size:.68rem"><strong>Requiere cotizar.</strong> Frecuencias son supuestos de planeación a validar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 · ARQUITECTURA DE INVERSIÓN -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 3 · Resumen Final</div>
+      <h2>Cómo se reparte la inversión.</h2>
+      <p class="subhead">Rangos indicativos de referencia para relanzamiento premium a 12 meses en Colombia.</p>
+      <div class="alloc">
+        <div class="allocrow"><span class="lbl">4 · Aeropuerto e Indoor</span><span class="pct">Gasto Alto</span></div>
+        <div class="track"><div class="fill" style="width:95%"></div></div>
+
+        <div class="allocrow"><span class="lbl">5 · Exterior y Digital Externo</span><span class="pct">Gasto Medio-Alto</span></div>
+        <div class="track"><div class="fill" style="width:85%"></div></div>
+
+        <div class="allocrow"><span class="lbl">2 · Patrocinios y Eventos</span><span class="pct">Gasto Medio</span></div>
+        <div class="track"><div class="fill" style="width:75%"></div></div>
+
+        <div class="allocrow"><span class="lbl">3 · Ecosistema Gamma (Medio Propio)</span><span class="pct">Gasto Medio</span></div>
+        <div class="track"><div class="fill" style="width:55%"></div></div>
+
+        <div class="allocrow"><span class="lbl">1 · Estrategia y Gestión — Fee Mensual Único</span><span class="pct">Gasto Bajo</span></div>
+        <div class="track"><div class="fill" style="width:50%"></div></div>
+      </div>
+      <div class="flag">
+        <p><strong>Rangos indicativos, no cifras aprobadas.</strong> Referencias de mercado son estimados públicos (no cotizaciones de proveedor) y sirven solo de orden de magnitud. El monto absoluto en COP y el fee de administración sobre terceros se dimensionan con Catalina y Finanzas antes de cualquier presentación externa. La fase 1 concentra ATL y BTL; a partir del mes 5 la inversión rota hacia ecosistema Gamma y always-on.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="dots" id="dots"></div>
+<div class="pageno" id="pageno">01 / 16</div>
+<div class="conf">Confidencial · Ediciones Gamma</div>
+
+<script>
+  const deck=document.getElementById('deck');
+  const slides=[...document.querySelectorAll('.slide')];
+  const dotsWrap=document.getElementById('dots');
+  const pageno=document.getElementById('pageno');
+  const pad=n=>String(n).padStart(2,'0');
+  slides.forEach((s,i)=>{
+    const b=document.createElement('button');
+    b.setAttribute('aria-label','Ir a lámina '+(i+1));
+    b.onclick=()=>slides[i].scrollIntoView();
+    dotsWrap.appendChild(b);
+  });
+  const dots=[...dotsWrap.children];
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const i=slides.indexOf(e.target);
+        dots.forEach((d,j)=>d.classList.toggle('active',j===i));
+        pageno.textContent=pad(i+1)+' / '+pad(slides.length);
+      }
+    });
+  },{root:deck,threshold:.55});
+  slides.forEach(s=>io.observe(s));
+  let idx=0;
+  deck.addEventListener('scroll',()=>{idx=Math.round(deck.scrollTop/window.innerHeight)});
+  window.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'||e.key==='PageDown'){e.preventDefault();slides[Math.min(idx+1,slides.length-1)].scrollIntoView()}
+    if(e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();slides[Math.max(idx-1,0)].scrollIntoView()}
+  });
+</script>
+</body>
+</html>
