@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diners Club International · Relanzamiento 360 Colombia</title>
+<style>
+  :root{
+    --navy:#0A2540; --navy-deep:#061a30; --ink:#12233a;
+    --parchment:#0A2540; --parchment-soft:#12233a;
+    --bronze:#8C6A2E; --gold:#8A6B1F; --gold-fill:#D2A855; --wine:#8C3A3A;
+    --muted:rgba(18,35,58,.62); --line:rgba(10,37,64,.16);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--serif); color:var(--ink);
+    background:#FFFFFF;
+    -webkit-font-smoothing:antialiased;
+  }
+  .deck{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+  .slide{
+    min-height:100vh;scroll-snap-align:start;position:relative;
+    display:flex;flex-direction:column;justify-content:center;
+    padding:6vh 7vw;
+    background:#FFFFFF;
+    border-bottom:1px solid rgba(10,37,64,.1);
+  }
+  .slide::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:
+      radial-gradient(60% 50% at 15% 90%, rgba(140,106,46,.05), transparent 60%),
+      linear-gradient(180deg, rgba(10,37,64,0), rgba(10,37,64,.02));
+  }
+  .wrap{max-width:1040px;margin:0 auto;width:100%;position:relative;z-index:1}
+  .eyebrow{
+    font-family:var(--sans);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--gold);font-weight:700;margin-bottom:1.4rem;display:flex;align-items:center;gap:.9rem;
+  }
+  .eyebrow::after{content:"";height:1px;flex:1;max-width:120px;background:var(--line)}
+  h1{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.02;font-weight:600;letter-spacing:-.01em;color:var(--navy)}
+  h2{font-size:clamp(1.7rem,3.8vw,2.7rem);line-height:1.08;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;color:var(--navy)}
+  h3{font-size:1.15rem;font-weight:700;color:var(--gold);margin-bottom:.5rem}
+  p{font-size:clamp(1rem,1.6vw,1.22rem);line-height:1.55;color:rgba(18,35,58,.88)}
+  .lead{font-size:clamp(1.15rem,2vw,1.5rem);color:var(--ink)}
+  .muted{color:var(--muted)}
+  .accent{color:var(--gold)}
+  .wine{color:#8C3A3A;font-weight:600}
+  strong{color:var(--navy);font-weight:700}
+
+  /* cover */
+  .cover h1{margin:.4rem 0 1.6rem}
+  .cover .x{color:var(--bronze);font-style:italic;font-weight:400}
+  .cover-sub{font-size:clamp(1.05rem,1.9vw,1.4rem);color:var(--ink);max-width:58ch;margin-bottom:2.4rem}
+  .brandline{font-family:var(--sans);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);padding-top:1.1rem;display:inline-block}
+
+  /* grids */
+  .grid{display:grid;gap:.85rem;margin-top:1.1rem}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .card{
+    background:#F7F5F0;border:1px solid var(--line);border-radius:3px;
+    padding:1.05rem 1.15rem;
+  }
+  .card h3{margin-bottom:.4rem}
+  .card p{font-size:.98rem;line-height:1.5;color:rgba(18,35,58,.78)}
+  .card.hl{border-color:var(--gold);background:rgba(154,111,31,.08)}
+  .card.team-wide{grid-column:1 / -1;display:grid;grid-template-columns:.85fr 1.6fr;gap:1.6rem;align-items:center}
+  .card.team-wide h3{margin-bottom:0}
+  .card.team-wide p{font-size:.98rem}
+  @media(max-width:760px){.card.team-wide{grid-template-columns:1fr;gap:.6rem}}
+  .card.sm{padding:1rem 1.05rem}
+  .card.sm h3{font-size:1rem;margin-bottom:.35rem}
+  .card.sm p{font-size:.84rem;line-height:1.38}
+  .tier-own{font-family:var(--sans);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.5rem}
+  .card.hl .tier-own{color:var(--gold)}
+  .sublabel{font-family:var(--sans);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--bronze);margin:1.4rem 0 .2rem}
+  .translabel{font-family:var(--serif);font-size:clamp(1.05rem,1.7vw,1.35rem);font-weight:600;color:var(--gold);margin:1.5rem 0 .3rem;display:flex;align-items:center;gap:.9rem}
+  .translabel::after{content:"";height:1px;flex:1;background:var(--line)}
+  .subhead{font-family:var(--sans);font-size:.95rem;color:var(--gold);margin-top:.6rem;letter-spacing:.01em;font-weight:600}
+
+  /* stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:1.2rem}
+  .stats.stats-5{grid-template-columns:repeat(5,1fr)}
+  .stat .n{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:var(--navy);line-height:1}
+  .stat .l{font-family:var(--sans);font-size:.75rem;letter-spacing:.03em;color:var(--muted);margin-top:.5rem;line-height:1.32}
+
+  /* table */
+  .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:1.4rem}
+  .tscroll.compact table th,.tscroll.compact table td{padding:.32rem .6rem}
+  .tscroll.compact table{font-size:.68rem}
+  .tscroll table{margin-top:0;min-width:560px}
+  table{width:100%;border-collapse:collapse;margin-top:1.4rem;font-size:.96rem}
+  th,td{text-align:left;padding:.7rem 1rem;border-bottom:1px solid rgba(10,37,64,.14);vertical-align:top}
+  th{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  td{color:rgba(18,35,58,.85)}
+  tr.us td{background:rgba(154,111,31,.06)}
+  tr.us td:first-child{color:var(--gold);font-weight:700;font-family:var(--serif)}
+  .td-strong{color:var(--navy);font-weight:700}
+
+  /* statement (tesis block) */
+  .tesis{margin-top:1.4rem;border-left:2px solid var(--gold);padding-left:1.2rem}
+  .tesis .big{font-size:clamp(1.2rem,2.2vw,1.6rem);color:var(--navy);font-weight:600;line-height:1.2}
+  .tesis .sub{font-size:1rem;color:rgba(18,35,58,.78);margin-top:.5rem;max-width:64ch}
+
+  /* ask */
+  .ask{background:#F7F5F0}
+  .ask ol{margin:1.4rem 0 0;padding-left:0;list-style:none;counter-reset:a}
+  .ask li{counter-increment:a;position:relative;padding:.7rem 0 .7rem 3rem;border-bottom:1px solid var(--line);font-size:1.02rem;color:var(--ink);max-width:74ch;line-height:1.45}
+  .ask li::before{content:counter(a);position:absolute;left:0;top:.7rem;font-family:var(--sans);font-size:.85rem;font-weight:700;color:#fff;background:var(--navy);width:1.6rem;height:1.6rem;border-radius:50%;display:flex;align-items:center;justify-content:center}
+  .closing{margin-top:1.6rem;font-style:italic;font-size:clamp(1.05rem,1.9vw,1.35rem);color:var(--gold);max-width:60ch}
+
+  /* nav dots */
+  .dots{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;gap:9px}
+  .dots button{width:9px;height:9px;border-radius:50%;border:1px solid var(--navy);background:transparent;cursor:pointer;padding:0;transition:.25s}
+  .dots button.active{background:var(--navy);border-color:var(--navy);transform:scale(1.25)}
+  .pageno{position:fixed;left:24px;bottom:20px;font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;color:var(--muted);z-index:20}
+  .conf{position:fixed;right:24px;bottom:20px;font-family:var(--sans);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(18,35,58,.4);z-index:20}
+
+  .note{font-family:var(--sans);font-size:.78rem;color:var(--muted);margin-top:1.2rem;letter-spacing:.01em}
+
+  /* module divider */
+  .divider{background:#F7F5F0;text-align:left}
+  .modnum{font-family:var(--sans);font-size:clamp(4rem,14vw,9rem);font-weight:800;line-height:.9;color:transparent;-webkit-text-stroke:1.5px var(--navy);letter-spacing:-.02em}
+  .modkicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--bronze);margin-bottom:.6rem;font-weight:700}
+  .tagline{font-size:clamp(1.6rem,3.4vw,2.6rem);font-weight:600;line-height:1.08;color:var(--navy);margin:1.2rem 0 .5rem}
+  .tagline em{color:var(--gold);font-style:italic}
+  .modindex{font-family:var(--sans);font-size:.82rem;color:var(--muted);margin-top:1rem;line-height:1.9;letter-spacing:.02em}
+  .modindex b{color:var(--gold);font-weight:700}
+
+  /* bulleted option lists (categoría → opciones → acción) */
+  .card .catlabel{font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze);display:block;margin-bottom:.15rem;font-weight:700}
+  .blist{list-style:none;margin:.3rem 0 0;padding:0}
+  .blist li{position:relative;padding:.2rem 0 .2rem .95rem;font-size:.85rem;line-height:1.36;color:rgba(18,35,58,.85)}
+  .blist li::before{content:"";position:absolute;left:0;top:.56rem;width:4px;height:4px;border-radius:50%;background:var(--bronze)}
+  .blist li strong{color:var(--navy);font-weight:700}
+  .action{display:block;font-family:var(--sans);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-top:.65rem;padding-top:.45rem;border-top:1px solid var(--line);font-weight:700}
+
+  /* modelo de inversión */
+  .natag{font-family:var(--sans);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:.18rem .5rem;border:1px solid var(--gold);border-radius:2px;color:var(--gold);display:inline-block;margin-bottom:.4rem;font-weight:700}
+  .natag.pass{color:var(--muted);border-color:rgba(18,35,58,.22)}
+  .alloc{margin-top:1.4rem}
+  .allocrow{display:grid;grid-template-columns:1fr auto;gap:.6rem;align-items:baseline}
+  .allocrow .lbl{font-size:.95rem;color:rgba(18,35,58,.9)}
+  .allocrow .pct{font-family:var(--sans);color:var(--gold);font-weight:700;font-size:.95rem}
+  .track{height:6px;background:rgba(10,37,64,.08);border-radius:2px;overflow:hidden;margin:.3rem 0 1rem}
+  .fill{height:100%;background:linear-gradient(90deg,var(--bronze),var(--gold-fill))}
+  .flag{border-left:2px solid var(--wine);background:rgba(140,58,58,.08);padding:.8rem 1rem;margin-top:1.2rem;border-radius:2px}
+  .flag p{font-family:var(--sans);font-size:.8rem;line-height:1.45;color:rgba(18,35,58,.85);max-width:none}
+
+  @media(max-width:760px){
+    .slide{padding:7vh 8vw;min-height:auto;padding-top:12vh;padding-bottom:12vh}
+    .g2,.g3,.g4,.stats,.stats.stats-5{grid-template-columns:1fr 1fr}
+    .dots{display:none}
+    .pageno,.conf{display:none}
+    table{min-width:480px}
+  }
+  @media(max-width:560px){
+    .slide{padding:10vh 6vw}
+    .g2,.g3,.g4,.stats,.stats.stats-5{grid-template-columns:1fr}
+    .card.team-wide{grid-template-columns:1fr}
+    h1{font-size:clamp(2rem,9vw,3rem)}
+    .stat .n{font-size:clamp(1.3rem,6vw,2rem)}
+    .ask li{padding-left:2.6rem}
+    .brandline{letter-spacing:.12em}
+  }
+  @media(max-width:400px){
+    .slide{padding:9vh 5vw}
+    h2{font-size:clamp(1.4rem,7vw,2rem)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .deck{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <!-- ============ APERTURA ============ -->
+
+  <!-- 0 · PORTADA DE PRESENTACIÓN -->
+  <section class="slide cover">
+    <div class="wrap">
+      <div class="eyebrow">Estrategia de Relanzamiento y Posicionamiento en Colombia</div>
+      <h1>Diners Club <span class="x">International</span></h1>
+      <p class="cover-sub">Propuesta de relanzamiento de marca y posicionamiento de experiencias y beneficios en Colombia.</p>
+      <span class="brandline">Estrategia de Marca + Beneficios y Experiencias + Plan de Acción</span>
+    </div>
+  </section>
+
+  <!-- 1 · COVER -->
+  <section class="slide cover">
+    <div class="wrap">
+      <div class="eyebrow">Diners Club Internacional y Ediciones Gamma</div>
+      <h1 style="font-size:clamp(1.7rem,4.6vw,3.4rem)">Recuperando el territorio:<br><strong style="color:var(--gold)">Interesting Life.</strong></h1>
+      <p class="cover-sub">Con el objetivo de reposicionar la marca y dar a conocer el programa de beneficios y experiencias curadas, hemos desarrollado la estrategia que combina <strong>estatus y pertenencia</strong> mediante comunicación apalancada en el ecosistema editorial propio de Ediciones Gamma.</p>
+      <span class="brandline">Diners Club International · Ediciones Gamma 2026</span>
+    </div>
+  </section>
+
+  <!-- 2 · SOMOS EDICIONES GAMMA -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Somos Ediciones Gamma</div>
+      <h2>Los expertos detrás de la estrategia.</h2>
+      <p style="font-size:.92rem;max-width:none">Ediciones Gamma es la empresa editorial de Banco Davivienda y Grupo Bolívar. Durante más de 15 años hemos construido relaciones con audiencias de alto valor mediante contenido, programas de beneficios, alianzas estratégicas y experiencias memorables. Esa combinación de conocimiento editorial, data, relacionamiento y ejecución es la base sobre la que hoy proponemos fortalecer la conexión entre Diners Club Internacional y sus clientes en Colombia.</p>
+      <div class="grid g3" style="margin-top:.85rem">
+        <div class="card hl" style="padding:.8rem 1rem"><span class="tier-own">Ediciones Gamma</span><h3 style="font-size:1rem">Ecosistema y máquina marketing</h3><p style="font-size:.85rem">Integramos una red de aliados premium, programas de beneficios, experiencias curadas en gastronomía, cultura, viajes y bienestar, junto con un ecosistema de medios (Revista Diners, AXXIS y plataformas digitales) que genera conversaciones con audiencias altamente calificadas.</p></div>
+        <div class="card" style="padding:.8rem 1rem"><span class="tier-own">Revista Diners</span><h3 style="font-size:1rem">La brújula del estilo de vida y el buen vivir</h3><p style="font-size:.85rem">Más que una revista, Diners es una marca con autoridad editorial y una comunidad construida alrededor de la cultura, la gastronomía, los viajes, el arte y el estilo de vida. Su credibilidad la convierte en un escenario natural para generar afinidad entre las marcas y las personas.</p></div>
+        <div class="card" style="padding:.8rem 1rem"><span class="tier-own">Revista AXXIS</span><h3 style="font-size:1rem">Vanguardia en arquitectura y diseño contemporáneo</h3><p style="font-size:.85rem">El medio líder en Colombia especializado en arquitectura, diseño contemporáneo, decoración e interiorismo — una mirada curada al mundo del diseño y la estética que transforma espacios y emociones. Inspiración constante para quienes creen que el buen diseño promueve el bienestar.</p></div>
+        <div class="card team-wide" style="padding:.8rem 1rem"><div><span class="tier-own">Equipo multidisciplinario experto</span><h3 style="font-size:1rem">Mente editorial + Marketing estratégico + Gestión en ejecución</h3></div><p style="font-size:.85rem">Reunimos periodistas, estrategas de marca, especialistas en marketing, creativos y gestores de alianzas que transforman objetivos de negocio en historias, contenidos, experiencias y activaciones capaces de fortalecer el vínculo entre las marcas, sus metas y la alineación con sus audiencias.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · ECOSISTEMA Y MÁQUINA DE MARKETING -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Ecosistema y Máquina de Marketing</div>
+      <h2>Todo un ecosistema listo para co-crear.</h2>
+      <p style="font-size:.82rem;max-width:none">El costo más alto en marketing premium no es el medio: es construir credibilidad desde cero. Ediciones Gamma resuelve esa variable. No es solo alcance: es afinidad ya construida, un activo que ninguna campaña de lanzamiento puede replicar en el corto plazo. La credibilidad ya existe.</p>
+      <div class="grid g4" style="margin-top:.6rem">
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Impreso</h3><p style="font-size:.78rem">Revista mensual: categorías consolidadas, secciones especiales y formatos de alto impacto a doble página.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Web + display</h3><p style="font-size:.78rem">revistadiners.com.co: contenido editorial, formatos digitales y acceso a contenido premium.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Redes</h3><p style="font-size:.78rem">Instagram, Facebook, TikTok y LinkedIn: presencia multiplataforma para distintos momentos de consumo del segmento premium.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Newsletters</h3><p style="font-size:.78rem">La Mesa de Diners y comunicaciones segmentadas por interés, con tasas de apertura por encima del benchmark editorial.</p></div>
+      </div>
+      <div class="translabel" style="margin:.9rem 0 .2rem">Formatos transmedia</div>
+      <div class="grid g4" style="margin-top:.2rem">
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">La Mesa de Diners</h3><p style="font-size:.78rem">Conversación sobre gastronomía, arte y vida contemporánea. Distribución tipo podcast: Spotify, YouTube, Instagram y TikTok.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Historias Diners</h3><p style="font-size:.78rem">Narrativa de marca, no reseña ni beneficio: micro-documentales que cuentan una historia. Distribución en IG, nota web y newsletter.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Diners Recomienda</h3><p style="font-size:.78rem">Curaduría estacional — recomienda un lugar o experiencia por temporada, ligada a un beneficio canjeable. Video-entrevista, revista y edición especial coleccionable.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Interesting Life</h3><p style="font-size:.78rem">No es contenido episódico: es el paraguas experiencial. Eventos privados y gastronomía de autor activados pagando con la tarjeta, transversal a todos los canales.</p></div>
+      </div>
+      <div class="translabel" style="margin:.9rem 0 .2rem">CRM / Inbound</div>
+      <div class="grid g2" style="margin-top:.2rem">
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Prospección y activación</h3><p style="font-size:.78rem">Journeys para la base actual: activación de beneficios, prospección calificada y nurturing/scoring hacia tarjetahabientes.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Mensajería directa</h3><p style="font-size:.78rem">WhatsApp y Messenger para activación 1:1: recordatorios de beneficios, soporte conversacional y conversión de prospectos.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · AUTORIDAD EDITORIAL -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Autoridad Editorial</div>
+      <h2 style="font-size:clamp(1.4rem,3vw,2.1rem)">Revista Diners no es solo una revista; es nuestro motor de adquisición y fidelización premium.</h2>
+      <p style="font-size:.86rem">Revista Diners cuenta con acceso a una audiencia que ya se filtró a sí misma por afinidad, ingreso y criterio de consumo. Esa pre-calificación reduce el costo de adquisición de un tarjetahabiente Diners frente a cualquier canal de captación masiva — la revista no busca al consumidor premium, ya convive con él.</p>
+      <div class="stats" style="margin-top:.9rem">
+        <div class="stat"><div class="n" style="font-size:clamp(1.3rem,2.4vw,1.9rem)">45 <span style="font-size:.8rem" class="muted">años</span></div><div class="l">edad promedio: 31 a 50 años</div></div>
+        <div class="stat"><div class="n" style="font-size:clamp(1.3rem,2.4vw,1.9rem)">84%</div><div class="l">NSE Alto + Medio-Alto</div></div>
+        <div class="stat"><div class="n" style="font-size:clamp(1.3rem,2.4vw,1.9rem)">737K</div><div class="l">usuarios únicos web · mes</div></div>
+        <div class="stat"><div class="n" style="font-size:clamp(1.3rem,2.4vw,1.9rem)">247K</div><div class="l">lectores, impreso y digital</div></div>
+      </div>
+      <div class="stats" style="margin-top:.6rem">
+        <div class="stat"><div class="n" style="font-size:clamp(1.3rem,2.4vw,1.9rem)">146K</div><div class="l">suscriptores · 90% de la circulación</div></div>
+        <div class="stat"><div class="n" style="font-size:clamp(1.3rem,2.4vw,1.9rem)">~98K</div><div class="l">Instagram · engagement ~6%</div></div>
+        <div class="stat"><div class="n" style="font-size:clamp(1.3rem,2.4vw,1.9rem)">~142K</div><div class="l">Facebook</div></div>
+        <div class="stat"><div class="n" style="font-size:clamp(1.3rem,2.4vw,1.9rem)">26–31,8%</div><div class="l">open rate newsletter · ~22.2K</div></div>
+      </div>
+      <div class="grid g3" style="margin-top:.8rem">
+        <div class="card sm" style="padding:.7rem .85rem"><h3 style="font-size:.92rem">Estética de Ultra-Lujo</h3><p style="font-size:.78rem">Cada página se produce con el estándar de una revista internacional de lujo: el contexto visual ya comunica pertenencia, antes de leer una palabra.</p></div>
+        <div class="card sm" style="padding:.7rem .85rem"><h3 style="font-size:.92rem">Profundidad Cultural</h3><p style="font-size:.78rem">Las crónicas no describen tendencias: las interpretan con criterio propio, lo que convierte cada mención en validación de expertos, no en anuncio pagado.</p></div>
+        <div class="card sm" style="padding:.7rem .85rem"><h3 style="font-size:.92rem">Autoridad Gastronómica</h3><p style="font-size:.78rem">Cuando Revista Diners recomienda un restaurante, esa recomendación mueve reservas — el poder de prescripción que necesita un beneficio gastronómico para generar redención real.</p></div>
+      </div>
+      <p style="margin-top:.6rem;font-size:.78rem" class="muted">Un ecosistema propio —impreso, web, redes, newsletter y podcast— significa que la marca no depende de un intermediario, ni de su algoritmo, ni de su tarifa, para llegar a esta audiencia.</p>
+    </div>
+  </section>
+
+  <!-- 5 · INTRO GENERAL · DOS ESTRATEGIAS -->
+  <section class="slide divider">
+    <div class="wrap">
+      <div class="modkicker">Estrategia de Relanzamiento</div>
+      <h2 class="tagline">Diners Club reclama su territorio:<br><em>Interesting Life</em> — "Experiencias".</h2>
+      <p style="font-size:.9rem;max-width:none">Visa y Mastercard compiten por ubicuidad, ofreciendo los mismos descuentos en los mismos comercios, buscando ser la opción por defecto. Ese es un juego de infraestructura que Diners Club no necesita jugar. La ventaja competitiva está en el extremo opuesto: ser la tarjeta que abre las puertas que la ubicuidad no puede abrir. Interesting Life no es una campaña — es el territorio donde esa diferenciación se vuelve tangible.</p>
+      <div class="grid g2" style="margin-top:.9rem">
+        <div class="card hl"><h3>1 · Relanzamiento de Marca DCI</h3><p style="font-size:.86rem;max-width:none">El enfoque parte de construir Lifetime Value —qué vale la pena pertenecer— y no solo la base del precio o el descuento: esa es la decisión que separa una estrategia de posicionamiento de una marca transaccional de lujo.</p></div>
+        <div class="card hl"><h3>2 · Posicionamiento de Beneficios DCI</h3><p style="font-size:.86rem;max-width:none">Beneficios always-on y experiencias curadas compiten por relevancia: esa distinción convierte el beneficio AON en un activo de fidelización, no en un costo de retención. El acceso OBI — Only by Invite convierte el uso de la tarjeta en una señal social visible para el entorno del tarjetahabiente.</p></div>
+      </div>
+      <div class="modindex">Dos frentes complementarios, detallados en los módulos siguientes.</div>
+    </div>
+  </section>
+
+  <!-- ============ MÓDULO 1 · RELANZAMIENTO DE MARCA DCI ============ -->
+
+  <!-- 6 · ATL: PRESENCIA DIRIGIDA -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 1 · Estrategia de Relanzamiento</div>
+      <h2>Presencia dirigida a nuestro segmento.</h2>
+      <p class="subhead">Densidad premium. No es cobertura amplia. Acciones estratégicas claras de categoría en cada una.</p>
+      <div class="grid g2">
+        <div class="card">
+          <span class="catlabel">ATL</span><h3>Exterior · Gran formato</h3>
+          <ul class="blist">
+            <li>Vallas y pantallas LED en corredores de mayor valor: <strong>Zona T, Parque 93, Usaquén</strong> (Bogotá)</li>
+            <li><strong>El Poblado, Provenza, Milla de Oro, Parque Lleras</strong> (Medellín); Granada y Ciudad Jardín (Cali); zona norte (Barranquilla)</li>
+            <li><strong>Domination</strong> temporal (varias caras) de un corredor gastronómico por ciudad durante el lanzamiento</li>
+          </ul>
+        </div>
+        <div class="card hl">
+          <span class="catlabel">ATL</span><h3>Editorial de nicho</h3>
+          <ul class="blist">
+            <li>Pauta en medios de <strong>negocios y estilo de vida</strong> de alto perfil (Forbes, AXXIS, Diners, El Tiempo)</li>
+            <li>Obsequio / descuento en suscripción a Revista Diners para un % de tarjetahabientes seleccionados por nivel de consumo</li>
+            <li>Cuadernillo de beneficios y experiencias DCI como material de apoyo en activaciones en centros comerciales</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="catlabel">BTL</span><h3>Indoor · Proximidad</h3>
+          <ul class="blist">
+            <li>Mupis y pantallas en centros comerciales de lujo: <strong>Andino, El Retiro, Fontanar</strong></li>
+            <li>Piezas branded en <strong>menús y mesas de restaurantes aliados</strong> (puente natural con AON)</li>
+            <li>Señalización en zonas de valet y parqueaderos premium</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="catlabel">BTL</span><h3>Aeropuertos &amp; travel</h3>
+          <ul class="blist">
+            <li>Toma de marca en <strong>salas VIP El Dorado</strong> (nac/int) y <strong>José María Córdova</strong></li>
+            <li>Mangas de abordaje y zonas <strong>priority / fast-track</strong></li>
+            <li>Estrategia de pantallas en salas de Llegadas/Nacional con los circuitos Premium/Gold</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · ACCIONES DE MARCA · EDITORIAL / WEB / REDES -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 1 · Estrategia de Relanzamiento</div>
+      <h2>Cómo se introduce la marca, de forma orgánica.</h2>
+      <p class="subhead">Por canal, con su acción estratégica — contenido y data al servicio del relanzamiento.</p>
+      <div class="grid g4">
+        <div class="card">
+          <span class="catlabel">Editorial</span><h3 style="font-size:1rem">Diners &amp; AXXIS</h3>
+          <ul class="blist">
+            <li>Publirreportaje / advertorial a doble página ("Interesting Life")</li>
+            <li>Portada falsa exclusiva para suscriptores</li>
+            <li>Ediciones especiales / cuadernillo "Interesting Life"</li>
+            <li>Sponsor de secciones fijas (ej. "Diners Club Recomienda")</li>
+            <li>Sección beneficio insignia</li>
+            <li>Postales físicas y coleccionables dirigidas</li>
+          </ul>
+          <span class="action">Acción → posicionamiento por asociación editorial</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Web</span><h3 style="font-size:1rem">revistadiners.com.co</h3>
+          <ul class="blist">
+            <li>Web display y formatos de alto impacto</li>
+            <li>Pauta display: barra fija + banner vertical, billboard + banner vertical, toma de la web — 3 meses/año cada formato</li>
+            <li>Branded content / advertorial digital</li>
+            <li>Contenido premium en zona exclusiva de beneficios</li>
+            <li>Inserciones digitales dirigidas por segmento</li>
+            <li>Landing dedicada al relanzamiento + retargeting secuencial</li>
+            <li>Search de marca y de intención (lujo, gastronomía, viajes)</li>
+          </ul>
+          <span class="action">Acción → tráfico cualificado · trazable</span>
+        </div>
+        <div class="card hl">
+          <span class="catlabel">Transmedia</span><h3 style="font-size:1rem">Instagram, Facebook, YouTube, TikTok &amp; Newsletter</h3>
+          <ul class="blist">
+            <li>Contenido co-branded en Instagram (~98K, engagement ~6%) y Facebook (~142K)</li>
+            <li>Historias Diners y Diners Recomienda distribuidos como video nativo en YouTube y TikTok</li>
+            <li>Integración cruzada con La Mesa de Diners (newsletter + podcast) para reforzar frecuencia</li>
+            <li>Newsletter espacio de marca en envíos segmentados (~22,2K)</li>
+            <li>Amplificación pagada sobre audiencia propia</li>
+            <li>Colaboraciones de marca / integración con creators de gourmet, viajes y negocios</li>
+          </ul>
+          <span class="action">Acción → alcance transmedia con afinidad heredada</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">CRM / Mensajería</span><h3 style="font-size:1rem">Base de tarjetahabientes</h3>
+          <ul class="blist">
+            <li>Journeys de activación sobre la base actual de tarjetahabientes</li>
+            <li>WhatsApp / Messenger 1:1: recordatorios de beneficios y soporte conversacional</li>
+            <li>Nurturing y scoring hacia conversión de prospectos</li>
+          </ul>
+          <span class="action">Acción → activación 1:1 · retención directa</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MÓDULO 2 · POSICIONAMIENTO DE BENEFICIOS ============ -->
+
+  <!-- 8 · POSICIONAMIENTO DE BENEFICIOS Y EXPERIENCIAS -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 2 · Posicionamiento de Beneficios y Experiencias</div>
+      <h2>La evolución de fidelizar a pertenecer.</h2>
+      <p class="lead" style="max-width:none;font-size:1rem"><strong>Beneficios always-on (AON):</strong> son el activo de pertenencia y relevancia mediante el acceso continuo de descuentos y beneficios en las diferentes categorías disponibles en la plataforma de gestión.</p>
+      <p class="lead" style="max-width:none;font-size:1rem;margin-top:.5rem"><strong>Experiencias exclusivas curadas Only by Invite (OBI):</strong> transforman el territorio de las experiencias en la verdadera insignia de estatus de la comunidad que accede a ella.</p>
+      <p class="lead" style="max-width:none;font-size:1rem;margin-top:.5rem"><strong>Patrocinios y Alianzas</strong> que fortalecen los pilares y la oferta de AON y OBI.</p>
+      <div class="card" style="margin-top:.7rem;padding:.6rem .9rem">
+        <p style="font-size:.82rem;max-width:none"><strong style="color:var(--gold);font-weight:600">Gastronomía, la puerta de entrada:</strong> es la categoría donde la curaduría editorial de Revista Diners ya tiene autoridad instalada; viajes, cultura y lifestyle escalan sobre esa confianza ya ganada.</p>
+      </div>
+      <p style="margin-top:.7rem;font-size:.8rem;max-width:none" class="muted">La ejecución de la estrategia de comunicación y medios incluye canales ATL, BTL y el ecosistema de Ediciones Gamma: un beneficio que se puede constatar construye pertenencia, confianza y credibilidad, y se sostiene en el boca a boca de sus propios miembros, no solo en la promesa de la campaña.</p>
+    </div>
+  </section>
+
+  <!-- ============ PILARES AON / OBI / ESTATUS ============ -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 2 · Pilares de Beneficios y Experiencias</div>
+      <h2>Pertenecer, Exclusividad y Estatus.</h2>
+      <p class="subhead">Tres pilares, cada uno con su propia oferta activable.</p>
+      <div class="grid g3">
+        <div class="card">
+          <span class="catlabel">Pertenecer</span><h3>AON — Always On</h3>
+          <ul class="blist">
+            <li>Descuentos especiales en categorías seleccionadas</li>
+            <li>Descuentos adicionales por pagos con tarjeta DCI</li>
+            <li>Early access en productos de aliados</li>
+          </ul>
+        </div>
+        <div class="card hl">
+          <span class="catlabel">Exclusividad</span><h3>OBI, Pop-ups &amp; experiencias efímeras</h3>
+          <ul class="blist">
+            <li>Formato insignia de "Interesting Life", replicable ciudad por ciudad</li>
+            <li>Cenas privadas con chef's table y menús de degustación ocultos</li>
+            <li>Catas privadas y maridajes de autor por temporada</li>
+            <li>Pop-ups gastronómicos privados</li>
+            <li>"Joyas ocultas" locales activadas por temporada</li>
+            <li>Experiencias curadas tipo boutique</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="catlabel">Estatus</span><h3>Patrocinios</h3>
+          <ul class="blist">
+            <li>Activaciones de marca en salas VIP de aeropuerto y espacios priority</li>
+            <li>Alianzas con hoteles boutique y clubes sociales</li>
+            <li>Torneos de <strong>golf</strong> en clubes campestres; polo y ecuestre</li>
+            <li>Ferias de arte de referencia (tipo <strong>ARTBO</strong>) y subastas</li>
+            <li>Festivales gastronómicos top con presencia curada</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 · ROADMAP -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Roadmap</div>
+      <h2>Plan de acción y definición de las bases del proyecto.</h2>
+      <div class="grid g3">
+        <div class="card hl">
+          <span class="catlabel">Paso 1</span><h3>Alcance de Interesting Life</h3>
+          <ul class="blist">
+            <li>Mercado / segmento a impactar</li>
+            <li>Definición del stack de beneficios: <strong>AON + OBI + Patrocinios</strong></li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="catlabel">Paso 2</span><h3>Aprobación de estructura</h3>
+          <ul class="blist">
+            <li>Definición de presupuesto</li>
+            <li>Definición de acciones y ecosistema</li>
+            <li>Claridad contractual</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="catlabel">Paso 3</span><h3>Puesta en marcha de acciones</h3>
+          <ul class="blist">
+            <li>Activación del ecosistema Gamma y estrategia de comunicación</li>
+            <li>Ejecución y operación</li>
+            <li>Administración del programa</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MÓDULO 3 · MODELO DE INVERSIÓN ============ -->
+
+  <!-- B · ARQUITECTURA FINANCIERA (COSTOS, EJECUCIÓN Y PLATAFORMA) -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Arquitectura Financiera y Logística</div>
+      <h2>Estructura y ejecución de la estrategia.</h2>
+      <p class="subhead">Claridad contractual: qué es honorario de Gamma, qué es medio propio y qué es inversión en terceros.</p>
+      <div class="grid g2">
+        <div class="card">
+          <h3>A · Estrategia</h3>
+          <ul class="blist">
+            <li>Dirección estratégica, concepto creativo y territorio de marca</li>
+            <li>Arquitectura de beneficios y diseño del programa (AON + Interesting Life)</li>
+            <li>Planeación de medios, medición y gobierno del proyecto</li>
+          </ul>
+          <span class="action">Modelo → fee de proyecto o retainer mensual</span>
+        </div>
+        <div class="card">
+          <h3>B · Operación</h3>
+          <ul class="blist">
+            <li>Project management, curaduría y consecución de aliados</li>
+            <li>Producción editorial, de contenido y de experiencias</li>
+            <li>Operación de la plataforma de beneficios, servicio y reportería</li>
+            <li><strong>Experiencias OBI</strong> (descuentos por pago con tarjeta, joyas ocultas) — negocio de Gamma, no pass-through</li>
+          </ul>
+          <span class="action">Modelo → fee mensual de operación + variable por volumen</span>
+        </div>
+        <div class="card">
+          <h3>C · Publicidad ecosistema Gamma</h3>
+          <ul class="blist">
+            <li>Pauta y branded content en revistas, web, redes, newsletter y podcast</li>
+            <li>Se cotiza por <strong>tipología de formato</strong> según tarifario</li>
+            <li>Costo marginal favorable: el inventario es propio</li>
+          </ul>
+          <span class="action">Modelo → tarifario por formato o paquete anual</span>
+        </div>
+        <div class="card">
+          <h3>D · Acciones Adicionales</h3>
+          <ul class="blist">
+            <li>Activaciones en centros comerciales: exhibición y muestreo en zonas de alto tráfico</li>
+            <li>Presencia en aeropuertos: salas VIP, jet-bridges y circuitos priority</li>
+            <li>Patrocinio de valet parking en restaurantes y eventos aliados</li>
+            <li>Patrocinio de torneos de golf, polo y clubes campestres</li>
+            <li>Vallas, programática, CTV, cine e influencers</li>
+          </ul>
+          <span class="action">Modelo → inversión directa o gestionada con fee admin</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B2 · GAMMA COMO OPERADOR DEL PROGRAMA DE BENEFICIOS -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 3 · Desglose Detallado (1 de 5)</div>
+      <h2 style="font-size:clamp(1.4rem,3vw,2rem)">Estrategia y gestión.</h2>
+      <p class="subhead">Estrategia, ejecución, administración y soporte — bajo un mismo equipo, un mismo tarifario.</p>
+      <div class="grid g4" style="margin-top:.6rem">
+        <div class="card sm">
+          <span class="catlabel">Estrategia</span><h3 style="font-size:.92rem">Diseño y gobierno del programa</h3>
+          <ul class="blist">
+            <li>Arquitectura de beneficios AON + OBI y curaduría de categorías</li>
+            <li>Definición de niveles y reglas de acceso/canje</li>
+            <li>Selección y negociación de aliados (gastronomía, viajes, cultura)</li>
+            <li>Plan editorial y de comunicación asociado al programa</li>
+            <li>Tablero de KPIs: adopción, redención, satisfacción</li>
+          </ul>
+        </div>
+        <div class="card sm hl">
+          <span class="catlabel">Ejecución</span><h3 style="font-size:.92rem">Producción y activación</h3>
+          <ul class="blist">
+            <li>Producción de experiencias OBI (cenas, catas, pop-ups)</li>
+            <li>Coordinación logística con aliados y proveedores</li>
+            <li>Contenido y piezas de comunicación por canal</li>
+            <li>Activaciones ATL/BTL asociadas al programa</li>
+            <li>Calendario editorial "Diners Recomienda" y ediciones especiales</li>
+          </ul>
+        </div>
+        <div class="card sm">
+          <span class="catlabel">Administración</span><h3 style="font-size:.92rem">Operación de la plataforma</h3>
+          <ul class="blist">
+            <li>Gestión de la plataforma de beneficios y catálogo de aliados</li>
+            <li>Carga, actualización y vigencia de beneficios</li>
+            <li>Conciliación de canjes y reportería de uso</li>
+            <li>Gestión contractual y facturación con aliados</li>
+            <li>Actualización de tarifario y condiciones comerciales</li>
+          </ul>
+        </div>
+        <div class="card sm">
+          <span class="catlabel">Soporte</span><h3 style="font-size:.92rem">Servicio al tarjetahabiente</h3>
+          <ul class="blist">
+            <li>Atención de consultas y novedades de canje</li>
+            <li>Resolución de incidencias con aliados</li>
+            <li>Onboarding y comunicación de bienvenida al programa</li>
+            <li>Monitoreo de satisfacción y NPS del programa</li>
+            <li>Retroalimentación continua a Estrategia para ajustar oferta</li>
+          </ul>
+        </div>
+      </div>
+      <div class="translabel" style="margin:.9rem 0 .2rem;font-size:1rem">Valor → fee mensual único, cubre las 4 capas</div>
+      <div class="flag" style="margin-top:.3rem">
+        <p><strong>Un solo operador, un solo punto de responsabilidad.</strong> Gamma asume las 4 capas del programa bajo el mismo equipo y un único fee mensual — evita la fragmentación entre agencia creativa, operador de plataforma y mesa de servicio que suele diluir la experiencia del tarjetahabiente.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- D · PATROCINIOS Y EVENTOS -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 3 · Desglose Detallado (2 de 5)</div>
+      <h2 style="font-size:clamp(1.3rem,2.6vw,1.8rem);margin-bottom:.3rem">Patrocinios y Eventos.</h2>
+      <p class="subhead" style="margin-bottom:.3rem;margin-top:0">Valores de mercado, referenciales. PPD = Pendiente Por Definir.</p>
+      <div class="tscroll compact">
+      <table style="margin-top:0">
+        <thead>
+          <tr><th>Acción</th><th>Ubicación</th><th>Frecuencia</th><th>Valor unitario</th><th>Valor total</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-strong">Diners Club Recomienda · sponsor de sección editorial</td><td>Revista Diners + AXXIS</td><td>4 ediciones/año</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Catas privadas y maridajes de autor</td><td>Ciudad rotativa</td><td>trimestral</td><td>~$3,8M–$6,5M/evento</td><td>~$15M–$26M/año</td></tr>
+          <tr><td class="td-strong">Valet parking patrocinado</td><td>Restaurantes y eventos aliados</td><td>12 meses</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Patrocinio suscripciones Revista Diners</td><td>Base de tarjetahabientes</td><td>12 meses</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Patrocinio torneo de golf</td><td>Clubes campestres</td><td>1–2 eventos/año</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Festival gastronómico</td><td>Festival top nacional</td><td>1 evento/año</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Feria de arte (tipo ARTBO / MAMBO)</td><td>Bogotá</td><td>1 evento/año</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Alianza hoteles boutique</td><td>Red de hoteles aliados</td><td>12 meses</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="flag" style="margin-top:.4rem;padding:.5rem .8rem">
+        <p style="font-size:.68rem"><strong>Valores con benchmark real; PPD = Pendiente Por Definir</strong> (sin cotización de proveedor, requiere cotizar). Frecuencias son supuestos de planeación a validar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- A · ECOSISTEMA GAMMA (AHORA EN POSICIÓN 16) -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 3 · Desglose Detallado (3 de 5)</div>
+      <h2 style="font-size:clamp(1.3rem,2.6vw,1.8rem);margin-bottom:.3rem">Presupuesto Ecosistema Gamma.</h2>
+      <div class="tscroll compact">
+      <table style="margin-top:0">
+        <thead>
+          <tr><th>Acción</th><th>Ubicación</th><th>Frecuencia</th><th>Unitario · Brutas</th><th>Total · Brutas</th><th>Unitario · Especiales</th><th>Total · Especiales</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-strong" colspan="7" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Editorial (impreso)</td></tr>
+          <tr class="us"><td>Publirreportaje 2 páginas ("Interesting Life")</td><td>Revista Diners + AXXIS</td><td>4 ediciones/año</td><td>$47.200.000</td><td>$188.800.000</td><td>$31.000.000</td><td>$124.000.000</td></tr>
+          <tr class="us"><td>Portada falsa exclusiva suscriptores</td><td>Revista Diners</td><td>1–2 ediciones/año</td><td>$43.700.000</td><td>$87.400.000</td><td>Según circulación</td><td>Según circulación</td></tr>
+          <tr class="us"><td>Cuadernillo / edición especial</td><td>Revista Diners</td><td>1 edición/año</td><td>$48.900.000</td><td>$48.900.000</td><td>Según circulación</td><td>Según circulación</td></tr>
+          <tr class="us"><td>Postales físicas y coleccionables</td><td>Base de tarjetahabientes seleccionada</td><td>2 envíos/año</td><td>$19.900.000</td><td>$39.800.000</td><td>Según circulación</td><td>Según circulación</td></tr>
+
+          <tr><td class="td-strong" colspan="7" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Web y Redes</td></tr>
+          <tr class="us"><td>Web display / branded content</td><td>revistadiners.com.co</td><td>12 meses</td><td>$2.750.000</td><td>$33.000.000</td><td>$2.750.000</td><td>$33.000.000</td></tr>
+          <tr class="us"><td>Landing dedicada + retargeting</td><td>Digital propio</td><td>12 meses</td><td>Tarifario interno</td><td>Incluido en fee C</td><td>—</td><td>—</td></tr>
+          <tr class="us"><td>Contenido co-branded IG/FB</td><td>Redes propias (~98K IG, ~142K FB)</td><td>12 meses</td><td>$1.700.000</td><td>$20.400.000</td><td>—</td><td>—</td></tr>
+
+          <tr><td class="td-strong" colspan="7" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Transmedia</td></tr>
+          <tr class="us"><td>Historias Diners (micro-documental)</td><td>YouTube, TikTok, IG</td><td>Tres videos</td><td>$9.400.000</td><td>$28.200.000</td><td>$8.500.000</td><td>$8.500.000</td></tr>
+          <tr class="us"><td>Diners Recomienda (video-entrevista)</td><td>YouTube, TikTok, IG</td><td>por pieza</td><td>$6.200.000</td><td>$6.200.000</td><td>$5.900.000</td><td>$5.900.000</td></tr>
+          <tr class="us"><td>La Mesa de Diners (podcast)</td><td>Spotify, YouTube, IG, TikTok</td><td>12 meses</td><td>$5.200.000</td><td>$62.400.000</td><td>$5.100.000</td><td>$61.200.000</td></tr>
+          <tr class="us"><td>Newsletter espacio de marca</td><td>Envíos segmentados (~22,2K)</td><td>12 meses</td><td>$2.500.000</td><td>$30.000.000</td><td>$2.500.000</td><td>$30.000.000</td></tr>
+
+          <tr><td class="td-strong" colspan="7" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">CRM / Mensajería (Bloque B)</td></tr>
+          <tr class="us"><td>Journeys de activación</td><td>Base actual de tarjetahabientes</td><td>12 meses</td><td class="wine">PPD · # contactos</td><td class="wine">PPD</td><td class="wine">PPD · # contactos</td><td class="wine">PPD</td></tr>
+          <tr class="us"><td>WhatsApp / Messenger 1:1</td><td>Mensajería directa</td><td>12 meses</td><td class="wine">PPD · # contactos</td><td class="wine">PPD</td><td class="wine">PPD · # contactos</td><td class="wine">PPD</td></tr>
+
+          <tr><td class="td-strong" colspan="7" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Display</td></tr>
+          <tr class="us"><td>Barra fija + banner vertical</td><td>revistadiners.com.co</td><td>3 meses/año</td><td>$6.600.000</td><td>$19.800.000</td><td>—</td><td>—</td></tr>
+          <tr class="us"><td>Billboard + banner vertical</td><td>revistadiners.com.co</td><td>3 meses/año</td><td>$7.800.000</td><td>$23.400.000</td><td>—</td><td>—</td></tr>
+          <tr class="us"><td>Toma de la web</td><td>revistadiners.com.co</td><td>3 meses/año</td><td>$17.400.000</td><td>$52.200.000</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="flag" style="margin-top:.4rem;padding:.5rem .8rem">
+        <p style="font-size:.68rem"><strong>Ecosistema Gamma no es pass-through.</strong> Tarifas brutas = tarifario de lista; tarifas especiales = tarifa preferencial negociada. Journeys y WhatsApp/Messenger dependen del volumen de contactos a activar — PPD hasta definir base.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- E · AEROPUERTO E INDOOR -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 3 · Desglose Detallado (4 de 5)</div>
+      <h2 style="font-size:clamp(1.3rem,2.6vw,1.8rem);margin-bottom:.3rem">Aeropuerto e Indoor.</h2>
+      <p class="subhead" style="margin-bottom:.3rem;margin-top:0">Valores de mercado, referenciales. PPD = Pendiente Por Definir.</p>
+      <div class="tscroll compact">
+      <table style="margin-top:0">
+        <thead>
+          <tr><th>Acción</th><th>Ubicación</th><th>Frecuencia</th><th>Valor unitario</th><th>Valor total</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-strong" colspan="5" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Aeropuerto</td></tr>
+          <tr><td class="td-strong">Branding sala VIP</td><td>El Dorado (nac/int)</td><td>12 meses</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Branding sala VIP</td><td>José María Córdova</td><td>12 meses</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Mangas de abordaje / priority</td><td>El Dorado + José María Córdova</td><td>12 meses</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Pantallas Llegadas/Nacional</td><td>Circuitos Premium/Gold</td><td>12 meses</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Acceso sala VIP tarjetahabiente</td><td>El Dorado + José María Córdova</td><td>por pase</td><td>US$25–65</td><td>variable · según redención</td></tr>
+
+          <tr><td class="td-strong" colspan="5" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Indoor</td></tr>
+          <tr><td class="td-strong">Mupi / pantalla CC</td><td>Andino</td><td>12 meses</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Mupi / pantalla CC</td><td>El Retiro</td><td>12 meses</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Mupi / pantalla CC</td><td>Fontanar</td><td>12 meses</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Piezas branded menús/mesas</td><td>Red de restaurantes aliados AON</td><td>12 meses</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Señalización valet / parqueaderos</td><td>Restaurantes y eventos aliados</td><td>12 meses</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="flag" style="margin-top:.4rem;padding:.5rem .8rem">
+        <p style="font-size:.68rem"><strong>Valores con benchmark real; PPD = Pendiente Por Definir</strong> (sin cotización de proveedor, requiere cotizar). Frecuencias son supuestos de planeación a validar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- F · EXTERIOR Y DIGITAL -->
+  <section class="slide" style="padding-top:4vh;padding-bottom:4vh">
+    <div class="wrap">
+      <div class="eyebrow" style="margin-bottom:.7rem">Módulo 3 · Desglose Detallado (5 de 5)</div>
+      <h2 style="font-size:clamp(1.2rem,2.4vw,1.6rem);margin-bottom:.2rem">Exterior y Digital externo.</h2>
+      <p class="subhead" style="margin-bottom:.3rem;margin-top:0">Valores de mercado, referenciales. PPD = Pendiente Por Definir.</p>
+      <div class="tscroll compact">
+      <table style="margin-top:0">
+        <thead>
+          <tr><th>Acción</th><th>Ubicación</th><th>Frecuencia</th><th>Valor unitario</th><th>Valor total</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-strong" colspan="5" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Exterior</td></tr>
+          <tr><td class="td-strong">Valla gran formato LED</td><td>Zona T, Parque 93, Usaquén (Bogotá)</td><td>12 meses</td><td>~$8M/mes</td><td>~$96M</td></tr>
+          <tr><td class="td-strong">Valla premium / LED</td><td>El Poblado, Provenza, Milla de Oro (Medellín)</td><td>12 meses</td><td>~$10M/mes</td><td>~$120M</td></tr>
+          <tr><td class="td-strong">Valla exterior</td><td>Granada, Ciudad Jardín (Cali)</td><td>12 meses</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Valla exterior</td><td>Zona norte (Barranquilla)</td><td>12 meses</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Domination temporal (lanzamiento)</td><td>3 ciudades, corredor gastronómico</td><td>1 mes</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+
+          <tr><td class="td-strong" colspan="5" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Digital externo</td></tr>
+          <tr><td class="td-strong">Programática / display</td><td>Audiencias altos ingresos</td><td>12 meses</td><td>$5.000–$20.000/mil</td><td>variable · según pauta</td></tr>
+          <tr><td class="td-strong">CTV / OTT segmentado</td><td>Hogares altos ingresos</td><td>12 meses</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Cine premium (VIP / Gold)</td><td>Salas premium principales ciudades</td><td>12 meses</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Influencers / creators</td><td>Gourmet, viajes, negocios</td><td>por campaña</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+          <tr><td class="td-strong">Search de marca / intención</td><td>Google / buscadores</td><td>12 meses</td><td class="wine">PPD</td><td class="wine">PPD</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="flag" style="margin-top:.4rem;padding:.5rem .8rem">
+        <p style="font-size:.68rem"><strong>Valores con benchmark real; PPD = Pendiente Por Definir</strong> (sin cotización de proveedor, requiere cotizar). Frecuencias son supuestos de planeación a validar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- C · DISTRIBUCIÓN PRESUPUESTAL -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 3 · Resumen (1–5 de 5)</div>
+      <h2>Cómo se reparte la inversión.</h2>
+      <p class="subhead">Rangos indicativos de referencia para un relanzamiento premium a 12 meses en Colombia.</p>
+      <div class="alloc">
+        <div class="allocrow"><span class="lbl">4 · Aeropuerto e Indoor</span><span class="pct">Gasto Alto</span></div>
+        <div class="track"><div class="fill" style="width:95%"></div></div>
+
+        <div class="allocrow"><span class="lbl">5 · Exterior y Digital externo</span><span class="pct">Gasto Medio-Alto</span></div>
+        <div class="track"><div class="fill" style="width:85%"></div></div>
+
+        <div class="allocrow"><span class="lbl">2 · Patrocinios y Eventos</span><span class="pct">Gasto Medio</span></div>
+        <div class="track"><div class="fill" style="width:75%"></div></div>
+
+        <div class="allocrow"><span class="lbl">3 · Ecosistema Gamma (medio propio)</span><span class="pct">Gasto Medio</span></div>
+        <div class="track"><div class="fill" style="width:55%"></div></div>
+
+        <div class="allocrow"><span class="lbl">1 · Estrategia y gestión — fee mensual único</span><span class="pct">Gasto Bajo</span></div>
+        <div class="track"><div class="fill" style="width:50%"></div></div>
+      </div>
+      <div class="flag">
+        <p><strong>Rangos indicativos, no cifras aprobadas.</strong> Las referencias de mercado son estimados públicos (no cotizaciones de proveedor) y sirven solo de orden de magnitud. El monto absoluto en COP y el fee de administración sobre terceros se dimensionan con Catalina y Finanzas antes de cualquier presentación externa. La fase 1 concentra ATL y BTL; a partir del mes 5 la inversión rota hacia ecosistema Gamma y always-on.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- G · EQUIPO Y RECURSOS · ECOSISTEMA GAMMA -->
+  <section class="slide" style="padding-top:4vh;padding-bottom:4vh">
+    <div class="wrap">
+      <div class="eyebrow">Módulo 3 · Equipo y Recursos</div>
+      <h2 style="font-size:clamp(1.3rem,2.6vw,1.9rem);margin-bottom:.2rem">Esquema 360 del ecosistema Gamma.</h2>
+      <p class="subhead" style="margin-bottom:.3rem;margin-top:0">Roles, dedicación y herramientas para operar la estrategia dentro de Ediciones Gamma — estratégico, creativo, marketing, tecnológico, administrativo-logístico y soporte.</p>
+      <div class="tscroll compact">
+      <table style="margin-top:0">
+        <thead>
+          <tr><th>Rol</th><th>Frente</th><th>Dedicación</th><th>Horas/mes</th><th>Costo/hora</th><th>Costo mensual</th><th>Herramienta</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-strong" colspan="7" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Estratégico</td></tr>
+          <tr class="us"><td>Director(a) de Estrategia · Growth Manager</td><td>Estratégico</td><td>Parcial (retainer)</td><td>110</td><td>$54.545</td><td>$6.000.000</td><td>—</td></tr>
+
+          <tr><td class="td-strong" colspan="7" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Especialistas &amp; Coordinadores</td></tr>
+          <tr class="us"><td>Project Manager (PM)</td><td>Gestión de proyecto</td><td>Tiempo completo</td><td>220</td><td>$29.545</td><td>$6.500.000</td><td>—</td></tr>
+          <tr class="us"><td>Coordinador(a) de Alianzas</td><td>Vinculación de aliados</td><td>Tiempo completo</td><td>220</td><td>$29.545</td><td>$6.500.000</td><td>Plataforma de Beneficios + HubSpot</td></tr>
+          <tr class="us"><td>Coordinador(a) Administrativo y Facturación</td><td>Administrativo</td><td>Parcial</td><td>110</td><td>$29.545</td><td>$3.250.000</td><td>—</td></tr>
+          <tr class="us"><td>Editor de Contenido (periodista)</td><td>Editorial</td><td>Parcial</td><td>110</td><td>$29.545</td><td>$3.250.000</td><td>—</td></tr>
+          <tr class="us"><td>Estratega de Marketing</td><td>Marketing</td><td>Parcial</td><td>110</td><td>$29.545</td><td>$3.250.000</td><td>—</td></tr>
+
+          <tr><td class="td-strong" colspan="7" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Operativos</td></tr>
+          <tr class="us"><td>Diseñador(a) Gráfico</td><td>Diseño</td><td>Parcial</td><td>110</td><td>$21.818</td><td>$2.400.000</td><td>Suite Adobe</td></tr>
+          <tr class="us"><td>Community Manager</td><td>Redes sociales</td><td>Tiempo completo</td><td>220</td><td>$21.818</td><td>$4.800.000</td><td>Metricool</td></tr>
+          <tr class="us"><td>Administrador(a) de Pauta</td><td>Pauta</td><td>Parcial</td><td>110</td><td>$21.818</td><td>$2.400.000</td><td>—</td></tr>
+          <tr class="us"><td>Administrador(a) de Plataforma de Beneficios · Web Master</td><td>Tecnológico</td><td>Tiempo completo</td><td>220</td><td>$21.818</td><td>$4.800.000</td><td>Elementor + SEMrush</td></tr>
+          <tr class="us"><td>Videógrafo(a)</td><td>Contenido audiovisual</td><td>Parcial</td><td>110</td><td>$21.818</td><td>$2.400.000</td><td>—</td></tr>
+
+          <tr><td class="td-strong" colspan="7" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Soporte &amp; Servicio al Cliente</td></tr>
+          <tr class="us"><td>Agente de Servicio al Cliente</td><td>Beneficiarios</td><td>Tiempo completo</td><td>220</td><td>$11.364</td><td>$2.500.000</td><td>HubSpot</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="flag" style="margin-top:.4rem;padding:.5rem .8rem">
+        <p style="font-size:.68rem"><strong>Solo equipo interno de Ediciones Gamma.</strong> Base de cálculo: 220 h/mes = máximo jornada estándar Colombia (tiempo completo); 110 h/mes (50%) = dedicación parcial. Costo/hora = salario mensual del rango ÷ 220 h. Rangos salariales: Estratégico (Growth Manager) $12.000.000 · Especialistas/Coordinadores (PM, Coordinador de Alianzas, Editor de Contenido, Estratega de Marketing, Key Account Manager) $6.500.000 · Operativos (Diseño, CM, Administrador de Pauta, Web Master, Videógrafo) $4.800.000 · Agente de Servicio al Cliente $2.500.000. Costo mensual por rol = costo/hora × horas/mes de dedicación. Próxima fase: esquema de recursos y costos con aliados y proveedores externos.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="dots" id="dots"></div>
+<div class="pageno" id="pageno">01 / 19</div>
+<div class="conf">Confidencial · Ediciones Gamma</div>
+
+<script>
+  const deck=document.getElementById('deck');
+  const slides=[...document.querySelectorAll('.slide')];
+  const dotsWrap=document.getElementById('dots');
+  const pageno=document.getElementById('pageno');
+  const pad=n=>String(n).padStart(2,'0');
+  slides.forEach((s,i)=>{
+    const b=document.createElement('button');
+    b.setAttribute('aria-label','Ir a lámina '+(i+1));
+    b.onclick=()=>slides[i].scrollIntoView();
+    dotsWrap.appendChild(b);
+  });
+  const dots=[...dotsWrap.children];
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const i=slides.indexOf(e.target);
+        dots.forEach((d,j)=>d.classList.toggle('active',j===i));
+        pageno.textContent=pad(i+1)+' / '+pad(slides.length);
+      }
+    });
+  },{root:deck,threshold:.55});
+  slides.forEach(s=>io.observe(s));
+  let idx=0;
+  deck.addEventListener('scroll',()=>{idx=Math.round(deck.scrollTop/window.innerHeight)});
+  window.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'||e.key==='PageDown'){e.preventDefault();slides[Math.min(idx+1,slides.length-1)].scrollIntoView()}
+    if(e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();slides[Math.max(idx-1,0)].scrollIntoView()}
+  });
+</script>
+</body>
+</html>
