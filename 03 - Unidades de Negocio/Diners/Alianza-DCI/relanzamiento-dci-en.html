@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diners Club International · 360 Relaunch Colombia</title>
+<style>
+  :root{
+    --navy:#0A2540; --navy-deep:#061a30; --ink:#12233a;
+    --bronze:#8C6A2E; --gold:#8A6B1F; --gold-fill:#D2A855; --wine:#8C3A3A;
+    --muted:rgba(18,35,58,.62); --line:rgba(10,37,64,.16);
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--serif); color:var(--ink); background:#FFFFFF; -webkit-font-smoothing:antialiased;}
+  .deck{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+  .slide{min-height:100vh;scroll-snap-align:start;position:relative;display:flex;flex-direction:column;justify-content:center;padding:6vh 7vw;background:#FFFFFF;border-bottom:1px solid rgba(10,37,64,.1);}
+  .slide::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 50% at 15% 90%, rgba(140,106,46,.05), transparent 60%),linear-gradient(180deg, rgba(10,37,64,0), rgba(10,37,64,.02));}
+  .wrap{max-width:1040px;margin:0 auto;width:100%;position:relative;z-index:1}
+  .eyebrow{font-family:var(--sans);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:1.4rem;display:flex;align-items:center;gap:.9rem;}
+  .eyebrow::after{content:"";height:1px;flex:1;max-width:120px;background:var(--line)}
+  h1{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1.02;font-weight:600;letter-spacing:-.01em;color:var(--navy)}
+  h2{font-size:clamp(1.7rem,3.8vw,2.7rem);line-height:1.08;font-weight:600;letter-spacing:-.01em;margin-bottom:1rem;color:var(--navy)}
+  h3{font-size:1.15rem;font-weight:700;color:var(--gold);margin-bottom:.5rem}
+  p{font-size:clamp(1rem,1.6vw,1.22rem);line-height:1.55;color:rgba(18,35,58,.88)}
+  .muted{color:var(--muted)}
+  strong{color:var(--navy);font-weight:700}
+  .cover h1{margin:.4rem 0 1.6rem}
+  .cover-sub{font-size:clamp(1.05rem,1.9vw,1.4rem);color:var(--ink);max-width:58ch;margin-bottom:2.4rem}
+  .brandline{font-family:var(--sans);font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);padding-top:1.1rem;display:inline-block}
+  .grid{display:grid;gap:.85rem;margin-top:1.1rem}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .card{background:#F7F5F0;border:1px solid var(--line);border-radius:3px;padding:1.05rem 1.15rem;}
+  .card h3{margin-bottom:.4rem}
+  .card p{font-size:.98rem;line-height:1.5;color:rgba(18,35,58,.78)}
+  .card.hl{border-color:var(--gold);background:rgba(154,111,31,.08)}
+  .card.team-wide{grid-column:1 / -1;display:grid;grid-template-columns:.85fr 1.6fr;gap:1.6rem;align-items:center}
+  .card.team-wide h3{margin-bottom:0}
+  .card.team-wide p{font-size:.98rem}
+  @media(max-width:760px){.card.team-wide{grid-template-columns:1fr;gap:.6rem}}
+  .card.sm{padding:1rem 1.05rem}
+  .card.sm h3{font-size:1rem;margin-bottom:.35rem}
+  .card.sm p{font-size:.84rem;line-height:1.38}
+  .tier-own{font-family:var(--sans);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.5rem}
+  .card.hl .tier-own{color:var(--gold)}
+  .translabel{font-family:var(--serif);font-size:clamp(1.05rem,1.7vw,1.35rem);font-weight:600;color:var(--gold);margin:1.5rem 0 .3rem;display:flex;align-items:center;gap:.9rem}
+  .translabel::after{content:"";height:1px;flex:1;background:var(--line)}
+  .subhead{font-family:var(--sans);font-size:.95rem;color:var(--gold);margin-top:.6rem;letter-spacing:.01em;font-weight:600}
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:1.2rem}
+  .stats.stats-5{grid-template-columns:repeat(5,1fr)}
+  .stat .n{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;color:var(--navy);line-height:1}
+  .stat .l{font-family:var(--sans);font-size:.75rem;letter-spacing:.03em;color:var(--muted);margin-top:.5rem;line-height:1.32}
+  .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:1.4rem}
+  .tscroll.compact table th,.tscroll.compact table td{padding:.32rem .6rem}
+  .tscroll.compact table{font-size:.68rem}
+  .tscroll table{margin-top:0;min-width:560px}
+  table{width:100%;border-collapse:collapse;margin-top:1.4rem;font-size:.96rem}
+  th,td{text-align:left;padding:.7rem 1rem;border-bottom:1px solid rgba(10,37,64,.14);vertical-align:top}
+  th{font-family:var(--sans);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  td{color:rgba(18,35,58,.85)}
+  tr.us td{background:rgba(154,111,31,.06)}
+  tr.us td:first-child{color:var(--gold);font-weight:700;font-family:var(--serif)}
+  .td-strong{color:var(--navy);font-weight:700}
+  .dots{position:fixed;right:22px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;gap:9px}
+  .dots button{width:9px;height:9px;border-radius:50%;border:1px solid var(--navy);background:transparent;cursor:pointer;padding:0;transition:.25s}
+  .dots button.active{background:var(--navy);border-color:var(--navy);transform:scale(1.25)}
+  .pageno{position:fixed;left:24px;bottom:20px;font-family:var(--sans);font-size:.72rem;letter-spacing:.16em;color:var(--muted);z-index:20}
+  .conf{position:fixed;right:24px;bottom:20px;font-family:var(--sans);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(18,35,58,.4);z-index:20}
+  .card .catlabel{font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--bronze);display:block;margin-bottom:.15rem;font-weight:700}
+  .blist{list-style:none;margin:.3rem 0 0;padding:0}
+  .blist li{position:relative;padding:.2rem 0 .2rem .95rem;font-size:.85rem;line-height:1.36;color:rgba(18,35,58,.85)}
+  .blist li::before{content:"";position:absolute;left:0;top:.56rem;width:4px;height:4px;border-radius:50%;background:var(--bronze)}
+  .blist li strong{color:var(--navy);font-weight:700}
+  .action{display:block;font-family:var(--sans);font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-top:.65rem;padding-top:.45rem;border-top:1px solid var(--line);font-weight:700}
+  .flag{border-left:2px solid var(--wine);background:rgba(140,58,58,.08);padding:.8rem 1rem;margin-top:1.2rem;border-radius:2px}
+  .flag p{font-family:var(--sans);font-size:.8rem;line-height:1.45;color:rgba(18,35,58,.85);max-width:none}
+  @media(max-width:760px){
+    .slide{padding:7vh 8vw;min-height:auto;padding-top:12vh;padding-bottom:12vh}
+    .g2,.g3,.g4,.stats,.stats.stats-5{grid-template-columns:1fr 1fr}
+    .dots{display:none}
+    .pageno,.conf{display:none}
+    table{min-width:480px}
+  }
+  @media(max-width:560px){
+    .slide{padding:10vh 6vw}
+    .g2,.g3,.g4,.stats,.stats.stats-5{grid-template-columns:1fr}
+    .card.team-wide{grid-template-columns:1fr}
+    h1{font-size:clamp(2rem,9vw,3rem)}
+    .stat .n{font-size:clamp(1.3rem,6vw,2rem)}
+    .brandline{letter-spacing:.12em}
+  }
+  @media(max-width:400px){
+    .slide{padding:9vh 5vw}
+    h2{font-size:clamp(1.4rem,7vw,2rem)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .deck{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <section class="slide cover">
+    <div class="wrap">
+      <div class="eyebrow">Diners Club International and Ediciones Gamma</div>
+      <h1 style="font-size:clamp(1.7rem,4.6vw,3.4rem)">Taking back the space we own:<br><strong style="color:var(--gold)">Interesting Life.</strong></h1>
+      <p class="cover-sub">A brand relaunch and positioning strategy built on a benefits program, powered by the Ediciones Gamma ecosystem.</p>
+      <span class="brandline">Diners Club International · Ediciones Gamma 2026</span>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">The Read · Current Portfolio</div>
+      <h2 style="font-size:clamp(1.4rem,3vw,2.1rem)">Who the DCI cardholder is today.</h2>
+      <p style="font-size:.95rem;max-width:78ch;margin-bottom:1.1rem;color:var(--ink)">A mature spender whose life runs on travel and lifestyle. The card handles the recurring bills, but it needs fresh reasons to stay first in the wallet.</p>
+      <div class="stats stats-5" style="margin-top:.6rem">
+        <div class="stat"><div class="n">169K</div><div class="l">customers</div></div>
+        <div class="stat"><div class="n">89%</div><div class="l">Blue · entry product</div></div>
+        <div class="stat"><div class="n">11%</div><div class="l">Black · 18.4K cardholders</div></div>
+        <div class="stat"><div class="n">51.15%</div><div class="l">core segment · ages 35&ndash;50</div></div>
+        <div class="stat"><div class="n">45.92%</div><div class="l">senior segment · 51+</div></div>
+      </div>
+      <div class="grid g2" style="margin-top:1rem">
+        <div class="card hl">
+          <span class="tier-own">The Archetype: The Senior Value Customer</span>
+          <ul class="blist">
+            <li><strong>Profile:</strong> Salaried (27%), PCNC (24%), retired (18%), and self-employed (18%).</li>
+            <li><strong>Gender:</strong> 52% men · 48% women.</li>
+            <li><strong>The tie:</strong> High income ($10.4M COP), but the card isn't their go-to.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tier-own">How They Spend and Decide</span>
+          <ul class="blist">
+            <li><strong>Behavior:</strong> Spending points to travel, high-end restaurants, and select purchases, with a solid average ticket ($295K COP).</li>
+            <li><strong>The friction:</strong> They're always comparing against Visa and Mastercard, which feel more widely accepted with benefits that are easier to see.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="flag" style="margin-top:.7rem">
+        <p><strong>The opening: high-value customers.</strong> The gap isn't how much they can spend. It's that nothing sets this card apart when it's time to pay.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">The Strategy</div>
+      <h2 style="font-size:clamp(1.5rem,3.2vw,2.3rem);line-height:1.1">Diners Club takes back the experience space:<br><em style="color:var(--gold);font-style:italic">Interesting Life</em></h2>
+      <p style="font-size:.92rem;max-width:none;margin-top:1rem">Visa and Mastercard compete on being everywhere and getting accepted everywhere, plus everyday discounts and assistance perks.</p>
+      <p style="font-size:.92rem;max-width:none;margin-top:.5rem;margin-bottom:1rem">Diners already owns the ground to stand apart, and to make good on a real promise around food and lifestyle.</p>
+      <div class="translabel" style="margin:.6rem 0 .2rem;font-size:1rem">Two tracks that work together</div>
+      <div class="grid g2" style="margin-top:.4rem">
+        <div class="card hl">
+          <h3>1 · DCI Brand Relaunch</h3>
+          <p style="font-size:.86rem;max-width:none">Positioning built to connect naturally with high-profile audiences who care about food, travel, culture, and lifestyle. Own the categories these customers already love: travel, high-end restaurants, specialty grocery, and wellness.</p>
+          <ul class="blist" style="margin-top:.5rem">
+            <li>Define the audience</li>
+            <li>Build content made for them</li>
+            <li>Set the reach and the territory</li>
+          </ul>
+        </div>
+        <div class="card hl">
+          <h3>2 · Positioning DCI Benefits</h3>
+          <p style="font-size:.86rem;max-width:none">Benefits that are always on build loyalty. Exclusive experiences become something people talk about.</p>
+          <ul class="blist" style="margin-top:.5rem">
+            <li>Always On benefits</li>
+            <li>Only by Invite experiences</li>
+            <li>Franchise sponsorships</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Module 1 · Brand Relaunch</div>
+      <h2 style="font-size:clamp(1.3rem,2.6vw,1.9rem)">Making the connection.</h2>
+      <p class="subhead" style="margin-top:0">The approach, the content hooks, and who we're talking to.</p>
+      <div class="grid g3" style="margin-top:.6rem">
+        <div class="card sm hl">
+          <span class="catlabel">The Strategic Spender</span>
+          <p style="font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:.3rem">High-net-worth. Expects the world to work around him, not the other way around.</p>
+          <ul class="blist">
+            <li><strong>Profile:</strong> 45+. Strong buying power and plenty of liquidity.</li>
+            <li><strong>Where they are in life:</strong> Wants total comfort. Balancing a heavy workload with family time.</li>
+            <li><strong>What they're into:</strong> Business-class tickets, high-end hotels, fine dining, international insurance, golf and private clubs, streaming.</li>
+            <li><strong>The Diners challenge:</strong> They carry it for the status, but there's real risk they reach for Mastercard Black or Visa Infinite instead.</li>
+            <li><strong>The opening:</strong> Priority access. Experiences they can't get anywhere else.</li>
+          </ul>
+        </div>
+        <div class="card sm">
+          <span class="catlabel">The Traditional Spender</span>
+          <p style="font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:.3rem">The quiet workhorse. Uses the card out of habit and loyalty to the bank.</p>
+          <ul class="blist">
+            <li><strong>Profile:</strong> 51+. Long-tenured professionals.</li>
+            <li><strong>Where they are in life:</strong> Family first. Trips are planned well ahead. They value their time and their peace of mind.</li>
+            <li><strong>What they're into:</strong> Travel, standout stays, and good food.</li>
+            <li><strong>The Diners challenge:</strong> Passive use, mostly autopay.</li>
+            <li><strong>The opening:</strong> Anchor events backed by the franchise.</li>
+          </ul>
+        </div>
+        <div class="card sm">
+          <span class="catlabel">The Active Value Spender</span>
+          <p style="font-size:.82rem;font-weight:600;color:var(--navy);margin-bottom:.3rem">Peak earning years. Highly active wherever experiences happen.</p>
+          <ul class="blist">
+            <li><strong>Profile:</strong> 35+. High and upper-middle income brackets.</li>
+            <li><strong>Where they are in life:</strong> Ahead of the curve on food and culture. Values ideas, art, and design.</li>
+            <li><strong>What they're into:</strong> High-end tech, digital platforms, the restaurants everyone's talking about.</li>
+            <li><strong>The Diners challenge:</strong> Heavy competition for everyday spend and card swipes.</li>
+            <li><strong>The opening:</strong> VIP experiences.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">The Ecosystem and the Marketing Engine</div>
+      <h2>A full ecosystem, ready to build with you.</h2>
+      <p style="font-size:.85rem;max-width:none">Ediciones Gamma is the natural home for building real affinity with audiences who show up for culture, food, travel, art, and lifestyle.</p>
+      <div class="grid g4" style="margin-top:.6rem">
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Print Magazine</h3><p style="font-size:.78rem">The luxury editorial authority in Colombia. Standout photography and content that earns its space.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Website</h3><p style="font-size:.78rem">Premium digital formats. Repeat traffic from people looking for recommendations.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Social</h3><p style="font-size:.78rem">An active, connected community. Multi-platform, premium audience.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Newsletters</h3><p style="font-size:.78rem">Subscribers who actually open. They treat the emails as a perk, not clutter.</p></div>
+      </div>
+      <div class="translabel" style="margin:.9rem 0 .2rem">Transmedia Formats</div>
+      <p style="font-size:.78rem;max-width:none;margin-bottom:.3rem" class="muted">Distributed across formats: editorial, web, podcast, YouTube, Instagram, Facebook, TikTok, and more.</p>
+      <div class="grid g4" style="margin-top:.2rem">
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">La Mesa de Diners</h3><p style="font-size:.78rem">Conversations on food, art, culture, entertainment, and lifestyle.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Historias Diners</h3><p style="font-size:.78rem">Short docs and interviews. The natural format for brand storytelling.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Diners Recomienda</h3><p style="font-size:.78rem">The experiences, perks, and brands that shape how people live.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Interesting Life</h3><p style="font-size:.78rem">The experience umbrella. Events and chef-driven dining, built for the franchise alone.</p></div>
+      </div>
+      <div class="translabel" style="margin:.9rem 0 .2rem">CRM / Inbound</div>
+      <div class="grid g2" style="margin-top:.2rem">
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Prospecting and Activation</h3><p style="font-size:.78rem">Segmented outreach. Messaging that lands. Direct lines to the customer.</p></div>
+        <div class="card sm" style="padding:.7rem .8rem"><h3 style="font-size:.9rem">Direct Messaging</h3><p style="font-size:.78rem">Benefit reminders and invites that feel personal.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" style="padding-top:4vh;padding-bottom:4vh">
+    <div class="wrap" style="max-width:1180px">
+      <div class="eyebrow">Editorial Authority · Where the Message Lives</div>
+      <h2 style="font-size:clamp(1.3rem,2.6vw,1.9rem);margin-bottom:.4rem">Revista Diners: where affinity gets built.</h2>
+      <div class="grid g3" style="align-items:start">
+        <div class="card hl">
+          <span class="tier-own">Revista Diners · 12 issues a year</span>
+          <p style="font-size:.82rem">A natural fit with high-profile readers who follow food, travel, culture, and lifestyle, in a premium setting with a high visual bar.</p>
+          <p style="font-size:.78rem;margin-top:.5rem"><strong style="color:var(--navy)">Deep curation:</strong> every story reads as an editorial stamp of approval that makes a brand more credible.</p>
+        </div>
+        <div class="card">
+          <span class="tier-own">Who Reads It</span>
+          <ul class="blist">
+            <li>Food lovers and travelers</li>
+            <li>Buyers of luxury goods, premium fashion, high-end cars, and hard-to-get products</li>
+            <li>Opinion leaders and the culture crowd</li>
+          </ul>
+        </div>
+        <div class="card hl">
+          <span class="tier-own">Monthly Multi-Platform Reach</span>
+          <div style="font-size:1.7rem;font-weight:700;color:var(--navy);line-height:1;margin:.3rem 0 .1rem">1,133,000+</div>
+          <p class="muted" style="font-size:.68rem;letter-spacing:.03em;text-transform:uppercase;margin-bottom:0">A qualified, captive community</p>
+        </div>
+      </div>
+      <div class="translabel" style="margin:1rem 0 .2rem;font-size:.9rem">Reach by Channel</div>
+      <div class="grid g4" style="margin-top:.2rem">
+        <div class="card sm" style="padding:.6rem .75rem"><span class="catlabel">Print Magazine</span><div style="font-size:1.15rem;font-weight:700;color:var(--navy)">146,000+</div><p style="font-size:.72rem;margin-top:.1rem" class="muted">Copies · 90% active subscribers</p></div>
+        <div class="card sm" style="padding:.6rem .75rem"><span class="catlabel">Website</span><div style="font-size:1.15rem;font-weight:700;color:var(--navy)">737,000+</div><p style="font-size:.72rem;margin-top:.1rem" class="muted">Unique users · 941,000 page views</p></div>
+        <div class="card sm" style="padding:.6rem .75rem"><span class="catlabel">Social</span><div style="font-size:1.15rem;font-weight:700;color:var(--navy)">210,000+</div><p style="font-size:.72rem;margin-top:.1rem" class="muted">Followers · 6.78% IG engagement</p></div>
+        <div class="card sm" style="padding:.6rem .75rem"><span class="catlabel">Newsletter</span><div style="font-size:1.15rem;font-weight:700;color:var(--navy)">40,000+</div><p style="font-size:.72rem;margin-top:.1rem" class="muted">Contacts · 31.8% open · 3.6% CTR</p></div>
+      </div>
+      <div class="flag" style="margin-top:.7rem">
+        <p><strong>On the ground at events, fairs, and experiences across Colombia.</strong> Enough pull to turn a recommendation into a same-day reservation, foot traffic, and sales.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Module 1 · Brand Relaunch</div>
+      <h2 style="font-size:clamp(1.3rem,2.6vw,1.9rem);margin-bottom:.3rem">The 360 channel plan.</h2>
+      <p class="subhead" style="margin-top:0;margin-bottom:.5rem">What we do, matched to where we say it.</p>
+      <div class="grid g3" style="margin-top:.4rem">
+        <div class="card hl">
+          <span class="catlabel">Premium Editorial</span><h3 style="font-size:1rem">Revista Diners + AXXIS</h3>
+          <ul class="blist" style="font-size:.8rem">
+            <li>Puts the brand in the most credible room</li>
+            <li>Readers come for curated experiences, not coupons</li>
+          </ul>
+          <span class="action">Goal → editorial positioning</span>
+        </div>
+        <div class="card hl">
+          <span class="catlabel">Digital</span><h3 style="font-size:1rem">Diners and AXXIS Websites</h3>
+          <ul class="blist" style="font-size:.8rem">
+            <li>Catches people who are already interested</li>
+            <li>A conversion hub in an aspirational setting</li>
+          </ul>
+          <span class="action">Goal → qualified traffic</span>
+        </div>
+        <div class="card hl">
+          <span class="catlabel">Social</span><h3 style="font-size:1rem">Instagram, Facebook, YouTube, TikTok</h3>
+          <ul class="blist" style="font-size:.8rem">
+            <li>Puts Interesting Life in front of people daily</li>
+            <li>Shows the experiences and benefits in action</li>
+          </ul>
+          <span class="action">Goal → transmedia reach</span>
+        </div>
+      </div>
+      <div class="translabel" style="margin:.9rem 0 .2rem;font-size:.95rem">Formats outside the Gamma ecosystem</div>
+      <div class="grid g3" style="margin-top:.2rem">
+        <div class="card">
+          <span class="catlabel">Close to the Audience</span><h3 style="font-size:1rem">Sponsorships</h3>
+          <ul class="blist" style="font-size:.8rem">
+            <li>Brand positioning</li>
+            <li>High-profile PR</li>
+          </ul>
+          <span class="action">Goal → retention + the moment of choice</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Close to the Reach</span><h3 style="font-size:1rem">Outdoor / Indoor Advertising</h3>
+          <ul class="blist" style="font-size:.8rem">
+            <li>Billboards and corridors that keep the brand top of mind</li>
+            <li>Malls: a standing reminder that the benefits are there</li>
+          </ul>
+          <span class="action">Goal → brand recall</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Close By</span><h3 style="font-size:1rem">Airport VIP Lounges</h3>
+          <ul class="blist" style="font-size:.8rem">
+            <li>Right there on the traveler's route</li>
+            <li>Puts DCI benefits in plain sight</li>
+          </ul>
+          <span class="action">Goal → presence in travel</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Module 2 · Belonging, Exclusivity, and Status</div>
+      <h2>Positioning the Benefits and Experiences.</h2>
+      <p class="subhead" style="margin-top:0">Experiences worth remembering, that make belonging to Diners Club International mean something.</p>
+      <div class="grid g3" style="margin-top:.6rem">
+        <div class="card">
+          <span class="catlabel">Belonging</span><h3>AON &mdash; Always On</h3>
+          <ul class="blist">
+            <li>Special discounts in select categories</li>
+            <li>Extra savings when you pay with the DCI card</li>
+            <li>Early access to partner products</li>
+          </ul>
+        </div>
+        <div class="card hl">
+          <span class="catlabel">Exclusivity - Only By Invitation</span><h3>Pop-Ups &amp; OBI Experiences</h3>
+          <ul class="blist">
+            <li>The signature format for "Interesting Life," and it travels city to city</li>
+            <li>Private dinners with chef's table and off-menu tastings</li>
+            <li>Seasonal private tastings and chef-led pairings</li>
+            <li>Private food pop-ups</li>
+            <li>Local hidden gems, opened up by season</li>
+            <li>Boutique-style curated experiences</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="catlabel">Status</span><h3>Franchise Sponsorships</h3>
+          <ul class="blist">
+            <li>Brand activations in airport VIP lounges and priority spaces</li>
+            <li>Partnerships with boutique hotels and social clubs</li>
+            <li>Golf tournaments at country clubs; polo and equestrian</li>
+            <li>Marquee art fairs (think ARTBO) and auctions</li>
+            <li>A curated presence at the top food festivals</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">We Are Ediciones Gamma</div>
+      <h2>The team behind the strategy.</h2>
+      <p style="font-size:.92rem;max-width:none">A publishing arm of Grupo Bolívar. We build high-value audiences with curated content, digital creative, and hands-on management of benefits programs, experiences, and partnerships.</p>
+      <div class="grid g3" style="margin-top:.85rem">
+        <div class="card hl" style="padding:.8rem 1rem"><span class="tier-own">Ediciones Gamma</span><h3 style="font-size:1rem">The Ecosystem and Marketing Engine</h3><p style="font-size:.85rem">One coordinated rollout across channels: magazines, web, podcast, video, social, paid media, newsletter, messaging, and CRM.</p></div>
+        <div class="card" style="padding:.8rem 1rem"><span class="tier-own">Revista Diners</span><h3 style="font-size:1rem">The Lifestyle Benchmark</h3><p style="font-size:.85rem">Its credibility makes it the natural place to build affinity between brands and people who value exclusivity.</p></div>
+        <div class="card" style="padding:.8rem 1rem"><span class="tier-own">Revista AXXIS</span><h3 style="font-size:1rem">Leading Voice in Architecture and Design</h3><p style="font-size:.85rem">Colombia's expert voice on architecture, design, and interiors. A curated point of view for people who care about good design.</p></div>
+        <div class="card team-wide" style="padding:.8rem 1rem"><div><span class="tier-own">A Multidisciplinary Team</span><h3 style="font-size:1rem">Editorial Minds + Marketing Strategy + Hands-On Execution + The Right Tech</h3></div><p style="font-size:.85rem">Journalists, creative and tech hubs, marketing strategists, admin and logistics support, and partnership leads who turn business goals into stories, experiences, and activations.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Roadmap</div>
+      <h2>The plan and how we run it.</h2>
+      <div class="grid g3">
+        <div class="card hl">
+          <span class="catlabel">Step 1</span><h3>Define Interesting Life</h3>
+          <ul class="blist">
+            <li>Lock the benefits stack: AON + OBI + Sponsorships</li>
+            <li>Set the strategic direction and brand territory</li>
+            <li>Design the benefits architecture and the program itself</li>
+          </ul>
+          <span class="action">Model → Project fee or monthly retainer</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Step 2</span><h3>Sign Off on the Structure</h3>
+          <ul class="blist">
+            <li>Clear on paper: what's a Gamma fee, what's owned media, what's third-party spend</li>
+            <li>Set the budget</li>
+            <li>Project management, curation, and lining up partners</li>
+          </ul>
+          <span class="action">Model → Monthly operating fee + variable by volume</span>
+        </div>
+        <div class="card">
+          <span class="catlabel">Step 3</span><h3>Put It in Motion</h3>
+          <ul class="blist">
+            <li>Run, operate, and manage the benefits program</li>
+            <li>Handle activations with outside partners like malls and airports</li>
+            <li>Manage content production and distribution</li>
+          </ul>
+          <span class="action">Model → Rate card + direct or managed spend with an admin fee</span>
+        </div>
+      </div>
+      <div class="flag" style="margin-top:.8rem;padding:.5rem .8rem">
+        <p style="font-size:.7rem"><strong>Handled in-house at Gamma:</strong> editorial production, content, and experiences · the benefits platform, service, and reporting · OBI experiences · media planning, measurement, and project governance.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" style="padding-top:4vh;padding-bottom:4vh">
+    <div class="wrap">
+      <div class="eyebrow">Module 3 · Team and Resources</div>
+      <h2 style="font-size:clamp(1.3rem,2.6vw,1.9rem);margin-bottom:.2rem">The full Gamma ecosystem.</h2>
+      <p class="subhead" style="margin-bottom:.3rem;margin-top:0">The roles it takes to build, manage, and run everything in this proposal.</p>
+      <div class="tscroll compact">
+      <table style="margin-top:0">
+        <thead>
+          <tr><th>Role</th><th>What They Do</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-strong" colspan="2" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Strategy</td></tr>
+          <tr class="us"><td>Strategy Director · Growth Manager</td><td>Strategy</td></tr>
+          <tr><td class="td-strong" colspan="2" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Specialists and Coordinators</td></tr>
+          <tr class="us"><td>Project Manager (PM)</td><td>Project management</td></tr>
+          <tr class="us"><td>Partnerships Coordinator</td><td>Signing partners · Building experiences</td></tr>
+          <tr class="us"><td>Admin and Billing Coordinator</td><td>Contracts for partners and experiences</td></tr>
+          <tr class="us"><td>Content Editor (journalist)</td><td>Editorial and digital content</td></tr>
+          <tr class="us"><td>Marketing Strategist</td><td>Running marketing programs</td></tr>
+          <tr><td class="td-strong" colspan="2" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Production</td></tr>
+          <tr class="us"><td>Graphic Editor</td><td>Design assets · Video editing for social</td></tr>
+          <tr class="us"><td>Videographer</td><td>Filming video content · Podcast production</td></tr>
+          <tr class="us"><td>Community Manager</td><td>Running social media</td></tr>
+          <tr class="us"><td>Paid Media Manager</td><td>Managing and running paid media</td></tr>
+          <tr class="us"><td>Benefits Platform Admin · Webmaster</td><td>Tech team for upkeep, support, and building out the platform</td></tr>
+          <tr><td class="td-strong" colspan="2" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Support &amp; Customer Service</td></tr>
+          <tr class="us"><td>Customer Service Agent</td><td>Members</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="flag" style="margin-top:.4rem;padding:.5rem .8rem">
+        <p style="font-size:.68rem"><strong>Ediciones Gamma's in-house team only.</strong> Next phase: resources and costs for outside partners and vendors.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Module 3 · The Details (1 of 4)</div>
+      <h2 style="font-size:clamp(1.3rem,2.6vw,1.8rem);margin-bottom:.3rem">What we'd run in the Gamma ecosystem.</h2>
+      <div class="tscroll compact">
+      <table style="margin-top:0">
+        <thead>
+          <tr><th>Action</th><th>Where</th><th>How Often</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-strong" colspan="3" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Editorial (Print)</td></tr>
+          <tr class="us"><td>2-page advertorial ("Interesting Life")</td><td>Revista Diners + AXXIS</td><td>4 issues/year</td></tr>
+          <tr class="us"><td>Subscriber-only false cover</td><td>Revista Diners</td><td>1&ndash;2 issues/year</td></tr>
+          <tr class="us"><td>Insert / special edition</td><td>Revista Diners</td><td>1 issue/year</td></tr>
+          <tr class="us"><td>Physical postcards and collectibles</td><td>Select cardholder list</td><td>2 mailings/year</td></tr>
+          <tr><td class="td-strong" colspan="3" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Web and Social</td></tr>
+          <tr class="us"><td>Web display / branded content</td><td>Diners + AXXIS</td><td>12 months</td></tr>
+          <tr class="us"><td>Dedicated landing page + retargeting</td><td>Diners + AXXIS</td><td>12 months</td></tr>
+          <tr class="us"><td>Co-branded IG/FB content</td><td>Owned Diners + AXXIS channels</td><td>12 months</td></tr>
+          <tr><td class="td-strong" colspan="3" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Transmedia</td></tr>
+          <tr class="us"><td>Historias Diners (short doc)</td><td>YouTube, TikTok, IG · Diners</td><td>Three videos</td></tr>
+          <tr class="us"><td>Diners Recomienda (video interview)</td><td>YouTube, TikTok, IG · Diners</td><td>Per piece</td></tr>
+          <tr class="us"><td>La Mesa de Diners (podcast)</td><td>Spotify, YouTube, IG, TikTok · Diners</td><td>12 months</td></tr>
+          <tr class="us"><td>Brand slot in the newsletter</td><td>Segmented sends · Diners + AXXIS</td><td>12 months</td></tr>
+          <tr><td class="td-strong" colspan="3" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">CRM / Messaging</td></tr>
+          <tr class="us"><td>Activation emails</td><td>Current cardholder base</td><td>12 months</td></tr>
+          <tr class="us"><td>WhatsApp / Messenger 1:1</td><td>Direct messaging</td><td>12 months</td></tr>
+          <tr><td class="td-strong" colspan="3" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Display</td></tr>
+          <tr class="us"><td>Fixed bar + vertical banner</td><td>Diners + AXXIS</td><td>3 months/year</td></tr>
+          <tr class="us"><td>Billboard + vertical banner</td><td>Diners + AXXIS</td><td>3 months/year</td></tr>
+          <tr class="us"><td>Full site takeover</td><td>Diners + AXXIS</td><td>3 months/year</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="flag" style="margin-top:.4rem;padding:.5rem .8rem">
+        <p style="font-size:.68rem"><strong>Preferred rate, already negotiated.</strong> Activation emails and WhatsApp/Messenger depend on how many contacts we're reaching.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Module 3 · The Details (2 of 4)</div>
+      <h2 style="font-size:clamp(1.3rem,2.6vw,1.8rem);margin-bottom:.3rem">What we'd run in sponsorships and events.</h2>
+      <p class="subhead" style="margin-bottom:.3rem;margin-top:0">Market rates, for reference. TBD = still to be defined.</p>
+      <div class="grid g2" style="margin-top:.8rem;margin-bottom:1rem">
+        <div class="card hl">
+          <span class="tier-own">What We Say</span>
+          <ul class="blist" style="font-size:.8rem">
+            <li>Brand management and high-profile PR</li>
+            <li>The moment people are most open to exclusivity</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tier-own">Who We Reach</span>
+          <ul class="blist" style="font-size:.8rem">
+            <li>The Strategic Spender (Black) at select events</li>
+            <li>Opinion leaders and the culture crowd</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tscroll compact">
+      <table style="margin-top:0">
+        <thead>
+          <tr><th>Action</th><th>Where</th><th>How Often</th></tr>
+        </thead>
+        <tbody>
+          <tr class="us"><td>Diners Club Recomienda · editorial section sponsor</td><td>Revista Diners + AXXIS</td><td>4 issues/year</td></tr>
+          <tr class="us"><td>Private tastings and chef-led pairings</td><td>Rotating cities</td><td>Quarterly</td></tr>
+          <tr class="us"><td>Sponsored valet parking</td><td>Partner restaurants and events</td><td>12 months</td></tr>
+          <tr class="us"><td>Sponsored Revista Diners subscriptions</td><td>Cardholder base</td><td>12 months</td></tr>
+          <tr class="us"><td>Golf tournament sponsorship</td><td>Country clubs</td><td>1&ndash;2 events/year</td></tr>
+          <tr class="us"><td>Food festival</td><td>Top national festival</td><td>1 event/year</td></tr>
+          <tr class="us"><td>Art fair (think ARTBO / MAMBO)</td><td>Bogotá</td><td>1 event/year</td></tr>
+          <tr class="us"><td>Boutique hotel partnership</td><td>Partner hotel network</td><td>12 months</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="flag" style="margin-top:.4rem;padding:.5rem .8rem">
+        <p style="font-size:.68rem"><strong>Needs a quote.</strong> Frequencies are planning assumptions, still to be confirmed.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Module 3 · The Details (3 of 4)</div>
+      <h2 style="font-size:clamp(1.3rem,2.6vw,1.8rem);margin-bottom:.3rem">What we'd run at airports and indoor.</h2>
+      <p class="subhead" style="margin-bottom:.3rem;margin-top:0">Market rates, for reference. TBD = still to be defined.</p>
+      <div class="grid g2" style="margin-top:.8rem;margin-bottom:1rem">
+        <div class="card">
+          <span class="tier-own">What We Say</span>
+          <ul class="blist">
+            <li>VIP access and exclusivity</li>
+            <li>Zero friction while traveling</li>
+            <li>Benefits you can feel, right when you use them</li>
+            <li>You're part of a premium travel circle</li>
+          </ul>
+        </div>
+        <div class="card hl">
+          <span class="tier-own">Who We Reach</span>
+          <ul class="blist">
+            <li>The Strategic Spender on business trips</li>
+            <li>The Active Value Spender who flies often</li>
+            <li>The Traditional Spender on planned trips</li>
+            <li>Domestic flyers and international connections</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tscroll compact">
+      <table style="margin-top:0">
+        <thead>
+          <tr><th>Section</th><th>Action</th><th>Where</th><th>How Often</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-strong" colspan="4" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Airport</td></tr>
+          <tr class="us"><td>Branding</td><td>VIP lounge branding</td><td>El Dorado (domestic/intl)</td><td>12 months</td></tr>
+          <tr class="us"><td>Branding</td><td>VIP lounge branding</td><td>José María Córdova</td><td>12 months</td></tr>
+          <tr class="us"><td>Jet bridges/Priority</td><td>Jet bridges / priority lanes</td><td>El Dorado + José María Córdova</td><td>12 months</td></tr>
+          <tr class="us"><td>Screens</td><td>Arrivals/Domestic screens</td><td>Premium/Gold circuits</td><td>12 months</td></tr>
+          <tr class="us"><td>Access</td><td>Cardholder VIP lounge access</td><td>El Dorado + José María Córdova</td><td>Per pass</td></tr>
+          <tr><td class="td-strong" colspan="4" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Indoor</td></tr>
+          <tr class="us"><td>Mupi</td><td>Mupi / mall screen</td><td>Andino</td><td>12 months</td></tr>
+          <tr class="us"><td>Mupi</td><td>Mupi / mall screen</td><td>El Retiro</td><td>12 months</td></tr>
+          <tr class="us"><td>Mupi</td><td>Mupi / mall screen</td><td>Fontanar</td><td>12 months</td></tr>
+          <tr class="us"><td>Branded</td><td>Branded menus and table pieces</td><td>AON partner restaurant network</td><td>12 months</td></tr>
+          <tr class="us"><td>Signage</td><td>Valet / parking signage</td><td>Partner restaurants and events</td><td>12 months</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="flag" style="margin-top:.4rem;padding:.5rem .8rem">
+        <p style="font-size:.68rem"><strong>Needs a quote.</strong> Frequencies are planning assumptions, still to be confirmed.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide" style="padding-top:4vh;padding-bottom:4vh">
+    <div class="wrap">
+      <div class="eyebrow" style="margin-bottom:.7rem">Module 3 · The Details (4 of 4)</div>
+      <h2 style="font-size:clamp(1.2rem,2.4vw,1.6rem);margin-bottom:.2rem">What we'd run outdoor and in external digital.</h2>
+      <p class="subhead" style="margin-bottom:.3rem;margin-top:0">Market rates, for reference. TBD = still to be defined.</p>
+      <div class="grid g2" style="margin-top:.8rem;margin-bottom:1rem">
+        <div class="card hl">
+          <span class="tier-own">What We Say</span>
+          <ul class="blist">
+            <li>The brand is everywhere in premium corridors</li>
+            <li>Solid, successful, here to stay</li>
+            <li>Status that sets it apart from Visa and Mastercard</li>
+            <li>Interesting Life as ground only Diners owns</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tier-own">Who We Reach</span>
+          <ul class="blist">
+            <li>The Strategic Spender in premium corridors</li>
+            <li>The Active Value Spender in aspirational areas</li>
+            <li>High-income households reached through CTV/OTT</li>
+            <li>Luxury, food, and travel audiences on display</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tscroll compact">
+      <table style="margin-top:0">
+        <thead>
+          <tr><th>Section</th><th>Action</th><th>Where</th><th>How Often</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="td-strong" colspan="4" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">Outdoor</td></tr>
+          <tr class="us"><td>LED billboard</td><td>Large-format LED billboard</td><td>Zona T, Parque 93, Usaquén (Bogotá)</td><td>12 months</td></tr>
+          <tr class="us"><td>LED billboard</td><td>Premium / LED billboard</td><td>El Poblado, Provenza, Milla de Oro (Medellín)</td><td>12 months</td></tr>
+          <tr class="us"><td>Billboard</td><td>Outdoor billboard</td><td>Granada, Ciudad Jardín (Cali)</td><td>12 months</td></tr>
+          <tr class="us"><td>Billboard</td><td>Outdoor billboard</td><td>North side (Barranquilla)</td><td>12 months</td></tr>
+          <tr class="us"><td>Takeover</td><td>Temporary takeover (launch)</td><td>3 cities, restaurant corridor</td><td>1 month</td></tr>
+          <tr><td class="td-strong" colspan="4" style="color:var(--gold);font-family:var(--sans);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border-bottom:1px solid var(--line);padding-top:.4rem">External Digital</td></tr>
+          <tr class="us"><td>Programmatic</td><td>Programmatic / display</td><td>High-income audiences</td><td>12 months</td></tr>
+          <tr class="us"><td>CTV/OTT</td><td>Targeted CTV / OTT</td><td>High-income households</td><td>12 months</td></tr>
+          <tr class="us"><td>Cinema</td><td>Premium cinema (VIP / Gold)</td><td>Premium screens in major cities</td><td>12 months</td></tr>
+          <tr class="us"><td>Influencers</td><td>Influencers / creators</td><td>Food, travel, business</td><td>Per campaign</td></tr>
+          <tr class="us"><td>Search</td><td>Brand / intent search</td><td>Google and other search engines</td><td>12 months</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="flag" style="margin-top:.4rem;padding:.5rem .8rem">
+        <p style="font-size:.68rem"><strong>Needs a quote.</strong> Frequencies are planning assumptions, still to be confirmed.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<div class="dots" id="dots"></div>
+<div class="pageno" id="pageno">01 / 15</div>
+<div class="conf">Confidential · Ediciones Gamma</div>
+
+<script>
+  const deck=document.getElementById('deck');
+  const slides=[...document.querySelectorAll('.slide')];
+  const dotsWrap=document.getElementById('dots');
+  const pageno=document.getElementById('pageno');
+  const pad=n=>String(n).padStart(2,'0');
+  slides.forEach((s,i)=>{
+    const b=document.createElement('button');
+    b.setAttribute('aria-label','Go to slide '+(i+1));
+    b.onclick=()=>slides[i].scrollIntoView();
+    dotsWrap.appendChild(b);
+  });
+  const dots=[...dotsWrap.children];
+  const io=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const i=slides.indexOf(e.target);
+        dots.forEach((d,j)=>d.classList.toggle('active',j===i));
+        pageno.textContent=pad(i+1)+' / '+pad(slides.length);
+      }
+    });
+  },{root:deck,threshold:.55});
+  slides.forEach(s=>io.observe(s));
+  let idx=0;
+  deck.addEventListener('scroll',()=>{idx=Math.round(deck.scrollTop/window.innerHeight)});
+  window.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'||e.key==='PageDown'){e.preventDefault();slides[Math.min(idx+1,slides.length-1)].scrollIntoView()}
+    if(e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();slides[Math.max(idx-1,0)].scrollIntoView()}
+  });
+</script>
+</body>
+</html>
