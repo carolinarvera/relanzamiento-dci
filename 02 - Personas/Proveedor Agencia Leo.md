@@ -8,7 +8,9 @@ confidence: high
 ---
 
 ## For future Claude
-Leo (Leo Burnett / Leo Latam) is the external agency managing technical execution for Ediciones Gamma's digital platforms under Davivienda. Contract model: bolsa de horas (not closed deliverables) — gives creative versatility. PM: Viviana Reyes (viviana.reyes@col-leoburnett.com). Planner: Paola Torres (paola.torres@leo-latam.com) — note: earlier vault records listed "Jonathan" as planner; Paola Torres is the confirmed planner as of 2026-06-17. Operates within Davivienda's "distrito digital" (~160 people, Torre Central floors 7 and 9). 11 resources including developers, SEO specialist, data analyst, UX/UI designers, and video manager (Caro). Key constraint: no external payment gateways — all bank transactions must go through the official Davivienda app (security policy). Critical partner for Visión platform strategy and "Mundo D" under Banco Davivienda.
+Leo (Leo Burnett / Leo Latam) is the external agency managing technical execution for Ediciones Gamma's digital platforms under Davivienda. Contract model: bolsa de horas (not closed deliverables) — gives creative versatility. PM: Viviana Reyes (viviana.reyes@col-leoburnett.com). Planner: Paola Torres (paola.torres@leo-latam.com) — note: earlier vault records listed "Jonathan" as planner; Paola Torres is the confirmed planner as of 2026-06-17. Operates within Davivienda's "distrito digital" (~160 people, Torre Central floors 7 and 9). Key constraint: no external payment gateways — all bank transactions must go through the official Davivienda app (security policy). Critical partner for Visión platform strategy and "Mundo D" under Banco Davivienda.
+
+**Actualización (alcance formal de roles recibido):** documento oficial de alcance describe 9 roles (1 recurso c/u): PM, Ingeniero Full Stack, Copy Sr, Web Master, Diseñador Web/Motion, Video Manager, Planner, Data Analyst, SEO — cada uno con límites explícitos de lo que NO cubre (ver sección 3.0). Esto **no coincide en número** con el registro histórico de 11 recursos (sección 3, jun 2026) — puede ser una redefinición de alcance contractual o un subconjunto del equipo total. Confirmar con Viviana Reyes cuál es la estructura vigente antes de usar cualquiera de las dos para el inventario de recursos de la negociación de contrato Visión.
 
 ---
 
@@ -33,7 +35,27 @@ Para corregir las fricciones operativas actuales (entregas sobre la marcha, depe
 - **Desacoplamiento de Contingencias:** Los hitos de coyuntura (ej. fluctuaciones del dólar o reportes de mercado de _Visión_) se manejan como _fast-tracks_ dentro del sprint, moviendo el contenido programado sin romper la velocidad del equipo.
     
 
-## 3. Estructura y Capacidad del Equipo (11 Recursos)
+## 3.0 Roles y Funciones Oficiales (alcance contractual, confirmado 2026-08-XX)
+
+Definición formal de alcance por rol — incluye límites explícitos de lo que NO cubre cada perfil. Fuente: documento de alcance Grupo Publicis/Leo.
+
+| Rol | Función | Límites explícitos |
+|---|---|---|
+| **Project Manager** (1) | Administración de recurso y gestión de proyecto, viabilidad en alcances digitales, facturación y reporte con herramientas Grupo Publicis, conexión con puntos estratégicos y de marca en boutique | — |
+| **Ingeniero Full Stack** (1) | Desarrollo de sitios web, APIs, modelado de bases de datos, administradores de contenido | **NO** hace desarrollos transaccionales. **NO** hace temas de UX |
+| **Copy Sr** (1) | Foco en performance, amplia experiencia en colocación de servicios/productos por canales digitales | **NO** genera big ideas sin acompañamiento de un director. **NO** traduce |
+| **Web Master** (1) | Análisis UX en plataformas, prototipado, diseño y maqueta de plataformas, curaduría del esquema de marca, material gráfico para conceptos financieros complejos | — |
+| **Diseñador Web / Motion** (1) | Diseño web general y piezas de performance, piezas animadas desde stock, maqueta HML (email marketing, landing page) como proyecto de upskilling, arte finalización | **NO** hace textos. **NO** conceptualiza |
+| **Video Manager** (1) | Piezas y plantillas de performance para RRSS + Display, adapta formatos audiovisuales entre canales, asiste producciones menores (grabación a edición) | — |
+| **Planner** (1) | Construcción de marca, benchmark, análisis de mercado/competencia/tendencias de consumidor, generación de insights de audiencia, colaboración creativa con mercadeo y diseño | — |
+| **Data Analyst** (1) | Recopila y analiza datos de los assets/canales bajo potestad Gamma-Davivienda, evalúa y reporta resultados de campañas, genera dashboards | — |
+| **SEO** (1) | Sigue e implementa ruta de estrategia SEO integral en todos los canales, genera tagging plan, keyword research por canal | — |
+
+**Nota operativa:** este alcance formal (9 roles, 1 recurso c/u = 9 personas) es la base de negociación del nuevo modelo tarifario Visión (fee recurrente + entregables, ver [[Contrato Visión]]) — sirve para el inventario de recursos que Carolina debe presentar antes de negociar el contrato. Contrastar contra la estructura de 11 recursos documentada abajo (Sección 3) por si hay roles duplicados o desactualizados.
+
+---
+
+## 3. Estructura y Capacidad del Equipo (11 Recursos) — registro histórico jun 2026
 
 El equipo de **Leo** está configurado bajo una arquitectura transversal para cubrir los frentes de adquisición orgánica, desarrollo y retención.
 
