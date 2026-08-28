@@ -45,7 +45,8 @@ Sin esto resuelto, cualquier otra métrica de septiembre queda en duda.
 
 ### P3 — Estructural, resultados visibles en el mes (semana 3-4)
 
-- **Auditar el Hub Arquitectos de Colombia a nivel página.** Resultados mixtos: Fischer y Soto mejoran posición, Zapata y Jiménez retroceden o pierden volumen — sin el detalle por URL no se sabe si es problema de publicación o de contenido.
+- **Auditar el Hub Arquitectos de Colombia a nivel página — actualizado con URL real (GSC Páginas, agosto 1-27).** Fischer, Jiménez, Soto y Cuartas están publicados y funcionan con CTR sólido (6.8%-14.1%). **Mauricio Zapata no aparece en el listado de páginas con tráfico** — no es una caída de posición, es ausencia total de clics. Confirmar si la página existe y está indexada antes de cualquier otra acción sobre ese perfil.
+- **Consolidar las 7 URLs de suscripción de AXXIS en una sola.** Encontradas en GSC Páginas: `/categoria-producto/suscripciones/`, `/suscripciones/`, y cinco variantes de `/producto/suscripcion-...` con descuentos distintos, cada una con tráfico mínimo por separado (62, 8, 3, 2, 2, 2, 1 clics). Es una causa raíz nueva para las 28 conversiones contra 108,000 usuarios — la señal de intención de compra se reparte en vez de consolidarse, y el usuario no tiene un camino de compra claro.
 - **Muestreo del bucket de noindex de Diners** (104,726 páginas marcadas error). A esa escala de sitio, probablemente es ruido estructural (filtros, paginación) y no contenido perdido, pero conviene cuantificarlo.
 - **Replicar en AXXIS el patrón evergreen + reel que funciona en Diners.**
 - **Arrancar estrategia de recurrencia para AXXIS.** 106,000 de 108,000 usuarios de julio fueron nuevos — retención casi nula. Prioridad de mayor impacto según el propio diagnóstico: newsletter segmentada + módulos de "leer a continuación" (interlinking) + notificaciones push. Ver detalle en sección Redes/Newsletter.
@@ -58,6 +59,8 @@ Sin esto resuelto, cualquier otra métrica de septiembre queda en duda.
 |---|---|---|
 | Clics orgánicos (GSC) | 8,237 | 52,123 |
 | Posición promedio | 8.65 | 8.44 |
+| Clics/día agosto (1-27), aparte | 204 (+14% vs. promedio jul-ago15) | pendiente de verificar |
+| "axxis" a secas (marca) | posición 5.44, sin cambio en 3 mediciones | — |
 | Páginas indexadas | 4,753 (32% del inventario conocido) | 19,700 (3.5%, en crecimiento) |
 | Visitas web (Metricool) | 72.3K | 109K |
 | Seguidores IG | 163.6K (+2,501) | 100.7K (+2,847) |
