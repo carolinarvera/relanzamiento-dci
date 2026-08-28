@@ -1,62 +1,80 @@
 ---
-date: 2026-07-31
+date: 2026-08-28
 type: tasks-hot
 scope: urgentes-esta-semana
-last-updated: 2026-07-31
+last-updated: 2026-08-28
 ai-first: true
 tags: [tasks, urgente, hot, semana-actual]
 ---
 
 ## For future Claude
-Solo las tareas urgentes o con deadline esta semana. Leer este archivo primero al inicio de sesión — NO el master completo. Actualizar al cierre de cada sesión. Plan completo: `Tasks/00-Tareas-Master-H2-2026.md`.
+Solo lo urgente y lo bloqueado. Leer este archivo primero al inicio de sesión — NO el master completo. **La fuente única en vivo es tareas-growth-mkt.vercel.app** (95 tareas tras la depuración del 28-ago; venían de 160). Este archivo es el extracto de lo que no puede esperar.
 
-**Contexto semana 31 jul:** Club Beneficios Suscriptores operativo en modo manual. Estado aliados: 3 activos · 8 en documentación. **Meta: 20 aliados funcionales al 30 ago.** Foco esta semana: bienvenida aliados + media kit + comunicaciones + licencias HubSpot.
-
----
-
-# Tareas Urgentes — Semana 31 Jul - 6 Ago 2026
+**Contexto 28-ago:** Dos fechas duras encima — migración del reporte de ventas a HubSpot el **15 de septiembre**, y vigencia de aliados en la landing al **30 de septiembre**. Tres de los cinco bloqueadores son precios sin definir, lo que significa que el equipo comercial cotiza sobre base inestable con un gap acumulado de -$532M.
 
 ---
 
-## 🔴 P0 — Esta semana sin falta (Beneficios Suscriptores)
+# Tareas Urgentes — Semana del 28 de agosto 2026
 
-| Tarea | Owner | Contexto |
+---
+
+## 🚧 Bloqueadores activos (5)
+
+| # | Tarea | Owner | Fecha |
+|---|---|---|---|
+| `2RE` | Cerrar precios y contenido de los 3 paquetes — Starter, Pymes, Anual 360 | Carolina + comercial | — |
+| `7LI` | Definir precios paquetes B2B por volumen (5 tramos) | Nicolás Serna | — |
+| `12LI` | Libros por Encargo — precios, media kit y deck | Nicolás Serna + Carolina | — |
+| `13EX` | Media kit y presentación de aliados Beneficios Suscriptores | Paola Nossa + Carolina | vencida 8 ago |
+| `57RE` | Migrar el reporte de ventas a HubSpot y apagar los Excel | Jeison + Carolina + comercial | **15 sep** |
+
+> **Tres de cinco son precios.** 2RE, 7LI y 12LI bloquean media kits, campañas y propuestas. Es el mismo tipo de bloqueo repetido en tres BUs.
+
+---
+
+## 🔴 Urgentes con fecha
+
+| # | Tarea | Owner | Vence |
+|---|---|---|---|
+| `13EX` | Media kit y presentación de aliados | Paola Nossa + Carolina | 8 ago (vencida) |
+| `BS09` | Presentar datos revistero + aceptación a Catalina | Paola Nossa | 8 ago (vencida) |
+| `EJ08` | Activar Meta Lead Ads nativo → HubSpot | Jeison + Sebastián | 30 ago |
+| `EJ11` | Enviar base suscriptores activos a Sebastián | Jeison | 30 ago |
+| `EG06` | Mapear recursos Visión — inventario, costos y dedicación | Carolina | 30 ago |
+| `EG07` | Negociar contrato Leo (SEO + WordPress) | Carolina | 30 ago |
+| `EJ20` | Conversación 1:1 Natalia Castaño — performance | Carolina | 30 ago |
+| `57RE` | Migración reporte de ventas a HubSpot | Jeison + Carolina | **15 sep** |
+| `BS01` | Landing — vigencia al 30 de septiembre en aliados | Nicolás + Paola Nossa | 30 sep |
+
+---
+
+## 🔴 Urgentes sin fecha asignada
+
+| # | Tarea | Owner |
 |---|---|---|
-| Actualizar landing — cambiar vigencia a 30 ago en 3 aliados destacados | Nicolás + Paola Nossa | Coordinar con Juan David. Urgente para coherencia con aliados |
-| Compartir slides presentación con Carolina | Paola Nossa | Bloqueante para actualizar slide audiencia |
-| Recopilar logos de todos los aliados | Paola Nossa | Bloqueante para media kit + presentación |
-| Agregar slide aliados actuales + pasados (con logos) a presentación | Paola Nossa | Esta semana |
-| Actualizar slide de audiencia con datos reales de base | Carolina | Una vez recibidas las slides de Paola |
-| Ajustar diseño media kit | Paola Nossa | Fortalecer sección audiencia |
-| Armar paquetes personalizados de bienvenida por aliado | Carolina + Nicolás | Incluir media kit ajustado |
-| Enviar correos bienvenida con media kit a aliados (3 activos) | Carolina + Nicolás | Después de ajustar media kit |
-| Presentar datos revistero + aceptación a Catalina | Paola Nossa | Aprobación formal requerida antes de formalizar con aliados |
+| `2RE` | Cerrar precios de los 3 paquetes de pauta | Carolina + comercial |
+| `31RE` | Embeds formularios HubSpot en ambos sitios | Jeison + Juan David |
+| `7LI` | Precios paquetes B2B por volumen | Nicolás Serna |
+| `12LI` | Libros por Encargo — precios, media kit y deck | Nicolás + Carolina |
+| `EJ06` | Renovación — pasarela, workflow y pendientes | Jeison + Carolina + Sebastián + Paola Nossa |
+| `EJ29` | Cierre programa Privilegios — emails y cadencia | Carolina + Jeison + Paola Pantaleón |
 
 ---
 
-## 📋 P1 — Primera semana agosto
+## ⚠️ Riesgos de la semana
 
-| Tarea | Owner | Contexto |
-|---|---|---|
-| Evaluar licencias HubSpot: quién necesita acceso marketing | Grupo | Nicolás seguro · revisar licencia Stefi · 1ra semana ago |
-| Reunión: definir email templates + frecuencia comunicaciones | Carolina | Citar a Nico + Paola Nossa |
-| Coordinar segmentación suscriptores con Juan David | Jeison | Nuevos / activos / con vigencia vencida → para CRM flows |
-| Presentar proceso onboarding aliados a Nico | Carolina | Mapa de vinculación antes de citar a grupo ampliado |
-| Reunión con María Claudia Vargas | Carolina | Definir rol + proceso actualización bases de datos |
+- **Dos vencidas desde el 8 de agosto** (13EX y BS09) que bloquean la formalización con aliados. BS09 necesita aprobación de Catalina antes de comprometer nada.
+- **La migración del 15 de septiembre depende de un paso previo** que nadie tiene asignado con fecha: clasificar los clientes por pauta en el sistema. Sin eso la fecha se cae.
+- **EJ06 es la única urgente sin fecha que toca revenue directo.** La sospecha de que la renovación automática de la pasarela IO no opera lleva abierta desde julio.
+- **Carolina aparece en 6 de las 15 urgentes.** Jeison en 6. Entre los dos concentran el cuello de botella.
 
 ---
 
-## ⏳ Bloqueadores activos
+## ✅ Cerrado recientemente
 
-| Bloqueador | Quién desbloquea |
-|---|---|
-| Slides presentación sin compartir | Paola Nossa → Carolina |
-| Logos aliados sin recopilar | Paola Nossa |
-| Licencias HubSpot sin definir | Grupo — 1ra semana ago |
-| Revistero sin aprobación formal | Paola Nossa → Catalina |
-| Segmentación CRM suscriptores sin claridad | Jeison + Juan David |
-| MVP plataforma | Juan David — mediados sep 2026 |
+- **Baselines de Instagram** (12AX y 13DI) — cerrados con los informes de julio. AXXIS: 162,380 seguidores, ER 4.51%, 35-44 = 34.92%. Diners: 99,930 seguidores, ER 6.9% posts / 8.81% reels, 69% del alcance de no seguidores, 35-44 = 35.5%. Ambos con Facebook pendiente.
+- **Hallazgo que corrige la estrategia:** las dos cuentas ya están en el perfil de audiencia objetivo. El reto no es rejuvenecer sino convertir alcance en tráfico y suscripción.
 
 ---
 
-*Plan completo: `Tasks/00-Tareas-Master-H2-2026.md` · Actualizado: 2026-07-31*
+*Fuente única en vivo: tareas-growth-mkt.vercel.app · Archivo histórico: `Tasks/00-Tareas-Master-H2-2026.md` · Actualizado: 2026-08-28*
