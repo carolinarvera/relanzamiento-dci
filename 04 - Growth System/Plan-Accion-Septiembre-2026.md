@@ -30,6 +30,9 @@ Sin esto resuelto, cualquier otra métrica de septiembre queda en duda.
 - **Resolver las 1,531 páginas 404 de AXXIS.** Enlaces rotos con pérdida directa de equity de SEO.
 - **Pausar o recortar las campañas de Google Ads que pagan por keywords donde Diners ya rankea top 3 orgánico** (confirmado con evidencia keyword por keyword: termales, restaurantes Candelaria, karts, afueras de Bogotá). 56% del gasto activo de la cuenta compartida sin una sola conversión.
 - **Investigar el embudo de suscripción de AXXIS.** 28 conversiones de "Finalizar compra suscripción" contra 108,000 usuarios activos en julio. Esta es la métrica de negocio real, no de tráfico — conecta directo con la prioridad de compensar la pérdida de Privilegios Davivienda.
+- **El embudo de suscripción falla en las dos plataformas de pauta, no solo en Google Ads.** Meta Ads de agosto (1-27, cuenta completa): solo 2.8% del gasto va a campañas de conversión, con 3 leads y 1 compra en todo el mes entre AXXIS y Diners. Confirma que el problema es estructural (checkout/tracking/propuesta de valor), no de configuración de una sola plataforma.
+- **Separar el reporting de Colchones El Dorado.** Sigue apareciendo mezclado en la misma cuenta de Meta Ads pese a la regla ya establecida en julio — 5.7% del gasto de agosto es de esta cuenta cliente, no editorial.
+- **La fragmentación de campañas empeoró desde julio.** De 52 campañas activas (julio) a 208 campañas individuales de boost de artículos en agosto (1-27), consumiendo 68.8% del presupuesto de Meta. Consolidar en 2-3 campañas por BU sigue pendiente.
 
 ### P2 — Quick wins (semana 2-3)
 
