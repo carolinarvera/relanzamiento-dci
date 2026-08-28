@@ -44,7 +44,9 @@ Sin esto resuelto, cualquier otra métrica de septiembre queda en duda.
 
 ### P2 — Quick wins (semana 2-3)
 
-- **Auditar por qué la campaña "Suscripción AXXIS"** (la única que convierte en toda la cuenta de Google Ads) tiene volumen mínimo de impresiones. Si es un problema de configuración se corrige en días, no semanas.
+- **Urgente, operativo: la campaña "Suscripción AXXIS" está pausada ("Detenida") en Google Ads ahora mismo.** Es la única campaña de toda la cuenta con conversiones reales. Confirmar con el equipo de pauta por qué se detuvo y reactivarla si fue un error — no es un problema de investigación, es una acción de hoy.
+- **Confirmado a nivel de término de búsqueda: 0 conversiones en el 100% de las keywords de Search.** Export nativo de Google Ads (1-27 ago, ~100 términos, miles de clics combinados) — ninguno registra conversión. Cierra cualquier duda de que el problema es de una campaña específica; es la cuenta completa de Search.
+- **Buena señal parcial: el gasto en las 4 campañas de Diners ya flaggeadas como wasteful está bajando solo.** Agosto vs. julio: -36% en Aguas termales, -20% en Karts, -25% en Restaurantes temáticos, -27% en Poemas de amor. Confirmar con el equipo de pauta si fue una corrección deliberada, para no duplicar el esfuerzo ni revertirla sin querer.
 - **Schema Organization + sitelinks para la búsqueda de marca "axxis"** — sigue en posición 5.4, sin moverse desde agosto.
 - **Subir cadencia de reels en AXXIS.** 10 publicados en 46 días frente a 19 de Diners, con el reel siendo el formato de mejor engagement de AXXIS (6.49% vs 4.94% de post).
 - **Auditar experiencia mobile de AXXIS.** Desktop convierte mejor pese a rankear peor (CTR 2.68% vs 1.69% mobile) — con 83% del tráfico social en mobile, es una fricción cara.
