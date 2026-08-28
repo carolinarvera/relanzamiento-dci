@@ -51,7 +51,8 @@ Sin esto resuelto, cualquier otra métrica de septiembre queda en duda.
 - ~~Muestreo del bucket de noindex de Diners~~ — **Verificado (28-ago).** Muestra de 2,000 URLs del total de 104,726: 90.4% páginas de búsqueda interna, 9.4% paginación profunda, 99.8% del total. **Cero artículos de contenido real encontrados.** Confirmado como ruido estructural, sin acción pendiente.
 - **Investigar la caída de velocidad de carga en Diners.** Auditoría técnica (200 páginas de muestra, 24 ago vs 20 ago): páginas con carga lenta pasaron de 5 a 25 en cuatro días — la métrica que más empeoró del reporte. Revisar si coincide con un deploy o cambio reciente antes de que afecte ranking.
 - **Replicar en AXXIS el patrón evergreen + reel que funciona en Diners.**
-- **Arrancar estrategia de recurrencia para AXXIS.** 106,000 de 108,000 usuarios de julio fueron nuevos — retención casi nula. Prioridad de mayor impacto según el propio diagnóstico: newsletter segmentada + módulos de "leer a continuación" (interlinking) + notificaciones push. Ver detalle en sección Redes/Newsletter.
+- **Arrancar estrategia de recurrencia para AXXIS y Diners.** AXXIS: 106,000 de 108,000 usuarios de julio fueron nuevos (98%). Diners (GA4, 1-25 ago): mejor pero igual débil — 9.7% recurrente, retención a 7 días por debajo de 0.3% en casi todas las cohortes. Prioridad de mayor impacto según el propio diagnóstico: newsletter segmentada + módulos de "leer a continuación" (interlinking) + notificaciones push. Ver detalle en sección Redes/Newsletter.
+- **Verificar el pico de usuarios nuevos del 21-ago en Diners** (12,766 vs. promedio ~3,000-4,000/día, 3-4×). Antes de atribuirlo a una nota viral, confirmar que no sea el mismo tipo de error de tracking cruzado que ya se encontró entre AXXIS y Diners en julio — identificar el contenido/canal que lo generó.
 
 ---
 
