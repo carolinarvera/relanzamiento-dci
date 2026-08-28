@@ -17,6 +17,8 @@ Construido sobre el diagnóstico del corte 1 jul-15 ago 2026 (Metricool, Google 
 
 **Condición de entrada:** ninguna meta de septiembre se fija sobre GA4 de AXXIS hasta que el tag esté corregido y validado por un ciclo completo. Mientras tanto, GSC (clics/impresiones) y Metricool (visitas/redes) son la referencia.
 
+**Secuencia obligatoria de pauta de conversión (ambas marcas):** CRO de landing + resolver login/checkout → validar con el embudo de GA4 que el paso de login mejoró → recién ahí reactivar pauta de suscripción. Pagar tráfico hacia un embudo con 98%+ de abandono en login es gasto ciego — decisión ya tomada correctamente al pausar "Suscripción AXXIS".
+
 ---
 
 ## Prioridades y quick wins
@@ -44,7 +46,7 @@ Sin esto resuelto, cualquier otra métrica de septiembre queda en duda.
 
 ### P2 — Quick wins (semana 2-3)
 
-- **Urgente, operativo: la campaña "Suscripción AXXIS" está pausada ("Detenida") en Google Ads ahora mismo.** Es la única campaña de toda la cuenta con conversiones reales. Confirmar con el equipo de pauta por qué se detuvo y reactivarla si fue un error — no es un problema de investigación, es una acción de hoy.
+- **"Suscripción AXXIS" está pausada por decisión deliberada de Carolina — correcto, no reactivar todavía.** No tiene sentido pagar tráfico hacia un embudo donde el 98.84% se cae en el paso de login antes de poder comprar (ver hallazgo del embudo abajo). **Condición de reactivación: primero CRO de la landing y resolver el flujo de login/checkout, después se reactiva la pauta de conversión** — en ese orden, no en paralelo.
 - **Confirmado a nivel de término de búsqueda: 0 conversiones en el 100% de las keywords de Search.** Export nativo de Google Ads (1-27 ago, ~100 términos, miles de clics combinados) — ninguno registra conversión. Cierra cualquier duda de que el problema es de una campaña específica; es la cuenta completa de Search.
 - **Buena señal parcial: el gasto en las 4 campañas de Diners ya flaggeadas como wasteful está bajando solo.** Agosto vs. julio: -36% en Aguas termales, -20% en Karts, -25% en Restaurantes temáticos, -27% en Poemas de amor. Confirmar con el equipo de pauta si fue una corrección deliberada, para no duplicar el esfuerzo ni revertirla sin querer.
 - **Schema Organization + sitelinks para la búsqueda de marca "axxis"** — sigue en posición 5.4, sin moverse desde agosto.
