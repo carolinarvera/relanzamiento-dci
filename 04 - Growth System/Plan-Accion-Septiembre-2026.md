@@ -60,7 +60,7 @@ Sin esto resuelto, cualquier otra métrica de septiembre queda en duda.
 |---|---|---|
 | Clics orgánicos (GSC) | 8,237 | 52,123 |
 | Posición promedio | 8.65 | 8.44 |
-| Clics/día agosto (1-27), aparte | 204 (+14% vs. promedio jul-ago15) | pendiente de verificar |
+| Clics/día agosto (1-27), aparte | 204 (+14% vs. promedio jul-ago15) | 1,078 (-4.9% vs. promedio jul-ago15) |
 | "axxis" a secas (marca) | posición 5.44, sin cambio en 3 mediciones | — |
 | Páginas indexadas | 4,753 (32% del inventario conocido) | 19,700 (3.5%, en crecimiento) |
 | Visitas web (Metricool) | 72.3K | 109K |
