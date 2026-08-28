@@ -1,0 +1,102 @@
+---
+date: 2026-08-19
+type: plan-accion-mes
+tags: [growth-system, axxis, diners, septiembre-2026, seo, sem, pauta, ga4, indexacion]
+status: activo
+owner: Carolina Ramirez
+scope: revistas-nexsteps
+version: 1.0
+last_updated: 2026-08-19
+related: "[[Plan-Accion-Agosto-2026]], [[Comite-Plan-Digital-Agosto-2026]]"
+---
+
+# Plan de Acción — Septiembre 2026
+**Documento vivo: fuente única del vault · Se actualiza conforme avanza el mes**
+
+Construido sobre el diagnóstico del corte 1 jul-15 ago 2026 (Metricool, Google Ads, GSC performance y cobertura de indexación, GA4). Agosto fue el mes de detectar los problemas estructurales; septiembre es el mes de corregirlos y empezar a medir con datos limpios.
+
+**Condición de entrada:** ninguna meta de septiembre se fija sobre GA4 de AXXIS hasta que el tag esté corregido y validado por un ciclo completo. Mientras tanto, GSC (clics/impresiones) y Metricool (visitas/redes) son la referencia.
+
+---
+
+## Prioridades y quick wins
+
+### P1 — Estructural, bloqueante (semana 1)
+
+Sin esto resuelto, cualquier otra métrica de septiembre queda en duda.
+
+- **Corregir el tag GA4 de AXXIS.** Tracking mezclado con Diners confirmado (~22-24 jul). Ningún reporte de GA4 de AXXIS es válido hasta la corrección y un ciclo limpio de medición.
+- **Auditar las 915 páginas de AXXIS excluidas por noindex marcado como error en GSC Coverage.** Candidato directo a explicar la caída de tráfico orgánico que julio dejó sin resolver. Exportar el listado de URLs y confirmar cuáles son contenido real bloqueado por accidente.
+- **Resolver las 1,531 páginas 404 de AXXIS.** Enlaces rotos con pérdida directa de equity de SEO.
+- **Pausar o recortar las campañas de Google Ads que pagan por keywords donde Diners ya rankea top 3 orgánico** (confirmado con evidencia keyword por keyword: termales, restaurantes Candelaria, karts, afueras de Bogotá). 56% del gasto activo de la cuenta compartida sin una sola conversión.
+- **Investigar el embudo de suscripción de AXXIS.** 28 conversiones de "Finalizar compra suscripción" contra 108,000 usuarios activos en julio. Esta es la métrica de negocio real, no de tráfico — conecta directo con la prioridad de compensar la pérdida de Privilegios Davivienda.
+
+### P2 — Quick wins (semana 2-3)
+
+- **Auditar por qué la campaña "Suscripción AXXIS"** (la única que convierte en toda la cuenta de Google Ads) tiene volumen mínimo de impresiones. Si es un problema de configuración se corrige en días, no semanas.
+- **Schema Organization + sitelinks para la búsqueda de marca "axxis"** — sigue en posición 5.4, sin moverse desde agosto.
+- **Subir cadencia de reels en AXXIS.** 10 publicados en 46 días frente a 19 de Diners, con el reel siendo el formato de mejor engagement de AXXIS (6.49% vs 4.94% de post).
+- **Auditar experiencia mobile de AXXIS.** Desktop convierte mejor pese a rankear peor (CTR 2.68% vs 1.69% mobile) — con 83% del tráfico social en mobile, es una fricción cara.
+- **Corregir la metodología de reporte de redes sociales.** El aporte de IG/FB al tráfico que se venía reportando incluía pauta paga (94-98% de esas cifras es `cpc`, no orgánico) — separar antes del próximo corte para no duplicar la misma inversión bajo dos etiquetas.
+
+### P3 — Estructural, resultados visibles en el mes (semana 3-4)
+
+- **Auditar el Hub Arquitectos de Colombia a nivel página.** Resultados mixtos: Fischer y Soto mejoran posición, Zapata y Jiménez retroceden o pierden volumen — sin el detalle por URL no se sabe si es problema de publicación o de contenido.
+- **Muestreo del bucket de noindex de Diners** (104,726 páginas marcadas error). A esa escala de sitio, probablemente es ruido estructural (filtros, paginación) y no contenido perdido, pero conviene cuantificarlo.
+- **Replicar en AXXIS el patrón evergreen + reel que funciona en Diners.**
+- **Arrancar estrategia de recurrencia para AXXIS.** 106,000 de 108,000 usuarios de julio fueron nuevos — retención casi nula. Prioridad de mayor impacto según el propio diagnóstico: newsletter segmentada + módulos de "leer a continuación" (interlinking) + notificaciones push. Ver detalle en sección Redes/Newsletter.
+
+---
+
+## Métricas de referencia (corte 1 jul-15 ago, 46 días, GSC + Metricool)
+
+| Métrica | AXXIS | Diners |
+|---|---|---|
+| Clics orgánicos (GSC) | 8,237 | 52,123 |
+| Posición promedio | 8.65 | 8.44 |
+| Páginas indexadas | 4,753 (32% del inventario conocido) | 19,700 (3.5%, en crecimiento) |
+| Visitas web (Metricool) | 72.3K | 109K |
+| Seguidores IG | 163.6K (+2,501) | 100.7K (+2,847) |
+| Engagement IG (post/reel) | 4.94% / 6.49% | 7.3% / 7.88% |
+
+**Meta de septiembre:** no fijar metas numéricas de sesiones/usuarios de AXXIS hasta cerrar P1. Meta de proceso: GA4 de AXXIS validado y GSC Coverage de AXXIS con el bucket de noindex-error resuelto o descartado como falso positivo, antes del 30 de septiembre.
+
+---
+
+## SEO / Contenido
+
+| Tarea | Detalle | Owner | Prioridad |
+|---|---|---|---|
+| Exportar y auditar URLs noindex-error de AXXIS | 915 páginas | Plataformas (Jeison) | P1 |
+| Resolver 404 de AXXIS | 1,531 páginas | Plataformas | P1 |
+| Schema + sitelinks "axxis" | Posición 5.4 sin moverse | Mateo / Juan David | P2 |
+| Auditoría por URL de Hub Arquitectos | 5 perfiles, resultados mixtos | Mateo | P3 |
+| Muestreo noindex Diners | 104,726 páginas, probable ruido estructural | Plataformas | P3 |
+
+## Pauta (Meta + Google Ads)
+
+| Tarea | Detalle | Owner | Prioridad |
+|---|---|---|---|
+| Pausar/recortar campañas Diners sobre keywords ya rankeadas | Confirmado keyword por keyword, 56% del gasto activo, 0 conversiones | Growth / agencia Google Ads | P1 |
+| Auditar throttling de "Suscripción AXXIS" | Única campaña que convierte, volumen mínimo | Agencia Google Ads | P2 |
+| Investigar embudo de suscripción AXXIS end-to-end | 28 conversiones / 108K usuarios | Growth / Plataformas | P1 |
+
+## Redes sociales / Newsletter
+
+| Tarea | Detalle | Owner | Prioridad |
+|---|---|---|---|
+| Subir cadencia de reels AXXIS | De 10 a ~18-20/mes | Paola Gordillo | P2 |
+| Corregir metodología de reporte social (excluir paid del "aporte orgánico") | 94-98% de lo reportado como aporte de IG/FB era pauta paga | Growth | P2 |
+| Newsletter segmentada + lead magnet para AXXIS | Estrategia de recurrencia — retención casi nula (98% tráfico nuevo) | Growth / Paola Nossa | P3 |
+| Módulos "leer a continuación" en artículos AXXIS | Combate el bajo tiempo de interacción (29s promedio) | Plataformas | P3 |
+
+---
+
+## Checklist de cierre de mes
+
+- [ ] Tag GA4 AXXIS corregido y validado
+- [ ] Listado de URLs noindex-error de AXXIS auditado
+- [ ] Campañas Diners de bajo ROI pausadas o recortadas
+- [ ] Causa raíz de la campaña Suscripción AXXIS identificada
+- [ ] Embudo de suscripción AXXIS diagnosticado (28/108K)
+- [ ] Reporte de redes sociales con metodología corregida (sin duplicar paid)
