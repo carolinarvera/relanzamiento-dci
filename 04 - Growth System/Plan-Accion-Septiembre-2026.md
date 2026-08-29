@@ -13,45 +13,39 @@ related: "[[Plan-Accion-Agosto-2026]], [[Comite-Plan-Digital-Agosto-2026]]"
 # Plan de Acción — Septiembre 2026
 **Documento vivo: fuente única del vault · Se actualiza conforme avanza el mes**
 
-Construido sobre el diagnóstico del corte 1 jul-15 ago 2026 (Metricool, Google Ads, GSC performance y cobertura de indexación, GA4). Agosto fue el mes de detectar los problemas estructurales; septiembre es el mes de corregirlos y empezar a medir con datos limpios.
+Construido sobre el diagnóstico del corte 1 jul-28 ago 2026 (Metricool, Google Ads, Meta Ads, GSC performance + cobertura, GA4, AdButler) y el diagnóstico técnico de proveedor externo (ago 2026).
 
-**Condición de entrada:** ninguna meta de septiembre se fija sobre GA4 de AXXIS hasta que el tag esté corregido y validado por un ciclo completo. Mientras tanto, GSC (clics/impresiones) y Metricool (visitas/redes) son la referencia.
+## Objetivo del plan
 
-**Secuencia obligatoria de pauta de conversión (ambas marcas):** CRO de landing + resolver login/checkout → validar con el embudo de GA4 que el paso de login mejoró → recién ahí reactivar pauta de suscripción. Pagar tráfico hacia un embudo con 98%+ de abandono en login es gasto ciego — decisión ya tomada correctamente al pausar "Suscripción AXXIS".
+**Recuperar y proteger tráfico de calidad.** La conversión NO es objetivo de growth mientras el flujo de la página no esté arreglado — es un frente de Producto, no de Growth. Los hallazgos del embudo están documentados abajo como handoff, no como prioridad de este plan.
+
+**Cómo se mide:**
+
+| Métrica | Compromiso |
+|---|---|
+| Tráfico orgánico | Crece — es el activo recuperable y el que retiene (38s vs. 9s de Paid Social) |
+| Impresiones publicitarias viewable | No bajan — protege el ingreso directo de AdButler |
+| Tráfico total | Se sostiene; cualquier baja por reasignación de pauta debe ser planeada y anunciada, no reactiva |
+
+**Condición de medición:** ninguna meta se fija sobre GA4 (ninguna de las dos marcas) hasta corregir el tag contaminado. Mientras tanto GSC (clics/impresiones) y Metricool son la referencia.
+
+**Sobre Paid Social:** no se corta hasta que el orgánico recupere volumen suficiente para reemplazarlo. Bajo un objetivo de tráfico, cortar antes resta volumen sin sustituto. El arreglo de redirecciones es lo que habilita esa reducción más adelante.
 
 ---
 
 ## Prioridades y quick wins
 
-### P1 — Estructural, bloqueante (semana 1)
+### P1 — Recuperación de tráfico (semana 1)
 
-Sin esto resuelto, cualquier otra métrica de septiembre queda en duda.
+Lo que devuelve volumen real. Ordenado por impacto sobre el objetivo.
 
-- **Corregir el tag GA4 — confirmado que la contaminación es bidireccional y sigue activa en agosto.** GA4 Diners muestra "Revista AXXIS" en su top de páginas (3,695 vistas) Y GA4 AXXIS muestra "Revista Diners" y su página de error (3,481 + 1,262 vistas) en el suyo. No es una fuga de un solo sentido — es un tag o contenedor de GTM compartido mal configurado entre las dos propiedades. Revisar la configuración de streams/tags de ambas marcas en conjunto, no por separado. Ningún reporte de GA4 de ninguna de las dos marcas es válido hasta la corrección y un ciclo limpio de medición.
-- **Confirmado con el embudo de AXXIS: comparte el mismo muro de login que Diners — no hay nada que replicar, hay que arreglar la misma plataforma en las dos marcas.** GA4 embudo AXXIS (31 jul-27 ago): 1.89% completa el login (Diners: 1.16%) — prácticamente idéntico. El fix (evaluar si el login es necesario antes de comprar, guest checkout o login simplificado) aplica a ambas marcas por igual, es la misma arquitectura de checkout.
-- **Quick win más barato mientras se resuelve el login: CTA de suscripción en páginas de artículo.** Desglose del mismo embudo por página de entrada: quien entra por el home completa login 3.55% de las veces; quien entra por un artículo, 0%-0.08% (44× peor). Casi todo el tráfico de pauta y contenido entra por artículo, no por home. Poner una llamada a suscripción visible en el cuerpo de los artículos es una corrección de días, no de rediseño de checkout.
-- **Quinta confirmación independiente de cero conversiones — esta vez en AdButler (pauta programática), un sistema sin relación con GA4/Google Ads/Meta Ads.** Reporte de publisher (15-28 ago): columna "Conversions" en 0 para las 28 filas, ambas marcas, todos los días — no un ratio bajo, literalmente sin configurar. Probable que el píxel de conversión de AdButler nunca se instaló. Confirmar con quien administre la cuenta si hay conversiones configuradas para las campañas de clientes que corren ahí (ej. Colchones El Dorado).
-- **AXXIS tiene mejor calidad de inventario publicitario que Diners, pese a menos tráfico — dato comercial, no solo de diagnóstico.** AdButler (1 jul-28 ago): AXXIS CTR 0.348% vs. Diners 0.147% (2.4× mejor); viewability ~45-50% en AXXIS vs. ~20-36% en Diners. Argumento para el equipo comercial: la pauta rinde más por impresión en AXXIS.
-- **Dentro de AXXIS, la Barra Fija es el formato de mejor desempeño — Banner #2 Escritorio es el más débil.** AdButler por zona (15-28 ago): Barra Fija (escritorio y móvil) CTR 0.4%-2.6%, hasta 5-10× mejor que los banners estáticos. Banner #2 Escritorio tiene varios días en 0% de CTR pese a cientos de impresiones. Para el equipo comercial: priorizar Barra Fija al vender pauta a clientes; evaluar si Banner #2 Escritorio vale la pena mantener.
-- **Cuarta confirmación independiente: Paid Social da cero conversiones.** Google Ads (jul), Meta Ads (ago), GA4 Diners, y ahora GA4 AXXIS: 0 eventos clave desde Paid Social pese a ser el canal con más volumen (30,337 sesiones, 49% del tráfico de AXXIS). Ya no es una hipótesis, es un patrón repetido en cuatro fuentes distintas — reasignar presupuesto de Paid Social a canales que sí convierten (Organic Search, Email) es la acción con más evidencia detrás de todo el plan.
-- **AXXIS también tiene el gap de cross-domain con ePayco** (`new-checkout.epayco.co` aparece como referral externo, igual que en Diners) — se corrige una sola vez si comparten cuenta de medición. Pero AXXIS tiene un gap adicional que Diners no tiene: **$0 de ingresos en todos los canales pese a tener eventos de compra registrados** — el valor del evento de compra no parece estar mapeado en el stream de AXXIS. Auditar configuración de ecommerce/valor de evento por separado de Diners.
-- **8,681 vistas de "página no encontrada" en el top 25 de páginas de Diners (GA4, agosto).** Más que casi cualquier artículo real del mes — tráfico real cayendo en enlaces rotos, no un artefacto de rastreo. Cruzar con el hallazgo de 404s de GSC y priorizar la corrección de enlaces internos rotos.
-- **Posible tráfico bot en GA4 de Diners.** Geografía inconsistente con todas las demás fuentes: 23% de usuarios activos reportados como EE.UU., más Singapur (2,501) — muy distinto al ~80% Colombia consistente en GSC y Metricool. Auditar antes de usar cifras de usuarios activos de GA4 para cualquier meta o reporte de comité.
-- ~~Auditar las 915 páginas de AXXIS excluidas por noindex marcado como error en GSC Coverage~~ — **Verificado (28-ago).** El bucket real son 798 URLs, y el 94% es comportamiento correcto de WordPress (686 páginas de búsqueda interna, 27 de paginación profunda, 8 embeds, 7 adjuntos) — no es un problema. El hallazgo real, mucho más chico: **47 artículos genuinos mal bloqueados por noindex**, ejemplos: `diseno-casa-tenjo`, `el-encanto-de-las-ciudades-intermedias-colombianas`, `una-moderna-villa-en-una-isla-de-honduras`. Corregir el noindex de esos 47 y solicitar reindexación — tarea acotada, ya no es el riesgo estructural que parecía.
-- **Resolver las 1,531 páginas 404 de AXXIS.** Enlaces rotos con pérdida directa de equity de SEO.
-- **Pausar o recortar las campañas de Google Ads que pagan por keywords donde Diners ya rankea top 3 orgánico** (confirmado con evidencia keyword por keyword: termales, restaurantes Candelaria, karts, afueras de Bogotá). 56% del gasto activo de la cuenta compartida sin una sola conversión.
-- **Investigar el embudo de suscripción de AXXIS.** 28 conversiones de "Finalizar compra suscripción" contra 108,000 usuarios activos en julio. Esta es la métrica de negocio real, no de tráfico — conecta directo con la prioridad de compensar la pérdida de Privilegios Davivienda.
-- **El embudo de suscripción falla en las dos plataformas de pauta, no solo en Google Ads.** Meta Ads de agosto (1-27, cuenta completa): solo 2.8% del gasto va a campañas de conversión, con 3 leads y 1 compra en todo el mes entre AXXIS y Diners. Confirma que el problema es estructural (checkout/tracking/propuesta de valor), no de configuración de una sola plataforma.
-- **Causa raíz real del embudo de Diners, con el embudo completo medido: no es el checkout, es el login.** GA4 exploración de embudo (31 jul-27 ago, 61,738 visitantes): Paso 1 visita → Paso 2 "Inicio de sesión" = **1.16% completa, 98.84% abandona ahí**. De los 716 que sí inician sesión, 3 compran (0.42% — proporción razonable). El problema no es que nadie quiera comprar, es que casi nadie llega siquiera a poder intentarlo por la pared de login obligatorio antes de la compra. Esto es diez veces más grande que el gap de cross-domain tracking con ePayco (que sigue siendo válido corregir, pero es secundario). **Acción P1 real: evaluar si el login es necesario antes de comprar, o si se puede mover a después del pago (guest checkout) o simplificar (login social, magic link).** Dato a favor: email tiene la mejor tasa de login de todos los canales (4.19% vs. 1.67% cpc, 0.35% orgánico) — refuerza la apuesta por newsletter.
-- **Separar el reporting de Colchones El Dorado.** Sigue apareciendo mezclado en la misma cuenta de Meta Ads pese a la regla ya establecida en julio — 5.7% del gasto de agosto es de esta cuenta cliente, no editorial.
-- **La fragmentación de campañas empeoró desde julio, y ya tiene un costo medible.** De 52 campañas activas (julio) a 208 campañas individuales de boost de artículos en agosto (1-27), consumiendo 68.8% del presupuesto de Meta. Verificado con export nativo (no Metricool ni Gemini): el alcance promocionado por publicación cayó -67% de julio a agosto en ambas marcas — la misma pauta repartida entre demasiadas campañas pequeñas rinde menos por pieza. Consolidar en 2-3 campañas por BU sigue pendiente.
-- **Corrección de diagnóstico: no es un problema de Facebook vs. Instagram, es de fragmentación.** El alcance orgánico+pagado de Facebook por publicación cayó -57% a -64% de julio a agosto (AXXIS y Diners respectivamente, verificado con export nativo). Instagram, en cambio, se mantuvo prácticamente plano (-0.4% a -4% por publicación) — no aceleró como se reportó inicialmente con una fuente no verificada. La caída de Facebook coincide en el tiempo con la fragmentación de campañas de pauta, no con una caída de la plataforma en sí.
+- **Mapa de redirecciones 301 para AXXIS — la causa raíz del colapso de tráfico.** La migración de plataforma (~2025) cambió la estructura de URLs de plana a categorizada y nunca se implementaron las redirecciones. **Verificado de forma independiente el 28-ago: 12 de 12 URLs categorizadas actuales tienen su versión plana en 404** (ej. `/casa-de-cristal-de-fernanda-marques/` → 404, mientras `/arquitectura/casa-de-cristal-de-fernanda-marques/` → 200). Cada artículo publicado antes de la migración perdió su enlace, su autoridad acumulada y su posición. Es la acción de mayor impacto sobre el objetivo de tráfico de todo el plan. Owner: Plataformas (Jeison) o proveedor externo.
+- **Corregir el tag GA4 — integridad del número que se reporta a la junta.** Contaminación bidireccional confirmada y activa en agosto: GA4 Diners muestra "Revista AXXIS" en su top de páginas (3,695 vistas) y GA4 AXXIS muestra "Revista Diners" (3,481 vistas). Es un tag/contenedor GTM compartido mal configurado. Mientras no se corrija, las cifras de tráfico que se presentan están infladas por un monto desconocido. Owner: Plataformas.
+- **Corregir los 47 artículos de AXXIS bloqueados por noindex.** Del bucket de 798 URLs en GSC, el 94% es comportamiento correcto de WordPress (búsqueda interna, paginación, embeds). El problema real son 47 artículos genuinos mal bloqueados — ej. `diseno-casa-tenjo`, `el-encanto-de-las-ciudades-intermedias-colombianas`. Tarea acotada: corregir el tag y solicitar reindexación.
+- **Resolver los 404 y enlaces internos rotos.** GSC reporta 1,531 páginas en 404 en AXXIS. GA4 de Diners muestra **8,681 vistas de "página no encontrada"** en su top 25 de páginas del mes — más que casi cualquier artículo real. Es tráfico real que ya llegó y se pierde en un callejón sin salida.
 
 ### P2 — Quick wins (semana 2-3)
 
-- **"Suscripción AXXIS" está pausada por decisión deliberada de Carolina — correcto, no reactivar todavía.** No tiene sentido pagar tráfico hacia un embudo donde el 98.84% se cae en el paso de login antes de poder comprar (ver hallazgo del embudo abajo). **Condición de reactivación: primero CRO de la landing y resolver el flujo de login/checkout, después se reactiva la pauta de conversión** — en ese orden, no en paralelo.
-- **Confirmado a nivel de término de búsqueda: 0 conversiones en el 100% de las keywords de Search.** Export nativo de Google Ads (1-27 ago, ~100 términos, miles de clics combinados) — ninguno registra conversión. Cierra cualquier duda de que el problema es de una campaña específica; es la cuenta completa de Search.
-- **Buena señal parcial: el gasto en las 4 campañas de Diners ya flaggeadas como wasteful está bajando solo.** Agosto vs. julio: -36% en Aguas termales, -20% en Karts, -25% en Restaurantes temáticos, -27% en Poemas de amor. Confirmar con el equipo de pauta si fue una corrección deliberada, para no duplicar el esfuerzo ni revertirla sin querer.
 - **Schema Organization + sitelinks para la búsqueda de marca "axxis"** — sigue en posición 5.4, sin moverse desde agosto.
 - **Subir cadencia de reels en AXXIS.** 10 publicados en 46 días frente a 19 de Diners, con el reel siendo el formato de mejor engagement de AXXIS (6.49% vs 4.94% de post).
 - **Auditar experiencia mobile de AXXIS.** Desktop convierte mejor pese a rankear peor (CTR 2.68% vs 1.69% mobile) — con 83% del tráfico social en mobile, es una fricción cara.
@@ -60,7 +54,6 @@ Sin esto resuelto, cualquier otra métrica de septiembre queda en duda.
 ### P3 — Estructural, resultados visibles en el mes (semana 3-4)
 
 - **Auditar el Hub Arquitectos de Colombia a nivel página — actualizado con URL real (GSC Páginas, agosto 1-27).** Fischer, Jiménez, Soto y Cuartas están publicados y funcionan con CTR sólido (6.8%-14.1%). **Mauricio Zapata no aparece en el listado de páginas con tráfico** — no es una caída de posición, es ausencia total de clics. Confirmar si la página existe y está indexada antes de cualquier otra acción sobre ese perfil.
-- **Consolidar las 7 URLs de suscripción de AXXIS en una sola.** Encontradas en GSC Páginas: `/categoria-producto/suscripciones/`, `/suscripciones/`, y cinco variantes de `/producto/suscripcion-...` con descuentos distintos, cada una con tráfico mínimo por separado (62, 8, 3, 2, 2, 2, 1 clics). Es una causa raíz nueva para las 28 conversiones contra 108,000 usuarios — la señal de intención de compra se reparte en vez de consolidarse, y el usuario no tiene un camino de compra claro. Verificado con auditoría técnica (ILR/enlaces internos): las páginas de producto de AXXIS tienen 1-2 enlaces internos entrantes cada una, prácticamente huérfanas. **Diners no tiene este problema** — solo 2 URLs de producto (plan 3 y 6 meses) y su página hub de suscripciones tiene la autoridad interna máxima (ILR 100). Confirma que es un problema específico de cómo se construyó esa sección en AXXIS, no del CMS compartido.
 - ~~Muestreo del bucket de noindex de Diners~~ — **Verificado (28-ago).** Muestra de 2,000 URLs del total de 104,726: 90.4% páginas de búsqueda interna, 9.4% paginación profunda, 99.8% del total. **Cero artículos de contenido real encontrados.** Confirmado como ruido estructural, sin acción pendiente.
 - **Investigar la caída de velocidad de carga en Diners.** Auditoría técnica (200 páginas de muestra, 24 ago vs 20 ago): páginas con carga lenta pasaron de 5 a 25 en cuatro días — la métrica que más empeoró del reporte. Revisar si coincide con un deploy o cambio reciente antes de que afecte ranking.
 - **Replicar en AXXIS el patrón evergreen + reel que funciona en Diners.**
@@ -90,19 +83,23 @@ Sin esto resuelto, cualquier otra métrica de septiembre queda en duda.
 
 | Tarea | Detalle | Owner | Prioridad |
 |---|---|---|---|
-| Exportar y auditar URLs noindex-error de AXXIS | 915 páginas | Plataformas (Jeison) | P1 |
+| Implementar mapa de redirecciones 301 AXXIS | Migración rompió URLs — verificado 12/12 en 404 | Plataformas / proveedor | **P1** |
+| Corregir 47 artículos con noindex | Verificado: solo 47 reales de 798 del bucket | Plataformas (Jeison) | P1 |
 | Resolver 404 de AXXIS | 1,531 páginas | Plataformas | P1 |
 | Schema + sitelinks "axxis" | Posición 5.4 sin moverse | Mateo / Juan David | P2 |
 | Auditoría por URL de Hub Arquitectos | 5 perfiles, resultados mixtos | Mateo | P3 |
-| Muestreo noindex Diners | 104,726 páginas, probable ruido estructural | Plataformas | P3 |
+| Velocidad de carga Diners | Páginas lentas pasaron de 5 a 25 en 4 días | Plataformas | P3 |
 
 ## Pauta (Meta + Google Ads)
 
+**Principio:** no se corta Paid Social hasta que el orgánico recupere volumen. La pauta de conversión sigue pausada hasta que Producto arregle el flujo.
+
 | Tarea | Detalle | Owner | Prioridad |
 |---|---|---|---|
-| Pausar/recortar campañas Diners sobre keywords ya rankeadas | Confirmado keyword por keyword, 56% del gasto activo, 0 conversiones | Growth / agencia Google Ads | P1 |
-| Auditar throttling de "Suscripción AXXIS" | Única campaña que convierte, volumen mínimo | Agencia Google Ads | P2 |
-| Investigar embudo de suscripción AXXIS end-to-end | 28 conversiones / 108K usuarios | Growth / Plataformas | P1 |
+| Recortar campañas Diners sobre keywords ya rankeadas top 3 orgánico | Verificado keyword por keyword. Ya bajó solo -20% a -36% entre jul y ago — confirmar si fue deliberado | Growth / agencia Google Ads | P2 |
+| Consolidar campañas fragmentadas de Meta | De 52 (jul) a 208 (ago). El alcance promocionado por publicación cayó -67% — misma pauta diluida en demasiadas campañas | Paola Nossa / agencia | P2 |
+| Separar reporting de Colchones El Dorado | Cuenta cliente mezclada con editorial, 5.7% del gasto de agosto. Regla ya vigente desde julio | Paola Nossa | P2 |
+| Mantener pausada la pauta de suscripción | Decisión de Carolina — no reactivar hasta que Producto resuelva el flujo | Carolina | — |
 
 ## Redes sociales / Newsletter
 
@@ -115,11 +112,26 @@ Sin esto resuelto, cualquier otra métrica de septiembre queda en duda.
 
 ---
 
+## Handoff a Producto — conversión (no es objetivo de Growth este mes)
+
+Documentado para quien sea dueño del flujo de compra. Growth no lo persigue mientras la página no esté arreglada, pero el diagnóstico ya está hecho y no hay que repetirlo.
+
+| Hallazgo | Evidencia | Impacto |
+|---|---|---|
+| **Muro de login antes de comprar** | GA4 embudo (31 jul-27 ago): 98.84% abandona en el paso de login en Diners, 98.11% en AXXIS. De quienes sí completan, 0.42% compra (proporción sana) | El cuello de botella real del negocio. Evaluar guest checkout o login simplificado |
+| **Cross-domain con ePayco sin configurar** | `new-checkout.epayco.co` aparece como referral externo en ambas marcas | GA4 pierde la sesión al saltar al checkout — hay ingresos registrados sin evento clave asociado |
+| **7 URLs de suscripción fragmentadas en AXXIS** | 62, 8, 3, 2, 2, 2 y 1 clic cada una; páginas de producto con 1-2 enlaces internos. Diners no tiene el problema (solo 2 URLs, hub con ILR 100) | La intención de compra se reparte en vez de consolidarse |
+| **Píxel de conversión de AdButler nunca configurado** | Columna Conversions en 0 en las 28 filas del periodo, ambas marcas | No se puede medir el retorno de las campañas de clientes |
+| **Valor de evento de compra sin mapear en AXXIS** | $0 de ingresos en todos los canales pese a tener eventos de compra registrados | Diners sí registra ingresos; AXXIS no |
+| **CTA de suscripción ausente en artículos** | Quien entra por home completa login 3.55%; por artículo, 0%-0.08% (44× peor) | Quick win de días una vez se defina el flujo |
+
+---
+
 ## Checklist de cierre de mes
 
-- [ ] Tag GA4 AXXIS corregido y validado
-- [ ] Listado de URLs noindex-error de AXXIS auditado
-- [ ] Campañas Diners de bajo ROI pausadas o recortadas
-- [ ] Causa raíz de la campaña Suscripción AXXIS identificada
-- [ ] Embudo de suscripción AXXIS diagnosticado (28/108K)
-- [ ] Reporte de redes sociales con metodología corregida (sin duplicar paid)
+- [ ] Mapa de redirecciones 301 de AXXIS implementado y validado
+- [ ] Tag GA4 corregido (contaminación bidireccional) y validado con un ciclo limpio
+- [ ] 47 artículos con noindex corregidos y reindexación solicitada
+- [ ] 404 y enlaces internos rotos resueltos en ambas marcas
+- [ ] Reporte de redes sociales con metodología corregida (sin duplicar paid como orgánico)
+- [ ] Baseline de tráfico orgánico e impresiones viewable establecido para medir recuperación
