@@ -9,7 +9,7 @@ confidence: high
 ---
 
 ## For future Claude
-AXXIS is Ediciones Gamma's architecture and interior design magazine. Revenue (June 2026): Impreso 76% meta, Digital 66% meta. For full operational dashboard see [[03 - Unidades de Negocio/AXXIS/AXXIS Dashboard Estratégico]] (score 44/100). Key risk: loss of Privilegios Davivienda program (June 2026). **Email/CRM platform: HubSpot** (confirmed 2026-06-17) — use HubSpot MCP for newsletter and contact data.
+AXXIS is Ediciones Gamma's architecture and interior design magazine. Revenue (June 2026): Impreso 76% meta, Digital 66% meta. For current strategy and objectives see [[Estrategia Growth AXXIS 2026]]; for the June 2026 audit snapshot (historical, score 44/100) see [[03 - Unidades de Negocio/AXXIS/AXXIS Dashboard Estratégico]]. Key risk: loss of Privilegios Davivienda program (June 2026). **Email/CRM platform: HubSpot** (confirmed 2026-06-17) — use HubSpot MCP for newsletter and contact data.
 
 ---
 
@@ -252,9 +252,11 @@ Comparativo tarifario vs: Forbes · Semana · Dinero · Portafolio
 ---
 
 ## Documentos relacionados
-- [[AXXIS Dashboard Estratégico]] — KPIs, scores y métricas en tiempo real
-- [[Estrategia Growth AXXIS 2026]] — plan de crecimiento H2 2026
-- [[Media Kit AXXIS 2026]] — materiales comerciales
+- [[Estrategia Growth AXXIS 2026]] — plan de crecimiento H2 2026 (documento vivo, usar primero)
+- [[Cocreacion-Comercial-AXXIS-2026]] — modelo comercial transmedia
+- [[AXXIS Dashboard Estratégico]] — snapshot de auditoría jun-2026, histórico (recortado ago-2026)
+- [[Media Kit AXXIS 2026]] — materiales comerciales y tarifario (fuente única de precios, incl. digitales)
+- [[Formatos-Digitales-AXXIS]] — ficha operativa de producción por formato digital
 
 ## Tags
 #axxis #revista #arquitectura #diseño #unidad-negocio

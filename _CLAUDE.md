@@ -37,7 +37,7 @@ ai-first: true
 1. **Personas/proyectos** → `_personas.md` o `_proyectos.md`. Nunca abrir archivos individuales salvo que necesites historial.
 2. **Trabajo en una BU** → leer `_context/<BU>.md` primero. Solo abrir la nota BU completa si la tarjeta no alcanza.
 3. **Archivos grandes** (`Diners.md`, `AXXIS Dashboard Estratégico.md`) → tienen mapa de secciones al inicio. Leer con `offset`/`limit`, nunca completo.
-4. **Tareas** → `Tasks/00-Tareas-Hot.md`. El master solo si necesitas el archivo histórico.
+4. **Tareas** → `Tasks/00-Tareas-Hot.md` (80 líneas, siempre). Si necesitas detalle de una BU específica, abrir `00-Tareas-Master-H2-2026.md` **con offset/limit según su mapa de secciones** (línea 1-27), nunca completo. La fuente viva de verdad es tareas-growth-mkt.vercel.app — úsala para conteos o estado actual antes que el master.
 
 ---
 

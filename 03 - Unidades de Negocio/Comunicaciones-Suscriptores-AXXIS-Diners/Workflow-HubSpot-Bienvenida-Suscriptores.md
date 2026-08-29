@@ -293,4 +293,4 @@ Las dos listas finales compensan en parte: quien nunca abre queda identificado p
 
 ## Relacionado
 
-[[Journey-Emails-Suscriptores]] · [[Email-Bienvenida-Beneficios-Diners]] · [[Email-Bienvenida-AXXIS]] · [[Arquitectura-Plataforma-Beneficios]]
+[[Journey-Emails-Suscriptores]] · [[Emails-Bienvenida-Suscriptores]] · [[Arquitectura-Plataforma-Beneficios]]

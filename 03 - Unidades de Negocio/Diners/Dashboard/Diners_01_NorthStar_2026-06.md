@@ -1,5 +1,6 @@
 ---
 date: 2026-06-24
+last-updated: 2026-08-29
 type: dashboard-tab
 tags: [diners, dashboard, north-star, kpis, junio-2026]
 related-projects: [diners, revenue-growth]
@@ -11,71 +12,30 @@ confidence: high
 # Diners — North Star & Estrategia H2 2026
 **Actualizado:** 2026-06-24 | **Estado:** Digital 37% meta — CRÍTICO
 
-> **For future Claude:** Diners es revista de cultura, gastronomía, moda, viajes y lifestyle premium. Estado crítico en revenue digital (37% de meta a jun 2026). Estrategia validada jun 2026: 3 North Stars (Revenue / Audiencia / Comunidad), Beneficios Suscriptores como tercer motor, 32 propuestas de nuevos formatos, 15 aplicaciones de IA en contenido. CM: [[Paola Gordillo]] (redes AXXIS + Diners — NO Visión). Editor web: [[Simon Granja]]. Pauta digital: [[Proveedor Pauta digital Sebastian Diaz]] (Meta Ads + AdSense). Pauta: SIEMPRE separar pauta propia (suscripciones + consideración) de campañas de clientes (Rolex, marcas lujo = INGRESOS, nunca en auditoría propia). Catalina Obregon aprueba toda revisión de precios o contratación.
+> **For future Claude:** Recortado 2026-08-29 (98→~45 líneas): se quitaron las tablas de KPI de audiencia y beneficios que llevaban desde junio marcadas "A medir/Definir" sin llenarse — para datos actuales de audiencia y revenue ver [[Diners.md]] (que ya tiene GA4/Metricool reales de jul-ago). Se archivó la referencia a "32 formatos + 15 apps IA" (`Diners_02_Formatos_IA_2026-06`, ago-29): ninguno de esos 32 formatos se confirmó como ejecutado, y quedó reemplazado por el Modelo Transmedia de 4 franquicias en [[Formatos-Digitales-Diners]]. **Nota de naming:** esta nota usa "North Star 1/2/3" (Revenue/Audiencia/Beneficios); no confundir con el framework "NS01/NS02/NS03" usado en Libros y mencionado (pero aún no creado) para AXXIS/Diners — son numeraciones distintas sin relación entre sí. Lo que sigue vigente aquí: el mapa de owners y el diagnóstico de fondo (digital 37% meta, pauta propia vs. clientes separada).
 
 ---
 
-## 3 NORTH STARS — Validado 2026-06-24
+## North Stars — validado 2026-06-24
 
-> Estructura base AXXIS adaptada a Diners. Diners agrega el Beneficios Suscriptores como tercer motor de revenue que AXXIS no tiene.
+> Estructura base AXXIS adaptada a Diners. Diners agrega Beneficios Suscriptores como tercer motor de revenue que AXXIS no tiene.
 
-### North Star 1 — Revenue digital
+**North Star 1 — Revenue digital:** ingresos pauta propia (consideración + suscripciones) + ingresos suscripciones Club. Baseline jun 2026: 37% de meta. Meta H2: 80%+.
 
-**Métrica:** Ingresos pauta propia (consideración + suscripciones) + ingresos suscripciones Club
+> ⚠️ Pauta de clientes (Rolex, marcas de lujo) = INGRESOS separados. Nunca incluir en esta auditoría — para eso está [[Forecast Pauta Jun 2026]].
 
-> ⚠️ Pauta clientes (Rolex, marcas de lujo) = INGRESOS separados. Nunca incluir en esta auditoría.
+**North Star 2 — Audiencia y engagement:** visitas web + engagement rate redes + open rate newsletter. Para valores actuales, ver informes mensuales en `Diners/Informes/2026/` (más recientes que cualquier baseline de junio en este archivo).
 
-| KPI | Baseline jun 2026 | Meta H2 2026 |
-|----|------------------|-------------|
-| Revenue pauta propia digital | 37% meta | 80%+ meta |
-| Suscripciones digitales activas | A medir | Definir línea base jul |
-| % cumplimiento vs meta mensual | 37% | 75%+ en dic |
-
-### North Star 2 — Audiencia y engagement
-
-**Métrica:** Visitas web + engagement rate redes + open rate newsletter
-
-| KPI | Meta H2 2026 |
-|----|-------------|
-| Visitas web / mes | Definir baseline con Jeison |
-| Engagement rate redes | 4%+ |
-| Open rate newsletter | 28%+ |
-| Tiempo en página | 3:30+ |
-
-### North Star 3 — Beneficios Suscriptores (nuevo motor)
-
-**Métrica:** Miembros activos + retención 90 días
-
-| KPI | Meta lanzamiento | Meta dic 2026 |
-|----|-----------------|--------------|
-| Miembros Reader (freemium) | 500 | 2,000 |
-| Miembros Member pagos | 50 | 300 |
-| Miembros Black | 10 | 50 |
-| Retención 90 días | — | 70%+ |
-| Partners activos en el club | 5 | 15 |
+**North Star 3 — Beneficios Suscriptores (motor nuevo, jun 2026):** miembros activos + retención 90 días. Metas de lanzamiento: 500 Reader / 50 Member / 10 Black, escalando a 2,000 / 300 / 50 a diciembre, retención 90d ≥70%, 15 partners activos. Para estado real del programa, ver [[Arquitectura-Plataforma-Beneficios]] y [[Zona-Premium-Suscriptores-AXXIS-Diners]].
 
 ---
 
-## ESTADO ACTUAL — Junio 2026
-
-| Área | Estado | Diagnóstico |
-|------|--------|-------------|
-| Revenue digital | 🔴 37% meta | Gap crítico — prioridad máxima |
-| Revenue campañas clientes | ⬜ A verificar | Ver [[Forecast Pauta Jun 2026]] |
-| CM redes sociales | Paola Gordillo | AXXIS + Diners — bien distribuido |
-| Editor web | Simon Granja | Owner tareas editoriales SEO |
-| Pauta digital | Sebastián Díaz | Meta Ads + AdSense |
-| Beneficios Suscriptores | 🟡 No existe aún | Propuesta validada jun 2026 |
-
----
-
-## MAPA DE OWNERS — Diners
+## Mapa de owners — Diners
 
 | Función | Owner | Herramientas |
 |---------|-------|-------------|
 | Contenido web | Simon Granja | WordPress |
 | Redes sociales | Paola Gordillo | Meta, TikTok, X, Pinterest, LinkedIn |
-| Email marketing | Paola Gordillo | Herramienta email (confirmar) |
 | Pauta digital | Sebastián Díaz | Meta Ads, AdSense |
 | Estrategia y revenue | Carolina Ramirez | — |
 | Analytics | Jeison Montero | GA4, Looker Studio |
@@ -83,16 +43,15 @@ confidence: high
 
 ---
 
-## PALANCAS DE GROWTH — Prioridad H2 2026
+## Palancas de growth — prioridad H2 2026
 
-1. **Nuevos formatos y IA** — Ver [[Diners_02_Formatos_IA_2026-06]] (32 formatos + 15 apps IA)
-2. **Beneficios Suscriptores** — tercer motor de revenue con partners gastronomía/moda/viajes/arte
+1. **Beneficios Suscriptores** — tercer motor de revenue con partners gastronomía/moda/viajes/arte
+2. **Formatos digitales** — ver [[Formatos-Digitales-Diners]] (Modelo Transmedia 4 franquicias, vigente)
 3. **Revisión de precios** — suscripciones y tarifario pauta propia por debajo del benchmark premium
-4. **Email marketing** — confirmar herramienta actual y mejorar cadencia y segmentación
-5. **SEO editorial** — auditoría SEO ya existe en [[2026-06 Auditoría SEO - Diners]]
+4. **SEO editorial** — ver [[estrategia-seo-90-dias]] y [[2026-06 Auditoría SEO - Diners]]
 
 ---
 
-## RELACIONADO
+## Relacionado
 
-[[Diners_NextSteps_2026-06]] · [[Diners_02_Formatos_IA_2026-06]] · [[Diners.md]] · [[Paola Gordillo]] · [[Simon Granja]] · [[Natalia Castaño]] · [[Proveedor Pauta digital Sebastian Diaz]] · [[Forecast Pauta Jun 2026]] · [[Auditoria-Competencia-Anunciantes-2026]]
+[[Diners_NextSteps_2026-06]] · [[Diners.md]] · [[Formatos-Digitales-Diners]] · [[Paola Gordillo]] · [[Simon Granja]] · [[Natalia Castaño]] · [[Proveedor Pauta digital Sebastian Diaz]] · [[Forecast Pauta Jun 2026]]

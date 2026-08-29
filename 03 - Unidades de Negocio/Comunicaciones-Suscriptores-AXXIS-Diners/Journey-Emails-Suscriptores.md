@@ -84,7 +84,7 @@ No hace falta carnet, código ni aplicación.
 
 • Oliveto
 • La Cabrera
-• Cafeto
+• Kaffeto Gourmet
 
 La lista crece cada mes con restaurantes y comercios elegidos por el equipo editorial.
 
@@ -111,7 +111,7 @@ La suscripción a Diners no termina en la revista impresa. Incluye tres benefici
 
 Oliveto · {{descuento_oliveto}}
 La Cabrera · {{descuento_cabrera}}
-Cafeto · {{descuento_cafeto}}
+Kaffeto Gourmet · {{descuento_cafeto}}
 
 Restaurantes que ya estaban en la lista de recomendados de la revista. Ahora, además, cuestan menos. Para usarlo basta con dar el número de cédula al llegar: el aliado verifica la suscripción y aplica el descuento. Sin carnet, sin código, sin aplicación.
 
@@ -202,7 +202,7 @@ Los descuentos de la suscripción están disponibles en:
 
 • **Oliveto**
 • **La Cabrera**
-• **Cafeto**
+• **Kaffeto Gourmet**
 
 Para usarlos basta con dar el número de cédula al llegar. El aliado verifica la suscripción y aplica el descuento.
 
@@ -324,7 +324,7 @@ No construir los nueve de una vez. El orden por retorno:
 
 **La pasarela de pago de Diners está rota.** Según el contexto de la BU, nueve personas llegaron a checkout y generaron cero ingresos. Los correos E7, E8 y E9 mandan tráfico directo a ese checkout. Construirlos antes de arreglar la pasarela es gastar la mejor oportunidad de retención del año en una página que no cobra, y encima quema la credibilidad del remitente con quien sí quería renovar. Arreglar primero, enviar después.
 
-**Los tres beneficios destacados vencen el 30 de agosto de 2026.** Oliveto, La Cabrera y Cafeto aparecen nombrados en E3 y E5. Si no se renueva la vigencia, ambos correos quedan desactualizados en tres semanas. Conviene confirmar con Paola Pantaleon antes de programarlos, o dejar la lista de aliados en un módulo editable y no en el cuerpo fijo.
+**Los tres beneficios destacados vencen el 30 de agosto de 2026.** Oliveto, La Cabrera y Kaffeto Gourmet aparecen nombrados en E3 y E5. Si no se renueva la vigencia, ambos correos quedan desactualizados en tres semanas. Conviene confirmar con Paola Pantaleon antes de programarlos, o dejar la lista de aliados en un módulo editable y no en el cuerpo fijo.
 
 **AXXIS no tiene beneficios hasta octubre o noviembre.** E3 y E5 son solo para Diners. Segmentar por revista en HubSpot antes de activar el journey, o los suscriptores de AXXIS recibirán instrucciones para un beneficio que no tienen.
 
@@ -347,4 +347,4 @@ No construir los nueve de una vez. El orden por retorno:
 
 ## Relacionado
 
-[[Email-Bienvenida-Beneficios-Diners]] · [[Email-Bienvenida-AXXIS]] · [[Arquitectura-Plataforma-Beneficios]] · [[Zona-Premium-Suscriptores-AXXIS-Diners]]
+[[Emails-Bienvenida-Suscriptores]] · [[Arquitectura-Plataforma-Beneficios]] · [[Zona-Premium-Suscriptores-AXXIS-Diners]]

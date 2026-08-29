@@ -72,8 +72,7 @@ Solo lo urgente y lo bloqueado. Leer este archivo primero al inicio de sesión �
 
 ## ✅ Cerrado recientemente
 
-- **Baselines de Instagram** (12AX y 13DI) — cerrados con los informes de julio. AXXIS: 162,380 seguidores, ER 4.51%, 35-44 = 34.92%. Diners: 99,930 seguidores, ER 6.9% posts / 8.81% reels, 69% del alcance de no seguidores, 35-44 = 35.5%. Ambos con Facebook pendiente.
-- **Hallazgo que corrige la estrategia:** las dos cuentas ya están en el perfil de audiencia objetivo. El reto no es rejuvenecer sino convertir alcance en tráfico y suscripción.
+- Baselines de Instagram (12AX, 13DI) — cerrados con informes de julio AXXIS y Diners.
 
 ---
 

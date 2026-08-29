@@ -10,7 +10,9 @@ confidence: high
 ---
 
 ## For future Claude
-Corrected H2 2026 action plan for Libros BU. OBJ1 = sell existing 29-title catalog both retail (individual buyers) and wholesale (bulk corporate/hotel/library orders). OBJ2 = find clients who want to CREATE a NEW book in one of Gamma's 5 active categories: Arquitectura y Diseño, Arte, Turismo, Cocina, Crianza Infantil. Each category has its own ideal client profile and outreach strategy. Team: [[Nicolas Serna]] (commercial), [[Ernesto Rodriguez]] (SEO/content), [[Paola Gordillo]] (social), Lina (design), Camilo/Mateo (AV). Revenue targets: OBJ1 $150M COP H2 / OBJ2 $200M COP H2.
+**ARCHIVADO 2026-08-29 — NO usar como estado actual.** Este plan definía OBJ2 como "conseguir clientes para publicar un libro NUEVO en una de las 5 categorías de Gamma" (Arquitectura, Arte, Turismo, Cocina, Crianza). Ese OBJ2 nunca se ejecutó y quedó reemplazado 8 días después (2026-06-29) por el framework NS01/NS02, donde **OBJ2 pasó a significar Libros por Encargo/conmemorativos** (ver [[NS02-Funnel-Libros-Encargo-B2B]]) — una iniciativa distinta con el mismo nombre. **Riesgo si se usa este archivo:** confundir los dos "OBJ2". Para el estado vigente ver [[Plan-Maestro-Libros-H2-2026]]. Se conserva solo como referencia histórica de la exploración de categorías nuevas, por si se retoma en el futuro.
+
+Corrected H2 2026 action plan for Libros BU. OBJ1 = sell existing 29-title catalog both retail (individual buyers) and wholesale (bulk corporate/hotel/library orders). OBJ2 (histórico, ver arriba) = find clients who want to CREATE a NEW book in one of Gamma's 5 active categories: Arquitectura y Diseño, Arte, Turismo, Cocina, Crianza Infantil. Each category has its own ideal client profile and outreach strategy. Team: [[Nicolas Serna]] (commercial), [[Ernesto Rodriguez]] (SEO/content), [[Paola Gordillo]] (social), Lina (design), Camilo/Mateo (AV). Revenue targets: OBJ1 $150M COP H2 / OBJ2 (histórico) $200M COP H2.
 
 ---
 

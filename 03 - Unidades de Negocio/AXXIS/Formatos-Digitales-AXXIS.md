@@ -7,30 +7,13 @@ tags: [axxis, formatos-digitales, contenido, ns03]
 ---
 
 ## For future Claude
-Inventario de formatos digitales oficiales de AXXIS — los 8 formatos del media kit vigente más formatos de paquetes especiales. Owner producción: [[Mateo Arias Ortiz]] + [[Paola Nossa]]. Los formatos legacy "Proyectos que hablan" y "Connect And Collab" fueron reemplazados por esta taxonomía oficial (actualizado 2026-08-02). Relacionado con [[Media Kit AXXIS 2026]], [[NS03 Relevancia Digital]] y [[NS01 Pauta B2B]]. "AXXIS Connect" pendiente de definición — precio en media kit ($12M), descripción sin confirmar. Preguntar a Paola Nossa antes de incluir en propuestas.
+Inventario **operativo** de formatos digitales oficiales de AXXIS — concepto, distribución y notas de producción por formato. **Los precios ya NO viven aquí — fuente única de precios: [[Media Kit AXXIS 2026]] §6-7** (se eliminó la tabla duplicada 2026-08-29 para evitar que las dos notas se desincronicen). Owner producción: [[Mateo Arias Ortiz]] + [[Paola Nossa]]. Los formatos legacy "Proyectos que hablan" y "Connect And Collab" fueron reemplazados por esta taxonomía oficial (actualizado 2026-08-02). Relacionado con NS03 Relevancia Digital y NS01 Pauta B2B (framework de North Stars pendiente de crear para AXXIS, aún no existen como notas). "AXXIS Connect" pendiente de definición — precio en media kit ($12M), descripción sin confirmar. Preguntar a Paola Nossa antes de incluir en propuestas.
 
 ---
 
 # Formatos Digitales — AXXIS
 
-> Fuente: Media Kit 2026 AXXIS · Actualizado 2026-08-02 · Precios netos + IVA
-
----
-
-## Formatos Digitales (tarifario oficial)
-
-| Formato | Tarifa base | Tarifa con personaje |
-|---------|-------------|----------------------|
-| Email / Newsletter | $2.650.000 | — |
-| Content | $5.300.000 | — |
-| Content con header | $6.100.000 | — |
-| El Producto del Mes | $6.400.000 | $9.500.000 |
-| Tour AXXIS | $6.400.000 | $10.500.000 (incluye dron) |
-| AXXIS Conversando con... | $6.900.000 | $9.500.000 |
-| Un café con AXXIS | $6.900.000 | $9.500.000 |
-| Evento virtual / Cubrimiento AXXIS | $6.900.000 | — |
-| Conexión AXXIS | $12.000.000 | — |
-| Video | $14.500.000 | — |
+> Precios: ver [[Media Kit AXXIS 2026]] §6 (tarifario) y §7 (paquetes especiales). Esta nota cubre solo concepto, distribución y notas de producción.
 
 ---
 
@@ -39,14 +22,12 @@ Inventario de formatos digitales oficiales de AXXIS — los 8 formatos del media
 ### Tour AXXIS
 - **Concepto:** Recorrido en video por un proyecto residencial, comercial o showroom.
 - **Distribución:** IG · YouTube · Web
-- **Tarifa:** $6.400.000 / Con personaje + dron: $10.500.000
 
 ---
 
 ### AXXIS Conversando con... / Un café con AXXIS
 - **Concepto:** Entrevista a personaje del sector arquitectura y diseño — arquitecto, interiorista, diseñador, figura de marca.
 - **Distribución:** IG · YouTube · Web · Newsletter
-- **Tarifa:** $6.900.000 / Con personaje/influenciador: $9.500.000
 - **Nota:** Dos nombres para el mismo formato-raíz. Confirmar con Paola Nossa si se unifican o si tienen distinción editorial.
 
 ---
@@ -54,21 +35,19 @@ Inventario de formatos digitales oficiales de AXXIS — los 8 formatos del media
 ### El Producto del Mes
 - **Concepto:** Spotlight editorial sobre un producto de diseño — ficha + contexto de uso + criterio AXXIS.
 - **Distribución:** Web · IG · Newsletter
-- **Tarifa:** $6.400.000 / Con personaje: $9.500.000
 
 ---
 
 ### Detrás del Plano
 - **Concepto:** Making of del proceso de diseño — bocetos, maquetas, proceso hasta resultado final.
 - **Distribución:** IG · TikTok · Web
-- **Tarifa:** Incluido en tarifario general como "Content con header" ($6.100.000) — confirmar precio independiente
+- **Nota:** Facturado dentro de "Content con header" en el tarifario — confirmar si debe tener precio independiente.
 
 ---
 
 ### Evento virtual / Cubrimiento AXXIS
 - **Concepto:** Equipo editorial cubre lanzamientos, aniversarios o inauguraciones. Incluye página en revista impresa + video + amplificación web/redes/newsletter.
 - **Distribución:** Presencial + Web + IG + Impresa + Newsletter
-- **Tarifa:** $6.900.000 base / Paquete Cubrimiento AXXIS Premium: $12.300.000
 
 ---
 
@@ -76,12 +55,11 @@ Inventario de formatos digitales oficiales de AXXIS — los 8 formatos del media
 - **Concepto:** Convocatoria de 15 invitados aliados (arquitectos, diseñadores, interioristas) a evento de marca. "Sello AXXIS" al evento.
 - **Incluye:** Equipo editorial 3 personas (editor + videógrafo + periodista) · Invitaciones impresas y digitales
 - **Distribución:** Presencial + IG + Web
-- **Tarifa:** $14.500.000
 
 ---
 
 ### AXXIS Connect
-- **Concepto:** Pendiente de definición por Paola Nossa. Precio en media kit: $12.000.000.
+- **Concepto:** Pendiente de definición por Paola Nossa.
 - **Estado:** No incluir en propuestas hasta confirmar descripción.
 
 ---
@@ -90,33 +68,24 @@ Inventario de formatos digitales oficiales de AXXIS — los 8 formatos del media
 
 ### Podcast AXXIS
 Conversaciones de 20-35 min con arquitectos, diseñadores, creativos e influenciadores. Incluye guion, grabación, edición, animaciones, publicación en Spotify y plan de difusión (newsletter 47K, posts, historias, banner web).
-**Tarifa por episodio: $5.500.000 + IVA**
-
----
 
 ### Cubrimiento AXXIS (paquete completo)
 Editor/periodista + videógrafo · 1 página impresa · Video web + redes · Newsletter.
-**Tarifa total: $12.300.000 + IVA**
-
----
 
 ### AXXIS Invita (paquete completo)
 15 invitados aliados · Equipo editorial 3 personas · Invitaciones impresas y digitales · Cobertura IG + clips + nota web.
-**Tarifa: $14.500.000 + IVA**
-
----
 
 ### En la Historia de...
 Serie de 10 cápsulas mensuales de video (40s-1:30min) narrando la historia, hitos y personajes de una marca a lo largo del año.
-**Tarifa: Por definir — pendiente publicación en media kit**
+**Tarifa: por definir — pendiente publicación en media kit**
 
 ---
 
 ## Relacionado
 
-[[Media Kit AXXIS 2026]] · [[NS01 Pauta B2B]] · [[NS03 Relevancia Digital]] · [[Mateo Arias Ortiz]] · [[Paola Nossa]]
+[[Media Kit AXXIS 2026]] · [[Mateo Arias Ortiz]] · [[Paola Nossa]]
 
 ---
 
-*Actualizado por Claude — 2026-08-02. Reemplaza versión 2026-06-29 con 2 formatos legacy.*
+*Actualizado por Claude — 2026-08-29. Precios consolidados en [[Media Kit AXXIS 2026]] para evitar doble mantenimiento; esta nota queda como ficha operativa de producción.*
 *Fuente: Media kit 2026 AXXIS_V1.pptx + lista oficial compartida por Carolina Ramirez.*

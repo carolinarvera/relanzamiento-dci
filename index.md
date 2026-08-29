@@ -1,5 +1,5 @@
 ---
-date: 2026-06-29
+date: 2026-08-29
 type: index
 tags: [index, meta]
 ai-first: true
@@ -12,7 +12,7 @@ Mapa de navegación del vault. Usar para localizar archivos — los detalles est
 
 # GammaVault Index
 
-*Actualizado: 2026-06-29*
+*Actualizado: 2026-08-29*
 
 ---
 
@@ -59,8 +59,11 @@ Mapa de navegación del vault. Usar para localizar archivos — los detalles est
 - [[03 - Unidades de Negocio/Zona-Premium-Suscriptores-AXXIS-Diners]] — Doc maestro: 2 pilares valor no-precio (contenido exclusivo, Beneficios Suscriptores), decisiones pendientes, cronograma jul-oct
 - [[03 - Unidades de Negocio/Perfil-Demografico-Base-Privilegios-2026]] — Análisis real 5,853 registros: promedio 45.3 años (no 39), segmento y ciudad, sin nombres/emails
 - [[03 - Unidades de Negocio/AXXIS/AXXIS]] — Revista Arq/Diseño. 3 NS: Pauta B2B / Suscriptores / Relevancia Digital
-- [[03 - Unidades de Negocio/AXXIS/AXXIS Dashboard Estratégico]] — Dashboard completo AXXIS. Score global 44/100
-- [[03 - Unidades de Negocio/AXXIS/Media Kit AXXIS 2026]] — Media kit V1. V2 en producción (deadline 5 jul)
+- [[03 - Unidades de Negocio/AXXIS/Estrategia Growth AXXIS 2026]] — Documento vivo de estrategia: 3 growth loops, objetivos, sprint 30 días
+- [[03 - Unidades de Negocio/AXXIS/Cocreacion-Comercial-AXXIS-2026]] — Modelo comercial transmedia y secciones editoriales patrocinables
+- [[03 - Unidades de Negocio/AXXIS/AXXIS Dashboard Estratégico]] — Snapshot de auditoría jun-2026 (histórico, recortado ago-2026). Estrategia vigente → [[Estrategia Growth AXXIS 2026]]
+- [[03 - Unidades de Negocio/AXXIS/Media Kit AXXIS 2026]] — Media kit V1. Fuente única de tarifario, incl. formatos digitales
+- [[03 - Unidades de Negocio/AXXIS/Formatos-Digitales-AXXIS]] — Ficha operativa por formato digital (concepto, distribución, producción)
 - [[03 - Unidades de Negocio/Diners/Diners]] — Revista Cultura/Estilo. Digital 37% meta (crítico)
 - [[03 - Unidades de Negocio/Diners/Dashboard/Diners_01_NorthStar_2026-06]] — North star Diners jun 2026
 
@@ -73,9 +76,12 @@ Mapa de navegación del vault. Usar para localizar archivos — los detalles est
 - [[03 - Unidades de Negocio/Libros/Auditoria-Catalogo-Activo-2026]] — 29 títulos activos, precios, gaps
 - [[03 - Unidades de Negocio/Libros/NS01-Funnel-Catalogo-Venta-Directa]] — NS01 Libros: funnel venta catálogo B2C/B2B. Meta $150M H2
 - [[03 - Unidades de Negocio/Libros/NS02-Funnel-Libros-Encargo-B2B]] — NS02 Libros: funnel encargo corporativo. Meta $200M H2
-- [[03 - Unidades de Negocio/Libros/Plan-Accion-Libros-H2-2026]] — Plan de acción 4 canales jul-dic
-- [[03 - Unidades de Negocio/Libros/Plan-Marketing-Libros-H2-2026]] — Plan marketing: personas, canales, presupuesto $24M
+- [[03 - Unidades de Negocio/Libros/Plan-Maestro-Libros-H2-2026]] — Hub vigente: OBJ1/OBJ2, bloqueantes, mapa de documentos
+- [[03 - Unidades de Negocio/Libros/NS01-Funnel-Catalogo-Venta-Directa]] — Funnel real OBJ1 (catálogo), single source of truth
+- [[03 - Unidades de Negocio/Libros/NS02-Funnel-Libros-Encargo-B2B]] — Funnel real OBJ2 (encargo/conmemorativos)
 - [[03 - Unidades de Negocio/Libros/Plan-Trabajo-Libros-H2-2026]] — Plan operativo: 3 focos, responsables, deadlines
+- [[03 - Unidades de Negocio/Libros/Archivo/Plan-Accion-Libros-H2-2026]] — Archivado: OBJ2 "5 categorías nuevas" no se ejecutó, reemplazado por NS01/NS02
+- [[03 - Unidades de Negocio/Libros/Archivo/Plan-Marketing-Libros-H2-2026]] — Archivado: mismo motivo, buyer personas de la iniciativa no ejecutada
 - [[03 - Unidades de Negocio/Libros/Media-Kit-Corporativo-Gift-Book]] — Media kit gift book corporativo (precios TBD Nicolás)
 - [[03 - Unidades de Negocio/Libros/Templates-Primer-Contacto-Libros-Encargo]] — 7 templates outreach (email, LinkedIn, específicos por prospecto)
 - [[03 - Unidades de Negocio/Libros/SEO-Fichas-Producto-29-Titulos]] — Fichas SEO 29 títulos para Juan David
@@ -83,6 +89,10 @@ Mapa de navegación del vault. Usar para localizar archivos — los detalles est
 - [[03 - Unidades de Negocio/Libros/Informe Digital Mayo 2026 - Gamma]] — Línea base digital Gamma mayo 2026
 
 ### Plataformas
+- [[03 - Unidades de Negocio/Comunicaciones-Suscriptores-AXXIS-Diners/Emails-Bienvenida-Suscriptores]] — Correos de bienvenida (E1) Diners + AXXIS
+- [[03 - Unidades de Negocio/Comunicaciones-Suscriptores-AXXIS-Diners/Journey-Emails-Suscriptores]] — Journey completo E2-E9, Diners + AXXIS
+- [[03 - Unidades de Negocio/Comunicaciones-Suscriptores-AXXIS-Diners/Workflow-HubSpot-Bienvenida-Suscriptores]] — Spec del workflow de bienvenida en HubSpot
+- [[03 - Unidades de Negocio/Comunicaciones-Suscriptores-AXXIS-Diners/Email-Recordacion-Beneficios]] — Recordación mensual de beneficios, suscriptores Diners
 - [[03 - Unidades de Negocio/Experiencias/Experiencias]] — Eventos, alianzas, beneficios suscriptores
 - [[03 - Unidades de Negocio/Experiencias/Arquitectura-Plataforma-Beneficios]] — Spec técnico plataforma Beneficios Suscriptores: 3 actores, módulos, KPIs, stack
 - [[03 - Unidades de Negocio/Experiencias/Prototipos-UI-Beneficios-Suscriptores]] — Prototipos HTML por actor: Suscriptor ✅, Aliado ✅, Gamma Admin pendiente

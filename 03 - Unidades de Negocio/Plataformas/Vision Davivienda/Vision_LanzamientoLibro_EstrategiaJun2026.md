@@ -1,15 +1,15 @@
 ---
 date: 2026-06-30
 type: project
-tags: [libros, davivienda, lanzamiento, estrategia, pr, creativo]
+tags: [vision-davivienda, davivienda, lanzamiento, estrategia, pr, creativo]
 related-people: [Carolina Ramirez, Jeison Montero, Juan Camilo Perdomo, Luisa Saenz, Viviana Reyes]
-related-projects: [Libro Davivienda Lanzamiento]
+related-projects: [Vision-Davivienda]
 ai-first: true
-confidence: high
+confidence: medium
 ---
 
 ## For future Claude
-Full launch strategy for the Davivianda digital book. IMPORTANTE: este libro es un proyecto 100% de Davivianda (área de mercadeo) — no de Ediciones Gamma. Gamma apoya en ejecución digital (Vision.com, Braze email, redes, agencias Babel y LEO). El libro es GRATUITO y digital. Nicolás Serna NO está en este proyecto. No hay Instagram Shop, no hay precios, no hay HubSpot. Day D: September 29, 2026. Calibrated with real 2025-2026 campaign data. Key validated finding: journalist/reporter reels are the top format (+561%); Stories tipo social do NOT work (80-100 views); LinkedIn Davivienda Corredores is critical (~17K impressions); YouTube Shorts grew 1,091%. See companion file Libro Davivienda Resultados Campana 2025-2026.md for benchmark data.
+**Movido desde BU Libros a BU Visión 2026-08-29 — El Libro Davivienda pertenece a Visión, no a Libros de Gamma (ver [[feedback_libro_davivienda_no_es_gamma]]).** Draft de estrategia de lanzamiento del 30-jun-2026, con Day D propuesto del 29 de septiembre — **ese Day D quedó superado** por la reunión de alineación del 10-jul, que produjo tres documentos más recientes y con owners confirmados: [[Vision_LanzamientoLibro_BriefNatalia_2026-07]], [[Vision_LanzamientoLibro_CuadroResumen_2026-07]] y [[Vision_LanzamientoLibro_Plan360_2026-07]] (que a su vez marca la fecha D-0 como pendiente de Natalia, no confirmada como 29-sep). Usar este archivo solo para el hallazgo de formatos (reels de periodistas +561%, Stories no funcionan, LinkedIn Corredores clave, YouTube Shorts +1091%) — el resto del plan operativo está en los 3 documentos de julio. Datos de benchmark completos en [[Vision_LanzamientoLibro_ResultadosCampana2025-2026]]. Full launch strategy for the Davivienda digital book. IMPORTANTE: este libro es un proyecto 100% de Davivienda (área de mercadeo) — no de Ediciones Gamma. Gamma apoya en ejecución digital (Vision.com, Braze email, redes, agencias Babel y LEO). El libro es GRATUITO y digital. Nicolás Serna NO está en este proyecto. No hay Instagram Shop, no hay precios, no hay HubSpot.
 
 ---
 

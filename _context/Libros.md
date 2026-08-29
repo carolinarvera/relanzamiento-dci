@@ -40,9 +40,9 @@ ai-first: true
 - `Prospectos-Libros-Conmemorativos-Colombia-2026.md`
 - `Media-Kit-Corporativo-Gift-Book.md`
 
-## ⚠️ Libro Davivienda — NO es proyecto Gamma
+## ⚠️ Libro Davivienda — pertenece a BU Visión, no a Libros
 
 Proyecto liderado 100% por mercadeo de Davivienda. Libro **gratuito y digital**.
 Gamma = proveedor de ejecución digital únicamente. Sin precios, sin HubSpot, sin Nicolás Serna.
-Agencias: Babel (PR) + Leo Burnett (creativos). Lanzamiento 29 sep 2026.
-Archivos: `Libro Davivienda Estrategia Lanzamiento 2026.md`
+Agencias: Babel (PR) + Leo Burnett (creativos). Day D pendiente de confirmar con Natalia (no 29-sep, ver nota abajo).
+**Movido a `Plataformas/Vision Davivienda/` 2026-08-29** — si algo lo referencia desde aquí, es un enlace viejo. Archivos vigentes: [[Vision_LanzamientoLibro_BriefNatalia_2026-07]] · [[Vision_LanzamientoLibro_CuadroResumen_2026-07]] · [[Vision_LanzamientoLibro_Plan360_2026-07]].

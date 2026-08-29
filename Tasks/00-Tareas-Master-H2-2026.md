@@ -12,6 +12,18 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 
 > Tareas Ejecución Inmediata julio 2026 (EJ01-EJ31 y equivalentes) completadas o en curso — viven en **tareas-growth-mkt.vercel.app**. Removidas del Master 2026-08-02 para reducir tokens.
 
+**Mapa de secciones — leer solo la sección que necesitas (offset/limit), nunca el archivo completo:**
+
+| Sección | Líneas | Tareas |
+|---|---|---|
+| Resumen ejecutivo | 29-47 | — |
+| AXXIS | 48-129 | 21 |
+| Diners | 130-208 | 20 |
+| Compartidas AXXIS + Diners | 209-360 | 43 |
+| Ediciones Gamma | 361-382 | 3 |
+| Libros | 383-433 | 12 |
+| Experiencias Banca Privada & VIP | 434-472 | 10 |
+
 ---
 
 ## Resumen ejecutivo
@@ -29,15 +41,14 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 **Bloqueadores activos:**
 - `#12LI` Definir precios Paquete Legado y Centenario — Nicolas Serna
 
-**Archivos BU:** [[Tasks/AXXIS]] · [[Tasks/Diners]] · [[Tasks/Revistas]] · [[Tasks/Libros]] · [[Tasks/Experiencias]]
-**Herramienta equipo:** tareas-growth-mkt.vercel.app
+**Herramienta equipo:** tareas-growth-mkt.vercel.app (fuente única en vivo; el detalle por BU vive en las secciones de este archivo)
 
 ---
 
 ## AXXIS — 21 tareas
 
 > Pipeline: Consideración → Atracción → Conversión → Retención → Infraestructura
-> Ver detalle completo: [[Tasks/AXXIS]]
+> Detalle completo en esta sección.
 
 ### Paola Nossa — Comercial
 
@@ -119,7 +130,7 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 ## Diners — 20 tareas
 
 > Pipeline: Consideración → Atracción → Conversión → Retención → Infraestructura
-> Ver detalle completo: [[Tasks/Diners]]
+> Detalle completo en esta sección.
 
 ### Paola Nossa — Comercial
 
@@ -197,7 +208,7 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 
 ## Compartidas AXXIS + Diners — 43 tareas
 
-> Aplican a ambas revistas. Ver detalle completo: [[Tasks/Revistas]]
+> Aplican a ambas revistas.
 
 ### Jeison Montero (PM) + Equipo Comercial — Venta B2B
 
@@ -371,7 +382,7 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 
 ## Libros — 12 tareas
 
-> Ver detalle completo: [[Tasks/Libros]] · [[03 - Unidades de Negocio/Libros/Libros]]
+> Detalle completo en esta sección · [[03 - Unidades de Negocio/Libros/Libros]]
 
 ### ⚠️ BLOQUEADORES — Nicolas Serna (resolver primero)
 
@@ -422,7 +433,7 @@ tags: [tasks, master, h2-2026, axxis, diners, libros, experiencias, ediciones-ga
 
 ## Experiencias Banca Privada & Experiencias VIP — 10 tareas
 
-> Ver detalle completo: [[Tasks/Experiencias]] · [[03 - Unidades de Negocio/Experiencias/Experiencias]]
+> Detalle completo en esta sección · [[03 - Unidades de Negocio/Experiencias/Experiencias]]
 
 
 ### Paola Pantaleon — Experiencias Corporativas (Banca Privada + expansión)

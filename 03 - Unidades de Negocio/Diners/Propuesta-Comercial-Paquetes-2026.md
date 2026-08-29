@@ -80,7 +80,7 @@ Ideal para: marcas de moda, bebidas premium, bienestar, cultura, lanzamientos de
 
 **Diferencia vs Paquete INICIO:** presencia en la revista impresa (146K suscriptores) + el artículo adopta el tono de sección editorial de Diners, no de nota de prensa.
 
-**Propuesta de valor:** "Tu marca en las manos de 146,000 suscriptores premium — y en pantalla para 737,000 usuarios web."
+**Propuesta de valor:** "Tu marca en las manos de 146,000 suscriptores premium — y en pantalla para decenas de miles de usuarios web cada mes." *(cifra web corregida 2026-08-29: el media kit citaba 737K, pero Metricool confirma ~58.9K/mes real — ver nota interna arriba. No usar 737K en ninguna propuesta.)*
 
 ---
 

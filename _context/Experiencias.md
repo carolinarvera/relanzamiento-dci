@@ -37,4 +37,5 @@ Falta el **primer aliado** para desbloquear experiencias con aliados.
 - `Arquitectura-Plataforma-Beneficios.md` — arquitectura técnica
 - `Prototipos-UI-Beneficios-Suscriptores.md`
 - `Competencia B2B Experiencias 2026.md`
-- `Email-Bienvenida-Beneficios-Diners.md`
+
+> Las comunicaciones de suscriptores (emails de bienvenida, journey, recordación, workflow HubSpot) **no viven en Experiencias** — son de Diners/AXXIS, ahora en `03 - Unidades de Negocio/Comunicaciones-Suscriptores-AXXIS-Diners/` (movidas 2026-08-29).

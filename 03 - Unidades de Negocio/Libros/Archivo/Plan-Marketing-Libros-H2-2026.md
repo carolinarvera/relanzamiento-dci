@@ -10,7 +10,9 @@ confidence: high
 ---
 
 ## For future Claude
-Dedicated marketing plan for Libros BU H2 2026. Two objectives: OBJ1 = sell existing 29-title catalog (retail + wholesale lots), OBJ2 = find clients to commission a new book in one of Gamma's 5 categories (Arquitectura y Diseño, Arte, Turismo, Cocina, Crianza Infantil). Covers buyer personas, messaging matrix, channel strategy, campaign calendar, and estimated budget. Read [[Plan-Accion-Libros-H2-2026]] for task assignments and owners. Team: [[Nicolas Serna]], [[Ernesto Rodriguez]], [[Paola Gordillo]], Lina (design), Camilo/Mateo (AV).
+**ARCHIVADO 2026-08-29 — NO usar como estado actual.** Igual que [[Plan-Accion-Libros-H2-2026]] (también archivado), este plan define OBJ2 como "5 categorías nuevas de publicación" — significado distinto al OBJ2 vigente hoy (Libros por Encargo/conmemorativos, ver [[NS02-Funnel-Libros-Encargo-B2B]]). Los buyer personas 6-10 (Arquitecto, Chef, Director de Turismo, etc.) corresponden a esa iniciativa que no se ejecutó. Para el estado vigente ver [[Plan-Maestro-Libros-H2-2026]].
+
+Dedicated marketing plan for Libros BU H2 2026. Two objectives: OBJ1 = sell existing 29-title catalog (retail + wholesale lots), OBJ2 (histórico, ver arriba) = find clients to commission a new book in one of Gamma's 5 categories (Arquitectura y Diseño, Arte, Turismo, Cocina, Crianza Infantil). Covers buyer personas, messaging matrix, channel strategy, campaign calendar, and estimated budget. Team: [[Nicolas Serna]], [[Ernesto Rodriguez]], [[Paola Gordillo]], Lina (design), Camilo/Mateo (AV).
 
 ---
 
