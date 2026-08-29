@@ -1,349 +1,281 @@
 ---
-date: 2026-06-16
-type: reference
-tags: [axxis, media-kit, tarifario, comercial, marketing, audiencia]
-related-people: [Paola Nossa, Sergio Alejandro Sabogal]
-related-projects: [Cronograma-Eventos-2026]
-sources: ["Media kit 2026 AXXIS_V1.pptx (Downloads, compartido por Carolina 2026-06-16)", "Google Slides (Drive, fuente viva): https://docs.google.com/presentation/d/1OT1i_7ntMkg8HSXz3vmaray_zoUGCEcfvnrDsWGyFC4/edit"]
+type: media-kit
+unidad-de-negocio: AXXIS
+last-updated: 2026-08-29
 ai-first: true
 confidence: high
+tags: [axxis, media-kit, tarifario, formatos, audiencia, comercial, paquetes, ns01]
+related-people: [Paola Nossa, Clara Vergara, Carolina Ramirez]
 ---
 
 ## For future Claude
-Media kit comercial oficial de AXXIS 2026 — documento que el equipo de [[Paola Nossa]] envía a anunciantes y al equipo comercial/editorial (acción pendiente en [[2026-06-16 Presentación Actividades de Marketing Sesión 2]]). Contiene: perfil de audiencia impresa y digital, calendario editorial 2026, tarifario impreso, formatos de alto impacto, formatos digitales, paquetes especiales (Cubrimiento, AXXIS Invita, Podcast, En la historia de…), tarifario de pauta display con especificaciones técnicas, y contacto comercial. Los valores de tarifario impreso aquí son los **oficiales/brutos** — coinciden y amplían los mencionados de memoria en la reunión del 2026-06-16 (contraportada, portadas interiores, primera página, páginas corrientes, portada falsa). Usar esta nota como fuente de verdad de precios al armar propuestas comerciales o al comparar con el tarifario de Diners. **Incluye también el precio de formatos digitales (§6-7) — [[Formatos-Digitales-AXXIS]] ya no duplica esa tabla, solo cubre concepto y producción por formato.**
+Tarifario, audiencia y paquetes oficiales de AXXIS 2026, extraídos del PDF `Media kit 2026 AXXIS_V1.pdf` (34 láminas, entregado 2026-08-29). Reemplaza la versión parcial del 2026-08-02, que solo tenía formatos digitales sin impreso ni paquetes. **Hallazgo importante: los paquetes comerciales SÍ tienen precio aquí — Starter $3M, Pyme $10M (o $7M sin video) y Lanzamiento $13.5M** — mientras [[Sistema-Ventas-Editorial-2026]] los da por definir y nombra el tercero "Anual 360" en vez de "Lanzamiento". Eso toca directo el bloqueador #2RE. Comparar siempre contra [[Media Kit Diners 2026]] antes de armar propuestas conjuntas: las dos revistas tienen audiencias opuestas en género y edad digital.
 
 ---
 
-# 📰 Media Kit AXXIS 2026
+# Media Kit AXXIS 2026
 
-> Fuente viva (Google Slides): https://docs.google.com/presentation/d/1OT1i_7ntMkg8HSXz3vmaray_zoUGCEcfvnrDsWGyFC4/edit
-
----
-
-## 1. Plataforma y Alcance
-
-- **Website:** www.revistaaxxis.com.co — contenido actualizado diariamente
-- **Edición impresa:** 11 publicaciones al año, de febrero a diciembre
-- **Redes sociales:** Instagram, Facebook, YouTube, TikTok
-- **Newsletter:** 47.000 contactos calificados (tasa de apertura ~25%)
+> Fuente: Media kit 2026 AXXIS_V1.pdf · Tarifas netas en COP, sujetas a IVA y a cotización
 
 ---
 
-## 2. Perfil de Audiencia
+## 1. Cifras de alcance
 
-### Audiencia Revista Impresa
-| Dimensión | Dato |
-|-----------|------|
-| Género | 56% mujeres / 44% hombres |
-| Centennials (18-30) | 19% |
-| Millennials (31-40) | 22% |
-| Gen X (41-50) | 23% |
-| Gen X (51-60) | 19% |
-| Baby boomers (60+) | 17% |
-| Nivel socioeconómico Alto | 49% |
-| Nivel socioeconómico Medio-Alto | 38% |
-| Nivel socioeconómico Medio | 13% |
+| Métrica | Valor |
+|---|---|
+| Ejemplares en Colombia | +77.000 |
+| Suscriptores | 65.960 (85% de la circulación) |
+| Usuarios únicos web / mes | +248.000 |
+| Páginas vistas / mes | 402.000 |
+| Contactos en newsletter | 47.000 |
+| Seguidores en redes | +307.000 |
+| Publicaciones al año | 11 (febrero a diciembre) |
 
-### Audiencia Digital
-| Dimensión | Dato |
-|-----------|------|
-| Género | 61% mujeres / 39% hombres |
-| Centennials (18-24) | 7% |
-| Millennials (25-34) | 14% |
-| Gen X (35-44) | 14% |
-| Gen X (45-54) | 18% |
-| Baby boomers (55-64) | 31% (mayor concentración) |
-| Bogotá | 55% |
-| Antioquia | 19% |
-| Santander | 14% |
-| Costa Caribe / Valle / Otros | 5% / 2% / 5% |
-
-### Perfil de lector
-Arquitectos, ingenieros, interioristas, decoradores y diseñadores — apasionados por diseño, arquitectura y decoración. 52% Bogotá, 15% Antioquia, 14% Eje Cafetero, 7% Santanderes, 4% Costa Caribe.
+**Redes por plataforma:** Facebook +157K · Instagram +154K · X +5K · TikTok y YouTube (nuevas)
 
 ---
 
-## 3. Calendario Editorial 2026
+## 2. Audiencia — revista impresa
 
-| Mes | Edición # | Especial |
-|-----|-----------|----------|
-| Febrero | 374 | Contra lo homogéneo (color y tendencias 2026) |
-| Marzo | 375 | Identidad y cultura: la cara de la ciudad (arquitectura institucional y oficinas) |
-| Abril | 376 | Mujeres AXXIS — Capítulo cocinas |
-| Mayo | 377 | Arquitectura para desconectarse (Costa Caribe) / Especial Construcción |
-| Junio | 378 | El secreto del bienestar (baños, pisos y acabados) |
-| Julio | 379 | No todo es demoler (renovación y sostenibilidad) |
-| Agosto | 380 | Arquitectura joven e innovación |
-| Septiembre | 381 | El lujo del mañana (lujo y cocinas) |
-| Octubre | 382 | Diseño en movimiento (automóviles, aerolíneas, arquitectura efímera) |
-| Noviembre | 383 | Capital del diseño (Antioquia y Feria de Diseño) |
-| Diciembre | 384 | Gran edición de Aniversario #36 |
+| Generación | Edad | % |
+|---|---|---|
+| Centennials | 18-30 | 19% |
+| Millennials | 31-40 | 22% |
+| Gen X | 41-50 | 23% |
+| Gen X | 51-60 | 19% |
+| Baby boomers | 60+ | 17% |
+
+**Género:** 56% hombres · 44% mujeres
+**NSE:** Alto 49% · Medio-alto 38% · Medio 13%
+
+**Perfil de lector:**
+- 52% arquitectos, ingenieros, interioristas, decoradores y diseñadores
+- 48% apasionados por el diseño, la arquitectura y la decoración
+
+**Regiones:** Bogotá 52% · Costa Caribe 15% · Antioquia 14% · Valle 7% · Eje Cafetero 4% · Santanderes 4% · Meta 2% · Otros 2%
 
 ---
 
-## 4. Tarifario Revista Impresa (tarifas brutas, sujetas a IVA)
+## 3. Audiencia — revistaaxxis.com.co
 
-| Formato | Valor |
-|---------|-------|
-| Contraportada | $29.300.000 |
+| Generación | Edad | % |
+|---|---|---|
+| Centennials | 18-24 | 7% |
+| Millennials | 25-34 | 14% |
+| Gen X | 35-44 | 14% |
+| Gen X | 45-54 | 18% |
+| Baby boomers | 55-64 | **31%** |
+
+**Género:** 61% mujeres · 39% hombres
+**Regiones:** Bogotá 55% · Antioquia 19% · Costa Caribe 14% · Valle 5% · Santander 2% · Otros 5%
+
+> ⚠️ **La audiencia digital de AXXIS es notablemente mayor que la impresa** — 31% en 55-64 años y solo 21% bajo los 35. Y se invierte en género: la impresa es 56% hombres, la web 61% mujeres. Son dos públicos distintos y no deben presentarse como uno solo.
+
+---
+
+## 4. Calendario editorial 2026
+
+| Ed. | Mes | Especial | Cierre | Circulación |
+|---|---|---|---|---|
+| 374 | Febrero | Contra lo homogéneo (color y tendencias 2026) | Feb 04 | Feb 10 |
+| 375 | Marzo | Identidad y cultura: la cara de la ciudad (arquitectura institucional y oficinas) | Mar 04 | Mar 10 |
+| 376 | Abril | Mujeres AXXIS · Capítulo cocinas | Abr 08 | Abr 14 |
+| 377 | Mayo | Arquitectura para desconectarse (Costa Caribe) · Especial Construcción | May 06 | May 12 |
+| 378 | Junio | El secreto del bienestar (baños, pisos y acabados) | Jun 10 | Jun 16 |
+| 379 | Julio | No todo es demoler (renovación y sostenibilidad) | Jul 08 | Jul 14 |
+| 380 | Agosto | El lujo del mañana (lujo y cocinas) · Diseño en movimiento (automóviles, aerolíneas, arquitectura efímera) | Ago 05 | Ago 11 |
+| 381 | **Septiembre** | Especial construcción · Especial vidrio y acero | Sep 09 | Sep 15 |
+| 382 | **Octubre** | Capital del diseño (Antioquia y Feria de Diseño) · Especial remodelación | Oct 06 | Oct 13 |
+| 383 | Noviembre | **Gran edición Aniversario #36** | Nov 09 | Nov 17 |
+| 384 | Diciembre | Arquitectura joven e innovación · Objetos de diseño para regalar | Dic 09 | Dic 15 |
+
+> Octubre (edición 382) es la que el forecast marca como ventana de recuperación por el especial de autos y remodelación.
+
+---
+
+## 5. Tarifario impreso
+
+| Formato | Tarifa |
+|---|---|
 | Doble página | $40.900.000 |
+| Contraportada | $29.300.000 |
 | Portadas interiores | $26.200.000 |
 | Primera página impar | $22.600.000 |
 | Páginas corrientes | $21.400.000 |
 | Media página vertical | $11.800.000 |
 | 1/3 página vertical | $5.100.000 |
 
-> Nota: en la reunión del 2026-06-16 Carolina mencionó cifras redondeadas de memoria ($29M, $26M, $22M, $21M) — el media kit confirma los valores exactos arriba.
+---
 
-## 5. Formatos de Alto Impacto (tarifas netas aproximadas, sujetas a cotización + IVA)
+## 6. Formatos de alto impacto
 
-| Formato | Valor | Notas |
-|---------|-------|-------|
-| Portada falsa | $42.000.000 | — |
-| Cuadernillo 16 pág (pegado a tirilla) | $43.480.000 | — |
-| Gatefold 2 cuerpos (abre a la derecha) | $37.570.000 | — |
-| Gatefold 1/2 (abre hacia abajo) | $34.710.000 | — |
-| Página dura | $25.480.000 | — |
-| Postal sobre portada | $14.380.000 | — |
-| Cintillo | $22.390.000 | **Solo suscriptores** (no circulación total) |
+### Solo suscriptores
 
-> Coincide con lo mencionado en la reunión: portada falsa $42M, cintillo solo a suscriptores.
+| Formato | Tarifa | Especificación |
+|---|---|---|
+| Portada falsa | $42.000.000 | 1 cuerpo 2 caras · 24 x 32 cm · 4x4 · plastificado brillante una cara · esmaltado 250 gr · encuadernado al lomo · reserva para el logo AXXIS |
+| Cintillo | $22.390.000 | 1 cuerpo 2 caras · abierto 68 x 10 cm de alto · 4x4 · 150 gr |
+| Postal sobre portada | $14.380.000 | 11 x 15,5 cm · 4x4 2 caras · propalcote 300 gr · va suelta sobre la portada embolsada |
+
+### Circulación total
+
+| Formato | Tarifa | Especificación |
+|---|---|---|
+| Cuadernillo 16 páginas | $43.480.000 | 20.5 x 27.5 cm · 4x4 2 caras · bond 90 gr · pegado a tirilla con microperforado |
+| Gatefold 2 cuerpos | $37.570.000 | Cerrado 24 x 32 · abierto 48 x 32 cm · 4x4 · propalcote 200 gr |
+| Gatefold ½ abre hacia abajo | $34.710.000 | Cerrado 24 x 32 · abierto 24 x 48 cm · 4x4 · propalcote 150 gr |
+| Página dura | $25.480.000 | 24 x 32 cm · 4x4 · 200 gr sin acabados |
 
 ---
 
-## 6. Tarifario Formatos Digitales (tarifas netas, sujetas a IVA)
+## 7. Formatos digitales
 
-| Formato | Valor |
-|---------|-------|
-| Email/Newsletter | $2.650.000 |
-| Content | $5.300.000 |
-| Content con header | $6.100.000 |
-| El producto del mes | $6.400.000 |
-| Tour AXXIS | $6.400.000 |
-| Conversando con | $6.900.000 |
-| Un café con AXXIS | $6.900.000 |
-| Evento virtual / Cubrimiento AXXIS | $6.900.000 |
-| Video | $14.500.000 |
-| Conexión AXXIS | $12.000.000 |
+| Formato | Tarifa | Nota |
+|---|---|---|
+| AXXIS Invita | $14.500.000 | No incluye el valor de la página en revista impresa |
+| Conexión AXXIS | $12.000.000 | Evento virtual |
+| Conversando con | $6.900.000 | |
+| Un café con AXXIS | $6.900.000 | |
+| Cubrimiento AXXIS | $6.900.000 | |
+| Tour AXXIS | $6.400.000 | Incluye tomas con dron |
+| El producto del mes | $6.400.000 | |
+| Content con header | $6.100.000 | |
+| Content | $5.300.000 | |
+| Newsletter | $2.650.000 | Incluye un envío de refuerzo |
 
-### Formatos con personajes/influenciadores (tarifas aproximadas, sujetas a cotización)
-| Formato | Valor |
-|---------|-------|
-| Tour AXXIS con personaje (incluye dron) | $10.500.000 |
-| Un Café / Conversando con personaje | $9.500.000 |
-| Tendencia AXXIS + personaje (producto del mes) | $9.500.000 |
+### Con personaje
 
----
+| Formato | Tarifa | Descripción |
+|---|---|---|
+| Tour AXXIS con personaje | $10.500.000 | Recorrido guiado por el editor acompañado del personaje. Incluye dron |
+| Un Café con AXXIS o Conversando con personaje | $9.500.000 | Video a dos cámaras con iluminación |
+| Tendencia AXXIS + personaje (El producto del mes) | $9.500.000 | El personaje muestra un producto o espacio integrado a su estilo |
 
-## 7. Paquetes Especiales
-
-### Podcast AXXIS
-Conversaciones de 20-35 min con arquitectos, diseñadores, creativos e influenciadores. Incluye guion, grabación, edición, animaciones, publicación en Spotify y plan de difusión completo (newsletter 44.000 registros, posts, historias, banner web).
-**Valor por episodio: $5.500.000 + IVA**
-
-### Cubrimiento AXXIS
-Equipo editorial (editor/periodista + videógrafo) cubre lanzamientos, aniversarios e inauguraciones de marcas. Incluye 1 página en revista impresa + video + amplificación web/redes/newsletter.
-**Valor total: $12.300.000 + IVA**
-
-### AXXIS Invita
-Convocatoria de 15 invitados aliados (arquitectos/diseñadores/interioristas) a eventos de marca, con "Sello AXXIS". Incluye equipo editorial de 3 personas (editor, videógrafo, periodista) e invitaciones impresas y digitales.
-
-### En la Historia de…
-Serie de 10 cápsulas mensuales de video (40s-1:30min) narrando la historia, hitos y personajes de una marca a lo largo del año.
+> Perfiles de personaje: influyentes en arquitectura, diseño y decoración, alineados con la estética editorial.
 
 ---
 
-## 8. Pauta Display (tarifario + especificaciones técnicas)
+## 8. Métricas de entrega por formato
 
-| Formato | Valor |
-|---------|-------|
-| Robapágina | $1.200.000 |
-| Banner | $1.400.000 |
-| Barra fija | $1.400.000 |
+### Content web (un mes de distribución)
+
+| Salida | Alcance promedio |
+|---|---|
+| Newsletter | 47.000 contactos semanales |
+| 2 post en Facebook | 12.000 impresiones c/u |
+| 1 post en Instagram | 12.000 impresiones |
+| 2 historias en Instagram | 2.500 impresiones c/u |
+| **Bonus** | Display por 30.000 impresiones (arte lo entrega el anunciante) |
+
+### Video — 8 salidas totales
+
+| Salida | Alcance |
+|---|---|
+| Publicación en Instagram | 12.500 reproducciones |
+| Nota en web | 1.300 visitas |
+| Newsletter | 47.000 registros · 25% de apertura |
+| 2 historias en Instagram | 2.500 visualizaciones c/u |
+| 2 post en Facebook | 12.000 impresiones c/u |
+
+### Podcast AXXIS — $5.500.000 por episodio
+
+Conversaciones de 20 a 35 minutos. Incluye investigación, guion, grabación, edición, animaciones, artes, publicación en Spotify, cápsulas de expectativa y cortinilla de marca.
+
+| Salida | Alcance |
+|---|---|
+| Content marketing | 1.500 visitas |
+| Newsletter | 44.000 registros · 25% apertura · destacado en Home 3 días |
+| 2 post en Facebook | 12.000 impresiones c/u |
+| 2 historias en Instagram | 2.050 impresiones c/u |
+| 1 post en Instagram | 12.000 impresiones |
+| Toma de la web | 30.000 impresiones |
+
+### Cubrimiento AXXIS — $12.300.000 · 11 salidas
+
+Equipo de 2 (editor o periodista + videógrafo) · 1 página de contenido en impresa · video de máximo 2:30 entregado dos días después · Instagram 9.500 reproducciones · content marketing 1.500 visitas destacado en Home 3 días · banner 30.000 impresiones.
+
+### AXXIS Invita — $14.500.000 · 11 salidas
+
+Convocatoria de 15 arquitectos, diseñadores e interioristas aliados · equipo de 3 (editor, videógrafo, periodista) · invitaciones impresas y digitales por telemercadeo, email, WhatsApp y domicilio · video máximo 2:30 · mismas salidas de amplificación que Cubrimiento.
+
+### En la historia de…
+
+Serie de 10 cápsulas mensuales de 40s a 1:30 min que construyen la narrativa de una marca: el comienzo, hito 1, hito 2, personajes, materiales y tecnología. Personalizado por marca. Referencia publicada: Mazda, 15.500 reproducciones. **Sin tarifa en el kit.**
+
+---
+
+## 9. Pauta display — tarifas por 7 días
+
+| Formato | Tarifa |
+|---|---|
+| Pre-home + pre-articles | $4.200.000 |
+| Toma de la web | $3.700.000 |
+| Billboard con video | $2.000.000 |
+| Video in read | $1.950.000 |
 | Billboard | $1.700.000 |
 | Barra fija con fold on | $1.600.000 |
-| Video in read | $1.950.000 |
-| Billboard con video | $2.000.000 |
-| Toma de la web | $3.700.000 |
-| Pre Home + Pre Articles | $4.200.000 |
+| Banner | $1.400.000 |
+| Barra fija | $1.400.000 |
+| Robapágina | $1.200.000 |
 
-### Especificaciones técnicas
-- **Billboard/Banner:** Desktop 970x250 / 300x600 px · Mobile 300x100 / 300x250 px · HTML5, JPG o GIF
-- **Toma de la web:** Desktop 970x488 px · Mobile 320x400 px · incluye cabezote y botón cerrar, 1 impacto/usuario/día
-- **Billboard con video:** Desktop 970x250 px (máx 100K) + video 320x180 px (máx 2MB) · Mobile robapágina 300x250 (máx 100K) + video 300x250 (máx 1.5MB) · formato mp4
-- **Video in read:** Desktop 640x480 px (máx 2MB) · Mobile 300x280 px (máx 1.5MB) · requiere activación de sonido
-- **Barra fija con fold on:** Desktop billboard 970x90 px + video 16:9 (máx 3MB, máx 30") · Mobile robapágina 300x100 px + video 300x250 (máx 1.5MB)
+### Dimensiones
 
----
-
-## 9. Contacto Comercial
-
-| Nombre | Cargo | Email | Teléfono |
-|--------|-------|-------|----------|
-| (Ejecutiva de desarrollo de negocios) | — | cvergara@revistaaxxis.com.co | +57 320 490 0118 |
-| Sergio Alejandro Sabogal | Head of Marketing & Business | sergio.sabogal@revistadiners.com.co | +57 310 448 9025 |
+| Producto | Desktop | Mobile | Formato |
+|---|---|---|---|
+| Pre-home y pre-articles | 970 x 488 px | 320 x 400 px | HTML5, JPG o GIF · un solo impacto por usuario al día |
+| Toma de la web | 970x250 y 300x600 px | 300x100 y 300x250 px | HTML5, JPG o GIF · billboard y banner en primera posición |
+| Billboard con video | Billboard 970x250 (máx 100K) + video 320x180 (máx 2MB) | Robapágina 300x250 (máx 100K) + video 300x250 (máx 1.5MB) | mp4 |
+| Video in read | 640 x 480 px (máx 2MB) | 300 x 280 px (máx 1.5MB) | mp4 · aparece entre párrafos, con botón de cerrar, el usuario activa el sonido |
+| Barra fija con fold on | Billboard 970x90 (máx 100KB) + video 16:9 (máx 3MB) | Robapágina 300x100 (máx 100K) + video 300x250 (máx 1.5MB) | mp4 · máximo 30 segundos, arranca sin sonido |
 
 ---
 
-## 10. Auditoría Comercial — Diagnóstico Sales Enablement (2026-06-21)
+## 10. Paquetes comerciales — CON PRECIO
 
-> Análisis completo del kit (33 páginas) realizado por Carolina Ramirez — insumo para sesión de marketing con Paola Nossa.
+| Paquete | Para quién | Incluye | Valor neto |
+|---|---|---|---|
+| **Starter** | Marcas pequeñas, estudios de arquitectura, diseñadores emergentes o primera presencia en AXXIS. Objetivo: visibilidad y posicionamiento inicial | 1 content marketing web · 1 envío de newsletter colectivo · 1 post en Instagram con réplica en Facebook · **bonus:** banner display 7 días | **$3.000.000** |
+| **Pyme** | Marcas en crecimiento que necesitan reputación y recordación. Objetivo: posicionar la marca y contar su historia | Media página de aviso impresa · 1 content con header (nota en newsletter, 2 post FB, 1 post IG, 2 story IG) · 1 video formato El producto del mes · **bonus:** banner 7 días + mención de 20s en lectura web | **$10.000.000**<br>*(sin video: $7.000.000)* |
+| **Lanzamiento** | Lanzamientos de producto, aperturas de showroom, nuevas colecciones, aniversarios o grandes campañas. Objetivo: alto impacto y amplificación | 1 página impresa · 1 Tour AXXIS o cubrimiento del evento · AXXIS Invita · 6 fotos del evento o producto · 1 content con header · **bonus:** banner 7 días + mención de 20s + mención en Podcast | **$13.500.000** |
 
-### Lo que el kit tiene bien
-
-- **Portfolio sin huecos de funnel.** Desde cintillo/portada falsa (awareness) hasta AXXIS Invita y cubrimiento (relacionamiento real). Un cliente puede entrar por cualquier presupuesto.
-- **Newsletter como activo diferenciador.** 47k contactos con 25% de apertura es el número más potente del kit y el que más diferencia a AXXIS de competidores digitales. Aparece bien en el slide de contenido web pero no se destaca suficientemente en el resto.
-- **Paquetes de video con 8 salidas.** Tour AXXIS (video + nota web + newsletter + historias + Facebook) es fácil de vender porque el cliente ve alcance agregado, no formato aislado.
-- **Formatos con personaje son el producto premium correcto.** $9.5M-$10.5M justificados — es el único formato donde AXXIS pone su red de influencia al servicio del cliente.
-- **AXXIS Invita y Cubrimiento.** Formatos de alto valor para marcas que buscan relacionamiento real con la comunidad arquitectura/diseño.
-- **"En la historia de..."** Caso Mazda con 15.500 views en reel. Único formato de brand building de largo plazo.
-- **Diseño visual sólido.** Coherente, fotografías de calidad, identidad consistente.
-
-### Gaps que frenan ventas
-
-**1. Precios ausentes en todos los formatos impresos especiales (CRÍTICO)**
-Portada falsa, cintillo, postal, página dura, gatefolds y cuadernillo no tienen precio visible — solo "TARIFAS SUJETAS A COTIZACIÓN". Un cliente que evalúa presupuesto no puede avanzar sin llamar. Alarga el ciclo innecesariamente.
-*Acción: agregar rangos o tarifario unificado al final del kit.*
-
-**2. El placeholder de la ejecutiva comercial no fue completado**
-La página de contacto dice literalmente "(Nombre del ejecutivo)". Error de producción que daña credibilidad en el primer punto de contacto.
-*Acción: completar nombre antes del próximo envío.*
-
-**3. Cero paquetes prearmados**
-El kit lista 15+ formatos como menú. El cliente tiene que armar su propia combinación. Resultado: propuestas hechas desde cero en cada caso, sin oferta ancla.
-*Acción: crear 3 bundles con precio único — Starter (~$8M), Growth (~$15M), Premium (~$25M+).*
-
-**4. Sin caso de éxito completo con ROI**
-Mazda aparece con 15.500 views pero sin cifras de negocio (tráfico, leads, ventas). Para clientes de construcción/materiales que justifican inversión ante un CMO, esto es lo que cierra.
-*Acción: desarrollar 1 caso completo con métricas de entrada y salida.*
-
-**5. Engagement de redes ausente**
-154k IG, 157k FB — pero sin tasa de engagement ni alcance promedio de post propio. Los media buyers de clientes grandes ya aprendieron a preguntar por esto.
-*Acción: agregar engagement promedio (%) e impresiones reales de posts propios.*
-
-**6. "AXXIS En la historia de..." sin precio**
-Es probablemente el formato de mayor ticket (10 cápsulas = contrato largo). No tiene precio visible.
-*Acción: definir y publicar el precio en el kit.*
-
-**7. Podcast sin métricas de audiencia**
-El slide no incluye oyentes actuales en Spotify. Sin ese número, el precio de $5.5M/episodio es difícil de defender solo con distribución en redes propias.
-*Acción: incluir oyentes/escuchas por episodio (si el podcast ya tiene historial).*
-
-**8. Fuente de datos digitales no especificada**
-"248k usuarios únicos promedio" no indica GA4 ni período de medición. Un media buyer lo preguntará.
-*Acción: agregar "(Fuente: GA4, promedio ene-dic 2025)" o el período real.*
-
-**9. Circulación impresa sin número certificado**
-"Solo suscriptores" y "circulación total" aparecen como descriptores pero no hay tiraje total visible.
-*Acción: agregar tiraje actual (estimado 5.000-7.000 según Sesión 2) con aclaración de metodología.*
-
-**10. Sin slide "¿por qué AXXIS?"**
-El kit asume que el cliente ya decidió pautar aquí. En realidad AXXIS compite contra Google Ads, Meta y presupuesto cero. Falta un slide de cierre de decisión antes de llegar a formatos.
-*Acción: agregar 1 slide de diferenciadores con comparativo simple.*
-
-### Prioridades por impacto en revenue
-
-| Acción | Impacto | Esfuerzo |
-|--------|---------|----------|
-| Completar nombre ejecutiva en contacto | Elimina error que daña credibilidad | 5 min |
-| Agregar rangos de precio a formatos impresos especiales | Elimina fricción en ciclo de venta | 1 hora |
-| Crear 3 paquetes ancla con precio | Facilita primer ticket y conversación | 2-3 horas |
-| Desarrollar 1 caso de éxito completo con ROI | Cierra objeción de inversión | 1 semana |
-| Agregar engagement promedio de redes | Defensivo ante media buyers | 30 min |
-| Publicar precio "En la historia de..." | Activa venta de formato de mayor ticket | 1 hora |
-
-### Qué formato ofrecer según segmento del CRM
-
-| Segmento | Formato ancla recomendado | Ticket aprox. |
-|----------|--------------------------|---------------|
-| Construcción / materiales (Acesco, Corona, Amarilo) | Tour AXXIS o Cubrimiento | $6.4M-$12.3M |
-| Diseño de interiores / mueblería / iluminación | Content web + Newsletter | $5.3M-$6.1M |
-| Real estate / constructoras premium | AXXIS Invita | $14.5M |
-| Aerolíneas / retail de lujo | Página impresa + display web | $3M-$6M |
-| Marcas con historia (aniversarios, hitos) | AXXIS En la historia de... | Por definir |
+> ⚠️ Estos precios contradicen a [[Sistema-Ventas-Editorial-2026]], que tiene los tres paquetes como "Por definir" y nombra el tercero **Anual 360** en lugar de **Lanzamiento**. Resolver antes de que el equipo cotice con dos fuentes distintas — es el bloqueador #2RE.
 
 ---
 
-## 11. Paquetes Comerciales Temáticos (anclados al calendario editorial)
+## 11. Contacto
 
-> Insumo para conversaciones comerciales. Anclan la oferta a una edición concreta y facilitan el primer ticket. Precios brutas + IVA. Fecha de cierre = aprox. 6 semanas antes de la edición.
-
----
-
-### Paquete "Diseño en Movimiento" — Edición Octubre (ed. 382)
-**Cierre comercial: ~9 septiembre 2026**
-*Automóviles, aerolíneas, arquitectura efímera — audiencia premium con poder adquisitivo alto*
-
-| Nivel | Contenido | Valor |
-|-------|-----------|-------|
-| **Entrada** | 1 página corriente impresa + 1 Content web + Newsletter | $29.800.000 |
-| **Presencia** | Doble página impresa + Tour AXXIS + Newsletter + Display 7 días | $57.800.000 |
-| **Protagonismo** | Portada interior + Doble página + Tour AXXIS con personaje + AXXIS Invita + Newsletter + Display 30 días | $107.900.000 |
+La lámina de contacto trae **"(Nombre del ejecutivo)"** sin diligenciar, con el correo y celular de [[Clara Vergara]]: cvergara@revistaaxxis.com.co · +57 320 490 0118
 
 ---
 
-### Paquete "Bienestar" — Edición Julio (ed. 379)
-**Cierre comercial: ~finales mayo 2026**
-*Renovación y sostenibilidad — materiales, acabados, bienestar en el hogar*
+## Pendientes que abre este documento
 
-| Nivel | Contenido | Valor |
-|-------|-----------|-------|
-| **Entrada** | 1 página corriente impresa + 1 Content web + Newsletter | $29.800.000 |
-| **Presencia** | Doble página impresa + El Producto del Mes + Newsletter + Display 7 días | $52.400.000 |
-| **Protagonismo** | Portada interior + Doble página + Tour AXXIS + AXXIS Conversando con... + Newsletter + Display 30 días | $95.400.000 |
+1. **Dos láminas salen sin terminar.** La de contacto dice "(Nombre del ejecutivo)" y la última de propuesta comercial está en Lorem ipsum con `$X.XXX.XXX`. Mismo problema que el [[Media Kit Diners 2026]].
+2. **Los paquetes no coinciden con el sistema de ventas.** Aquí tienen precio y el tercero se llama Lanzamiento; en el vault figura Anual 360 sin precio.
+3. **"En la historia de…" se presenta sin tarifa.** Es el único formato del kit sin valor, y ya tiene caso publicado (Mazda).
+4. **La audiencia digital envejeció.** 31% en 55-64 años contra 21% bajo los 35. Contrasta con Instagram, donde el bloque 35-44 es el 34.92% (informe Metricool julio). Web y redes atraen públicos distintos — relevante para #8AX.
+5. **El archivo es V1.** Confirmar con [[Paola Nossa]] si es la versión que circula al mercado.
 
 ---
 
-### Paquete "Lujo del Mañana" — Edición Septiembre (ed. 381)
-**Cierre comercial: ~9 agosto 2026**
-*Lujo y cocinas — marcas premium, arquitectura de alto valor*
+## Comparativo rápido con Diners
 
-| Nivel | Contenido | Valor |
-|-------|-----------|-------|
-| **Entrada** | 1 página corriente impresa + 1 Content web + Newsletter | $29.800.000 |
-| **Presencia** | Doble página impresa + AXXIS Conversando con... + Newsletter | $51.200.000 |
-| **Protagonismo** | Portada interior + Doble página + Tour AXXIS con personaje + Cubrimiento AXXIS + Newsletter + Display 30 días | $106.000.000 |
+| | AXXIS | Diners |
+|---|---|---|
+| Suscriptores | 65.960 (85% circ.) | 146.000 (90% circ.) |
+| Usuarios únicos / mes | 248K | 737K |
+| Páginas vistas / mes | 402K | 941K |
+| Newsletter | 47K | 400K |
+| Género impresa | 56% hombres | 54% mujeres |
+| Género web | 61% mujeres | 60% mujeres |
+| Página corriente impresa | $21.400.000 | $23.600.000 |
+| Billboard 7 días | $1.700.000 | $2.050.000 |
+| Paquetes con precio | Sí (3) | No |
 
----
-
-### Paquete "Aniversario #36" — Edición Diciembre (ed. 384)
-**Cierre comercial: ~octubre 2026**
-*Gran edición aniversario — oportunidad de asociación a hito editorial*
-
-| Nivel | Contenido | Valor |
-|-------|-----------|-------|
-| **Presencia** | Doble página impresa + Content con header + Newsletter | $47.200.000 |
-| **Protagonismo** | Portada interior + Doble página + En la Historia de... (temporada) + AXXIS Invita + Newsletter | A cotizar |
-
----
-
-### Paquete Digital Evergreen
-*Sin dependencia de edición — activa en cualquier momento del año*
-
-| Contenido | Valor |
-|-----------|-------|
-| Newsletter patrocinado (1 envío) | $2.650.000 |
-| Content web + Newsletter | $7.950.000 |
-| El Producto del Mes + Newsletter + Display 7 días | $9.800.000 |
-| Tour AXXIS + Content + Newsletter | $14.350.000 |
-
----
-
-### Notas de uso de paquetes
-
-- Los precios son brutos de lista — aplicar descuento comercial según política vigente.
-- Paquetes de Protagonismo incluyen exclusividad de categoría dentro de la edición (confirmar con Paola Nossa).
-- "En la Historia de..." no tiene precio publicado — cotizar separado hasta definir tarifa.
-- AXXIS Connect excluido de paquetes hasta aclarar definición del formato.
+> Diners tiene 3x el tráfico web y 8.5x la base de newsletter, pero AXXIS es la única con paquetes comerciales tarifados.
 
 ---
 
 ## Relacionado
 
-[[AXXIS]] · [[Diners]] · [[Paola Nossa]] · [[Cronograma de Eventos y Marketing 2026]] · [[2026-06-16 Presentación Actividades de Marketing Sesión 2]] · [[Ayudaventas — Formato Comercial por Edición]] · [[Formatos-Digitales-AXXIS]]
-
----
-
-*Generado por Claude — 2026-06-16, a partir de "Media kit 2026 AXXIS_V1.pptx" compartido por Carolina Ramirez.*
-*Auditoría comercial añadida por Claude — 2026-06-21, revisión completa del kit (33 páginas).*
-*Paquetes comerciales temáticos añadidos por Claude — 2026-08-02, sesión estrategia AXXIS H2 2026.*
+[[Media Kit Diners 2026]] · [[Formatos-Digitales-AXXIS]] · [[Sistema-Ventas-Editorial-2026]] · [[Forecast-Pauta-Revistas-2026]] · [[03 - Unidades de Negocio/AXXIS/AXXIS]]
