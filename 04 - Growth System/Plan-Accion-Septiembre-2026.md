@@ -29,6 +29,8 @@ Construido sobre el diagnóstico del corte 1 jul-28 ago 2026 (Metricool, Google 
 
 **Condición de medición:** ninguna meta se fija sobre GA4 (ninguna de las dos marcas) hasta corregir el tag contaminado. Mientras tanto GSC (clics/impresiones) y Metricool son la referencia.
 
+**Decisión pendiente — momento de corregir el tag GA4.** Al separar las propiedades, la cifra reportada de AXXIS baja (hoy incluye tráfico de Diners), aunque el tráfico real no cambie. Choca con el compromiso de "el tráfico no baja". Opciones: (A) corregir justo después de un reporte a junta, para llegar al siguiente con la base ya estabilizada; (B) anunciarlo antes como corrección de medición, lo que cuesta más en el momento pero blinda cualquier caída futura y se adelanta al dato histórico del proveedor externo (-71% AXXIS, -68% Diners desde sus picos). Definir antes de que Plataformas toque el tag.
+
 **Sobre Paid Social:** no se corta hasta que el orgánico recupere volumen suficiente para reemplazarlo. Bajo un objetivo de tráfico, cortar antes resta volumen sin sustituto. El arreglo de redirecciones es lo que habilita esa reducción más adelante.
 
 ---
