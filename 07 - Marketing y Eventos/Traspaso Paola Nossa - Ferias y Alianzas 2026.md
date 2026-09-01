@@ -374,3 +374,196 @@ Stand 4×3 mts con piso, cambio portadas, transporte, instalación, pintura, mue
 ---
 
 *Creado en traspaso de cargo — 2026-08-29. Owner interina: Carolina Ramirez.*
+
+---
+
+# ADENDA — Entrega formal del cargo (2026-08-31)
+
+> Datos confidenciales. Esta nota es local y no se publica. El tablero público en
+> acciones-marketing-gamma.vercel.app omite deliberadamente todos los montos y credenciales.
+
+## Feria del Hogar — 3 al 18/20 sep (canje AXXIS)
+
+**Discrepancia de fechas:** la entrega escrita dice 3–18 sep; la tabla de beneficios dice 3–20 sep. Confirmar.
+
+### Lo que aporta AXXIS
+
+| Pieza | Mes | Valor |
+|---|---|---|
+| 1 video de cubrimiento con entrevista a vocero | Sep | $9.600.000 |
+| 2 posts FB + 2 stories IG (comerciales) | Sep | $4.300.000 |
+| Banner vertical 15 días | **Ago** | $3.000.000 |
+| **Total propuesta AXXIS** | | **$16.900.000** |
+
+### Lo que recibe AXXIS
+
+| Beneficio | Detalle | Cant. | Valor |
+|---|---|---|---|
+| Boletería | Invitaciones VIP muestra comercial | 50 | $800.000 |
+| Pata de logos | Presencia en página web | 1 | $16.000.000 |
+| Redes sociales | Agradecimiento como medio aliado en FB e IG | 1 | $6.000.000 |
+| **Total** | | | **$22.800.000** |
+
+**RIESGO CRÍTICO:** el banner vertical estaba programado para agosto. Al 31-ago no hay confirmación de que haya salido. Verificar con Sebastián Díaz.
+
+---
+
+## Oferta suscripciones AXXIS — Expocamacol 2026
+
+| Plan | Ediciones | Incluye | Precio |
+|---|---|---|---|
+| Anual | 12 | — | $208.000 |
+| Trimestral (30% dcto) | 3 | Libro anuario AXXIS 2026 | $175.500 |
+| Semestral | 6 | Libro colección: Panamá Country 3ED o Boyacá 200 años | $119.400 |
+| Trimestral | 3 | Vinturi de regalo | $59.700 |
+
+Válidas solo en el stand AXXIS durante Expocamacol. **Primera edición prometida para septiembre 2026** a la dirección registrada. Aplican T&C.
+
+~50 personas se inscribieron al concurso por una suscripción trimestral.
+
+---
+
+## Presupuesto POP 2027 — aprobado
+
+| Concepto | Descripción | Valor |
+|---|---|---|
+| Material publicitario | Abanicos, postales, brochure, camisetas para ferias y posicionamiento AXXIS + Diners | $16.800.000 |
+
+Proveedor: **Daru**. Se gira a requerimiento del área de mercadeo de Gamma.
+
+---
+
+## Accesos y credenciales
+
+**Escarapelas Feria de Diseño**
+- URL: https://incontacto.co/azj6
+- Usuario: AXXIS-LFDD-2026
+- Contraseña: AXXIS-LFDD-2026
+
+**AdButler (reporte KEVINS)**
+- URL: https://admin.adbutler.com/?ID=182735&p=authenticate
+- Usuario: kevins@estadisticas.com
+- Contraseña: Diners2025
+- A veces pide actualizar credenciales; lo gestiona Sebastián Díaz.
+
+---
+
+## Contactos nuevos
+
+| Persona | Rol | Contacto |
+|---|---|---|
+| Catalina Ramírez Ayala | Directora de Mercadeo — Congreso Colombiano de la Construcción | 320 492 0096 |
+| Diana Trujillo | Numa Studio (fotografía, COCREA) | — |
+| Carolina Delgado | Destinataria del informe de entrega de Expocamacol | — |
+| Juan David | Publicación del newsletter | — |
+| Simón Granja | Editor Diners — contenido EVA | — |
+
+---
+
+## Pagos pendientes
+
+- Stand — Daru Diseños SAS
+- Stand Feria de Diseño Medellín — Madereca
+- Tote bags — Ecoactiva
+- Sombrillas — Biglogo
+
+## Proveedores COCREA (factura sep → aprobar en tablero → ejecutar)
+
+1. **Numa Studio** (Diana Trujillo) — cuenta de cobro actualizada + reunión con Lina de diseño para iniciar fotos
+2. **Daru Diseños SAS** — factura 1 sep. Bolsa POP y material de ferias 2027
+3. **Madereca** — factura 1 sep. Transporte y ajuste del mueble de ferias de Medellín
+
+---
+
+## Inventario de mercadeo
+
+| Artículo | AXXIS | Diners |
+|---|---|---|
+| Tote bags (ferias) | 500 | 430 |
+| Tote bags (clientes) | 150 | 100 |
+| Mugs | 100 | 70 |
+| Sombrillas | 100 | 100 |
+
+---
+
+## Reportes recurrentes heredados
+
+- **KEVINS** (importante): falta julio y agosto. Datos de AdButler. Incluir además las notas de valor agregado publicadas en el newsletter Diners: *Citizen Star Wars* y *Kevins Joyeros Diamantes*.
+- **Informes web**: se entregan todos los meses, organizados por año/mes en Drive.
+- **Reportes de las ejecutivas**: varios pendientes; se relacionan en las matrices de compromisos comerciales de AXXIS y Diners.
+
+---
+
+## Propuestas aprobadas sin ejecutar
+
+1. Matriz de estrategia para Libros
+2. **Pódcast** — sustentada y aprobada para ejecutar
+3. Landing de AXXIS con el área de tecnología
+
+---
+
+## Torneo de Golf
+
+Listado en la entrega como feria por ejecutar, **sin ningún detalle**: sin fecha, revista, contacto ni alcance. Único punto completamente vacío del documento. Preguntar a Paola mientras siga disponible.
+
+---
+
+*Adenda registrada 2026-08-31 a partir del documento formal "Área Mercadeo entrega cargo".*
+
+---
+
+# ADENDA 2 — Checklist operativo Feria de Diseño (2026-08-31)
+
+## Credenciales de plataformas
+
+**Sizfra 2.0 — registro de mercancías (deadline 7 sep)**
+- Usuario: `117860062001`
+- Contraseña: `DISENO2026`
+
+**Escarapelas y manillas de montaje**
+- URL: https://incontacto.co/azj6
+- Usuario: `AXXIS-LFDD-2026`
+- Contraseña: `AXXIS-LFDD-2026`
+
+## Datos operativos
+
+| Dato | Valor |
+|---|---|
+| Ubicación del stand | Pabellón Azul, **AZ17** |
+| Montaje | 9 sep |
+| Feria | 10–12 sep |
+| Desmontaje | Domingo 13 sep |
+| Retorno mobiliario | Beta-Medellín |
+| Internet | Contratar con Plaza Mayor según reglamento |
+| Landing | https://revistaaxxis.com.co/suscripcion-feria-medellin-2026/ |
+
+## Inventario para el stand
+
+| Ítem | Cantidad |
+|---|---|
+| Libros | 182 |
+| Revistas AXXIS | 2.500 |
+| Revistas Diners | 500 |
+| Postales | 3.000 |
+| Camisetas | 4 |
+
+Descuentos de libros: 30% individual · 35% kits · 60% Guía El Arqa.
+
+## Personal confirmado
+
+Viajan 4: Mateo Arias, Néstor Camilo Medina, Ramón Nivia y **Lilo (10–12 sep)**. Daniel Bedoya vive en Medellín. Natalia Pedraza validada. Hay 3 habitaciones twin del canje Binn, alcanza.
+
+**Tiquete de Lilo lo asume Gamma** — la feria solo cubre a Mateo y Camilo.
+
+## Requisitos que pueden bloquear el ingreso
+
+- **ARL y seguridad social vigentes** para todo el personal de montaje y desmontaje
+- **Registro en Sizfra antes del 7 sep** — sin esto no entra mercancía al recinto
+
+## Estado de la OC del mueble
+
+Correo a **Heimy Hernández** enviado el 31 de agosto solicitando la orden de compra de mantenimiento y transporte del mueble (Madereca). Falta su aprobación y el trámite en cartera.
+
+---
+
+*Adenda registrada 2026-08-31.*

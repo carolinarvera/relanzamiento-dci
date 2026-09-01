@@ -6,8 +6,8 @@
   --bg:#F5F4F1; --surface:#FFFFFF; --surface-alt:#ECEAE7; --surface-muted:#F9F8F6;
   --text-1:#171714; --text-2:#5E5C58; --text-3:#9C9A96;
   --border:#D6D4D0; --border-strong:#B0AEA9;
-  --accent:#2B5F8A; --accent-dark:#1E4E78; --accent-light:rgba(43,95,138,.10);
-  --green:#1B5E20; --hero-bg:#111213; --hero-text:#EDECEB;
+  --accent:#171714; --accent-dark:#000000; --accent-light:rgba(0,0,0,.06);
+  --green:#171714; --hero-bg:#111213; --hero-text:#EDECEB;
   --photo-bg:#1A1D20;
 }
 @media (prefers-color-scheme:dark){
@@ -15,7 +15,7 @@
     --bg:#111213;--surface:#181A1B;--surface-alt:#1F2122;--surface-muted:#161718;
     --text-1:#EDECEB;--text-2:#9A9895;--text-3:#6A6865;
     --border:#2C2E30;--border-strong:#3C3E41;
-    --accent:#4A88BD;--accent-dark:#3A78AD;--accent-light:rgba(74,136,189,.12);
+    --accent:#EDECEB;--accent-dark:#FFFFFF;--accent-light:rgba(237,236,235,.08);
     --photo-bg:#111213;
   }
 }
@@ -23,14 +23,14 @@
   --bg:#111213;--surface:#181A1B;--surface-alt:#1F2122;--surface-muted:#161718;
   --text-1:#EDECEB;--text-2:#9A9895;--text-3:#6A6865;
   --border:#2C2E30;--border-strong:#3C3E41;
-  --accent:#4A88BD;--accent-dark:#3A78AD;--accent-light:rgba(74,136,189,.12);
+  --accent:#EDECEB;--accent-dark:#FFFFFF;--accent-light:rgba(237,236,235,.08);
   --photo-bg:#111213;
 }
 :root[data-theme="light"]{
   --bg:#F5F4F1;--surface:#FFFFFF;--surface-alt:#ECEAE7;--surface-muted:#F9F8F6;
   --text-1:#171714;--text-2:#5E5C58;--text-3:#9C9A96;
   --border:#D6D4D0;--border-strong:#B0AEA9;
-  --accent:#2B5F8A;--accent-dark:#1E4E78;--accent-light:rgba(43,95,138,.10);
+  --accent:#171714;--accent-dark:#000000;--accent-light:rgba(0,0,0,.06);
   --photo-bg:#1A1D20;
 }
 
@@ -60,7 +60,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .nav-right{display:flex;align-items:center;gap:8px;margin-left:auto}
 .btn-login{font-size:13px;padding:8px 16px;border-radius:2px;cursor:pointer;color:var(--text-2);border:1px solid var(--border);background:transparent;font-family:inherit;transition:border-color .15s,color .15s}
 .btn-login:hover{border-color:var(--border-strong);color:var(--text-1)}
-.btn-sus{font-size:13px;font-weight:600;padding:8px 18px;border-radius:2px;cursor:pointer;background:var(--accent);color:#fff;border:none;font-family:inherit;transition:background .15s;white-space:nowrap}
+.btn-sus{font-size:13px;font-weight:600;padding:8px 18px;border-radius:2px;cursor:pointer;background:var(--accent);color:var(--bg);border:none;font-family:inherit;transition:background .15s;white-space:nowrap}
 .btn-sus:hover{background:var(--accent-dark)}
 .btn-hamburger{background:none;border:none;cursor:pointer;color:var(--text-1);padding:4px 6px;margin-left:4px}
 
@@ -75,7 +75,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .hero-headline{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(32px,4.8vw,54px);font-weight:400;color:var(--hero-text);line-height:1.2;max-width:700px;margin:0 auto 18px;text-wrap:balance}
 .hero-sub{font-size:15.5px;color:rgba(237,236,235,.55);max-width:500px;margin:0 auto 36px;line-height:1.7;font-weight:300}
 .hero-ctas{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
-.main-cta{display:inline-block;background:var(--accent);color:#fff;padding:15px 36px;border-radius:2px;font-size:14.5px;font-weight:600;letter-spacing:.02em;transition:background .15s}
+.main-cta{display:inline-block;background:var(--accent);color:var(--bg);padding:15px 36px;border-radius:2px;font-size:14.5px;font-weight:600;letter-spacing:.02em;transition:background .15s}
 .main-cta:hover{background:var(--accent-dark)}
 .hero-tag{font-family:'Cormorant Garamond',Georgia,serif;font-size:16px;font-style:italic;font-weight:300;color:rgba(237,236,235,.45);margin:-20px auto 32px;max-width:440px;letter-spacing:.01em}
 .hero-link{display:inline-block;font-size:14px;color:rgba(237,236,235,.45);padding:15px 20px;transition:color .15s;border-bottom:1px solid rgba(237,236,235,.18)}
@@ -90,14 +90,14 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 
 /* ===== BADGES ===== */
 .badge{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:2px;text-transform:uppercase;font-family:'Source Sans 3',sans-serif;white-space:nowrap}
-.b-best{background:var(--accent);color:#fff}
-.b-save{background:var(--green);color:#fff}
+.b-best{background:var(--accent);color:var(--bg)}
+.b-save{background:var(--green);color:var(--bg)}
 .b-entry{background:rgba(255,255,255,.12);color:rgba(237,236,235,.7);border:.5px solid rgba(255,255,255,.15)}
 .b-free{background:rgba(255,255,255,.08);color:rgba(237,236,235,.75);border:.5px solid rgba(255,255,255,.2)}
 .b-sold{background:#f0f0ee;color:var(--text-3);border:.5px solid var(--border)}
 :root[data-theme="dark"] .b-sold,:root:not([data-theme="light"]) .b-sold{background:#222;color:var(--text-3)}
-.b-offer{background:#FFF8E1;color:#795500;border:.5px solid #F0D080}
-:root[data-theme="dark"] .b-offer,:root:not([data-theme="light"]) .b-offer{background:#2A1E00;color:#D4A800;border-color:#4A3A00}
+.b-offer{background:#f0f0ee;color:var(--text-2);border:.5px solid var(--border)}
+:root[data-theme="dark"] .b-offer,:root:not([data-theme="light"]) .b-offer{background:#222;color:var(--text-3);border-color:#333}
 
 /* ===== NAMED PLANS GRID ===== */
 #planes{scroll-margin-top:120px}
@@ -114,13 +114,16 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .plan-photo-bg{position:absolute;inset:0}
 /* Plan Colección — architectural blueprint */
 .pp-coleccion{background:linear-gradient(150deg,#131820 0%,#1c2535 55%,#151b24 100%)}
-.pp-coleccion::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(43,95,138,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(43,95,138,.07) 1px,transparent 1px);background-size:22px 22px}
+.pp-coleccion::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:22px 22px}
 /* Plan Inspiración — diagonal elevation lines */
 .pp-inspiracion{background:linear-gradient(155deg,#1a1e24 0%,#222830 50%,#1c2028 100%)}
-.pp-inspiracion::after{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(43,95,138,.05) 0px,rgba(43,95,138,.05) 1px,transparent 1px,transparent 28px)}
+.pp-inspiracion::after{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.03) 0px,rgba(255,255,255,.03) 1px,transparent 1px,transparent 28px)}
 /* Plan Descubrimiento — concrete texture */
 .pp-descubrimiento{background:linear-gradient(140deg,#1e2022 0%,#282b2e 55%,#1c1e20 100%)}
 .pp-descubrimiento::after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.025) 1px,transparent 1px);background-size:18px 18px}
+/* Plan Referencia — medium grain */
+.pp-semestral{background:linear-gradient(145deg,#1d1f21 0%,#262a2d 55%,#1b1d1f 100%)}
+.pp-semestral::after{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0px,rgba(255,255,255,.025) 1px,transparent 1px,transparent 36px)}
 /* Plan Número — minimal clean */
 .pp-numero{background:linear-gradient(150deg,#1a1c1e 0%,#24272a 100%)}
 .pp-numero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px);background-size:100% 32px}
@@ -147,11 +150,11 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .np-feats li:last-child{border-bottom:none}
 .np-feats li::before{content:"—";color:var(--accent);font-size:10px;flex-shrink:0;margin-top:2px;font-weight:600}
 .np-feats li.hl{color:var(--text-1);font-weight:500}
-.np-feats li.warn::before{content:"!";color:#B07800}
-.np-feats li.warn{color:#805500}
-:root[data-theme="dark"] .np-feats li.warn,:root:not([data-theme="light"]) .np-feats li.warn{color:#D4A800}
+.np-feats li.warn::before{content:"!";color:var(--text-3)}
+.np-feats li.warn{color:var(--text-2)}
+:root[data-theme="dark"] .np-feats li.warn,:root:not([data-theme="light"]) .np-feats li.warn{color:var(--text-2)}
 .np-cta{display:block;text-align:center;padding:13px 16px;border-radius:2px;font-size:13.5px;font-weight:600;font-family:'Source Sans 3',sans-serif;letter-spacing:.02em;transition:background .15s,opacity .15s}
-.np-cta.primary{background:var(--accent);color:#fff}
+.np-cta.primary{background:var(--accent);color:var(--bg)}
 .np-cta.primary:hover{background:var(--accent-dark)}
 .np-cta.dark{background:var(--text-1);color:var(--bg)}
 .np-cta.dark:hover{opacity:.8}
@@ -181,8 +184,8 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .ac-price.sold{text-decoration:line-through;color:var(--text-3);font-size:18px}
 .ac-badge{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:.06em;padding:2px 8px;border-radius:2px;text-transform:uppercase;font-family:'Source Sans 3',sans-serif;margin-bottom:8px}
 .ab-sold{background:#f0f0ee;color:var(--text-3);border:.5px solid var(--border)}
-.ab-offer{background:#FFF8E1;color:#795500;border:.5px solid #F0D080}
-:root[data-theme="dark"] .ab-offer,:root:not([data-theme="light"]) .ab-offer{background:#2A1E00;color:#D4A800;border-color:#4A3A00}
+.ab-offer{background:#f0f0ee;color:var(--text-2);border:.5px solid var(--border)}
+:root[data-theme="dark"] .ab-offer,:root:not([data-theme="light"]) .ab-offer{background:#222;color:var(--text-3);border-color:#333}
 .ac-cta{display:block;text-align:center;font-size:12.5px;font-weight:600;padding:10px 14px;border-radius:2px;font-family:'Source Sans 3',sans-serif;letter-spacing:.02em}
 .ac-cta.buy{background:var(--text-1);color:var(--bg);transition:opacity .15s}
 .ac-cta.buy:hover{opacity:.8}
@@ -241,7 +244,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .sticky-cta.show{transform:translateY(0)}
 .sc-text{font-size:13px;color:var(--hero-text);font-weight:300;line-height:1.3}
 .sc-text small{display:block;font-size:10.5px;color:rgba(237,236,235,.42)}
-.sticky-cta a{background:var(--accent);color:#fff;font-size:13px;font-weight:600;padding:10px 20px;border-radius:2px;white-space:nowrap;font-family:'Source Sans 3',sans-serif}
+.sticky-cta a{background:var(--hero-text);color:var(--hero-bg);font-size:13px;font-weight:600;padding:10px 20px;border-radius:2px;white-space:nowrap;font-family:'Source Sans 3',sans-serif}
 
 /* ===== FOOTER ===== */
 .site-footer{background:#0D0E0F;padding:52px 40px 0;color:var(--hero-text)}
@@ -261,7 +264,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 .nl-form input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:2px;padding:10px 13px;font-size:13px;color:var(--hero-text);outline:none;font-family:inherit;transition:border-color .15s}
 .nl-form input::placeholder{color:rgba(237,236,235,.27)}
 .nl-form input:focus{border-color:rgba(255,255,255,.22)}
-.nl-form button{background:var(--accent);color:#fff;border:none;border-radius:2px;padding:10px 20px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .15s;align-self:flex-start}
+.nl-form button{background:var(--hero-text);color:var(--hero-bg);border:none;border-radius:2px;padding:10px 20px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity .15s;align-self:flex-start}
 .nl-form button:hover{background:var(--accent-dark)}
 .footer-bottom{display:flex;align-items:center;justify-content:space-between;padding:20px 0 26px;flex-wrap:wrap;gap:10px}
 .footer-links-row{display:flex;gap:18px;flex-wrap:wrap}
@@ -326,9 +329,9 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 
 <!-- HERO -->
 <section class="hero">
-  <p class="hero-eyebrow">Revista AXXIS · Colombia · Arquitectura · Diseño Interior · Decoración</p>
+  <p class="hero-eyebrow">Revista AXXIS · 35 años en Colombia · Arquitectura · Diseño Interior · Decoración</p>
   <h1 class="hero-headline">Donde la arquitectura y el diseño se convierten en inspiración.</h1>
-  <p class="hero-sub">AXXIS ofrece una mirada curada a los espacios que inspiran, las ideas que transforman y los talentos que están redefiniendo lo que viene. Exploramos la arquitectura, el diseño, el interiorismo y el arte para revelar tendencias, conceptos y perspectivas que nos invitan a mirar el mundo de otra manera.</p>
+  <p class="hero-sub">AXXIS es la voz experta en Colombia y la mirada curada de los espacios que inspiran, las ideas que transforman y los personajes que redefinen tendencias, conceptos y perspectivas que transforman la manera de descubrir la arquitectura, el diseño, el interiorismo y el arte.</p>
   <p class="hero-tag">Un espacio para descubrir, conectar e inspirarse.</p>
   <div class="hero-ctas">
     <a href="#planes" class="main-cta">Suscribirse — desde $59.700</a>
@@ -339,9 +342,9 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 <!-- PLANES -->
 <section class="section" id="planes">
   <div class="wrap">
-    <p class="section-label">Suscripciones · Desde $19.900</p>
-    <h2 class="section-title">Elija el plan y empiece a recibir AXXIS</h2>
-    <p class="section-body np-intro">Once ediciones al año, entregadas en la puerta. Un solo pago, sin renovación automática.</p>
+    <p class="section-label">Planes de suscripciones · desde $59.700</p>
+    <h2 class="section-title">AXXIS, todo un año de inspiración y contenido editorial curado.</h2>
+    <p class="section-body np-intro">Elija el plan anual y reciba la inspiración de AXXIS durante todo el año.</p>
 
     <div class="np-grid">
 
@@ -402,6 +405,34 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
         </div>
       </div>
 
+      <!-- PLAN SEMESTRAL — 6 ediciones -->
+      <div class="np">
+        <div class="plan-photo">
+          <div class="plan-photo-bg pp-semestral"></div>
+          <span class="plan-photo-wm">AXXIS</span>
+          <div class="plan-photo-badges">
+            <span class="badge b-entry">Medio año</span>
+          </div>
+          <p class="plan-photo-caption">6 meses de AXXIS + libro Esta es Colombia – Edición 6</p>
+        </div>
+        <div class="np-body">
+          <p class="np-eyebrow">Plan semestral · con libro</p>
+          <p class="np-name">Plan Referencia</p>
+          <div class="np-pricing">
+            <span class="np-price">$286.400</span>
+            <span class="np-save">Suscripción $119.400 + Libro $167.000</span>
+            <span class="np-period">6 ediciones + Esta es Colombia – Ed. 6</span>
+          </div>
+          <ul class="np-feats">
+            <li class="hl">6 ediciones impresas de AXXIS</li>
+            <li class="hl">Libro Esta es Colombia – Edición 6 incluido</li>
+            <li>Envío sin costo a la dirección elegida</li>
+            <li>Precios preferenciales en libros <a href="https://edicionesgamma.com" style="color:var(--accent);border-bottom:1px solid currentColor">Ediciones Gamma</a></li>
+          </ul>
+          <a href="#" class="np-cta dark">Elegir Plan Referencia</a>
+        </div>
+      </div>
+
       <!-- PLAN DESCUBRIMIENTO — Trimestral -->
       <div class="np">
         <div class="plan-photo">
@@ -429,7 +460,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
       </div>
 
       <!-- PLAN NÚMERO — Edición suelta -->
-      <div class="np">
+      <div class="np" style="grid-column:1/-1;max-width:50%;margin:0 auto;width:100%">
         <div class="plan-photo">
           <div class="plan-photo-bg pp-numero"></div>
           <span class="plan-photo-wm">AXXIS</span>
