@@ -567,3 +567,40 @@ Correo a **Heimy Hernández** enviado el 31 de agosto solicitando la orden de co
 ---
 
 *Adenda registrada 2026-08-31.*
+
+---
+
+# ADENDA 3 — Alianza Bogotá Eats / Beats a Cielo Abierto (2026-09-02)
+
+**Evento:** 16 al 18 de octubre 2026 · Parque Museo El Chicó, Bogotá
+**Revista:** Diners
+
+> Discrepancia de nombre: la propuesta comercial se titula "Beats a Cielo Abierto 2026" y describe un festival; el cronograma de ferias lo registra como "Bogotá Eats". Confirmar cuál es el evento real.
+
+## Lo que aporta Diners (canje)
+
+| Pieza | Detalle | Fecha | Valor |
+|---|---|---|---|
+| 1 pág aviso **contraportada interior** | Revista impresa | Edición 14 sep 2026 | $30.900.000 |
+| Paquete digital pre festival | Entrevista y contenido web + 1 newsletter colectivo, 2 posts FB, 1 post IG, 2 stories | Lunes 28 sep | $10.480.000 |
+| Paquete digital durante festival | Contenido web + 1 newsletter colectivo, 2 posts FB, 1 post IG, 2 historias | Viernes 16 oct | $10.480.000 |
+| Pauta display | Toma de home: banner vertical y entre artículos + billboard según disponibilidad | 13 al 18 oct | $8.100.000 |
+| SMS | Invitación del festival a base Diners | Antes del 16 oct | $3.500.000 |
+| Video cubrimiento | Editor de Diners hace recorrido el viernes para invitar al fin de semana | Viernes 16 oct | $7.300.000 |
+| **Total canje Diners** | | | **$70.760.000** |
+
+## Lo que recibe Gamma
+
+**Sin documentar.** La propuesta detalla solo el aporte de Diners. No hay registro de la contraprestación del festival. Confirmar por escrito antes de ejecutar la primera pieza.
+
+## Riesgo inmediato
+
+La contraportada interior va en la **edición del 14 de septiembre**. Es la pieza de mayor valor del canje ($30.9M, 44% del total) y la más cercana. El cierre de material de la revista es anterior a esa fecha. Confirmar con Sandra Martínez y pedir el arte al aliado.
+
+## Alerta de base de datos
+
+El SMS usa la base de suscriptores Diners. Es la única pieza del calendario de ferias que la toca. Validar consentimiento y segmento antes de comprometerla.
+
+---
+
+*Adenda registrada 2026-09-02.*
