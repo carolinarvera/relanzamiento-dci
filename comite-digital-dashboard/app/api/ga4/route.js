@@ -147,11 +147,17 @@ async function buildAudience(token, propertyId, today) {
   const rep = (dimension, metrics, extra = {}) =>
     runReport(token, propertyId, { dateRanges: [range], dimensions: [{ name: dimension }], metrics: metrics.map((name) => ({ name })), ...extra });
 
-  const [devices, channels, gender, age] = await Promise.all([
+  const [devices, channels, gender, age, ageGender] = await Promise.all([
     rep('deviceCategory', ['totalUsers']),
     rep('sessionDefaultChannelGroup', ['sessions', 'screenPageViews', 'totalUsers'], { orderBys: [{ metric: { metricName: 'sessions' }, desc: true }] }),
     rep('userGender', ['totalUsers']).catch(() => []),
     rep('userAgeBracket', ['totalUsers'], { orderBys: [{ dimension: { dimensionName: 'userAgeBracket' } }] }).catch(() => []),
+    runReport(token, propertyId, {
+      dateRanges: [range],
+      dimensions: [{ name: 'userAgeBracket' }, { name: 'userGender' }],
+      metrics: [{ name: 'totalUsers' }],
+      orderBys: [{ dimension: { dimensionName: 'userAgeBracket' } }],
+    }).catch(() => []),
   ]);
 
   const share = (rows, idx = 0) => {
@@ -171,6 +177,17 @@ async function buildAudience(token, propertyId, today) {
       users: Number(r.metricValues[2].value),
       pct: sessionsTotal ? Number(r.metricValues[0].value) / sessionsTotal : 0,
     })),
+    ageGender: (() => {
+      const valid = ageGender.filter((r) => ['female', 'male'].includes(r.dimensionValues[1].value) && r.dimensionValues[0].value !== 'unknown');
+      const total = valid.reduce((a, r) => a + Number(r.metricValues[0].value), 0);
+      const byAge = {};
+      valid.forEach((r) => {
+        const a = r.dimensionValues[0].value;
+        byAge[a] = byAge[a] || { age: a, mujeres: 0, hombres: 0 };
+        byAge[a][r.dimensionValues[1].value === 'female' ? 'mujeres' : 'hombres'] = total ? Number(r.metricValues[0].value) / total : 0;
+      });
+      return Object.values(byAge).sort((x, y) => x.age.localeCompare(y.age, 'es', { numeric: true }));
+    })(),
     gender: renorm(known(share(gender))),
     age: renorm(known(share(age))),
   };

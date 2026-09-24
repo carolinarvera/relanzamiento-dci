@@ -418,18 +418,22 @@ export default function Dashboard() {
                         ))}
                       </div>
                     ) : <div style={styles.cardSubtext}>Sin datos de sexo (GA4 los omite cuando son muy pocos usuarios)</div>}
-                    {current.ga4.audience.age.length > 0 ? (
-                      <div style={{ width: '100%', height: 260 }}>
+                    {current.ga4.audience.ageGender?.length > 0 ? (
+                      <div style={{ width: '100%', height: 300 }}>
                         <ResponsiveContainer>
-                          <PieChart>
-                            <Pie data={current.ga4.audience.age} dataKey="value" nameKey="name" innerRadius="50%" outerRadius="85%" label={(e) => `${(e.pct * 100).toFixed(1)}%`}>
-                              {current.ga4.audience.age.map((a, k) => (
-                                <Cell key={a.name} fill={['#1a4fb3', '#2f66c6', '#4a86e8', '#7aa6ee', '#a9c4f5', '#cfdcf7'][k % 6]} />
-                              ))}
-                            </Pie>
-                            <Tooltip formatter={(v) => v.toLocaleString('es-CO')} />
+                          <BarChart data={current.ga4.audience.ageGender} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                            <XAxis dataKey="age" tick={{ fontSize: 12 }} />
+                            <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} />
+                            <Tooltip formatter={(v) => `${(v * 100).toFixed(1)}%`} />
                             <Legend />
-                          </PieChart>
+                            <Bar dataKey="mujeres" name="Mujeres" fill="#1a73e8">
+                              <LabelList dataKey="mujeres" position="top" formatter={(v) => `${(v * 100).toFixed(1)}%`} style={{ fontSize: 10, fill: '#1a73e8' }} />
+                            </Bar>
+                            <Bar dataKey="hombres" name="Hombres" fill="#333333">
+                              <LabelList dataKey="hombres" position="top" formatter={(v) => `${(v * 100).toFixed(1)}%`} style={{ fontSize: 10, fill: '#333' }} />
+                            </Bar>
+                          </BarChart>
                         </ResponsiveContainer>
                       </div>
                     ) : <div style={styles.cardSubtext}>Sin datos de edad</div>}
