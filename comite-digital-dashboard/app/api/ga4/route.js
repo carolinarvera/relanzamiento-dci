@@ -150,12 +150,13 @@ async function buildSections(token, propertyId, brand, range) {
   return { articles, sections, summary: top ? { topSection: top.label, topArticle: top.topPages[0]?.path || null } : null };
 }
 
-async function buildAudience(token, propertyId, r) {
+async function buildAudience(token, propertyId, r, brand) {
   const range = { startDate: r.start, endDate: r.end };
   const rep = (dimension, metrics, extra = {}) =>
     runReport(token, propertyId, { dateRanges: [range], dimensions: [{ name: dimension }], metrics: metrics.map((name) => ({ name })), ...extra });
 
-  const [devices, channels, gender, age, ageGender, cityRows, countryRows] = await Promise.all([
+  const aiFilter = { filter: { fieldName: 'sessionDefaultChannelGroup', stringFilter: { matchType: 'EXACT', value: 'AI Assistant' } } };
+  const [devices, channels, gender, age, ageGender, cityRows, countryRows, aiSources, aiLanding] = await Promise.all([
     rep('deviceCategory', ['totalUsers']),
     rep('sessionDefaultChannelGroup', ['sessions', 'screenPageViews', 'totalUsers'], { orderBys: [{ metric: { metricName: 'sessions' }, desc: true }] }),
     rep('userGender', ['totalUsers']).catch(() => []),
@@ -168,7 +169,10 @@ async function buildAudience(token, propertyId, r) {
     }).catch(() => []),
     rep('city', ['totalUsers'], { limit: 6, metricAggregations: ['TOTAL'], orderBys: [{ metric: { metricName: 'totalUsers' }, desc: true }] }).catch(() => []),
     rep('country', ['totalUsers'], { limit: 4, metricAggregations: ['TOTAL'], orderBys: [{ metric: { metricName: 'totalUsers' }, desc: true }] }).catch(() => []),
+    rep('sessionSource', ['sessions', 'screenPageViews', 'totalUsers'], { dimensionFilter: aiFilter, orderBys: [{ metric: { metricName: 'sessions' }, desc: true }], limit: 10 }).catch(() => []),
+    rep('landingPage', ['sessions'], { dimensionFilter: aiFilter, orderBys: [{ metric: { metricName: 'sessions' }, desc: true }], limit: 30 }).catch(() => []),
   ]);
+  const aiPages = await topArticles(brand, aiLanding.map((r) => ({ path: r.dimensionValues[0].value, views: Number(r.metricValues[0].value) })));
   const geo = (rows) => {
     const total = Number(rows.totals?.[0]?.value || 0);
     return rows
@@ -205,6 +209,10 @@ async function buildAudience(token, propertyId, r) {
       });
       return Object.values(byAge).sort((x, y) => x.age.localeCompare(y.age, 'es', { numeric: true }));
     })(),
+    ai: {
+      sources: aiSources.map((r) => ({ name: r.dimensionValues[0].value, sessions: Number(r.metricValues[0].value), views: Number(r.metricValues[1].value), users: Number(r.metricValues[2].value) })),
+      pages: aiPages.map((a) => ({ path: a.path, sessions: a.views, title: a.title })),
+    },
     cities: geo(cityRows),
     countries: geo(countryRows),
     gender: renorm(known(share(gender))),
@@ -248,7 +256,7 @@ async function buildProperty(token, propertyId, brand, range) {
       metrics: [{ name: 'screenPageViews' }, { name: 'totalUsers' }],
     }),
     buildSections(token, propertyId, brand, range),
-    buildAudience(token, propertyId, range),
+    buildAudience(token, propertyId, range, brand),
   ]);
 
   const byName = (rows, name) => rows.find((r) => r.dimensionValues.some((v) => v.value === name));

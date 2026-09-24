@@ -474,6 +474,41 @@ export default function Dashboard() {
                         ))}
                       </tbody>
                     </table>
+                    {current.ga4.audience.ai?.sources?.length > 0 && (
+                      <div style={{ marginTop: '18px' }}>
+                        <div style={styles.cardTitle}>Asistentes de IA que envían tráfico</div>
+                        <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '6px' }}>
+                          <thead>
+                            <tr style={{ background: '#f0f0f0' }}>
+                              <th style={{ padding: '6px', textAlign: 'left' }}>Asistente</th>
+                              <th style={{ padding: '6px', textAlign: 'right' }}>Sesiones</th>
+                              <th style={{ padding: '6px', textAlign: 'right' }}>Vistas</th>
+                              <th style={{ padding: '6px', textAlign: 'right' }}>Usuarios</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {current.ga4.audience.ai.sources.map((a) => (
+                              <tr key={a.name}>
+                                <td style={{ padding: '6px', borderBottom: '1px solid #eee' }}>{a.name}</td>
+                                <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(a.sessions)}</td>
+                                <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(a.views)}</td>
+                                <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(a.users)}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                        {current.ga4.audience.ai.pages?.length > 0 && (
+                          <div style={{ marginTop: '12px' }}>
+                            <div style={styles.cardTitle}>Artículos a los que llegan (sesiones)</div>
+                            <ol style={{ fontSize: '12px', paddingLeft: '18px', margin: '6px 0 0' }}>
+                              {current.ga4.audience.ai.pages.map((pg) => (
+                                <li key={pg.path} style={{ marginBottom: '4px' }}>{pg.title || pg.path} <strong>· {nf(pg.sessions)}</strong></li>
+                              ))}
+                            </ol>
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
                   {current.ga4.audience.cities?.length > 0 && (
                     <div style={styles.card}>
