@@ -67,11 +67,11 @@ export default function Dashboard() {
           }
         };
         const qs = range ? `?start=${range.start}&end=${range.end}` : '';
-        const results = await Promise.all([load('Search Console', `/api/gsc${qs}`), load('GA4', `/api/ga4${qs}`), load('Meta', `/api/meta${qs}`)]);
-        const [gsc, ga4, meta] = results;
+        const results = await Promise.all([load('Search Console', `/api/gsc${qs}`), load('GA4', `/api/ga4${qs}`), load('Meta', `/api/meta${qs}`), load('SEO', `/api/seo${qs}`)]);
+        const [gsc, ga4, meta, seo] = results;
         const errs = results.filter((r) => r.error).map((r) => `${r.name}: ${r.error}`);
         (meta.json?.errors || []).forEach((e) => errs.push(`Meta ${e}`));
-        setData({ gsc: gsc.json || {}, ga4: ga4.json || {}, meta: meta.json || {}, errors: errs });
+        setData({ gsc: gsc.json || {}, ga4: ga4.json || {}, meta: meta.json || {}, seo: seo.json || {}, errors: errs });
         setError(null);
       } catch (err) {
         setError(err.message);
@@ -133,12 +133,14 @@ export default function Dashboard() {
     gsc: data.gsc?.axxis || {},
     ga4: data.ga4?.axxis || {},
     meta: data.meta?.axxis || {},
+    seo: data.seo?.axxis || null,
   };
 
   const dinersData = {
     gsc: data.gsc?.diners || {},
     ga4: data.ga4?.diners || {},
     meta: data.meta?.diners || {},
+    seo: data.seo?.diners || null,
   };
 
   const current = activeTab === 'axxis' ? axxisData : dinersData;
@@ -708,6 +710,75 @@ export default function Dashboard() {
           </div>
         )}
       </div>
+
+      {/* Rendimiento SEO */}
+      {current.seo && (() => {
+        const seo = current.seo;
+        const cell = { padding: '8px', borderBottom: '1px solid #eee', fontSize: '12px' };
+        const num = { ...cell, textAlign: 'right' };
+        const head = { padding: '8px', textAlign: 'right', fontSize: '11px', color: '#666', textTransform: 'uppercase' };
+        const table = (rows, keyLabel) => (
+          <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '8px' }}>
+            <thead>
+              <tr style={{ background: '#f4f6fb' }}>
+                <th style={{ ...head, textAlign: 'left' }}>{keyLabel}</th>
+                <th style={head}>Clics</th>
+                <th style={head}>Impresiones</th>
+                <th style={head}>CTR</th>
+                <th style={head}>Posición</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((r, k) => (
+                <tr key={r.key + k}>
+                  <td style={{ ...cell, wordBreak: 'break-all' }}><span style={{ color: '#999' }}>{k + 1}.</span> {r.key}</td>
+                  <td style={num}><strong>{nf(r.clicks)}</strong></td>
+                  <td style={num}>{nf(r.impressions)}</td>
+                  <td style={num}>{(r.ctr * 100).toFixed(1)}%</td>
+                  <td style={num}>{r.position.toFixed(1)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        );
+        return (
+          <div style={styles.section}>
+            <h2 style={styles.sectionTitle}>Rendimiento SEO · {rangeLabel}</h2>
+            <div style={styles.card}>
+              <div style={styles.cardTitle}>Rendimiento orgánico por páginas (Top 10)</div>
+              {table(seo.pages, 'Página')}
+            </div>
+            <div style={{ ...styles.card, marginTop: '20px' }}>
+              <div style={styles.cardTitle}>Rendimiento orgánico por consultas (Top 10)</div>
+              {table(seo.queries, 'Consulta')}
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px', marginTop: '20px' }}>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Consultas orgánicas según posición (Top 10 mejor posicionadas)</div>
+                {table(seo.byPosition, 'Consulta')}
+                <div style={styles.cardSubtext}>Consultas con al menos 100 impresiones, ordenadas por posición promedio.</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Distribución de consultas por posición</div>
+                <div style={{ width: '100%', height: 260, marginTop: '12px' }}>
+                  <ResponsiveContainer>
+                    <BarChart data={seo.buckets} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                      <XAxis dataKey="label" tick={{ fontSize: 10 }} />
+                      <YAxis tick={{ fontSize: 11 }} />
+                      <Tooltip formatter={(v) => v.toLocaleString('es-CO')} />
+                      <Bar dataKey="queries" name="Consultas" fill="#1a4fb3">
+                        <LabelList dataKey="queries" position="top" formatter={(v) => v.toLocaleString('es-CO')} style={{ fontSize: 11 }} />
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+                <div style={styles.cardSubtext}>{nf(seo.totalQueries)} consultas con impresiones{seo.truncated ? ' (tope de 25.000 de Search Console)' : ''}. Clics por rango: {seo.buckets.map((b) => `${b.label.replace('Posición ', '')}: ${nf(b.clicks)}`).join(' · ')}</div>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Facebook */}
       {(() => {
