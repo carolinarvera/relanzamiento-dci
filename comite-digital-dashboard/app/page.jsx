@@ -44,17 +44,32 @@ function presetOptions() {
   return opts;
 }
 
+const SECTIONS = [
+  { key: 'resumen', label: 'Resumen', apis: ['gsc', 'ga4', 'meta'] },
+  { key: 'web', label: 'Web', apis: ['ga4'] },
+  { key: 'seo', label: 'SEO', apis: ['gsc', 'seo'] },
+  { key: 'redes', label: 'Redes sociales', apis: ['meta'] },
+  { key: 'pauta', label: 'Pauta', apis: ['pauta'] },
+];
+const API_NAMES = { gsc: 'Search Console', ga4: 'GA4', meta: 'Meta', seo: 'SEO', pauta: 'Pauta' };
+
 export default function Dashboard() {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [data, setData] = useState({ gsc: {}, ga4: {}, meta: {}, seo: {}, pauta: {} });
+  const [errorsBy, setErrorsBy] = useState({});
+  const [loadedKey, setLoadedKey] = useState({});
+  const [loading, setLoading] = useState(false);
+  const [section, setSection] = useState('web');
   const [activeTab, setActiveTab] = useState('axxis');
   const [range, setRange] = useState(null);
   const [draft, setDraft] = useState({ start: '', end: '' });
   const [trends, setTrends] = useState(null);
   const [trendDays, setTrendDays] = useState(30);
+  const rangeKey = range ? `${range.start}|${range.end}` : 'default';
+  const sectionDef = SECTIONS.find((x) => x.key === section);
+  const ready = sectionDef.apis.every((a) => loadedKey[a] === rangeKey);
 
   useEffect(() => {
+    if (section !== 'seo') return undefined;
     let cancelled = false;
     setTrends(null);
     fetch(`/api/trends?brand=${activeTab}&days=${trendDays}`, { cache: 'no-store' })
@@ -62,45 +77,42 @@ export default function Dashboard() {
       .then((j) => { if (!cancelled) setTrends(j); })
       .catch((e) => { if (!cancelled) setTrends({ error: e.message }); });
     return () => { cancelled = true; };
-  }, [activeTab, trendDays]);
+  }, [activeTab, trendDays, section]);
 
   useEffect(() => {
-    const fetchData = async () => {
+    let cancelled = false;
+    const loadApi = async (api, force) => {
+      if (!force && loadedKey[api] === rangeKey) return;
+      const qs = range ? `?start=${range.start}&end=${range.end}` : '';
       try {
-        setLoading(true);
-        const load = async (name, url) => {
-          try {
-            const r = await fetch(url, url.startsWith('/api/pauta') ? {} : { cache: 'no-store' });
-            const j = await r.json();
-            if (!r.ok) return { name, error: j.error || `HTTP ${r.status}` };
-            return { name, json: j };
-          } catch (e) {
-            return { name, error: e.message };
-          }
-        };
-        const qs = range ? `?start=${range.start}&end=${range.end}` : '';
-        const results = await Promise.all([load('Search Console', `/api/gsc${qs}`), load('GA4', `/api/ga4${qs}`), load('Meta', `/api/meta${qs}`), load('SEO', `/api/seo${qs}`), load('Pauta', `/api/pauta${qs}`)]);
-        const [gsc, ga4, meta, seo, pauta] = results;
-        const errs = results.filter((r) => r.error).map((r) => `${r.name}: ${r.error}`);
-        (meta.json?.errors || []).forEach((e) => errs.push(`Meta ${e}`));
-        (pauta.json?.errors || []).forEach((e) => errs.push(`Pauta ${e}`));
-        setData({ gsc: gsc.json || {}, ga4: ga4.json || {}, meta: meta.json || {}, seo: seo.json || {}, pauta: pauta.json || {}, errors: errs });
-        setError(null);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
+        const r = await fetch(`/api/${api}${qs}`, api === 'pauta' ? {} : { cache: 'no-store' });
+        const j = await r.json();
+        if (cancelled) return;
+        if (!r.ok) {
+          setErrorsBy((e) => ({ ...e, [api]: [`${API_NAMES[api]}: ${j.error || `HTTP ${r.status}`}`] }));
+          setData((d) => ({ ...d, [api]: {} }));
+        } else {
+          const extra = (j.errors || []).map((e) => `${API_NAMES[api]} ${e}`);
+          setErrorsBy((e) => ({ ...e, [api]: extra }));
+          setData((d) => ({ ...d, [api]: j }));
+        }
+        setLoadedKey((k) => ({ ...k, [api]: rangeKey }));
+      } catch (e) {
+        if (cancelled) return;
+        setErrorsBy((er) => ({ ...er, [api]: [`${API_NAMES[api]}: ${e.message}`] }));
+        setLoadedKey((k) => ({ ...k, [api]: rangeKey }));
       }
     };
-
-    fetchData();
-    const interval = setInterval(fetchData, 300000); // Refresh cada 5 min
-    return () => clearInterval(interval);
-  }, [range]);
-
-  if (loading && !data) return <div style={{ padding: '40px', textAlign: 'center' }}>Cargando datos...</div>;
-  if (error) return <div style={{ padding: '40px', color: 'red' }}>Error: {error}</div>;
-  if (!data) return <div style={{ padding: '40px' }}>Sin datos</div>;
+    const run = async (force) => {
+      setLoading(true);
+      await Promise.all(sectionDef.apis.map((a) => loadApi(a, force)));
+      if (!cancelled) setLoading(false);
+    };
+    run(false);
+    const interval = setInterval(() => run(true), 300000); // refresca solo la sección activa cada 5 min
+    return () => { cancelled = true; clearInterval(interval); };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [range, section]);
 
   const styles = {
     container: { maxWidth: '1400px', margin: '0 auto', padding: '20px' },
@@ -163,7 +175,7 @@ export default function Dashboard() {
   };
 
   const current = activeTab === 'axxis' ? axxisData : dinersData;
-  const rangeLabel = data.ga4?.range?.label || data.gsc?.range?.label || '';
+  const rangeLabel = data.ga4?.range?.label || data.gsc?.range?.label || data.seo?.range?.label || data.meta?.range?.label || data.pauta?.range?.label || '';
   const nf = (v) => (v === undefined || v === null ? '\u2014' : Number(v).toLocaleString('es-CO'));
 
   return (
@@ -204,13 +216,27 @@ export default function Dashboard() {
         <span style={{ fontSize: '13px', color: '#666' }}>{loading ? 'Actualizando…' : `Mostrando: ${rangeLabel}`} · variación vs periodo anterior equivalente</span>
       </div>
 
-      {data.errors?.length > 0 && (
+      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '20px', borderBottom: '2px solid #ddd' }}>
+        {SECTIONS.map((x) => (
+          <button
+            key={x.key}
+            onClick={() => setSection(x.key)}
+            style={{ padding: '10px 18px', border: 'none', background: 'transparent', cursor: 'pointer', fontSize: '14px', fontWeight: section === x.key ? 700 : 500, color: section === x.key ? '#0066cc' : '#555', borderBottom: section === x.key ? '3px solid #0066cc' : '3px solid transparent', marginBottom: '-2px' }}
+          >
+            {x.label}
+          </button>
+        ))}
+      </div>
+
+      {Object.values(errorsBy).flat().length > 0 && (
         <div style={{ background: '#fdecea', color: '#b71c1c', padding: '12px 16px', borderRadius: '8px', marginBottom: '20px', fontSize: '13px' }}>
           <strong>Fuentes con error (sin datos de ejemplo, solo datos reales):</strong>
-          <ul style={{ margin: '6px 0 0', paddingLeft: '18px' }}>{data.errors.map((e, k) => <li key={k}>{e}</li>)}</ul>
+          <ul style={{ margin: '6px 0 0', paddingLeft: '18px' }}>{Object.values(errorsBy).flat().map((e, k) => <li key={k}>{e}</li>)}</ul>
         </div>
       )}
 
+      {ready && section === 'web' && (
+      <>
       {/* GA4 */}
       <div style={styles.section}>
         <h2 style={styles.sectionTitle}>Informe Web</h2>
@@ -703,6 +729,11 @@ export default function Dashboard() {
         )}
       </div>
 
+      </>
+      )}
+
+      {ready && section === 'seo' && (
+      <>
       {/* GSC */}
       <div style={styles.section}>
         <h2 style={styles.sectionTitle}>Google Search Console</h2>
@@ -903,6 +934,11 @@ export default function Dashboard() {
         );
       })()}
 
+      </>
+      )}
+
+      {ready && section === 'redes' && (
+      <>
       {/* Facebook */}
       {(() => {
         const fb = current.meta?.facebook?.detail;
@@ -1209,6 +1245,11 @@ export default function Dashboard() {
         );
       })()}
 
+      </>
+      )}
+
+      {ready && section === 'resumen' && (
+      <>
       {/* Resumen tabular */}
       <div style={styles.section}>
         <h2 style={styles.sectionTitle}>Resumen Consolidado</h2>
@@ -1254,6 +1295,11 @@ export default function Dashboard() {
         Última actualización: {new Date().toLocaleString('es-CO')} · Actualiza cada 5 minutos
       </div>
 
+      </>
+      )}
+
+      {ready && section === 'pauta' && (
+      <>
       {/* Informe de pauta */}
       {data.pauta?.brands && (() => {
         const brandKey = activeTab;
@@ -1445,6 +1491,14 @@ export default function Dashboard() {
           </div>
         );
       })()}
+      </>
+      )}
+
+      {!ready && (
+        <div style={{ ...styles.card, textAlign: 'center', padding: '40px', color: '#555' }}>
+          {loading ? `Cargando ${sectionDef.label}…` : `No se pudo cargar ${sectionDef.label}. Revisa los avisos de arriba.`}
+        </div>
+      )}
     </div>
   );
 }
