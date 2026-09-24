@@ -211,33 +211,6 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* GSC */}
-      <div style={styles.section}>
-        <h2 style={styles.sectionTitle}>Google Search Console</h2>
-        <div style={styles.grid}>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Clics</div>
-            <div style={styles.cardValue}>{nf(current.gsc?.clicks)}</div>
-            <div style={styles.cardSubtext}>{rangeLabel}</div>
-          </div>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Impresiones</div>
-            <div style={styles.cardValue}>{nf(current.gsc?.impressions)}</div>
-            <div style={styles.cardSubtext}>{rangeLabel}</div>
-          </div>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>CTR Promedio</div>
-            <div style={styles.cardValue}>{current.gsc?.ctr ? (current.gsc.ctr * 100).toFixed(2) : 0}%</div>
-            <div style={styles.cardSubtext}>tasa de clics</div>
-          </div>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Posición Promedio</div>
-            <div style={styles.cardValue}>{current.gsc?.position?.toFixed(1) || 0}</div>
-            <div style={styles.cardSubtext}>en búsquedas</div>
-          </div>
-        </div>
-      </div>
-
       {/* GA4 */}
       <div style={styles.section}>
         <h2 style={styles.sectionTitle}>Informe Web</h2>
@@ -728,6 +701,33 @@ export default function Dashboard() {
             </div>
           </div>
         )}
+      </div>
+
+      {/* GSC */}
+      <div style={styles.section}>
+        <h2 style={styles.sectionTitle}>Google Search Console</h2>
+        <div style={styles.grid}>
+          <div style={styles.card}>
+            <div style={styles.cardTitle}>Clics</div>
+            <div style={styles.cardValue}>{nf(current.gsc?.clicks)}</div>
+            <div style={styles.cardSubtext}>{rangeLabel}</div>
+          </div>
+          <div style={styles.card}>
+            <div style={styles.cardTitle}>Impresiones</div>
+            <div style={styles.cardValue}>{nf(current.gsc?.impressions)}</div>
+            <div style={styles.cardSubtext}>{rangeLabel}</div>
+          </div>
+          <div style={styles.card}>
+            <div style={styles.cardTitle}>CTR Promedio</div>
+            <div style={styles.cardValue}>{current.gsc?.ctr ? (current.gsc.ctr * 100).toFixed(2) : 0}%</div>
+            <div style={styles.cardSubtext}>tasa de clics</div>
+          </div>
+          <div style={styles.card}>
+            <div style={styles.cardTitle}>Posición Promedio</div>
+            <div style={styles.cardValue}>{current.gsc?.position?.toFixed(1) || 0}</div>
+            <div style={styles.cardSubtext}>en búsquedas</div>
+          </div>
+        </div>
       </div>
 
       {/* Rendimiento SEO */}
