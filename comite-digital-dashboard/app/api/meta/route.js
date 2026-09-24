@@ -38,11 +38,12 @@ export async function GET() {
       }),
     ]);
 
-    // Facebook Page insights
+    // Facebook Page insights (page_fans/page_impressions* fueron deprecadas por Meta en 2023)
     const [axxisFbRes, dinersFbRes] = await Promise.all([
       axios.get(`https://graph.facebook.com/v19.0/${axxisFbId}/insights`, {
         params: {
-          metric: 'page_fans',
+          metric: 'page_post_engagements,page_views_total',
+          period: 'day',
           access_token: token,
         },
       }).catch((err) => {
@@ -51,7 +52,8 @@ export async function GET() {
       }),
       axios.get(`https://graph.facebook.com/v19.0/${dinersFbId}/insights`, {
         params: {
-          metric: 'page_fans',
+          metric: 'page_post_engagements,page_views_total',
+          period: 'day',
           access_token: token,
         },
       }).catch((err) => {
@@ -60,14 +62,24 @@ export async function GET() {
       }),
     ]);
 
+    // Fan count (seguidores) como proxy de alcance — page_fans fue deprecada
+    const [axxisFbFields, dinersFbFields] = await Promise.all([
+      axios.get(`https://graph.facebook.com/v19.0/${axxisFbId}`, {
+        params: { fields: 'fan_count', access_token: token },
+      }).catch(() => ({ data: null })),
+      axios.get(`https://graph.facebook.com/v19.0/${dinersFbId}`, {
+        params: { fields: 'fan_count', access_token: token },
+      }).catch(() => ({ data: null })),
+    ]);
+
     return Response.json({
       axxis: {
         instagram: parseInstagramResponse(axxisIgRes.data),
-        facebook: parseFacebookResponse(axxisFbRes.data),
+        facebook: parseFacebookResponse(axxisFbRes.data, axxisFbFields.data),
       },
       diners: {
         instagram: parseInstagramResponse(dinersIgRes.data),
-        facebook: parseFacebookResponse(dinersFbRes.data),
+        facebook: parseFacebookResponse(dinersFbRes.data, dinersFbFields.data),
       },
     });
   } catch (error) {
@@ -132,26 +144,19 @@ function parseInstagramResponse(data) {
   };
 }
 
-function parseFacebookResponse(data) {
-  if (!data || !data.data) {
-    return {
-      reach: 0,
-      impressions: 0,
-      engagement: 0,
-      engagementRate: 0,
-    };
+function parseFacebookResponse(data, fieldsData) {
+  const metrics = {};
+  if (data && data.data) {
+    data.data.forEach(item => {
+      metrics[item.name] = item.values?.[item.values.length - 1]?.value || 0;
+    });
   }
 
-  const metrics = {};
-  data.data.forEach(item => {
-    metrics[item.name] = item.values?.[0]?.value || 0;
-  });
-
-  const impressions = metrics.page_impressions || 0;
+  const impressions = metrics.page_views_total || 0;
   const engagement = metrics.page_post_engagements || 0;
 
   return {
-    reach: metrics.page_impressions_unique || 0,
+    reach: fieldsData?.fan_count || 0,
     impressions,
     engagement,
     engagementRate: impressions ? (engagement / impressions) : 0,
