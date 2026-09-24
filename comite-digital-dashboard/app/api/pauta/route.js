@@ -10,6 +10,9 @@ const BRANDS = [
   { key: 'diners', re: /din+ers?/ },
   { key: 'gamma', re: /ga+m+a/ },
 ];
+// Pauta de clientes = campañas cuyo nombre lleva alguna de estas palabras; el resto es contenido general propio.
+const CLIENT_KEYWORDS = ['content', 'feria'];
+const payerOf = (name) => (CLIENT_KEYWORDS.some((k) => norm(name).includes(k)) ? 'cliente' : 'propia');
 const brandOf = (name) => BRANDS.find((b) => b.re.test(norm(name)))?.key || 'otras';
 
 const RESULT_BY_OBJECTIVE = {
@@ -52,6 +55,7 @@ async function accountCampaigns(account, token, start, end) {
       id: r.campaign_id,
       name: r.campaign_name,
       brand: brandOf(r.campaign_name),
+      payer: payerOf(r.campaign_name),
       objective: obj,
       resultLabel: def.label,
       currency: account.currency,
@@ -91,18 +95,14 @@ export async function GET(request) {
     const [cur, prev] = await Promise.all([load(range.start, range.end), load(range.prevStart, range.prevEnd)]);
 
     const grand = sum(cur, 'spend');
-    const out = {};
-    ['axxis', 'diners', 'gamma', 'otras'].forEach((b) => {
-      const list = cur.filter((c) => c.brand === b);
-      const prevList = prev.filter((c) => c.brand === b);
+    const enrich = (list, prevList) => {
       const t = totals(list);
-      const pt = totals(prevList);
       const prevByName = new Map(prevList.map((c) => [c.name, c]));
-      out[b] = {
+      return {
         totals: t,
-        prevTotals: pt,
-        spendShare: grand ? t.spend / grand : 0,
+        prevTotals: totals(prevList),
         campaigns: list
+          .slice()
           .sort((x, y) => y.spend - x.spend)
           .map((c) => ({
             ...c,
@@ -114,8 +114,25 @@ export async function GET(request) {
             prevSpend: prevByName.get(c.name)?.spend ?? null,
           })),
       };
+    };
+    const out = {};
+    ['axxis', 'diners', 'gamma', 'otras'].forEach((b) => {
+      const list = cur.filter((c) => c.brand === b);
+      const prevList = prev.filter((c) => c.brand === b);
+      const all = enrich(list, prevList);
+      out[b] = {
+        ...all,
+        spendShare: grand ? all.totals.spend / grand : 0,
+        cliente: enrich(list.filter((c) => c.payer === 'cliente'), prevList.filter((c) => c.payer === 'cliente')),
+        propia: enrich(list.filter((c) => c.payer === 'propia'), prevList.filter((c) => c.payer === 'propia')),
+      };
     });
-    return Response.json({ range, currency: accounts.find((a) => a.currency === 'COP')?.currency || accounts[0]?.currency || 'COP', accounts: accounts.map((a) => a.name), totalSpend: grand, brands: out, errors });
+    const global = {
+      cliente: enrich(cur.filter((c) => c.payer === 'cliente'), prev.filter((c) => c.payer === 'cliente')),
+      propia: enrich(cur.filter((c) => c.payer === 'propia'), prev.filter((c) => c.payer === 'propia')),
+      prevTotalSpend: sum(prev, 'spend'),
+    };
+    return Response.json({ range, currency: accounts.find((a) => a.currency === 'COP')?.currency || accounts[0]?.currency || 'COP', accounts: accounts.map((a) => a.name), totalSpend: grand, global, clientKeywords: CLIENT_KEYWORDS, brands: out, errors });
   } catch (error) {
     const detail = error.response?.data?.error?.message || error.message;
     console.error('Pauta API Error:', detail);

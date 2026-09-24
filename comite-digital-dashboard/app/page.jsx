@@ -1257,16 +1257,25 @@ export default function Dashboard() {
       {/* Informe de pauta */}
       {data.pauta?.brands && (() => {
         const brandKey = activeTab;
+        const brandName = activeTab === 'axxis' ? 'AXXIS' : 'Diners';
         const b = data.pauta.brands[brandKey];
-        const others = data.pauta.brands.otras;
+        const g = data.pauta.global;
         if (!b) return null;
         const cop = (v) => `$ ${Math.round(v).toLocaleString('es-CO')}`;
-        const t = b.totals;
-        const pt = b.prevTotals;
         const rel = (cur, prev) => (prev ? cur / prev - 1 : null);
         const cell = { padding: '8px', borderBottom: '1px solid #eee', fontSize: '12px' };
         const num = { ...cell, textAlign: 'right' };
         const head = { padding: '8px', textAlign: 'right', fontSize: '11px', color: '#666', textTransform: 'uppercase' };
+        const CLIENT = '#d84315';
+        const OWN = '#1a4fb3';
+        const totalBrand = b.totals.spend;
+        const clientBrand = b.cliente.totals.spend;
+        const ownBrand = b.propia.totals.spend;
+        const clientShare = totalBrand ? clientBrand / totalBrand : 0;
+        const clientGlobal = g.cliente.totals.spend;
+        const ownGlobal = g.propia.totals.spend;
+        const totalGlobal = clientGlobal + ownGlobal;
+
         const campaignTable = (list, limit) => (
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '900px' }}>
@@ -1305,18 +1314,16 @@ export default function Dashboard() {
             </table>
           </div>
         );
-        const split = ['axxis', 'diners', 'gamma', 'otras'].map((k) => ({ k, share: data.pauta.brands[k].spendShare, spend: data.pauta.brands[k].totals.spend }));
-        const colors = { axxis: '#1a4fb3', diners: '#d84315', gamma: '#6a1b9a', otras: '#757575' };
-        const names = { axxis: 'AXXIS', diners: 'Diners', gamma: 'Gamma', otras: 'Otras (sin marca en el nombre)' };
-        return (
-          <div style={styles.section}>
-            <h2 style={styles.sectionTitle}>Informe de pauta · {activeTab === 'axxis' ? 'AXXIS' : 'Diners'} · {rangeLabel}</h2>
+
+        const kpis = (grp) => {
+          const t = grp.totals;
+          const pt = grp.prevTotals;
+          return (
             <div style={styles.grid}>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Inversión</div>
                 <div style={styles.cardValue}>{cop(t.spend)}</div>
                 {renderChange(rel(t.spend, pt.spend))}
-                <div style={styles.cardSubtext}>{(b.spendShare * 100).toFixed(1)}% de la inversión total en Meta</div>
               </div>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Impresiones</div>
@@ -1327,7 +1334,7 @@ export default function Dashboard() {
                 <div style={styles.cardTitle}>Alcance</div>
                 <div style={styles.cardValue}>{nf(t.reach)}</div>
                 {renderChange(rel(t.reach, pt.reach))}
-                <div style={styles.cardSubtext}>suma por campaña (puede repetir personas)</div>
+                <div style={styles.cardSubtext}>suma por campaña</div>
               </div>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Clics en enlace</div>
@@ -1341,13 +1348,13 @@ export default function Dashboard() {
               </div>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>CPC</div>
-                <div style={styles.cardValue}>{cop(t.cpc)}</div>
+                <div style={styles.cardValue}>{t.linkClicks ? cop(t.cpc) : '\u2014'}</div>
                 {renderChange(rel(t.cpc, pt.cpc), true)}
                 <div style={styles.cardSubtext}>menor es mejor</div>
               </div>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>CPM</div>
-                <div style={styles.cardValue}>{cop(t.cpm)}</div>
+                <div style={styles.cardValue}>{t.impressions ? cop(t.cpm) : '\u2014'}</div>
                 {renderChange(rel(t.cpm, pt.cpm), true)}
                 <div style={styles.cardSubtext}>menor es mejor</div>
               </div>
@@ -1357,31 +1364,81 @@ export default function Dashboard() {
                 {renderChange(rel(t.campaigns, pt.campaigns))}
               </div>
             </div>
+          );
+        };
+
+        return (
+          <div style={styles.section}>
+            <h2 style={styles.sectionTitle}>Informe de pauta · {brandName} · {rangeLabel}</h2>
+
+            <div style={{ ...styles.cardTitle, fontSize: '14px', margin: '0 0 10px' }}>Quién financia la inversión en Meta</div>
+            <div style={styles.grid}>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Inversión total {brandName}</div>
+                <div style={styles.cardValue}>{cop(totalBrand)}</div>
+                {renderChange(rel(totalBrand, b.prevTotals.spend))}
+                <div style={styles.cardSubtext}>{(b.spendShare * 100).toFixed(1)}% de la inversión total en Meta</div>
+              </div>
+              <div style={{ ...styles.card, borderTop: `4px solid ${CLIENT}` }}>
+                <div style={styles.cardTitle}>Pauta de clientes (content, feria)</div>
+                <div style={styles.cardValue}>{cop(clientBrand)}</div>
+                {renderChange(rel(clientBrand, b.cliente.prevTotals.spend))}
+                <div style={styles.cardSubtext}>{(clientShare * 100).toFixed(1)}% de la inversión de {brandName} · la pagan los clientes</div>
+              </div>
+              <div style={{ ...styles.card, borderTop: `4px solid ${OWN}` }}>
+                <div style={styles.cardTitle}>Pauta propia (contenido general)</div>
+                <div style={styles.cardValue}>{cop(ownBrand)}</div>
+                {renderChange(rel(ownBrand, b.propia.prevTotals.spend))}
+                <div style={styles.cardSubtext}>{((1 - clientShare) * 100).toFixed(1)}% de la inversión de {brandName} · la asume Gamma</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Aporte de clientes · todas las marcas</div>
+                <div style={styles.cardValue}>{totalGlobal ? `${((clientGlobal / totalGlobal) * 100).toFixed(1)}%` : '\u2014'}</div>
+                <div style={styles.cardSubtext}>{cop(clientGlobal)} de {cop(totalGlobal)} en Meta</div>
+              </div>
+            </div>
 
             <div style={styles.card}>
-              <div style={styles.cardTitle}>Distribución de la inversión por marca (Meta)</div>
-              <div style={{ display: 'flex', height: '28px', borderRadius: '14px', overflow: 'hidden', margin: '10px 0', background: '#eee' }}>
-                {split.map((x) => <div key={x.k} title={`${names[x.k]} ${(x.share * 100).toFixed(1)}%`} style={{ width: `${x.share * 100}%`, background: colors[x.k] }} />)}
-              </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', fontSize: '12px' }}>
-                {split.map((x) => (
-                  <span key={x.k}><span style={{ display: 'inline-block', width: '10px', height: '10px', background: colors[x.k], marginRight: '6px' }} />{names[x.k]}: <strong>{(x.share * 100).toFixed(1)}%</strong> · {cop(x.spend)}</span>
-                ))}
+              <div style={styles.cardTitle}>Inversión por marca: clientes vs propia</div>
+              {['axxis', 'diners', 'gamma', 'otras'].map((k) => {
+                const v = data.pauta.brands[k];
+                const tt = v.totals.spend;
+                if (!tt) return null;
+                const cs = v.cliente.totals.spend;
+                const nm = { axxis: 'AXXIS', diners: 'Diners', gamma: 'Gamma', otras: 'Otras (sin marca)' }[k];
+                return (
+                  <div key={k} style={{ margin: '12px 0' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', marginBottom: '4px' }}>
+                      <strong>{nm}</strong>
+                      <span>Total {cop(tt)} · clientes {((cs / tt) * 100).toFixed(1)}%</span>
+                    </div>
+                    <div style={{ display: 'flex', height: '20px', borderRadius: '10px', overflow: 'hidden', background: '#eee' }}>
+                      <div title={`Clientes ${cop(cs)}`} style={{ width: `${(cs / tt) * 100}%`, background: CLIENT }} />
+                      <div title={`Propia ${cop(tt - cs)}`} style={{ width: `${((tt - cs) / tt) * 100}%`, background: OWN }} />
+                    </div>
+                  </div>
+                );
+              })}
+              <div style={{ display: 'flex', gap: '16px', fontSize: '12px', marginTop: '8px' }}>
+                <span><span style={{ display: 'inline-block', width: '10px', height: '10px', background: CLIENT, marginRight: '6px' }} />Clientes (content, feria)</span>
+                <span><span style={{ display: 'inline-block', width: '10px', height: '10px', background: OWN, marginRight: '6px' }} />Propia (general)</span>
               </div>
             </div>
 
-            <div style={{ ...styles.card, marginTop: '20px' }}>
-              <div style={styles.cardTitle}>Campañas {activeTab === 'axxis' ? 'AXXIS' : 'Diners'} por inversión (Top 15)</div>
-              {campaignTable(b.campaigns, 15)}
-              <div style={styles.cardSubtext}>La marca se detecta por el nombre de la campaña. "Resultado" depende del objetivo (tráfico: clics en enlace; interacción: interacciones; reconocimiento: alcance). Datos de las cuentas de anuncios de Meta: {data.pauta.accounts.join(', ')}.</div>
+            <div style={{ ...styles.cardTitle, fontSize: '14px', margin: '30px 0 10px', color: CLIENT }}>Pauta de clientes · {brandName} (campañas con "content" o "feria" en el nombre)</div>
+            {kpis(b.cliente)}
+            <div style={styles.card}>
+              <div style={styles.cardTitle}>Campañas de clientes por inversión (Top 15)</div>
+              {b.cliente.campaigns.length ? campaignTable(b.cliente.campaigns, 15) : <div style={styles.cardSubtext}>Sin campañas de clientes en este periodo.</div>}
             </div>
-            {others?.campaigns?.length > 0 && (
-              <div style={{ ...styles.card, marginTop: '20px' }}>
-                <div style={styles.cardTitle}>Otras campañas sin marca en el nombre (Top 10)</div>
-                {campaignTable(others.campaigns, 10)}
-                <div style={styles.cardSubtext}>Pueden ser campañas de clientes o notas promocionadas. Dime qué nombres son de clientes y las separo como "Campañas de clientes".</div>
-              </div>
-            )}
+
+            <div style={{ ...styles.cardTitle, fontSize: '14px', margin: '30px 0 10px', color: OWN }}>Pauta propia · {brandName} (contenido general, sin "content" ni "feria")</div>
+            {kpis(b.propia)}
+            <div style={styles.card}>
+              <div style={styles.cardTitle}>Campañas propias por inversión (Top 15)</div>
+              {campaignTable(b.propia.campaigns, 15)}
+              <div style={styles.cardSubtext}>La marca se detecta por el nombre de la campaña y el tipo (cliente o propia) por las palabras "{(data.pauta.clientKeywords || []).join('", "')}". Si un cliente usa otra denominación, dímela y la agrego. "Resultado" depende del objetivo. Cuentas de anuncios de Meta: {data.pauta.accounts.join(', ')}.</div>
+            </div>
           </div>
         );
       })()}
