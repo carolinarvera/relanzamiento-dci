@@ -74,15 +74,56 @@ async function fbDetail(pageId, pageToken, errors, label, r) {
   }
 }
 
-async function igDetail(igId, token, errors, label) {
+async function topIgPosts(igId, token, r) {
+  const day = (d, plus = 0) => Math.floor(Date.parse(`${d}T00:00:00Z`) / 1000) + plus * 86400;
+  let res = await axios.get(`https://graph.facebook.com/v19.0/${igId}/media`, {
+    params: {
+      fields: 'id,caption,media_type,media_product_type,permalink,thumbnail_url,media_url,timestamp,like_count,comments_count',
+      since: day(r.start), until: day(r.end, 1), limit: 100, access_token: token,
+    },
+  });
+  let media = res.data.data || [];
+  for (let page = 0; page < 3 && res.data.paging?.next && media.length < 300; page += 1) {
+    res = await axios.get(res.data.paging.next);
+    media = media.concat(res.data.data || []);
+  }
+  const candidates = media
+    .filter((m) => m.timestamp)
+    .sort((a, b) => ((b.like_count || 0) + (b.comments_count || 0)) - ((a.like_count || 0) + (a.comments_count || 0)))
+    .slice(0, 12);
+  const withInsights = await Promise.all(candidates.map(async (m) => {
+    try {
+      const ins = await axios.get(`https://graph.facebook.com/v19.0/${m.id}/insights`, {
+        params: { metric: 'reach,saved,shares,total_interactions,views', access_token: token },
+      });
+      const v = {};
+      (ins.data.data || []).forEach((i) => { v[i.name] = i.values?.[0]?.value || 0; });
+      return { m, v };
+    } catch { return null; }
+  }));
+  const kind = (m) => (m.media_product_type === 'REELS' ? 'Reel' : m.media_type === 'CAROUSEL_ALBUM' ? 'Carrusel' : m.media_type === 'VIDEO' ? 'Video' : 'Imagen');
+  return withInsights
+    .filter(Boolean)
+    .sort((a, b) => (b.v.total_interactions || 0) - (a.v.total_interactions || 0))
+    .slice(0, 3)
+    .map(({ m, v }) => ({
+      id: m.id, permalink: m.permalink, image: m.thumbnail_url || m.media_url || null, type: kind(m),
+      date: m.timestamp.slice(0, 10), caption: (m.caption || '').replace(/\s+/g, ' ').slice(0, 140),
+      likes: m.like_count || 0, comments: m.comments_count || 0,
+      reach: v.reach || 0, views: v.views || 0, saved: v.saved || 0, shares: v.shares || 0, interactions: v.total_interactions || 0,
+    }));
+}
+
+async function igDetail(igId, token, errors, label, range) {
   try {
     const demo = (breakdown) => axios.get(`https://graph.facebook.com/v19.0/${igId}/insights`, {
       params: { metric: 'follower_demographics', period: 'lifetime', metric_type: 'total_value', breakdown, access_token: token },
     }).then((r) => r.data.data?.[0]?.total_value?.breakdowns?.[0]?.results || []);
-    const [ageGender, city, acct] = await Promise.all([
+    const [ageGender, city, acct, topPosts] = await Promise.all([
       demo('age,gender'),
       demo('city'),
       axios.get(`https://graph.facebook.com/v19.0/${igId}`, { params: { fields: 'followers_count', access_token: token } }),
+      topIgPosts(igId, token, range).catch((e) => { errors.push(`${label} Instagram top posts: ` + (e.response?.data?.error?.message || e.message)); return []; }),
     ]);
     const valid = ageGender.filter((r) => ['F', 'M'].includes(r.dimension_values[1]) && r.dimension_values[0] !== '13-17');
     const total = valid.reduce((a, r) => a + r.value, 0);
@@ -96,6 +137,7 @@ async function igDetail(igId, token, errors, label) {
     const cityTotal = city.reduce((a, r) => a + r.value, 0);
     return {
       followers: acct.data.followers_count || 0,
+      topPosts,
       ageGender: Object.values(byAge).sort((x, y) => x.age.localeCompare(y.age, 'es', { numeric: true })),
       women: total ? women / total : 0,
       men: total ? 1 - women / total : 0,
@@ -200,8 +242,8 @@ export async function GET(request) {
     const [axxisFbD, dinersFbD, axxisIgD, dinersIgD] = await Promise.all([
       fbDetail(axxisFbId, axxisFbToken, errors, 'AXXIS', range),
       fbDetail(dinersFbId, dinersFbToken, errors, 'Diners', range),
-      igDetail(axxisIgId, token, errors, 'AXXIS'),
-      igDetail(dinersIgId, token, errors, 'Diners'),
+      igDetail(axxisIgId, token, errors, 'AXXIS', range),
+      igDetail(dinersIgId, token, errors, 'Diners', range),
     ]);
 
     return Response.json({
