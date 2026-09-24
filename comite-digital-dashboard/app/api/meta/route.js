@@ -16,6 +16,86 @@ async function getPageAccessTokens(userToken) {
   }
 }
 
+export const dynamic = 'force-dynamic';
+
+const sumVal = (v) => (v && typeof v === 'object' ? Object.values(v).reduce((a, n) => a + n, 0) : v || 0);
+const chg = (cur, prev) => (prev ? cur / prev - 1 : null);
+
+async function fbRange(pageId, pageToken, since, until) {
+  const r = await axios.get(`https://graph.facebook.com/v19.0/${pageId}/insights`, {
+    params: {
+      metric: 'page_media_view,page_total_media_view_unique,page_actions_post_reactions_total,page_views_total',
+      period: 'total_over_range',
+      since,
+      until,
+      access_token: pageToken,
+    },
+  });
+  const out = {};
+  (r.data.data || []).forEach((m) => { out[m.name] = sumVal(m.values?.[0]?.value); });
+  return out;
+}
+
+async function fbDetail(pageId, pageToken, errors, label) {
+  try {
+    const now = new Date();
+    const u = Math.floor(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1) / 1000);
+    const m1 = Math.floor(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - 1, 1) / 1000);
+    const m2 = Math.floor(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - 2, 1) / 1000);
+    const [cur, prev, page] = await Promise.all([
+      fbRange(pageId, pageToken, m1, u),
+      fbRange(pageId, pageToken, m2, m1),
+      axios.get(`https://graph.facebook.com/v19.0/${pageId}`, { params: { fields: 'followers_count', access_token: pageToken } }),
+    ]);
+    const views = cur.page_media_view || 0;
+    const reactions = cur.page_actions_post_reactions_total || 0;
+    return {
+      followers: page.data.followers_count || 0,
+      views, viewsChange: chg(views, prev.page_media_view),
+      viewers: cur.page_total_media_view_unique || 0, viewersChange: chg(cur.page_total_media_view_unique, prev.page_total_media_view_unique),
+      reactions, reactionsChange: chg(reactions, prev.page_actions_post_reactions_total),
+      profileViews: cur.page_views_total || 0, profileViewsChange: chg(cur.page_views_total, prev.page_views_total),
+      engagementRate: views ? reactions / views : 0,
+    };
+  } catch (err) {
+    errors.push(`${label} Facebook detalle: ` + (err.response?.data?.error?.message || err.message));
+    return null;
+  }
+}
+
+async function igDetail(igId, token, errors, label) {
+  try {
+    const demo = (breakdown) => axios.get(`https://graph.facebook.com/v19.0/${igId}/insights`, {
+      params: { metric: 'follower_demographics', period: 'lifetime', metric_type: 'total_value', breakdown, access_token: token },
+    }).then((r) => r.data.data?.[0]?.total_value?.breakdowns?.[0]?.results || []);
+    const [ageGender, city, acct] = await Promise.all([
+      demo('age,gender'),
+      demo('city'),
+      axios.get(`https://graph.facebook.com/v19.0/${igId}`, { params: { fields: 'followers_count', access_token: token } }),
+    ]);
+    const valid = ageGender.filter((r) => ['F', 'M'].includes(r.dimension_values[1]) && r.dimension_values[0] !== '13-17');
+    const total = valid.reduce((a, r) => a + r.value, 0);
+    const byAge = {};
+    valid.forEach((r) => {
+      const a = r.dimension_values[0];
+      byAge[a] = byAge[a] || { age: a, mujeres: 0, hombres: 0 };
+      byAge[a][r.dimension_values[1] === 'F' ? 'mujeres' : 'hombres'] = total ? r.value / total : 0;
+    });
+    const women = valid.filter((r) => r.dimension_values[1] === 'F').reduce((a, r) => a + r.value, 0);
+    const cityTotal = city.reduce((a, r) => a + r.value, 0);
+    return {
+      followers: acct.data.followers_count || 0,
+      ageGender: Object.values(byAge).sort((x, y) => x.age.localeCompare(y.age, 'es', { numeric: true })),
+      women: total ? women / total : 0,
+      men: total ? 1 - women / total : 0,
+      cities: city.sort((a, b) => b.value - a.value).slice(0, 5).map((r) => ({ name: r.dimension_values[0].split(',')[0], pct: cityTotal ? r.value / cityTotal : 0 })),
+    };
+  } catch (err) {
+    errors.push(`${label} Instagram detalle: ` + (err.response?.data?.error?.message || err.message));
+    return null;
+  }
+}
+
 export async function GET() {
   try {
     const token = process.env.META_ACCESS_TOKEN;
@@ -104,15 +184,22 @@ export async function GET() {
       }).catch(() => ({ data: null })),
     ]);
 
+    const [axxisFbD, dinersFbD, axxisIgD, dinersIgD] = await Promise.all([
+      fbDetail(axxisFbId, axxisFbToken, errors, 'AXXIS'),
+      fbDetail(dinersFbId, dinersFbToken, errors, 'Diners'),
+      igDetail(axxisIgId, token, errors, 'AXXIS'),
+      igDetail(dinersIgId, token, errors, 'Diners'),
+    ]);
+
     return Response.json({
       errors,
       axxis: {
-        instagram: parseInstagramResponse(axxisIgRes.data),
-        facebook: parseFacebookResponse(axxisFbRes.data, axxisFbFields.data),
+        instagram: { ...parseInstagramResponse(axxisIgRes.data), detail: axxisIgD },
+        facebook: { ...parseFacebookResponse(axxisFbRes.data, axxisFbFields.data), detail: axxisFbD },
       },
       diners: {
-        instagram: parseInstagramResponse(dinersIgRes.data),
-        facebook: parseFacebookResponse(dinersFbRes.data, dinersFbFields.data),
+        instagram: { ...parseInstagramResponse(dinersIgRes.data), detail: dinersIgD },
+        facebook: { ...parseFacebookResponse(dinersFbRes.data, dinersFbFields.data), detail: dinersFbD },
       },
     });
   } catch (error) {

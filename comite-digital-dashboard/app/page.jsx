@@ -454,59 +454,144 @@ export default function Dashboard() {
         )}
       </div>
 
-      {/* Instagram */}
-      <div style={styles.section}>
-        <h2 style={styles.sectionTitle}>Instagram</h2>
-        <div style={styles.grid}>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Alcance</div>
-            <div style={styles.cardValue}>{current.meta?.instagram?.reach || 0}</div>
-            <div style={styles.cardSubtext}>últimos 30 días</div>
-          </div>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Visitas al perfil</div>
-            <div style={styles.cardValue}>{nf(current.meta?.instagram?.impressions)}</div>
-            <div style={styles.cardSubtext}>últimos 30 días</div>
-          </div>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Engagement</div>
-            <div style={styles.cardValue}>{current.meta?.instagram?.engagement || 0}</div>
-            <div style={styles.cardSubtext}>interacciones</div>
-          </div>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Tasa Engagement</div>
-            <div style={styles.cardValue}>{current.meta?.instagram?.engagementRate ? (current.meta.instagram.engagementRate * 100).toFixed(2) : 0}%</div>
-            <div style={styles.cardSubtext}>respecto a alcance/seguidores</div>
-          </div>
-        </div>
-      </div>
-
       {/* Facebook */}
-      <div style={styles.section}>
-        <h2 style={styles.sectionTitle}>Facebook</h2>
-        <div style={styles.grid}>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Seguidores</div>
-            <div style={styles.cardValue}>{nf(current.meta?.facebook?.reach)}</div>
-            <div style={styles.cardSubtext}>total actual</div>
+      {(() => {
+        const fb = current.meta?.facebook?.detail;
+        if (!fb) return (
+          <div style={styles.section}>
+            <h2 style={styles.sectionTitle}>Facebook</h2>
+            <div style={styles.card}><div style={styles.cardSubtext}>Sin datos de Facebook (revisa los avisos de error arriba)</div></div>
           </div>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Vistas de página</div>
-            <div style={styles.cardValue}>{nf(current.meta?.facebook?.impressions)}</div>
-            <div style={styles.cardSubtext}>últimos 30 días</div>
+        );
+        const pie = [
+          { name: 'Espectadores', value: fb.viewers, fill: '#666666' },
+          { name: 'Reacciones', value: fb.reactions, fill: '#bbbbbb' },
+          { name: 'Visualizaciones', value: fb.views, fill: '#4a86e8' },
+        ];
+        const pieTotal = pie.reduce((x, y) => x + y.value, 0);
+        const kpis = [
+          ['Visualizaciones', fb.views, fb.viewsChange],
+          ['Reacciones', fb.reactions, fb.reactionsChange],
+          ['Espectadores', fb.viewers, fb.viewersChange],
+          ['Visitas al perfil', fb.profileViews, fb.profileViewsChange],
+        ];
+        return (
+          <div style={styles.section}>
+            <h2 style={styles.sectionTitle}>Facebook · {current.ga4?.monthlyHistory?.[current.ga4.monthlyHistory.length - 1]?.month}</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Seguidores</div>
+                <div style={styles.cardValue}>{nf(fb.followers)}</div>
+                <div style={{ marginTop: '16px' }}>
+                  {kpis.map(([label, value, change]) => (
+                    <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '10px 0', borderBottom: '1px solid #eee' }}>
+                      <span style={{ fontSize: '13px', color: '#555', textTransform: 'uppercase' }}>{label}</span>
+                      <span><strong style={{ fontSize: '18px' }}>{nf(value)}</strong> {change !== null && change !== undefined && (
+                        <span style={{ fontSize: '12px', fontWeight: 600, color: change >= 0 ? '#2e7d32' : '#c62828' }}>{change >= 0 ? '\u2191' : '\u2193'} {(Math.abs(change) * 100).toFixed(1)}%</span>
+                      )}</span>
+                    </div>
+                  ))}
+                </div>
+                <div style={{ marginTop: '16px' }}>
+                  <span style={{ fontSize: '26px', fontWeight: 700 }}>{(fb.engagementRate * 100).toFixed(1)}%</span> <span style={{ fontSize: '13px' }}>Tasa de engagement</span>
+                  <div style={styles.cardSubtext}>reacciones / visualizaciones</div>
+                </div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Interacciones</div>
+                <div style={{ width: '100%', height: 300 }}>
+                  <ResponsiveContainer>
+                    <PieChart>
+                      <Pie data={pie} dataKey="value" nameKey="name" outerRadius="80%" label={(e) => `${(e.value / pieTotal * 100).toFixed(1)}%`}>
+                        {pie.map((x) => <Cell key={x.name} fill={x.fill} />)}
+                      </Pie>
+                      <Tooltip formatter={(v) => v.toLocaleString('es-CO')} />
+                      <Legend />
+                    </PieChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+            </div>
+            <div style={{ ...styles.cardSubtext, marginTop: '8px' }}>Meta no entrega sexo, edad ni ciudad de los seguidores de páginas de Facebook por API; esos datos se muestran para Instagram.</div>
           </div>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Engagement</div>
-            <div style={styles.cardValue}>{current.meta?.facebook?.engagement || 0}</div>
-            <div style={styles.cardSubtext}>interacciones</div>
+        );
+      })()}
+
+      {/* Instagram */}
+      {(() => {
+        const ig = current.meta?.instagram;
+        const d = ig?.detail;
+        return (
+          <div style={styles.section}>
+            <h2 style={styles.sectionTitle}>Instagram</h2>
+            <div style={styles.grid}>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Seguidores</div>
+                <div style={styles.cardValue}>{nf(d?.followers)}</div>
+                <div style={styles.cardSubtext}>total actual</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Alcance</div>
+                <div style={styles.cardValue}>{nf(ig?.reach)}</div>
+                <div style={styles.cardSubtext}>últimos 30 días</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Interacciones</div>
+                <div style={styles.cardValue}>{nf(ig?.engagement)}</div>
+                <div style={styles.cardSubtext}>últimos 30 días</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Visitas al perfil</div>
+                <div style={styles.cardValue}>{nf(ig?.impressions)}</div>
+                <div style={styles.cardSubtext}>últimos 30 días</div>
+              </div>
+            </div>
+            {d && (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+                <div style={styles.card}>
+                  <div style={styles.cardTitle}>Sexo y edad de seguidores</div>
+                  <div style={{ margin: '10px 0', fontSize: '22px', fontWeight: 700 }}>
+                    <span style={{ color: '#1a73e8' }}>Mujeres {(d.women * 100).toFixed(1)}%</span> - Hombres {(d.men * 100).toFixed(1)}%
+                  </div>
+                  <div style={{ width: '100%', height: 280 }}>
+                    <ResponsiveContainer>
+                      <BarChart data={d.ageGender} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                        <XAxis dataKey="age" tick={{ fontSize: 12 }} />
+                        <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} />
+                        <Tooltip formatter={(v) => `${(v * 100).toFixed(1)}%`} />
+                        <Legend />
+                        <Bar dataKey="mujeres" name="Mujeres" fill="#1a73e8">
+                          <LabelList dataKey="mujeres" position="top" formatter={(v) => `${(v * 100).toFixed(1)}%`} style={{ fontSize: 10, fill: '#1a73e8' }} />
+                        </Bar>
+                        <Bar dataKey="hombres" name="Hombres" fill="#333333">
+                          <LabelList dataKey="hombres" position="top" formatter={(v) => `${(v * 100).toFixed(1)}%`} style={{ fontSize: 10, fill: '#333' }} />
+                        </Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+                <div style={styles.card}>
+                  <div style={styles.cardTitle}>Distribución geográfica</div>
+                  <div style={{ width: '100%', height: 320, marginTop: '12px' }}>
+                    <ResponsiveContainer>
+                      <BarChart data={d.cities} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                        <XAxis dataKey="name" tick={{ fontSize: 11 }} />
+                        <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} />
+                        <Tooltip formatter={(v) => `${(v * 100).toFixed(1)}%`} />
+                        <Bar dataKey="pct" name="Seguidores" fill="#000000">
+                          <LabelList dataKey="pct" position="top" formatter={(v) => `${(v * 100).toFixed(1)}%`} style={{ fontSize: 11 }} />
+                        </Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Tasa Engagement</div>
-            <div style={styles.cardValue}>{current.meta?.facebook?.engagementRate ? (current.meta.facebook.engagementRate * 100).toFixed(2) : 0}%</div>
-            <div style={styles.cardSubtext}>respecto a alcance/seguidores</div>
-          </div>
-        </div>
-      </div>
+        );
+      })()}
 
       {/* Resumen tabular */}
       <div style={styles.section}>
