@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid, LabelList, Cell } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid, LabelList, Cell, AreaChart, Area, ReferenceDot, ReferenceLine } from 'recharts';
 
 export default function Dashboard() {
   const [data, setData] = useState(null);
@@ -211,6 +211,64 @@ export default function Dashboard() {
             {renderChange(current.ga4?.engagementRateChange)}
           </div>
         </div>
+
+        {current.ga4?.dailyViews?.length > 0 && (
+          <div style={{ marginTop: '40px' }}>
+            <h2 style={styles.sectionTitle}>Informe Web - Página 2</h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+              <div style={{ ...styles.card, gridColumn: 'span 2' }}>
+                <div style={styles.cardTitle}>Visitas diarias: agosto y septiembre</div>
+                <div style={{ width: '100%', height: 320, marginTop: '12px' }}>
+                  <ResponsiveContainer>
+                    <AreaChart data={current.ga4.dailyViews} margin={{ top: 30, right: 20, left: 0, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                      <XAxis dataKey="label" tick={{ fontSize: 11 }} interval={6} />
+                      <YAxis tick={{ fontSize: 12 }} />
+                      <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
+                      <Area type="monotone" dataKey="value" name="Vistas" stroke="#0066cc" strokeDasharray="2 3" strokeWidth={2} fill="#0066cc" fillOpacity={0.08} />
+                      <ReferenceLine x="1 sep" stroke="#0000cc" strokeWidth={2} />
+                      {current.ga4.dailyPeaks?.map((pk) => (
+                        <ReferenceDot key={pk.label} x={pk.label} y={pk.value} r={5} fill="#ff8c00" stroke="#fff"
+                          label={{ value: pk.value.toLocaleString('es-CO'), position: 'top', fontSize: 12, fill: '#222' }} />
+                      ))}
+                    </AreaChart>
+                  </ResponsiveContainer>
+                </div>
+                <div style={styles.cardSubtext}>Curva aproximada a partir del informe; los picos marcados son exactos.</div>
+              </div>
+              <div>
+                <div style={styles.card}>
+                  <div style={styles.cardTitle}>Visitas agosto</div>
+                  <div style={styles.cardValue}>{(current.ga4?.pageviews || 0).toLocaleString('es-CO')}</div>
+                </div>
+                {current.ga4.septPartial && (
+                  <>
+                    <div style={{ ...styles.cardTitle, margin: '20px 0 10px' }}>Cifras actuales del {current.ga4.septPartial.range}</div>
+                    <div style={styles.card}>
+                      <div style={styles.cardTitle}>Vistas</div>
+                      <div style={styles.cardValue}>{current.ga4.septPartial.views.toLocaleString('es-CO')}</div>
+                      {renderChange(current.ga4.septPartial.viewsChange)}
+                    </div>
+                    <div style={{ ...styles.card, marginTop: '12px' }}>
+                      <div style={styles.cardTitle}>Total de usuarios</div>
+                      <div style={styles.cardValue}>{current.ga4.septPartial.users.toLocaleString('es-CO')}</div>
+                      {renderChange(current.ga4.septPartial.usersChange)}
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+            <div style={{ ...styles.card, marginTop: '20px' }}>
+              <div style={styles.cardTitle}>Análisis general</div>
+              <p style={{ fontSize: '14px', lineHeight: 1.6, color: '#333', marginTop: '8px' }}>{current.ga4.analysis}</p>
+              <ul style={{ fontSize: '14px', fontWeight: 600, color: '#222', marginTop: '12px', paddingLeft: '18px' }}>
+                {current.ga4.dailyPeaks?.map((pk) => (
+                  <li key={pk.label}>Pico {pk.label.replace('ago', 'de agosto').replace('sep', 'de septiembre')}: {pk.note}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Instagram */}
