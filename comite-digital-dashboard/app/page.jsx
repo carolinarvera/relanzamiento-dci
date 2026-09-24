@@ -134,61 +134,23 @@ export default function Dashboard() {
 
       {/* GA4 */}
       <div style={styles.section}>
-        <h2 style={styles.sectionTitle}>Google Analytics 4</h2>
+        <h2 style={styles.sectionTitle}>Informe Web</h2>
         <div style={styles.grid}>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Sesiones</div>
-            <div style={styles.cardValue}>{(current.ga4?.sessions || 0).toLocaleString('es-CO')}</div>
-            {renderChange(current.ga4?.sessionsChange) || <div style={styles.cardSubtext}>últimos 30 días</div>}
-          </div>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Vistas</div>
             <div style={styles.cardValue}>{(current.ga4?.pageviews || 0).toLocaleString('es-CO')}</div>
-            {renderChange(current.ga4?.pageviewsChange) || <div style={styles.cardSubtext}>páginas vistas</div>}
+            {renderChange(current.ga4?.pageviewsChange)}
+          </div>
+          <div style={styles.card}>
+            <div style={styles.cardTitle}>Sesiones</div>
+            <div style={styles.cardValue}>{(current.ga4?.sessions || 0).toLocaleString('es-CO')}</div>
+            {renderChange(current.ga4?.sessionsChange)}
           </div>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Total de Usuarios</div>
             <div style={styles.cardValue}>{(current.ga4?.users || 0).toLocaleString('es-CO')}</div>
-            {renderChange(current.ga4?.usersChange) || <div style={styles.cardSubtext}>únicos</div>}
+            {renderChange(current.ga4?.usersChange)}
           </div>
-          {current.ga4?.organicSessions ? (
-            <div style={styles.card}>
-              <div style={styles.cardTitle}>Tráfico Orgánico</div>
-              <div style={styles.cardValue}>{current.ga4.organicSessions.toLocaleString('es-CO')}</div>
-              <div style={styles.cardSubtext}>sesiones</div>
-            </div>
-          ) : (
-            <div style={styles.card}>
-              <div style={styles.cardTitle}>Usuarios Nuevos</div>
-              <div style={styles.cardValue}>{(current.ga4?.newUsers || 0).toLocaleString('es-CO')}</div>
-              {renderChange(current.ga4?.newUsersChange)}
-            </div>
-          )}
-          {current.ga4?.paidSessions ? (
-            <div style={styles.card}>
-              <div style={styles.cardTitle}>Tráfico Pauta</div>
-              <div style={styles.cardValue}>{current.ga4.paidSessions.toLocaleString('es-CO')}</div>
-              <div style={styles.cardSubtext}>sesiones</div>
-            </div>
-          ) : (
-            <>
-              <div style={styles.card}>
-                <div style={styles.cardTitle}>Porcentaje de Rebote</div>
-                <div style={styles.cardValue}>{current.ga4?.bounceRate ? (current.ga4.bounceRate * 100).toFixed(0) : 0}%</div>
-                {renderChange(current.ga4?.bounceRateChange)}
-              </div>
-              <div style={styles.card}>
-                <div style={styles.cardTitle}>Duración Media Sesión</div>
-                <div style={styles.cardValue}>{current.ga4?.avgSessionDuration || '00:00'}</div>
-                {renderChange(current.ga4?.avgSessionDurationChange)}
-              </div>
-              <div style={styles.card}>
-                <div style={styles.cardTitle}>Porcentaje de Interacciones</div>
-                <div style={styles.cardValue}>{current.ga4?.engagementRate ? (current.ga4.engagementRate * 100).toFixed(2) : 0}%</div>
-                {renderChange(current.ga4?.engagementRateChange)}
-              </div>
-            </>
-          )}
         </div>
 
         {current.ga4?.monthlyHistory?.length > 0 && (
