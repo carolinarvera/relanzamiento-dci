@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid, LabelList, Cell } from 'recharts';
 
 export default function Dashboard() {
   const [data, setData] = useState(null);
@@ -74,6 +74,11 @@ export default function Dashboard() {
     const positive = value >= 0;
     const arrow = positive ? '↑' : '↓';
     return <div style={styles.change(positive)}>{arrow} {(Math.abs(value) * 100).toFixed(1)}% vs mes anterior</div>;
+  };
+
+  const formatCompact = (value) => {
+    if (value >= 1000) return `${(value / 1000).toFixed(0)}K`;
+    return value;
   };
 
   const axxisData = {
@@ -189,20 +194,36 @@ export default function Dashboard() {
         {current.ga4?.monthlyHistory?.length > 0 && (
           <div style={styles.card}>
             <div style={styles.cardTitle}>Tráfico total de la página web</div>
-            <div style={{ width: '100%', height: 320, marginTop: '12px' }}>
+            <div style={{ width: '100%', height: 360, marginTop: '12px' }}>
               <ResponsiveContainer>
-                <BarChart data={current.ga4.monthlyHistory}>
+                <BarChart data={current.ga4.monthlyHistory} margin={{ top: 30, right: 10, left: 0, bottom: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" vertical={false} />
                   <XAxis dataKey="month" tick={{ fontSize: 12 }} />
                   <YAxis tick={{ fontSize: 12 }} />
                   <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
                   <Legend />
-                  <Bar dataKey="sesiones" name="Sesiones" fill="#333333" />
-                  <Bar dataKey="vistas" name="Vistas" fill="#0066cc" />
-                  <Bar dataKey="usuarios" name="Total de usuarios" fill="#999999" />
+                  <Bar dataKey="sesiones" name="Sesiones">
+                    {current.ga4.monthlyHistory.map((entry, i) => (
+                      <Cell key={`ses-${i}`} fill={i === current.ga4.monthlyHistory.length - 1 ? '#000000' : '#333333'} />
+                    ))}
+                    <LabelList dataKey="sesiones" position="top" formatter={formatCompact} style={{ fontSize: 10, fill: '#333' }} />
+                  </Bar>
+                  <Bar dataKey="vistas" name="Vistas">
+                    {current.ga4.monthlyHistory.map((entry, i) => (
+                      <Cell key={`vis-${i}`} fill={i === current.ga4.monthlyHistory.length - 1 ? '#ff8c00' : '#0066cc'} />
+                    ))}
+                    <LabelList dataKey="vistas" position="top" formatter={formatCompact} style={{ fontSize: 10, fill: '#0066cc' }} />
+                  </Bar>
+                  <Bar dataKey="usuarios" name="Total de usuarios">
+                    {current.ga4.monthlyHistory.map((entry, i) => (
+                      <Cell key={`usu-${i}`} fill={i === current.ga4.monthlyHistory.length - 1 ? '#555555' : '#999999'} />
+                    ))}
+                    <LabelList dataKey="usuarios" position="top" formatter={formatCompact} style={{ fontSize: 10, fill: '#999' }} />
+                  </Bar>
                 </BarChart>
               </ResponsiveContainer>
             </div>
+            <div style={styles.cardSubtext}>El último mes ({current.ga4.monthlyHistory[current.ga4.monthlyHistory.length - 1]?.month}) se destaca en color más oscuro</div>
           </div>
         )}
       </div>
