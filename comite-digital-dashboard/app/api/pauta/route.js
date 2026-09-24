@@ -34,17 +34,19 @@ async function paged(url, params) {
   return data;
 }
 
+const CACHE = new Map();
+const TTL = 20 * 60 * 1000;
+
 async function accountCampaigns(account, token, start, end) {
-  const [rows, camps] = await Promise.all([
-    paged(`https://graph.facebook.com/v19.0/${account.id}/insights`, {
-      level: 'campaign',
-      fields: 'campaign_id,campaign_name,spend,impressions,reach,clicks,inline_link_clicks,actions',
-      time_range: JSON.stringify({ since: start, until: end }),
-      limit: 500,
-      access_token: token,
-    }),
-    paged(`https://graph.facebook.com/v19.0/${account.id}/campaigns`, { fields: 'id,objective', limit: 500, access_token: token }).catch(() => []),
-  ]);
+  const rows = await paged(`https://graph.facebook.com/v19.0/${account.id}/insights`, {
+    level: 'campaign',
+    fields: 'campaign_id,campaign_name,spend,impressions,reach,clicks,inline_link_clicks,actions',
+    time_range: JSON.stringify({ since: start, until: end }),
+    limit: 500,
+    access_token: token,
+  });
+  if (!rows.length) return [];
+  const camps = await paged(`https://graph.facebook.com/v19.0/${account.id}/campaigns`, { fields: 'id,objective', limit: 500, access_token: token }).catch(() => []);
   const objective = Object.fromEntries(camps.map((c) => [c.id, c.objective]));
   return rows.map((r) => {
     const obj = objective[r.campaign_id] || null;
@@ -86,6 +88,9 @@ const totals = (list) => {
 export async function GET(request) {
   try {
     const range = resolveRange(new URL(request.url).searchParams);
+    const cacheKey = `${range.start}|${range.end}`;
+    const hit = CACHE.get(cacheKey);
+    if (hit && Date.now() - hit.at < TTL) return Response.json({ ...hit.data, cached: true });
     const token = process.env.META_ACCESS_TOKEN;
     if (!token) throw new Error('META_ACCESS_TOKEN no configurado');
     const accounts = await paged('https://graph.facebook.com/v19.0/me/adaccounts', { fields: 'id,name,currency,account_status', limit: 50, access_token: token });
@@ -94,6 +99,10 @@ export async function GET(request) {
     const load = async (start, end) => (await Promise.all(accounts.map((a) => accountCampaigns(a, token, start, end).catch((e) => { errors.push(`${a.name}: ` + (e.response?.data?.error?.message || e.message)); return []; })))).flat();
     const [cur, prev] = await Promise.all([load(range.start, range.end), load(range.prevStart, range.prevEnd)]);
 
+    if (errors.length && !cur.length) {
+      if (hit) return Response.json({ ...hit.data, cached: true, stale: true, errors });
+      return Response.json({ error: errors[0] }, { status: 502 });
+    }
     const grand = sum(cur, 'spend');
     const enrich = (list, prevList) => {
       const t = totals(list);
@@ -132,7 +141,10 @@ export async function GET(request) {
       propia: enrich(cur.filter((c) => c.payer === 'propia'), prev.filter((c) => c.payer === 'propia')),
       prevTotalSpend: sum(prev, 'spend'),
     };
-    return Response.json({ range, currency: accounts.find((a) => a.currency === 'COP')?.currency || accounts[0]?.currency || 'COP', accounts: accounts.map((a) => a.name), totalSpend: grand, global, clientKeywords: CLIENT_KEYWORDS, brands: out, errors });
+    const payload = { range, currency: accounts.find((a) => a.currency === 'COP')?.currency || accounts[0]?.currency || 'COP', accounts: accounts.map((a) => a.name), totalSpend: grand, global, clientKeywords: CLIENT_KEYWORDS, brands: out, errors };
+    if (!errors.length) CACHE.set(cacheKey, { at: Date.now(), data: payload });
+    else if (hit) return Response.json({ ...hit.data, cached: true, stale: true, errors });
+    return Response.json(payload);
   } catch (error) {
     const detail = error.response?.data?.error?.message || error.message;
     console.error('Pauta API Error:', detail);
