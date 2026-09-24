@@ -51,6 +51,18 @@ export default function Dashboard() {
   const [activeTab, setActiveTab] = useState('axxis');
   const [range, setRange] = useState(null);
   const [draft, setDraft] = useState({ start: '', end: '' });
+  const [trends, setTrends] = useState(null);
+  const [trendDays, setTrendDays] = useState(30);
+
+  useEffect(() => {
+    let cancelled = false;
+    setTrends(null);
+    fetch(`/api/trends?brand=${activeTab}&days=${trendDays}`, { cache: 'no-store' })
+      .then((r) => r.json())
+      .then((j) => { if (!cancelled) setTrends(j); })
+      .catch((e) => { if (!cancelled) setTrends({ error: e.message }); });
+    return () => { cancelled = true; };
+  }, [activeTab, trendDays]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -825,7 +837,46 @@ export default function Dashboard() {
               </div>
             </div>
             <div style={{ ...styles.card, marginTop: '20px' }}>
-              <div style={styles.cardTitle}>Google Trends Colombia · tendencias de hoy</div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', alignItems: 'center' }}>
+                <div style={styles.cardTitle}>Google Trends Colombia · temas de la revista</div>
+                <select value={trendDays} onChange={(e) => setTrendDays(Number(e.target.value))} style={{ padding: '6px', borderRadius: '4px', border: '1px solid #ccc' }}>
+                  <option value={7}>Últimos 7 días</option>
+                  <option value={30}>Últimos 30 días</option>
+                  <option value={90}>Últimos 90 días</option>
+                </select>
+              </div>
+              {!trends && <div style={styles.cardSubtext}>Consultando Google Trends…</div>}
+              {trends?.error && <div style={{ ...styles.cardSubtext, color: '#b71c1c' }}>No se pudo leer Google Trends: {trends.error}</div>}
+              {trends?.topics && (
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '14px', marginTop: '12px' }}>
+                  {trends.topics.map((t) => (
+                    <div key={t.keyword} style={{ border: '1px solid #e3e6ee', borderRadius: '8px', padding: '12px' }}>
+                      <div style={{ fontSize: '14px', fontWeight: 700, textTransform: 'capitalize', marginBottom: '6px' }}>{t.keyword}</div>
+                      {t.error ? (
+                        <div style={{ fontSize: '12px', color: '#b71c1c' }}>Sin respuesta de Google Trends</div>
+                      ) : t.top.length === 0 && t.rising.length === 0 ? (
+                        <div style={{ fontSize: '12px', color: '#888' }}>Sin volumen suficiente en este periodo</div>
+                      ) : (
+                        <>
+                          <div style={{ fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Más buscadas</div>
+                          <ol style={{ margin: '4px 0 8px', paddingLeft: '18px', fontSize: '12px' }}>
+                            {t.top.slice(0, 5).map((q) => <li key={q.query}>{q.query} <span style={{ color: '#999' }}>({q.value})</span></li>)}
+                          </ol>
+                          <div style={{ fontSize: '11px', color: '#2e7d32', textTransform: 'uppercase', fontWeight: 700 }}>En alza</div>
+                          <ol style={{ margin: '4px 0 0', paddingLeft: '18px', fontSize: '12px' }}>
+                            {t.rising.slice(0, 5).map((q) => <li key={q.query}>{q.query} <span style={{ color: '#2e7d32', fontWeight: 600 }}>{q.label}</span></li>)}
+                            {t.rising.length === 0 && <li style={{ listStyle: 'none', marginLeft: '-18px', color: '#888' }}>sin consultas en alza</li>}
+                          </ol>
+                        </>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+              <div style={styles.cardSubtext}>Consultas relacionadas por tema en Colombia. "Más buscadas": índice 0-100 relativo dentro de cada tema. "En alza": crecimiento contra el periodo anterior ("Aumento puntual" = alza muy fuerte desde un volumen bajo). Google Trends no es una API oficial y puede fallar o vaciar temas de poco volumen.</div>
+            </div>
+            <div style={{ ...styles.card, marginTop: '20px' }}>
+              <div style={styles.cardTitle}>Tendencias generales del día en Colombia (todas las categorías)</div>
               {Array.isArray(seo.trends) ? (
                 <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '8px' }}>
                   <thead>
