@@ -46,6 +46,16 @@ export async function GET() {
         bounceRateChange: -0.234,
         avgSessionDurationChange: -0.038,
         engagementRateChange: 0.40,
+        monthlyHistory: [
+          { month: 'ene 2026', sesiones: 102342, vistas: 131316, usuarios: 81215 },
+          { month: 'feb 2026', sesiones: 86510, vistas: 114258, usuarios: 68357 },
+          { month: 'mar 2026', sesiones: 99187, vistas: 123321, usuarios: 77472 },
+          { month: 'abr 2026', sesiones: 70962, vistas: 89357, usuarios: 58182 },
+          { month: 'may 2026', sesiones: 69142, vistas: 86765, usuarios: 54400 },
+          { month: 'jun 2026', sesiones: 97699, vistas: 117470, usuarios: 80778 },
+          { month: 'jul 2026', sesiones: 137622, vistas: 164159, usuarios: 115360 },
+          { month: 'ago 2026', sesiones: 93919, vistas: 136612, usuarios: 80065 },
+        ],
       },
       diners: {
         sessions: 89340,
@@ -86,5 +96,6 @@ function parseGA4Response(res) {
     bounceRateChange: res.bounceRateChange ?? null,
     avgSessionDurationChange: res.avgSessionDurationChange ?? null,
     engagementRateChange: res.engagementRateChange ?? null,
+    monthlyHistory: res.monthlyHistory || [],
   };
 }

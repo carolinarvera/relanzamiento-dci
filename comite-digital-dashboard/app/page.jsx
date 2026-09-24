@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid } from 'recharts';
 
 export default function Dashboard() {
   const [data, setData] = useState(null);
@@ -184,6 +185,26 @@ export default function Dashboard() {
             </>
           )}
         </div>
+
+        {current.ga4?.monthlyHistory?.length > 0 && (
+          <div style={styles.card}>
+            <div style={styles.cardTitle}>Tráfico total de la página web</div>
+            <div style={{ width: '100%', height: 320, marginTop: '12px' }}>
+              <ResponsiveContainer>
+                <BarChart data={current.ga4.monthlyHistory}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                  <XAxis dataKey="month" tick={{ fontSize: 12 }} />
+                  <YAxis tick={{ fontSize: 12 }} />
+                  <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
+                  <Legend />
+                  <Bar dataKey="sesiones" name="Sesiones" fill="#333333" />
+                  <Bar dataKey="vistas" name="Vistas" fill="#0066cc" />
+                  <Bar dataKey="usuarios" name="Total de usuarios" fill="#999999" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Instagram */}
