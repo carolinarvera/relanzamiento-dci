@@ -456,6 +456,29 @@ export default function Dashboard() {
                       </tbody>
                     </table>
                   </div>
+                  {current.ga4.audience.cities?.length > 0 && (
+                    <div style={styles.card}>
+                      <div style={styles.cardTitle}>Distribución geográfica de lectores</div>
+                      <div style={{ width: '100%', height: 260, marginTop: '12px' }}>
+                        <ResponsiveContainer>
+                          <BarChart data={current.ga4.audience.cities} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                            <XAxis dataKey="name" tick={{ fontSize: 11 }} />
+                            <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} />
+                            <Tooltip formatter={(v) => `${(v * 100).toFixed(1)}%`} />
+                            <Bar dataKey="pct" name="Lectores" fill="#000000">
+                              <LabelList dataKey="pct" position="top" formatter={(v) => `${(v * 100).toFixed(1)}%`} style={{ fontSize: 11 }} />
+                            </Bar>
+                          </BarChart>
+                        </ResponsiveContainer>
+                      </div>
+                      {current.ga4.audience.countries?.length > 0 && (
+                        <div style={{ fontSize: '12px', color: '#555', marginTop: '8px' }}>
+                          Países: {current.ga4.audience.countries.map((c) => `${c.name} ${(c.pct * 100).toFixed(1)}%`).join(' · ')}
+                        </div>
+                      )}
+                    </div>
+                  )}
                   <div style={styles.card}>
                     <div style={styles.cardTitle}>Sexo y edad lectores</div>
                     {current.ga4.audience.gender.length > 0 ? (

@@ -40,7 +40,9 @@ async function runReport(token, propertyId, body) {
     body,
     { headers: { Authorization: `Bearer ${token}` } },
   );
-  return res.data.rows || [];
+  const rows = res.data.rows || [];
+  rows.totals = res.data.totals?.[0]?.metricValues || null;
+  return rows;
 }
 
 const num = (row, i) => Number(row.metricValues[i].value);
@@ -145,7 +147,7 @@ async function buildAudience(token, propertyId, r) {
   const rep = (dimension, metrics, extra = {}) =>
     runReport(token, propertyId, { dateRanges: [range], dimensions: [{ name: dimension }], metrics: metrics.map((name) => ({ name })), ...extra });
 
-  const [devices, channels, gender, age, ageGender] = await Promise.all([
+  const [devices, channels, gender, age, ageGender, cityRows, countryRows] = await Promise.all([
     rep('deviceCategory', ['totalUsers']),
     rep('sessionDefaultChannelGroup', ['sessions', 'screenPageViews', 'totalUsers'], { orderBys: [{ metric: { metricName: 'sessions' }, desc: true }] }),
     rep('userGender', ['totalUsers']).catch(() => []),
@@ -156,7 +158,16 @@ async function buildAudience(token, propertyId, r) {
       metrics: [{ name: 'totalUsers' }],
       orderBys: [{ dimension: { dimensionName: 'userAgeBracket' } }],
     }).catch(() => []),
+    rep('city', ['totalUsers'], { limit: 6, metricAggregations: ['TOTAL'], orderBys: [{ metric: { metricName: 'totalUsers' }, desc: true }] }).catch(() => []),
+    rep('country', ['totalUsers'], { limit: 4, metricAggregations: ['TOTAL'], orderBys: [{ metric: { metricName: 'totalUsers' }, desc: true }] }).catch(() => []),
   ]);
+  const geo = (rows) => {
+    const total = Number(rows.totals?.[0]?.value || 0);
+    return rows
+      .filter((r) => !['(not set)', ''].includes(r.dimensionValues[0].value))
+      .slice(0, 5)
+      .map((r) => ({ name: r.dimensionValues[0].value, pct: total ? Number(r.metricValues[0].value) / total : 0 }));
+  };
 
   const share = (rows, idx = 0) => {
     const total = rows.reduce((a, r) => a + Number(r.metricValues[idx].value), 0);
@@ -186,6 +197,8 @@ async function buildAudience(token, propertyId, r) {
       });
       return Object.values(byAge).sort((x, y) => x.age.localeCompare(y.age, 'es', { numeric: true }));
     })(),
+    cities: geo(cityRows),
+    countries: geo(countryRows),
     gender: renorm(known(share(gender))),
     age: renorm(known(share(age))),
   };
