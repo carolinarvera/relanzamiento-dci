@@ -42,11 +42,19 @@ async function fbDetail(pageId, pageToken, errors, label) {
     const u = Math.floor(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1) / 1000);
     const m1 = Math.floor(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - 1, 1) / 1000);
     const m2 = Math.floor(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - 2, 1) / 1000);
-    const [cur, prev, page] = await Promise.all([
+    const [cur, prev, page, cityRes] = await Promise.all([
       fbRange(pageId, pageToken, m1, u),
       fbRange(pageId, pageToken, m2, m1),
       axios.get(`https://graph.facebook.com/v19.0/${pageId}`, { params: { fields: 'followers_count', access_token: pageToken } }),
+      axios.get(`https://graph.facebook.com/v19.0/${pageId}/insights`, {
+        params: { metric: 'page_follows_city', period: 'day', access_token: pageToken },
+      }).then((r) => r.data.data?.[0]?.values?.slice(-1)[0]?.value || {}).catch(() => ({})),
     ]);
+    const followersTotal = page.data.followers_count || 0;
+    const cities = Object.entries(cityRes)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5)
+      .map(([name, value]) => ({ name: name.split(',')[0], pct: followersTotal ? value / followersTotal : 0 }));
     const views = cur.page_media_view || 0;
     const reactions = cur.page_actions_post_reactions_total || 0;
     return {
@@ -56,6 +64,7 @@ async function fbDetail(pageId, pageToken, errors, label) {
       reactions, reactionsChange: chg(reactions, prev.page_actions_post_reactions_total),
       profileViews: cur.page_views_total || 0, profileViewsChange: chg(cur.page_views_total, prev.page_views_total),
       engagementRate: views ? reactions / views : 0,
+      cities,
     };
   } catch (err) {
     errors.push(`${label} Facebook detalle: ` + (err.response?.data?.error?.message || err.message));

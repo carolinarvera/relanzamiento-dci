@@ -512,7 +512,25 @@ export default function Dashboard() {
                 </div>
               </div>
             </div>
-            <div style={{ ...styles.cardSubtext, marginTop: '8px' }}>Meta no entrega sexo, edad ni ciudad de los seguidores de páginas de Facebook por API; esos datos se muestran para Instagram.</div>
+            {fb.cities?.length > 0 && (
+              <div style={{ ...styles.card, marginTop: '20px' }}>
+                <div style={styles.cardTitle}>Distribución geográfica de seguidores</div>
+                <div style={{ width: '100%', height: 320, marginTop: '12px' }}>
+                  <ResponsiveContainer>
+                    <BarChart data={fb.cities} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                      <XAxis dataKey="name" tick={{ fontSize: 11 }} />
+                      <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} />
+                      <Tooltip formatter={(v) => `${(v * 100).toFixed(1)}%`} />
+                      <Bar dataKey="pct" name="Seguidores" fill="#000000">
+                        <LabelList dataKey="pct" position="top" formatter={(v) => `${(v * 100).toFixed(1)}%`} style={{ fontSize: 11 }} />
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+            )}
+            <div style={{ ...styles.cardSubtext, marginTop: '8px' }}>Meta no entrega sexo ni edad de los seguidores de páginas de Facebook por API; esos datos se muestran para Instagram.</div>
           </div>
         );
       })()}
