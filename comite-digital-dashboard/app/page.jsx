@@ -44,9 +44,23 @@ function presetOptions() {
   return opts;
 }
 
+
+const THEMES = {
+  axxis: {
+    ink: '#231815', accent: '#E4612B', accent2: '#F0A184', highlight: '#8A3A12',
+    soft: '#F2F4F3', page: '#F2F4F3', line: '#E4E4E4', text: '#4B5153',
+    headFont: "'Manrope', system-ui, sans-serif", bodyFont: "'Rubik', system-ui, sans-serif", logo: '/axxis.svg',
+  },
+  diners: {
+    ink: '#101010', accent: '#9B1712', accent2: '#C9706C', highlight: '#692B2B',
+    soft: '#F7F3F1', page: '#F7F3F1', line: '#EAEAEA', text: '#383935',
+    headFont: "'Playfair Display', Georgia, serif", bodyFont: "'Montserrat', system-ui, sans-serif", logo: '/diners.svg',
+  },
+};
+
 const SECTIONS = [
   { key: 'resumen', label: 'Resumen', apis: ['ga4', 'meta', 'pauta'] },
-  { key: 'web', label: 'Web', apis: ['ga4'] },
+  { key: 'web', label: 'Web', apis: ['ga4', 'gsc'] },
   { key: 'seo', label: 'SEO', apis: ['gsc', 'seo'] },
   { key: 'redes', label: 'Redes sociales', apis: ['meta'] },
   { key: 'pauta', label: 'Pauta', apis: ['pauta'] },
@@ -128,27 +142,31 @@ export default function Dashboard() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [range, section]);
 
+  const T = THEMES[activeTab];
+
+  useEffect(() => { document.body.style.background = T.page; }, [activeTab]); // eslint-disable-line
+
   const styles = {
-    container: { maxWidth: '1400px', margin: '0 auto', padding: '20px' },
+    container: { maxWidth: '1400px', margin: '0 auto', padding: '20px', fontFamily: T.bodyFont, color: T.text, minHeight: '100vh' },
     header: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '30px' },
-    title: { fontSize: '28px', fontWeight: 'bold', color: '#222' },
+    title: { fontSize: '28px', fontWeight: 'bold', color: T.ink, fontFamily: T.headFont },
     tabs: { display: 'flex', gap: '10px' },
     tabBtn: (active) => ({
       padding: '10px 20px',
       border: 'none',
       borderRadius: '4px',
       cursor: 'pointer',
-      backgroundColor: active ? '#0066cc' : '#ddd',
+      backgroundColor: active ? T.accent : '#ddd',
       color: active ? 'white' : '#333',
       fontWeight: active ? 'bold' : 'normal',
     }),
     grid: { display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '20px', marginBottom: '30px' },
     card: { backgroundColor: 'white', padding: '20px', borderRadius: '8px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' },
     cardTitle: { fontSize: '12px', fontWeight: '600', color: '#666', textTransform: 'uppercase', marginBottom: '8px' },
-    cardValue: { fontSize: '28px', fontWeight: 'bold', color: '#0066cc' },
+    cardValue: { fontSize: '28px', fontWeight: 'bold', color: T.accent },
     cardSubtext: { fontSize: '12px', color: '#999', marginTop: '8px' },
     section: { marginBottom: '40px' },
-    sectionTitle: { fontSize: '18px', fontWeight: 'bold', color: '#222', marginBottom: '15px' },
+    sectionTitle: { fontSize: '18px', fontWeight: 'bold', color: T.ink, marginBottom: '15px', fontFamily: T.headFont },
     table: { width: '100%', borderCollapse: 'collapse', backgroundColor: 'white', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' },
     th: { backgroundColor: '#f0f0f0', padding: '12px', textAlign: 'left', fontWeight: '600', fontSize: '12px', color: '#666' },
     td: { padding: '12px', borderBottom: '1px solid #eee', fontSize: '14px' },
@@ -195,7 +213,10 @@ export default function Dashboard() {
   return (
     <div style={styles.container}>
       <div style={styles.header}>
-        <h1 style={styles.title}>Comité Digital Dashboard</h1>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          <img src={T.logo} alt={activeTab} style={{ height: '30px' }} />
+          <h1 style={styles.title}>Comité Digital Dashboard</h1>
+        </div>
         <div style={styles.tabs}>
           <button style={styles.tabBtn(activeTab === 'axxis')} onClick={() => setActiveTab('axxis')}>AXXIS</button>
           <button style={styles.tabBtn(activeTab === 'diners')} onClick={() => setActiveTab('diners')}>DINERS</button>
@@ -224,7 +245,7 @@ export default function Dashboard() {
         <span>a</span>
         <input type="date" value={draft.end || data.ga4?.range?.end || ''} max={new Date().toISOString().slice(0, 10)} onChange={(e) => setDraft({ ...draft, end: e.target.value, start: draft.start || data.ga4?.range?.start || '' })} style={{ padding: '7px', borderRadius: '4px', border: '1px solid #ccc' }} />
         <button
-          style={{ padding: '8px 16px', border: 'none', borderRadius: '4px', background: '#0066cc', color: 'white', cursor: 'pointer', fontWeight: 600 }}
+          style={{ padding: '8px 16px', border: 'none', borderRadius: '4px', background: T.accent, color: 'white', cursor: 'pointer', fontWeight: 600 }}
           onClick={() => { if (draft.start && draft.end && draft.start <= draft.end) setRange({ start: draft.start, end: draft.end }); }}
         >Aplicar</button>
         <span style={{ fontSize: '13px', color: '#666' }}>{loading ? 'Actualizando…' : `Mostrando: ${rangeLabel}`} · variación vs periodo anterior equivalente</span>
@@ -235,7 +256,7 @@ export default function Dashboard() {
           <button
             key={x.key}
             onClick={() => setSection(x.key)}
-            style={{ padding: '10px 18px', border: 'none', background: 'transparent', cursor: 'pointer', fontSize: '14px', fontWeight: section === x.key ? 700 : 500, color: section === x.key ? '#0066cc' : '#555', borderBottom: section === x.key ? '3px solid #0066cc' : '3px solid transparent', marginBottom: '-2px' }}
+            style={{ padding: '10px 18px', border: 'none', background: 'transparent', cursor: 'pointer', fontSize: '14px', fontWeight: section === x.key ? 700 : 500, color: section === x.key ? T.accent : '#555', borderBottom: section === x.key ? '3px solid #0066cc' : '3px solid transparent', marginBottom: '-2px' }}
           >
             {x.label}
           </button>
@@ -283,11 +304,11 @@ export default function Dashboard() {
                   <YAxis tick={{ fontSize: 12 }} />
                   <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
                   <Legend />
-                  <Bar dataKey="vistas" name="Vistas" fill="#0066cc" legendType="square">
+                  <Bar dataKey="vistas" name="Vistas" fill={T.accent} legendType="square">
                     {current.ga4.monthlyHistory.map((entry, i) => (
-                      <Cell key={`vis-${i}`} fill={i === current.ga4.monthlyHistory.length - 1 ? '#ff8c00' : '#0066cc'} />
+                      <Cell key={`vis-${i}`} fill={i === current.ga4.monthlyHistory.length - 1 ? T.highlight : T.accent} />
                     ))}
-                    <LabelList dataKey="vistas" position="top" formatter={formatCompact} style={{ fontSize: 10, fill: '#0066cc' }} />
+                    <LabelList dataKey="vistas" position="top" formatter={formatCompact} style={{ fontSize: 10, fill: T.accent }} />
                   </Bar>
                   <Bar dataKey="sesiones" name="Sesiones" fill="#333333" legendType="square">
                     {current.ga4.monthlyHistory.map((entry, i) => (
@@ -344,10 +365,10 @@ export default function Dashboard() {
                   <YAxis tick={{ fontSize: 11 }} />
                   <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
                   <Legend />
-                  <Bar dataKey="vistas" name="Vistas" fill="#0066cc" legendType="square">
+                  <Bar dataKey="vistas" name="Vistas" fill={T.accent} legendType="square">
                     {current.ga4.hourlyViews.map((h) => {
                       const max = Math.max(...current.ga4.hourlyViews.map((x) => x.vistas));
-                      return <Cell key={h.hour} fill={h.vistas === max ? '#ff8c00' : '#0066cc'} />;
+                      return <Cell key={h.hour} fill={h.vistas === max ? T.highlight : T.accent} />;
                     })}
                   </Bar>
                   <Bar dataKey="sesiones" name="Sesiones" fill="#333333" legendType="square" />
@@ -394,10 +415,10 @@ export default function Dashboard() {
                       <XAxis dataKey="label" tick={{ fontSize: 11 }} interval={6} />
                       <YAxis tick={{ fontSize: 12 }} />
                       <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
-                      <Area type="monotone" dataKey="value" name="Vistas" stroke="#0066cc" strokeDasharray="2 3" strokeWidth={2} fill="#0066cc" fillOpacity={0.08} />
+                      <Area type="monotone" dataKey="value" name="Vistas" stroke={T.accent} strokeDasharray="2 3" strokeWidth={2} fill={T.accent} fillOpacity={0.08} />
                       <ReferenceLine x="1 sep" stroke="#0000cc" strokeWidth={2} />
                       {current.ga4.dailyPeaks?.map((pk) => (
-                        <ReferenceDot key={pk.label} x={pk.label} y={pk.value} r={5} fill="#ff8c00" stroke="#fff"
+                        <ReferenceDot key={pk.label} x={pk.label} y={pk.value} r={5} fill={T.highlight} stroke="#fff"
                           label={{ value: pk.value.toLocaleString('es-CO'), position: 'top', fontSize: 12, fill: '#222' }} />
                       ))}
                     </AreaChart>
@@ -464,7 +485,7 @@ export default function Dashboard() {
                             <XAxis dataKey="label" tick={{ fontSize: 10 }} interval={4} />
                             <YAxis tick={{ fontSize: 10 }} />
                             <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
-                            <Area type="monotone" dataKey="value" name="Vistas" stroke="#1a4fb3" strokeWidth={2} fill="#1a4fb3" fillOpacity={0.08} />
+                            <Area type="monotone" dataKey="value" name="Vistas" stroke={T.accent} strokeWidth={2} fill={T.accent} fillOpacity={0.08} />
                             {sec.peak && <ReferenceDot x={sec.peak.label} y={sec.peak.value} r={5} fill="#d32f2f" stroke="#fff" />}
                           </AreaChart>
                         </ResponsiveContainer>
@@ -479,10 +500,10 @@ export default function Dashboard() {
                             <XAxis dataKey="hour" tick={{ fontSize: 10 }} interval={2} />
                             <YAxis tick={{ fontSize: 10 }} />
                             <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
-                            <Bar dataKey="value" name="Vistas" fill="#1a4fb3">
+                            <Bar dataKey="value" name="Vistas" fill={T.accent}>
                               {sec.hourly.map((h) => {
                                 const max = Math.max(...sec.hourly.map((x) => x.value));
-                                return <Cell key={h.hour} fill={h.value === max && max > 0 ? '#ff8c00' : '#1a4fb3'} />;
+                                return <Cell key={h.hour} fill={h.value === max && max > 0 ? T.highlight : T.accent} />;
                               })}
                             </Bar>
                           </BarChart>
@@ -543,7 +564,7 @@ export default function Dashboard() {
                   const rel = (cur, prev) => (prev ? cur / prev - 1 : null);
                   return (
                     <div style={{ ...styles.card, marginBottom: '20px', background: '#f3f1ee' }}>
-                      <div style={{ fontSize: '22px', fontWeight: 800, color: '#1c2a6b', marginBottom: '12px' }}>Fuentes de tráfico</div>
+                      <div style={{ fontSize: '22px', fontWeight: 800, color: T.ink, marginBottom: '12px' }}>Fuentes de tráfico</div>
                       <div style={{ display: 'flex', height: '44px', borderRadius: '22px', overflow: 'hidden', background: '#ddd' }}>
                         {groups.map((g) => (
                           <div key={g.name} title={`${g.name} ${(g.pct * 100).toFixed(1)}%`} style={{ width: `${g.pct * 100}%`, background: g.color }} />
@@ -556,7 +577,7 @@ export default function Dashboard() {
                               <span style={{ fontSize: '30px', fontWeight: 800, color: '#111' }}>{(g.pct * 100).toFixed(g.pct < 0.1 ? 1 : 0)}%</span>
                               {chip(rel(g.pct, g.prevPct))}
                             </div>
-                            <div style={{ fontSize: '15px', fontWeight: 700, color: '#1c2a6b' }}>{g.name}</div>
+                            <div style={{ fontSize: '15px', fontWeight: 700, color: T.ink }}>{g.name}</div>
                             <div style={{ fontSize: '13px', color: '#333', marginTop: '4px' }}>
                               Visitas <strong>{nf(g.views)}</strong>{chip(rel(g.views, g.prevViews))}
                             </div>
@@ -580,8 +601,8 @@ export default function Dashboard() {
                           <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', textTransform: 'capitalize' }}>
                             <span>{d.name}</span><strong>{(d.pct * 100).toFixed(1)}%</strong>
                           </div>
-                          <div style={{ background: '#e8eefc', borderRadius: '4px', height: '10px' }}>
-                            <div style={{ width: `${d.pct * 100}%`, background: '#4a86e8', height: '10px', borderRadius: '4px' }} />
+                          <div style={{ background: T.soft, borderRadius: '4px', height: '10px' }}>
+                            <div style={{ width: `${d.pct * 100}%`, background: T.accent2, height: '10px', borderRadius: '4px' }} />
                           </div>
                         </div>
                       ))}
@@ -603,7 +624,7 @@ export default function Dashboard() {
                           </div>
                           <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse' }}>
                             <thead>
-                              <tr style={{ background: '#1a4fb3', color: 'white' }}>
+                              <tr style={{ background: T.accent, color: 'white' }}>
                                 <th style={{ padding: '6px', textAlign: 'left' }}>Tipo / canal</th>
                                 <th style={{ padding: '6px', textAlign: 'right' }}>Vistas</th>
                                 <th style={{ padding: '6px', textAlign: 'right' }}>Sesiones</th>
@@ -613,7 +634,7 @@ export default function Dashboard() {
                             <tbody>
                               {groups.map((g) => (
                                 <React.Fragment key={g.name}>
-                                  <tr style={{ background: '#f4f6fb' }}>
+                                  <tr style={{ background: T.soft }}>
                                     <td style={{ padding: '6px', fontWeight: 700, borderLeft: `4px solid ${g.color}` }}>{g.name} · {(g.pct * 100).toFixed(1)}%</td>
                                     <td style={{ padding: '6px', textAlign: 'right', fontWeight: 700 }}>{nf(g.views)}</td>
                                     <td style={{ padding: '6px', textAlign: 'right', fontWeight: 700 }}>{nf(g.sessions)}</td>
@@ -701,7 +722,7 @@ export default function Dashboard() {
                     {current.ga4.audience.gender.length > 0 ? (
                       <div style={{ margin: '10px 0', fontSize: '24px', fontWeight: 700 }}>
                         {current.ga4.audience.gender.map((g) => (
-                          <div key={g.name} style={{ color: g.name === 'female' ? '#1a73e8' : '#222' }}>
+                          <div key={g.name} style={{ color: g.name === 'female' ? T.accent : '#222' }}>
                             {g.name === 'female' ? 'Mujeres' : g.name === 'male' ? 'Hombres' : g.name} {(g.pct * 100).toFixed(1)}%
                           </div>
                         ))}
@@ -716,8 +737,8 @@ export default function Dashboard() {
                             <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} />
                             <Tooltip formatter={(v) => `${(v * 100).toFixed(1)}%`} />
                             <Legend />
-                            <Bar dataKey="mujeres" name="Mujeres" fill="#1a73e8">
-                              <LabelList dataKey="mujeres" position="top" formatter={(v) => `${(v * 100).toFixed(1)}%`} style={{ fontSize: 10, fill: '#1a73e8' }} />
+                            <Bar dataKey="mujeres" name="Mujeres" fill={T.accent}>
+                              <LabelList dataKey="mujeres" position="top" formatter={(v) => `${(v * 100).toFixed(1)}%`} style={{ fontSize: 10, fill: T.accent }} />
                             </Bar>
                             <Bar dataKey="hombres" name="Hombres" fill="#333333">
                               <LabelList dataKey="hombres" position="top" formatter={(v) => `${(v * 100).toFixed(1)}%`} style={{ fontSize: 10, fill: '#333' }} />
@@ -784,7 +805,7 @@ export default function Dashboard() {
         const table = (rows, keyLabel) => (
           <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '8px' }}>
             <thead>
-              <tr style={{ background: '#f4f6fb' }}>
+              <tr style={{ background: T.soft }}>
                 <th style={{ ...head, textAlign: 'left' }}>{keyLabel}</th>
                 <th style={head}>Clics</th>
                 <th style={head}>Impresiones</th>
@@ -827,7 +848,7 @@ export default function Dashboard() {
                       <XAxis dataKey="label" tick={{ fontSize: 10 }} />
                       <YAxis tick={{ fontSize: 11 }} />
                       <Tooltip formatter={(v) => v.toLocaleString('es-CO')} />
-                      <Bar dataKey="queries" name="Consultas" fill="#1a4fb3">
+                      <Bar dataKey="queries" name="Consultas" fill={T.accent}>
                         <LabelList dataKey="queries" position="top" formatter={(v) => v.toLocaleString('es-CO')} style={{ fontSize: 11 }} />
                       </Bar>
                     </BarChart>
@@ -842,7 +863,7 @@ export default function Dashboard() {
               <div style={styles.cardTitle}>Temas que rinden por encima de la media (Top 10)</div>
               <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '8px' }}>
                 <thead>
-                  <tr style={{ background: '#f4f6fb' }}>
+                  <tr style={{ background: T.soft }}>
                     <th style={{ ...head, textAlign: 'left' }}>Tema</th>
                     <th style={head}>Clics</th>
                     <th style={head}>Impresiones</th>
@@ -893,7 +914,7 @@ export default function Dashboard() {
                 <div style={{ overflowX: 'auto', marginTop: '12px' }}>
                   <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '520px' }}>
                     <thead>
-                      <tr style={{ background: '#f4f6fb' }}>
+                      <tr style={{ background: T.soft }}>
                         <th style={{ ...head, textAlign: 'left', width: '13%' }}>Tema</th>
                         <th style={{ ...head, textAlign: 'left' }}>Noticias del sector (últimos días)</th>
                       </tr>
@@ -923,7 +944,7 @@ export default function Dashboard() {
               {Array.isArray(seo.trends) ? (
                 <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '8px' }}>
                   <thead>
-                    <tr style={{ background: '#f4f6fb' }}>
+                    <tr style={{ background: T.soft }}>
                       <th style={{ ...head, textAlign: 'left' }}>Tendencia</th>
                       <th style={head}>Búsquedas aprox.</th>
                       <th style={{ ...head, textAlign: 'left' }}>Noticia relacionada</th>
@@ -935,7 +956,7 @@ export default function Dashboard() {
                       <tr key={t.title} style={{ background: t.matches.length ? '#eef7ee' : 'transparent' }}>
                         <td style={{ ...cell, fontWeight: 600 }}>{t.title}</td>
                         <td style={num}>{t.traffic}</td>
-                        <td style={cell}>{t.newsUrl ? <a href={t.newsUrl} target="_blank" rel="noreferrer" style={{ color: '#0066cc' }}>{t.news}</a> : t.news} <span style={{ color: '#999' }}>{t.source ? `· ${t.source}` : ''}</span></td>
+                        <td style={cell}>{t.newsUrl ? <a href={t.newsUrl} target="_blank" rel="noreferrer" style={{ color: T.accent }}>{t.news}</a> : t.news} <span style={{ color: '#999' }}>{t.source ? `· ${t.source}` : ''}</span></td>
                         <td style={cell}>{t.matches.length ? t.matches.join(', ') : '\u2014'}</td>
                       </tr>
                     ))}
@@ -965,7 +986,7 @@ export default function Dashboard() {
         const pie = [
           { name: 'Espectadores', value: fb.viewers, fill: '#666666' },
           { name: 'Reacciones', value: fb.reactions, fill: '#bbbbbb' },
-          { name: 'Visualizaciones', value: fb.views, fill: '#4a86e8' },
+          { name: 'Visualizaciones', value: fb.views, fill: T.accent2 },
         ];
         const pieTotal = pie.reduce((x, y) => x + y.value, 0);
         const kpis = [
@@ -1056,7 +1077,7 @@ export default function Dashboard() {
                           <span>Comentarios <strong>{nf(post.comments)}</strong></span>
                           <span>Compartidos <strong>{nf(post.shares)}</strong></span>
                         </div>
-                        <a href={post.permalink} target="_blank" rel="noreferrer" style={{ display: 'inline-block', marginTop: '10px', fontSize: '12px', color: '#0066cc' }}>Ver en Facebook</a>
+                        <a href={post.permalink} target="_blank" rel="noreferrer" style={{ display: 'inline-block', marginTop: '10px', fontSize: '12px', color: T.accent }}>Ver en Facebook</a>
                       </div>
                     </div>
                   ))}
@@ -1082,7 +1103,7 @@ export default function Dashboard() {
                           <span>Comentarios <strong>{nf(post.comments)}</strong></span>
                           <span>Compartidos <strong>{nf(post.shares)}</strong></span>
                         </div>
-                        <a href={post.permalink} target="_blank" rel="noreferrer" style={{ display: 'inline-block', marginTop: '10px', fontSize: '12px', color: '#0066cc' }}>Ver en Facebook</a>
+                        <a href={post.permalink} target="_blank" rel="noreferrer" style={{ display: 'inline-block', marginTop: '10px', fontSize: '12px', color: T.accent }}>Ver en Facebook</a>
                       </div>
                     </div>
                   ))}
@@ -1179,7 +1200,7 @@ export default function Dashboard() {
                           <span>Guardados <strong>{nf(post.saved)}</strong></span>
                           <span>Compartidos <strong>{nf(post.shares)}</strong></span>
                         </div>
-                        <a href={post.permalink} target="_blank" rel="noreferrer" style={{ display: 'inline-block', marginTop: '10px', fontSize: '12px', color: '#0066cc' }}>Ver en Instagram</a>
+                        <a href={post.permalink} target="_blank" rel="noreferrer" style={{ display: 'inline-block', marginTop: '10px', fontSize: '12px', color: T.accent }}>Ver en Instagram</a>
                       </div>
                     </div>
                   ))}
@@ -1205,7 +1226,7 @@ export default function Dashboard() {
                           <span>Guardados <strong>{nf(post.saved)}</strong></span>
                           <span>Compartidos <strong>{nf(post.shares)}</strong></span>
                         </div>
-                        <a href={post.permalink} target="_blank" rel="noreferrer" style={{ display: 'inline-block', marginTop: '10px', fontSize: '12px', color: '#0066cc' }}>Ver en Instagram</a>
+                        <a href={post.permalink} target="_blank" rel="noreferrer" style={{ display: 'inline-block', marginTop: '10px', fontSize: '12px', color: T.accent }}>Ver en Instagram</a>
                       </div>
                     </div>
                   ))}
@@ -1217,7 +1238,7 @@ export default function Dashboard() {
                 <div style={styles.card}>
                   <div style={styles.cardTitle}>Sexo y edad de seguidores</div>
                   <div style={{ margin: '10px 0', fontSize: '22px', fontWeight: 700 }}>
-                    <span style={{ color: '#1a73e8' }}>Mujeres {(d.women * 100).toFixed(1)}%</span> - Hombres {(d.men * 100).toFixed(1)}%
+                    <span style={{ color: T.accent }}>Mujeres {(d.women * 100).toFixed(1)}%</span> - Hombres {(d.men * 100).toFixed(1)}%
                   </div>
                   <div style={{ width: '100%', height: 280 }}>
                     <ResponsiveContainer>
@@ -1227,8 +1248,8 @@ export default function Dashboard() {
                         <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} />
                         <Tooltip formatter={(v) => `${(v * 100).toFixed(1)}%`} />
                         <Legend />
-                        <Bar dataKey="mujeres" name="Mujeres" fill="#1a73e8">
-                          <LabelList dataKey="mujeres" position="top" formatter={(v) => `${(v * 100).toFixed(1)}%`} style={{ fontSize: 10, fill: '#1a73e8' }} />
+                        <Bar dataKey="mujeres" name="Mujeres" fill={T.accent}>
+                          <LabelList dataKey="mujeres" position="top" formatter={(v) => `${(v * 100).toFixed(1)}%`} style={{ fontSize: 10, fill: T.accent }} />
                         </Bar>
                         <Bar dataKey="hombres" name="Hombres" fill="#333333">
                           <LabelList dataKey="hombres" position="top" formatter={(v) => `${(v * 100).toFixed(1)}%`} style={{ fontSize: 10, fill: '#333' }} />
@@ -1305,7 +1326,7 @@ export default function Dashboard() {
         );
         return (
           <div style={styles.section}>
-            <h2 style={{ ...styles.sectionTitle, color: '#1c2a6b' }}>CIFRAS DIGITALES · {brandName} · {rangeLabel}</h2>
+            <h2 style={{ ...styles.sectionTitle, color: T.ink }}>CIFRAS DIGITALES · {brandName} · {rangeLabel}</h2>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '20px' }}>
               <div style={styles.card}>
@@ -1321,8 +1342,8 @@ export default function Dashboard() {
                       <YAxis tick={{ fontSize: 11 }} />
                       <Tooltip formatter={(v) => v.toLocaleString('es-CO')} />
                       <Legend />
-                      <Line type="monotone" dataKey="vistas" name="Vistas" stroke="#f39c12" strokeWidth={2} dot>
-                        <LabelList dataKey="vistas" position="top" formatter={formatCompact} style={{ fontSize: 10, fill: '#f39c12' }} />
+                      <Line type="monotone" dataKey="vistas" name="Vistas" stroke={T.accent} strokeWidth={2} dot>
+                        <LabelList dataKey="vistas" position="top" formatter={formatCompact} style={{ fontSize: 10, fill: T.accent }} />
                       </Line>
                       <Line type="monotone" dataKey="usuarios" name="Usuarios" stroke="#999999" strokeWidth={2} dot>
                         <LabelList dataKey="usuarios" position="bottom" formatter={formatCompact} style={{ fontSize: 10, fill: '#888' }} />
@@ -1333,16 +1354,16 @@ export default function Dashboard() {
               </div>
 
               <div style={{ display: 'grid', gap: '20px', alignContent: 'start' }}>
-                <div style={{ ...styles.card, background: '#eef1fb' }}>
+                <div style={{ ...styles.card, background: T.soft }}>
                   {topSec ? (
                     <>
-                      <div><strong style={{ fontSize: '20px', color: '#1c2a6b' }}>{topSec.label}</strong> <span style={{ fontSize: '12px', color: '#555' }}>Sección con mayor interés</span></div>
+                      <div><strong style={{ fontSize: '20px', color: T.ink }}>{topSec.label}</strong> <span style={{ fontSize: '12px', color: '#555' }}>Sección con mayor interés</span></div>
                       <div style={{ fontSize: '14px', marginTop: '6px' }}>Aporta <strong>{ga.pageviews ? ((topSec.views / ga.pageviews) * 100).toFixed(0) : '\u2014'}% del tráfico</strong></div>
                       {growth && <div style={{ fontSize: '14px', marginTop: '6px' }}>{growth.label} {chip(growth.change)} <span style={{ color: '#555' }}>vs periodo anterior</span></div>}
                     </>
                   ) : <div style={styles.cardSubtext}>Sin datos de secciones</div>}
                 </div>
-                <div style={{ ...styles.card, background: '#eef1fb' }}>
+                <div style={{ ...styles.card, background: T.soft }}>
                   <div style={{ fontSize: '14px', fontWeight: 800 }}>Artículo más leído:</div>
                   {art ? (
                     <>
@@ -1356,7 +1377,7 @@ export default function Dashboard() {
 
             {groups.length > 0 && (
               <div style={{ ...styles.card, marginTop: '20px', background: '#f3f1ee' }}>
-                <div style={{ fontSize: '22px', fontWeight: 800, color: '#1c2a6b', marginBottom: '12px' }}>Fuentes de tráfico</div>
+                <div style={{ fontSize: '22px', fontWeight: 800, color: T.ink, marginBottom: '12px' }}>Fuentes de tráfico</div>
                 <div style={{ display: 'flex', height: '40px', borderRadius: '20px', overflow: 'hidden', background: '#ddd' }}>
                   {groups.map((g) => <div key={g.name} title={`${g.name} ${(g.pct * 100).toFixed(1)}%`} style={{ width: `${g.pct * 100}%`, background: g.color }} />)}
                 </div>
@@ -1364,7 +1385,7 @@ export default function Dashboard() {
                   {groups.map((g) => (
                     <div key={g.name} style={{ borderTop: `3px solid ${g.color}`, paddingTop: '8px' }}>
                       <div><span style={{ fontSize: '30px', fontWeight: 800 }}>{(g.pct * 100).toFixed(g.pct < 0.1 ? 1 : 0)}%</span>{chip(g.prevPct ? g.pct / g.prevPct - 1 : null)}</div>
-                      <div style={{ fontSize: '15px', fontWeight: 700, color: '#1c2a6b' }}>{g.name}</div>
+                      <div style={{ fontSize: '15px', fontWeight: 700, color: T.ink }}>{g.name}</div>
                       <div style={{ fontSize: '13px' }}>Visitas <strong>{nf(g.views)}</strong>{chip(g.prevViews ? g.views / g.prevViews - 1 : null)}</div>
                     </div>
                   ))}
@@ -1390,7 +1411,7 @@ export default function Dashboard() {
             </div>
 
             <div style={{ ...styles.card, marginTop: '20px', background: '#f7f7f9' }}>
-              <div style={{ fontSize: '22px', fontWeight: 800, color: '#1c2a6b', marginBottom: '12px' }}>Redes <span style={{ fontWeight: 400 }}>sociales</span></div>
+              <div style={{ fontSize: '22px', fontWeight: 800, color: T.ink, marginBottom: '12px' }}>Redes <span style={{ fontWeight: 400 }}>sociales</span></div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', alignItems: 'baseline' }}>
@@ -1435,8 +1456,8 @@ export default function Dashboard() {
         const cell = { padding: '8px', borderBottom: '1px solid #eee', fontSize: '12px' };
         const num = { ...cell, textAlign: 'right' };
         const head = { padding: '8px', textAlign: 'right', fontSize: '11px', color: '#666', textTransform: 'uppercase' };
-        const CLIENT = '#d84315';
-        const OWN = '#1a4fb3';
+        const CLIENT = T.accent;
+        const OWN = T.ink;
         const totalBrand = b.totals.spend;
         const clientBrand = b.cliente.totals.spend;
         const ownBrand = b.propia.totals.spend;
@@ -1446,7 +1467,7 @@ export default function Dashboard() {
           <div style={{ overflowX: 'auto' }}>
             <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '900px' }}>
               <thead>
-                <tr style={{ background: '#f4f6fb' }}>
+                <tr style={{ background: T.soft }}>
                   <th style={{ ...head, textAlign: 'left' }}>Campaña</th>
                   <th style={{ ...head, textAlign: 'left' }}>Resultado</th>
                   <th style={head}>Inversión</th>
@@ -1593,11 +1614,11 @@ export default function Dashboard() {
               <div style={styles.cardSubtext}>La marca se detecta por el nombre de la campaña y el tipo (cliente o propia) por las palabras "{(data.pauta.clientKeywords || []).join('", "')}". Si un cliente usa otra denominación, dímela y la agrego. "Resultado" depende del objetivo. Cuentas de anuncios de Meta: {data.pauta.accounts.join(', ')}.</div>
             </div>
 
-            <div style={{ ...styles.cardTitle, fontSize: '14px', margin: '40px 0 10px', color: '#1c2a6b' }}>Detalle de campañas de tráfico · {brandName}</div>
+            <div style={{ ...styles.cardTitle, fontSize: '14px', margin: '40px 0 10px', color: T.ink }}>Detalle de campañas de tráfico · {brandName}</div>
             {!traficoOpen ? (
               <div style={styles.card}>
                 <div style={styles.cardSubtext}>Muestra los 10 anuncios de campañas de tráfico con más inversión: imagen, texto y métricas de comportamiento. Se carga aparte para no agotar el cupo de la API de Meta Ads.</div>
-                <button onClick={() => setTraficoOpen(true)} style={{ marginTop: '12px', padding: '10px 18px', border: 'none', borderRadius: '4px', background: '#0066cc', color: 'white', fontWeight: 600, cursor: 'pointer' }}>Cargar detalle de anuncios</button>
+                <button onClick={() => setTraficoOpen(true)} style={{ marginTop: '12px', padding: '10px 18px', border: 'none', borderRadius: '4px', background: T.accent, color: 'white', fontWeight: 600, cursor: 'pointer' }}>Cargar detalle de anuncios</button>
               </div>
             ) : !trafico ? (
               <div style={{ ...styles.card, textAlign: 'center', padding: '30px', color: '#555' }}>Cargando anuncios…</div>
@@ -1642,7 +1663,7 @@ export default function Dashboard() {
                           {ad.age?.length ? ad.age.map((a) => (
                             <div key={a.age} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '11px', marginBottom: '3px' }}>
                               <span style={{ width: '38px' }}>{a.age}</span>
-                              <div style={{ flex: 1, background: '#eef1fb', borderRadius: '3px', height: '10px' }}><div style={{ width: `${a.pct * 100}%`, background: '#4a86e8', height: '10px', borderRadius: '3px' }} /></div>
+                              <div style={{ flex: 1, background: T.soft, borderRadius: '3px', height: '10px' }}><div style={{ width: `${a.pct * 100}%`, background: T.accent2, height: '10px', borderRadius: '3px' }} /></div>
                               <span style={{ width: '38px', textAlign: 'right' }}>{(a.pct * 100).toFixed(1)}%</span>
                             </div>
                           )) : <span style={{ fontSize: '11px', color: '#999' }}>Sin datos de edad</span>}
