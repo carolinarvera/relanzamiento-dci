@@ -223,12 +223,12 @@ export default function Dashboard() {
             </tr>
             <tr>
               <td style={styles.td}>Alcance redes</td>
-              <td style={styles.td}>{current.meta?.reach || 0}</td>
+              <td style={styles.td}>{(current.meta?.instagram?.reach || 0) + (current.meta?.facebook?.reach || 0)}</td>
               <td style={styles.td}>Meta</td>
             </tr>
             <tr>
               <td style={styles.td}>Engagement redes</td>
-              <td style={styles.td}>{current.meta?.engagement || 0}</td>
+              <td style={styles.td}>{(current.meta?.instagram?.engagement || 0) + (current.meta?.facebook?.engagement || 0)}</td>
               <td style={styles.td}>Meta</td>
             </tr>
           </tbody>
