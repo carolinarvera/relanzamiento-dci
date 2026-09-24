@@ -1,17 +1,19 @@
 import axios from 'axios';
+import { resolveRange } from '../../lib/range';
 
 export const dynamic = 'force-dynamic';
 
 const MONTHS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 
-export async function GET() {
+export async function GET(request) {
   try {
+    const range = resolveRange(new URL(request.url).searchParams);
     const token = await getAccessToken();
     const [axxis, diners] = await Promise.all([
-      buildProperty(token, process.env.GA4_AXXIS_ID, 'axxis'),
-      buildProperty(token, process.env.GA4_DINERS_ID, 'diners'),
+      buildProperty(token, process.env.GA4_AXXIS_ID, 'axxis', range),
+      buildProperty(token, process.env.GA4_DINERS_ID, 'diners', range),
     ]);
-    return Response.json({ axxis: parseGA4Response(axxis), diners: parseGA4Response(diners) });
+    return Response.json({ range, axxis: parseGA4Response(axxis), diners: parseGA4Response(diners) });
   } catch (error) {
     const detail = error.response?.data?.error_description || error.response?.data?.error?.message || error.message;
     console.error('GA4 API Error:', detail);
@@ -92,11 +94,9 @@ async function topArticles(brand, pageList) {
   }));
 }
 
-async function buildSections(token, propertyId, brand, today) {
-  const y = today.getUTCFullYear();
-  const m = today.getUTCMonth();
-  const cur = { startDate: iso(new Date(Date.UTC(y, m - 1, 1))), endDate: iso(new Date(Date.UTC(y, m, 0))) };
-  const prev = { startDate: iso(new Date(Date.UTC(y, m - 2, 1))), endDate: iso(new Date(Date.UTC(y, m - 1, 0))) };
+async function buildSections(token, propertyId, brand, range) {
+  const cur = { startDate: range.start, endDate: range.end };
+  const prev = { startDate: range.prevStart, endDate: range.prevEnd };
 
   const rows = await runReport(token, propertyId, {
     dateRanges: [{ ...cur, name: 'cur' }, { ...prev, name: 'prev' }],
@@ -140,10 +140,8 @@ async function buildSections(token, propertyId, brand, today) {
   return { articles, sections, summary: top ? { topSection: top.label, topArticle: top.topPages[0]?.path || null } : null };
 }
 
-async function buildAudience(token, propertyId, today) {
-  const y = today.getUTCFullYear();
-  const m = today.getUTCMonth();
-  const range = { startDate: iso(new Date(Date.UTC(y, m - 1, 1))), endDate: iso(new Date(Date.UTC(y, m, 0))) };
+async function buildAudience(token, propertyId, r) {
+  const range = { startDate: r.start, endDate: r.end };
   const rep = (dimension, metrics, extra = {}) =>
     runReport(token, propertyId, { dateRanges: [range], dimensions: [{ name: dimension }], metrics: metrics.map((name) => ({ name })), ...extra });
 
@@ -193,23 +191,30 @@ async function buildAudience(token, propertyId, today) {
   };
 }
 
-async function buildProperty(token, propertyId, brand) {
+async function buildProperty(token, propertyId, brand, range) {
   const today = new Date();
   const monthStart = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), 1));
   const dayOfMonth = today.getUTCDate() - 1 || 1;
-  const yearStart = `${today.getUTCFullYear()}-01-01`;
+  const yearStart = `${range.end.slice(0, 4)}-01-01`;
   const prevMonthStart = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, 1));
   const prevSameDay = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, dayOfMonth));
 
-  const [monthly, daily, partial, sectionData, audience] = await Promise.all([
+  const [kpis, monthly, daily, partial, sectionData, audience] = await Promise.all([
     runReport(token, propertyId, {
-      dateRanges: [{ startDate: yearStart, endDate: 'today' }],
-      dimensions: [{ name: 'yearMonth' }],
+      dateRanges: [
+        { startDate: range.start, endDate: range.end, name: 'cur' },
+        { startDate: range.prevStart, endDate: range.prevEnd, name: 'prev' },
+      ],
       metrics: ['sessions', 'screenPageViews', 'totalUsers', 'newUsers', 'bounceRate', 'averageSessionDuration', 'engagementRate'].map((name) => ({ name })),
+    }),
+    runReport(token, propertyId, {
+      dateRanges: [{ startDate: yearStart, endDate: range.end }],
+      dimensions: [{ name: 'yearMonth' }],
+      metrics: ['sessions', 'screenPageViews', 'totalUsers'].map((name) => ({ name })),
       orderBys: [{ dimension: { dimensionName: 'yearMonth' } }],
     }),
     runReport(token, propertyId, {
-      dateRanges: [{ startDate: iso(prevMonthStart), endDate: 'today' }],
+      dateRanges: [{ startDate: range.start, endDate: range.end }],
       dimensions: [{ name: 'date' }],
       metrics: [{ name: 'screenPageViews' }],
       orderBys: [{ dimension: { dimensionName: 'date' } }],
@@ -221,28 +226,25 @@ async function buildProperty(token, propertyId, brand) {
       ],
       metrics: [{ name: 'screenPageViews' }, { name: 'totalUsers' }],
     }),
-    buildSections(token, propertyId, brand, today),
-    buildAudience(token, propertyId, today),
+    buildSections(token, propertyId, brand, range),
+    buildAudience(token, propertyId, range),
   ]);
 
-  const currentYm = `${today.getUTCFullYear()}${String(today.getUTCMonth() + 1).padStart(2, '0')}`;
-  const closed = monthly.filter((r) => r.dimensionValues[0].value !== currentYm);
-  const last = closed[closed.length - 1];
-  const prior = closed[closed.length - 2];
+  const byName = (rows, name) => rows.find((r) => r.dimensionValues.some((v) => v.value === name));
+  const last = byName(kpis, 'cur');
+  const prior = byName(kpis, 'prev') || { metricValues: kpis[0].metricValues.map(() => ({ value: 0 })) };
 
-  const monthlyHistory = closed.map((r) => ({
+  const monthlyHistory = monthly.map((r) => ({
     month: `${MONTHS[Number(r.dimensionValues[0].value.slice(4)) - 1]} ${r.dimensionValues[0].value.slice(0, 4)}`,
     sesiones: num(r, 0), vistas: num(r, 1), usuarios: num(r, 2),
   }));
 
-  const dailyViews = daily
-    .filter((r) => r.dimensionValues[0].value >= iso(new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, 1))).replace(/-/g, ''))
-    .map((r) => {
-      const d = r.dimensionValues[0].value;
-      return { label: `${Number(d.slice(6))} ${MONTHS[Number(d.slice(4, 6)) - 1]}`, value: num(r, 0) };
-    });
+  const dailyViews = daily.map((r) => {
+    const d = r.dimensionValues[0].value;
+    return { label: `${Number(d.slice(6))} ${MONTHS[Number(d.slice(4, 6)) - 1]}`, value: num(r, 0) };
+  });
 
-  const dr = (name) => partial.find((r) => r.dimensionValues.some((v) => v.value === name));
+  const dr = (name) => byName(partial, name);
   const cur = dr('cur');
   const prev = dr('prev');
 

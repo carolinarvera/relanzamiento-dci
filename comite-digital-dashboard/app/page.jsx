@@ -3,11 +3,30 @@
 import { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid, LabelList, Cell, PieChart, Pie, AreaChart, Area, ReferenceDot, ReferenceLine } from 'recharts';
 
+const MONTH_NAMES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+const isoDate = (d) => d.toISOString().slice(0, 10);
+
+function presetOptions() {
+  const now = new Date();
+  const y = now.getUTCFullYear();
+  const opts = [
+    { label: 'Mes actual (hasta hoy)', value: `${isoDate(new Date(Date.UTC(y, now.getUTCMonth(), 1)))}|${isoDate(now)}` },
+    { label: 'Últimos 30 días', value: `${isoDate(new Date(now.getTime() - 29 * 86400000))}|${isoDate(now)}` },
+    { label: 'Últimos 7 días', value: `${isoDate(new Date(now.getTime() - 6 * 86400000))}|${isoDate(now)}` },
+  ];
+  for (let m = now.getUTCMonth() - 1; m >= 0; m -= 1) {
+    opts.push({ label: `${MONTH_NAMES[m]} ${y}`, value: `${isoDate(new Date(Date.UTC(y, m, 1)))}|${isoDate(new Date(Date.UTC(y, m + 1, 0)))}` });
+  }
+  return opts;
+}
+
 export default function Dashboard() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState('axxis');
+  const [range, setRange] = useState(null);
+  const [draft, setDraft] = useState({ start: '', end: '' });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -23,7 +42,8 @@ export default function Dashboard() {
             return { name, error: e.message };
           }
         };
-        const results = await Promise.all([load('Search Console', '/api/gsc'), load('GA4', '/api/ga4'), load('Meta', '/api/meta')]);
+        const qs = range ? `?start=${range.start}&end=${range.end}` : '';
+        const results = await Promise.all([load('Search Console', `/api/gsc${qs}`), load('GA4', `/api/ga4${qs}`), load('Meta', `/api/meta${qs}`)]);
         const [gsc, ga4, meta] = results;
         const errs = results.filter((r) => r.error).map((r) => `${r.name}: ${r.error}`);
         (meta.json?.errors || []).forEach((e) => errs.push(`Meta ${e}`));
@@ -39,9 +59,9 @@ export default function Dashboard() {
     fetchData();
     const interval = setInterval(fetchData, 300000); // Refresh cada 5 min
     return () => clearInterval(interval);
-  }, []);
+  }, [range]);
 
-  if (loading) return <div style={{ padding: '40px', textAlign: 'center' }}>Cargando datos...</div>;
+  if (loading && !data) return <div style={{ padding: '40px', textAlign: 'center' }}>Cargando datos...</div>;
   if (error) return <div style={{ padding: '40px', color: 'red' }}>Error: {error}</div>;
   if (!data) return <div style={{ padding: '40px' }}>Sin datos</div>;
 
@@ -97,6 +117,7 @@ export default function Dashboard() {
   };
 
   const current = activeTab === 'axxis' ? axxisData : dinersData;
+  const rangeLabel = data.ga4?.range?.label || data.gsc?.range?.label || '';
   const nf = (v) => (v === undefined || v === null ? '\u2014' : Number(v).toLocaleString('es-CO'));
 
   return (
@@ -107,6 +128,34 @@ export default function Dashboard() {
           <button style={styles.tabBtn(activeTab === 'axxis')} onClick={() => setActiveTab('axxis')}>AXXIS</button>
           <button style={styles.tabBtn(activeTab === 'diners')} onClick={() => setActiveTab('diners')}>DINERS</button>
         </div>
+      </div>
+
+      <div style={{ ...styles.card, display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center', marginBottom: '20px' }}>
+        <strong style={{ fontSize: '13px' }}>Periodo del informe:</strong>
+        <select
+          style={{ padding: '8px', borderRadius: '4px', border: '1px solid #ccc' }}
+          value=""
+          onChange={(e) => {
+            const v = e.target.value;
+            if (!v) return;
+            if (v === 'default') { setRange(null); setDraft({ start: '', end: '' }); return; }
+            const [a, b] = v.split('|');
+            setRange({ start: a, end: b });
+            setDraft({ start: a, end: b });
+          }}
+        >
+          <option value="">Atajos…</option>
+          <option value="default">Último mes cerrado (por defecto)</option>
+          {presetOptions().map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+        </select>
+        <input type="date" value={draft.start || data.ga4?.range?.start || ''} max={new Date().toISOString().slice(0, 10)} onChange={(e) => setDraft({ ...draft, start: e.target.value, end: draft.end || data.ga4?.range?.end || '' })} style={{ padding: '7px', borderRadius: '4px', border: '1px solid #ccc' }} />
+        <span>a</span>
+        <input type="date" value={draft.end || data.ga4?.range?.end || ''} max={new Date().toISOString().slice(0, 10)} onChange={(e) => setDraft({ ...draft, end: e.target.value, start: draft.start || data.ga4?.range?.start || '' })} style={{ padding: '7px', borderRadius: '4px', border: '1px solid #ccc' }} />
+        <button
+          style={{ padding: '8px 16px', border: 'none', borderRadius: '4px', background: '#0066cc', color: 'white', cursor: 'pointer', fontWeight: 600 }}
+          onClick={() => { if (draft.start && draft.end && draft.start <= draft.end) setRange({ start: draft.start, end: draft.end }); }}
+        >Aplicar</button>
+        <span style={{ fontSize: '13px', color: '#666' }}>{loading ? 'Actualizando…' : `Mostrando: ${rangeLabel}`} · variación vs periodo anterior equivalente</span>
       </div>
 
       {data.errors?.length > 0 && (
@@ -123,12 +172,12 @@ export default function Dashboard() {
           <div style={styles.card}>
             <div style={styles.cardTitle}>Clics</div>
             <div style={styles.cardValue}>{nf(current.gsc?.clicks)}</div>
-            <div style={styles.cardSubtext}>últimos 30 días</div>
+            <div style={styles.cardSubtext}>{rangeLabel}</div>
           </div>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Impresiones</div>
             <div style={styles.cardValue}>{nf(current.gsc?.impressions)}</div>
-            <div style={styles.cardSubtext}>últimos 30 días</div>
+            <div style={styles.cardSubtext}>{rangeLabel}</div>
           </div>
           <div style={styles.card}>
             <div style={styles.cardTitle}>CTR Promedio</div>
@@ -248,7 +297,7 @@ export default function Dashboard() {
               </div>
               <div>
                 <div style={styles.card}>
-                  <div style={styles.cardTitle}>Vistas {current.ga4.monthlyHistory?.[current.ga4.monthlyHistory.length - 1]?.month}</div>
+                  <div style={styles.cardTitle}>Vistas {rangeLabel}</div>
                   <div style={styles.cardValue}>{nf(current.ga4?.pageviews)}</div>
                 </div>
                 {current.ga4.septPartial && (
@@ -270,7 +319,7 @@ export default function Dashboard() {
             </div>
             {current.ga4.sections?.length > 0 && (
               <div style={{ marginTop: '30px' }}>
-                <h2 style={styles.sectionTitle}>Vistas por sección ({current.ga4.monthlyHistory?.[current.ga4.monthlyHistory.length - 1]?.month})</h2>
+                <h2 style={styles.sectionTitle}>Vistas por sección ({rangeLabel})</h2>
                 {current.ga4.sections.map((sec) => (
                   <div key={sec.slug} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '20px' }}>
                     <div style={styles.card}>
@@ -333,7 +382,7 @@ export default function Dashboard() {
                     <tr style={{ background: '#262626', color: 'white' }}>
                       <th style={{ padding: '12px' }}></th>
                       <th style={{ padding: '12px', textAlign: 'left' }}>FECHA DE PUBLICACIÓN</th>
-                      <th style={{ padding: '12px', textAlign: 'left' }}>Los artículos más leídos {current.ga4.monthlyHistory?.[current.ga4.monthlyHistory.length - 1]?.month}</th>
+                      <th style={{ padding: '12px', textAlign: 'left' }}>Los artículos más leídos {rangeLabel}</th>
                       <th style={{ padding: '12px', textAlign: 'right' }}>VISITAS</th>
                       <th style={{ padding: '12px', textAlign: 'left' }}>TEMA</th>
                     </tr>
@@ -477,7 +526,7 @@ export default function Dashboard() {
         ];
         return (
           <div style={styles.section}>
-            <h2 style={styles.sectionTitle}>Facebook · {current.ga4?.monthlyHistory?.[current.ga4.monthlyHistory.length - 1]?.month}</h2>
+            <h2 style={styles.sectionTitle}>Facebook · {rangeLabel}</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Seguidores</div>
@@ -551,17 +600,17 @@ export default function Dashboard() {
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Alcance</div>
                 <div style={styles.cardValue}>{nf(ig?.reach)}</div>
-                <div style={styles.cardSubtext}>últimos 30 días</div>
+                <div style={styles.cardSubtext}>{rangeLabel}</div>
               </div>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Interacciones</div>
                 <div style={styles.cardValue}>{nf(ig?.engagement)}</div>
-                <div style={styles.cardSubtext}>últimos 30 días</div>
+                <div style={styles.cardSubtext}>{rangeLabel}</div>
               </div>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Visitas al perfil</div>
                 <div style={styles.cardValue}>{nf(ig?.impressions)}</div>
-                <div style={styles.cardSubtext}>últimos 30 días</div>
+                <div style={styles.cardSubtext}>{rangeLabel}</div>
               </div>
             </div>
             {d && (

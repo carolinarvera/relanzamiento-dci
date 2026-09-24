@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { resolveRange } from '../../lib/range';
 
 async function getPageAccessTokens(userToken) {
   try {
@@ -36,15 +37,16 @@ async function fbRange(pageId, pageToken, since, until) {
   return out;
 }
 
-async function fbDetail(pageId, pageToken, errors, label) {
+async function fbDetail(pageId, pageToken, errors, label, r) {
   try {
-    const now = new Date();
-    const u = Math.floor(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1) / 1000);
-    const m1 = Math.floor(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - 1, 1) / 1000);
-    const m2 = Math.floor(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() - 2, 1) / 1000);
+    const day = (d, plus = 0) => Math.floor(Date.parse(`${d}T00:00:00Z`) / 1000) + plus * 86400;
+    const u = day(r.end, 1);
+    const m1 = day(r.start);
+    const m2 = day(r.prevStart);
+    const pu = day(r.prevEnd, 1);
     const [cur, prev, page, cityRes] = await Promise.all([
       fbRange(pageId, pageToken, m1, u),
-      fbRange(pageId, pageToken, m2, m1),
+      fbRange(pageId, pageToken, m2, pu),
       axios.get(`https://graph.facebook.com/v19.0/${pageId}`, { params: { fields: 'followers_count', access_token: pageToken } }),
       axios.get(`https://graph.facebook.com/v19.0/${pageId}/insights`, {
         params: { metric: 'page_follows_city', period: 'day', access_token: pageToken },
@@ -105,15 +107,17 @@ async function igDetail(igId, token, errors, label) {
   }
 }
 
-export async function GET() {
+export async function GET(request) {
   try {
+    const range = resolveRange(new URL(request.url).searchParams);
+    const toUnix = (d, plusDay = 0) => Math.floor(Date.parse(`${d}T00:00:00Z`) / 1000) + plusDay * 86400;
     const token = process.env.META_ACCESS_TOKEN;
     if (!token) throw new Error('META_ACCESS_TOKEN no configurado');
 
     // IDs de Instagram Business Account (usados vía Facebook Graph API)
     const errors = [];
-    const until = Math.floor(Date.now() / 1000);
-    const since = until - 29 * 86400;
+    const until = toUnix(range.end, 1);
+    const since = Math.max(toUnix(range.start), until - 30 * 86400);
     const axxisIgId = process.env.META_AXXIS_PAGE_ID || 'default';
     const dinersIgId = process.env.META_DINERS_PAGE_ID || 'default';
     // IDs de página de Facebook (distintos a los de Instagram)
@@ -194,13 +198,14 @@ export async function GET() {
     ]);
 
     const [axxisFbD, dinersFbD, axxisIgD, dinersIgD] = await Promise.all([
-      fbDetail(axxisFbId, axxisFbToken, errors, 'AXXIS'),
-      fbDetail(dinersFbId, dinersFbToken, errors, 'Diners'),
+      fbDetail(axxisFbId, axxisFbToken, errors, 'AXXIS', range),
+      fbDetail(dinersFbId, dinersFbToken, errors, 'Diners', range),
       igDetail(axxisIgId, token, errors, 'AXXIS'),
       igDetail(dinersIgId, token, errors, 'Diners'),
     ]);
 
     return Response.json({
+      range,
       errors,
       axxis: {
         instagram: { ...parseInstagramResponse(axxisIgRes.data), detail: axxisIgD },
