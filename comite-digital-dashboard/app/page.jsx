@@ -3,6 +3,30 @@
 import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid, LabelList, Cell, PieChart, Pie, AreaChart, Area, ReferenceDot, ReferenceLine } from 'recharts';
 
+const CHANNEL_GROUPS = [
+  { name: 'Pauta', color: '#d84315', channels: ['Paid Social', 'Paid Search', 'Paid Other', 'Paid Video', 'Paid Shopping', 'Display', 'Cross-network'] },
+  { name: 'Orgánico', color: '#2e7d32', channels: ['Organic Search', 'Organic Social', 'Organic Video', 'Organic Shopping'] },
+  { name: 'Directo', color: '#1a4fb3', channels: ['Direct'] },
+  { name: 'Email', color: '#6a1b9a', channels: ['Email'] },
+  { name: 'Referido', color: '#00838f', channels: ['Referral', 'Affiliates'] },
+  { name: 'Asistentes de IA', color: '#f9a825', channels: ['AI Assistant'] },
+];
+
+function groupChannels(all) {
+  const known = new Set(CHANNEL_GROUPS.flatMap((g) => g.channels));
+  const sum = (items, key) => items.reduce((x, c) => x + (c[key] || 0), 0);
+  return [...CHANNEL_GROUPS, { name: 'No asignado / otros', color: '#757575', channels: null }]
+    .map((g) => {
+      const items = all.filter((c) => (g.channels ? g.channels.includes(c.name) : !known.has(c.name)));
+      return {
+        ...g, items,
+        sessions: sum(items, 'sessions'), views: sum(items, 'views'), users: sum(items, 'users'),
+        pct: sum(items, 'pct'), prevPct: sum(items, 'prevPct'), prevViews: sum(items, 'prevViews'),
+      };
+    })
+    .filter((g) => g.items.length > 0);
+}
+
 const MONTH_NAMES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 const isoDate = (d) => d.toISOString().slice(0, 10);
 
@@ -453,6 +477,40 @@ export default function Dashboard() {
             {current.ga4.audience && (
               <div style={{ marginTop: '30px' }}>
                 <h2 style={styles.sectionTitle}>Datos demográficos relevantes</h2>
+                {(() => {
+                  const groups = groupChannels(current.ga4.audience.channels).filter((g) => g.pct > 0);
+                  const chip = (v) => (v === null || v === undefined || !Number.isFinite(v) ? null : (
+                    <span style={{ fontSize: '12px', fontWeight: 700, padding: '1px 6px', borderRadius: '3px', marginLeft: '6px', background: v >= 0 ? '#e3f4e6' : '#fbe4e4', color: v >= 0 ? '#2e7d32' : '#b71c1c' }}>
+                      {v >= 0 ? '\u25B2' : '\u25BC'} {Math.abs(v * 100).toFixed(v > 1 ? 0 : 1)}%
+                    </span>
+                  ));
+                  const rel = (cur, prev) => (prev ? cur / prev - 1 : null);
+                  return (
+                    <div style={{ ...styles.card, marginBottom: '20px', background: '#f3f1ee' }}>
+                      <div style={{ fontSize: '22px', fontWeight: 800, color: '#1c2a6b', marginBottom: '12px' }}>Fuentes de tráfico</div>
+                      <div style={{ display: 'flex', height: '44px', borderRadius: '22px', overflow: 'hidden', background: '#ddd' }}>
+                        {groups.map((g) => (
+                          <div key={g.name} title={`${g.name} ${(g.pct * 100).toFixed(1)}%`} style={{ width: `${g.pct * 100}%`, background: g.color }} />
+                        ))}
+                      </div>
+                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: '18px', marginTop: '16px' }}>
+                        {groups.map((g) => (
+                          <div key={g.name} style={{ borderTop: `3px solid ${g.color}`, paddingTop: '8px' }}>
+                            <div style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap' }}>
+                              <span style={{ fontSize: '30px', fontWeight: 800, color: '#111' }}>{(g.pct * 100).toFixed(g.pct < 0.1 ? 1 : 0)}%</span>
+                              {chip(rel(g.pct, g.prevPct))}
+                            </div>
+                            <div style={{ fontSize: '15px', fontWeight: 700, color: '#1c2a6b' }}>{g.name}</div>
+                            <div style={{ fontSize: '13px', color: '#333', marginTop: '4px' }}>
+                              Visitas <strong>{nf(g.views)}</strong>{chip(rel(g.views, g.prevViews))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      <div style={styles.cardSubtext}>% de sesiones por tipo de fuente; variaciones vs el periodo anterior equivalente. Visitas = vistas de página.</div>
+                    </div>
+                  );
+                })()}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
                   <div>
                     <div style={styles.card}>
@@ -476,27 +534,7 @@ export default function Dashboard() {
                   <div style={styles.card}>
                     <div style={styles.cardTitle}>Fuentes de tráfico (% de sesiones)</div>
                     {(() => {
-                      const GROUPS = [
-                        { name: 'Pauta', color: '#d84315', channels: ['Paid Social', 'Paid Search', 'Paid Other', 'Paid Video', 'Paid Shopping', 'Display', 'Cross-network'] },
-                        { name: 'Orgánico', color: '#2e7d32', channels: ['Organic Search', 'Organic Social', 'Organic Video', 'Organic Shopping'] },
-                        { name: 'Directo', color: '#1a4fb3', channels: ['Direct'] },
-                        { name: 'Email', color: '#6a1b9a', channels: ['Email'] },
-                        { name: 'Referido', color: '#00838f', channels: ['Referral', 'Affiliates'] },
-                        { name: 'Asistentes de IA', color: '#f9a825', channels: ['AI Assistant'] },
-                      ];
-                      const all = current.ga4.audience.channels;
-                      const known = new Set(GROUPS.flatMap((g) => g.channels));
-                      const groups = [...GROUPS, { name: 'No asignado / otros', color: '#757575', channels: null }].map((g) => {
-                        const items = all.filter((c) => (g.channels ? g.channels.includes(c.name) : !known.has(c.name)));
-                        return {
-                          ...g,
-                          items,
-                          sessions: items.reduce((x, c) => x + c.sessions, 0),
-                          views: items.reduce((x, c) => x + c.views, 0),
-                          users: items.reduce((x, c) => x + c.users, 0),
-                          pct: items.reduce((x, c) => x + c.pct, 0),
-                        };
-                      }).filter((g) => g.items.length > 0);
+                      const groups = groupChannels(current.ga4.audience.channels);
                       return (
                         <>
                           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', margin: '14px 0' }}>

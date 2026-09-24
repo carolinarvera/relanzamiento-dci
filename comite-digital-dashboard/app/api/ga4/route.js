@@ -156,7 +156,7 @@ async function buildAudience(token, propertyId, r, brand) {
     runReport(token, propertyId, { dateRanges: [range], dimensions: [{ name: dimension }], metrics: metrics.map((name) => ({ name })), ...extra });
 
   const aiFilter = { filter: { fieldName: 'sessionDefaultChannelGroup', stringFilter: { matchType: 'EXACT', value: 'AI Assistant' } } };
-  const [devices, channels, gender, age, ageGender, cityRows, countryRows, aiSources, aiLanding] = await Promise.all([
+  const [devices, channels, gender, age, ageGender, cityRows, countryRows, aiSources, aiLanding, prevChannels] = await Promise.all([
     rep('deviceCategory', ['totalUsers']),
     rep('sessionDefaultChannelGroup', ['sessions', 'screenPageViews', 'totalUsers'], { orderBys: [{ metric: { metricName: 'sessions' }, desc: true }] }),
     rep('userGender', ['totalUsers']).catch(() => []),
@@ -171,7 +171,15 @@ async function buildAudience(token, propertyId, r, brand) {
     rep('country', ['totalUsers'], { limit: 4, metricAggregations: ['TOTAL'], orderBys: [{ metric: { metricName: 'totalUsers' }, desc: true }] }).catch(() => []),
     rep('sessionSource', ['sessions', 'screenPageViews', 'totalUsers'], { dimensionFilter: aiFilter, orderBys: [{ metric: { metricName: 'sessions' }, desc: true }], limit: 10 }).catch(() => []),
     rep('landingPage', ['sessions'], { dimensionFilter: aiFilter, orderBys: [{ metric: { metricName: 'sessions' }, desc: true }], limit: 30 }).catch(() => []),
+    runReport(token, propertyId, {
+      dateRanges: [{ startDate: r.prevStart, endDate: r.prevEnd }],
+      dimensions: [{ name: 'sessionDefaultChannelGroup' }],
+      metrics: [{ name: 'sessions' }, { name: 'screenPageViews' }],
+    }).catch(() => []),
   ]);
+  const prevByName = {};
+  prevChannels.forEach((row) => { prevByName[row.dimensionValues[0].value] = { sessions: Number(row.metricValues[0].value), views: Number(row.metricValues[1].value) }; });
+  const prevSessionsTotal = Object.values(prevByName).reduce((a, c) => a + c.sessions, 0);
   const aiPages = await topArticles(brand, aiLanding.map((r) => ({ path: r.dimensionValues[0].value, views: Number(r.metricValues[0].value) })));
   const geo = (rows) => {
     const total = Number(rows.totals?.[0]?.value || 0);
@@ -197,6 +205,9 @@ async function buildAudience(token, propertyId, r, brand) {
       views: Number(r.metricValues[1].value),
       users: Number(r.metricValues[2].value),
       pct: sessionsTotal ? Number(r.metricValues[0].value) / sessionsTotal : 0,
+      prevSessions: prevByName[r.dimensionValues[0].value]?.sessions ?? 0,
+      prevViews: prevByName[r.dimensionValues[0].value]?.views ?? 0,
+      prevPct: prevSessionsTotal ? (prevByName[r.dimensionValues[0].value]?.sessions ?? 0) / prevSessionsTotal : 0,
     })),
     ageGender: (() => {
       const valid = ageGender.filter((r) => ['female', 'male'].includes(r.dimensionValues[1].value) && r.dimensionValues[0].value !== 'unknown');
