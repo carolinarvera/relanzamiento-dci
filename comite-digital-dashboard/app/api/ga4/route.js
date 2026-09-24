@@ -85,7 +85,7 @@ async function buildSections(token, propertyId, brand, today) {
   if (!defs) {
     const totals = {};
     pages.cur.forEach((p) => { const sl = sectionOf(p.path); if (sl) totals[sl] = (totals[sl] || 0) + p.views; });
-    defs = Object.entries(totals).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([slug]) => ({ slug, label: cap(slug) }));
+    defs = Object.entries(totals).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([slug]) => ({ slug, label: cap(slug.replace(/-/g, ' ')) }));
   }
 
   const sections = await Promise.all(defs.map(async ({ slug, label }) => {
