@@ -188,6 +188,29 @@ export default function Dashboard() {
             <div style={styles.cardSubtext}>El último mes ({current.ga4.monthlyHistory[current.ga4.monthlyHistory.length - 1]?.month}) se destaca en color más oscuro</div>
           </div>
         )}
+
+        <div style={{ ...styles.grid, marginTop: '20px' }}>
+          <div style={styles.card}>
+            <div style={styles.cardTitle}>Usuarios Nuevos</div>
+            <div style={styles.cardValue}>{(current.ga4?.newUsers || 0).toLocaleString('es-CO')}</div>
+            {renderChange(current.ga4?.newUsersChange)}
+          </div>
+          <div style={styles.card}>
+            <div style={styles.cardTitle}>Duración Media Sesión</div>
+            <div style={styles.cardValue}>{current.ga4?.avgSessionDuration || '00:00:00'}</div>
+            {renderChange(current.ga4?.avgSessionDurationChange)}
+          </div>
+          <div style={styles.card}>
+            <div style={styles.cardTitle}>Porcentaje de Rebote</div>
+            <div style={styles.cardValue}>{current.ga4?.bounceRate ? (current.ga4.bounceRate * 100).toFixed(0) : 0}%</div>
+            {renderChange(current.ga4?.bounceRateChange)}
+          </div>
+          <div style={styles.card}>
+            <div style={styles.cardTitle}>Porcentaje de Interacciones</div>
+            <div style={styles.cardValue}>{current.ga4?.engagementRate ? (current.ga4.engagementRate * 100).toFixed(2) : 0}%</div>
+            {renderChange(current.ga4?.engagementRateChange)}
+          </div>
+        </div>
       </div>
 
       {/* Instagram */}
