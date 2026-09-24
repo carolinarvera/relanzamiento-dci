@@ -70,7 +70,7 @@ export default function Dashboard() {
         setLoading(true);
         const load = async (name, url) => {
           try {
-            const r = await fetch(url, { cache: 'no-store' });
+            const r = await fetch(url, url.startsWith('/api/pauta') ? {} : { cache: 'no-store' });
             const j = await r.json();
             if (!r.ok) return { name, error: j.error || `HTTP ${r.status}` };
             return { name, json: j };
