@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid, LabelList, Cell, AreaChart, Area, ReferenceDot, ReferenceLine } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid, LabelList, Cell, PieChart, Pie, AreaChart, Area, ReferenceDot, ReferenceLine } from 'recharts';
 
 export default function Dashboard() {
   const [data, setData] = useState(null);
@@ -350,6 +350,91 @@ export default function Dashboard() {
                     ))}
                   </tbody>
                 </table>
+              </div>
+            )}
+
+            {current.ga4.audience && (
+              <div style={{ marginTop: '30px' }}>
+                <h2 style={styles.sectionTitle}>Datos demográficos relevantes</h2>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+                  <div>
+                    <div style={styles.card}>
+                      <div style={styles.cardTitle}>Usuarios nuevos</div>
+                      <div style={styles.cardValue}>{nf(current.ga4.newUsers)}</div>
+                    </div>
+                    <div style={{ ...styles.card, marginTop: '20px' }}>
+                      <div style={styles.cardTitle}>Dispositivos usados para conectarse</div>
+                      {current.ga4.audience.devices.map((d) => (
+                        <div key={d.name} style={{ marginTop: '12px' }}>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', textTransform: 'capitalize' }}>
+                            <span>{d.name}</span><strong>{(d.pct * 100).toFixed(1)}%</strong>
+                          </div>
+                          <div style={{ background: '#e8eefc', borderRadius: '4px', height: '10px' }}>
+                            <div style={{ width: `${d.pct * 100}%`, background: '#4a86e8', height: '10px', borderRadius: '4px' }} />
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div style={styles.card}>
+                    <div style={styles.cardTitle}>Fuentes de tráfico (% de sesiones)</div>
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', margin: '14px 0' }}>
+                      {current.ga4.audience.channels.map((c) => (
+                        <div key={c.name}>
+                          <div style={{ fontSize: '24px', fontWeight: 700, color: '#222' }}>{(c.pct * 100).toFixed(1)}%</div>
+                          <div style={{ fontSize: '12px', color: '#666' }}>{c.name}</div>
+                        </div>
+                      ))}
+                    </div>
+                    <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse' }}>
+                      <thead>
+                        <tr style={{ background: '#1a4fb3', color: 'white' }}>
+                          <th style={{ padding: '6px', textAlign: 'left' }}>Grupo de canal</th>
+                          <th style={{ padding: '6px', textAlign: 'right' }}>Sesiones</th>
+                          <th style={{ padding: '6px', textAlign: 'right' }}>Vistas</th>
+                          <th style={{ padding: '6px', textAlign: 'right' }}>Usuarios</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {current.ga4.audience.channels.map((c) => (
+                          <tr key={c.name}>
+                            <td style={{ padding: '6px', borderBottom: '1px solid #eee' }}>{c.name}</td>
+                            <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(c.sessions)}</td>
+                            <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(c.views)}</td>
+                            <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(c.users)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                  <div style={styles.card}>
+                    <div style={styles.cardTitle}>Sexo y edad lectores</div>
+                    {current.ga4.audience.gender.length > 0 ? (
+                      <div style={{ margin: '10px 0', fontSize: '24px', fontWeight: 700 }}>
+                        {current.ga4.audience.gender.map((g) => (
+                          <div key={g.name} style={{ color: g.name === 'female' ? '#1a73e8' : '#222' }}>
+                            {g.name === 'female' ? 'Mujeres' : g.name === 'male' ? 'Hombres' : g.name} {(g.pct * 100).toFixed(1)}%
+                          </div>
+                        ))}
+                      </div>
+                    ) : <div style={styles.cardSubtext}>Sin datos de sexo (GA4 los omite cuando son muy pocos usuarios)</div>}
+                    {current.ga4.audience.age.length > 0 ? (
+                      <div style={{ width: '100%', height: 260 }}>
+                        <ResponsiveContainer>
+                          <PieChart>
+                            <Pie data={current.ga4.audience.age} dataKey="value" nameKey="name" innerRadius="50%" outerRadius="85%" label={(e) => `${(e.pct * 100).toFixed(1)}%`}>
+                              {current.ga4.audience.age.map((a, k) => (
+                                <Cell key={a.name} fill={['#1a4fb3', '#2f66c6', '#4a86e8', '#7aa6ee', '#a9c4f5', '#cfdcf7'][k % 6]} />
+                              ))}
+                            </Pie>
+                            <Tooltip formatter={(v) => v.toLocaleString('es-CO')} />
+                            <Legend />
+                          </PieChart>
+                        </ResponsiveContainer>
+                      </div>
+                    ) : <div style={styles.cardSubtext}>Sin datos de edad</div>}
+                  </div>
+                </div>
               </div>
             )}
 

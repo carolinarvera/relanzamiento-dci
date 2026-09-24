@@ -140,6 +140,42 @@ async function buildSections(token, propertyId, brand, today) {
   return { articles, sections, summary: top ? { topSection: top.label, topArticle: top.topPages[0]?.path || null } : null };
 }
 
+async function buildAudience(token, propertyId, today) {
+  const y = today.getUTCFullYear();
+  const m = today.getUTCMonth();
+  const range = { startDate: iso(new Date(Date.UTC(y, m - 1, 1))), endDate: iso(new Date(Date.UTC(y, m, 0))) };
+  const rep = (dimension, metrics, extra = {}) =>
+    runReport(token, propertyId, { dateRanges: [range], dimensions: [{ name: dimension }], metrics: metrics.map((name) => ({ name })), ...extra });
+
+  const [devices, channels, gender, age] = await Promise.all([
+    rep('deviceCategory', ['totalUsers']),
+    rep('sessionDefaultChannelGroup', ['sessions', 'screenPageViews', 'totalUsers'], { orderBys: [{ metric: { metricName: 'sessions' }, desc: true }] }),
+    rep('userGender', ['totalUsers']).catch(() => []),
+    rep('userAgeBracket', ['totalUsers'], { orderBys: [{ dimension: { dimensionName: 'userAgeBracket' } }] }).catch(() => []),
+  ]);
+
+  const share = (rows, idx = 0) => {
+    const total = rows.reduce((a, r) => a + Number(r.metricValues[idx].value), 0);
+    return rows.map((r) => ({ name: r.dimensionValues[0].value, value: Number(r.metricValues[idx].value), pct: total ? Number(r.metricValues[idx].value) / total : 0 }));
+  };
+  const known = (list) => list.filter((x) => x.name !== 'unknown' && x.name !== '(not set)');
+  const renorm = (list) => { const t = list.reduce((a, x) => a + x.value, 0); return list.map((x) => ({ ...x, pct: t ? x.value / t : 0 })); };
+
+  const sessionsTotal = channels.reduce((a, r) => a + Number(r.metricValues[0].value), 0);
+  return {
+    devices: share(devices).sort((a, b) => b.pct - a.pct),
+    channels: channels.map((r) => ({
+      name: r.dimensionValues[0].value,
+      sessions: Number(r.metricValues[0].value),
+      views: Number(r.metricValues[1].value),
+      users: Number(r.metricValues[2].value),
+      pct: sessionsTotal ? Number(r.metricValues[0].value) / sessionsTotal : 0,
+    })),
+    gender: renorm(known(share(gender))),
+    age: renorm(known(share(age))),
+  };
+}
+
 async function buildProperty(token, propertyId, brand) {
   const today = new Date();
   const monthStart = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), 1));
@@ -148,7 +184,7 @@ async function buildProperty(token, propertyId, brand) {
   const prevMonthStart = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, 1));
   const prevSameDay = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, dayOfMonth));
 
-  const [monthly, daily, partial, sectionData] = await Promise.all([
+  const [monthly, daily, partial, sectionData, audience] = await Promise.all([
     runReport(token, propertyId, {
       dateRanges: [{ startDate: yearStart, endDate: 'today' }],
       dimensions: [{ name: 'yearMonth' }],
@@ -169,6 +205,7 @@ async function buildProperty(token, propertyId, brand) {
       metrics: [{ name: 'screenPageViews' }, { name: 'totalUsers' }],
     }),
     buildSections(token, propertyId, brand, today),
+    buildAudience(token, propertyId, today),
   ]);
 
   const currentYm = `${today.getUTCFullYear()}${String(today.getUTCMonth() + 1).padStart(2, '0')}`;
@@ -215,6 +252,7 @@ async function buildProperty(token, propertyId, brand) {
     monthlyHistory,
     sections: sectionData.sections,
     topArticles: sectionData.articles,
+    audience,
     sectionSummary: sectionData.summary,
     dailyViews,
     dailyPeaks,
@@ -249,6 +287,7 @@ function parseGA4Response(res) {
     dailyPeaks: res.dailyPeaks || [],
     sections: res.sections || [],
     topArticles: res.topArticles || [],
+    audience: res.audience || null,
     sectionSummary: res.sectionSummary || null,
     septPartial: res.septPartial || null,
   };
