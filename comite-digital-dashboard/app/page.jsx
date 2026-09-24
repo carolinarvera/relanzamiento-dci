@@ -766,10 +766,6 @@ export default function Dashboard() {
               <div style={styles.cardTitle}>Rendimiento orgánico por páginas (Top 10)</div>
               {table(seo.pages, 'Página')}
             </div>
-            <div style={{ ...styles.card, marginTop: '20px' }}>
-              <div style={styles.cardTitle}>Rendimiento orgánico por consultas (Top 10)</div>
-              {table(seo.queries, 'Consulta')}
-            </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px', marginTop: '20px' }}>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Consultas orgánicas según posición (Top 10 mejor posicionadas)</div>
