@@ -16,14 +16,20 @@ export async function GET() {
           period: 'day',
           access_token: token,
         },
-      }).catch(() => ({ data: null })),
+      }).catch((err) => {
+        console.error('AXXIS Instagram error:', err.response?.data || err.message);
+        return { data: null };
+      }),
       axios.get(`https://graph.instagram.com/${dinersPageId}/insights`, {
         params: {
           metric: 'impressions,reach,profile_views,website_clicks,engagement',
           period: 'day',
           access_token: token,
         },
-      }).catch(() => ({ data: null })),
+      }).catch((err) => {
+        console.error('Diners Instagram error:', err.response?.data || err.message);
+        return { data: null };
+      }),
     ]);
 
     // Facebook insights
@@ -34,14 +40,20 @@ export async function GET() {
           period: 'day',
           access_token: token,
         },
-      }).catch(() => ({ data: null })),
+      }).catch((err) => {
+        console.error('AXXIS Facebook error:', err.response?.data || err.message);
+        return { data: null };
+      }),
       axios.get(`https://graph.facebook.com/${dinersPageId}/insights`, {
         params: {
           metric: 'page_impressions,page_fan_adds,page_engaged_users,page_actions_post_like',
           period: 'day',
           access_token: token,
         },
-      }).catch(() => ({ data: null })),
+      }).catch((err) => {
+        console.error('Diners Facebook error:', err.response?.data || err.message);
+        return { data: null };
+      }),
     ]);
 
     return Response.json({
