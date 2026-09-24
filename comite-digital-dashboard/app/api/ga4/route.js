@@ -62,6 +62,36 @@ const FIXED_SECTIONS = {
 const sectionOf = (path) => path.split('/')[1] || '';
 const cap = (t) => t.charAt(0).toUpperCase() + t.slice(1);
 
+const SITE_BASE = { axxis: 'https://revistaaxxis.com.co', diners: 'https://revistadiners.com.co' };
+const decodeEntities = (t) => t
+  .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
+  .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCharCode(parseInt(n, 16)))
+  .replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&nbsp;/g, ' ');
+const MONTH_NAMES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+async function topArticles(brand, pageList) {
+  const articles = pageList
+    .filter((p) => p.path.split('/').filter(Boolean).length >= 2)
+    .sort((a, b) => b.views - a.views)
+    .slice(0, 5);
+  return Promise.all(articles.map(async (a) => {
+    const segs = a.path.split('/').filter(Boolean);
+    const slug = segs[segs.length - 1];
+    let title = null;
+    let date = null;
+    try {
+      const r = await axios.get(`${SITE_BASE[brand]}/wp-json/wp/v2/posts`, { params: { slug, _fields: 'date,title' }, timeout: 8000 });
+      const post = r.data?.[0];
+      if (post) {
+        title = decodeEntities(post.title?.rendered || '');
+        const [yy, mm, dd] = post.date.slice(0, 10).split('-').map(Number);
+        date = `${dd} de ${MONTH_NAMES[mm - 1]} de ${yy}`;
+      }
+    } catch { /* sin título/fecha si el sitio no responde */ }
+    return { path: a.path, views: a.views, title, date, topic: cap(segs[0].replace(/-/g, ' ')) };
+  }));
+}
+
 async function buildSections(token, propertyId, brand, today) {
   const y = today.getUTCFullYear();
   const m = today.getUTCMonth();
@@ -106,7 +136,8 @@ async function buildSections(token, propertyId, brand, today) {
   }));
 
   const top = [...sections].sort((a, b) => b.views - a.views)[0];
-  return { sections, summary: top ? { topSection: top.label, topArticle: top.topPages[0]?.path || null } : null };
+  const articles = await topArticles(brand, pages.cur);
+  return { articles, sections, summary: top ? { topSection: top.label, topArticle: top.topPages[0]?.path || null } : null };
 }
 
 async function buildProperty(token, propertyId, brand) {
@@ -183,6 +214,7 @@ async function buildProperty(token, propertyId, brand) {
     engagementRateChange: pct(num(last, 6), num(prior, 6)),
     monthlyHistory,
     sections: sectionData.sections,
+    topArticles: sectionData.articles,
     sectionSummary: sectionData.summary,
     dailyViews,
     dailyPeaks,
@@ -216,6 +248,7 @@ function parseGA4Response(res) {
     dailyViews: res.dailyViews || [],
     dailyPeaks: res.dailyPeaks || [],
     sections: res.sections || [],
+    topArticles: res.topArticles || [],
     sectionSummary: res.sectionSummary || null,
     septPartial: res.septPartial || null,
   };

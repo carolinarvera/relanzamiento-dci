@@ -326,6 +326,33 @@ export default function Dashboard() {
               </div>
             )}
 
+            {current.ga4.topArticles?.length > 0 && (
+              <div style={{ ...styles.card, marginTop: '20px', padding: 0, overflow: 'hidden' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}>
+                  <thead>
+                    <tr style={{ background: '#262626', color: 'white' }}>
+                      <th style={{ padding: '12px' }}></th>
+                      <th style={{ padding: '12px', textAlign: 'left' }}>FECHA DE PUBLICACIÓN</th>
+                      <th style={{ padding: '12px', textAlign: 'left' }}>Los artículos más leídos {current.ga4.monthlyHistory?.[current.ga4.monthlyHistory.length - 1]?.month}</th>
+                      <th style={{ padding: '12px', textAlign: 'right' }}>VISITAS</th>
+                      <th style={{ padding: '12px', textAlign: 'left' }}>TEMA</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {current.ga4.topArticles.map((a, k) => (
+                      <tr key={a.path} style={{ background: '#f2f2f2' }}>
+                        <td style={{ padding: '12px', textAlign: 'center', borderBottom: '1px dotted #999' }}>{k + 1}</td>
+                        <td style={{ padding: '12px', borderBottom: '1px dotted #999', whiteSpace: 'nowrap' }}>{a.date || '\u2014'}</td>
+                        <td style={{ padding: '12px', borderBottom: '1px dotted #999' }}>{a.title || a.path}</td>
+                        <td style={{ padding: '12px', textAlign: 'right', borderBottom: '1px dotted #999', fontWeight: 600 }}>{nf(a.views)}</td>
+                        <td style={{ padding: '12px', borderBottom: '1px dotted #999' }}>{a.topic}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+
             <div style={{ ...styles.card, marginTop: '20px' }}>
               <div style={styles.cardTitle}>Picos de visitas (calculados de GA4)</div>
               <ul style={{ fontSize: '14px', fontWeight: 600, color: '#222', marginTop: '12px', paddingLeft: '18px' }}>
