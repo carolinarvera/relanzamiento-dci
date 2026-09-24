@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid, LabelList, Cell, PieChart, Pie, AreaChart, Area, ReferenceDot, ReferenceLine } from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid, LabelList, Cell, PieChart, Pie, LineChart, Line, AreaChart, Area, ReferenceDot, ReferenceLine } from 'recharts';
 
 const CHANNEL_GROUPS = [
   { name: 'Pauta', color: '#d84315', channels: ['Paid Social', 'Paid Search', 'Paid Other', 'Paid Video', 'Paid Shopping', 'Display', 'Cross-network'] },
@@ -45,7 +45,7 @@ function presetOptions() {
 }
 
 const SECTIONS = [
-  { key: 'resumen', label: 'Resumen', apis: ['gsc', 'ga4', 'meta'] },
+  { key: 'resumen', label: 'Resumen', apis: ['ga4', 'meta', 'pauta'] },
   { key: 'web', label: 'Web', apis: ['ga4'] },
   { key: 'seo', label: 'SEO', apis: ['gsc', 'seo'] },
   { key: 'redes', label: 'Redes sociales', apis: ['meta'] },
@@ -1248,55 +1248,168 @@ export default function Dashboard() {
       </>
       )}
 
-      {ready && section === 'resumen' && (
-      <>
-      {/* Resumen tabular */}
-      <div style={styles.section}>
-        <h2 style={styles.sectionTitle}>Resumen Consolidado</h2>
-        <table style={styles.table}>
-          <thead>
-            <tr style={{ backgroundColor: '#f0f0f0' }}>
-              <th style={styles.th}>Métrica</th>
-              <th style={styles.th}>Valor</th>
-              <th style={styles.th}>Fuente</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td style={styles.td}>Clics de búsqueda</td>
-              <td style={styles.td}>{nf(current.gsc?.clicks)}</td>
-              <td style={styles.td}>GSC</td>
-            </tr>
-            <tr>
-              <td style={styles.td}>Vistas totales</td>
-              <td style={styles.td}>{nf(current.ga4?.pageviews)}</td>
-              <td style={styles.td}>GA4</td>
-            </tr>
-            <tr>
-              <td style={styles.td}>Sesiones totales</td>
-              <td style={styles.td}>{current.ga4?.sessions || 0}</td>
-              <td style={styles.td}>GA4</td>
-            </tr>
-            <tr>
-              <td style={styles.td}>Alcance redes</td>
-              <td style={styles.td}>{(current.meta?.instagram?.reach || 0) + (current.meta?.facebook?.reach || 0)}</td>
-              <td style={styles.td}>Meta</td>
-            </tr>
-            <tr>
-              <td style={styles.td}>Engagement redes</td>
-              <td style={styles.td}>{(current.meta?.instagram?.engagement || 0) + (current.meta?.facebook?.engagement || 0)}</td>
-              <td style={styles.td}>Meta</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      {ready && section === 'resumen' && (() => {
+        const ga = current.ga4 || {};
+        const hist = ga.monthlyHistory || [];
+        const n = hist.length;
+        const lastChange = n > 1 && hist[n - 2].vistas ? hist[n - 1].vistas / hist[n - 2].vistas - 1 : null;
+        const secs = ga.sections || [];
+        const topSec = secs.slice().sort((x, y) => y.views - x.views)[0];
+        const growth = secs.filter((x) => x !== topSec && x.change !== null && x.change !== undefined).sort((x, y) => y.change - x.change)[0];
+        const art = ga.topArticles?.[0];
+        const groups = ga.audience?.channels ? groupChannels(ga.audience.channels).filter((g) => g.pct > 0) : [];
+        const meta = current.meta || {};
+        const ig = meta.instagram?.detail;
+        const fb = meta.facebook?.detail;
+        const pauta = data.pauta?.global;
+        const cop = (v) => `$ ${Math.round(v).toLocaleString('es-CO')}`;
+        const kTxt = (v) => (v >= 1000 ? `${(v / 1000).toFixed(1)}k` : `${v}`);
+        const chip = (v) => (v === null || v === undefined || !Number.isFinite(v) ? null : (
+          <span style={{ fontSize: '12px', fontWeight: 700, padding: '1px 6px', borderRadius: '3px', marginLeft: '6px', background: v >= 0 ? '#e3f4e6' : '#fbe4e4', color: v >= 0 ? '#2e7d32' : '#b71c1c' }}>
+            {v >= 0 ? '\u25B2' : '\u25BC'} {Math.abs(v * 100).toFixed(Math.abs(v) >= 1 ? 0 : 1)}%
+          </span>
+        ));
+        const rel = (cur, prev) => (prev ? cur / prev - 1 : null);
+        const clientTotal = pauta?.cliente?.totals?.spend || 0;
+        const ownTotal = pauta?.propia?.totals?.spend || 0;
+        const clientShare = clientTotal + ownTotal ? clientTotal / (clientTotal + ownTotal) : 0;
+        const brandName = activeTab === 'axxis' ? 'AXXIS' : 'Diners';
+        const kpi = (label, value, change) => (
+          <div>
+            <div style={{ fontSize: '11px', color: '#555', fontWeight: 700 }}>{label}</div>
+            <div style={{ fontSize: '20px', fontWeight: 800 }}>{value}{change}</div>
+          </div>
+        );
+        const postCard = (post, icon, kind) => post && (
+          <a href={post.permalink} target="_blank" rel="noreferrer" style={{ display: 'flex', gap: '10px', marginTop: '12px', padding: '8px', border: '1px solid #e3e6ee', borderRadius: '8px', textDecoration: 'none', color: '#222', background: '#fff' }}>
+            {post.image && <img src={post.image} alt="" referrerPolicy="no-referrer" style={{ width: '64px', height: '64px', objectFit: 'cover', borderRadius: '6px' }} />}
+            <div style={{ fontSize: '12px' }}>
+              <div style={{ fontWeight: 600 }}>{post.caption.slice(0, 90)}{post.caption.length > 90 ? '\u2026' : ''}</div>
+              <div style={{ color: '#777', marginTop: '4px' }}>{kind} · {post.date} · {nf(post.interactions)} interacciones</div>
+            </div>
+          </a>
+        );
+        return (
+          <div style={styles.section}>
+            <h2 style={{ ...styles.sectionTitle, color: '#1c2a6b' }}>CIFRAS DIGITALES · {brandName} · {rangeLabel}</h2>
 
-      <div style={{ textAlign: 'center', color: '#999', fontSize: '12px', marginTop: '40px' }}>
-        Última actualización: {new Date().toLocaleString('es-CO')} · Actualiza cada 5 minutos
-      </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '20px' }}>
+              <div style={styles.card}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+                  <div style={styles.cardTitle}>Vistas y usuarios por mes</div>
+                  {n > 0 && <div style={{ fontSize: '22px', fontWeight: 800 }}>{nf(hist[n - 1].vistas)}{chip(lastChange)}</div>}
+                </div>
+                <div style={{ width: '100%', height: 260, marginTop: '8px' }}>
+                  <ResponsiveContainer>
+                    <LineChart data={hist} margin={{ top: 20, right: 20, left: 0, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                      <XAxis dataKey="month" tick={{ fontSize: 11 }} />
+                      <YAxis tick={{ fontSize: 11 }} />
+                      <Tooltip formatter={(v) => v.toLocaleString('es-CO')} />
+                      <Legend />
+                      <Line type="monotone" dataKey="vistas" name="Vistas" stroke="#f39c12" strokeWidth={2} dot>
+                        <LabelList dataKey="vistas" position="top" formatter={formatCompact} style={{ fontSize: 10, fill: '#f39c12' }} />
+                      </Line>
+                      <Line type="monotone" dataKey="usuarios" name="Usuarios" stroke="#999999" strokeWidth={2} dot>
+                        <LabelList dataKey="usuarios" position="bottom" formatter={formatCompact} style={{ fontSize: 10, fill: '#888' }} />
+                      </Line>
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
 
-      </>
-      )}
+              <div style={{ display: 'grid', gap: '20px', alignContent: 'start' }}>
+                <div style={{ ...styles.card, background: '#eef1fb' }}>
+                  {topSec ? (
+                    <>
+                      <div><strong style={{ fontSize: '20px', color: '#1c2a6b' }}>{topSec.label}</strong> <span style={{ fontSize: '12px', color: '#555' }}>Sección con mayor interés</span></div>
+                      <div style={{ fontSize: '14px', marginTop: '6px' }}>Aporta <strong>{ga.pageviews ? ((topSec.views / ga.pageviews) * 100).toFixed(0) : '\u2014'}% del tráfico</strong></div>
+                      {growth && <div style={{ fontSize: '14px', marginTop: '6px' }}>{growth.label} {chip(growth.change)} <span style={{ color: '#555' }}>vs periodo anterior</span></div>}
+                    </>
+                  ) : <div style={styles.cardSubtext}>Sin datos de secciones</div>}
+                </div>
+                <div style={{ ...styles.card, background: '#eef1fb' }}>
+                  <div style={{ fontSize: '14px', fontWeight: 800 }}>Artículo más leído:</div>
+                  {art ? (
+                    <>
+                      <div style={{ fontSize: '14px', margin: '6px 0' }}>{art.title || art.path}</div>
+                      <div style={{ color: '#2e7d32', fontWeight: 800 }}>{kTxt(art.views)} visitas</div>
+                    </>
+                  ) : <div style={styles.cardSubtext}>Sin datos</div>}
+                </div>
+              </div>
+            </div>
+
+            {groups.length > 0 && (
+              <div style={{ ...styles.card, marginTop: '20px', background: '#f3f1ee' }}>
+                <div style={{ fontSize: '22px', fontWeight: 800, color: '#1c2a6b', marginBottom: '12px' }}>Fuentes de tráfico</div>
+                <div style={{ display: 'flex', height: '40px', borderRadius: '20px', overflow: 'hidden', background: '#ddd' }}>
+                  {groups.map((g) => <div key={g.name} title={`${g.name} ${(g.pct * 100).toFixed(1)}%`} style={{ width: `${g.pct * 100}%`, background: g.color }} />)}
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: '18px', marginTop: '14px' }}>
+                  {groups.map((g) => (
+                    <div key={g.name} style={{ borderTop: `3px solid ${g.color}`, paddingTop: '8px' }}>
+                      <div><span style={{ fontSize: '30px', fontWeight: 800 }}>{(g.pct * 100).toFixed(g.pct < 0.1 ? 1 : 0)}%</span>{chip(g.prevPct ? g.pct / g.prevPct - 1 : null)}</div>
+                      <div style={{ fontSize: '15px', fontWeight: 700, color: '#1c2a6b' }}>{g.name}</div>
+                      <div style={{ fontSize: '13px' }}>Visitas <strong>{nf(g.views)}</strong>{chip(g.prevViews ? g.views / g.prevViews - 1 : null)}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <div style={{ ...styles.card, marginTop: '20px' }}>
+              {pauta ? (
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
+                  <div>
+                    <div style={{ fontSize: '30px', fontWeight: 800, color: '#2e7d32', lineHeight: 1.1 }}>{(clientShare * 100).toFixed(0)}% de la inversión fue pagada por los clientes comerciales</div>
+                    <div style={{ fontSize: '14px', marginTop: '6px' }}>que pautaron en el mes · {cop(clientTotal)} de {cop(clientTotal + ownTotal)} en Meta</div>
+                    {data.pauta.brands?.[activeTab] && (
+                      <div style={styles.cardSubtext}>En {brandName}: {(() => { const bb = data.pauta.brands[activeTab]; const t = bb.totals.spend; return t ? `${((bb.cliente.totals.spend / t) * 100).toFixed(1)}%` : '\u2014'; })()} de su inversión es de clientes</div>
+                    )}
+                  </div>
+                  <div>
+                    <div style={styles.cardTitle}>Clientes que pautaron</div>
+                    <ul style={{ margin: '8px 0 0', paddingLeft: '18px', fontSize: '13px' }}>
+                      {(pauta.clients || []).map((c) => <li key={c.name} style={{ marginBottom: '4px' }}>{c.name} <span style={{ color: '#888' }}>· {cop(c.spend)} · {c.campaigns} campañas</span></li>)}
+                    </ul>
+                  </div>
+                </div>
+              ) : <div style={styles.cardSubtext}>Sin datos de pauta (revisa los avisos de error).</div>}
+            </div>
+
+            <div style={{ ...styles.card, marginTop: '20px', background: '#f7f7f9' }}>
+              <div style={{ fontSize: '22px', fontWeight: 800, color: '#1c2a6b', marginBottom: '12px' }}>Redes <span style={{ fontWeight: 400 }}>sociales</span></div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', alignItems: 'baseline' }}>
+                    <div><span style={{ fontSize: '26px', fontWeight: 800 }}>{nf(ig?.followers)}</span> <span style={{ fontSize: '15px' }}>Seguidores Instagram</span></div>
+                    <div><span style={{ fontSize: '12px', color: '#555' }}>Aporte de IG al tráfico </span><strong style={{ fontSize: '20px', color: '#2e7d32' }}>{ga.social ? `${(ga.social.instagram.share * 100).toFixed(2)}%` : '\u2014'}</strong>{chip(ga.social?.instagram?.shareChange)}</div>
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', background: '#eeece8', padding: '10px', borderRadius: '6px', marginTop: '10px' }}>
+                    {kpi('Nuevos seguidores', nf(ig?.period?.newFollowers), chip(ig?.period?.newFollowersChange))}
+                    {kpi('Alcance', nf(ig?.period?.reach), chip(ig?.period?.reachChange))}
+                    {kpi('Engagement', ig?.period ? `${(ig.period.engagementRate * 100).toFixed(1)}%` : '\u2014', ig?.period?.prevEngagementRate != null ? chip(ig.period.engagementRate - ig.period.prevEngagementRate) : null)}
+                  </div>
+                  {postCard(ig?.topPosts?.[0], 'ig', 'Instagram · mejor publicación')}
+                </div>
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', alignItems: 'baseline' }}>
+                    <div><span style={{ fontSize: '26px', fontWeight: 800 }}>{nf(fb?.followers)}</span> <span style={{ fontSize: '15px' }}>Seguidores Facebook</span></div>
+                    <div><span style={{ fontSize: '12px', color: '#555' }}>Aporte de FB al tráfico </span><strong style={{ fontSize: '20px', color: '#2e7d32' }}>{ga.social ? `${(ga.social.facebook.share * 100).toFixed(2)}%` : '\u2014'}</strong>{chip(ga.social?.facebook?.shareChange)}</div>
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '10px', background: '#eeece8', padding: '10px', borderRadius: '6px', marginTop: '10px' }}>
+                    {kpi('Nuevos seguidores', nf(fb?.newFollowers), chip(fb?.newFollowersChange))}
+                    {kpi('Espectadores', nf(fb?.viewers), chip(fb?.viewersChange))}
+                    {kpi('Engagement', fb ? `${(fb.engagementRate * 100).toFixed(2)}%` : '\u2014', fb?.prevEngagementRate != null ? chip(fb.engagementRate - fb.prevEngagementRate) : null)}
+                  </div>
+                  {postCard(fb?.topPosts?.[0], 'fb', 'Facebook · mejor publicación')}
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
 
       {ready && section === 'pauta' && (
       <>

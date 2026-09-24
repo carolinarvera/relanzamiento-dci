@@ -12,7 +12,19 @@ const BRANDS = [
 ];
 // Pauta de clientes = campañas cuyo nombre lleva alguna de estas palabras; el resto es contenido general propio.
 const CLIENT_KEYWORDS = ['content', 'feria'];
-const payerOf = (name) => (CLIENT_KEYWORDS.some((k) => norm(name).includes(k)) ? 'cliente' : 'propia');
+const KNOWN_CLIENTS = [
+  { name: 'Colchones El Dorado', re: /dorado/ },
+  { name: 'VIU Group', re: /\bviu\b/ },
+  { name: 'Planeta Legno Floors', re: /legno/ },
+  { name: 'Pisos Albornoz', re: /albornoz/ },
+  { name: 'Productos Arquitectónicos', re: /productos arquitect/ },
+  { name: 'Encortinarte', re: /encortinarte/ },
+  { name: 'Gran Salón Inmobiliario', re: /salon inmobiliario/ },
+  { name: 'Eternit', re: /eternit/ },
+  { name: 'Nórdika', re: /nordika/ },
+];
+const clientOf = (name) => KNOWN_CLIENTS.find((c) => c.re.test(norm(name)))?.name || null;
+const payerOf = (name) => (CLIENT_KEYWORDS.some((k) => norm(name).includes(k)) || clientOf(name) ? 'cliente' : 'propia');
 const brandOf = (name) => BRANDS.find((b) => b.re.test(norm(name)))?.key || 'otras';
 
 const RESULT_BY_OBJECTIVE = {
@@ -58,6 +70,7 @@ async function accountCampaigns(account, token, range) {
       name: r.campaign_name,
       brand: brandOf(r.campaign_name),
       payer: payerOf(r.campaign_name),
+      client: clientOf(r.campaign_name),
       objective: obj,
       resultLabel: def.label,
       currency: account.currency,
@@ -142,6 +155,15 @@ export async function GET(request) {
       cliente: enrich(cur.filter((c) => c.payer === 'cliente'), prev.filter((c) => c.payer === 'cliente')),
       propia: enrich(cur.filter((c) => c.payer === 'propia'), prev.filter((c) => c.payer === 'propia')),
       prevTotalSpend: sum(prev, 'spend'),
+      clients: Object.values(
+        cur.filter((c) => c.payer === 'cliente').reduce((acc, c) => {
+          const key = c.client || 'Otros clientes (content / feria)';
+          acc[key] = acc[key] || { name: key, spend: 0, campaigns: 0 };
+          acc[key].spend += c.spend;
+          acc[key].campaigns += 1;
+          return acc;
+        }, {}),
+      ).sort((a, b) => b.spend - a.spend),
     };
     const payload = { range, currency: accounts.find((a) => a.currency === 'COP')?.currency || accounts[0]?.currency || 'COP', accounts: accounts.map((a) => a.name), totalSpend: grand, global, clientKeywords: CLIENT_KEYWORDS, brands: out, errors };
     if (!errors.length) CACHE.set(cacheKey, { at: Date.now(), data: payload });
