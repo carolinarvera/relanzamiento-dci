@@ -37,6 +37,43 @@ async function fbRange(pageId, pageToken, since, until) {
   return out;
 }
 
+async function topFbPosts(pageId, pageToken, r) {
+  const day = (d, plus = 0) => Math.floor(Date.parse(`${d}T00:00:00Z`) / 1000) + plus * 86400;
+  let res = await axios.get(`https://graph.facebook.com/v19.0/${pageId}/posts`, {
+    params: {
+      fields: 'id,message,created_time,permalink_url,full_picture,status_type,shares,reactions.summary(true).limit(0),comments.summary(true).limit(0)',
+      since: day(r.start), until: day(r.end, 1), limit: 100, access_token: pageToken,
+    },
+  });
+  let posts = res.data.data || [];
+  for (let page = 0; page < 3 && res.data.paging?.next && posts.length < 400; page += 1) {
+    res = await axios.get(res.data.paging.next);
+    posts = posts.concat(res.data.data || []);
+  }
+  const score = (p) => (p.reactions?.summary?.total_count || 0) + (p.comments?.summary?.total_count || 0) + (p.shares?.count || 0);
+  const candidates = posts.sort((a, b) => score(b) - score(a)).slice(0, 10);
+  const withInsights = await Promise.all(candidates.map(async (p) => {
+    try {
+      const ins = await axios.get(`https://graph.facebook.com/v19.0/${p.id}/insights`, {
+        params: { metric: 'post_media_view,post_total_media_view_unique,post_clicks', access_token: pageToken },
+      });
+      const v = {};
+      (ins.data.data || []).forEach((i) => { if (i.period === 'lifetime' || v[i.name] === undefined) v[i.name] = i.values?.[0]?.value || 0; });
+      return { p, v };
+    } catch { return { p, v: {} }; }
+  }));
+  const kind = (t) => (t === 'added_video' ? 'Video' : t === 'added_photos' ? 'Foto' : t === 'shared_story' ? 'Enlace' : 'Publicación');
+  return withInsights
+    .sort((a, b) => score(b.p) - score(a.p))
+    .slice(0, 3)
+    .map(({ p, v }) => ({
+      id: p.id, permalink: p.permalink_url, image: p.full_picture || null, type: kind(p.status_type),
+      date: p.created_time.slice(0, 10), caption: (p.message || '').replace(/\s+/g, ' ').slice(0, 140),
+      reactions: p.reactions?.summary?.total_count || 0, comments: p.comments?.summary?.total_count || 0, shares: p.shares?.count || 0,
+      interactions: score(p), views: v.post_media_view || 0, viewers: v.post_total_media_view_unique || 0, clicks: v.post_clicks || 0,
+    }));
+}
+
 async function fbDetail(pageId, pageToken, errors, label, r) {
   try {
     const day = (d, plus = 0) => Math.floor(Date.parse(`${d}T00:00:00Z`) / 1000) + plus * 86400;
@@ -44,13 +81,14 @@ async function fbDetail(pageId, pageToken, errors, label, r) {
     const m1 = day(r.start);
     const m2 = day(r.prevStart);
     const pu = day(r.prevEnd, 1);
-    const [cur, prev, page, cityRes] = await Promise.all([
+    const [cur, prev, page, cityRes, topPosts] = await Promise.all([
       fbRange(pageId, pageToken, m1, u),
       fbRange(pageId, pageToken, m2, pu),
       axios.get(`https://graph.facebook.com/v19.0/${pageId}`, { params: { fields: 'followers_count', access_token: pageToken } }),
       axios.get(`https://graph.facebook.com/v19.0/${pageId}/insights`, {
         params: { metric: 'page_follows_city', period: 'day', access_token: pageToken },
       }).then((r) => r.data.data?.[0]?.values?.slice(-1)[0]?.value || {}).catch(() => ({})),
+      topFbPosts(pageId, pageToken, r).catch((e) => { errors.push(`${label} Facebook top posts: ` + (e.response?.data?.error?.message || e.message)); return []; }),
     ]);
     const followersTotal = page.data.followers_count || 0;
     const cities = Object.entries(cityRes)
@@ -67,6 +105,7 @@ async function fbDetail(pageId, pageToken, errors, label, r) {
       profileViews: cur.page_views_total || 0, profileViewsChange: chg(cur.page_views_total, prev.page_views_total),
       engagementRate: views ? reactions / views : 0,
       cities,
+      topPosts,
     };
   } catch (err) {
     errors.push(`${label} Facebook detalle: ` + (err.response?.data?.error?.message || err.message));
