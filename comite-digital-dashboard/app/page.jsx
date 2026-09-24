@@ -249,17 +249,17 @@ export default function Dashboard() {
                   <YAxis tick={{ fontSize: 12 }} />
                   <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
                   <Legend />
-                  <Bar dataKey="sesiones" name="Sesiones" fill="#333333" legendType="square">
-                    {current.ga4.monthlyHistory.map((entry, i) => (
-                      <Cell key={`ses-${i}`} fill={i === current.ga4.monthlyHistory.length - 1 ? '#000000' : '#333333'} />
-                    ))}
-                    <LabelList dataKey="sesiones" position="top" formatter={formatCompact} style={{ fontSize: 10, fill: '#333' }} />
-                  </Bar>
                   <Bar dataKey="vistas" name="Vistas" fill="#0066cc" legendType="square">
                     {current.ga4.monthlyHistory.map((entry, i) => (
                       <Cell key={`vis-${i}`} fill={i === current.ga4.monthlyHistory.length - 1 ? '#ff8c00' : '#0066cc'} />
                     ))}
                     <LabelList dataKey="vistas" position="top" formatter={formatCompact} style={{ fontSize: 10, fill: '#0066cc' }} />
+                  </Bar>
+                  <Bar dataKey="sesiones" name="Sesiones" fill="#333333" legendType="square">
+                    {current.ga4.monthlyHistory.map((entry, i) => (
+                      <Cell key={`ses-${i}`} fill={i === current.ga4.monthlyHistory.length - 1 ? '#000000' : '#333333'} />
+                    ))}
+                    <LabelList dataKey="sesiones" position="top" formatter={formatCompact} style={{ fontSize: 10, fill: '#333' }} />
                   </Bar>
                   <Bar dataKey="usuarios" name="Total de usuarios" fill="#999999" legendType="square">
                     {current.ga4.monthlyHistory.map((entry, i) => (
@@ -288,13 +288,13 @@ export default function Dashboard() {
                   <YAxis tick={{ fontSize: 11 }} />
                   <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
                   <Legend />
-                  <Bar dataKey="sesiones" name="Sesiones" fill="#333333" legendType="square" />
                   <Bar dataKey="vistas" name="Vistas" fill="#0066cc" legendType="square">
                     {current.ga4.hourlyViews.map((h) => {
                       const max = Math.max(...current.ga4.hourlyViews.map((x) => x.vistas));
                       return <Cell key={h.hour} fill={h.vistas === max ? '#ff8c00' : '#0066cc'} />;
                     })}
                   </Bar>
+                  <Bar dataKey="sesiones" name="Sesiones" fill="#333333" legendType="square" />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -549,8 +549,8 @@ export default function Dashboard() {
                             <thead>
                               <tr style={{ background: '#1a4fb3', color: 'white' }}>
                                 <th style={{ padding: '6px', textAlign: 'left' }}>Tipo / canal</th>
-                                <th style={{ padding: '6px', textAlign: 'right' }}>Sesiones</th>
                                 <th style={{ padding: '6px', textAlign: 'right' }}>Vistas</th>
+                                <th style={{ padding: '6px', textAlign: 'right' }}>Sesiones</th>
                                 <th style={{ padding: '6px', textAlign: 'right' }}>Usuarios</th>
                               </tr>
                             </thead>
@@ -559,15 +559,15 @@ export default function Dashboard() {
                                 <React.Fragment key={g.name}>
                                   <tr style={{ background: '#f4f6fb' }}>
                                     <td style={{ padding: '6px', fontWeight: 700, borderLeft: `4px solid ${g.color}` }}>{g.name} · {(g.pct * 100).toFixed(1)}%</td>
-                                    <td style={{ padding: '6px', textAlign: 'right', fontWeight: 700 }}>{nf(g.sessions)}</td>
                                     <td style={{ padding: '6px', textAlign: 'right', fontWeight: 700 }}>{nf(g.views)}</td>
+                                    <td style={{ padding: '6px', textAlign: 'right', fontWeight: 700 }}>{nf(g.sessions)}</td>
                                     <td style={{ padding: '6px', textAlign: 'right', fontWeight: 700 }}>{nf(g.users)}</td>
                                   </tr>
                                   {g.items.map((c) => (
                                     <tr key={c.name}>
                                       <td style={{ padding: '6px 6px 6px 22px', borderBottom: '1px solid #eee' }}>{c.name} <span style={{ color: '#888' }}>({(c.pct * 100).toFixed(1)}%)</span></td>
-                                      <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(c.sessions)}</td>
                                       <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(c.views)}</td>
+                                      <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(c.sessions)}</td>
                                       <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(c.users)}</td>
                                     </tr>
                                   ))}
@@ -587,8 +587,8 @@ export default function Dashboard() {
                           <thead>
                             <tr style={{ background: '#f0f0f0' }}>
                               <th style={{ padding: '6px', textAlign: 'left' }}>Asistente</th>
-                              <th style={{ padding: '6px', textAlign: 'right' }}>Sesiones</th>
                               <th style={{ padding: '6px', textAlign: 'right' }}>Vistas</th>
+                              <th style={{ padding: '6px', textAlign: 'right' }}>Sesiones</th>
                               <th style={{ padding: '6px', textAlign: 'right' }}>Usuarios</th>
                             </tr>
                           </thead>
@@ -596,8 +596,8 @@ export default function Dashboard() {
                             {current.ga4.audience.ai.sources.map((a) => (
                               <tr key={a.name}>
                                 <td style={{ padding: '6px', borderBottom: '1px solid #eee' }}>{a.name}</td>
-                                <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(a.sessions)}</td>
                                 <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(a.views)}</td>
+                                <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(a.sessions)}</td>
                                 <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(a.users)}</td>
                               </tr>
                             ))}
@@ -860,6 +860,11 @@ export default function Dashboard() {
               <td style={styles.td}>Clics de búsqueda</td>
               <td style={styles.td}>{nf(current.gsc?.clicks)}</td>
               <td style={styles.td}>GSC</td>
+            </tr>
+            <tr>
+              <td style={styles.td}>Vistas totales</td>
+              <td style={styles.td}>{nf(current.ga4?.pageviews)}</td>
+              <td style={styles.td}>GA4</td>
             </tr>
             <tr>
               <td style={styles.td}>Sesiones totales</td>
