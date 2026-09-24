@@ -25,7 +25,7 @@ const chg = (cur, prev) => (prev ? cur / prev - 1 : null);
 async function fbRange(pageId, pageToken, since, until) {
   const r = await axios.get(`https://graph.facebook.com/v19.0/${pageId}/insights`, {
     params: {
-      metric: 'page_media_view,page_total_media_view_unique,page_actions_post_reactions_total,page_views_total',
+      metric: 'page_media_view,page_total_media_view_unique,page_actions_post_reactions_total,page_views_total,page_daily_follows,page_daily_unfollows_unique',
       period: 'total_over_range',
       since,
       until,
@@ -109,6 +109,10 @@ async function fbDetail(pageId, pageToken, errors, label, r) {
       reactions, reactionsChange: chg(reactions, prev.page_actions_post_reactions_total),
       profileViews: cur.page_views_total || 0, profileViewsChange: chg(cur.page_views_total, prev.page_views_total),
       engagementRate: views ? reactions / views : 0,
+      prevEngagementRate: prev.page_media_view ? (prev.page_actions_post_reactions_total || 0) / prev.page_media_view : null,
+      newFollowers: cur.page_daily_follows || 0,
+      newFollowersChange: chg(cur.page_daily_follows, prev.page_daily_follows),
+      unfollows: cur.page_daily_unfollows_unique || 0,
       cities,
       topPosts: topPosts.top,
       bottomPosts: topPosts.bottom,
@@ -162,16 +166,38 @@ async function topIgPosts(igId, token, r) {
   return { top, bottom };
 }
 
+async function igPeriod(igId, token, r, which) {
+  const day = (d, plus = 0) => Math.floor(Date.parse(`${d}T00:00:00Z`) / 1000) + plus * 86400;
+  const start = which === 'prev' ? r.prevStart : r.start;
+  const end = which === 'prev' ? r.prevEnd : r.end;
+  const until = day(end, 1);
+  const since = Math.max(day(start), until - 30 * 86400);
+  const [core, fol] = await Promise.all([
+    axios.get(`https://graph.facebook.com/v19.0/${igId}/insights`, {
+      params: { metric: 'reach,total_interactions', period: 'day', metric_type: 'total_value', since, until, access_token: token },
+    }),
+    axios.get(`https://graph.facebook.com/v19.0/${igId}/insights`, {
+      params: { metric: 'follows_and_unfollows', period: 'day', metric_type: 'total_value', breakdown: 'follow_type', since, until, access_token: token },
+    }).catch(() => null),
+  ]);
+  const v = {};
+  (core.data.data || []).forEach((m) => { v[m.name] = m.total_value?.value || 0; });
+  const newFollowers = fol?.data?.data?.[0]?.total_value?.breakdowns?.[0]?.results?.find((x) => x.dimension_values[0] === 'FOLLOWER')?.value ?? null;
+  return { reach: v.reach || 0, interactions: v.total_interactions || 0, newFollowers };
+}
+
 async function igDetail(igId, token, errors, label, range) {
   try {
     const demo = (breakdown) => axios.get(`https://graph.facebook.com/v19.0/${igId}/insights`, {
       params: { metric: 'follower_demographics', period: 'lifetime', metric_type: 'total_value', breakdown, access_token: token },
     }).then((r) => r.data.data?.[0]?.total_value?.breakdowns?.[0]?.results || []);
-    const [ageGender, city, acct, topPosts] = await Promise.all([
+    const [ageGender, city, acct, topPosts, curP, prevP] = await Promise.all([
       demo('age,gender'),
       demo('city'),
       axios.get(`https://graph.facebook.com/v19.0/${igId}`, { params: { fields: 'followers_count', access_token: token } }),
       topIgPosts(igId, token, range).catch((e) => { errors.push(`${label} Instagram top posts: ` + (e.response?.data?.error?.message || e.message)); return { top: [], bottom: [] }; }),
+      igPeriod(igId, token, range, 'cur'),
+      igPeriod(igId, token, range, 'prev').catch(() => null),
     ]);
     const valid = ageGender.filter((r) => ['F', 'M'].includes(r.dimension_values[1]) && r.dimension_values[0] !== '13-17');
     const total = valid.reduce((a, r) => a + r.value, 0);
@@ -187,6 +213,12 @@ async function igDetail(igId, token, errors, label, range) {
       followers: acct.data.followers_count || 0,
       topPosts: topPosts.top,
       bottomPosts: topPosts.bottom,
+      period: {
+        reach: curP.reach, reachChange: prevP?.reach ? curP.reach / prevP.reach - 1 : null,
+        newFollowers: curP.newFollowers, newFollowersChange: prevP?.newFollowers ? curP.newFollowers / prevP.newFollowers - 1 : null,
+        engagementRate: curP.reach ? curP.interactions / curP.reach : 0,
+        prevEngagementRate: prevP?.reach ? prevP.interactions / prevP.reach : null,
+      },
       ageGender: Object.values(byAge).sort((x, y) => x.age.localeCompare(y.age, 'es', { numeric: true })),
       women: total ? women / total : 0,
       men: total ? 1 - women / total : 0,

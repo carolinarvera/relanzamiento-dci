@@ -124,6 +124,12 @@ export default function Dashboard() {
     return <div style={styles.change(good)}>{arrow} {(Math.abs(value) * 100).toFixed(1)}% vs mes anterior</div>;
   };
 
+  const renderPP = (cur, prev) => {
+    if (prev === null || prev === undefined) return null;
+    const diff = (cur - prev) * 100;
+    return <div style={styles.change(diff >= 0)}>{diff >= 0 ? '\u2191' : '\u2193'} {Math.abs(diff).toFixed(2)} pp vs periodo anterior</div>;
+  };
+
   const formatCompact = (value) => {
     if (value >= 1000) return `${(value / 1000).toFixed(0)}K`;
     return value;
@@ -804,6 +810,32 @@ export default function Dashboard() {
         return (
           <div style={styles.section}>
             <h2 style={styles.sectionTitle}>Facebook · {rangeLabel}</h2>
+            <div style={styles.grid}>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Aporte de FB al tráfico</div>
+                <div style={styles.cardValue}>{current.ga4?.social ? `${(current.ga4.social.facebook.share * 100).toFixed(2)}%` : '\u2014'}</div>
+                {renderChange(current.ga4?.social?.facebook?.shareChange)}
+                <div style={styles.cardSubtext}>% de sesiones del sitio desde Facebook (GA4)</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Nuevos seguidores</div>
+                <div style={styles.cardValue}>{nf(fb.newFollowers)}</div>
+                {renderChange(fb.newFollowersChange)}
+                <div style={styles.cardSubtext}>brutos; dejaron de seguir: {nf(fb.unfollows)}</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Alcance</div>
+                <div style={styles.cardValue}>{nf(fb.viewers)}</div>
+                {renderChange(fb.viewersChange)}
+                <div style={styles.cardSubtext}>espectadores únicos</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Engagement</div>
+                <div style={styles.cardValue}>{(fb.engagementRate * 100).toFixed(2)}%</div>
+                {renderPP(fb.engagementRate, fb.prevEngagementRate)}
+                <div style={styles.cardSubtext}>reacciones / visualizaciones</div>
+              </div>
+            </div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Seguidores</div>
@@ -927,9 +959,28 @@ export default function Dashboard() {
                 <div style={styles.cardSubtext}>total actual</div>
               </div>
               <div style={styles.card}>
+                <div style={styles.cardTitle}>Aporte de IG al tráfico</div>
+                <div style={styles.cardValue}>{current.ga4?.social ? `${(current.ga4.social.instagram.share * 100).toFixed(2)}%` : '\u2014'}</div>
+                {renderChange(current.ga4?.social?.instagram?.shareChange)}
+                <div style={styles.cardSubtext}>% de sesiones del sitio desde Instagram (GA4)</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Nuevos seguidores</div>
+                <div style={styles.cardValue}>{nf(d?.period?.newFollowers)}</div>
+                {renderChange(d?.period?.newFollowersChange)}
+                <div style={styles.cardSubtext}>netos en el periodo (máx. 30 días)</div>
+              </div>
+              <div style={styles.card}>
                 <div style={styles.cardTitle}>Alcance</div>
-                <div style={styles.cardValue}>{nf(ig?.reach)}</div>
+                <div style={styles.cardValue}>{nf(d?.period?.reach ?? ig?.reach)}</div>
+                {renderChange(d?.period?.reachChange)}
                 <div style={styles.cardSubtext}>{rangeLabel}</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Engagement</div>
+                <div style={styles.cardValue}>{d?.period ? `${(d.period.engagementRate * 100).toFixed(1)}%` : '\u2014'}</div>
+                {d?.period ? renderPP(d.period.engagementRate, d.period.prevEngagementRate) : null}
+                <div style={styles.cardSubtext}>interacciones / alcance</div>
               </div>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Interacciones</div>
