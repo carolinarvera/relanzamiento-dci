@@ -274,6 +274,28 @@ export default function Dashboard() {
           </div>
         )}
 
+        <div style={{ ...styles.cardTitle, fontSize: '14px', margin: '20px 0 10px' }}>Tráfico orgánico (búsqueda) · {rangeLabel}</div>
+        <div style={styles.grid}>
+          <div style={styles.card}>
+            <div style={styles.cardTitle}>Vistas orgánicas</div>
+            <div style={styles.cardValue}>{nf(current.ga4?.organic?.views)}</div>
+            {renderChange(current.ga4?.organic?.viewsChange)}
+            <div style={styles.cardSubtext}>GA4 · grupo de canal Organic Search</div>
+          </div>
+          <div style={styles.card}>
+            <div style={styles.cardTitle}>Posición promedio</div>
+            <div style={styles.cardValue}>{current.gsc?.position ? current.gsc.position.toFixed(1) : '\u2014'}</div>
+            {current.gsc?.prev?.position ? renderChange(current.gsc.position / current.gsc.prev.position - 1, true) : null}
+            <div style={styles.cardSubtext}>Search Console · menor es mejor</div>
+          </div>
+          <div style={styles.card}>
+            <div style={styles.cardTitle}>Rebote orgánico</div>
+            <div style={styles.cardValue}>{current.ga4?.organic ? `${(current.ga4.organic.bounceRate * 100).toFixed(1)}%` : '\u2014'}</div>
+            {renderChange(current.ga4?.organic?.bounceRateChange, true)}
+            <div style={styles.cardSubtext}>sesiones de búsqueda orgánica · menor es mejor</div>
+          </div>
+        </div>
+
         {current.ga4?.hourlyViews?.some((h) => h.vistas > 0) && (
           <div style={{ ...styles.card, marginTop: '20px' }}>
             <div style={styles.cardTitle}>

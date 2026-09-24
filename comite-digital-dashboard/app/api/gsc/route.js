@@ -18,7 +18,7 @@ async function getAccessToken() {
 
 const iso = (d) => d.toISOString().slice(0, 10);
 
-async function siteTotals(token, siteUrl, range) {
+async function periodTotals(token, siteUrl, range) {
   const lagLimit = iso(new Date(Date.now() - 3 * 86400000));
   const endDate = range.end > lagLimit ? lagLimit : range.end;
   const startDate = range.start > endDate ? endDate : range.start;
@@ -29,6 +29,14 @@ async function siteTotals(token, siteUrl, range) {
   );
   const row = res.data.rows?.[0] || {};
   return { clicks: row.clicks || 0, impressions: row.impressions || 0, ctr: row.ctr || 0, position: row.position || 0 };
+}
+
+async function siteTotals(token, siteUrl, range) {
+  const [cur, prev] = await Promise.all([
+    periodTotals(token, siteUrl, range),
+    periodTotals(token, siteUrl, { start: range.prevStart, end: range.prevEnd }).catch(() => null),
+  ]);
+  return { ...cur, prev };
 }
 
 export async function GET(request) {

@@ -231,6 +231,8 @@ async function buildAudience(token, propertyId, r, brand) {
   };
 }
 
+const byNameEarly = (rows, name) => rows.find((r) => r.dimensionValues.some((v) => v.value === name));
+
 async function buildProperty(token, propertyId, brand, range) {
   const today = new Date();
   const monthStart = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), 1));
@@ -239,7 +241,7 @@ async function buildProperty(token, propertyId, brand, range) {
   const prevMonthStart = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, 1));
   const prevSameDay = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, dayOfMonth));
 
-  const [kpis, monthly, daily, partial, sectionData, audience, hourRows] = await Promise.all([
+  const [kpis, monthly, daily, partial, sectionData, audience, hourRows, organicRows] = await Promise.all([
     runReport(token, propertyId, {
       dateRanges: [
         { startDate: range.start, endDate: range.end, name: 'cur' },
@@ -273,7 +275,22 @@ async function buildProperty(token, propertyId, brand, range) {
       dimensions: [{ name: 'hour' }],
       metrics: [{ name: 'screenPageViews' }, { name: 'sessions' }],
     }),
+    runReport(token, propertyId, {
+      dateRanges: [
+        { startDate: range.start, endDate: range.end, name: 'cur' },
+        { startDate: range.prevStart, endDate: range.prevEnd, name: 'prev' },
+      ],
+      metrics: ['screenPageViews', 'sessions', 'bounceRate'].map((name) => ({ name })),
+      dimensionFilter: { filter: { fieldName: 'sessionDefaultChannelGroup', stringFilter: { matchType: 'EXACT', value: 'Organic Search' } } },
+    }),
   ]);
+  const orgCur = byNameEarly(organicRows, 'cur');
+  const orgPrev = byNameEarly(organicRows, 'prev');
+  const organic = orgCur ? {
+    views: num(orgCur, 0), viewsChange: orgPrev ? pct(num(orgCur, 0), num(orgPrev, 0)) : null,
+    sessions: num(orgCur, 1),
+    bounceRate: num(orgCur, 2), bounceRateChange: orgPrev ? pct(num(orgCur, 2), num(orgPrev, 2)) : null,
+  } : null;
   const hourlyViews = Array.from({ length: 24 }, (_, h) => ({ hour: `${String(h).padStart(2, '0')}h`, vistas: 0, sesiones: 0 }));
   hourRows.forEach((r) => {
     const h = Number(r.dimensionValues[0].value);
@@ -326,6 +343,7 @@ async function buildProperty(token, propertyId, brand, range) {
     sectionSummary: sectionData.summary,
     dailyViews,
     hourlyViews,
+    organic,
     dailyPeaks,
     septPartial: cur && prev ? {
       range: `1 al ${dayOfMonth} de ${['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'][today.getUTCMonth()]}`,
@@ -357,6 +375,7 @@ function parseGA4Response(res) {
     dailyViews: res.dailyViews || [],
     dailyPeaks: res.dailyPeaks || [],
     hourlyViews: res.hourlyViews || [],
+    organic: res.organic || null,
     sections: res.sections || [],
     topArticles: res.topArticles || [],
     audience: res.audience || null,
