@@ -782,6 +782,74 @@ export default function Dashboard() {
                 <div style={styles.cardSubtext}>{nf(seo.totalQueries)} consultas con impresiones{seo.truncated ? ' (tope de 25.000 de Search Console)' : ''}. Clics por rango: {seo.buckets.map((b) => `${b.label.replace('Posición ', '')}: ${nf(b.clicks)}`).join(' · ')}</div>
               </div>
             </div>
+
+            <div style={{ ...styles.cardTitle, fontSize: '14px', margin: '30px 0 10px' }}>Insumos para contenido editorial (sin consultas de marca)</div>
+            <div style={styles.card}>
+              <div style={styles.cardTitle}>Temas que rinden por encima de la media (Top 10)</div>
+              <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '8px' }}>
+                <thead>
+                  <tr style={{ background: '#f4f6fb' }}>
+                    <th style={{ ...head, textAlign: 'left' }}>Tema</th>
+                    <th style={head}>Clics</th>
+                    <th style={head}>Impresiones</th>
+                    <th style={head}>CTR</th>
+                    <th style={head}>vs media</th>
+                    <th style={head}>Posición</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {seo.topics.map((t, k) => (
+                    <tr key={t.term}>
+                      <td style={cell}><span style={{ color: '#999' }}>{k + 1}.</span> {t.term}</td>
+                      <td style={num}><strong>{nf(t.clicks)}</strong></td>
+                      <td style={num}>{nf(t.impressions)}</td>
+                      <td style={num}>{(t.ctr * 100).toFixed(1)}%</td>
+                      <td style={{ ...num, color: '#2e7d32', fontWeight: 700 }}>{t.vsAvg.toFixed(1)}x</td>
+                      <td style={num}>{t.position.toFixed(1)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <div style={styles.cardSubtext}>Temas = palabras y pares de palabras agrupadas de consultas sin marca. Solo entran los que superan el CTR promedio editorial ({(seo.topicsAvgCtr * 100).toFixed(2)}%), con al menos 300 impresiones y 3 consultas distintas.</div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px', marginTop: '20px' }}>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Top 10 consultas editoriales (sin marca)</div>
+                {table(seo.editorialTop, 'Consulta')}
+                <div style={styles.cardSubtext}>Excluye consultas que incluyen el nombre de la revista y las de tipo URL.</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Consultas con potencial: posición 8-20 (Top 10 por impresiones)</div>
+                {table(seo.opportunities, 'Consulta')}
+                <div style={styles.cardSubtext}>Mucha demanda y todavía en segunda página o borde de la primera: buenas candidatas para nuevo contenido o mejora.</div>
+              </div>
+            </div>
+            <div style={{ ...styles.card, marginTop: '20px' }}>
+              <div style={styles.cardTitle}>Google Trends Colombia · tendencias de hoy</div>
+              {Array.isArray(seo.trends) ? (
+                <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '8px' }}>
+                  <thead>
+                    <tr style={{ background: '#f4f6fb' }}>
+                      <th style={{ ...head, textAlign: 'left' }}>Tendencia</th>
+                      <th style={head}>Búsquedas aprox.</th>
+                      <th style={{ ...head, textAlign: 'left' }}>Noticia relacionada</th>
+                      <th style={{ ...head, textAlign: 'left' }}>Coincide con tus temas</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {seo.trends.map((t) => (
+                      <tr key={t.title} style={{ background: t.matches.length ? '#eef7ee' : 'transparent' }}>
+                        <td style={{ ...cell, fontWeight: 600 }}>{t.title}</td>
+                        <td style={num}>{t.traffic}</td>
+                        <td style={cell}>{t.newsUrl ? <a href={t.newsUrl} target="_blank" rel="noreferrer" style={{ color: '#0066cc' }}>{t.news}</a> : t.news} <span style={{ color: '#999' }}>{t.source ? `· ${t.source}` : ''}</span></td>
+                        <td style={cell}>{t.matches.length ? t.matches.join(', ') : '\u2014'}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              ) : <div style={styles.cardSubtext}>No se pudo leer Google Trends: {seo.trends?.error}</div>}
+              <div style={styles.cardSubtext}>Fuente: feed público de Google Trends (búsquedas en tendencia en Colombia, últimas 24 h). Google no ofrece API para "consultas relacionadas" por tema. Resaltado en verde: la tendencia comparte palabras con consultas que ya te traen impresiones.</div>
+            </div>
           </div>
         );
       })()}
@@ -872,7 +940,7 @@ export default function Dashboard() {
             </div>
             {fb.topPosts?.length > 0 && (
               <div style={{ marginTop: '20px' }}>
-                <div style={{ ...styles.cardTitle, fontSize: '14px' }}>Las 3 publicaciones con mejor desempeño · {rangeLabel} (reacciones + comentarios + compartidos)</div>
+                <div style={{ ...styles.cardTitle, fontSize: '14px' }}>Las 5 publicaciones con mejor desempeño · {rangeLabel} (reacciones + comentarios + compartidos)</div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px', marginTop: '10px' }}>
                   {fb.topPosts.map((post, k) => (
                     <div key={post.id} style={{ ...styles.card, padding: 0, overflow: 'hidden' }}>
@@ -995,7 +1063,7 @@ export default function Dashboard() {
             </div>
             {d?.topPosts?.length > 0 && (
               <div style={{ marginBottom: '20px' }}>
-                <div style={{ ...styles.cardTitle, fontSize: '14px' }}>Las 3 publicaciones con mejor desempeño · {rangeLabel} (por interacciones)</div>
+                <div style={{ ...styles.cardTitle, fontSize: '14px' }}>Las 5 publicaciones con mejor desempeño · {rangeLabel} (por interacciones)</div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px', marginTop: '10px' }}>
                   {d.topPosts.map((post, k) => (
                     <div key={post.id} style={{ ...styles.card, padding: 0, overflow: 'hidden' }}>

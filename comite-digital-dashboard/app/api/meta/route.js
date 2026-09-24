@@ -74,7 +74,7 @@ async function topFbPosts(pageId, pageToken, r) {
     interactions: score(p), views: v.post_media_view || 0, viewers: v.post_total_media_view_unique || 0, clicks: v.post_clicks || 0,
   });
   const byId = new Map(withInsights.map((x) => [x.p.id, x]));
-  const top = topCandidates.map((p) => byId.get(p.id)).filter(Boolean).sort((a, b) => score(b.p) - score(a.p)).slice(0, 3).map(shape);
+  const top = topCandidates.map((p) => byId.get(p.id)).filter(Boolean).sort((a, b) => score(b.p) - score(a.p)).slice(0, 5).map(shape);
   const bottom = worstCandidates.map((p) => byId.get(p.id)).filter(Boolean).sort((a, b) => score(a.p) - score(b.p) || (a.v.post_total_media_view_unique || 0) - (b.v.post_total_media_view_unique || 0)).slice(0, 3).map(shape);
   return { top, bottom };
 }
@@ -161,7 +161,7 @@ async function topIgPosts(igId, token, r) {
   });
   const byId = new Map(withInsights.filter(Boolean).map((x) => [x.m.id, x]));
   const inter = (x) => x.v.total_interactions || 0;
-  const top = topCandidates.map((m) => byId.get(m.id)).filter(Boolean).sort((a, b) => inter(b) - inter(a)).slice(0, 3).map(shape);
+  const top = topCandidates.map((m) => byId.get(m.id)).filter(Boolean).sort((a, b) => inter(b) - inter(a)).slice(0, 5).map(shape);
   const bottom = worstCandidates.map((m) => byId.get(m.id)).filter(Boolean).sort((a, b) => inter(a) - inter(b)).slice(0, 3).map(shape);
   return { top, bottom };
 }
