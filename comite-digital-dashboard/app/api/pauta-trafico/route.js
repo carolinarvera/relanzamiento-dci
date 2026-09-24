@@ -77,13 +77,13 @@ export async function GET(request) {
 
     const adIds = top.map((x) => x.r.ad_id);
     const [creatives, ageRows] = await Promise.all([
-      axios.get('https://graph.facebook.com/v19.0/', {
-        params: {
-          ids: adIds.join(','),
-          fields: 'creative.thumbnail_width(480).thumbnail_height(480){thumbnail_url,image_url,body,title,video_id,object_story_spec}',
-          access_token: token,
-        },
-      }).then((res) => res.data).catch(() => ({})),
+      // creativos por cuenta (el parámetro ids ya no se acepta en versiones nuevas de la API)
+      Promise.all([...new Set(top.map((x) => x.account.id))].map((accId) => paged(`https://graph.facebook.com/v19.0/${accId}/ads`, {
+        fields: 'id,creative.thumbnail_width(480).thumbnail_height(480){thumbnail_url,image_url,body,title,video_id,object_story_spec}',
+        filtering: JSON.stringify([{ field: 'id', operator: 'IN', value: top.filter((x) => x.account.id === accId).map((x) => x.r.ad_id) }]),
+        limit: 100,
+        access_token: token,
+      }).catch(() => []))).then((lists) => Object.fromEntries(lists.flat().map((ad) => [ad.id, ad]))),
       // la edad se pide por cuenta (los anuncios pueden estar en cuentas distintas)
       Promise.all([...new Set(top.map((x) => x.account.id))].map((accId) => paged(`https://graph.facebook.com/v19.0/${accId}/insights`, {
         level: 'ad',
