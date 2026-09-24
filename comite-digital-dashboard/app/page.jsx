@@ -268,6 +268,64 @@ export default function Dashboard() {
                 )}
               </div>
             </div>
+            {current.ga4.sections?.length > 0 && (
+              <div style={{ marginTop: '30px' }}>
+                <h2 style={styles.sectionTitle}>Vistas por sección ({current.ga4.monthlyHistory?.[current.ga4.monthlyHistory.length - 1]?.month})</h2>
+                {current.ga4.sections.map((sec) => (
+                  <div key={sec.slug} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '20px' }}>
+                    <div style={styles.card}>
+                      <div style={styles.cardTitle}>{sec.label}</div>
+                      <div style={styles.cardValue}>{nf(sec.views)}</div>
+                      {renderChange(sec.change)}
+                    </div>
+                    <div style={styles.card}>
+                      <div style={styles.cardTitle}>Ruta de página · Vistas</div>
+                      <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '8px' }}>
+                        <tbody>
+                          {sec.topPages.map((pg, k) => (
+                            <tr key={pg.path}>
+                              <td style={{ padding: '6px 4px', borderBottom: '1px solid #eee', color: '#888', width: '20px' }}>{k + 1}.</td>
+                              <td style={{ padding: '6px 4px', borderBottom: '1px solid #eee', wordBreak: 'break-all' }}>{pg.path}</td>
+                              <td style={{ padding: '6px 4px', borderBottom: '1px solid #eee', textAlign: 'right', fontWeight: 600 }}>{nf(pg.views)}</td>
+                            </tr>
+                          ))}
+                          <tr>
+                            <td></td>
+                            <td style={{ padding: '6px 4px', fontWeight: 700 }}>Total sección</td>
+                            <td style={{ padding: '6px 4px', textAlign: 'right', fontWeight: 700 }}>{nf(sec.views)}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                    <div style={styles.card}>
+                      <div style={styles.cardTitle}>Vistas {sec.label}{sec.peak ? ` · pico ${sec.peak.value.toLocaleString('es-CO')} (${sec.peak.label})` : ''}</div>
+                      <div style={{ width: '100%', height: 200, marginTop: '12px' }}>
+                        <ResponsiveContainer>
+                          <AreaChart data={sec.daily} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                            <XAxis dataKey="label" tick={{ fontSize: 10 }} interval={4} />
+                            <YAxis tick={{ fontSize: 10 }} />
+                            <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
+                            <Area type="monotone" dataKey="value" name="Vistas" stroke="#1a4fb3" strokeWidth={2} fill="#1a4fb3" fillOpacity={0.08} />
+                            {sec.peak && <ReferenceDot x={sec.peak.label} y={sec.peak.value} r={5} fill="#d32f2f" stroke="#fff" />}
+                          </AreaChart>
+                        </ResponsiveContainer>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+                {current.ga4.sectionSummary && (
+                  <div style={{ ...styles.card, background: '#f5f1e6' }}>
+                    <p style={{ margin: '4px 0', fontSize: '14px' }}><strong>Sección con más tráfico:</strong> {current.ga4.sectionSummary.topSection}</p>
+                    <p style={{ margin: '4px 0', fontSize: '14px', wordBreak: 'break-all' }}><strong>Página más leída:</strong> {current.ga4.sectionSummary.topArticle}</p>
+                    <p style={{ margin: '4px 0', fontSize: '14px' }}>
+                      {current.ga4.sections.map((sec) => sec.change === null || sec.change === undefined ? null : `${sec.label} ${sec.change >= 0 ? 'aumentó' : 'disminuyó'} ${(Math.abs(sec.change) * 100).toFixed(0)}%`).filter(Boolean).join(' · ')} frente al mes anterior.
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
+
             <div style={{ ...styles.card, marginTop: '20px' }}>
               <div style={styles.cardTitle}>Picos de visitas (calculados de GA4)</div>
               <ul style={{ fontSize: '14px', fontWeight: 600, color: '#222', marginTop: '12px', paddingLeft: '18px' }}>

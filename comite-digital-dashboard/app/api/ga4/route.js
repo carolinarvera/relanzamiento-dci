@@ -8,8 +8,8 @@ export async function GET() {
   try {
     const token = await getAccessToken();
     const [axxis, diners] = await Promise.all([
-      buildProperty(token, process.env.GA4_AXXIS_ID),
-      buildProperty(token, process.env.GA4_DINERS_ID),
+      buildProperty(token, process.env.GA4_AXXIS_ID, 'axxis'),
+      buildProperty(token, process.env.GA4_DINERS_ID, 'diners'),
     ]);
     return Response.json({ axxis: parseGA4Response(axxis), diners: parseGA4Response(diners) });
   } catch (error) {
@@ -50,7 +50,66 @@ function fmtDuration(sec) {
   return [Math.floor(s / 3600), Math.floor((s % 3600) / 60), s % 60].map((n) => String(n).padStart(2, '0')).join(':');
 }
 
-async function buildProperty(token, propertyId) {
+
+const FIXED_SECTIONS = {
+  axxis: [
+    { slug: 'arquitectura', label: 'Arquitectura' },
+    { slug: 'diseno', label: 'Diseño' },
+    { slug: 'decoracion', label: 'Decoración' },
+  ],
+};
+
+const sectionOf = (path) => path.split('/')[1] || '';
+const cap = (t) => t.charAt(0).toUpperCase() + t.slice(1);
+
+async function buildSections(token, propertyId, brand, today) {
+  const y = today.getUTCFullYear();
+  const m = today.getUTCMonth();
+  const cur = { startDate: iso(new Date(Date.UTC(y, m - 1, 1))), endDate: iso(new Date(Date.UTC(y, m, 0))) };
+  const prev = { startDate: iso(new Date(Date.UTC(y, m - 2, 1))), endDate: iso(new Date(Date.UTC(y, m - 1, 0))) };
+
+  const rows = await runReport(token, propertyId, {
+    dateRanges: [{ ...cur, name: 'cur' }, { ...prev, name: 'prev' }],
+    dimensions: [{ name: 'pagePath' }],
+    metrics: [{ name: 'screenPageViews' }],
+    limit: 100000,
+  });
+  const pages = { cur: [], prev: [] };
+  rows.forEach((r) => {
+    const range = r.dimensionValues[1]?.value === 'prev' ? 'prev' : 'cur';
+    pages[range].push({ path: r.dimensionValues[0].value, views: Number(r.metricValues[0].value) });
+  });
+  const total = (list, slug) => list.filter((p) => sectionOf(p.path) === slug).reduce((a, p) => a + p.views, 0);
+
+  let defs = FIXED_SECTIONS[brand];
+  if (!defs) {
+    const totals = {};
+    pages.cur.forEach((p) => { const sl = sectionOf(p.path); if (sl) totals[sl] = (totals[sl] || 0) + p.views; });
+    defs = Object.entries(totals).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([slug]) => ({ slug, label: cap(slug) }));
+  }
+
+  const sections = await Promise.all(defs.map(async ({ slug, label }) => {
+    const daily = (await runReport(token, propertyId, {
+      dateRanges: [cur],
+      dimensions: [{ name: 'date' }],
+      metrics: [{ name: 'screenPageViews' }],
+      dimensionFilter: { filter: { fieldName: 'pagePath', stringFilter: { matchType: 'BEGINS_WITH', value: `/${slug}` } } },
+      orderBys: [{ dimension: { dimensionName: 'date' } }],
+    })).map((r) => {
+      const d = r.dimensionValues[0].value;
+      return { label: `${Number(d.slice(6))} ${MONTHS[Number(d.slice(4, 6)) - 1]}`, value: Number(r.metricValues[0].value) };
+    });
+    const peak = daily.reduce((best, d) => (!best || d.value > best.value ? d : best), null);
+    const topPages = pages.cur.filter((p) => sectionOf(p.path) === slug).sort((a, b) => b.views - a.views).slice(0, 5);
+    const views = total(pages.cur, slug);
+    return { slug, label, views, change: pct(views, total(pages.prev, slug)), topPages, daily, peak };
+  }));
+
+  const top = [...sections].sort((a, b) => b.views - a.views)[0];
+  return { sections, summary: top ? { topSection: top.label, topArticle: top.topPages[0]?.path || null } : null };
+}
+
+async function buildProperty(token, propertyId, brand) {
   const today = new Date();
   const monthStart = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), 1));
   const dayOfMonth = today.getUTCDate() - 1 || 1;
@@ -58,7 +117,7 @@ async function buildProperty(token, propertyId) {
   const prevMonthStart = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, 1));
   const prevSameDay = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, dayOfMonth));
 
-  const [monthly, daily, partial] = await Promise.all([
+  const [monthly, daily, partial, sectionData] = await Promise.all([
     runReport(token, propertyId, {
       dateRanges: [{ startDate: yearStart, endDate: 'today' }],
       dimensions: [{ name: 'yearMonth' }],
@@ -78,6 +137,7 @@ async function buildProperty(token, propertyId) {
       ],
       metrics: [{ name: 'screenPageViews' }, { name: 'totalUsers' }],
     }),
+    buildSections(token, propertyId, brand, today),
   ]);
 
   const currentYm = `${today.getUTCFullYear()}${String(today.getUTCMonth() + 1).padStart(2, '0')}`;
@@ -122,6 +182,8 @@ async function buildProperty(token, propertyId) {
     avgSessionDurationChange: pct(num(last, 5), num(prior, 5)),
     engagementRateChange: pct(num(last, 6), num(prior, 6)),
     monthlyHistory,
+    sections: sectionData.sections,
+    sectionSummary: sectionData.summary,
     dailyViews,
     dailyPeaks,
     septPartial: cur && prev ? {
@@ -153,6 +215,8 @@ function parseGA4Response(res) {
     monthlyHistory: res.monthlyHistory || [],
     dailyViews: res.dailyViews || [],
     dailyPeaks: res.dailyPeaks || [],
+    sections: res.sections || [],
+    sectionSummary: res.sectionSummary || null,
     septPartial: res.septPartial || null,
   };
 }
