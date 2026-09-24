@@ -5,14 +5,18 @@ export async function GET() {
     const token = process.env.META_ACCESS_TOKEN;
     if (!token) throw new Error('META_ACCESS_TOKEN no configurado');
 
-    const axxisPageId = process.env.META_AXXIS_PAGE_ID || 'default';
-    const dinersPageId = process.env.META_DINERS_PAGE_ID || 'default';
+    // IDs de Instagram Business Account (usados vía Facebook Graph API)
+    const axxisIgId = process.env.META_AXXIS_PAGE_ID || 'default';
+    const dinersIgId = process.env.META_DINERS_PAGE_ID || 'default';
+    // IDs de página de Facebook (distintos a los de Instagram)
+    const axxisFbId = process.env.META_AXXIS_FB_PAGE_ID || 'default';
+    const dinersFbId = process.env.META_DINERS_FB_PAGE_ID || 'default';
 
-    // Instagram insights
+    // Instagram insights (vía graph.facebook.com, no graph.instagram.com)
     const [axxisIgRes, dinersIgRes] = await Promise.all([
-      axios.get(`https://graph.instagram.com/${axxisPageId}/insights`, {
+      axios.get(`https://graph.facebook.com/v19.0/${axxisIgId}/insights`, {
         params: {
-          metric: 'impressions,reach,profile_views,website_clicks,engagement',
+          metric: 'reach,profile_views,accounts_engaged,total_interactions',
           period: 'day',
           access_token: token,
         },
@@ -20,9 +24,9 @@ export async function GET() {
         console.error('AXXIS Instagram error:', err.response?.data || err.message);
         return { data: null };
       }),
-      axios.get(`https://graph.instagram.com/${dinersPageId}/insights`, {
+      axios.get(`https://graph.facebook.com/v19.0/${dinersIgId}/insights`, {
         params: {
-          metric: 'impressions,reach,profile_views,website_clicks,engagement',
+          metric: 'reach,profile_views,accounts_engaged,total_interactions',
           period: 'day',
           access_token: token,
         },
@@ -32,11 +36,11 @@ export async function GET() {
       }),
     ]);
 
-    // Facebook insights
+    // Facebook Page insights
     const [axxisFbRes, dinersFbRes] = await Promise.all([
-      axios.get(`https://graph.facebook.com/${axxisPageId}/insights`, {
+      axios.get(`https://graph.facebook.com/v19.0/${axxisFbId}/insights`, {
         params: {
-          metric: 'page_impressions,page_fan_adds,page_engaged_users,page_actions_post_like',
+          metric: 'page_impressions,page_impressions_unique,page_post_engagements,page_fans',
           period: 'day',
           access_token: token,
         },
@@ -44,9 +48,9 @@ export async function GET() {
         console.error('AXXIS Facebook error:', err.response?.data || err.message);
         return { data: null };
       }),
-      axios.get(`https://graph.facebook.com/${dinersPageId}/insights`, {
+      axios.get(`https://graph.facebook.com/v19.0/${dinersFbId}/insights`, {
         params: {
-          metric: 'page_impressions,page_fan_adds,page_engaged_users,page_actions_post_like',
+          metric: 'page_impressions,page_impressions_unique,page_post_engagements,page_fans',
           period: 'day',
           access_token: token,
         },
@@ -117,8 +121,8 @@ function parseInstagramResponse(data) {
     metrics[item.name] = item.values?.[0]?.value || 0;
   });
 
-  const impressions = metrics.impressions || 0;
-  const engagement = (metrics.engagement || metrics.profile_views || 0);
+  const impressions = metrics.profile_views || 0;
+  const engagement = metrics.total_interactions || metrics.accounts_engaged || 0;
 
   return {
     reach: metrics.reach || 0,
@@ -144,10 +148,10 @@ function parseFacebookResponse(data) {
   });
 
   const impressions = metrics.page_impressions || 0;
-  const engagement = (metrics.page_engaged_users || metrics.page_actions_post_like || 0);
+  const engagement = metrics.page_post_engagements || 0;
 
   return {
-    reach: metrics.page_fan_adds || 0,
+    reach: metrics.page_impressions_unique || 0,
     impressions,
     engagement,
     engagementRate: impressions ? (engagement / impressions) : 0,
