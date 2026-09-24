@@ -1,37 +1,12 @@
 import axios from 'axios';
+import crypto from 'crypto';
 
-export async function GET() {
-  try {
-    const googleKey = JSON.parse(process.env.GOOGLE_CLOUD_JSON_KEY);
-    const axxisId = process.env.GA4_AXXIS_ID;
-    const dinersId = process.env.GA4_DINERS_ID;
+export const dynamic = 'force-dynamic';
 
-    // Obtener access token
-    const tokenResponse = await axios.post(
-      `https://www.googleapis.com/oauth2/v4/token`,
-      {
-        grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
-        assertion: generateJWT(googleKey),
-      }
-    );
+const MONTHS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 
-    const accessToken = tokenResponse.data.access_token;
-
-    // Llamar GA4 Data API
-    const [axxisRes, dinersRes] = await Promise.all([
-      callGA4API(accessToken, axxisId),
-      callGA4API(accessToken, dinersId),
-    ]);
-
-    return Response.json({
-      axxis: parseGA4Response(axxisRes),
-      diners: parseGA4Response(dinersRes),
-    });
-  } catch (error) {
-    console.error('GA4 API Error:', error);
-    // Mock data en caso de error
-    return Response.json({
-      axxis: {
+const MOCK = {
+  axxis: {
         sessions: 93919,
         users: 80065,
         newUsers: 72360,
@@ -116,25 +91,144 @@ export async function GET() {
           { month: 'ago 2026', sesiones: 93919, vistas: 136612, usuarios: 80065 },
         ],
       },
-      diners: {
+  diners: {
         sessions: 89340,
         users: 71200,
         organicSessions: 65400,
         paidSessions: 12100,
       },
+};
+
+export async function GET() {
+  try {
+    const key = JSON.parse(process.env.GOOGLE_CLOUD_JSON_KEY);
+    const token = await getAccessToken(key);
+    const [axxis, diners] = await Promise.all([
+      buildProperty(token, process.env.GA4_AXXIS_ID, MOCK.axxis),
+      buildProperty(token, process.env.GA4_DINERS_ID, MOCK.diners),
+    ]);
+    return Response.json({ axxis: parseGA4Response(axxis), diners: parseGA4Response(diners), source: 'ga4' });
+  } catch (error) {
+    console.error('GA4 API Error:', error.response?.data || error.message);
+    return Response.json({
+      axxis: parseGA4Response(MOCK.axxis),
+      diners: parseGA4Response(MOCK.diners),
+      source: 'mock',
+      error: JSON.stringify(error.response?.data || error.message),
     });
   }
 }
 
-function generateJWT(key) {
-  // Implementar JWT generation para Google Service Account
-  // Por ahora, retornar string dummy
-  return 'dummy-jwt';
+async function getAccessToken(key) {
+  const b64 = (o) => Buffer.from(JSON.stringify(o)).toString('base64url');
+  const now = Math.floor(Date.now() / 1000);
+  const unsigned = b64({ alg: 'RS256', typ: 'JWT' }) + '.' + b64({
+    iss: key.client_email,
+    scope: 'https://www.googleapis.com/auth/analytics.readonly',
+    aud: 'https://oauth2.googleapis.com/token',
+    iat: now,
+    exp: now + 3600,
+  });
+  const signature = crypto.createSign('RSA-SHA256').update(unsigned).sign(key.private_key.replace(/\\n/g, '\n'), 'base64url');
+  const res = await axios.post(
+    'https://oauth2.googleapis.com/token',
+    new URLSearchParams({ grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer', assertion: unsigned + '.' + signature }),
+  );
+  return res.data.access_token;
 }
 
-async function callGA4API(accessToken, propertyId) {
-  // Implementar llamada a Google Analytics Data API
-  return {};
+async function runReport(token, propertyId, body) {
+  const res = await axios.post(
+    `https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`,
+    body,
+    { headers: { Authorization: `Bearer ${token}` } },
+  );
+  return res.data.rows || [];
+}
+
+const num = (row, i) => Number(row.metricValues[i].value);
+const pct = (cur, prev) => (prev ? cur / prev - 1 : null);
+const iso = (d) => d.toISOString().slice(0, 10);
+
+function fmtDuration(sec) {
+  const s = Math.round(sec);
+  return [Math.floor(s / 3600), Math.floor((s % 3600) / 60), s % 60].map((n) => String(n).padStart(2, '0')).join(':');
+}
+
+async function buildProperty(token, propertyId, fallback) {
+  const today = new Date();
+  const monthStart = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), 1));
+  const dayOfMonth = today.getUTCDate() - 1 || 1;
+  const yearStart = `${today.getUTCFullYear()}-01-01`;
+  const prevMonthStart = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, 1));
+  const prevSameDay = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, dayOfMonth));
+
+  const [monthly, daily, partial] = await Promise.all([
+    runReport(token, propertyId, {
+      dateRanges: [{ startDate: yearStart, endDate: 'today' }],
+      dimensions: [{ name: 'yearMonth' }],
+      metrics: ['sessions', 'screenPageViews', 'totalUsers', 'newUsers', 'bounceRate', 'averageSessionDuration', 'engagementRate'].map((name) => ({ name })),
+      orderBys: [{ dimension: { dimensionName: 'yearMonth' } }],
+    }),
+    runReport(token, propertyId, {
+      dateRanges: [{ startDate: iso(prevMonthStart), endDate: 'today' }],
+      dimensions: [{ name: 'date' }],
+      metrics: [{ name: 'screenPageViews' }],
+      orderBys: [{ dimension: { dimensionName: 'date' } }],
+    }),
+    runReport(token, propertyId, {
+      dateRanges: [
+        { startDate: iso(monthStart), endDate: 'today', name: 'cur' },
+        { startDate: iso(prevMonthStart), endDate: iso(prevSameDay), name: 'prev' },
+      ],
+      metrics: [{ name: 'screenPageViews' }, { name: 'totalUsers' }],
+    }),
+  ]);
+
+  const currentYm = `${today.getUTCFullYear()}${String(today.getUTCMonth() + 1).padStart(2, '0')}`;
+  const closed = monthly.filter((r) => r.dimensionValues[0].value !== currentYm);
+  const last = closed[closed.length - 1];
+  const prior = closed[closed.length - 2];
+
+  const monthlyHistory = closed.map((r) => ({
+    month: `${MONTHS[Number(r.dimensionValues[0].value.slice(4)) - 1]} ${r.dimensionValues[0].value.slice(0, 4)}`,
+    sesiones: num(r, 0), vistas: num(r, 1), usuarios: num(r, 2),
+  }));
+
+  const dailyViews = daily
+    .filter((r) => r.dimensionValues[0].value >= iso(new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, 1))).replace(/-/g, ''))
+    .map((r) => {
+      const d = r.dimensionValues[0].value;
+      return { label: `${Number(d.slice(6))} ${MONTHS[Number(d.slice(4, 6)) - 1]}`, value: num(r, 0) };
+    });
+
+  const dr = (name) => partial.find((r) => r.dimensionValues.some((v) => v.value === name));
+  const cur = dr('cur');
+  const prev = dr('prev');
+
+  const dailyPeaks = (fallback.dailyPeaks || [])
+    .map((pk) => ({ ...pk, value: dailyViews.find((d) => d.label === pk.label)?.value ?? pk.value }));
+
+  return {
+    sessions: num(last, 0), pageviews: num(last, 1), users: num(last, 2), newUsers: num(last, 3),
+    bounceRate: num(last, 4), avgSessionDuration: fmtDuration(num(last, 5)), engagementRate: num(last, 6),
+    sessionsChange: pct(num(last, 0), num(prior, 0)),
+    pageviewsChange: pct(num(last, 1), num(prior, 1)),
+    usersChange: pct(num(last, 2), num(prior, 2)),
+    newUsersChange: pct(num(last, 3), num(prior, 3)),
+    bounceRateChange: pct(num(last, 4), num(prior, 4)),
+    avgSessionDurationChange: pct(num(last, 5), num(prior, 5)),
+    engagementRateChange: pct(num(last, 6), num(prior, 6)),
+    monthlyHistory,
+    dailyViews,
+    dailyPeaks,
+    septPartial: cur && prev ? {
+      range: `1 al ${dayOfMonth} de ${['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'][today.getUTCMonth()]}`,
+      views: num(cur, 0), viewsChange: pct(num(cur, 0), num(prev, 0)),
+      users: num(cur, 1), usersChange: pct(num(cur, 1), num(prev, 1)),
+    } : null,
+    analysis: fallback.analysis,
+  };
 }
 
 function parseGA4Response(res) {
