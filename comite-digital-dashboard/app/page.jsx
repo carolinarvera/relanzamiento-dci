@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid, LabelList, Cell, PieChart, Pie, AreaChart, Area, ReferenceDot, ReferenceLine } from 'recharts';
 
 const MONTH_NAMES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
@@ -475,34 +475,71 @@ export default function Dashboard() {
                   </div>
                   <div style={styles.card}>
                     <div style={styles.cardTitle}>Fuentes de tráfico (% de sesiones)</div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', margin: '14px 0' }}>
-                      {current.ga4.audience.channels.map((c) => (
-                        <div key={c.name}>
-                          <div style={{ fontSize: '24px', fontWeight: 700, color: '#222' }}>{(c.pct * 100).toFixed(1)}%</div>
-                          <div style={{ fontSize: '12px', color: '#666' }}>{c.name}</div>
-                        </div>
-                      ))}
-                    </div>
-                    <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse' }}>
-                      <thead>
-                        <tr style={{ background: '#1a4fb3', color: 'white' }}>
-                          <th style={{ padding: '6px', textAlign: 'left' }}>Grupo de canal</th>
-                          <th style={{ padding: '6px', textAlign: 'right' }}>Sesiones</th>
-                          <th style={{ padding: '6px', textAlign: 'right' }}>Vistas</th>
-                          <th style={{ padding: '6px', textAlign: 'right' }}>Usuarios</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {current.ga4.audience.channels.map((c) => (
-                          <tr key={c.name}>
-                            <td style={{ padding: '6px', borderBottom: '1px solid #eee' }}>{c.name}</td>
-                            <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(c.sessions)}</td>
-                            <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(c.views)}</td>
-                            <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(c.users)}</td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                    {(() => {
+                      const GROUPS = [
+                        { name: 'Pauta', color: '#d84315', channels: ['Paid Social', 'Paid Search', 'Paid Other', 'Paid Video', 'Paid Shopping', 'Display', 'Cross-network'] },
+                        { name: 'Orgánico', color: '#2e7d32', channels: ['Organic Search', 'Organic Social', 'Organic Video', 'Organic Shopping'] },
+                        { name: 'Directo', color: '#1a4fb3', channels: ['Direct'] },
+                        { name: 'Email', color: '#6a1b9a', channels: ['Email'] },
+                        { name: 'Referido', color: '#00838f', channels: ['Referral', 'Affiliates'] },
+                        { name: 'Asistentes de IA', color: '#f9a825', channels: ['AI Assistant'] },
+                      ];
+                      const all = current.ga4.audience.channels;
+                      const known = new Set(GROUPS.flatMap((g) => g.channels));
+                      const groups = [...GROUPS, { name: 'No asignado / otros', color: '#757575', channels: null }].map((g) => {
+                        const items = all.filter((c) => (g.channels ? g.channels.includes(c.name) : !known.has(c.name)));
+                        return {
+                          ...g,
+                          items,
+                          sessions: items.reduce((x, c) => x + c.sessions, 0),
+                          views: items.reduce((x, c) => x + c.views, 0),
+                          users: items.reduce((x, c) => x + c.users, 0),
+                          pct: items.reduce((x, c) => x + c.pct, 0),
+                        };
+                      }).filter((g) => g.items.length > 0);
+                      return (
+                        <>
+                          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', margin: '14px 0' }}>
+                            {groups.map((g) => (
+                              <div key={g.name} style={{ borderLeft: `4px solid ${g.color}`, paddingLeft: '10px' }}>
+                                <div style={{ fontSize: '24px', fontWeight: 700, color: '#222' }}>{(g.pct * 100).toFixed(1)}%</div>
+                                <div style={{ fontSize: '12px', color: '#666' }}>{g.name}</div>
+                              </div>
+                            ))}
+                          </div>
+                          <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse' }}>
+                            <thead>
+                              <tr style={{ background: '#1a4fb3', color: 'white' }}>
+                                <th style={{ padding: '6px', textAlign: 'left' }}>Tipo / canal</th>
+                                <th style={{ padding: '6px', textAlign: 'right' }}>Sesiones</th>
+                                <th style={{ padding: '6px', textAlign: 'right' }}>Vistas</th>
+                                <th style={{ padding: '6px', textAlign: 'right' }}>Usuarios</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {groups.map((g) => (
+                                <React.Fragment key={g.name}>
+                                  <tr style={{ background: '#f4f6fb' }}>
+                                    <td style={{ padding: '6px', fontWeight: 700, borderLeft: `4px solid ${g.color}` }}>{g.name} · {(g.pct * 100).toFixed(1)}%</td>
+                                    <td style={{ padding: '6px', textAlign: 'right', fontWeight: 700 }}>{nf(g.sessions)}</td>
+                                    <td style={{ padding: '6px', textAlign: 'right', fontWeight: 700 }}>{nf(g.views)}</td>
+                                    <td style={{ padding: '6px', textAlign: 'right', fontWeight: 700 }}>{nf(g.users)}</td>
+                                  </tr>
+                                  {g.items.map((c) => (
+                                    <tr key={c.name}>
+                                      <td style={{ padding: '6px 6px 6px 22px', borderBottom: '1px solid #eee' }}>{c.name} <span style={{ color: '#888' }}>({(c.pct * 100).toFixed(1)}%)</span></td>
+                                      <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(c.sessions)}</td>
+                                      <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(c.views)}</td>
+                                      <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(c.users)}</td>
+                                    </tr>
+                                  ))}
+                                </React.Fragment>
+                              ))}
+                            </tbody>
+                          </table>
+                        </>
+                      );
+                    })()}
                     {current.ga4.audience.ai?.sources?.length > 0 && (
                       <div style={{ marginTop: '18px' }}>
                         <div style={styles.cardTitle}>Asistentes de IA que envían tráfico</div>
