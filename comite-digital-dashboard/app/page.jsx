@@ -838,7 +838,7 @@ export default function Dashboard() {
             </div>
             <div style={{ ...styles.card, marginTop: '20px' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', alignItems: 'center' }}>
-                <div style={styles.cardTitle}>Google Trends Colombia · temas de la revista</div>
+                <div style={styles.cardTitle}>Noticias del sector · temas de la revista</div>
                 <select value={trendDays} onChange={(e) => setTrendDays(Number(e.target.value))} style={{ padding: '6px', borderRadius: '4px', border: '1px solid #ccc' }}>
                   <option value={7}>Últimos 7 días</option>
                   <option value={30}>Últimos 30 días</option>
@@ -847,32 +847,19 @@ export default function Dashboard() {
               </div>
               {!trends && <div style={styles.cardSubtext}>Consultando Google Trends…</div>}
               {trends?.error && <div style={{ ...styles.cardSubtext, color: '#b71c1c' }}>No se pudo leer Google Trends: {trends.error}</div>}
-              {trends?.topics && trends.failed > 0 && trends.failed === trends.topics.length && (
-                <div style={{ background: '#fff4e5', color: '#8a4b00', padding: '10px 12px', borderRadius: '6px', fontSize: '12px', marginTop: '10px' }}>
-                  Google Trends no respondió ({trends.topics[0]?.error}). Las noticias del sector sí se muestran; reintenta en unos minutos.
-                </div>
-              )}
               {trends?.topics && (
                 <div style={{ overflowX: 'auto', marginTop: '12px' }}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '860px' }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '520px' }}>
                     <thead>
                       <tr style={{ background: '#f4f6fb' }}>
                         <th style={{ ...head, textAlign: 'left', width: '13%' }}>Tema</th>
-                        <th style={{ ...head, textAlign: 'left', width: '22%' }}>Más buscadas</th>
-                        <th style={{ ...head, textAlign: 'left', width: '25%' }}>En alza</th>
-                        <th style={{ ...head, textAlign: 'left', width: '40%' }}>Noticias del sector (últimos días)</th>
+                        <th style={{ ...head, textAlign: 'left' }}>Noticias del sector (últimos días)</th>
                       </tr>
                     </thead>
                     <tbody>
                       {trends.topics.map((t) => (
                         <tr key={t.keyword} style={{ verticalAlign: 'top' }}>
                           <td style={{ ...cell, fontWeight: 700, textTransform: 'capitalize' }}>{t.keyword}</td>
-                          <td style={cell}>
-                            {t.top.length ? t.top.slice(0, 4).map((q) => <div key={q.query}>{q.query} <span style={{ color: '#999' }}>({q.value})</span></div>) : <span style={{ color: '#999' }}>{t.error ? 'sin respuesta' : 'sin volumen suficiente'}</span>}
-                          </td>
-                          <td style={cell}>
-                            {t.rising.length ? t.rising.slice(0, 4).map((q) => <div key={q.query}>{q.query} <span style={{ color: '#2e7d32', fontWeight: 600 }}>{q.label}</span></div>) : <span style={{ color: '#999' }}>{'\u2014'}</span>}
-                          </td>
                           <td style={cell}>
                             {t.news?.length ? t.news.map((n) => (
                               <div key={n.url || n.title} style={{ marginBottom: '6px' }}>
@@ -887,7 +874,7 @@ export default function Dashboard() {
                   </table>
                 </div>
               )}
-              <div style={styles.cardSubtext}>Consultas relacionadas y noticias (Google News, Colombia) por tema. "Más buscadas": índice 0-100 relativo dentro de cada tema. "En alza": crecimiento contra el periodo anterior ("Aumento puntual" = alza muy fuerte desde un volumen bajo). Google Trends no es una API oficial y puede fallar o vaciar temas de poco volumen.</div>
+              <div style={styles.cardSubtext}>Noticias recientes de Colombia por tema (Google News), con búsquedas pensadas para el nicho de la revista.</div>
             </div>
             <div style={{ ...styles.card, marginTop: '20px' }}>
               <div style={styles.cardTitle}>Tendencias generales del día en Colombia (todas las categorías)</div>

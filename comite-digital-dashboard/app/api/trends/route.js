@@ -1,5 +1,4 @@
 import axios from 'axios';
-import googleTrends from 'google-trends-api';
 
 export const dynamic = 'force-dynamic';
 
@@ -38,7 +37,6 @@ const TOPICS = {
 
 const CACHE = new Map();
 const TTL = 12 * 60 * 60 * 1000;
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 const decode = (t) => (t || '').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 
@@ -59,19 +57,6 @@ async function fetchNews(query, days) {
   }
 }
 
-async function related(keyword, startTime, attempt = 0) {
-  try {
-    const raw = await googleTrends.relatedQueries({ keyword, geo: 'CO', hl: 'es', startTime });
-    const lists = JSON.parse(raw).default.rankedList;
-    const clean = (l) => (l?.rankedKeyword || []).slice(0, 6).map((k) => ({ query: k.query, value: k.value, label: k.formattedValue }));
-    return { keyword, top: clean(lists[0]), rising: clean(lists[1]) };
-  } catch (e) {
-    const blocked = /is not valid JSON|<HTML|<html/i.test(String(e.message || e));
-    if (!blocked && attempt < 1) { await sleep(1500); return related(keyword, startTime, attempt + 1); }
-    return { keyword, blocked, error: blocked ? 'Google bloqueó temporalmente las consultas (demasiadas solicitudes)' : String(e.message || e).slice(0, 120), top: [], rising: [] };
-  }
-}
-
 export async function GET(request) {
   const url = new URL(request.url);
   const brand = url.searchParams.get('brand') === 'diners' ? 'diners' : 'axxis';
@@ -80,23 +65,14 @@ export async function GET(request) {
   const hit = CACHE.get(key);
   if (hit && Date.now() - hit.at < TTL) return Response.json({ ...hit.data, cached: true });
 
-  const startTime = new Date(Date.now() - days * 86400000);
   const list = TOPICS[brand];
   const results = [];
-  for (const t of list) {
-    // Trends se consulta de a una y con pausa para evitar el bloqueo de Google; las noticias no tienen ese límite.
-    const rel = await related(t.k, startTime);
-    results.push({ ...rel, news: await fetchNews(t.news, days) });
-    if (rel.blocked) {
-      // ya bloqueado: completar el resto solo con noticias
-      const rest = list.slice(results.length);
-      results.push(...(await Promise.all(rest.map(async (r) => ({ keyword: r.k, blocked: true, error: rel.error, top: [], rising: [], news: await fetchNews(r.news, days) })))));
-      break;
-    }
-    await sleep(900);
+  for (let i = 0; i < list.length; i += 4) {
+    // eslint-disable-next-line no-await-in-loop
+    results.push(...(await Promise.all(list.slice(i, i + 4).map(async (t) => ({ keyword: t.k, news: await fetchNews(t.news, days) })))));
   }
-  const failed = results.filter((r) => r.error).length;
-  const data = { brand, days, geo: 'CO', topics: results, failed };
-  if (failed < results.length) CACHE.set(key, { at: Date.now(), data });
+  const withNews = results.filter((r) => r.news.length).length;
+  const data = { brand, days, geo: 'CO', topics: results, failed: results.length - withNews };
+  if (withNews > 0) CACHE.set(key, { at: Date.now(), data });
   return Response.json(data);
 }
