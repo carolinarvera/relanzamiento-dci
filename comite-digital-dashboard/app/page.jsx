@@ -92,11 +92,12 @@ export default function Dashboard() {
     change: (positive) => ({ fontSize: '12px', marginTop: '8px', color: positive ? '#2e7d32' : '#c62828', fontWeight: '600' }),
   };
 
-  const renderChange = (value) => {
+  const renderChange = (value, lowerIsBetter = false) => {
     if (value === null || value === undefined) return null;
     const positive = value >= 0;
+    const good = lowerIsBetter ? !positive : positive;
     const arrow = positive ? '↑' : '↓';
-    return <div style={styles.change(positive)}>{arrow} {(Math.abs(value) * 100).toFixed(1)}% vs mes anterior</div>;
+    return <div style={styles.change(good)}>{arrow} {(Math.abs(value) * 100).toFixed(1)}% vs mes anterior</div>;
   };
 
   const formatCompact = (value) => {
@@ -263,7 +264,7 @@ export default function Dashboard() {
           <div style={styles.card}>
             <div style={styles.cardTitle}>Porcentaje de Rebote</div>
             <div style={styles.cardValue}>{current.ga4?.bounceRate ? (current.ga4.bounceRate * 100).toFixed(0) : 0}%</div>
-            {renderChange(current.ga4?.bounceRateChange)}
+            {renderChange(current.ga4?.bounceRateChange, true)}<div style={styles.cardSubtext}>menor es mejor</div>
           </div>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Porcentaje de Interacciones</div>
