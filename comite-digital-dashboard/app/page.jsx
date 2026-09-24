@@ -64,6 +64,8 @@ export default function Dashboard() {
   const [draft, setDraft] = useState({ start: '', end: '' });
   const [trends, setTrends] = useState(null);
   const [trendDays, setTrendDays] = useState(30);
+  const [traficoOpen, setTraficoOpen] = useState(false);
+  const [trafico, setTrafico] = useState(null);
   const rangeKey = range ? `${range.start}|${range.end}` : 'default';
   const sectionDef = SECTIONS.find((x) => x.key === section);
   const ready = sectionDef.apis.every((a) => loadedKey[a] === rangeKey);
@@ -78,6 +80,18 @@ export default function Dashboard() {
       .catch((e) => { if (!cancelled) setTrends({ error: e.message }); });
     return () => { cancelled = true; };
   }, [activeTab, trendDays, section]);
+
+  useEffect(() => {
+    if (section !== 'pauta' || !traficoOpen) return undefined;
+    let cancelled = false;
+    setTrafico(null);
+    const qs = range ? `&start=${range.start}&end=${range.end}` : '';
+    fetch(`/api/pauta-trafico?brand=${activeTab}${qs}`)
+      .then((r) => r.json())
+      .then((j) => { if (!cancelled) setTrafico(j); })
+      .catch((e) => { if (!cancelled) setTrafico({ error: e.message }); });
+    return () => { cancelled = true; };
+  }, [section, traficoOpen, activeTab, rangeKey]);
 
   useEffect(() => {
     let cancelled = false;
@@ -1578,6 +1592,68 @@ export default function Dashboard() {
               {campaignTable(b.propia.campaigns, 15)}
               <div style={styles.cardSubtext}>La marca se detecta por el nombre de la campaña y el tipo (cliente o propia) por las palabras "{(data.pauta.clientKeywords || []).join('", "')}". Si un cliente usa otra denominación, dímela y la agrego. "Resultado" depende del objetivo. Cuentas de anuncios de Meta: {data.pauta.accounts.join(', ')}.</div>
             </div>
+
+            <div style={{ ...styles.cardTitle, fontSize: '14px', margin: '40px 0 10px', color: '#1c2a6b' }}>Detalle de campañas de tráfico · {brandName}</div>
+            {!traficoOpen ? (
+              <div style={styles.card}>
+                <div style={styles.cardSubtext}>Muestra los 10 anuncios de campañas de tráfico con más inversión: imagen, texto y métricas de comportamiento. Se carga aparte para no agotar el cupo de la API de Meta Ads.</div>
+                <button onClick={() => setTraficoOpen(true)} style={{ marginTop: '12px', padding: '10px 18px', border: 'none', borderRadius: '4px', background: '#0066cc', color: 'white', fontWeight: 600, cursor: 'pointer' }}>Cargar detalle de anuncios</button>
+              </div>
+            ) : !trafico ? (
+              <div style={{ ...styles.card, textAlign: 'center', padding: '30px', color: '#555' }}>Cargando anuncios…</div>
+            ) : trafico.error ? (
+              <div style={{ ...styles.card, color: '#b71c1c' }}>No se pudo cargar el detalle: {trafico.error}</div>
+            ) : !trafico.ads?.length ? (
+              <div style={styles.card}><div style={styles.cardSubtext}>Sin campañas de tráfico de {brandName} con gasto en este periodo.</div></div>
+            ) : (
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '20px' }}>
+                {trafico.ads.map((ad) => {
+                  const dash = '\u2014';
+                  const m = (label, value) => (
+                    <div style={{ padding: '6px 0', borderBottom: '1px solid #f0f0f0' }}>
+                      <div style={{ fontSize: '10px', color: '#777', textTransform: 'uppercase' }}>{label}</div>
+                      <div style={{ fontSize: '14px', fontWeight: 700 }}>{value}</div>
+                    </div>
+                  );
+                  const pct = (v) => (v === null || v === undefined ? dash : `${(v * 100).toFixed(1)}%`);
+                  return (
+                    <div key={ad.id} style={{ ...styles.card, padding: 0, overflow: 'hidden' }}>
+                      {ad.image ? <img src={ad.image} alt="" referrerPolicy="no-referrer" style={{ width: '100%', height: '240px', objectFit: 'cover', display: 'block' }} /> : <div style={{ height: '120px', background: '#eee', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#999', fontSize: '12px' }}>Sin vista previa</div>}
+                      <div style={{ padding: '14px' }}>
+                        <div style={{ fontSize: '11px', color: '#777' }}>{ad.campaign} · {ad.isVideo ? 'Video' : 'Imagen'} · Inversión {cop(ad.spend)}</div>
+                        {ad.headline && <div style={{ fontSize: '14px', fontWeight: 700, marginTop: '6px' }}>{ad.headline}</div>}
+                        <div style={{ fontSize: '13px', margin: '6px 0 12px', color: '#333', maxHeight: '90px', overflow: 'hidden' }}>{ad.text || <span style={{ color: '#999' }}>Sin texto descriptivo disponible</span>}</div>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0 12px' }}>
+                          {m('Impresiones', nf(ad.impressions))}
+                          {m('Alcance', nf(ad.reach))}
+                          {m('Frecuencia', ad.frequency ? ad.frequency.toFixed(2) : dash)}
+                          {m('CPM', ad.impressions ? cop(ad.cpm) : dash)}
+                          {m('CPC', ad.linkClicks ? cop(ad.cpc) : dash)}
+                          {m('Clics en enlace', nf(ad.linkClicks))}
+                          {m('Visitas a la página de destino', ad.landingPageViews === null ? dash : nf(ad.landingPageViews))}
+                          {m('Visitas al perfil', ad.profileVisits === null ? dash : nf(ad.profileVisits))}
+                          {m('Seguimientos de Instagram', ad.igFollows === null ? dash : nf(ad.igFollows))}
+                          {m('Reproducciones 3 s', ad.videoViews3s === null ? dash : nf(ad.videoViews3s))}
+                          {m('Tiempo prom. reproducción', ad.avgWatchSeconds === null ? dash : `${ad.avgWatchSeconds.toFixed(1)} s`)}
+                          {m('Retención 25/50/75/100%', ad.videoViews3s ? `${pct(ad.retention.p25)} · ${pct(ad.retention.p50)} · ${pct(ad.retention.p75)} · ${pct(ad.retention.p100)}` : dash)}
+                        </div>
+                        <div style={{ marginTop: '12px' }}>
+                          <div style={{ fontSize: '10px', color: '#777', textTransform: 'uppercase', marginBottom: '4px' }}>Edad del público (% del alcance)</div>
+                          {ad.age?.length ? ad.age.map((a) => (
+                            <div key={a.age} style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '11px', marginBottom: '3px' }}>
+                              <span style={{ width: '38px' }}>{a.age}</span>
+                              <div style={{ flex: 1, background: '#eef1fb', borderRadius: '3px', height: '10px' }}><div style={{ width: `${a.pct * 100}%`, background: '#4a86e8', height: '10px', borderRadius: '3px' }} /></div>
+                              <span style={{ width: '38px', textAlign: 'right' }}>{(a.pct * 100).toFixed(1)}%</span>
+                            </div>
+                          )) : <span style={{ fontSize: '11px', color: '#999' }}>Sin datos de edad</span>}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            {trafico?.ads?.length > 0 && <div style={styles.cardSubtext}>Los campos de video (reproducciones 3 s, tiempo promedio, retención) solo existen en anuncios de video. "{'\u2014'}" significa que Meta no devolvió ese dato para el anuncio (por ejemplo visitas al perfil o seguimientos de Instagram, que solo aparecen en campañas con ese objetivo).</div>}
           </div>
         );
       })()}
