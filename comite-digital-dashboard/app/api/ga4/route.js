@@ -101,16 +101,15 @@ async function buildProperty(token, propertyId) {
   const cur = dr('cur');
   const prev = dr('prev');
 
-  const dailyPeaks = dailyViews
+  const dailyPeaks = [];
+  dailyViews
     .map((d, i) => ({ ...d, i }))
-    .filter((d, _, arr) => {
-      const prev = dailyViews[d.i - 1]?.value ?? -1;
-      const next = dailyViews[d.i + 1]?.value ?? -1;
-      return d.value > prev && d.value >= next;
-    })
     .sort((x, y) => y.value - x.value)
-    .slice(0, 3)
-    .map(({ label, value }) => ({ label, value }));
+    .forEach((d) => {
+      if (dailyPeaks.length < 3 && dailyPeaks.every((p) => Math.abs(p.i - d.i) >= 7)) dailyPeaks.push(d);
+    });
+  dailyPeaks.sort((x, y) => x.i - y.i);
+  dailyPeaks.forEach((p) => delete p.i);
 
   return {
     sessions: num(last, 0), pageviews: num(last, 1), users: num(last, 2), newUsers: num(last, 3),
