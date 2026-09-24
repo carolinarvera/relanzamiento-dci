@@ -151,17 +151,17 @@ function parseInstagramResponse(data) {
 
   const metrics = {};
   data.data.forEach(item => {
-    metrics[item.name] = item.values?.[0]?.value || 0;
+    metrics[item.name] = item.total_value?.value ?? item.values?.[0]?.value ?? 0;
   });
 
-  const impressions = metrics.profile_views || 0;
+  const reach = metrics.reach || 0;
   const engagement = metrics.total_interactions || metrics.accounts_engaged || 0;
 
   return {
-    reach: metrics.reach || 0,
-    impressions,
+    reach,
+    impressions: metrics.profile_views || 0,
     engagement,
-    engagementRate: impressions ? (engagement / impressions) : 0,
+    engagementRate: reach ? (engagement / reach) : 0,
   };
 }
 
@@ -175,11 +175,12 @@ function parseFacebookResponse(data, fieldsData) {
 
   const impressions = metrics.page_views_total || 0;
   const engagement = metrics.page_post_engagements || 0;
+  const reach = fieldsData?.fan_count || 0;
 
   return {
-    reach: fieldsData?.fan_count || 0,
+    reach,
     impressions,
     engagement,
-    engagementRate: impressions ? (engagement / impressions) : 0,
+    engagementRate: reach ? (engagement / reach) : 0,
   };
 }
