@@ -18,6 +18,7 @@ export async function GET() {
         params: {
           metric: 'reach,profile_views,accounts_engaged,total_interactions',
           period: 'day',
+          metric_type: 'total_value',
           access_token: token,
         },
       }).catch((err) => {
@@ -28,6 +29,7 @@ export async function GET() {
         params: {
           metric: 'reach,profile_views,accounts_engaged,total_interactions',
           period: 'day',
+          metric_type: 'total_value',
           access_token: token,
         },
       }).catch((err) => {
@@ -40,8 +42,7 @@ export async function GET() {
     const [axxisFbRes, dinersFbRes] = await Promise.all([
       axios.get(`https://graph.facebook.com/v19.0/${axxisFbId}/insights`, {
         params: {
-          metric: 'page_impressions,page_impressions_unique,page_post_engagements,page_fans',
-          period: 'day',
+          metric: 'page_fans',
           access_token: token,
         },
       }).catch((err) => {
@@ -50,8 +51,7 @@ export async function GET() {
       }),
       axios.get(`https://graph.facebook.com/v19.0/${dinersFbId}/insights`, {
         params: {
-          metric: 'page_impressions,page_impressions_unique,page_post_engagements,page_fans',
-          period: 'day',
+          metric: 'page_fans',
           access_token: token,
         },
       }).catch((err) => {
