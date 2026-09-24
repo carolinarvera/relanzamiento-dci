@@ -1,5 +1,21 @@
 import axios from 'axios';
 
+async function getPageAccessTokens(userToken) {
+  try {
+    const res = await axios.get('https://graph.facebook.com/v19.0/me/accounts', {
+      params: { access_token: userToken },
+    });
+    const tokens = {};
+    (res.data.data || []).forEach((page) => {
+      tokens[page.id] = page.access_token;
+    });
+    return tokens;
+  } catch (err) {
+    console.error('Error obteniendo Page Access Tokens:', err.response?.data || err.message);
+    return {};
+  }
+}
+
 export async function GET() {
   try {
     const token = process.env.META_ACCESS_TOKEN;
@@ -11,6 +27,11 @@ export async function GET() {
     // IDs de página de Facebook (distintos a los de Instagram)
     const axxisFbId = process.env.META_AXXIS_FB_PAGE_ID || 'default';
     const dinersFbId = process.env.META_DINERS_FB_PAGE_ID || 'default';
+
+    // Facebook Page Insights requiere el Page Access Token (no el de usuario)
+    const pageTokens = await getPageAccessTokens(token);
+    const axxisFbToken = pageTokens[axxisFbId] || token;
+    const dinersFbToken = pageTokens[dinersFbId] || token;
 
     // Instagram insights (vía graph.facebook.com, no graph.instagram.com)
     const [axxisIgRes, dinersIgRes] = await Promise.all([
@@ -44,7 +65,7 @@ export async function GET() {
         params: {
           metric: 'page_post_engagements,page_views_total',
           period: 'day',
-          access_token: token,
+          access_token: axxisFbToken,
         },
       }).catch((err) => {
         console.error('AXXIS Facebook error:', err.response?.data || err.message);
@@ -54,7 +75,7 @@ export async function GET() {
         params: {
           metric: 'page_post_engagements,page_views_total',
           period: 'day',
-          access_token: token,
+          access_token: dinersFbToken,
         },
       }).catch((err) => {
         console.error('Diners Facebook error:', err.response?.data || err.message);
@@ -65,10 +86,10 @@ export async function GET() {
     // Fan count (seguidores) como proxy de alcance — page_fans fue deprecada
     const [axxisFbFields, dinersFbFields] = await Promise.all([
       axios.get(`https://graph.facebook.com/v19.0/${axxisFbId}`, {
-        params: { fields: 'fan_count', access_token: token },
+        params: { fields: 'fan_count', access_token: axxisFbToken },
       }).catch(() => ({ data: null })),
       axios.get(`https://graph.facebook.com/v19.0/${dinersFbId}`, {
-        params: { fields: 'fan_count', access_token: token },
+        params: { fields: 'fan_count', access_token: dinersFbToken },
       }).catch(() => ({ data: null })),
     ]);
 
