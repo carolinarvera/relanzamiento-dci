@@ -202,19 +202,19 @@ export default function Dashboard() {
                   <YAxis tick={{ fontSize: 12 }} />
                   <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
                   <Legend />
-                  <Bar dataKey="sesiones" name="Sesiones">
+                  <Bar dataKey="sesiones" name="Sesiones" fill="#333333" legendType="square">
                     {current.ga4.monthlyHistory.map((entry, i) => (
                       <Cell key={`ses-${i}`} fill={i === current.ga4.monthlyHistory.length - 1 ? '#000000' : '#333333'} />
                     ))}
                     <LabelList dataKey="sesiones" position="top" formatter={formatCompact} style={{ fontSize: 10, fill: '#333' }} />
                   </Bar>
-                  <Bar dataKey="vistas" name="Vistas">
+                  <Bar dataKey="vistas" name="Vistas" fill="#0066cc" legendType="square">
                     {current.ga4.monthlyHistory.map((entry, i) => (
                       <Cell key={`vis-${i}`} fill={i === current.ga4.monthlyHistory.length - 1 ? '#ff8c00' : '#0066cc'} />
                     ))}
                     <LabelList dataKey="vistas" position="top" formatter={formatCompact} style={{ fontSize: 10, fill: '#0066cc' }} />
                   </Bar>
-                  <Bar dataKey="usuarios" name="Total de usuarios">
+                  <Bar dataKey="usuarios" name="Total de usuarios" fill="#999999" legendType="square">
                     {current.ga4.monthlyHistory.map((entry, i) => (
                       <Cell key={`usu-${i}`} fill={i === current.ga4.monthlyHistory.length - 1 ? '#555555' : '#999999'} />
                     ))}
