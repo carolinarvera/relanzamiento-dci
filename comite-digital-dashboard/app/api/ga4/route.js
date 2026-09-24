@@ -102,6 +102,9 @@ const MOCK = {
 export async function GET() {
   try {
     const key = JSON.parse(process.env.GOOGLE_CLOUD_JSON_KEY);
+    if (!key.private_key || !key.client_email) {
+      throw new Error('GOOGLE_CLOUD_JSON_KEY no es una llave de cuenta de servicio. Campos encontrados: ' + Object.keys(key).join(', '));
+    }
     const token = await getAccessToken(key);
     const [axxis, diners] = await Promise.all([
       buildProperty(token, process.env.GA4_AXXIS_ID, MOCK.axxis),
