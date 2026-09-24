@@ -22,6 +22,9 @@ export async function GET() {
     if (!token) throw new Error('META_ACCESS_TOKEN no configurado');
 
     // IDs de Instagram Business Account (usados vía Facebook Graph API)
+    const errors = [];
+    const until = Math.floor(Date.now() / 1000);
+    const since = until - 29 * 86400;
     const axxisIgId = process.env.META_AXXIS_PAGE_ID || 'default';
     const dinersIgId = process.env.META_DINERS_PAGE_ID || 'default';
     // IDs de página de Facebook (distintos a los de Instagram)
@@ -40,10 +43,12 @@ export async function GET() {
           metric: 'reach,profile_views,accounts_engaged,total_interactions',
           period: 'day',
           metric_type: 'total_value',
+          since,
+          until,
           access_token: token,
         },
       }).catch((err) => {
-        console.error('AXXIS Instagram error:', err.response?.data || err.message);
+        errors.push('AXXIS Instagram: ' + (err.response?.data?.error?.message || err.message));
         return { data: null };
       }),
       axios.get(`https://graph.facebook.com/v19.0/${dinersIgId}/insights`, {
@@ -51,10 +56,12 @@ export async function GET() {
           metric: 'reach,profile_views,accounts_engaged,total_interactions',
           period: 'day',
           metric_type: 'total_value',
+          since,
+          until,
           access_token: token,
         },
       }).catch((err) => {
-        console.error('Diners Instagram error:', err.response?.data || err.message);
+        errors.push('Diners Instagram: ' + (err.response?.data?.error?.message || err.message));
         return { data: null };
       }),
     ]);
@@ -65,20 +72,24 @@ export async function GET() {
         params: {
           metric: 'page_post_engagements,page_views_total',
           period: 'day',
+          since,
+          until,
           access_token: axxisFbToken,
         },
       }).catch((err) => {
-        console.error('AXXIS Facebook error:', err.response?.data || err.message);
+        errors.push('AXXIS Facebook: ' + (err.response?.data?.error?.message || err.message));
         return { data: null };
       }),
       axios.get(`https://graph.facebook.com/v19.0/${dinersFbId}/insights`, {
         params: {
           metric: 'page_post_engagements,page_views_total',
           period: 'day',
+          since,
+          until,
           access_token: dinersFbToken,
         },
       }).catch((err) => {
-        console.error('Diners Facebook error:', err.response?.data || err.message);
+        errors.push('Diners Facebook: ' + (err.response?.data?.error?.message || err.message));
         return { data: null };
       }),
     ]);
@@ -94,6 +105,7 @@ export async function GET() {
     ]);
 
     return Response.json({
+      errors,
       axxis: {
         instagram: parseInstagramResponse(axxisIgRes.data),
         facebook: parseFacebookResponse(axxisFbRes.data, axxisFbFields.data),
@@ -104,38 +116,8 @@ export async function GET() {
       },
     });
   } catch (error) {
-    console.error('Meta API Error:', error);
-    // Mock data en caso de error
-    return Response.json({
-      axxis: {
-        instagram: {
-          reach: 145000,
-          impressions: 320000,
-          engagement: 12500,
-          engagementRate: 0.0391,
-        },
-        facebook: {
-          reach: 95000,
-          impressions: 210000,
-          engagement: 8300,
-          engagementRate: 0.0395,
-        },
-      },
-      diners: {
-        instagram: {
-          reach: 215000,
-          impressions: 520000,
-          engagement: 31200,
-          engagementRate: 0.06,
-        },
-        facebook: {
-          reach: 180000,
-          impressions: 410000,
-          engagement: 24500,
-          engagementRate: 0.0598,
-        },
-      },
-    });
+    console.error('Meta API Error:', error.message);
+    return Response.json({ error: error.message }, { status: 502 });
   }
 }
 
@@ -169,7 +151,7 @@ function parseFacebookResponse(data, fieldsData) {
   const metrics = {};
   if (data && data.data) {
     data.data.forEach(item => {
-      metrics[item.name] = item.values?.[item.values.length - 1]?.value || 0;
+      metrics[item.name] = (item.values || []).reduce((sum, v) => sum + (v.value || 0), 0);
     });
   }
 

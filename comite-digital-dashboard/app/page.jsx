@@ -13,19 +13,22 @@ export default function Dashboard() {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const [gscRes, ga4Res, metaRes] = await Promise.all([
-          fetch('/api/gsc'),
-          fetch('/api/ga4'),
-          fetch('/api/meta'),
-        ]);
-
-        if (!gscRes.ok || !ga4Res.ok || !metaRes.ok) throw new Error('Error fetching data');
-
-        const gscData = await gscRes.json();
-        const ga4Data = await ga4Res.json();
-        const metaData = await metaRes.json();
-
-        setData({ gsc: gscData, ga4: ga4Data, meta: metaData });
+        const load = async (name, url) => {
+          try {
+            const r = await fetch(url, { cache: 'no-store' });
+            const j = await r.json();
+            if (!r.ok) return { name, error: j.error || `HTTP ${r.status}` };
+            return { name, json: j };
+          } catch (e) {
+            return { name, error: e.message };
+          }
+        };
+        const results = await Promise.all([load('Search Console', '/api/gsc'), load('GA4', '/api/ga4'), load('Meta', '/api/meta')]);
+        const [gsc, ga4, meta] = results;
+        const errs = results.filter((r) => r.error).map((r) => `${r.name}: ${r.error}`);
+        (meta.json?.errors || []).forEach((e) => errs.push(`Meta ${e}`));
+        setData({ gsc: gsc.json || {}, ga4: ga4.json || {}, meta: meta.json || {}, errors: errs });
+        setError(null);
       } catch (err) {
         setError(err.message);
       } finally {
@@ -94,6 +97,7 @@ export default function Dashboard() {
   };
 
   const current = activeTab === 'axxis' ? axxisData : dinersData;
+  const nf = (v) => (v === undefined || v === null ? '\u2014' : Number(v).toLocaleString('es-CO'));
 
   return (
     <div style={styles.container}>
@@ -105,18 +109,25 @@ export default function Dashboard() {
         </div>
       </div>
 
+      {data.errors?.length > 0 && (
+        <div style={{ background: '#fdecea', color: '#b71c1c', padding: '12px 16px', borderRadius: '8px', marginBottom: '20px', fontSize: '13px' }}>
+          <strong>Fuentes con error (sin datos de ejemplo, solo datos reales):</strong>
+          <ul style={{ margin: '6px 0 0', paddingLeft: '18px' }}>{data.errors.map((e, k) => <li key={k}>{e}</li>)}</ul>
+        </div>
+      )}
+
       {/* GSC */}
       <div style={styles.section}>
         <h2 style={styles.sectionTitle}>Google Search Console</h2>
         <div style={styles.grid}>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Clics</div>
-            <div style={styles.cardValue}>{current.gsc?.clicks || 0}</div>
+            <div style={styles.cardValue}>{nf(current.gsc?.clicks)}</div>
             <div style={styles.cardSubtext}>últimos 30 días</div>
           </div>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Impresiones</div>
-            <div style={styles.cardValue}>{current.gsc?.impressions || 0}</div>
+            <div style={styles.cardValue}>{nf(current.gsc?.impressions)}</div>
             <div style={styles.cardSubtext}>últimos 30 días</div>
           </div>
           <div style={styles.card}>
@@ -138,17 +149,17 @@ export default function Dashboard() {
         <div style={styles.grid}>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Vistas</div>
-            <div style={styles.cardValue}>{(current.ga4?.pageviews || 0).toLocaleString('es-CO')}</div>
+            <div style={styles.cardValue}>{nf(current.ga4?.pageviews)}</div>
             {renderChange(current.ga4?.pageviewsChange)}
           </div>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Sesiones</div>
-            <div style={styles.cardValue}>{(current.ga4?.sessions || 0).toLocaleString('es-CO')}</div>
+            <div style={styles.cardValue}>{nf(current.ga4?.sessions)}</div>
             {renderChange(current.ga4?.sessionsChange)}
           </div>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Total de Usuarios</div>
-            <div style={styles.cardValue}>{(current.ga4?.users || 0).toLocaleString('es-CO')}</div>
+            <div style={styles.cardValue}>{nf(current.ga4?.users)}</div>
             {renderChange(current.ga4?.usersChange)}
           </div>
         </div>
@@ -192,7 +203,7 @@ export default function Dashboard() {
         <div style={{ ...styles.grid, marginTop: '20px' }}>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Usuarios Nuevos</div>
-            <div style={styles.cardValue}>{(current.ga4?.newUsers || 0).toLocaleString('es-CO')}</div>
+            <div style={styles.cardValue}>{nf(current.ga4?.newUsers)}</div>
             {renderChange(current.ga4?.newUsersChange)}
           </div>
           <div style={styles.card}>
@@ -234,12 +245,11 @@ export default function Dashboard() {
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>
-                <div style={styles.cardSubtext}>Curva aproximada a partir del informe; los picos marcados son exactos.</div>
               </div>
               <div>
                 <div style={styles.card}>
-                  <div style={styles.cardTitle}>Visitas agosto</div>
-                  <div style={styles.cardValue}>{(current.ga4?.pageviews || 0).toLocaleString('es-CO')}</div>
+                  <div style={styles.cardTitle}>Vistas {current.ga4.monthlyHistory?.[current.ga4.monthlyHistory.length - 1]?.month}</div>
+                  <div style={styles.cardValue}>{nf(current.ga4?.pageviews)}</div>
                 </div>
                 {current.ga4.septPartial && (
                   <>
@@ -259,11 +269,10 @@ export default function Dashboard() {
               </div>
             </div>
             <div style={{ ...styles.card, marginTop: '20px' }}>
-              <div style={styles.cardTitle}>Análisis general</div>
-              <p style={{ fontSize: '14px', lineHeight: 1.6, color: '#333', marginTop: '8px' }}>{current.ga4.analysis}</p>
+              <div style={styles.cardTitle}>Picos de visitas (calculados de GA4)</div>
               <ul style={{ fontSize: '14px', fontWeight: 600, color: '#222', marginTop: '12px', paddingLeft: '18px' }}>
                 {current.ga4.dailyPeaks?.map((pk) => (
-                  <li key={pk.label}>Pico {pk.label.replace('ago', 'de agosto').replace('sep', 'de septiembre')}: {pk.note}</li>
+                  <li key={pk.label}>{pk.label}: {pk.value.toLocaleString('es-CO')} vistas</li>
                 ))}
               </ul>
             </div>
@@ -281,9 +290,9 @@ export default function Dashboard() {
             <div style={styles.cardSubtext}>últimos 30 días</div>
           </div>
           <div style={styles.card}>
-            <div style={styles.cardTitle}>Impresiones</div>
-            <div style={styles.cardValue}>{current.meta?.instagram?.impressions || 0}</div>
-            <div style={styles.cardSubtext}>últimas</div>
+            <div style={styles.cardTitle}>Visitas al perfil</div>
+            <div style={styles.cardValue}>{nf(current.meta?.instagram?.impressions)}</div>
+            <div style={styles.cardSubtext}>últimos 30 días</div>
           </div>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Engagement</div>
@@ -293,7 +302,7 @@ export default function Dashboard() {
           <div style={styles.card}>
             <div style={styles.cardTitle}>Tasa Engagement</div>
             <div style={styles.cardValue}>{current.meta?.instagram?.engagementRate ? (current.meta.instagram.engagementRate * 100).toFixed(2) : 0}%</div>
-            <div style={styles.cardSubtext}>respecto impresiones</div>
+            <div style={styles.cardSubtext}>respecto a alcance/seguidores</div>
           </div>
         </div>
       </div>
@@ -303,14 +312,14 @@ export default function Dashboard() {
         <h2 style={styles.sectionTitle}>Facebook</h2>
         <div style={styles.grid}>
           <div style={styles.card}>
-            <div style={styles.cardTitle}>Alcance</div>
-            <div style={styles.cardValue}>{current.meta?.facebook?.reach || 0}</div>
-            <div style={styles.cardSubtext}>últimos 30 días</div>
+            <div style={styles.cardTitle}>Seguidores</div>
+            <div style={styles.cardValue}>{nf(current.meta?.facebook?.reach)}</div>
+            <div style={styles.cardSubtext}>total actual</div>
           </div>
           <div style={styles.card}>
-            <div style={styles.cardTitle}>Impresiones</div>
-            <div style={styles.cardValue}>{current.meta?.facebook?.impressions || 0}</div>
-            <div style={styles.cardSubtext}>últimas</div>
+            <div style={styles.cardTitle}>Vistas de página</div>
+            <div style={styles.cardValue}>{nf(current.meta?.facebook?.impressions)}</div>
+            <div style={styles.cardSubtext}>últimos 30 días</div>
           </div>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Engagement</div>
@@ -320,7 +329,7 @@ export default function Dashboard() {
           <div style={styles.card}>
             <div style={styles.cardTitle}>Tasa Engagement</div>
             <div style={styles.cardValue}>{current.meta?.facebook?.engagementRate ? (current.meta.facebook.engagementRate * 100).toFixed(2) : 0}%</div>
-            <div style={styles.cardSubtext}>respecto impresiones</div>
+            <div style={styles.cardSubtext}>respecto a alcance/seguidores</div>
           </div>
         </div>
       </div>
@@ -339,7 +348,7 @@ export default function Dashboard() {
           <tbody>
             <tr>
               <td style={styles.td}>Clics de búsqueda</td>
-              <td style={styles.td}>{current.gsc?.clicks || 0}</td>
+              <td style={styles.td}>{nf(current.gsc?.clicks)}</td>
               <td style={styles.td}>GSC</td>
             </tr>
             <tr>
