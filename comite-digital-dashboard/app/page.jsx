@@ -361,6 +361,25 @@ export default function Dashboard() {
                         </ResponsiveContainer>
                       </div>
                     </div>
+                    <div style={styles.card}>
+                      <div style={styles.cardTitle}>Vistas {sec.label} por hora del día{(() => { const top = sec.hourly?.reduce((b, h) => (!b || h.value > b.value ? h : b), null); return top ? ` · pico ${top.hour}` : ''; })()}</div>
+                      <div style={{ width: '100%', height: 200, marginTop: '12px' }}>
+                        <ResponsiveContainer>
+                          <BarChart data={sec.hourly} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                            <XAxis dataKey="hour" tick={{ fontSize: 10 }} interval={2} />
+                            <YAxis tick={{ fontSize: 10 }} />
+                            <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
+                            <Bar dataKey="value" name="Vistas" fill="#1a4fb3">
+                              {sec.hourly.map((h) => {
+                                const max = Math.max(...sec.hourly.map((x) => x.value));
+                                return <Cell key={h.hour} fill={h.value === max && max > 0 ? '#ff8c00' : '#1a4fb3'} />;
+                              })}
+                            </Bar>
+                          </BarChart>
+                        </ResponsiveContainer>
+                      </div>
+                    </div>
                   </div>
                 ))}
                 {current.ga4.sectionSummary && (

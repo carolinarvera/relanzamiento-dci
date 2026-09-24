@@ -131,10 +131,18 @@ async function buildSections(token, propertyId, brand, range) {
       const d = r.dimensionValues[0].value;
       return { label: `${Number(d.slice(6))} ${MONTHS[Number(d.slice(4, 6)) - 1]}`, value: Number(r.metricValues[0].value) };
     });
+    const hourRows = await runReport(token, propertyId, {
+      dateRanges: [cur],
+      dimensions: [{ name: 'hour' }],
+      metrics: [{ name: 'screenPageViews' }],
+      dimensionFilter: { filter: { fieldName: 'pagePath', stringFilter: { matchType: 'BEGINS_WITH', value: `/${slug}` } } },
+    });
+    const hourly = Array.from({ length: 24 }, (_, h) => ({ hour: `${String(h).padStart(2, '0')}h`, value: 0 }));
+    hourRows.forEach((r) => { hourly[Number(r.dimensionValues[0].value)].value = Number(r.metricValues[0].value); });
     const peak = daily.reduce((best, d) => (!best || d.value > best.value ? d : best), null);
     const topPages = pages.cur.filter((p) => sectionOf(p.path) === slug).sort((a, b) => b.views - a.views).slice(0, 5);
     const views = total(pages.cur, slug);
-    return { slug, label, views, change: pct(views, total(pages.prev, slug)), topPages, daily, peak };
+    return { slug, label, views, change: pct(views, total(pages.prev, slug)), topPages, daily, peak, hourly };
   }));
 
   const top = [...sections].sort((a, b) => b.views - a.views)[0];
