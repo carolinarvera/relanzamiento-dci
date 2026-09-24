@@ -1261,7 +1261,7 @@ export default function Dashboard() {
         const meta = current.meta || {};
         const ig = meta.instagram?.detail;
         const fb = meta.facebook?.detail;
-        const pauta = data.pauta?.global;
+        const pauta = data.pauta?.brands?.[activeTab];
         const cop = (v) => `$ ${Math.round(v).toLocaleString('es-CO')}`;
         const kTxt = (v) => (v >= 1000 ? `${(v / 1000).toFixed(1)}k` : `${v}`);
         const chip = (v) => (v === null || v === undefined || !Number.isFinite(v) ? null : (
@@ -1363,13 +1363,10 @@ export default function Dashboard() {
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px' }}>
                   <div>
                     <div style={{ fontSize: '30px', fontWeight: 800, color: '#2e7d32', lineHeight: 1.1 }}>{(clientShare * 100).toFixed(0)}% de la inversión fue pagada por los clientes comerciales</div>
-                    <div style={{ fontSize: '14px', marginTop: '6px' }}>que pautaron en el mes · {cop(clientTotal)} de {cop(clientTotal + ownTotal)} en Meta</div>
-                    {data.pauta.brands?.[activeTab] && (
-                      <div style={styles.cardSubtext}>En {brandName}: {(() => { const bb = data.pauta.brands[activeTab]; const t = bb.totals.spend; return t ? `${((bb.cliente.totals.spend / t) * 100).toFixed(1)}%` : '\u2014'; })()} de su inversión es de clientes</div>
-                    )}
+                    <div style={{ fontSize: '14px', marginTop: '6px' }}>que pautaron en {brandName} en el mes · {cop(clientTotal)} de {cop(clientTotal + ownTotal)}</div>
                   </div>
                   <div>
-                    <div style={styles.cardTitle}>Clientes que pautaron</div>
+                    <div style={styles.cardTitle}>Clientes que pautaron en {brandName}</div>
                     <ul style={{ margin: '8px 0 0', paddingLeft: '18px', fontSize: '13px' }}>
                       {(pauta.clients || []).map((c) => <li key={c.name} style={{ marginBottom: '4px' }}>{c.name} <span style={{ color: '#888' }}>· {cop(c.spend)} · {c.campaigns} campañas</span></li>)}
                     </ul>
@@ -1418,7 +1415,6 @@ export default function Dashboard() {
         const brandKey = activeTab;
         const brandName = activeTab === 'axxis' ? 'AXXIS' : 'Diners';
         const b = data.pauta.brands[brandKey];
-        const g = data.pauta.global;
         if (!b) return null;
         const cop = (v) => `$ ${Math.round(v).toLocaleString('es-CO')}`;
         const rel = (cur, prev) => (prev ? cur / prev - 1 : null);
@@ -1431,9 +1427,6 @@ export default function Dashboard() {
         const clientBrand = b.cliente.totals.spend;
         const ownBrand = b.propia.totals.spend;
         const clientShare = totalBrand ? clientBrand / totalBrand : 0;
-        const clientGlobal = g.cliente.totals.spend;
-        const ownGlobal = g.propia.totals.spend;
-        const totalGlobal = clientGlobal + ownGlobal;
 
         const campaignTable = (list, limit) => (
           <div style={{ overflowX: 'auto' }}>
@@ -1536,7 +1529,6 @@ export default function Dashboard() {
                 <div style={styles.cardTitle}>Inversión total {brandName}</div>
                 <div style={styles.cardValue}>{cop(totalBrand)}</div>
                 {renderChange(rel(totalBrand, b.prevTotals.spend))}
-                <div style={styles.cardSubtext}>{(b.spendShare * 100).toFixed(1)}% de la inversión total en Meta</div>
               </div>
               <div style={{ ...styles.card, borderTop: `4px solid ${CLIENT}` }}>
                 <div style={styles.cardTitle}>Pauta de clientes (content, feria)</div>
@@ -1552,40 +1544,25 @@ export default function Dashboard() {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
-              {[['axxis', 'AXXIS'], ['diners', 'Diners']].map(([k, nm]) => {
-                const v = data.pauta.brands[k];
-                const tt = v.totals.spend;
-                const cs = v.cliente.totals.spend;
-                const os = v.propia.totals.spend;
-                const prevCs = v.cliente.prevTotals.spend;
-                const prevTt = v.prevTotals.spend;
-                return (
-                  <div key={k} style={styles.card}>
-                    <div style={styles.cardTitle}>Revista {nm} · inversión en Meta: clientes vs propia</div>
-                    <div style={{ display: 'flex', height: '26px', borderRadius: '13px', overflow: 'hidden', background: '#eee', margin: '12px 0' }}>
-                      <div title={`Clientes ${cop(cs)}`} style={{ width: `${tt ? (cs / tt) * 100 : 0}%`, background: CLIENT }} />
-                      <div title={`Propia ${cop(os)}`} style={{ width: `${tt ? (os / tt) * 100 : 0}%`, background: OWN }} />
-                    </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-                      <div style={{ borderLeft: `4px solid ${CLIENT}`, paddingLeft: '10px' }}>
-                        <div style={{ fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Clientes (content, feria)</div>
-                        <div style={{ fontSize: '20px', fontWeight: 700 }}>{cop(cs)}</div>
-                        <div style={{ fontSize: '12px', color: '#555' }}>{tt ? ((cs / tt) * 100).toFixed(1) : '0.0'}% de la inversión de {nm}</div>
-                        {renderChange(rel(cs, prevCs))}
-                      </div>
-                      <div style={{ borderLeft: `4px solid ${OWN}`, paddingLeft: '10px' }}>
-                        <div style={{ fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Propia (general)</div>
-                        <div style={{ fontSize: '20px', fontWeight: 700 }}>{cop(os)}</div>
-                        <div style={{ fontSize: '12px', color: '#555' }}>{tt ? ((os / tt) * 100).toFixed(1) : '0.0'}% de la inversión de {nm}</div>
-                        {renderChange(rel(os, v.propia.prevTotals.spend))}
-                      </div>
-                    </div>
-                    <div style={{ ...styles.cardSubtext, marginTop: '10px' }}>Total {nm}: {cop(tt)} {prevTt ? `(${tt >= prevTt ? '\u2191' : '\u2193'} ${Math.abs((tt / prevTt - 1) * 100).toFixed(1)}% vs periodo anterior)` : ''}</div>
+            {(() => {
+              const nm = brandName;
+              const tt = totalBrand;
+              const cs = clientBrand;
+              const os = ownBrand;
+              return (
+                <div style={styles.card}>
+                  <div style={styles.cardTitle}>Revista {nm} · inversión en Meta: clientes vs propia</div>
+                  <div style={{ display: 'flex', height: '26px', borderRadius: '13px', overflow: 'hidden', background: '#eee', margin: '12px 0' }}>
+                    <div title={`Clientes ${cop(cs)}`} style={{ width: `${tt ? (cs / tt) * 100 : 0}%`, background: CLIENT }} />
+                    <div title={`Propia ${cop(os)}`} style={{ width: `${tt ? (os / tt) * 100 : 0}%`, background: OWN }} />
                   </div>
-                );
-              })}
-            </div>
+                  <div style={{ display: 'flex', gap: '16px', fontSize: '12px' }}>
+                    <span><span style={{ display: 'inline-block', width: '10px', height: '10px', background: CLIENT, marginRight: '6px' }} />Clientes (content, feria): <strong>{tt ? ((cs / tt) * 100).toFixed(1) : '0.0'}%</strong></span>
+                    <span><span style={{ display: 'inline-block', width: '10px', height: '10px', background: OWN, marginRight: '6px' }} />Propia (general): <strong>{tt ? ((os / tt) * 100).toFixed(1) : '0.0'}%</strong></span>
+                  </div>
+                </div>
+              );
+            })()}
 
             <div style={{ ...styles.cardTitle, fontSize: '14px', margin: '30px 0 10px', color: CLIENT }}>Pauta de clientes · {brandName} (campañas con "content" o "feria" en el nombre)</div>
             {kpis(b.cliente)}

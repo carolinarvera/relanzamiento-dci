@@ -148,6 +148,15 @@ export async function GET(request) {
         ...all,
         spendShare: grand ? all.totals.spend / grand : 0,
         cliente: enrich(list.filter((c) => c.payer === 'cliente'), prevList.filter((c) => c.payer === 'cliente')),
+        clients: Object.values(
+          list.filter((c) => c.payer === 'cliente').reduce((acc, c) => {
+            const key = c.client || 'Otros clientes (content / feria)';
+            acc[key] = acc[key] || { name: key, spend: 0, campaigns: 0 };
+            acc[key].spend += c.spend;
+            acc[key].campaigns += 1;
+            return acc;
+          }, {}),
+        ).sort((a, b) => b.spend - a.spend),
         propia: enrich(list.filter((c) => c.payer === 'propia'), prevList.filter((c) => c.payer === 'propia')),
       };
     });
