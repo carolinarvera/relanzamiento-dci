@@ -18,6 +18,7 @@ async function getPageAccessTokens(userToken) {
 }
 
 export const dynamic = 'force-dynamic';
+export const maxDuration = 60;
 
 const sumVal = (v) => (v && typeof v === 'object' ? Object.values(v).reduce((a, n) => a + n, 0) : v || 0);
 const chg = (cur, prev) => (prev ? cur / prev - 1 : null);

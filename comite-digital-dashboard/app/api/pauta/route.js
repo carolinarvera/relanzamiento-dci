@@ -2,6 +2,7 @@ import axios from 'axios';
 import { resolveRange } from '../../lib/range';
 
 export const dynamic = 'force-dynamic';
+export const maxDuration = 60;
 
 const norm = (t) => t.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 const BRANDS = [
