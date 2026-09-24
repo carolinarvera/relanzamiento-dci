@@ -578,8 +578,10 @@ export default function Dashboard() {
                         </>
                       );
                     })()}
-                    {current.ga4.audience.ai?.sources?.length > 0 && (
-                      <div style={{ marginTop: '18px' }}>
+                  </div>
+                  {current.ga4.audience.ai?.sources?.length > 0 && (
+                    <div style={styles.card}>
+<div>
                         <div style={styles.cardTitle}>Asistentes de IA que envían tráfico</div>
                         <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '6px' }}>
                           <thead>
@@ -612,8 +614,9 @@ export default function Dashboard() {
                           </div>
                         )}
                       </div>
-                    )}
-                  </div>
+
+                    </div>
+                  )}
                   {current.ga4.audience.cities?.length > 0 && (
                     <div style={styles.card}>
                       <div style={styles.cardTitle}>Distribución geográfica de lectores</div>
