@@ -250,6 +250,34 @@ export default function Dashboard() {
           </div>
         )}
 
+        {current.ga4?.hourlyViews?.some((h) => h.vistas > 0) && (
+          <div style={{ ...styles.card, marginTop: '20px' }}>
+            <div style={styles.cardTitle}>
+              Tráfico por hora del día · {rangeLabel}
+              {(() => { const top = current.ga4.hourlyViews.reduce((b, h) => (!b || h.vistas > b.vistas ? h : b), null); return top ? ` · pico ${top.hour}` : ''; })()}
+            </div>
+            <div style={{ width: '100%', height: 300, marginTop: '12px' }}>
+              <ResponsiveContainer>
+                <BarChart data={current.ga4.hourlyViews} margin={{ top: 30, right: 10, left: 0, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                  <XAxis dataKey="hour" tick={{ fontSize: 11 }} />
+                  <YAxis tick={{ fontSize: 11 }} />
+                  <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
+                  <Legend />
+                  <Bar dataKey="sesiones" name="Sesiones" fill="#333333" legendType="square" />
+                  <Bar dataKey="vistas" name="Vistas" fill="#0066cc" legendType="square">
+                    {current.ga4.hourlyViews.map((h) => {
+                      const max = Math.max(...current.ga4.hourlyViews.map((x) => x.vistas));
+                      return <Cell key={h.hour} fill={h.vistas === max ? '#ff8c00' : '#0066cc'} />;
+                    })}
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+            <div style={styles.cardSubtext}>Hora del día en la zona horaria de la propiedad de GA4. La hora con más vistas se destaca en naranja.</div>
+          </div>
+        )}
+
         <div style={{ ...styles.grid, marginTop: '20px' }}>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Usuarios Nuevos</div>

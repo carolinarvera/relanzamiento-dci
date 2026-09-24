@@ -228,7 +228,7 @@ async function buildProperty(token, propertyId, brand, range) {
   const prevMonthStart = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, 1));
   const prevSameDay = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, dayOfMonth));
 
-  const [kpis, monthly, daily, partial, sectionData, audience] = await Promise.all([
+  const [kpis, monthly, daily, partial, sectionData, audience, hourRows] = await Promise.all([
     runReport(token, propertyId, {
       dateRanges: [
         { startDate: range.start, endDate: range.end, name: 'cur' },
@@ -257,7 +257,18 @@ async function buildProperty(token, propertyId, brand, range) {
     }),
     buildSections(token, propertyId, brand, range),
     buildAudience(token, propertyId, range, brand),
+    runReport(token, propertyId, {
+      dateRanges: [{ startDate: range.start, endDate: range.end }],
+      dimensions: [{ name: 'hour' }],
+      metrics: [{ name: 'screenPageViews' }, { name: 'sessions' }],
+    }),
   ]);
+  const hourlyViews = Array.from({ length: 24 }, (_, h) => ({ hour: `${String(h).padStart(2, '0')}h`, vistas: 0, sesiones: 0 }));
+  hourRows.forEach((r) => {
+    const h = Number(r.dimensionValues[0].value);
+    hourlyViews[h].vistas = num(r, 0);
+    hourlyViews[h].sesiones = num(r, 1);
+  });
 
   const byName = (rows, name) => rows.find((r) => r.dimensionValues.some((v) => v.value === name));
   const last = byName(kpis, 'cur');
@@ -303,6 +314,7 @@ async function buildProperty(token, propertyId, brand, range) {
     audience,
     sectionSummary: sectionData.summary,
     dailyViews,
+    hourlyViews,
     dailyPeaks,
     septPartial: cur && prev ? {
       range: `1 al ${dayOfMonth} de ${['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'][today.getUTCMonth()]}`,
@@ -333,6 +345,7 @@ function parseGA4Response(res) {
     monthlyHistory: res.monthlyHistory || [],
     dailyViews: res.dailyViews || [],
     dailyPeaks: res.dailyPeaks || [],
+    hourlyViews: res.hourlyViews || [],
     sections: res.sections || [],
     topArticles: res.topArticles || [],
     audience: res.audience || null,
