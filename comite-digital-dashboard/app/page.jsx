@@ -79,11 +79,12 @@ export default function Dashboard() {
           }
         };
         const qs = range ? `?start=${range.start}&end=${range.end}` : '';
-        const results = await Promise.all([load('Search Console', `/api/gsc${qs}`), load('GA4', `/api/ga4${qs}`), load('Meta', `/api/meta${qs}`), load('SEO', `/api/seo${qs}`)]);
-        const [gsc, ga4, meta, seo] = results;
+        const results = await Promise.all([load('Search Console', `/api/gsc${qs}`), load('GA4', `/api/ga4${qs}`), load('Meta', `/api/meta${qs}`), load('SEO', `/api/seo${qs}`), load('Pauta', `/api/pauta${qs}`)]);
+        const [gsc, ga4, meta, seo, pauta] = results;
         const errs = results.filter((r) => r.error).map((r) => `${r.name}: ${r.error}`);
         (meta.json?.errors || []).forEach((e) => errs.push(`Meta ${e}`));
-        setData({ gsc: gsc.json || {}, ga4: ga4.json || {}, meta: meta.json || {}, seo: seo.json || {}, errors: errs });
+        (pauta.json?.errors || []).forEach((e) => errs.push(`Pauta ${e}`));
+        setData({ gsc: gsc.json || {}, ga4: ga4.json || {}, meta: meta.json || {}, seo: seo.json || {}, pauta: pauta.json || {}, errors: errs });
         setError(null);
       } catch (err) {
         setError(err.message);
@@ -1252,6 +1253,138 @@ export default function Dashboard() {
       <div style={{ textAlign: 'center', color: '#999', fontSize: '12px', marginTop: '40px' }}>
         Última actualización: {new Date().toLocaleString('es-CO')} · Actualiza cada 5 minutos
       </div>
+
+      {/* Informe de pauta */}
+      {data.pauta?.brands && (() => {
+        const brandKey = activeTab;
+        const b = data.pauta.brands[brandKey];
+        const others = data.pauta.brands.otras;
+        if (!b) return null;
+        const cop = (v) => `$ ${Math.round(v).toLocaleString('es-CO')}`;
+        const t = b.totals;
+        const pt = b.prevTotals;
+        const rel = (cur, prev) => (prev ? cur / prev - 1 : null);
+        const cell = { padding: '8px', borderBottom: '1px solid #eee', fontSize: '12px' };
+        const num = { ...cell, textAlign: 'right' };
+        const head = { padding: '8px', textAlign: 'right', fontSize: '11px', color: '#666', textTransform: 'uppercase' };
+        const campaignTable = (list, limit) => (
+          <div style={{ overflowX: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '900px' }}>
+              <thead>
+                <tr style={{ background: '#f4f6fb' }}>
+                  <th style={{ ...head, textAlign: 'left' }}>Campaña</th>
+                  <th style={{ ...head, textAlign: 'left' }}>Resultado</th>
+                  <th style={head}>Inversión</th>
+                  <th style={head}>% inv.</th>
+                  <th style={head}>Impresiones</th>
+                  <th style={head}>Alcance</th>
+                  <th style={head}>Clics enlace</th>
+                  <th style={head}>CTR</th>
+                  <th style={head}>CPC</th>
+                  <th style={head}>Resultados</th>
+                  <th style={head}>Costo / resultado</th>
+                </tr>
+              </thead>
+              <tbody>
+                {list.slice(0, limit).map((c) => (
+                  <tr key={c.id}>
+                    <td style={{ ...cell, maxWidth: '280px' }}>{c.name}</td>
+                    <td style={cell}>{c.resultLabel}</td>
+                    <td style={num}><strong>{cop(c.spend)}</strong></td>
+                    <td style={num}>{(c.spendShare * 100).toFixed(1)}%</td>
+                    <td style={num}>{nf(c.impressions)}</td>
+                    <td style={num}>{nf(c.reach)}</td>
+                    <td style={num}>{nf(c.linkClicks)}</td>
+                    <td style={num}>{(c.ctr * 100).toFixed(2)}%</td>
+                    <td style={num}>{c.linkClicks ? cop(c.cpc) : '\u2014'}</td>
+                    <td style={num}>{nf(c.results)}</td>
+                    <td style={num}>{c.costPerResult ? cop(c.costPerResult) : '\u2014'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+        const split = ['axxis', 'diners', 'gamma', 'otras'].map((k) => ({ k, share: data.pauta.brands[k].spendShare, spend: data.pauta.brands[k].totals.spend }));
+        const colors = { axxis: '#1a4fb3', diners: '#d84315', gamma: '#6a1b9a', otras: '#757575' };
+        const names = { axxis: 'AXXIS', diners: 'Diners', gamma: 'Gamma', otras: 'Otras (sin marca en el nombre)' };
+        return (
+          <div style={styles.section}>
+            <h2 style={styles.sectionTitle}>Informe de pauta · {activeTab === 'axxis' ? 'AXXIS' : 'Diners'} · {rangeLabel}</h2>
+            <div style={styles.grid}>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Inversión</div>
+                <div style={styles.cardValue}>{cop(t.spend)}</div>
+                {renderChange(rel(t.spend, pt.spend))}
+                <div style={styles.cardSubtext}>{(b.spendShare * 100).toFixed(1)}% de la inversión total en Meta</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Impresiones</div>
+                <div style={styles.cardValue}>{nf(t.impressions)}</div>
+                {renderChange(rel(t.impressions, pt.impressions))}
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Alcance</div>
+                <div style={styles.cardValue}>{nf(t.reach)}</div>
+                {renderChange(rel(t.reach, pt.reach))}
+                <div style={styles.cardSubtext}>suma por campaña (puede repetir personas)</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Clics en enlace</div>
+                <div style={styles.cardValue}>{nf(t.linkClicks)}</div>
+                {renderChange(rel(t.linkClicks, pt.linkClicks))}
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>CTR (enlace)</div>
+                <div style={styles.cardValue}>{(t.ctr * 100).toFixed(2)}%</div>
+                {renderPP(t.ctr, pt.impressions ? pt.linkClicks / pt.impressions : null)}
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>CPC</div>
+                <div style={styles.cardValue}>{cop(t.cpc)}</div>
+                {renderChange(rel(t.cpc, pt.cpc), true)}
+                <div style={styles.cardSubtext}>menor es mejor</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>CPM</div>
+                <div style={styles.cardValue}>{cop(t.cpm)}</div>
+                {renderChange(rel(t.cpm, pt.cpm), true)}
+                <div style={styles.cardSubtext}>menor es mejor</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Campañas con gasto</div>
+                <div style={styles.cardValue}>{nf(t.campaigns)}</div>
+                {renderChange(rel(t.campaigns, pt.campaigns))}
+              </div>
+            </div>
+
+            <div style={styles.card}>
+              <div style={styles.cardTitle}>Distribución de la inversión por marca (Meta)</div>
+              <div style={{ display: 'flex', height: '28px', borderRadius: '14px', overflow: 'hidden', margin: '10px 0', background: '#eee' }}>
+                {split.map((x) => <div key={x.k} title={`${names[x.k]} ${(x.share * 100).toFixed(1)}%`} style={{ width: `${x.share * 100}%`, background: colors[x.k] }} />)}
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', fontSize: '12px' }}>
+                {split.map((x) => (
+                  <span key={x.k}><span style={{ display: 'inline-block', width: '10px', height: '10px', background: colors[x.k], marginRight: '6px' }} />{names[x.k]}: <strong>{(x.share * 100).toFixed(1)}%</strong> · {cop(x.spend)}</span>
+                ))}
+              </div>
+            </div>
+
+            <div style={{ ...styles.card, marginTop: '20px' }}>
+              <div style={styles.cardTitle}>Campañas {activeTab === 'axxis' ? 'AXXIS' : 'Diners'} por inversión (Top 15)</div>
+              {campaignTable(b.campaigns, 15)}
+              <div style={styles.cardSubtext}>La marca se detecta por el nombre de la campaña. "Resultado" depende del objetivo (tráfico: clics en enlace; interacción: interacciones; reconocimiento: alcance). Datos de las cuentas de anuncios de Meta: {data.pauta.accounts.join(', ')}.</div>
+            </div>
+            {others?.campaigns?.length > 0 && (
+              <div style={{ ...styles.card, marginTop: '20px' }}>
+                <div style={styles.cardTitle}>Otras campañas sin marca en el nombre (Top 10)</div>
+                {campaignTable(others.campaigns, 10)}
+                <div style={styles.cardSubtext}>Pueden ser campañas de clientes o notas promocionadas. Dime qué nombres son de clientes y las separo como "Campañas de clientes".</div>
+              </div>
+            )}
+          </div>
+        );
+      })()}
     </div>
   );
 }
