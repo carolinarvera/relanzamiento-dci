@@ -65,6 +65,14 @@ export default function Dashboard() {
     table: { width: '100%', borderCollapse: 'collapse', backgroundColor: 'white', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' },
     th: { backgroundColor: '#f0f0f0', padding: '12px', textAlign: 'left', fontWeight: '600', fontSize: '12px', color: '#666' },
     td: { padding: '12px', borderBottom: '1px solid #eee', fontSize: '14px' },
+    change: (positive) => ({ fontSize: '12px', marginTop: '8px', color: positive ? '#2e7d32' : '#c62828', fontWeight: '600' }),
+  };
+
+  const renderChange = (value) => {
+    if (value === null || value === undefined) return null;
+    const positive = value >= 0;
+    const arrow = positive ? '↑' : '↓';
+    return <div style={styles.change(positive)}>{arrow} {(Math.abs(value) * 100).toFixed(1)}% vs mes anterior</div>;
   };
 
   const axxisData = {
@@ -124,24 +132,57 @@ export default function Dashboard() {
         <div style={styles.grid}>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Sesiones</div>
-            <div style={styles.cardValue}>{current.ga4?.sessions || 0}</div>
-            <div style={styles.cardSubtext}>últimos 30 días</div>
+            <div style={styles.cardValue}>{(current.ga4?.sessions || 0).toLocaleString('es-CO')}</div>
+            {renderChange(current.ga4?.sessionsChange) || <div style={styles.cardSubtext}>últimos 30 días</div>}
           </div>
           <div style={styles.card}>
-            <div style={styles.cardTitle}>Usuarios</div>
-            <div style={styles.cardValue}>{current.ga4?.users || 0}</div>
-            <div style={styles.cardSubtext}>únicos</div>
+            <div style={styles.cardTitle}>Vistas</div>
+            <div style={styles.cardValue}>{(current.ga4?.pageviews || 0).toLocaleString('es-CO')}</div>
+            {renderChange(current.ga4?.pageviewsChange) || <div style={styles.cardSubtext}>páginas vistas</div>}
           </div>
           <div style={styles.card}>
-            <div style={styles.cardTitle}>Tráfico Orgánico</div>
-            <div style={styles.cardValue}>{current.ga4?.organicSessions || 0}</div>
-            <div style={styles.cardSubtext}>sesiones</div>
+            <div style={styles.cardTitle}>Total de Usuarios</div>
+            <div style={styles.cardValue}>{(current.ga4?.users || 0).toLocaleString('es-CO')}</div>
+            {renderChange(current.ga4?.usersChange) || <div style={styles.cardSubtext}>únicos</div>}
           </div>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Tráfico Pauta</div>
-            <div style={styles.cardValue}>{current.ga4?.paidSessions || 0}</div>
-            <div style={styles.cardSubtext}>sesiones</div>
-          </div>
+          {current.ga4?.organicSessions ? (
+            <div style={styles.card}>
+              <div style={styles.cardTitle}>Tráfico Orgánico</div>
+              <div style={styles.cardValue}>{current.ga4.organicSessions.toLocaleString('es-CO')}</div>
+              <div style={styles.cardSubtext}>sesiones</div>
+            </div>
+          ) : (
+            <div style={styles.card}>
+              <div style={styles.cardTitle}>Usuarios Nuevos</div>
+              <div style={styles.cardValue}>{(current.ga4?.newUsers || 0).toLocaleString('es-CO')}</div>
+              {renderChange(current.ga4?.newUsersChange)}
+            </div>
+          )}
+          {current.ga4?.paidSessions ? (
+            <div style={styles.card}>
+              <div style={styles.cardTitle}>Tráfico Pauta</div>
+              <div style={styles.cardValue}>{current.ga4.paidSessions.toLocaleString('es-CO')}</div>
+              <div style={styles.cardSubtext}>sesiones</div>
+            </div>
+          ) : (
+            <>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Porcentaje de Rebote</div>
+                <div style={styles.cardValue}>{current.ga4?.bounceRate ? (current.ga4.bounceRate * 100).toFixed(0) : 0}%</div>
+                {renderChange(current.ga4?.bounceRateChange)}
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Duración Media Sesión</div>
+                <div style={styles.cardValue}>{current.ga4?.avgSessionDuration || '00:00'}</div>
+                {renderChange(current.ga4?.avgSessionDurationChange)}
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Porcentaje de Interacciones</div>
+                <div style={styles.cardValue}>{current.ga4?.engagementRate ? (current.ga4.engagementRate * 100).toFixed(2) : 0}%</div>
+                {renderChange(current.ga4?.engagementRateChange)}
+              </div>
+            </>
+          )}
         </div>
       </div>
 
