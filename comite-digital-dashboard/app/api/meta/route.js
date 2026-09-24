@@ -51,7 +51,11 @@ async function topFbPosts(pageId, pageToken, r) {
     posts = posts.concat(res.data.data || []);
   }
   const score = (p) => (p.reactions?.summary?.total_count || 0) + (p.comments?.summary?.total_count || 0) + (p.shares?.count || 0);
-  const candidates = posts.sort((a, b) => score(b) - score(a)).slice(0, 10);
+  const sortedPosts = [...posts].sort((a, b) => score(b) - score(a));
+  const maturePosts = sortedPosts.filter((p) => Date.now() - Date.parse(p.created_time) > 3 * 86400000);
+  const topCandidates = sortedPosts.slice(0, 10);
+  const worstCandidates = maturePosts.slice(-10);
+  const candidates = [...new Map([...topCandidates, ...worstCandidates].map((p) => [p.id, p])).values()];
   const withInsights = await Promise.all(candidates.map(async (p) => {
     try {
       const ins = await axios.get(`https://graph.facebook.com/v19.0/${p.id}/insights`, {
@@ -63,15 +67,16 @@ async function topFbPosts(pageId, pageToken, r) {
     } catch { return { p, v: {} }; }
   }));
   const kind = (t) => (t === 'added_video' ? 'Video' : t === 'added_photos' ? 'Foto' : t === 'shared_story' ? 'Enlace' : 'Publicación');
-  return withInsights
-    .sort((a, b) => score(b.p) - score(a.p))
-    .slice(0, 3)
-    .map(({ p, v }) => ({
-      id: p.id, permalink: p.permalink_url, image: p.full_picture || null, type: kind(p.status_type),
-      date: p.created_time.slice(0, 10), caption: (p.message || '').replace(/\s+/g, ' ').slice(0, 140),
-      reactions: p.reactions?.summary?.total_count || 0, comments: p.comments?.summary?.total_count || 0, shares: p.shares?.count || 0,
-      interactions: score(p), views: v.post_media_view || 0, viewers: v.post_total_media_view_unique || 0, clicks: v.post_clicks || 0,
-    }));
+  const shape = ({ p, v }) => ({
+    id: p.id, permalink: p.permalink_url, image: p.full_picture || null, type: kind(p.status_type),
+    date: p.created_time.slice(0, 10), caption: (p.message || '').replace(/\s+/g, ' ').slice(0, 140),
+    reactions: p.reactions?.summary?.total_count || 0, comments: p.comments?.summary?.total_count || 0, shares: p.shares?.count || 0,
+    interactions: score(p), views: v.post_media_view || 0, viewers: v.post_total_media_view_unique || 0, clicks: v.post_clicks || 0,
+  });
+  const byId = new Map(withInsights.map((x) => [x.p.id, x]));
+  const top = topCandidates.map((p) => byId.get(p.id)).filter(Boolean).sort((a, b) => score(b.p) - score(a.p)).slice(0, 3).map(shape);
+  const bottom = worstCandidates.map((p) => byId.get(p.id)).filter(Boolean).sort((a, b) => score(a.p) - score(b.p) || (a.v.post_total_media_view_unique || 0) - (b.v.post_total_media_view_unique || 0)).slice(0, 3).map(shape);
+  return { top, bottom };
 }
 
 async function fbDetail(pageId, pageToken, errors, label, r) {
@@ -88,7 +93,7 @@ async function fbDetail(pageId, pageToken, errors, label, r) {
       axios.get(`https://graph.facebook.com/v19.0/${pageId}/insights`, {
         params: { metric: 'page_follows_city', period: 'day', access_token: pageToken },
       }).then((r) => r.data.data?.[0]?.values?.slice(-1)[0]?.value || {}).catch(() => ({})),
-      topFbPosts(pageId, pageToken, r).catch((e) => { errors.push(`${label} Facebook top posts: ` + (e.response?.data?.error?.message || e.message)); return []; }),
+      topFbPosts(pageId, pageToken, r).catch((e) => { errors.push(`${label} Facebook top posts: ` + (e.response?.data?.error?.message || e.message)); return { top: [], bottom: [] }; }),
     ]);
     const followersTotal = page.data.followers_count || 0;
     const cities = Object.entries(cityRes)
@@ -105,7 +110,8 @@ async function fbDetail(pageId, pageToken, errors, label, r) {
       profileViews: cur.page_views_total || 0, profileViewsChange: chg(cur.page_views_total, prev.page_views_total),
       engagementRate: views ? reactions / views : 0,
       cities,
-      topPosts,
+      topPosts: topPosts.top,
+      bottomPosts: topPosts.bottom,
     };
   } catch (err) {
     errors.push(`${label} Facebook detalle: ` + (err.response?.data?.error?.message || err.message));
@@ -126,10 +132,12 @@ async function topIgPosts(igId, token, r) {
     res = await axios.get(res.data.paging.next);
     media = media.concat(res.data.data || []);
   }
-  const candidates = media
-    .filter((m) => m.timestamp)
-    .sort((a, b) => ((b.like_count || 0) + (b.comments_count || 0)) - ((a.like_count || 0) + (a.comments_count || 0)))
-    .slice(0, 12);
+  const engagement = (m) => (m.like_count || 0) + (m.comments_count || 0);
+  const sorted = media.filter((m) => m.timestamp).sort((a, b) => engagement(b) - engagement(a));
+  const mature = sorted.filter((m) => Date.now() - Date.parse(m.timestamp) > 3 * 86400000);
+  const topCandidates = sorted.slice(0, 12);
+  const worstCandidates = mature.slice(-12);
+  const candidates = [...new Map([...topCandidates, ...worstCandidates].map((m) => [m.id, m])).values()];
   const withInsights = await Promise.all(candidates.map(async (m) => {
     try {
       const ins = await axios.get(`https://graph.facebook.com/v19.0/${m.id}/insights`, {
@@ -141,16 +149,17 @@ async function topIgPosts(igId, token, r) {
     } catch { return null; }
   }));
   const kind = (m) => (m.media_product_type === 'REELS' ? 'Reel' : m.media_type === 'CAROUSEL_ALBUM' ? 'Carrusel' : m.media_type === 'VIDEO' ? 'Video' : 'Imagen');
-  return withInsights
-    .filter(Boolean)
-    .sort((a, b) => (b.v.total_interactions || 0) - (a.v.total_interactions || 0))
-    .slice(0, 3)
-    .map(({ m, v }) => ({
-      id: m.id, permalink: m.permalink, image: m.thumbnail_url || m.media_url || null, type: kind(m),
-      date: m.timestamp.slice(0, 10), caption: (m.caption || '').replace(/\s+/g, ' ').slice(0, 140),
-      likes: m.like_count || 0, comments: m.comments_count || 0,
-      reach: v.reach || 0, views: v.views || 0, saved: v.saved || 0, shares: v.shares || 0, interactions: v.total_interactions || 0,
-    }));
+  const shape = ({ m, v }) => ({
+    id: m.id, permalink: m.permalink, image: m.thumbnail_url || m.media_url || null, type: kind(m),
+    date: m.timestamp.slice(0, 10), caption: (m.caption || '').replace(/\s+/g, ' ').slice(0, 140),
+    likes: m.like_count || 0, comments: m.comments_count || 0,
+    reach: v.reach || 0, views: v.views || 0, saved: v.saved || 0, shares: v.shares || 0, interactions: v.total_interactions || 0,
+  });
+  const byId = new Map(withInsights.filter(Boolean).map((x) => [x.m.id, x]));
+  const inter = (x) => x.v.total_interactions || 0;
+  const top = topCandidates.map((m) => byId.get(m.id)).filter(Boolean).sort((a, b) => inter(b) - inter(a)).slice(0, 3).map(shape);
+  const bottom = worstCandidates.map((m) => byId.get(m.id)).filter(Boolean).sort((a, b) => inter(a) - inter(b)).slice(0, 3).map(shape);
+  return { top, bottom };
 }
 
 async function igDetail(igId, token, errors, label, range) {
@@ -162,7 +171,7 @@ async function igDetail(igId, token, errors, label, range) {
       demo('age,gender'),
       demo('city'),
       axios.get(`https://graph.facebook.com/v19.0/${igId}`, { params: { fields: 'followers_count', access_token: token } }),
-      topIgPosts(igId, token, range).catch((e) => { errors.push(`${label} Instagram top posts: ` + (e.response?.data?.error?.message || e.message)); return []; }),
+      topIgPosts(igId, token, range).catch((e) => { errors.push(`${label} Instagram top posts: ` + (e.response?.data?.error?.message || e.message)); return { top: [], bottom: [] }; }),
     ]);
     const valid = ageGender.filter((r) => ['F', 'M'].includes(r.dimension_values[1]) && r.dimension_values[0] !== '13-17');
     const total = valid.reduce((a, r) => a + r.value, 0);
@@ -176,7 +185,8 @@ async function igDetail(igId, token, errors, label, range) {
     const cityTotal = city.reduce((a, r) => a + r.value, 0);
     return {
       followers: acct.data.followers_count || 0,
-      topPosts,
+      topPosts: topPosts.top,
+      bottomPosts: topPosts.bottom,
       ageGender: Object.values(byAge).sort((x, y) => x.age.localeCompare(y.age, 'es', { numeric: true })),
       women: total ? women / total : 0,
       men: total ? 1 - women / total : 0,

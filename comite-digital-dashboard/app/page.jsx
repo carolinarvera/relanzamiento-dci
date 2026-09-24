@@ -771,6 +771,32 @@ export default function Dashboard() {
                 </div>
               </div>
             )}
+            {fb.bottomPosts?.length > 0 && (
+              <div style={{ marginTop: '20px' }}>
+                <div style={{ ...styles.cardTitle, fontSize: '14px' }}>Las 3 publicaciones con menor desempeño · {rangeLabel} (reacciones + comentarios + compartidos)</div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px', marginTop: '10px' }}>
+                  {fb.bottomPosts.map((post, k) => (
+                    <div key={post.id} style={{ ...styles.card, padding: 0, overflow: 'hidden' }}>
+                      {post.image && <img src={post.image} alt="" referrerPolicy="no-referrer" style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }} />}
+                      <div style={{ padding: '14px' }}>
+                        <div style={{ fontSize: '12px', color: '#666' }}>#{k + 1} · {post.type} · {post.date}</div>
+                        <div style={{ fontSize: '13px', margin: '6px 0 10px', minHeight: '54px' }}>{post.caption}</div>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', fontSize: '12px' }}>
+                          <span>Interacciones <strong>{nf(post.interactions)}</strong></span>
+                          <span>Espectadores <strong>{nf(post.viewers)}</strong></span>
+                          <span>Vistas <strong>{nf(post.views)}</strong></span>
+                          <span>Clics <strong>{nf(post.clicks)}</strong></span>
+                          <span>Reacciones <strong>{nf(post.reactions)}</strong></span>
+                          <span>Comentarios <strong>{nf(post.comments)}</strong></span>
+                          <span>Compartidos <strong>{nf(post.shares)}</strong></span>
+                        </div>
+                        <a href={post.permalink} target="_blank" rel="noreferrer" style={{ display: 'inline-block', marginTop: '10px', fontSize: '12px', color: '#0066cc' }}>Ver en Facebook</a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
             {fb.cities?.length > 0 && (
               <div style={{ ...styles.card, marginTop: '20px' }}>
                 <div style={styles.cardTitle}>Distribución geográfica de seguidores</div>
@@ -828,6 +854,32 @@ export default function Dashboard() {
                 <div style={{ ...styles.cardTitle, fontSize: '14px' }}>Las 3 publicaciones con mejor desempeño · {rangeLabel} (por interacciones)</div>
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px', marginTop: '10px' }}>
                   {d.topPosts.map((post, k) => (
+                    <div key={post.id} style={{ ...styles.card, padding: 0, overflow: 'hidden' }}>
+                      {post.image && <img src={post.image} alt="" referrerPolicy="no-referrer" style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }} />}
+                      <div style={{ padding: '14px' }}>
+                        <div style={{ fontSize: '12px', color: '#666' }}>#{k + 1} · {post.type} · {post.date}</div>
+                        <div style={{ fontSize: '13px', margin: '6px 0 10px', minHeight: '54px' }}>{post.caption}</div>
+                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '6px', fontSize: '12px' }}>
+                          <span>Interacciones <strong>{nf(post.interactions)}</strong></span>
+                          <span>Alcance <strong>{nf(post.reach)}</strong></span>
+                          <span>Vistas <strong>{nf(post.views)}</strong></span>
+                          <span>Me gusta <strong>{nf(post.likes)}</strong></span>
+                          <span>Comentarios <strong>{nf(post.comments)}</strong></span>
+                          <span>Guardados <strong>{nf(post.saved)}</strong></span>
+                          <span>Compartidos <strong>{nf(post.shares)}</strong></span>
+                        </div>
+                        <a href={post.permalink} target="_blank" rel="noreferrer" style={{ display: 'inline-block', marginTop: '10px', fontSize: '12px', color: '#0066cc' }}>Ver en Instagram</a>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+            {d?.bottomPosts?.length > 0 && (
+              <div style={{ marginBottom: '20px' }}>
+                <div style={{ ...styles.cardTitle, fontSize: '14px' }}>Las 3 publicaciones con menor desempeño · {rangeLabel} (por interacciones)</div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px', marginTop: '10px' }}>
+                  {d.bottomPosts.map((post, k) => (
                     <div key={post.id} style={{ ...styles.card, padding: 0, overflow: 'hidden' }}>
                       {post.image && <img src={post.image} alt="" referrerPolicy="no-referrer" style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }} />}
                       <div style={{ padding: '14px' }}>
