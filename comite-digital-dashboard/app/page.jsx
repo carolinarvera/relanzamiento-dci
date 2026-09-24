@@ -847,33 +847,47 @@ export default function Dashboard() {
               </div>
               {!trends && <div style={styles.cardSubtext}>Consultando Google Trends…</div>}
               {trends?.error && <div style={{ ...styles.cardSubtext, color: '#b71c1c' }}>No se pudo leer Google Trends: {trends.error}</div>}
-              {trends?.topics && (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '14px', marginTop: '12px' }}>
-                  {trends.topics.map((t) => (
-                    <div key={t.keyword} style={{ border: '1px solid #e3e6ee', borderRadius: '8px', padding: '12px' }}>
-                      <div style={{ fontSize: '14px', fontWeight: 700, textTransform: 'capitalize', marginBottom: '6px' }}>{t.keyword}</div>
-                      {t.error ? (
-                        <div style={{ fontSize: '12px', color: '#b71c1c' }}>Sin respuesta de Google Trends</div>
-                      ) : t.top.length === 0 && t.rising.length === 0 ? (
-                        <div style={{ fontSize: '12px', color: '#888' }}>Sin volumen suficiente en este periodo</div>
-                      ) : (
-                        <>
-                          <div style={{ fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Más buscadas</div>
-                          <ol style={{ margin: '4px 0 8px', paddingLeft: '18px', fontSize: '12px' }}>
-                            {t.top.slice(0, 5).map((q) => <li key={q.query}>{q.query} <span style={{ color: '#999' }}>({q.value})</span></li>)}
-                          </ol>
-                          <div style={{ fontSize: '11px', color: '#2e7d32', textTransform: 'uppercase', fontWeight: 700 }}>En alza</div>
-                          <ol style={{ margin: '4px 0 0', paddingLeft: '18px', fontSize: '12px' }}>
-                            {t.rising.slice(0, 5).map((q) => <li key={q.query}>{q.query} <span style={{ color: '#2e7d32', fontWeight: 600 }}>{q.label}</span></li>)}
-                            {t.rising.length === 0 && <li style={{ listStyle: 'none', marginLeft: '-18px', color: '#888' }}>sin consultas en alza</li>}
-                          </ol>
-                        </>
-                      )}
-                    </div>
-                  ))}
+              {trends?.topics && trends.failed > 0 && trends.failed === trends.topics.length && (
+                <div style={{ background: '#fff4e5', color: '#8a4b00', padding: '10px 12px', borderRadius: '6px', fontSize: '12px', marginTop: '10px' }}>
+                  Google Trends no respondió ({trends.topics[0]?.error}). Las noticias del sector sí se muestran; reintenta en unos minutos.
                 </div>
               )}
-              <div style={styles.cardSubtext}>Consultas relacionadas por tema en Colombia. "Más buscadas": índice 0-100 relativo dentro de cada tema. "En alza": crecimiento contra el periodo anterior ("Aumento puntual" = alza muy fuerte desde un volumen bajo). Google Trends no es una API oficial y puede fallar o vaciar temas de poco volumen.</div>
+              {trends?.topics && (
+                <div style={{ overflowX: 'auto', marginTop: '12px' }}>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '860px' }}>
+                    <thead>
+                      <tr style={{ background: '#f4f6fb' }}>
+                        <th style={{ ...head, textAlign: 'left', width: '13%' }}>Tema</th>
+                        <th style={{ ...head, textAlign: 'left', width: '22%' }}>Más buscadas</th>
+                        <th style={{ ...head, textAlign: 'left', width: '25%' }}>En alza</th>
+                        <th style={{ ...head, textAlign: 'left', width: '40%' }}>Noticias del sector (últimos días)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {trends.topics.map((t) => (
+                        <tr key={t.keyword} style={{ verticalAlign: 'top' }}>
+                          <td style={{ ...cell, fontWeight: 700, textTransform: 'capitalize' }}>{t.keyword}</td>
+                          <td style={cell}>
+                            {t.top.length ? t.top.slice(0, 4).map((q) => <div key={q.query}>{q.query} <span style={{ color: '#999' }}>({q.value})</span></div>) : <span style={{ color: '#999' }}>{t.error ? 'sin respuesta' : 'sin volumen suficiente'}</span>}
+                          </td>
+                          <td style={cell}>
+                            {t.rising.length ? t.rising.slice(0, 4).map((q) => <div key={q.query}>{q.query} <span style={{ color: '#2e7d32', fontWeight: 600 }}>{q.label}</span></div>) : <span style={{ color: '#999' }}>{'\u2014'}</span>}
+                          </td>
+                          <td style={cell}>
+                            {t.news?.length ? t.news.map((n) => (
+                              <div key={n.url || n.title} style={{ marginBottom: '6px' }}>
+                                <a href={n.url} target="_blank" rel="noreferrer" style={{ color: '#0b57d0' }}>{n.title}</a>
+                                <span style={{ color: '#888' }}> · {n.source} · {n.date}</span>
+                              </div>
+                            )) : <span style={{ color: '#999' }}>sin noticias recientes</span>}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+              <div style={styles.cardSubtext}>Consultas relacionadas y noticias (Google News, Colombia) por tema. "Más buscadas": índice 0-100 relativo dentro de cada tema. "En alza": crecimiento contra el periodo anterior ("Aumento puntual" = alza muy fuerte desde un volumen bajo). Google Trends no es una API oficial y puede fallar o vaciar temas de poco volumen.</div>
             </div>
             <div style={{ ...styles.card, marginTop: '20px' }}>
               <div style={styles.cardTitle}>Tendencias generales del día en Colombia (todas las categorías)</div>
