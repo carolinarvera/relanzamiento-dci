@@ -37,12 +37,39 @@ async function getAccessToken() {
   return res.data.access_token;
 }
 
+const MAX_CONCURRENT = 6;
+const gates = {};
+
+async function withGate(propertyId, fn) {
+  const g = (gates[propertyId] = gates[propertyId] || { active: 0, queue: [] });
+  if (g.active >= MAX_CONCURRENT) await new Promise((resolve) => g.queue.push(resolve));
+  g.active += 1;
+  try {
+    return await fn();
+  } finally {
+    g.active -= 1;
+    const next = g.queue.shift();
+    if (next) next();
+  }
+}
+
 async function runReport(token, propertyId, body) {
-  const res = await axios.post(
+  const call = () => axios.post(
     `https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`,
     body,
     { headers: { Authorization: `Bearer ${token}` } },
   );
+  const res = await withGate(propertyId, async () => {
+    for (let attempt = 0; ; attempt += 1) {
+      try {
+        return await call();
+      } catch (err) {
+        const quota = err.response?.status === 429 || /quota|concurrent/i.test(err.response?.data?.error?.message || '');
+        if (!quota || attempt >= 3) throw err;
+        await new Promise((r) => setTimeout(r, 800 * (attempt + 1)));
+      }
+    }
+  });
   const rows = res.data.rows || [];
   rows.totals = res.data.totals?.[0]?.metricValues || null;
   return rows;
@@ -109,7 +136,7 @@ async function buildHome(token, propertyId, range) {
     runReport(token, propertyId, { dateRanges: [cur], dimensions: [{ name: 'date' }], metrics: [{ name: 'screenPageViews' }], dimensionFilter: f, orderBys: [{ dimension: { dimensionName: 'date' } }] }),
     runReport(token, propertyId, { dateRanges: [cur], dimensions: [{ name: 'hour' }], metrics: [{ name: 'screenPageViews' }], dimensionFilter: f }),
     runReport(token, propertyId, { dateRanges: both, dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'screenPageViews' }], dimensionFilter: f, limit: 100 }),
-    runReport(token, propertyId, { dateRanges: both, dimensions: [{ name: 'newVsReturning' }], metrics: [{ name: 'averageSessionDuration' }], dimensionFilter: f }).catch(() => []),
+    runReport(token, propertyId, { dateRanges: both, dimensions: [{ name: 'newVsReturning' }], metrics: [{ name: 'averageSessionDuration' }, { name: 'totalUsers' }, { name: 'sessionsPerUser' }], dimensionFilter: f }).catch(() => []),
     runReport(token, propertyId, { dateRanges: [cur], dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'sessions' }], dimensionFilter: seg('new'), limit: 30 }).catch(() => []),
     runReport(token, propertyId, { dateRanges: [cur], dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'sessions' }], dimensionFilter: seg('returning'), limit: 30 }).catch(() => []),
   ]);
@@ -117,6 +144,14 @@ async function buildHome(token, propertyId, range) {
     const row = durRows.find((x) => x.dimensionValues[0].value === kind && x.dimensionValues[1]?.value === which);
     return row ? Number(row.metricValues[0].value) : null;
   };
+  const hv = (kind, which, i) => { const r = durRows.find((x) => x.dimensionValues[0].value === kind && x.dimensionValues[1]?.value === which); return r ? Number(r.metricValues[i].value) : 0; };
+  const hTotCur = hv('new', 'cur', 1) + hv('returning', 'cur', 1);
+  const hTotPrev = hv('new', 'prev', 1) + hv('returning', 'prev', 1);
+  const homeReturning = hTotCur ? {
+    newPct: hv('new', 'cur', 1) / hTotCur, returningPct: hv('returning', 'cur', 1) / hTotCur,
+    prevNewPct: hTotPrev ? hv('new', 'prev', 1) / hTotPrev : null, prevReturningPct: hTotPrev ? hv('returning', 'prev', 1) / hTotPrev : null,
+    perUser: { new: hv('new', 'cur', 2), returning: hv('returning', 'cur', 2), prevNew: hv('new', 'prev', 2) || null, prevReturning: hv('returning', 'prev', 2) || null },
+  } : null;
   const chans = (rows) => rows.map((x) => ({ name: x.dimensionValues[0].value, sessions: Number(x.metricValues[0].value) }));
   const pick = (name) => kpis.find((r) => r.dimensionValues.some((v) => v.value === name));
   const c = pick('cur');
@@ -145,6 +180,7 @@ async function buildHome(token, propertyId, range) {
     newDuration: { sec: durOf('new', 'cur'), prevSec: durOf('new', 'prev') },
     returningDuration: { sec: durOf('returning', 'cur'), prevSec: durOf('returning', 'prev') },
     newChannels: chans(newChanRows), returningChannels: chans(retChanRows),
+    returning: homeReturning,
     bounceRate: m(c, 2), bounceRateChange: pct(m(c, 2), m(pv, 2)),
     readSec: read(c), readChange: pct(read(c), read(pv)),
     daily, peak, hourly, channels: Object.values(chan),
@@ -384,7 +420,7 @@ async function buildAudience(token, propertyId, r, brand) {
     runReport(token, propertyId, {
       dateRanges: [{ ...range, name: 'cur' }, { startDate: r.prevStart, endDate: r.prevEnd, name: 'prev' }],
       dimensions: [{ name: 'newVsReturning' }],
-      metrics: [{ name: 'averageSessionDuration' }],
+      metrics: [{ name: 'averageSessionDuration' }, { name: 'totalUsers' }, { name: 'sessionsPerUser' }],
     }).catch(() => []),
     runReport(token, propertyId, {
       dateRanges: [range],
@@ -409,6 +445,15 @@ async function buildAudience(token, propertyId, r, brand) {
     return row ? Number(row.metricValues[0].value) : null;
   };
   const newDuration = { sec: durOf('new', 'cur'), prevSec: durOf('new', 'prev') };
+  const rowOf = (kind, which) => newVsRet.find((x) => x.dimensionValues[0].value === kind && x.dimensionValues[1]?.value === which);
+  const mv = (kind, which, i) => { const r = rowOf(kind, which); return r ? Number(r.metricValues[i].value) : 0; };
+  const totCur = mv('new', 'cur', 1) + mv('returning', 'cur', 1);
+  const totPrev = mv('new', 'prev', 1) + mv('returning', 'prev', 1);
+  const returning = totCur ? {
+    newPct: mv('new', 'cur', 1) / totCur, returningPct: mv('returning', 'cur', 1) / totCur,
+    prevNewPct: totPrev ? mv('new', 'prev', 1) / totPrev : null, prevReturningPct: totPrev ? mv('returning', 'prev', 1) / totPrev : null,
+    perUser: { new: mv('new', 'cur', 2), returning: mv('returning', 'cur', 2), prevNew: mv('new', 'prev', 2) || null, prevReturning: mv('returning', 'prev', 2) || null },
+  } : null;
   returningDuration.sec = durOf('returning', 'cur');
   returningDuration.prevSec = durOf('returning', 'prev');
   const prevByName = {};
@@ -432,6 +477,7 @@ async function buildAudience(token, propertyId, r, brand) {
 
   const sessionsTotal = channels.reduce((a, r) => a + Number(r.metricValues[0].value), 0);
   return {
+    returning,
     newDuration,
     newChannels,
     returningDuration,

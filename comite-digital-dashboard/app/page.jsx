@@ -229,8 +229,33 @@ export default function Dashboard() {
           <div style={{ width: `${R.newPct * 100}%`, background: T.accent }} />
           <div style={{ width: `${R.returningPct * 100}%`, background: '#333' }} />
         </div>
-        <div style={{ ...styles.cardTitle, marginTop: '16px' }}>Frecuencia de visita</div>
-        {(R.frequency || []).map((x) => bar(x.label, x.pct, '#333'))}
+        {R.frequency?.length > 0 ? (
+          <>
+            <div style={{ ...styles.cardTitle, marginTop: '16px' }}>Frecuencia de visita</div>
+            {R.frequency.map((x) => bar(x.label, x.pct, '#333'))}
+          </>
+        ) : R.perUser ? (() => {
+          const mx = Math.max(R.perUser.new, R.perUser.returning, 0.0001);
+          const row = (label, v, prev, color) => (
+            <div key={label} style={{ marginTop: '10px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
+                <span>{label}</span>
+                <span><strong>{v.toFixed(2)}</strong> sesiones{prev ? <span style={{ marginLeft: '6px', fontSize: '11px', fontWeight: 700, color: v >= prev ? '#2e7d32' : '#c62828' }}>{v >= prev ? '\u25B2' : '\u25BC'} {Math.abs((v / prev - 1) * 100).toFixed(1)}%</span> : null}</span>
+              </div>
+              <div style={{ background: T.soft, borderRadius: '4px', height: '8px', marginTop: '3px' }}>
+                <div style={{ width: `${(v / mx) * 100}%`, background: color, height: '8px', borderRadius: '4px' }} />
+              </div>
+              {prev ? <div style={{ fontSize: '11px', color: '#888', marginTop: '2px' }}>Mes anterior {prev.toFixed(2)}</div> : null}
+            </div>
+          );
+          return (
+            <>
+              <div style={{ ...styles.cardTitle, marginTop: '16px' }}>Frecuencia: sesiones por usuario</div>
+              {row('Nuevos', R.perUser.new, R.perUser.prevNew, T.accent)}
+              {row('Recurrentes', R.perUser.returning, R.perUser.prevReturning, '#333')}
+            </>
+          );
+        })() : null}
       </div>
     );
   };
