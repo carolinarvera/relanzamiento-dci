@@ -187,6 +187,11 @@ export default function Dashboard() {
     return <div style={styles.change(diff >= 0)}>{diff >= 0 ? '\u2191' : '\u2193'} {Math.abs(diff).toFixed(2)} pp vs periodo anterior</div>;
   };
 
+  const fmtMin = (sec) => {
+    const t = Math.round(sec || 0);
+    return `${Math.floor(t / 60)}:${String(t % 60).padStart(2, '0')} min`;
+  };
+
   const formatCompact = (value) => {
     if (value >= 1000) return `${(value / 1000).toFixed(0)}K`;
     return value;
@@ -770,12 +775,41 @@ export default function Dashboard() {
             )}
 
             <div style={{ ...styles.card, marginTop: '20px' }}>
-              <div style={styles.cardTitle}>Días por encima del promedio (calculados de GA4)</div>
-              <ul style={{ fontSize: '14px', fontWeight: 600, color: '#222', marginTop: '12px', paddingLeft: '18px' }}>
-                {[...aboveAvg].sort((x, y) => y.value - x.value).map((pk) => (
-                  <li key={pk.label}>{pk.label}: {pk.value.toLocaleString('es-CO')} vistas</li>
-                ))}
-              </ul>
+              <div style={styles.cardTitle}>Días por encima del promedio: qué se leyó, de dónde llegó y cuándo</div>
+              <div style={{ overflowX: 'auto', marginTop: '12px' }}>
+                <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '820px' }}>
+                  <thead>
+                    <tr>
+                      {['Día', 'Vistas', 'Páginas más leídas (vistas · tiempo de lectura)', 'Origen de tráfico', 'Tiempo de lectura del día', 'Horas de mayor lectura'].map((h) => (
+                        <th key={h} style={{ textAlign: 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[...(current.ga4.aboveAvgDays || [])].sort((x, y) => y.views - x.views).map((d) => (
+                      <tr key={d.label} style={{ verticalAlign: 'top' }}>
+                        <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', fontWeight: 700, whiteSpace: 'nowrap' }}>{d.label}</td>
+                        <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', fontWeight: 700 }}>{nf(d.views)}</td>
+                        <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>
+                          {d.pages.map((pg) => (
+                            <div key={pg.path} style={{ wordBreak: 'break-all', marginBottom: '4px' }}>
+                              {pg.path} <strong>· {nf(pg.views)}</strong> · {fmtMin(pg.readSec)}
+                            </div>
+                          ))}
+                        </td>
+                        <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>
+                          {d.channels.map((c) => <div key={c.name}>{c.name} <strong>{(c.share * 100).toFixed(0)}%</strong></div>)}
+                        </td>
+                        <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', whiteSpace: 'nowrap' }}>{d.readTime}</td>
+                        <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>
+                          {d.hours.map((h) => <div key={h.hour}>{h.hour} <strong>· {nf(h.views)}</strong></div>)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div style={styles.cardSubtext}>Promedio del periodo: {Math.round(dailyAvg).toLocaleString('es-CO')} vistas/día · Tiempo de lectura = tiempo de interacción promedio por usuario activo (GA4) · Horas en la zona horaria de GA4</div>
             </div>
           </div>
         )}

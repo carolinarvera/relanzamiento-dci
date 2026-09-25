@@ -97,6 +97,70 @@ async function topArticles(brand, pageList) {
   }));
 }
 
+const CHANNEL_ES = {
+  'Organic Search': 'Búsqueda orgánica', Direct: 'Directo', 'Organic Social': 'Social orgánico', 'Paid Social': 'Social pagado',
+  'Paid Search': 'Búsqueda pagada', Referral: 'Referido', Email: 'Email', Display: 'Display', Unassigned: 'Sin asignar',
+  'Organic Video': 'Video orgánico', 'Cross-network': 'Cross-network', Affiliates: 'Afiliados',
+};
+
+async function buildAboveAvgAnalysis(token, propertyId, range, dailyViews) {
+  if (!dailyViews.length) return [];
+  const avg = dailyViews.reduce((a, d) => a + d.value, 0) / dailyViews.length;
+  const days = dailyViews.filter((d) => d.value > avg);
+  if (!days.length) return [];
+  const dateRanges = [{ startDate: range.start, endDate: range.end }];
+  const wanted = new Set(days.map((d) => d.date));
+
+  const [pageRows, channelRows, hourRows, dayRows] = await Promise.all([
+    runReport(token, propertyId, {
+      dateRanges, dimensions: [{ name: 'date' }, { name: 'pagePath' }],
+      metrics: ['screenPageViews', 'userEngagementDuration', 'activeUsers'].map((name) => ({ name })),
+      orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }], limit: 100000,
+    }),
+    runReport(token, propertyId, {
+      dateRanges, dimensions: [{ name: 'date' }, { name: 'sessionDefaultChannelGroup' }],
+      metrics: [{ name: 'sessions' }], limit: 10000,
+    }),
+    runReport(token, propertyId, {
+      dateRanges, dimensions: [{ name: 'date' }, { name: 'hour' }],
+      metrics: [{ name: 'screenPageViews' }], limit: 10000,
+    }),
+    runReport(token, propertyId, {
+      dateRanges, dimensions: [{ name: 'date' }],
+      metrics: ['userEngagementDuration', 'activeUsers'].map((name) => ({ name })),
+    }),
+  ]);
+
+  const group = (rows) => {
+    const m = {};
+    rows.forEach((r) => {
+      const d = r.dimensionValues[0].value;
+      if (wanted.has(d)) (m[d] = m[d] || []).push(r);
+    });
+    return m;
+  };
+  const pagesBy = group(pageRows);
+  const channelsBy = group(channelRows);
+  const hoursBy = group(hourRows);
+  const dayBy = group(dayRows);
+
+  return days.map((d) => {
+    const pages = (pagesBy[d.date] || [])
+      .filter((r) => r.dimensionValues[1].value !== '/')
+      .sort((a, b) => num(b, 0) - num(a, 0)).slice(0, 3)
+      .map((r) => ({ path: r.dimensionValues[1].value, views: num(r, 0), readSec: num(r, 2) ? num(r, 1) / num(r, 2) : 0 }));
+    const chRows = channelsBy[d.date] || [];
+    const chTotal = chRows.reduce((a, r) => a + num(r, 0), 0);
+    const channels = chRows.sort((a, b) => num(b, 0) - num(a, 0)).slice(0, 3)
+      .map((r) => ({ name: CHANNEL_ES[r.dimensionValues[1].value] || r.dimensionValues[1].value, share: chTotal ? num(r, 0) / chTotal : 0 }));
+    const hours = (hoursBy[d.date] || []).sort((a, b) => num(b, 0) - num(a, 0)).slice(0, 3)
+      .map((r) => ({ hour: `${String(Number(r.dimensionValues[1].value)).padStart(2, '0')}h`, views: num(r, 0) }));
+    const dr = (dayBy[d.date] || [])[0];
+    const readSec = dr && num(dr, 1) ? num(dr, 0) / num(dr, 1) : 0;
+    return { label: d.label, views: d.value, pages, channels, hours, readTime: fmtDuration(readSec) };
+  });
+}
+
 async function buildSections(token, propertyId, brand, range) {
   const cur = { startDate: range.start, endDate: range.end };
   const prev = { startDate: range.prevStart, endDate: range.prevEnd };
@@ -347,8 +411,9 @@ async function buildProperty(token, propertyId, brand, range) {
 
   const dailyViews = daily.map((r) => {
     const d = r.dimensionValues[0].value;
-    return { label: `${Number(d.slice(6))} ${MONTHS[Number(d.slice(4, 6)) - 1]}`, value: num(r, 0) };
+    return { date: d, label: `${Number(d.slice(6))} ${MONTHS[Number(d.slice(4, 6)) - 1]}`, value: num(r, 0) };
   });
+  const aboveAvgDays = await buildAboveAvgAnalysis(token, propertyId, range, dailyViews);
 
   const dr = (name) => byName(partial, name);
   const cur = dr('cur');
@@ -384,6 +449,7 @@ async function buildProperty(token, propertyId, brand, range) {
     organic,
     social,
     dailyPeaks,
+    aboveAvgDays,
     septPartial: cur && prev ? {
       range: `1 al ${dayOfMonth} de ${['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'][today.getUTCMonth()]}`,
       views: num(cur, 0), viewsChange: pct(num(cur, 0), num(prev, 0)),
@@ -413,6 +479,7 @@ function parseGA4Response(res) {
     monthlyHistory: res.monthlyHistory || [],
     dailyViews: res.dailyViews || [],
     dailyPeaks: res.dailyPeaks || [],
+    aboveAvgDays: res.aboveAvgDays || [],
     hourlyViews: res.hourlyViews || [],
     organic: res.organic || null,
     social: res.social || null,
