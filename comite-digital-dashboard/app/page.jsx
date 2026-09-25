@@ -207,6 +207,10 @@ export default function Dashboard() {
   };
 
   const current = activeTab === 'axxis' ? axxisData : dinersData;
+
+  const dailyList = current.ga4?.dailyViews || [];
+  const dailyAvg = dailyList.length ? dailyList.reduce((a, d) => a + d.value, 0) / dailyList.length : 0;
+  const aboveAvg = dailyList.filter((d) => d.value > dailyAvg);
   const rangeLabel = data.ga4?.range?.label || data.gsc?.range?.label || data.seo?.range?.label || data.meta?.range?.label || data.pauta?.range?.label || '';
   const nf = (v) => (v === undefined || v === null ? '\u2014' : Number(v).toLocaleString('es-CO'));
 
@@ -400,6 +404,7 @@ export default function Dashboard() {
           <div style={{ marginTop: '40px' }}>
             <div style={{ ...styles.card, padding: '28px', borderTop: `4px solid ${T.accent}`, boxShadow: '0 4px 14px rgba(0,0,0,0.12)' }}>
               <div style={{ ...styles.cardTitle, fontSize: '18px', color: '#222' }}>Visitas diarias: agosto y septiembre</div>
+              <div style={{ fontSize: '12px', color: '#888', marginTop: '4px' }}>Se destacan los {aboveAvg.length} días por encima del promedio ({Math.round(dailyAvg).toLocaleString('es-CO')} vistas/día)</div>
               <div style={{ width: '100%', height: 460, marginTop: '16px' }}>
                   <ResponsiveContainer>
                     <AreaChart data={current.ga4.dailyViews} margin={{ top: 30, right: 20, left: 0, bottom: 0 }}>
@@ -409,9 +414,11 @@ export default function Dashboard() {
                       <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
                       <Area type="monotone" dataKey="value" name="Vistas" stroke={T.accent} strokeDasharray="2 3" strokeWidth={3} fill={T.accent} fillOpacity={0.12} />
                       <ReferenceLine x="1 sep" stroke="#0000cc" strokeWidth={2} />
-                      {current.ga4.dailyPeaks?.map((pk) => (
-                        <ReferenceDot key={pk.label} x={pk.label} y={pk.value} r={7} fill={T.highlight} stroke="#fff"
-                          label={{ value: pk.value.toLocaleString('es-CO'), position: 'top', fontSize: 15, fontWeight: 700, fill: '#222' }} />
+                      <ReferenceLine y={dailyAvg} stroke="#888" strokeDasharray="6 4"
+                        label={{ value: `Promedio ${Math.round(dailyAvg).toLocaleString('es-CO')}`, position: 'insideBottomRight', fontSize: 12, fill: '#666' }} />
+                      {aboveAvg.map((d) => (
+                        <ReferenceDot key={d.label} x={d.label} y={d.value} r={6} fill={T.highlight} stroke="#fff"
+                          label={{ value: d.value.toLocaleString('es-CO'), position: 'top', fontSize: 12, fontWeight: 700, fill: '#222' }} />
                       ))}
                     </AreaChart>
                   </ResponsiveContainer>
@@ -763,9 +770,9 @@ export default function Dashboard() {
             )}
 
             <div style={{ ...styles.card, marginTop: '20px' }}>
-              <div style={styles.cardTitle}>Picos de visitas (calculados de GA4)</div>
+              <div style={styles.cardTitle}>Días por encima del promedio (calculados de GA4)</div>
               <ul style={{ fontSize: '14px', fontWeight: 600, color: '#222', marginTop: '12px', paddingLeft: '18px' }}>
-                {current.ga4.dailyPeaks?.map((pk) => (
+                {[...aboveAvg].sort((x, y) => y.value - x.value).map((pk) => (
                   <li key={pk.label}>{pk.label}: {pk.value.toLocaleString('es-CO')} vistas</li>
                 ))}
               </ul>
