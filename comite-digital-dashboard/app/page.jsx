@@ -343,12 +343,6 @@ export default function Dashboard() {
             {current.gsc?.prev?.position ? renderChange(current.gsc.position / current.gsc.prev.position - 1, true) : null}
             <div style={styles.cardSubtext}>Search Console · menor es mejor</div>
           </div>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Rebote orgánico</div>
-            <div style={styles.cardValue}>{current.ga4?.organic ? `${(current.ga4.organic.bounceRate * 100).toFixed(1)}%` : '\u2014'}</div>
-            {renderChange(current.ga4?.organic?.bounceRateChange, true)}
-            <div style={styles.cardSubtext}>sesiones de búsqueda orgánica · menor es mejor</div>
-          </div>
         </div>
 
         {current.ga4?.hourlyViews?.some((h) => h.vistas > 0) && (
@@ -404,27 +398,26 @@ export default function Dashboard() {
 
         {current.ga4?.dailyViews?.length > 0 && (
           <div style={{ marginTop: '40px' }}>
-            <h2 style={styles.sectionTitle}>Informe Web - Página 2</h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
-              <div style={{ ...styles.card, gridColumn: 'span 2' }}>
-                <div style={styles.cardTitle}>Visitas diarias: agosto y septiembre</div>
-                <div style={{ width: '100%', height: 320, marginTop: '12px' }}>
+            <div style={{ ...styles.card, padding: '28px', borderTop: `4px solid ${T.accent}`, boxShadow: '0 4px 14px rgba(0,0,0,0.12)' }}>
+              <div style={{ ...styles.cardTitle, fontSize: '18px', color: '#222' }}>Visitas diarias: agosto y septiembre</div>
+              <div style={{ width: '100%', height: 460, marginTop: '16px' }}>
                   <ResponsiveContainer>
                     <AreaChart data={current.ga4.dailyViews} margin={{ top: 30, right: 20, left: 0, bottom: 0 }}>
                       <CartesianGrid strokeDasharray="3 3" vertical={false} />
                       <XAxis dataKey="label" tick={{ fontSize: 11 }} interval={6} />
                       <YAxis tick={{ fontSize: 12 }} />
                       <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
-                      <Area type="monotone" dataKey="value" name="Vistas" stroke={T.accent} strokeDasharray="2 3" strokeWidth={2} fill={T.accent} fillOpacity={0.08} />
+                      <Area type="monotone" dataKey="value" name="Vistas" stroke={T.accent} strokeDasharray="2 3" strokeWidth={3} fill={T.accent} fillOpacity={0.12} />
                       <ReferenceLine x="1 sep" stroke="#0000cc" strokeWidth={2} />
                       {current.ga4.dailyPeaks?.map((pk) => (
-                        <ReferenceDot key={pk.label} x={pk.label} y={pk.value} r={5} fill={T.highlight} stroke="#fff"
-                          label={{ value: pk.value.toLocaleString('es-CO'), position: 'top', fontSize: 12, fill: '#222' }} />
+                        <ReferenceDot key={pk.label} x={pk.label} y={pk.value} r={7} fill={T.highlight} stroke="#fff"
+                          label={{ value: pk.value.toLocaleString('es-CO'), position: 'top', fontSize: 15, fontWeight: 700, fill: '#222' }} />
                       ))}
                     </AreaChart>
                   </ResponsiveContainer>
-                </div>
               </div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px', marginTop: '20px' }}>
               <div>
                 <div style={styles.card}>
                   <div style={styles.cardTitle}>Vistas {rangeLabel}</div>
