@@ -484,6 +484,23 @@ export default function Dashboard() {
                         </ResponsiveContainer>
                       </div>
                     </div>
+                    {sec.peakPages?.length > 0 && (
+                      <div style={styles.card}>
+                        <div style={styles.cardTitle}>Páginas más leídas el día pico · {sec.peak.label}</div>
+                        <div style={{ fontSize: '12px', color: '#888', marginTop: '4px' }}>{sec.label} · {nf(sec.peak.value)} vistas ese día</div>
+                        <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '8px' }}>
+                          <tbody>
+                            {sec.peakPages.map((pg, k) => (
+                              <tr key={pg.path}>
+                                <td style={{ padding: '6px 4px', borderBottom: '1px solid #eee', color: '#888', width: '20px' }}>{k + 1}.</td>
+                                <td style={{ padding: '6px 4px', borderBottom: '1px solid #eee', wordBreak: 'break-all' }}>{pg.path}</td>
+                                <td style={{ padding: '6px 4px', borderBottom: '1px solid #eee', textAlign: 'right', fontWeight: 600 }}>{nf(pg.views)}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
                     <div style={styles.card}>
                       <div style={styles.cardTitle}>Vistas {sec.label} por hora del día{(() => { const top = sec.hourly?.reduce((b, h) => (!b || h.value > b.value ? h : b), null); return top ? ` · pico ${top.hour}` : ''; })()}</div>
                       <div style={{ width: '100%', height: 200, marginTop: '12px' }}>
