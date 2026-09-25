@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { resolveRange } from '../../lib/range';
+import { isMock, mockGa4 } from '../../lib/mock';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -9,6 +10,7 @@ const MONTHS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', '
 export async function GET(request) {
   try {
     const range = resolveRange(new URL(request.url).searchParams);
+    if (isMock(new URL(request.url).searchParams)) return Response.json(mockGa4(range));
     const token = await getAccessToken();
     const [axxis, diners] = await Promise.all([
       buildProperty(token, process.env.GA4_AXXIS_ID, 'axxis', range),
@@ -97,6 +99,61 @@ async function topArticles(brand, pageList) {
   }));
 }
 
+async function buildHome(token, propertyId, range) {
+  const f = { filter: { fieldName: 'pagePath', stringFilter: { matchType: 'EXACT', value: '/' } } };
+  const cur = { startDate: range.start, endDate: range.end };
+  const both = [{ ...cur, name: 'cur' }, { startDate: range.prevStart, endDate: range.prevEnd, name: 'prev' }];
+  const seg = (kind) => ({ andGroup: { expressions: [f, { filter: { fieldName: 'newVsReturning', stringFilter: { matchType: 'EXACT', value: kind } } }] } });
+  const [kpis, dailyRows, hourRows, chanRows, durRows, newChanRows, retChanRows] = await Promise.all([
+    runReport(token, propertyId, { dateRanges: both, metrics: ['screenPageViews', 'totalUsers', 'bounceRate', 'userEngagementDuration', 'activeUsers', 'newUsers'].map((name) => ({ name })), dimensionFilter: f }),
+    runReport(token, propertyId, { dateRanges: [cur], dimensions: [{ name: 'date' }], metrics: [{ name: 'screenPageViews' }], dimensionFilter: f, orderBys: [{ dimension: { dimensionName: 'date' } }] }),
+    runReport(token, propertyId, { dateRanges: [cur], dimensions: [{ name: 'hour' }], metrics: [{ name: 'screenPageViews' }], dimensionFilter: f }),
+    runReport(token, propertyId, { dateRanges: both, dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'screenPageViews' }], dimensionFilter: f, limit: 100 }),
+    runReport(token, propertyId, { dateRanges: both, dimensions: [{ name: 'newVsReturning' }], metrics: [{ name: 'averageSessionDuration' }], dimensionFilter: f }).catch(() => []),
+    runReport(token, propertyId, { dateRanges: [cur], dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'sessions' }], dimensionFilter: seg('new'), limit: 30 }).catch(() => []),
+    runReport(token, propertyId, { dateRanges: [cur], dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'sessions' }], dimensionFilter: seg('returning'), limit: 30 }).catch(() => []),
+  ]);
+  const durOf = (kind, which) => {
+    const row = durRows.find((x) => x.dimensionValues[0].value === kind && x.dimensionValues[1]?.value === which);
+    return row ? Number(row.metricValues[0].value) : null;
+  };
+  const chans = (rows) => rows.map((x) => ({ name: x.dimensionValues[0].value, sessions: Number(x.metricValues[0].value) }));
+  const pick = (name) => kpis.find((r) => r.dimensionValues.some((v) => v.value === name));
+  const c = pick('cur');
+  const pv = pick('prev');
+  const m = (row, i) => (row ? Number(row.metricValues[i].value) : 0);
+  const read = (row) => (m(row, 4) ? m(row, 3) / m(row, 4) : 0);
+  const daily = dailyRows.map((r) => {
+    const d = r.dimensionValues[0].value;
+    return { date: d, label: `${Number(d.slice(6))} ${MONTHS[Number(d.slice(4, 6)) - 1]}`, value: Number(r.metricValues[0].value) };
+  });
+  const peak = daily.reduce((b, d) => (!b || d.value > b.value ? d : b), null);
+  const hourly = Array.from({ length: 24 }, (_, h) => ({ hour: `${String(h).padStart(2, '0')}h`, value: 0 }));
+  hourRows.forEach((r) => { hourly[Number(r.dimensionValues[0].value)].value = Number(r.metricValues[0].value); });
+  const chan = {};
+  chanRows.forEach((r) => {
+    const name = r.dimensionValues[0].value;
+    const which = r.dimensionValues[1]?.value === 'prev' ? 'prevViews' : 'views';
+    chan[name] = chan[name] || { name, views: 0, prevViews: 0 };
+    chan[name][which] = Number(r.metricValues[0].value);
+  });
+  return {
+    viewsPrev: m(pv, 0), usersPrev: m(pv, 1), bounceRatePrev: m(pv, 2), readSecPrev: read(pv),
+    views: m(c, 0), viewsChange: pct(m(c, 0), m(pv, 0)),
+    users: m(c, 1), usersChange: pct(m(c, 1), m(pv, 1)),
+    newUsers: m(c, 5), newUsersChange: pct(m(c, 5), m(pv, 5)),
+    newDuration: { sec: durOf('new', 'cur'), prevSec: durOf('new', 'prev') },
+    returningDuration: { sec: durOf('returning', 'cur'), prevSec: durOf('returning', 'prev') },
+    newChannels: chans(newChanRows), returningChannels: chans(retChanRows),
+    bounceRate: m(c, 2), bounceRateChange: pct(m(c, 2), m(pv, 2)),
+    readSec: read(c), readChange: pct(read(c), read(pv)),
+    daily, peak, hourly, channels: Object.values(chan),
+  };
+}
+
+const ABOVE_AVG_FACTOR = 1.15;
+const DEVICE_ES = { mobile: 'Móvil', desktop: 'Escritorio', tablet: 'Tablet', 'smart tv': 'Smart TV' };
+
 const CHANNEL_ES = {
   'Organic Search': 'Búsqueda orgánica', Direct: 'Directo', 'Organic Social': 'Social orgánico', 'Paid Social': 'Social pagado',
   'Paid Search': 'Búsqueda pagada', Referral: 'Referido', Email: 'Email', Display: 'Display', Unassigned: 'Sin asignar',
@@ -106,20 +163,21 @@ const CHANNEL_ES = {
 async function buildAboveAvgAnalysis(token, propertyId, range, dailyViews) {
   if (!dailyViews.length) return [];
   const avg = dailyViews.reduce((a, d) => a + d.value, 0) / dailyViews.length;
-  const days = dailyViews.filter((d) => d.value > avg);
+  const days = dailyViews.filter((d) => d.value > avg * ABOVE_AVG_FACTOR);
   if (!days.length) return [];
   const dateRanges = [{ startDate: range.start, endDate: range.end }];
   const wanted = new Set(days.map((d) => d.date));
 
-  const [pageRows, channelRows, hourRows, dayRows] = await Promise.all([
+  const [pageRows, pageChannelRows, hourRows, dayRows, deviceRows] = await Promise.all([
     runReport(token, propertyId, {
       dateRanges, dimensions: [{ name: 'date' }, { name: 'pagePath' }],
       metrics: ['screenPageViews', 'userEngagementDuration', 'activeUsers'].map((name) => ({ name })),
       orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }], limit: 100000,
     }),
     runReport(token, propertyId, {
-      dateRanges, dimensions: [{ name: 'date' }, { name: 'sessionDefaultChannelGroup' }],
-      metrics: [{ name: 'sessions' }], limit: 10000,
+      dateRanges, dimensions: [{ name: 'date' }, { name: 'pagePath' }, { name: 'sessionDefaultChannelGroup' }],
+      metrics: [{ name: 'screenPageViews' }],
+      orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }], limit: 100000,
     }),
     runReport(token, propertyId, {
       dateRanges, dimensions: [{ name: 'date' }, { name: 'hour' }],
@@ -128,6 +186,10 @@ async function buildAboveAvgAnalysis(token, propertyId, range, dailyViews) {
     runReport(token, propertyId, {
       dateRanges, dimensions: [{ name: 'date' }],
       metrics: ['userEngagementDuration', 'activeUsers'].map((name) => ({ name })),
+    }),
+    runReport(token, propertyId, {
+      dateRanges, dimensions: [{ name: 'date' }, { name: 'deviceCategory' }],
+      metrics: [{ name: 'screenPageViews' }], limit: 10000,
     }),
   ]);
 
@@ -140,24 +202,35 @@ async function buildAboveAvgAnalysis(token, propertyId, range, dailyViews) {
     return m;
   };
   const pagesBy = group(pageRows);
-  const channelsBy = group(channelRows);
+  const pageChannelsBy = {};
+  pageChannelRows.forEach((r) => {
+    const k = `${r.dimensionValues[0].value}|${r.dimensionValues[1].value}`;
+    (pageChannelsBy[k] = pageChannelsBy[k] || []).push(r);
+  });
   const hoursBy = group(hourRows);
   const dayBy = group(dayRows);
+  const devicesBy = group(deviceRows);
 
   return days.map((d) => {
     const pages = (pagesBy[d.date] || [])
       .filter((r) => r.dimensionValues[1].value !== '/')
       .sort((a, b) => num(b, 0) - num(a, 0)).slice(0, 3)
-      .map((r) => ({ path: r.dimensionValues[1].value, views: num(r, 0), readSec: num(r, 2) ? num(r, 1) / num(r, 2) : 0 }));
-    const chRows = channelsBy[d.date] || [];
-    const chTotal = chRows.reduce((a, r) => a + num(r, 0), 0);
-    const channels = chRows.sort((a, b) => num(b, 0) - num(a, 0)).slice(0, 3)
-      .map((r) => ({ name: CHANNEL_ES[r.dimensionValues[1].value] || r.dimensionValues[1].value, share: chTotal ? num(r, 0) / chTotal : 0 }));
+      .map((r) => {
+        const chRows = pageChannelsBy[`${d.date}|${r.dimensionValues[1].value}`] || [];
+        const chTotal = chRows.reduce((a, x) => a + num(x, 0), 0);
+        const channels = [...chRows].sort((a, b) => num(b, 0) - num(a, 0)).slice(0, 3)
+          .map((x) => ({ name: CHANNEL_ES[x.dimensionValues[2].value] || x.dimensionValues[2].value, share: chTotal ? num(x, 0) / chTotal : 0 }));
+        return { path: r.dimensionValues[1].value, views: num(r, 0), readSec: num(r, 2) ? num(r, 1) / num(r, 2) : 0, channels };
+      });
     const hours = (hoursBy[d.date] || []).sort((a, b) => num(b, 0) - num(a, 0)).slice(0, 3)
       .map((r) => ({ hour: `${String(Number(r.dimensionValues[1].value)).padStart(2, '0')}h`, views: num(r, 0) }));
+    const dvRows = devicesBy[d.date] || [];
+    const dvTotal = dvRows.reduce((a, r) => a + num(r, 0), 0);
+    const devices = dvRows.sort((a, b) => num(b, 0) - num(a, 0)).slice(0, 3)
+      .map((r) => ({ name: DEVICE_ES[r.dimensionValues[1].value] || r.dimensionValues[1].value, share: dvTotal ? num(r, 0) / dvTotal : 0 }));
     const dr = (dayBy[d.date] || [])[0];
     const readSec = dr && num(dr, 1) ? num(dr, 0) / num(dr, 1) : 0;
-    return { label: d.label, views: d.value, pages, channels, hours, readTime: fmtDuration(readSec) };
+    return { label: d.label, views: d.value, pages, devices, hours, readTime: fmtDuration(readSec) };
   });
 }
 
@@ -205,6 +278,55 @@ async function buildSections(token, propertyId, brand, range) {
     const hourly = Array.from({ length: 24 }, (_, h) => ({ hour: `${String(h).padStart(2, '0')}h`, value: 0 }));
     hourRows.forEach((r) => { hourly[Number(r.dimensionValues[0].value)].value = Number(r.metricValues[0].value); });
     const peak = daily.reduce((best, d) => (!best || d.value > best.value ? d : best), null);
+    const secFilter = { filter: { fieldName: 'pagePath', stringFilter: { matchType: 'BEGINS_WITH', value: `/${slug}` } } };
+    const byViews = [{ metric: { metricName: 'screenPageViews' }, desc: true }];
+    const [dayPageRows, dayChannelRows, dayHourRows] = await Promise.all([
+      runReport(token, propertyId, {
+        dateRanges: [cur], dimensions: [{ name: 'date' }, { name: 'pagePath' }],
+        metrics: ['screenPageViews', 'userEngagementDuration', 'activeUsers'].map((name) => ({ name })),
+        dimensionFilter: secFilter, orderBys: byViews, limit: 100000,
+      }),
+      runReport(token, propertyId, {
+        dateRanges: [cur], dimensions: [{ name: 'date' }, { name: 'pagePath' }, { name: 'sessionDefaultChannelGroup' }],
+        metrics: [{ name: 'screenPageViews' }], dimensionFilter: secFilter, orderBys: byViews, limit: 100000,
+      }),
+      runReport(token, propertyId, {
+        dateRanges: [cur], dimensions: [{ name: 'date' }, { name: 'pagePath' }, { name: 'hour' }],
+        metrics: [{ name: 'screenPageViews' }], dimensionFilter: secFilter, orderBys: byViews, limit: 100000,
+      }),
+    ]);
+    const topPageByDay = {};
+    const topPagesByDay = {};
+    const keyOf = {};
+    dayPageRows.forEach((r) => {
+      const d = r.dimensionValues[0].value;
+      const path = r.dimensionValues[1].value;
+      if (path === `/${slug}` || path === `/${slug}/`) return;
+      const label = `${Number(d.slice(6))} ${MONTHS[Number(d.slice(4, 6)) - 1]}`;
+      const list = (topPagesByDay[label] = topPagesByDay[label] || []);
+      if (list.length >= 3) return;
+      const users = Number(r.metricValues[2].value);
+      const entry = { path, views: Number(r.metricValues[0].value), readSec: users ? Number(r.metricValues[1].value) / users : 0, channels: [], peakHour: null };
+      list.push(entry);
+      if (list.length === 1) topPageByDay[label] = entry;
+      keyOf[`${d}|${path}`] = entry;
+    });
+    const chAcc = {};
+    dayChannelRows.forEach((r) => {
+      const k = `${r.dimensionValues[0].value}|${r.dimensionValues[1].value}`;
+      if (keyOf[k]) (chAcc[k] = chAcc[k] || []).push({ name: CHANNEL_ES[r.dimensionValues[2].value] || r.dimensionValues[2].value, n: Number(r.metricValues[0].value) });
+    });
+    Object.entries(chAcc).forEach(([k, list]) => {
+      const tot = list.reduce((a, x) => a + x.n, 0);
+      keyOf[k].channels = list.sort((x, y) => y.n - x.n).slice(0, 3).map((x) => ({ name: x.name, share: tot ? x.n / tot : 0 }));
+    });
+    const hrBest = {};
+    dayHourRows.forEach((r) => {
+      const k = `${r.dimensionValues[0].value}|${r.dimensionValues[1].value}`;
+      const n = Number(r.metricValues[0].value);
+      if (keyOf[k] && (!hrBest[k] || n > hrBest[k].n)) hrBest[k] = { n, h: Number(r.dimensionValues[2].value) };
+    });
+    Object.entries(hrBest).forEach(([k, v]) => { keyOf[k].peakHour = `${String(v.h).padStart(2, '0')}h`; });
     let peakPages = [];
     if (peak) {
       const iso = `${peak.date.slice(0, 4)}-${peak.date.slice(4, 6)}-${peak.date.slice(6)}`;
@@ -218,9 +340,9 @@ async function buildSections(token, propertyId, brand, range) {
       });
       peakPages = peakRows.map((r) => ({ path: r.dimensionValues[0].value, views: Number(r.metricValues[0].value) }));
     }
-    const topPages = pages.cur.filter((p) => sectionOf(p.path) === slug).sort((a, b) => b.views - a.views).slice(0, 5);
+    const topPages = pages.cur.filter((p) => sectionOf(p.path) === slug).sort((a, b) => b.views - a.views).slice(0, 10);
     const views = total(pages.cur, slug);
-    return { slug, label, views, change: pct(views, total(pages.prev, slug)), topPages, peakPages, daily, peak, hourly };
+    return { slug, label, views, change: pct(views, total(pages.prev, slug)), topPages, peakPages, topPageByDay, topPagesByDay, daily, peak, hourly };
   }));
 
   const top = [...sections].sort((a, b) => b.views - a.views)[0];
@@ -234,7 +356,7 @@ async function buildAudience(token, propertyId, r, brand) {
     runReport(token, propertyId, { dateRanges: [range], dimensions: [{ name: dimension }], metrics: metrics.map((name) => ({ name })), ...extra });
 
   const aiFilter = { filter: { fieldName: 'sessionDefaultChannelGroup', stringFilter: { matchType: 'EXACT', value: 'AI Assistant' } } };
-  const [devices, channels, gender, age, ageGender, cityRows, countryRows, aiSources, aiLanding, prevChannels] = await Promise.all([
+  const [devices, channels, gender, age, ageGender, cityRows, countryRows, aiSources, aiLanding, prevChannels, prevDevices, newVsRet, newChan, retChan] = await Promise.all([
     rep('deviceCategory', ['totalUsers']),
     rep('sessionDefaultChannelGroup', ['sessions', 'screenPageViews', 'totalUsers'], { orderBys: [{ metric: { metricName: 'sessions' }, desc: true }] }),
     rep('userGender', ['totalUsers']).catch(() => []),
@@ -254,7 +376,41 @@ async function buildAudience(token, propertyId, r, brand) {
       dimensions: [{ name: 'sessionDefaultChannelGroup' }],
       metrics: [{ name: 'sessions' }, { name: 'screenPageViews' }],
     }).catch(() => []),
+    runReport(token, propertyId, {
+      dateRanges: [{ startDate: r.prevStart, endDate: r.prevEnd }],
+      dimensions: [{ name: 'deviceCategory' }],
+      metrics: [{ name: 'totalUsers' }],
+    }).catch(() => []),
+    runReport(token, propertyId, {
+      dateRanges: [{ ...range, name: 'cur' }, { startDate: r.prevStart, endDate: r.prevEnd, name: 'prev' }],
+      dimensions: [{ name: 'newVsReturning' }],
+      metrics: [{ name: 'averageSessionDuration' }],
+    }).catch(() => []),
+    runReport(token, propertyId, {
+      dateRanges: [range],
+      dimensions: [{ name: 'sessionDefaultChannelGroup' }],
+      metrics: [{ name: 'sessions' }],
+      dimensionFilter: { filter: { fieldName: 'newVsReturning', stringFilter: { matchType: 'EXACT', value: 'new' } } },
+      limit: 30,
+    }).catch(() => []),
+    runReport(token, propertyId, {
+      dateRanges: [range],
+      dimensions: [{ name: 'sessionDefaultChannelGroup' }],
+      metrics: [{ name: 'sessions' }],
+      dimensionFilter: { filter: { fieldName: 'newVsReturning', stringFilter: { matchType: 'EXACT', value: 'returning' } } },
+      limit: 30,
+    }).catch(() => []),
   ]);
+  const returningChannels = retChan.map((x) => ({ name: x.dimensionValues[0].value, sessions: Number(x.metricValues[0].value) }));
+  const returningDuration = { sec: null, prevSec: null };
+  const newChannels = newChan.map((x) => ({ name: x.dimensionValues[0].value, sessions: Number(x.metricValues[0].value) }));
+  const durOf = (kind, which) => {
+    const row = newVsRet.find((x) => x.dimensionValues[0].value === kind && x.dimensionValues[1]?.value === which);
+    return row ? Number(row.metricValues[0].value) : null;
+  };
+  const newDuration = { sec: durOf('new', 'cur'), prevSec: durOf('new', 'prev') };
+  returningDuration.sec = durOf('returning', 'cur');
+  returningDuration.prevSec = durOf('returning', 'prev');
   const prevByName = {};
   prevChannels.forEach((row) => { prevByName[row.dimensionValues[0].value] = { sessions: Number(row.metricValues[0].value), views: Number(row.metricValues[1].value) }; });
   const prevSessionsTotal = Object.values(prevByName).reduce((a, c) => a + c.sessions, 0);
@@ -276,7 +432,11 @@ async function buildAudience(token, propertyId, r, brand) {
 
   const sessionsTotal = channels.reduce((a, r) => a + Number(r.metricValues[0].value), 0);
   return {
-    devices: share(devices).sort((a, b) => b.pct - a.pct),
+    newDuration,
+    newChannels,
+    returningDuration,
+    returningChannels,
+    devices: share(devices).sort((a, b) => b.pct - a.pct).map((d) => ({ ...d, prevPct: (share(prevDevices).find((x) => x.name === d.name) || {}).pct ?? null })),
     channels: channels.map((r) => ({
       name: r.dimensionValues[0].value,
       sessions: Number(r.metricValues[0].value),
@@ -319,7 +479,7 @@ async function buildProperty(token, propertyId, brand, range) {
   const prevMonthStart = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, 1));
   const prevSameDay = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth() - 1, dayOfMonth));
 
-  const [kpis, monthly, daily, partial, sectionData, audience, hourRows, organicRows, sourceRows] = await Promise.all([
+  const [kpis, monthly, daily, partial, sectionData, audience, hourRows, organicRows, sourceRows, hourPrevRows, dailyPrevRows, home] = await Promise.all([
     runReport(token, propertyId, {
       dateRanges: [
         { startDate: range.start, endDate: range.end, name: 'cur' },
@@ -370,6 +530,18 @@ async function buildProperty(token, propertyId, brand, range) {
       metrics: [{ name: 'sessions' }],
       limit: 10000,
     }),
+    runReport(token, propertyId, {
+      dateRanges: [{ startDate: range.prevStart, endDate: range.prevEnd }],
+      dimensions: [{ name: 'hour' }],
+      metrics: [{ name: 'screenPageViews' }],
+    }),
+    runReport(token, propertyId, {
+      dateRanges: [{ startDate: range.prevStart, endDate: range.prevEnd }],
+      dimensions: [{ name: 'date' }],
+      metrics: [{ name: 'screenPageViews' }],
+      orderBys: [{ dimension: { dimensionName: 'date' } }],
+    }),
+    buildHome(token, propertyId, range).catch((e) => { console.error('home', e.message); return null; }),
   ]);
   const socialShare = (regex) => {
     const sums = { cur: 0, prev: 0 };
@@ -399,6 +571,8 @@ async function buildProperty(token, propertyId, brand, range) {
     hourlyViews[h].vistas = num(r, 0);
     hourlyViews[h].sesiones = num(r, 1);
   });
+  hourPrevRows.forEach((r) => { hourlyViews[Number(r.dimensionValues[0].value)].vistasPrev = num(r, 0); });
+  const prevDailyViews = dailyPrevRows.map((r) => ({ date: r.dimensionValues[0].value, value: num(r, 0) }));
 
   const byName = (rows, name) => rows.find((r) => r.dimensionValues.some((v) => v.value === name));
   const last = byName(kpis, 'cur');
@@ -446,6 +620,8 @@ async function buildProperty(token, propertyId, brand, range) {
     sectionSummary: sectionData.summary,
     dailyViews,
     hourlyViews,
+    prevDailyViews,
+    home,
     organic,
     social,
     dailyPeaks,
@@ -481,6 +657,8 @@ function parseGA4Response(res) {
     dailyPeaks: res.dailyPeaks || [],
     aboveAvgDays: res.aboveAvgDays || [],
     hourlyViews: res.hourlyViews || [],
+    prevDailyViews: res.prevDailyViews || [],
+    home: res.home || null,
     organic: res.organic || null,
     social: res.social || null,
     sections: res.sections || [],

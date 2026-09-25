@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, CartesianGrid, LabelList, Cell, PieChart, Pie, LineChart, Line, AreaChart, Area, ReferenceDot, ReferenceLine } from 'recharts';
 
 const CHANNEL_GROUPS = [
@@ -25,6 +25,18 @@ function groupChannels(all) {
       };
     })
     .filter((g) => g.items.length > 0);
+}
+
+const CHANNEL_SHORT = {
+  'Organic Search': 'Búsqueda', 'Organic Social': 'Redes', 'Organic Video': 'Video', 'Organic Shopping': 'Shopping',
+  'Paid Social': 'Meta', 'Paid Search': 'Google Ads', 'Paid Other': 'Otros', 'Paid Video': 'YouTube', 'Paid Shopping': 'Shopping',
+  Display: 'Display', 'Cross-network': 'Cross-network', Referral: 'Referido', Affiliates: 'Afiliados',
+};
+
+function groupChannelsByViews(all) {
+  const tv = all.reduce((a, c) => a + (c.views || 0), 0);
+  const tpv = all.reduce((a, c) => a + (c.prevViews || 0), 0);
+  return groupChannels(all.map((c) => ({ ...c, pct: tv ? (c.views || 0) / tv : 0, prevPct: tpv ? (c.prevViews || 0) / tpv : 0 })));
 }
 
 const MONTH_NAMES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
@@ -65,6 +77,15 @@ const SECTIONS = [
   { key: 'redes', label: 'Redes sociales', apis: ['meta'] },
   { key: 'pauta', label: 'Pauta', apis: ['pauta'] },
 ];
+const CHANNEL_COLORS = {
+  'Búsqueda orgánica': { bg: '#e6f4ea', fg: '#1e6b34' },
+  'Social pagado': { bg: '#ede7f6', fg: '#4527a0' },
+  'Social orgánico': { bg: '#e0f2f1', fg: '#00695c' },
+  Directo: { bg: '#eceff1', fg: '#37474f' },
+  Referido: { bg: '#fff3e0', fg: '#a35a00' },
+  Email: { bg: '#fce4ec', fg: '#ad1457' },
+  default: { bg: '#eee', fg: '#444' },
+};
 const API_NAMES = { gsc: 'Search Console', ga4: 'GA4', meta: 'Meta', seo: 'SEO', pauta: 'Pauta' };
 
 export default function Dashboard() {
@@ -111,9 +132,10 @@ export default function Dashboard() {
     let cancelled = false;
     const loadApi = async (api, force) => {
       if (!force && loadedKey[api] === rangeKey) return;
-      const qs = range ? `?start=${range.start}&end=${range.end}` : '';
+      const mock = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('mock') === '1';
+      const qs = [range && `start=${range.start}&end=${range.end}`, mock && 'mock=1'].filter(Boolean).join('&');
       try {
-        const r = await fetch(`/api/${api}${qs}`, api === 'pauta' ? {} : { cache: 'no-store' });
+        const r = await fetch(`/api/${api}${qs ? `?${qs}` : ''}`, api === 'pauta' ? {} : { cache: 'no-store' });
         const j = await r.json();
         if (cancelled) return;
         if (!r.ok) {
@@ -173,12 +195,118 @@ export default function Dashboard() {
     change: (positive) => ({ fontSize: '12px', marginTop: '8px', color: positive ? '#2e7d32' : '#c62828', fontWeight: '600' }),
   };
 
-  const renderChange = (value, lowerIsBetter = false) => {
+  const renderReturning = (R, title = 'Nuevos vs recurrentes') => {
+    if (!R) return null;
+    const bar = (label, pct, color) => (
+      <div key={label} style={{ marginTop: '10px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
+          <span>{label}</span><strong>{(pct * 100).toFixed(pct < 0.1 ? 1 : 0)}%</strong>
+        </div>
+        <div style={{ background: T.soft, borderRadius: '4px', height: '8px', marginTop: '3px' }}>
+          <div style={{ width: `${Math.min(pct, 1) * 100}%`, background: color, height: '8px', borderRadius: '4px' }} />
+        </div>
+      </div>
+    );
+    const pp = (cur, prev) => {
+      if (prev === undefined || prev === null) return null;
+      const d = (cur - prev) * 100;
+      return <span style={{ marginLeft: '6px', fontSize: '11px', fontWeight: 700, color: d >= 0 ? '#2e7d32' : '#c62828' }}>{d >= 0 ? '\u25B2' : '\u25BC'} {Math.abs(d).toFixed(1)} pp</span>;
+    };
+    return (
+      <div style={styles.card}>
+        <div style={styles.cardTitle}>{title}</div>
+        <div style={{ display: 'flex', gap: '18px', marginTop: '10px' }}>
+          <div>
+            <div style={{ fontSize: '26px', fontWeight: 800, color: T.accent }}>{(R.newPct * 100).toFixed(0)}%</div>
+            <div style={{ fontSize: '12px', color: '#666' }}>Nuevos{pp(R.newPct, R.prevNewPct)}</div>
+          </div>
+          <div>
+            <div style={{ fontSize: '26px', fontWeight: 800, color: '#333' }}>{(R.returningPct * 100).toFixed(0)}%</div>
+            <div style={{ fontSize: '12px', color: '#666' }}>Recurrentes{pp(R.returningPct, R.prevReturningPct)}</div>
+          </div>
+        </div>
+        <div style={{ display: 'flex', height: '10px', borderRadius: '5px', overflow: 'hidden', marginTop: '10px', background: '#ddd' }}>
+          <div style={{ width: `${R.newPct * 100}%`, background: T.accent }} />
+          <div style={{ width: `${R.returningPct * 100}%`, background: '#333' }} />
+        </div>
+        <div style={{ ...styles.cardTitle, marginTop: '16px' }}>Frecuencia de visita</div>
+        {(R.frequency || []).map((x) => bar(x.label, x.pct, '#333'))}
+      </div>
+    );
+  };
+
+  const renderChange = (value, lowerIsBetter = false, prevText = null) => {
     if (value === null || value === undefined) return null;
     const positive = value >= 0;
     const good = lowerIsBetter ? !positive : positive;
     const arrow = positive ? '↑' : '↓';
-    return <div style={styles.change(good)}>{arrow} {(Math.abs(value) * 100).toFixed(1)}% vs mes anterior</div>;
+    return (
+      <>
+        <div style={styles.change(good)}>{arrow} {(Math.abs(value) * 100).toFixed(1)}% vs mes anterior</div>
+        {prevText !== null && prevText !== undefined && <div style={styles.cardSubtext}>Mes anterior: <strong>{prevText}</strong></div>}
+      </>
+    );
+  };
+  const prevFrom = (cur, change, fmt) => (cur === undefined || cur === null || change === undefined || change === null || change <= -1 || !Number.isFinite(Number(cur)) ? null : (fmt || ((v) => Math.round(v).toLocaleString('es-CO')))(Number(cur) / (1 + change)));
+  const durSec = (t) => (typeof t === 'string' ? t.split(':').reduce((a, x) => a * 60 + Number(x), 0) : null);
+  const fmtHMS = (sec) => [Math.floor(sec / 3600), Math.floor((sec % 3600) / 60), Math.round(sec % 60)].map((n) => String(n).padStart(2, '0')).join(':');
+  const pctFmt = (d) => (v) => `${(v * 100).toFixed(d)}%`;
+
+  const renderUsersRow = (g) => {
+          const R = g.returning;
+          const prevUsers = g.usersChange != null && g.usersChange > -1 ? g.users / (1 + g.usersChange) : null;
+          const prevNew = g.newUsersChange != null && g.newUsersChange > -1 ? g.newUsers / (1 + g.newUsersChange) : null;
+          const recur = g.users != null && g.newUsers != null ? Math.max(g.users - g.newUsers, 0) : null;
+          const prevRecur = prevUsers != null && prevNew != null ? Math.max(prevUsers - prevNew, 0) : null;
+          const recurChange = recur !== null && prevRecur ? recur / prevRecur - 1 : null;
+          const segmentExtras = (channels, dur, durLabel) => (
+            <>
+              {channels?.length > 0 && (() => {
+                const groupsN = CHANNEL_GROUPS.map((cg) => ({ ...cg, sessions: channels.filter((c) => cg.channels.includes(c.name)).reduce((a, c) => a + c.sessions, 0) }));
+                const known = new Set(CHANNEL_GROUPS.flatMap((cg) => cg.channels));
+                const other = channels.filter((c) => !known.has(c.name)).reduce((a, c) => a + c.sessions, 0);
+                if (other) groupsN.push({ name: 'Otros', color: '#757575', sessions: other });
+                const total = groupsN.reduce((a, x) => a + x.sessions, 0);
+                const top = groupsN.slice().sort((x, y) => y.sessions - x.sessions)[0];
+                if (!total || !top || !top.sessions) return null;
+                return (
+                  <div style={{ marginTop: '14px', paddingTop: '10px', borderTop: '1px solid #eee' }}>
+                    <div style={styles.cardTitle}>Principal fuente de tráfico</div>
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginTop: '6px' }}>
+                      <span style={{ fontSize: '24px', fontWeight: 800, color: top.color }}>{top.name}</span>
+                      <span style={{ fontSize: '13px', fontWeight: 700, color: '#333' }}>{((top.sessions / total) * 100).toFixed(0)}%</span>
+                    </div>
+                    <div style={styles.cardSubtext}>de las sesiones de este grupo</div>
+                  </div>
+                );
+              })()}
+              {dur?.sec != null && (
+                <div style={{ marginTop: '14px', paddingTop: '10px', borderTop: '1px solid #eee' }}>
+                  <div style={styles.cardTitle}>{durLabel}</div>
+                  <div style={{ ...styles.cardValue, fontSize: '24px' }}>{fmtHMS(dur.sec)}</div>
+                  {dur.prevSec ? renderChange(dur.sec / dur.prevSec - 1, false, fmtHMS(dur.prevSec)) : null}
+                </div>
+              )}
+            </>
+          );
+          if (g.newUsers == null && !R && recur === null) return null;
+          return (
+            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr)', gap: '20px', alignItems: 'stretch', marginTop: '20px' }}>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Usuarios nuevos</div>
+                <div style={styles.cardValue}>{nf(g.newUsers)}</div>
+                {renderChange(g.newUsersChange, false, prevFrom(g.newUsers, g.newUsersChange))}
+                {segmentExtras(g.newChannels, g.newDuration, 'Duración media de nuevos')}
+              </div>
+              {renderReturning(R) || <div />}
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Usuarios recurrentes</div>
+                <div style={styles.cardValue}>{nf(recur)}</div>
+                {renderChange(recurChange, false, prevRecur != null ? Math.round(prevRecur).toLocaleString('es-CO') : null)}
+                {segmentExtras(g.returningChannels, g.returningDuration, 'Duración media de recurrentes')}
+              </div>
+            </div>
+          );
   };
 
   const renderPP = (cur, prev) => {
@@ -215,7 +343,8 @@ export default function Dashboard() {
 
   const dailyList = current.ga4?.dailyViews || [];
   const dailyAvg = dailyList.length ? dailyList.reduce((a, d) => a + d.value, 0) / dailyList.length : 0;
-  const aboveAvg = dailyList.filter((d) => d.value > dailyAvg);
+  const dailyThreshold = dailyAvg * 1.15;
+  const aboveAvg = dailyList.filter((d) => d.value > dailyThreshold);
   const rangeLabel = data.ga4?.range?.label || data.gsc?.range?.label || data.seo?.range?.label || data.meta?.range?.label || data.pauta?.range?.label || '';
   const nf = (v) => (v === undefined || v === null ? '\u2014' : Number(v).toLocaleString('es-CO'));
 
@@ -288,22 +417,22 @@ export default function Dashboard() {
           <div style={styles.card}>
             <div style={styles.cardTitle}>Vistas</div>
             <div style={styles.cardValue}>{nf(current.ga4?.pageviews)}</div>
-            {renderChange(current.ga4?.pageviewsChange)}
+            {renderChange(current.ga4?.pageviewsChange, false, prevFrom(current.ga4?.pageviews, current.ga4?.pageviewsChange))}
           </div>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Sesiones</div>
             <div style={styles.cardValue}>{nf(current.ga4?.sessions)}</div>
-            {renderChange(current.ga4?.sessionsChange)}
+            {renderChange(current.ga4?.sessionsChange, false, prevFrom(current.ga4?.sessions, current.ga4?.sessionsChange))}
           </div>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Total de Usuarios</div>
             <div style={styles.cardValue}>{nf(current.ga4?.users)}</div>
-            {renderChange(current.ga4?.usersChange)}
+            {renderChange(current.ga4?.usersChange, false, prevFrom(current.ga4?.users, current.ga4?.usersChange))}
           </div>
         </div>
 
         {current.ga4?.monthlyHistory?.length > 0 && (
-          <div style={styles.card}>
+          <div style={{ ...styles.card, marginTop: '20px' }}>
             <div style={styles.cardTitle}>Tráfico total de la página web</div>
             <div style={{ width: '100%', height: 360, marginTop: '12px' }}>
               <ResponsiveContainer>
@@ -338,246 +467,44 @@ export default function Dashboard() {
           </div>
         )}
 
+        {renderUsersRow({ ...current.ga4, returning: current.ga4?.audience?.returning, newChannels: current.ga4?.audience?.newChannels, newDuration: current.ga4?.audience?.newDuration, returningChannels: current.ga4?.audience?.returningChannels, returningDuration: current.ga4?.audience?.returningDuration })}
+
         <div style={{ ...styles.cardTitle, fontSize: '14px', margin: '20px 0 10px' }}>Tráfico orgánico (búsqueda) · {rangeLabel}</div>
-        <div style={styles.grid}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5, minmax(0, 1fr))', gap: '20px' }}>
           <div style={styles.card}>
-            <div style={styles.cardTitle}>Vistas orgánicas</div>
+            <div style={styles.cardTitle}>Vistas de búsqueda orgánica (Google)</div>
             <div style={styles.cardValue}>{nf(current.ga4?.organic?.views)}</div>
-            {renderChange(current.ga4?.organic?.viewsChange)}
+            {renderChange(current.ga4?.organic?.viewsChange, false, prevFrom(current.ga4?.organic?.views, current.ga4?.organic?.viewsChange))}
             <div style={styles.cardSubtext}>GA4 · grupo de canal Organic Search</div>
           </div>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Posición promedio</div>
             <div style={styles.cardValue}>{current.gsc?.position ? current.gsc.position.toFixed(1) : '\u2014'}</div>
-            {current.gsc?.prev?.position ? renderChange(current.gsc.position / current.gsc.prev.position - 1, true) : null}
+            {current.gsc?.prev?.position ? renderChange(current.gsc.position / current.gsc.prev.position - 1, true, current.gsc.prev.position.toFixed(1)) : null}
             <div style={styles.cardSubtext}>Search Console · menor es mejor</div>
-          </div>
-        </div>
-
-        {current.ga4?.hourlyViews?.some((h) => h.vistas > 0) && (
-          <div style={{ ...styles.card, marginTop: '20px' }}>
-            <div style={styles.cardTitle}>
-              Tráfico por hora del día · {rangeLabel}
-              {(() => { const top = current.ga4.hourlyViews.reduce((b, h) => (!b || h.vistas > b.vistas ? h : b), null); return top ? ` · pico ${top.hour}` : ''; })()}
-            </div>
-            <div style={{ width: '100%', height: 300, marginTop: '12px' }}>
-              <ResponsiveContainer>
-                <BarChart data={current.ga4.hourlyViews} margin={{ top: 30, right: 10, left: 0, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                  <XAxis dataKey="hour" tick={{ fontSize: 11 }} />
-                  <YAxis tick={{ fontSize: 11 }} />
-                  <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
-                  <Legend />
-                  <Bar dataKey="vistas" name="Vistas" fill={T.accent} legendType="square">
-                    {current.ga4.hourlyViews.map((h) => {
-                      const max = Math.max(...current.ga4.hourlyViews.map((x) => x.vistas));
-                      return <Cell key={h.hour} fill={h.vistas === max ? T.highlight : T.accent} />;
-                    })}
-                  </Bar>
-                  <Bar dataKey="sesiones" name="Sesiones" fill="#333333" legendType="square" />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-            <div style={styles.cardSubtext}>Hora del día en la zona horaria de la propiedad de GA4. La hora con más vistas se destaca en naranja.</div>
-          </div>
-        )}
-
-        <div style={{ ...styles.grid, marginTop: '20px' }}>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Usuarios Nuevos</div>
-            <div style={styles.cardValue}>{nf(current.ga4?.newUsers)}</div>
-            {renderChange(current.ga4?.newUsersChange)}
-          </div>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Duración Media Sesión</div>
-            <div style={styles.cardValue}>{current.ga4?.avgSessionDuration || '00:00:00'}</div>
-            {renderChange(current.ga4?.avgSessionDurationChange)}
-          </div>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Porcentaje de Rebote</div>
-            <div style={styles.cardValue}>{current.ga4?.bounceRate ? (current.ga4.bounceRate * 100).toFixed(0) : 0}%</div>
-            {renderChange(current.ga4?.bounceRateChange, true)}<div style={styles.cardSubtext}>menor es mejor</div>
           </div>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Porcentaje de Interacciones</div>
             <div style={styles.cardValue}>{current.ga4?.engagementRate ? (current.ga4.engagementRate * 100).toFixed(2) : 0}%</div>
-            {renderChange(current.ga4?.engagementRateChange)}
+            {renderChange(current.ga4?.engagementRateChange, false, prevFrom(current.ga4?.engagementRate, current.ga4?.engagementRateChange, pctFmt(2)))}
+          </div>
+          <div style={styles.card}>
+            <div style={styles.cardTitle}>Duración Media Sesión</div>
+            <div style={styles.cardValue}>{current.ga4?.avgSessionDuration || '00:00:00'}</div>
+            {renderChange(current.ga4?.avgSessionDurationChange, false, prevFrom(durSec(current.ga4?.avgSessionDuration), current.ga4?.avgSessionDurationChange, fmtHMS))}
+          </div>
+          <div style={styles.card}>
+            <div style={styles.cardTitle}>Porcentaje de Rebote</div>
+            <div style={styles.cardValue}>{current.ga4?.bounceRate ? (current.ga4.bounceRate * 100).toFixed(0) : 0}%</div>
+            {renderChange(current.ga4?.bounceRateChange, true, prevFrom(current.ga4?.bounceRate, current.ga4?.bounceRateChange, pctFmt(0)))}<div style={styles.cardSubtext}>menor es mejor</div>
           </div>
         </div>
 
-        {current.ga4?.dailyViews?.length > 0 && (
-          <div style={{ marginTop: '40px' }}>
-            <div style={{ ...styles.card, padding: '28px', borderTop: `4px solid ${T.accent}`, boxShadow: '0 4px 14px rgba(0,0,0,0.12)' }}>
-              <div style={{ ...styles.cardTitle, fontSize: '18px', color: '#222' }}>Visitas diarias: agosto y septiembre</div>
-              <div style={{ fontSize: '12px', color: '#888', marginTop: '4px' }}>Se destacan los {aboveAvg.length} días por encima del promedio ({Math.round(dailyAvg).toLocaleString('es-CO')} vistas/día)</div>
-              <div style={{ width: '100%', height: 460, marginTop: '16px' }}>
-                  <ResponsiveContainer>
-                    <AreaChart data={current.ga4.dailyViews} margin={{ top: 30, right: 20, left: 0, bottom: 0 }}>
-                      <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                      <XAxis dataKey="label" tick={{ fontSize: 11 }} interval={6} />
-                      <YAxis tick={{ fontSize: 12 }} />
-                      <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
-                      <Area type="monotone" dataKey="value" name="Vistas" stroke={T.accent} strokeDasharray="2 3" strokeWidth={3} fill={T.accent} fillOpacity={0.12} />
-                      <ReferenceLine x="1 sep" stroke="#0000cc" strokeWidth={2} />
-                      <ReferenceLine y={dailyAvg} stroke="#888" strokeDasharray="6 4"
-                        label={{ value: `Promedio ${Math.round(dailyAvg).toLocaleString('es-CO')}`, position: 'insideBottomRight', fontSize: 12, fill: '#666' }} />
-                      {aboveAvg.map((d) => (
-                        <ReferenceDot key={d.label} x={d.label} y={d.value} r={6} fill={T.highlight} stroke="#fff"
-                          label={{ value: d.value.toLocaleString('es-CO'), position: 'top', fontSize: 12, fontWeight: 700, fill: '#222' }} />
-                      ))}
-                    </AreaChart>
-                  </ResponsiveContainer>
-              </div>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px', marginTop: '20px' }}>
-              <div>
-                <div style={styles.card}>
-                  <div style={styles.cardTitle}>Vistas {rangeLabel}</div>
-                  <div style={styles.cardValue}>{nf(current.ga4?.pageviews)}</div>
-                </div>
-                {current.ga4.septPartial && (
-                  <>
-                    <div style={{ ...styles.cardTitle, margin: '20px 0 10px' }}>Cifras actuales del {current.ga4.septPartial.range}</div>
-                    <div style={styles.card}>
-                      <div style={styles.cardTitle}>Vistas</div>
-                      <div style={styles.cardValue}>{current.ga4.septPartial.views.toLocaleString('es-CO')}</div>
-                      {renderChange(current.ga4.septPartial.viewsChange)}
-                    </div>
-                    <div style={{ ...styles.card, marginTop: '12px' }}>
-                      <div style={styles.cardTitle}>Total de usuarios</div>
-                      <div style={styles.cardValue}>{current.ga4.septPartial.users.toLocaleString('es-CO')}</div>
-                      {renderChange(current.ga4.septPartial.usersChange)}
-                    </div>
-                  </>
-                )}
-              </div>
-            </div>
-            {current.ga4.sections?.length > 0 && (
-              <div style={{ marginTop: '30px' }}>
-                <h2 style={styles.sectionTitle}>Vistas por sección ({rangeLabel})</h2>
-                {current.ga4.sections.map((sec) => (
-                  <div key={sec.slug} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '20px' }}>
-                    <div style={styles.card}>
-                      <div style={styles.cardTitle}>{sec.label}</div>
-                      <div style={styles.cardValue}>{nf(sec.views)}</div>
-                      {renderChange(sec.change)}
-                    </div>
-                    <div style={styles.card}>
-                      <div style={styles.cardTitle}>Ruta de página · Vistas</div>
-                      <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '8px' }}>
-                        <tbody>
-                          {sec.topPages.map((pg, k) => (
-                            <tr key={pg.path}>
-                              <td style={{ padding: '6px 4px', borderBottom: '1px solid #eee', color: '#888', width: '20px' }}>{k + 1}.</td>
-                              <td style={{ padding: '6px 4px', borderBottom: '1px solid #eee', wordBreak: 'break-all' }}>{pg.path}</td>
-                              <td style={{ padding: '6px 4px', borderBottom: '1px solid #eee', textAlign: 'right', fontWeight: 600 }}>{nf(pg.views)}</td>
-                            </tr>
-                          ))}
-                          <tr>
-                            <td></td>
-                            <td style={{ padding: '6px 4px', fontWeight: 700 }}>Total sección</td>
-                            <td style={{ padding: '6px 4px', textAlign: 'right', fontWeight: 700 }}>{nf(sec.views)}</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                    <div style={styles.card}>
-                      <div style={styles.cardTitle}>Vistas {sec.label}{sec.peak ? ` · pico ${sec.peak.value.toLocaleString('es-CO')} (${sec.peak.label})` : ''}</div>
-                      <div style={{ width: '100%', height: 200, marginTop: '12px' }}>
-                        <ResponsiveContainer>
-                          <AreaChart data={sec.daily} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
-                            <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                            <XAxis dataKey="label" tick={{ fontSize: 10 }} interval={4} />
-                            <YAxis tick={{ fontSize: 10 }} />
-                            <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
-                            <Area type="monotone" dataKey="value" name="Vistas" stroke={T.accent} strokeWidth={2} fill={T.accent} fillOpacity={0.08} />
-                            {sec.peak && <ReferenceDot x={sec.peak.label} y={sec.peak.value} r={5} fill="#d32f2f" stroke="#fff" />}
-                          </AreaChart>
-                        </ResponsiveContainer>
-                      </div>
-                    </div>
-                    {sec.peakPages?.length > 0 && (
-                      <div style={styles.card}>
-                        <div style={styles.cardTitle}>Páginas más leídas el día pico · {sec.peak.label}</div>
-                        <div style={{ fontSize: '12px', color: '#888', marginTop: '4px' }}>{sec.label} · {nf(sec.peak.value)} vistas ese día</div>
-                        <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '8px' }}>
-                          <tbody>
-                            {sec.peakPages.map((pg, k) => (
-                              <tr key={pg.path}>
-                                <td style={{ padding: '6px 4px', borderBottom: '1px solid #eee', color: '#888', width: '20px' }}>{k + 1}.</td>
-                                <td style={{ padding: '6px 4px', borderBottom: '1px solid #eee', wordBreak: 'break-all' }}>{pg.path}</td>
-                                <td style={{ padding: '6px 4px', borderBottom: '1px solid #eee', textAlign: 'right', fontWeight: 600 }}>{nf(pg.views)}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    )}
-                    <div style={styles.card}>
-                      <div style={styles.cardTitle}>Vistas {sec.label} por hora del día{(() => { const top = sec.hourly?.reduce((b, h) => (!b || h.value > b.value ? h : b), null); return top ? ` · pico ${top.hour}` : ''; })()}</div>
-                      <div style={{ width: '100%', height: 200, marginTop: '12px' }}>
-                        <ResponsiveContainer>
-                          <BarChart data={sec.hourly} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-                            <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                            <XAxis dataKey="hour" tick={{ fontSize: 10 }} interval={2} />
-                            <YAxis tick={{ fontSize: 10 }} />
-                            <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
-                            <Bar dataKey="value" name="Vistas" fill={T.accent}>
-                              {sec.hourly.map((h) => {
-                                const max = Math.max(...sec.hourly.map((x) => x.value));
-                                return <Cell key={h.hour} fill={h.value === max && max > 0 ? T.highlight : T.accent} />;
-                              })}
-                            </Bar>
-                          </BarChart>
-                        </ResponsiveContainer>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-                {current.ga4.sectionSummary && (
-                  <div style={{ ...styles.card, background: '#f5f1e6' }}>
-                    <p style={{ margin: '4px 0', fontSize: '14px' }}><strong>Sección con más tráfico:</strong> {current.ga4.sectionSummary.topSection}</p>
-                    <p style={{ margin: '4px 0', fontSize: '14px', wordBreak: 'break-all' }}><strong>Página más leída:</strong> {current.ga4.sectionSummary.topArticle}</p>
-                    <p style={{ margin: '4px 0', fontSize: '14px' }}>
-                      {current.ga4.sections.map((sec) => sec.change === null || sec.change === undefined ? null : `${sec.label} ${sec.change >= 0 ? 'aumentó' : 'disminuyó'} ${(Math.abs(sec.change) * 100).toFixed(0)}%`).filter(Boolean).join(' · ')} frente al mes anterior.
-                    </p>
-                  </div>
-                )}
-              </div>
-            )}
-
-            {current.ga4.topArticles?.length > 0 && (
-              <div style={{ ...styles.card, marginTop: '20px', padding: 0, overflow: 'hidden' }}>
-                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}>
-                  <thead>
-                    <tr style={{ background: '#262626', color: 'white' }}>
-                      <th style={{ padding: '12px' }}></th>
-                      <th style={{ padding: '12px', textAlign: 'left' }}>FECHA DE PUBLICACIÓN</th>
-                      <th style={{ padding: '12px', textAlign: 'left' }}>Los artículos más leídos {rangeLabel}</th>
-                      <th style={{ padding: '12px', textAlign: 'right' }}>VISITAS</th>
-                      <th style={{ padding: '12px', textAlign: 'left' }}>TEMA</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {current.ga4.topArticles.map((a, k) => (
-                      <tr key={a.path} style={{ background: '#f2f2f2' }}>
-                        <td style={{ padding: '12px', textAlign: 'center', borderBottom: '1px dotted #999' }}>{k + 1}</td>
-                        <td style={{ padding: '12px', borderBottom: '1px dotted #999', whiteSpace: 'nowrap' }}>{a.date || '\u2014'}</td>
-                        <td style={{ padding: '12px', borderBottom: '1px dotted #999' }}>{a.title || a.path}</td>
-                        <td style={{ padding: '12px', textAlign: 'right', borderBottom: '1px dotted #999', fontWeight: 600 }}>{nf(a.views)}</td>
-                        <td style={{ padding: '12px', borderBottom: '1px dotted #999' }}>{a.topic}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            )}
-
             {current.ga4.audience && (
               <div style={{ marginTop: '30px' }}>
-                <h2 style={styles.sectionTitle}>Datos demográficos relevantes</h2>
+                <h2 style={styles.sectionTitle}>Fuentes de tráfico</h2>
                 {(() => {
-                  const groups = groupChannels(current.ga4.audience.channels).filter((g) => g.pct > 0);
+                  const groups = groupChannelsByViews(current.ga4.audience.channels).filter((g) => g.pct > 0).sort((a, b) => b.views - a.views);
                   const chip = (v) => (v === null || v === undefined || !Number.isFinite(v) ? null : (
                     <span style={{ fontSize: '12px', fontWeight: 700, padding: '1px 6px', borderRadius: '3px', marginLeft: '6px', background: v >= 0 ? '#e3f4e6' : '#fbe4e4', color: v >= 0 ? '#2e7d32' : '#b71c1c' }}>
                       {v >= 0 ? '\u25B2' : '\u25BC'} {Math.abs(v * 100).toFixed(v > 1 ? 0 : 1)}%
@@ -586,98 +513,46 @@ export default function Dashboard() {
                   const rel = (cur, prev) => (prev ? cur / prev - 1 : null);
                   return (
                     <div style={{ ...styles.card, marginBottom: '20px', background: '#f3f1ee' }}>
-                      <div style={{ fontSize: '22px', fontWeight: 800, color: T.ink, marginBottom: '12px' }}>Fuentes de tráfico</div>
                       <div style={{ display: 'flex', height: '44px', borderRadius: '22px', overflow: 'hidden', background: '#ddd' }}>
                         {groups.map((g) => (
                           <div key={g.name} title={`${g.name} ${(g.pct * 100).toFixed(1)}%`} style={{ width: `${g.pct * 100}%`, background: g.color }} />
                         ))}
                       </div>
-                      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: '18px', marginTop: '16px' }}>
+                      <div style={{ display: 'grid', gridTemplateColumns: `repeat(${groups.length}, minmax(0, 1fr))`, gap: '18px', marginTop: '16px' }}>
                         {groups.map((g) => (
                           <div key={g.name} style={{ borderTop: `3px solid ${g.color}`, paddingTop: '8px' }}>
                             <div style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap' }}>
-                              <span style={{ fontSize: '30px', fontWeight: 800, color: '#111' }}>{(g.pct * 100).toFixed(g.pct < 0.1 ? 1 : 0)}%</span>
-                              {chip(rel(g.pct, g.prevPct))}
+                              <span style={{ fontSize: '30px', fontWeight: 800, color: '#111' }}>{nf(g.views)}</span>
+                              {chip(rel(g.views, g.prevViews))}
                             </div>
                             <div style={{ fontSize: '15px', fontWeight: 700, color: T.ink }}>{g.name}</div>
                             <div style={{ fontSize: '13px', color: '#333', marginTop: '4px' }}>
-                              Visitas <strong>{nf(g.views)}</strong>{chip(rel(g.views, g.prevViews))}
+                              <strong>{(g.pct * 100).toFixed(g.pct < 0.1 ? 1 : 0)}%</strong> de las vistas
+                              {Number.isFinite(g.prevPct) && g.prevPct > 0 && (() => {
+                                const d = (g.pct - g.prevPct) * 100;
+                                return (
+                                  <>
+                                    <span style={{ marginLeft: '6px', fontSize: '12px', fontWeight: 700, color: d >= 0 ? '#2e7d32' : '#c62828' }}>{d >= 0 ? '\u25B2' : '\u25BC'} {Math.abs(d).toFixed(1)} pp</span>
+                                    <div style={{ fontSize: '11px', color: '#888', marginTop: '2px' }}>Periodo anterior {(g.prevPct * 100).toFixed(g.prevPct < 0.1 ? 1 : 0)}%</div>
+                                  </>
+                                );
+                              })()}
                             </div>
+                            {g.items.length > 1 && (
+                              <div style={{ fontSize: '12px', color: '#555', marginTop: '4px' }}>
+                                {g.items.slice().sort((x, y) => y.views - x.views).map((c, n) => (
+                                  <span key={c.name}>{n > 0 ? ' · ' : ''}{CHANNEL_SHORT[c.name] || c.name} <strong>{nf(c.views)}</strong></span>
+                                ))}
+                              </div>
+                            )}
                           </div>
                         ))}
                       </div>
-                      <div style={styles.cardSubtext}>% de sesiones por tipo de fuente; variaciones vs el periodo anterior equivalente. Visitas = vistas de página.</div>
+                      <div style={styles.cardSubtext}>Vistas de página por tipo de fuente y su participación; variaciones vs el periodo anterior equivalente.</div>
                     </div>
                   );
                 })()}
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
-                  <div>
-                    <div style={styles.card}>
-                      <div style={styles.cardTitle}>Usuarios nuevos</div>
-                      <div style={styles.cardValue}>{nf(current.ga4.newUsers)}</div>
-                    </div>
-                    <div style={{ ...styles.card, marginTop: '20px' }}>
-                      <div style={styles.cardTitle}>Dispositivos usados para conectarse</div>
-                      {current.ga4.audience.devices.map((d) => (
-                        <div key={d.name} style={{ marginTop: '12px' }}>
-                          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', textTransform: 'capitalize' }}>
-                            <span>{d.name}</span><strong>{(d.pct * 100).toFixed(1)}%</strong>
-                          </div>
-                          <div style={{ background: T.soft, borderRadius: '4px', height: '10px' }}>
-                            <div style={{ width: `${d.pct * 100}%`, background: T.accent2, height: '10px', borderRadius: '4px' }} />
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div style={styles.card}>
-                    <div style={styles.cardTitle}>Fuentes de tráfico (% de sesiones)</div>
-                    {(() => {
-                      const groups = groupChannels(current.ga4.audience.channels);
-                      return (
-                        <>
-                          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px', margin: '14px 0' }}>
-                            {groups.map((g) => (
-                              <div key={g.name} style={{ borderLeft: `4px solid ${g.color}`, paddingLeft: '10px' }}>
-                                <div style={{ fontSize: '24px', fontWeight: 700, color: '#222' }}>{(g.pct * 100).toFixed(1)}%</div>
-                                <div style={{ fontSize: '12px', color: '#666' }}>{g.name}</div>
-                              </div>
-                            ))}
-                          </div>
-                          <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse' }}>
-                            <thead>
-                              <tr style={{ background: T.accent, color: 'white' }}>
-                                <th style={{ padding: '6px', textAlign: 'left' }}>Tipo / canal</th>
-                                <th style={{ padding: '6px', textAlign: 'right' }}>Vistas</th>
-                                <th style={{ padding: '6px', textAlign: 'right' }}>Sesiones</th>
-                                <th style={{ padding: '6px', textAlign: 'right' }}>Usuarios</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {groups.map((g) => (
-                                <React.Fragment key={g.name}>
-                                  <tr style={{ background: T.soft }}>
-                                    <td style={{ padding: '6px', fontWeight: 700, borderLeft: `4px solid ${g.color}` }}>{g.name} · {(g.pct * 100).toFixed(1)}%</td>
-                                    <td style={{ padding: '6px', textAlign: 'right', fontWeight: 700 }}>{nf(g.views)}</td>
-                                    <td style={{ padding: '6px', textAlign: 'right', fontWeight: 700 }}>{nf(g.sessions)}</td>
-                                    <td style={{ padding: '6px', textAlign: 'right', fontWeight: 700 }}>{nf(g.users)}</td>
-                                  </tr>
-                                  {g.items.map((c) => (
-                                    <tr key={c.name}>
-                                      <td style={{ padding: '6px 6px 6px 22px', borderBottom: '1px solid #eee' }}>{c.name} <span style={{ color: '#888' }}>({(c.pct * 100).toFixed(1)}%)</span></td>
-                                      <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(c.views)}</td>
-                                      <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(c.sessions)}</td>
-                                      <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(c.users)}</td>
-                                    </tr>
-                                  ))}
-                                </React.Fragment>
-                              ))}
-                            </tbody>
-                          </table>
-                        </>
-                      );
-                    })()}
-                  </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', alignItems: 'start' }}>
                   {current.ga4.audience.ai?.sources?.length > 0 && (
                     <div style={styles.card}>
 <div>
@@ -716,29 +591,459 @@ export default function Dashboard() {
 
                     </div>
                   )}
-                  {current.ga4.audience.cities?.length > 0 && (
+                </div>
+              </div>
+            )}
+
+        {current.ga4?.dailyViews?.length > 0 && (
+          <div style={{ marginTop: '40px' }}>
+            <div style={{ ...styles.card, padding: '28px', borderTop: `4px solid ${T.accent}`, boxShadow: '0 4px 14px rgba(0,0,0,0.12)' }}>
+              <div style={{ ...styles.cardTitle, fontSize: '18px', color: '#222' }}>Visitas diarias: agosto y septiembre</div>
+              <div style={{ fontSize: '12px', color: '#888', marginTop: '4px' }}>Se destacan los {aboveAvg.length} días por encima de {Math.round(dailyThreshold).toLocaleString('es-CO')} vistas/día (promedio + 15%)</div>
+              <div style={{ width: '100%', height: 460, marginTop: '16px' }}>
+                  <ResponsiveContainer>
+                    <AreaChart data={current.ga4.dailyViews} margin={{ top: 30, right: 20, left: 0, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                      <XAxis dataKey="label" tick={{ fontSize: 11 }} interval={6} />
+                      <YAxis tick={{ fontSize: 12 }} />
+                      <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
+                      <Area type="monotone" dataKey="value" name="Vistas" stroke={T.accent} strokeDasharray="2 3" strokeWidth={3} fill={T.accent} fillOpacity={0.12} />
+                      <ReferenceLine x="1 sep" stroke="#0000cc" strokeWidth={2} />
+                      <ReferenceLine y={dailyThreshold} stroke="#888" strokeDasharray="6 4"
+                        label={{ value: `Umbral ${Math.round(dailyThreshold).toLocaleString('es-CO')}`, position: 'insideBottomRight', fontSize: 12, fill: '#666' }} />
+                      {aboveAvg.map((d) => (
+                        <ReferenceDot key={d.label} x={d.label} y={d.value} r={6} fill={T.highlight} stroke="#fff"
+                          label={{ value: d.value.toLocaleString('es-CO'), position: 'top', fontSize: 12, fontWeight: 700, fill: '#222' }} />
+                      ))}
+                    </AreaChart>
+                  </ResponsiveContainer>
+              </div>
+            </div>
+            <div style={{ ...styles.card, marginTop: '20px' }}>
+              <div style={styles.cardTitle}>Días por encima del promedio: qué se leyó, de dónde llegó y cuándo</div>
+              <div style={{ overflowX: 'auto', marginTop: '12px' }}>
+                <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '760px' }}>
+                  <thead>
+                    <tr>
+                      {['Día', 'Vistas', 'Dispositivo', 'Horas pico', 'Páginas más leídas (vistas · tiempo de lectura · origen de tráfico)'].map((h) => (
+                        <th key={h} style={{ textAlign: 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[...(current.ga4.aboveAvgDays || [])].sort((x, y) => y.views - x.views).map((d) => (
+                      <tr key={d.label} style={{ verticalAlign: 'top' }}>
+                        <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', fontWeight: 700, whiteSpace: 'nowrap' }}>{d.label}</td>
+                        <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', fontWeight: 700 }}>{nf(d.views)}</td>
+                        <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>
+                          {d.devices.map((c) => <div key={c.name}>{c.name} <strong>{(c.share * 100).toFixed(0)}%</strong></div>)}
+                        </td>
+                        <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>
+                          {d.hours.map((h) => <div key={h.hour}>{h.hour} <strong>· {nf(h.views)}</strong></div>)}
+                        </td>
+                        <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', width: '58%' }}>
+                          {d.pages.map((pg) => (
+                            <div key={pg.path} style={{ marginBottom: '8px', padding: '6px 10px', borderLeft: `4px solid ${T.accent}`, background: '#faf7f2', borderRadius: '0 6px 6px 0' }}>
+                              <div style={{ fontSize: '13px', fontWeight: 700, color: T.text, overflowWrap: 'anywhere' }}>{pg.path}</div>
+                              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '6px', alignItems: 'center' }}>
+                                <span style={{ background: T.accent, color: '#fff', fontWeight: 700, fontSize: '11px', padding: '2px 8px', borderRadius: '10px' }}>{nf(pg.views)} vistas</span>
+                                <span style={{ background: '#222', color: '#fff', fontSize: '11px', padding: '2px 8px', borderRadius: '10px' }}>{fmtMin(pg.readSec)} lectura</span>
+                                {pg.channels.filter((c) => c.name !== 'Referido').slice(0, 1).map((c) => {
+                                  const col = CHANNEL_COLORS[c.name] || CHANNEL_COLORS.default;
+                                  return <span key={c.name} style={{ background: col.bg, color: col.fg, fontWeight: 600, fontSize: '11px', padding: '2px 8px', borderRadius: '10px' }}>{c.name} {(c.share * 100).toFixed(0)}%</span>;
+                                })}
+                              </div>
+                            </div>
+                          ))}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div style={styles.cardSubtext}>Días con más de {Math.round(dailyThreshold).toLocaleString('es-CO')} vistas (promedio {Math.round(dailyAvg).toLocaleString('es-CO')} + 15%) · Tiempo de lectura = tiempo de interacción promedio por usuario activo (GA4) · Horas en la zona horaria de GA4</div>
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px', marginTop: '20px' }}>
+              <div>
+                {current.ga4.septPartial && (
+                  <>
+                    <div style={{ ...styles.cardTitle, margin: '20px 0 10px' }}>Cifras actuales del {current.ga4.septPartial.range}</div>
                     <div style={styles.card}>
-                      <div style={styles.cardTitle}>Distribución geográfica de lectores</div>
-                      <div style={{ width: '100%', height: 260, marginTop: '12px' }}>
+                      <div style={styles.cardTitle}>Vistas</div>
+                      <div style={styles.cardValue}>{current.ga4.septPartial.views.toLocaleString('es-CO')}</div>
+                      {renderChange(current.ga4.septPartial.viewsChange, false, prevFrom(current.ga4.septPartial.views, current.ga4.septPartial.viewsChange))}
+                    </div>
+                    <div style={{ ...styles.card, marginTop: '12px' }}>
+                      <div style={styles.cardTitle}>Total de usuarios</div>
+                      <div style={styles.cardValue}>{current.ga4.septPartial.users.toLocaleString('es-CO')}</div>
+                      {renderChange(current.ga4.septPartial.usersChange, false, prevFrom(current.ga4.septPartial.users, current.ga4.septPartial.usersChange))}
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+            {current.ga4.sections?.length > 0 && (
+              <div style={{ marginTop: '30px' }}>
+                <h2 style={styles.sectionTitle}>Vistas por sección ({rangeLabel})</h2>
+                {current.ga4.sections.map((sec) => (
+                  <Fragment key={sec.slug}>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '20px', alignItems: 'start' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    <div style={{ ...styles.card, padding: '10px 16px', display: 'flex', alignItems: 'baseline', gap: '12px', flexWrap: 'wrap' }}>
+                      <div style={styles.cardTitle}>{sec.label}</div>
+                      <div style={{ ...styles.cardValue, fontSize: '24px' }}>{nf(sec.views)}</div>
+                      {renderChange(sec.change, false, prevFrom(sec.views, sec.change))}
+                    </div>
+                    <div style={styles.card}>
+                      <div style={styles.cardTitle}>Vistas {sec.label}{sec.peak ? ` · pico ${sec.peak.value.toLocaleString('es-CO')} (${sec.peak.label})` : ''}</div>
+                      <div style={{ width: '100%', height: 200, marginTop: '12px' }}>
                         <ResponsiveContainer>
-                          <BarChart data={current.ga4.audience.cities} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
+                          <AreaChart data={sec.daily} margin={{ top: 20, right: 12, left: 0, bottom: 0 }}>
                             <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                            <XAxis dataKey="name" tick={{ fontSize: 11 }} />
-                            <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} />
-                            <Tooltip formatter={(v) => `${(v * 100).toFixed(1)}%`} />
-                            <Bar dataKey="pct" name="Lectores" fill="#000000">
-                              <LabelList dataKey="pct" position="top" formatter={(v) => `${(v * 100).toFixed(1)}%`} style={{ fontSize: 11 }} />
-                            </Bar>
-                          </BarChart>
+                            <XAxis dataKey="label" tick={{ fontSize: 10 }} interval={7} />
+                            <YAxis tick={{ fontSize: 10 }} width={34} />
+                            <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
+                            <Area type="monotone" dataKey="value" name="Vistas" stroke={T.accent} strokeWidth={2} fill={T.accent} fillOpacity={0.08} />
+                            {sec.peak && <ReferenceDot x={sec.peak.label} y={sec.peak.value} r={5} fill="#d32f2f" stroke="#fff" />}
+                          </AreaChart>
                         </ResponsiveContainer>
                       </div>
-                      {current.ga4.audience.countries?.length > 0 && (
-                        <div style={{ fontSize: '12px', color: '#555', marginTop: '8px' }}>
-                          Países: {current.ga4.audience.countries.map((c) => `${c.name} ${(c.pct * 100).toFixed(1)}%`).join(' · ')}
+                    </div>
+                    </div>
+                    <div style={styles.card}>
+                      <div style={styles.cardTitle}>Ruta de página · Vistas</div>
+                      <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '8px' }}>
+                        <tbody>
+                          {sec.topPages.map((pg, k) => (
+                            <tr key={pg.path}>
+                              <td style={{ padding: '6px 4px', borderBottom: '1px solid #eee', color: '#888', width: '20px' }}>{k + 1}.</td>
+                              <td style={{ padding: '6px 4px', borderBottom: '1px solid #eee', wordBreak: 'break-all' }}>{pg.path}</td>
+                              <td style={{ padding: '6px 4px', borderBottom: '1px solid #eee', textAlign: 'right', fontWeight: 600 }}>{nf(pg.views)}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    {(() => {
+                      const WD = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
+                      const acc = WD.map((name) => ({ name, sum: 0, n: 0 }));
+                      (sec.daily || []).forEach((d) => {
+                        if (!d.date) return;
+                        const wd = (new Date(Date.UTC(+d.date.slice(0, 4), +d.date.slice(4, 6) - 1, +d.date.slice(6))).getUTCDay() + 6) % 7;
+                        acc[wd].sum += d.value; acc[wd].n += 1;
+                      });
+                      const charts = [
+                        { key: 'hora', title: 'por hora del día', data: sec.hourly.map((h) => ({ label: h.hour, value: h.value })), interval: 2, labels: false },
+                        { key: 'dia', title: 'por día de la semana (promedio)', data: acc.map((x) => ({ label: x.name, value: x.n ? Math.round(x.sum / x.n) : 0 })), interval: 0, labels: true },
+                      ];
+                      return (
+                        <div style={{ position: 'relative', alignSelf: 'stretch', minHeight: '340px' }}>
+                        <div style={{ position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                          {charts.map((c) => {
+                            const top = c.data.reduce((b, h) => (!b || h.value > b.value ? h : b), null);
+                            return (
+                              <div key={c.key} style={{ ...styles.card, flex: 1, minHeight: 0, display: 'flex', flexDirection: 'column', padding: '12px 16px' }}>
+                                <div style={styles.cardTitle}>Vistas {sec.label} {c.title}{top && top.value > 0 ? ` · pico ${top.label}` : ''}</div>
+                                <div style={{ width: '100%', flex: 1, minHeight: 0, marginTop: '4px' }}>
+                                  <ResponsiveContainer>
+                                    <BarChart data={c.data} margin={{ top: 14, right: 10, left: 0, bottom: 0 }}>
+                                      <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                                      <XAxis dataKey="label" tick={{ fontSize: 10 }} interval={c.interval} />
+                                      <YAxis tick={{ fontSize: 10 }} width={34} />
+                                      <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
+                                      <Bar dataKey="value" name={c.key === 'hora' ? 'Vistas' : 'Vistas promedio'} fill={T.accent}>
+                                        {c.data.map((h) => <Cell key={h.label} fill={top && h.value === top.value && top.value > 0 ? T.highlight : T.accent} />)}
+                                        {c.labels && <LabelList dataKey="value" position="top" formatter={formatCompact} style={{ fontSize: 10, fill: '#444' }} />}
+                                      </Bar>
+                                    </BarChart>
+                                  </ResponsiveContainer>
+                                </div>
+                              </div>
+                            );
+                          })}
                         </div>
-                      )}
+                        </div>
+                      );
+                    })()}
+                  </div>
+                  {aboveAvg.some((d) => sec.topPageByDay?.[d.label]) && (
+                    <div style={{ ...styles.card, marginBottom: '30px' }}>
+                      <div style={styles.cardTitle}>Página #1 de cada día destacado · {sec.label}</div>
+                      <div style={{ overflowX: 'auto', marginTop: '8px' }}>
+                        <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '640px' }}>
+                          <thead>
+                            <tr>
+                              {['Fecha', 'Página', 'Vistas · tiempo de lectura · origen de tráfico', 'Hora pico'].map((h) => (
+                                <th key={h} style={{ textAlign: 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>
+                              ))}
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {(() => {
+                              const WDN = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+                              const dow = (date) => (date ? WDN[new Date(Date.UTC(+date.slice(0, 4), +date.slice(4, 6) - 1, +date.slice(6))).getUTCDay()] : '');
+                              const td = { padding: '8px 6px', borderBottom: '1px solid #eee' };
+                              const cells = (pg) => {
+                                const ch = (pg.channels || []).filter((c) => c.name !== 'Referido')[0];
+                                const col = ch ? (CHANNEL_COLORS[ch.name] || CHANNEL_COLORS.default) : null;
+                                return [
+                                  <td key="p" style={{ ...td, fontWeight: 700, color: T.text, overflowWrap: 'anywhere' }}>{pg.path}</td>,
+                                  <td key="m" style={td}>
+                                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
+                                      <span style={{ background: T.accent, color: '#fff', fontWeight: 700, fontSize: '11px', padding: '2px 8px', borderRadius: '10px' }}>{nf(pg.views)} vistas</span>
+                                      <span style={{ background: '#222', color: '#fff', fontSize: '11px', padding: '2px 8px', borderRadius: '10px' }}>{fmtMin(pg.readSec)} lectura</span>
+                                      {ch && <span style={{ background: col.bg, color: col.fg, fontWeight: 600, fontSize: '11px', padding: '2px 8px', borderRadius: '10px' }}>{ch.name} {(ch.share * 100).toFixed(0)}%</span>}
+                                    </div>
+                                  </td>,
+                                  <td key="h" style={{ ...td, fontWeight: 700 }}>{pg.peakHour || '\u2014'}</td>,
+                                ];
+                              };
+                              const rows = [];
+                              const peakLabel = sec.peak?.label;
+                              const peakList = peakLabel ? sec.topPagesByDay?.[peakLabel] : null;
+                              if (peakList?.length) {
+                                peakList.forEach((pg, k) => rows.push(
+                                  <tr key={`peak-${k}`} style={{ background: '#fff6ee' }}>
+                                    {k === 0 && (
+                                      <td rowSpan={peakList.length} style={{ ...td, whiteSpace: 'nowrap', verticalAlign: 'top' }}>
+                                        <div style={{ fontWeight: 700 }}>{peakLabel}</div>
+                                        <div style={{ fontSize: '11px', color: '#888' }}>{dow(sec.peak.date)}</div>
+                                        <div style={{ fontSize: '11px', color: '#888' }}>sitio {nf((dailyList.find((x) => x.label === peakLabel) || {}).value)}</div>
+                                        <span style={{ display: 'inline-block', marginTop: '4px', background: T.highlight, color: '#fff', fontSize: '10px', fontWeight: 700, padding: '2px 8px', borderRadius: '10px' }}>DÍA PICO · TOP {peakList.length}</span>
+                                      </td>
+                                    )}
+                                    {cells(pg)}
+                                  </tr>
+                                ));
+                              }
+                              aboveAvg
+                                .filter((d) => d.label !== peakLabel && sec.topPageByDay?.[d.label])
+                                .sort((x, y) => sec.topPageByDay[y.label].views - sec.topPageByDay[x.label].views)
+                                .forEach((d) => rows.push(
+                                  <tr key={d.label}>
+                                    <td style={{ ...td, whiteSpace: 'nowrap' }}>
+                                      <div style={{ fontWeight: 700 }}>{d.label}</div>
+                                      <div style={{ fontSize: '11px', color: '#888' }}>{dow(d.date)}</div>
+                                      <div style={{ fontSize: '11px', color: '#888' }}>sitio {nf(d.value)}</div>
+                                    </td>
+                                    {cells(sec.topPageByDay[d.label])}
+                                  </tr>
+                                ));
+                              return rows;
+                            })()}
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   )}
+                  </Fragment>
+                ))}
+              </div>
+            )}
+
+
+
+          </div>
+        )}
+        {(current.ga4?.hourlyViews?.some((h) => h.vistas > 0) || current.ga4?.dailyViews?.length > 0) && (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '20px', marginTop: '30px', alignItems: 'start' }}>
+            {current.ga4?.hourlyViews?.some((h) => h.vistas > 0) && (
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>
+                  Tráfico por hora del día · {rangeLabel}
+                  {(() => { const top = current.ga4.hourlyViews.reduce((b, h) => (!b || h.vistas > b.vistas ? h : b), null); return top ? ` · pico ${top.hour}` : ''; })()}
+                </div>
+                <div style={{ width: '100%', height: 300, marginTop: '12px' }}>
+                  <ResponsiveContainer>
+                    <BarChart data={current.ga4.hourlyViews} margin={{ top: 30, right: 10, left: 0, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                      <XAxis dataKey="hour" tick={{ fontSize: 11 }} />
+                      <YAxis tick={{ fontSize: 11 }} />
+                      <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
+                      <Legend />
+                      <Bar dataKey="vistas" name="Vistas" fill={T.accent} legendType="square">
+                        {current.ga4.hourlyViews.map((h) => {
+                          const max = Math.max(...current.ga4.hourlyViews.map((x) => x.vistas));
+                          return <Cell key={h.hour} fill={h.vistas === max ? T.highlight : T.accent} />;
+                        })}
+                      </Bar>
+                      <Bar dataKey="sesiones" name="Sesiones" fill="#333333" legendType="square" />
+                      <Bar dataKey="vistasPrev" name="Vistas mes anterior" fill="#c9c2b8" legendType="square" />
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+                <div style={styles.cardSubtext}>Hora del día en la zona horaria de la propiedad de GA4. La hora con más vistas se destaca en naranja.</div>
+              </div>
+            )}
+            {current.ga4?.dailyViews?.length > 0 && (() => {
+              const WD = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+              const acc = WD.map((name) => ({ label: name.slice(0, 3), sum: 0, n: 0 }));
+              const accPrev = WD.map(() => ({ sum: 0, n: 0 }));
+              const fill = (list, target) => list.forEach((d) => {
+                if (!d.date) return;
+                const wd = (new Date(Date.UTC(+d.date.slice(0, 4), +d.date.slice(4, 6) - 1, +d.date.slice(6))).getUTCDay() + 6) % 7;
+                target[wd].sum += d.value; target[wd].n += 1;
+              });
+              fill(current.ga4.dailyViews, acc);
+              fill(current.ga4.prevDailyViews || [], accPrev);
+              const data = acc.map((x, i) => ({ label: x.label, full: WD[i], value: x.n ? Math.round(x.sum / x.n) : 0, prev: accPrev[i].n ? Math.round(accPrev[i].sum / accPrev[i].n) : 0 }));
+              const max = Math.max(...data.map((x) => x.value));
+              const top = data.find((x) => x.value === max);
+              return (
+                <div style={styles.card}>
+                  <div style={styles.cardTitle}>Tráfico por día de la semana · {rangeLabel} · pico {top?.full}</div>
+                  <div style={{ width: '100%', height: 300, marginTop: '12px' }}>
+                    <ResponsiveContainer>
+                      <BarChart data={data} margin={{ top: 30, right: 10, left: 0, bottom: 0 }}>
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                        <XAxis dataKey="label" tick={{ fontSize: 11 }} />
+                        <YAxis tick={{ fontSize: 11 }} />
+                        <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
+                        <Bar dataKey="value" name="Vistas promedio por día" fill={T.accent} legendType="square">
+                          {data.map((x) => <Cell key={x.label} fill={x.value === max ? T.highlight : T.accent} />)}
+                          <LabelList dataKey="value" position="top" formatter={formatCompact} style={{ fontSize: 11, fill: '#444' }} />
+                        </Bar>
+                        <Bar dataKey="prev" name="Mes anterior" fill="#c9c2b8" legendType="square">
+                          <LabelList dataKey="prev" position="top" formatter={formatCompact} style={{ fontSize: 10, fill: '#999' }} />
+                        </Bar>
+                        <Legend />
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                  <div style={styles.cardSubtext}>Promedio de vistas por día según el día de la semana. El día con más vistas se destaca en naranja. En gris, el mes anterior.</div>
+                </div>
+              );
+            })()}
+          </div>
+        )}
+        {current.ga4?.home && (() => {
+          const h = current.ga4.home;
+          const g = current.gsc?.home;
+          const rel = (cur, prev) => (prev ? cur / prev - 1 : null);
+          const WD = ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'];
+          const acc = WD.map((label) => ({ label, sum: 0, n: 0 }));
+          h.daily.forEach((d) => {
+            const wd = (new Date(Date.UTC(+d.date.slice(0, 4), +d.date.slice(4, 6) - 1, +d.date.slice(6))).getUTCDay() + 6) % 7;
+            acc[wd].sum += d.value; acc[wd].n += 1;
+          });
+          const week = acc.map((x) => ({ label: x.label, value: x.n ? Math.round(x.sum / x.n) : 0 }));
+          const maxHour = Math.max(...h.hourly.map((x) => x.value));
+          const maxWeek = Math.max(...week.map((x) => x.value));
+          const groups = groupChannelsByViews(h.channels.map((c) => ({ ...c, sessions: 0, users: 0 }))).filter((x) => x.pct > 0).sort((a, b) => b.views - a.views);
+          const box = { ...styles.card };
+          return (
+            <div style={{ marginTop: '40px' }}>
+              <h2 style={styles.sectionTitle}>Home · página de inicio ({rangeLabel})</h2>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: '20px' }}>
+                <div style={box}><div style={styles.cardTitle}>Vistas del home</div><div style={styles.cardValue}>{nf(h.views)}</div>{renderChange(h.viewsChange)}<div style={styles.cardSubtext}>Mes anterior: <strong>{nf(h.viewsPrev)}</strong></div></div>
+                <div style={box}><div style={styles.cardTitle}>Usuarios</div><div style={styles.cardValue}>{nf(h.users)}</div>{renderChange(h.usersChange)}<div style={styles.cardSubtext}>Mes anterior: <strong>{nf(h.usersPrev)}</strong></div></div>
+                <div style={box}><div style={styles.cardTitle}>Tiempo de lectura</div><div style={styles.cardValue}>{fmtMin(h.readSec)}</div>{renderChange(h.readChange)}<div style={styles.cardSubtext}>Mes anterior: <strong>{fmtMin(h.readSecPrev)}</strong></div></div>
+                <div style={box}><div style={styles.cardTitle}>Porcentaje de rebote</div><div style={styles.cardValue}>{(h.bounceRate * 100).toFixed(0)}%</div>{renderChange(h.bounceRateChange, true)}<div style={styles.cardSubtext}>Mes anterior: <strong>{(h.bounceRatePrev * 100).toFixed(0)}%</strong> · menor es mejor</div></div>
+              </div>
+              {renderUsersRow({ users: h.users, usersChange: h.usersChange, newUsers: h.newUsers, newUsersChange: h.newUsersChange, returning: h.returning, newChannels: h.newChannels, newDuration: h.newDuration, returningChannels: h.returningChannels, returningDuration: h.returningDuration })}
+              {g && (
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: '20px', marginTop: '20px' }}>
+                  <div style={box}><div style={styles.cardTitle}>Clics en Google (home)</div><div style={styles.cardValue}>{nf(g.clicks)}</div>{g.prev ? renderChange(rel(g.clicks, g.prev.clicks)) : null}{g.prev && <div style={styles.cardSubtext}>Mes anterior: <strong>{nf(g.prev.clicks)}</strong></div>}</div>
+                  <div style={box}><div style={styles.cardTitle}>Impresiones (home)</div><div style={styles.cardValue}>{nf(g.impressions)}</div>{g.prev ? renderChange(rel(g.impressions, g.prev.impressions)) : null}{g.prev && <div style={styles.cardSubtext}>Mes anterior: <strong>{nf(g.prev.impressions)}</strong></div>}</div>
+                  <div style={box}><div style={styles.cardTitle}>CTR (home)</div><div style={styles.cardValue}>{(g.ctr * 100).toFixed(1)}%</div>{g.prev ? renderChange(rel(g.ctr, g.prev.ctr)) : null}{g.prev && <div style={styles.cardSubtext}>Mes anterior: <strong>{(g.prev.ctr * 100).toFixed(1)}%</strong></div>}</div>
+                  <div style={box}><div style={styles.cardTitle}>Posición promedio (home)</div><div style={styles.cardValue}>{g.position ? g.position.toFixed(1) : '\u2014'}</div>{g.prev?.position ? renderChange(rel(g.position, g.prev.position), true) : null}<div style={styles.cardSubtext}>{g.prev?.position ? <>Mes anterior: <strong>{g.prev.position.toFixed(1)}</strong> · </> : null}menor es mejor</div></div>
+                </div>
+              )}
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '20px', marginTop: '20px' }}>
+                <div style={box}>
+                  <div style={styles.cardTitle}>Vistas del home por día{h.peak ? ` · pico ${nf(h.peak.value)} (${h.peak.label})` : ''}</div>
+                  <div style={{ width: '100%', height: 220, marginTop: '12px' }}>
+                    <ResponsiveContainer>
+                      <AreaChart data={h.daily} margin={{ top: 20, right: 12, left: 0, bottom: 0 }}>
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                        <XAxis dataKey="label" tick={{ fontSize: 10 }} interval={7} />
+                        <YAxis tick={{ fontSize: 10 }} width={34} />
+                        <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
+                        <Area type="monotone" dataKey="value" name="Vistas" stroke={T.accent} strokeWidth={2} fill={T.accent} fillOpacity={0.1} />
+                        {h.peak && <ReferenceDot x={h.peak.label} y={h.peak.value} r={5} fill="#d32f2f" stroke="#fff" />}
+                      </AreaChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+                <div style={box}>
+                  <div style={styles.cardTitle}>Vistas del home por hora del día</div>
+                  <div style={{ width: '100%', height: 220, marginTop: '12px' }}>
+                    <ResponsiveContainer>
+                      <BarChart data={h.hourly} margin={{ top: 14, right: 10, left: 0, bottom: 0 }}>
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                        <XAxis dataKey="hour" tick={{ fontSize: 10 }} interval={2} />
+                        <YAxis tick={{ fontSize: 10 }} width={34} />
+                        <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
+                        <Bar dataKey="value" name="Vistas" fill={T.accent}>
+                          {h.hourly.map((x) => <Cell key={x.hour} fill={x.value === maxHour && maxHour > 0 ? T.highlight : T.accent} />)}
+                        </Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+                <div style={box}>
+                  <div style={styles.cardTitle}>Vistas del home por día de la semana (promedio)</div>
+                  <div style={{ width: '100%', height: 220, marginTop: '12px' }}>
+                    <ResponsiveContainer>
+                      <BarChart data={week} margin={{ top: 18, right: 10, left: 0, bottom: 0 }}>
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                        <XAxis dataKey="label" tick={{ fontSize: 10 }} interval={0} />
+                        <YAxis tick={{ fontSize: 10 }} width={34} />
+                        <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
+                        <Bar dataKey="value" name="Vistas promedio" fill={T.accent}>
+                          {week.map((x) => <Cell key={x.label} fill={x.value === maxWeek && maxWeek > 0 ? T.highlight : T.accent} />)}
+                          <LabelList dataKey="value" position="top" formatter={formatCompact} style={{ fontSize: 10, fill: '#444' }} />
+                        </Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '20px', alignItems: 'start', marginTop: '30px' }}>
+              {groups.length > 0 ? (
+                <div>
+                  <div style={{ ...styles.cardTitle, fontSize: '14px', marginBottom: '10px' }}>Fuentes de tráfico · solo home · {rangeLabel}</div>
+                  <div style={{ ...styles.card, background: '#f3f1ee' }}>
+                    <div style={{ display: 'flex', height: '44px', borderRadius: '22px', overflow: 'hidden', background: '#ddd' }}>
+                      {groups.map((x) => (
+                        <div key={x.name} title={`${x.name} ${(x.pct * 100).toFixed(1)}%`} style={{ width: `${x.pct * 100}%`, background: x.color }} />
+                      ))}
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: `repeat(${groups.length}, minmax(0, 1fr))`, gap: '18px', marginTop: '16px' }}>
+                      {groups.map((x) => {
+                        const vc = rel(x.views, x.prevViews);
+                        const pp = x.prevPct > 0 ? (x.pct - x.prevPct) * 100 : null;
+                        return (
+                          <div key={x.name} style={{ borderTop: `3px solid ${x.color}`, paddingTop: '8px' }}>
+                            <div style={{ display: 'flex', alignItems: 'baseline', flexWrap: 'wrap' }}>
+                              <span style={{ fontSize: '30px', fontWeight: 800, color: '#111' }}>{nf(x.views)}</span>
+                              {vc !== null && Number.isFinite(vc) && (
+                                <span style={{ fontSize: '12px', fontWeight: 700, padding: '1px 6px', borderRadius: '3px', marginLeft: '6px', background: vc >= 0 ? '#e3f4e6' : '#fbe4e4', color: vc >= 0 ? '#2e7d32' : '#c62828' }}>{vc >= 0 ? '\u25B2' : '\u25BC'} {Math.abs(vc * 100).toFixed(1)}%</span>
+                              )}
+                            </div>
+                            <div style={{ fontSize: '15px', fontWeight: 700, color: T.ink }}>{x.name}</div>
+                            <div style={{ fontSize: '13px', color: '#333', marginTop: '4px' }}>
+                              <strong>{(x.pct * 100).toFixed(x.pct < 0.1 ? 1 : 0)}%</strong> de las vistas
+                              {pp !== null && <span style={{ marginLeft: '6px', fontSize: '12px', fontWeight: 700, color: pp >= 0 ? '#2e7d32' : '#c62828' }}>{pp >= 0 ? '\u25B2' : '\u25BC'} {Math.abs(pp).toFixed(1)} pp</span>}
+                            </div>
+                            {pp !== null && <div style={{ fontSize: '11px', color: '#888', marginTop: '2px' }}>Periodo anterior {(x.prevPct * 100).toFixed(x.prevPct < 0.1 ? 1 : 0)}%</div>}
+                          </div>
+                        );
+                      })}
+                    </div>
+                    <div style={styles.cardSubtext}>Vistas de página del home por tipo de fuente y su participación; variaciones vs el periodo anterior equivalente.</div>
+                  </div>
+                </div>
+              ) : <div />}
+              </div>
+            </div>
+          );
+        })()}
+
+            {current.ga4.audience && (
+              <div style={{ marginTop: '30px' }}>
+                <h2 style={styles.sectionTitle}>Datos demográficos relevantes</h2>
+                <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: '20px', alignItems: 'start' }}>
                   <div style={styles.card}>
                     <div style={styles.cardTitle}>Sexo y edad lectores</div>
                     {current.ga4.audience.gender.length > 0 ? (
@@ -771,48 +1076,180 @@ export default function Dashboard() {
                     ) : <div style={styles.cardSubtext}>Sin datos de edad</div>}
                   </div>
                 </div>
-              </div>
-            )}
-
-            <div style={{ ...styles.card, marginTop: '20px' }}>
-              <div style={styles.cardTitle}>Días por encima del promedio: qué se leyó, de dónde llegó y cuándo</div>
-              <div style={{ overflowX: 'auto', marginTop: '12px' }}>
-                <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '820px' }}>
-                  <thead>
-                    <tr>
-                      {['Día', 'Vistas', 'Páginas más leídas (vistas · tiempo de lectura)', 'Origen de tráfico', 'Tiempo de lectura del día', 'Horas de mayor lectura'].map((h) => (
-                        <th key={h} style={{ textAlign: 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {[...(current.ga4.aboveAvgDays || [])].sort((x, y) => y.views - x.views).map((d) => (
-                      <tr key={d.label} style={{ verticalAlign: 'top' }}>
-                        <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', fontWeight: 700, whiteSpace: 'nowrap' }}>{d.label}</td>
-                        <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', fontWeight: 700 }}>{nf(d.views)}</td>
-                        <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>
-                          {d.pages.map((pg) => (
-                            <div key={pg.path} style={{ wordBreak: 'break-all', marginBottom: '4px' }}>
-                              {pg.path} <strong>· {nf(pg.views)}</strong> · {fmtMin(pg.readSec)}
+                {(() => {
+                  const A = current.ga4.audience;
+                  if (!A.interests && !A.os && !A.regions) return null;
+                  const bar = (label, pct, color, extra, dec) => (
+                    <div key={label} style={{ marginTop: '10px' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
+                        <span>{label}</span><span><strong>{(pct * 100).toFixed(dec ?? (pct < 0.1 ? 1 : 0))}%</strong>{extra}</span>
+                      </div>
+                      <div style={{ background: T.soft, borderRadius: '4px', height: '8px', marginTop: '3px' }}>
+                        <div style={{ width: `${Math.min(pct, 1) * 100}%`, background: color, height: '8px', borderRadius: '4px' }} />
+                      </div>
+                    </div>
+                  );
+                  const pp = (cur, prev) => {
+                    if (prev === undefined || prev === null) return null;
+                    const d = (cur - prev) * 100;
+                    return <span style={{ marginLeft: '6px', fontSize: '11px', fontWeight: 700, color: d >= 0 ? '#2e7d32' : '#c62828' }}>{d >= 0 ? '\u25B2' : '\u25BC'} {Math.abs(d).toFixed(1)} pp</span>;
+                  };
+                  return (
+                    <>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '20px', alignItems: 'stretch', marginTop: '20px' }}>
+                      {[
+                        { title: 'País', list: A.countries },
+                        { title: 'Departamento de Colombia', list: A.regions },
+                        { title: 'Ciudad', list: current.ga4.audience.cities },
+                      ].filter((g) => g.list?.length > 0).map((g) => (
+                        <div key={g.title} style={styles.card}>
+                          <div style={styles.cardTitle}>{g.title}</div>
+                          {g.list.slice(0, 5).map((x, k) => bar(x.name, x.pct, k === 0 ? T.highlight : T.accent, null, 1))}
+                          {Array.from({ length: Math.max(0, 5 - g.list.length) }, (_, k) => (
+                            <div key={`pad-${k}`} aria-hidden="true" style={{ marginTop: '10px', visibility: 'hidden' }}>
+                              <div style={{ fontSize: '13px' }}>&nbsp;</div>
+                              <div style={{ height: '8px', marginTop: '3px' }} />
                             </div>
                           ))}
-                        </td>
-                        <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>
-                          {d.channels.map((c) => <div key={c.name}>{c.name} <strong>{(c.share * 100).toFixed(0)}%</strong></div>)}
-                        </td>
-                        <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', whiteSpace: 'nowrap' }}>{d.readTime}</td>
-                        <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>
-                          {d.hours.map((h) => <div key={h.hour}>{h.hour} <strong>· {nf(h.views)}</strong></div>)}
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
+                          <div style={styles.cardSubtext}>% de los usuarios · escala 0 a 100%</div>
+                        </div>
+                      ))}
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '20px', alignItems: 'stretch', marginTop: '20px' }}>
+                    <div style={styles.card}>
+                      <div style={styles.cardTitle}>Dispositivos usados para conectarse</div>
+                      {current.ga4.audience.devices.map((d) => {
+                        const diff = d.prevPct === null || d.prevPct === undefined ? null : (d.pct - d.prevPct) * 100;
+                        return (
+                          <div key={d.name} style={{ marginTop: '14px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', fontSize: '13px', textTransform: 'capitalize' }}>
+                              <span>{d.name}</span>
+                              <span>
+                                <strong>{(d.pct * 100).toFixed(1)}%</strong>
+                                {diff !== null && (
+                                  <span style={{ marginLeft: '6px', fontSize: '11px', fontWeight: 700, textTransform: 'none', color: diff >= 0 ? '#2e7d32' : '#c62828' }}>
+                                    {diff >= 0 ? '\u25B2' : '\u25BC'} {Math.abs(diff).toFixed(1)} pp
+                                  </span>
+                                )}
+                              </span>
+                            </div>
+                            <div style={{ background: T.soft, borderRadius: '4px', height: '10px', marginTop: '3px' }}>
+                              <div style={{ width: `${d.pct * 100}%`, background: T.accent2, height: '10px', borderRadius: '4px' }} />
+                            </div>
+                            {d.prevPct !== null && d.prevPct !== undefined && (
+                              <>
+                                <div style={{ background: T.soft, borderRadius: '4px', height: '6px', marginTop: '3px' }}>
+                                  <div style={{ width: `${d.prevPct * 100}%`, background: '#c9c2b8', height: '6px', borderRadius: '4px' }} />
+                                </div>
+                                <div style={{ fontSize: '11px', color: '#888', marginTop: '2px' }}>Periodo anterior {(d.prevPct * 100).toFixed(1)}%</div>
+                              </>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                      {A.os?.length > 0 && (
+                        <div style={styles.card}>
+                          <div style={styles.cardTitle}>Sistema operativo</div>
+                          {A.os.map((x, k) => bar(x.name, x.pct, k === 0 ? T.highlight : T.accent, pp(x.pct, x.prevPct)))}
+                        </div>
+                      )}
+                      {A.brands?.length > 0 && (
+                        <div style={styles.card}>
+                          <div style={styles.cardTitle}>Marca del dispositivo</div>
+                          {A.brands.map((x) => bar(x.name, x.pct, '#333'))}
+                        </div>
+                      )}
+                    </div>
+                      {A.interestsBySegment?.rows?.length > 0 && (() => {
+                        const M = A.interestsBySegment;
+                        const ageLabels = M.segments.slice(2);
+                        const genderData = M.rows.map((r) => ({ name: r.name, Mujeres: r.values[0], Hombres: r.values[1] }));
+                        const generalData = (A.interests || []).map((x) => ({ name: x.name, value: x.pct }));
+                        const allVals = [...M.rows.flatMap((r) => r.values), ...generalData.map((x) => x.value)];
+                        const top = Math.ceil(Math.max(...allVals) * 10) / 10;
+                        const domain = [0, top];
+                        const ticks = Array.from({ length: Math.round(top * 10) + 1 }, (_, i) => i / 10);
+                        const pctF = (v) => `${(v * 100).toFixed(0)}%`;
+                        const axisProps = { type: 'number', domain, ticks, tickFormatter: pctF, tick: { fontSize: 10 } };
+                        const lab = { position: 'right', formatter: pctF, style: { fontSize: 10, fill: '#444' } };
+                        const chartMargin = { top: 5, right: 36, left: 0, bottom: 0 };
+                        return (
+                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '20px', alignItems: 'stretch', marginTop: '20px' }}>
+                            {generalData.length > 0 && (
+                              <div style={styles.card}>
+                                <div style={styles.cardTitle}>Intereses de los lectores</div>
+                                <div style={{ width: '100%', height: 360, marginTop: '8px' }}>
+                                  <ResponsiveContainer>
+                                    <BarChart data={generalData} layout="vertical" margin={chartMargin} barCategoryGap="30%">
+                                      <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+                                      <XAxis {...axisProps} />
+                                      <YAxis type="category" dataKey="name" width={130} tick={{ fontSize: 11 }} />
+                                      <Tooltip formatter={(v) => pctF(v)} />
+                                      <Bar dataKey="value" name="Usuarios con el interés">
+                                        {generalData.map((x, k) => <Cell key={x.name} fill={k === 0 ? T.highlight : T.accent} />)}
+                                        <LabelList dataKey="value" {...lab} />
+                                      </Bar>
+                                    </BarChart>
+                                  </ResponsiveContainer>
+                                </div>
+                                {A.interestsCoverage != null && <div style={{ ...styles.cardSubtext, minHeight: '36px' }}>GA4 clasifica intereses en {(A.interestsCoverage * 100).toFixed(0)}% de los usuarios; un usuario puede tener varios.</div>}
+                              </div>
+                            )}
+                            <div style={styles.card}>
+                              <div style={styles.cardTitle}>Intereses por género</div>
+                              <div style={{ width: '100%', height: 360, marginTop: '8px' }}>
+                                <ResponsiveContainer>
+                                  <BarChart data={genderData} layout="vertical" margin={chartMargin} barGap={2} barCategoryGap="22%">
+                                    <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+                                    <XAxis {...axisProps} />
+                                    <YAxis type="category" dataKey="name" width={130} tick={{ fontSize: 11 }} />
+                                    <Tooltip formatter={(v) => pctF(v)} />
+                                    <Legend />
+                                    <Bar dataKey="Mujeres" fill={T.accent}><LabelList dataKey="Mujeres" {...lab} /></Bar>
+                                    <Bar dataKey="Hombres" fill="#333333"><LabelList dataKey="Hombres" {...lab} /></Bar>
+                                  </BarChart>
+                                </ResponsiveContainer>
+                              </div>
+                              <div style={{ ...styles.cardSubtext, minHeight: '36px' }}>% de los hombres y de las mujeres con ese interés; cada grupo se mide sobre sus propios usuarios.</div>
+                            </div>
+                            <div style={{ ...styles.card, gridColumn: '1 / -1' }}>
+                              <div style={styles.cardTitle}>Intereses por edad · el rango más fuerte de cada interés en naranja oscuro</div>
+                              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '16px 24px', marginTop: '10px' }}>
+                                {M.rows.map((r) => {
+                                  const data = ageLabels.map((label, k) => ({ label, value: r.values[2 + k] }));
+                                  const max = Math.max(...data.map((d) => d.value));
+                                  return (
+                                    <div key={r.name}>
+                                      <div style={{ fontSize: '13px', fontWeight: 700, color: T.text }}>{r.name}</div>
+                                      <div style={{ width: '100%', height: 170 }}>
+                                        <ResponsiveContainer>
+                                          <BarChart data={data} layout="vertical" margin={chartMargin} barCategoryGap="25%">
+                                            <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+                                            <XAxis {...axisProps} />
+                                            <YAxis type="category" dataKey="label" width={40} tick={{ fontSize: 10 }} />
+                                            <Tooltip formatter={(v) => pctF(v)} />
+                                            <Bar dataKey="value" name="% del rango">
+                                              {data.map((d) => <Cell key={d.label} fill={d.value === max ? T.highlight : T.accent} />)}
+                                              <LabelList dataKey="value" {...lab} />
+                                            </Bar>
+                                          </BarChart>
+                                        </ResponsiveContainer>
+                                      </div>
+                                    </div>
+                                  );
+                                })}
+                              </div>
+                              <div style={styles.cardSubtext}>% de los usuarios de cada grupo con ese interés. Los usuarios sin género o edad detectados por GA4 no se incluyen. Las tres pastillas usan la misma escala (0 a {(top * 100).toFixed(0)}%).</div>
+                            </div>
+                          </div>
+                        );
+                      })()}
+                    </>
+                  );
+                })()}
               </div>
-              <div style={styles.cardSubtext}>Promedio del periodo: {Math.round(dailyAvg).toLocaleString('es-CO')} vistas/día · Tiempo de lectura = tiempo de interacción promedio por usuario activo (GA4) · Horas en la zona horaria de GA4</div>
-            </div>
-          </div>
-        )}
+            )}
       </div>
 
       </>
@@ -1053,19 +1490,19 @@ export default function Dashboard() {
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Aporte de FB al tráfico</div>
                 <div style={styles.cardValue}>{current.ga4?.social ? `${(current.ga4.social.facebook.share * 100).toFixed(2)}%` : '\u2014'}</div>
-                {renderChange(current.ga4?.social?.facebook?.shareChange)}
+                {renderChange(current.ga4?.social?.facebook?.shareChange, false, prevFrom(current.ga4?.social?.facebook?.share, current.ga4?.social?.facebook?.shareChange, pctFmt(2)))}
                 <div style={styles.cardSubtext}>% de sesiones del sitio desde Facebook (GA4)</div>
               </div>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Nuevos seguidores</div>
                 <div style={styles.cardValue}>{nf(fb.newFollowers)}</div>
-                {renderChange(fb.newFollowersChange)}
+                {renderChange(fb.newFollowersChange, false, prevFrom(fb.newFollowers, fb.newFollowersChange))}
                 <div style={styles.cardSubtext}>brutos; dejaron de seguir: {nf(fb.unfollows)}</div>
               </div>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Alcance</div>
                 <div style={styles.cardValue}>{nf(fb.viewers)}</div>
-                {renderChange(fb.viewersChange)}
+                {renderChange(fb.viewersChange, false, prevFrom(fb.viewers, fb.viewersChange))}
                 <div style={styles.cardSubtext}>espectadores únicos</div>
               </div>
               <div style={styles.card}>
@@ -1200,19 +1637,19 @@ export default function Dashboard() {
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Aporte de IG al tráfico</div>
                 <div style={styles.cardValue}>{current.ga4?.social ? `${(current.ga4.social.instagram.share * 100).toFixed(2)}%` : '\u2014'}</div>
-                {renderChange(current.ga4?.social?.instagram?.shareChange)}
+                {renderChange(current.ga4?.social?.instagram?.shareChange, false, prevFrom(current.ga4?.social?.instagram?.share, current.ga4?.social?.instagram?.shareChange, pctFmt(2)))}
                 <div style={styles.cardSubtext}>% de sesiones del sitio desde Instagram (GA4)</div>
               </div>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Nuevos seguidores</div>
                 <div style={styles.cardValue}>{nf(d?.period?.newFollowers)}</div>
-                {renderChange(d?.period?.newFollowersChange)}
+                {renderChange(d?.period?.newFollowersChange, false, prevFrom(d?.period?.newFollowers, d?.period?.newFollowersChange))}
                 <div style={styles.cardSubtext}>netos en el periodo (máx. 30 días)</div>
               </div>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Alcance</div>
                 <div style={styles.cardValue}>{nf(d?.period?.reach ?? ig?.reach)}</div>
-                {renderChange(d?.period?.reachChange)}
+                {renderChange(d?.period?.reachChange, false, prevFrom(d?.period?.reach ?? ig?.reach, d?.period?.reachChange))}
                 <div style={styles.cardSubtext}>{rangeLabel}</div>
               </div>
               <div style={styles.card}>
@@ -1561,23 +1998,23 @@ export default function Dashboard() {
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Inversión</div>
                 <div style={styles.cardValue}>{cop(t.spend)}</div>
-                {renderChange(rel(t.spend, pt.spend))}
+                {renderChange(rel(t.spend, pt.spend), false, cop(pt.spend))}
               </div>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Impresiones</div>
                 <div style={styles.cardValue}>{nf(t.impressions)}</div>
-                {renderChange(rel(t.impressions, pt.impressions))}
+                {renderChange(rel(t.impressions, pt.impressions), false, nf(pt.impressions))}
               </div>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Alcance</div>
                 <div style={styles.cardValue}>{nf(t.reach)}</div>
-                {renderChange(rel(t.reach, pt.reach))}
+                {renderChange(rel(t.reach, pt.reach), false, nf(pt.reach))}
                 <div style={styles.cardSubtext}>suma por campaña</div>
               </div>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Clics en enlace</div>
                 <div style={styles.cardValue}>{nf(t.linkClicks)}</div>
-                {renderChange(rel(t.linkClicks, pt.linkClicks))}
+                {renderChange(rel(t.linkClicks, pt.linkClicks), false, nf(pt.linkClicks))}
               </div>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>CTR (enlace)</div>
@@ -1587,19 +2024,19 @@ export default function Dashboard() {
               <div style={styles.card}>
                 <div style={styles.cardTitle}>CPC</div>
                 <div style={styles.cardValue}>{t.linkClicks ? cop(t.cpc) : '\u2014'}</div>
-                {renderChange(rel(t.cpc, pt.cpc), true)}
+                {renderChange(rel(t.cpc, pt.cpc), true, cop(pt.cpc))}
                 <div style={styles.cardSubtext}>menor es mejor</div>
               </div>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>CPM</div>
                 <div style={styles.cardValue}>{t.impressions ? cop(t.cpm) : '\u2014'}</div>
-                {renderChange(rel(t.cpm, pt.cpm), true)}
+                {renderChange(rel(t.cpm, pt.cpm), true, cop(pt.cpm))}
                 <div style={styles.cardSubtext}>menor es mejor</div>
               </div>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Campañas con gasto</div>
                 <div style={styles.cardValue}>{nf(t.campaigns)}</div>
-                {renderChange(rel(t.campaigns, pt.campaigns))}
+                {renderChange(rel(t.campaigns, pt.campaigns), false, nf(pt.campaigns))}
               </div>
             </div>
           );
@@ -1614,18 +2051,18 @@ export default function Dashboard() {
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Inversión total {brandName}</div>
                 <div style={styles.cardValue}>{cop(totalBrand)}</div>
-                {renderChange(rel(totalBrand, b.prevTotals.spend))}
+                {renderChange(rel(totalBrand, b.prevTotals.spend), false, cop(b.prevTotals.spend))}
               </div>
               <div style={{ ...styles.card, borderTop: `4px solid ${CLIENT}` }}>
                 <div style={styles.cardTitle}>Pauta de clientes (content, feria)</div>
                 <div style={styles.cardValue}>{cop(clientBrand)}</div>
-                {renderChange(rel(clientBrand, b.cliente.prevTotals.spend))}
+                {renderChange(rel(clientBrand, b.cliente.prevTotals.spend), false, cop(b.cliente.prevTotals.spend))}
                 <div style={styles.cardSubtext}>{(clientShare * 100).toFixed(1)}% de la inversión de {brandName} · la pagan los clientes</div>
               </div>
               <div style={{ ...styles.card, borderTop: `4px solid ${OWN}` }}>
                 <div style={styles.cardTitle}>Pauta propia (contenido general)</div>
                 <div style={styles.cardValue}>{cop(ownBrand)}</div>
-                {renderChange(rel(ownBrand, b.propia.prevTotals.spend))}
+                {renderChange(rel(ownBrand, b.propia.prevTotals.spend), false, cop(b.propia.prevTotals.spend))}
                 <div style={styles.cardSubtext}>{((1 - clientShare) * 100).toFixed(1)}% de la inversión de {brandName} · la asume Gamma</div>
               </div>
             </div>
