@@ -60,8 +60,8 @@ async function build(token, propertyId, range, domain) {
     const d = Number(r.dimensionValues[0].value);
     const h = Number(r.dimensionValues[1].value);
     const v = Number(r.metricValues[0].value);
-    byHour[h].value += v;
-    dowSum[d] += v;
+    if (byHour[h]) byHour[h].value += v;
+    if (d >= 0 && d < 7) dowSum[d] += v;
   });
   const countDow = Array(7).fill(0);
   for (let t = new Date(`${range.prevStart}T00:00:00Z`); t <= new Date(`${range.end}T00:00:00Z`); t = new Date(t.getTime() + 86400000)) countDow[t.getUTCDay()] += 1;

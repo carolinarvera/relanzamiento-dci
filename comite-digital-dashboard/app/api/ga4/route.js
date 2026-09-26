@@ -164,7 +164,7 @@ async function buildHome(token, propertyId, range) {
   });
   const peak = daily.reduce((b, d) => (!b || d.value > b.value ? d : b), null);
   const hourly = Array.from({ length: 24 }, (_, h) => ({ hour: `${String(h).padStart(2, '0')}h`, value: 0 }));
-  hourRows.forEach((r) => { hourly[Number(r.dimensionValues[0].value)].value = Number(r.metricValues[0].value); });
+  hourRows.forEach((r) => { const slot = hourly[Number(r.dimensionValues[0].value)]; if (slot) slot.value = Number(r.metricValues[0].value); });
   const chan = {};
   chanRows.forEach((r) => {
     const name = r.dimensionValues[0].value;
@@ -312,7 +312,7 @@ async function buildSections(token, propertyId, brand, range) {
       dimensionFilter: { filter: { fieldName: 'pagePath', stringFilter: { matchType: 'BEGINS_WITH', value: `/${slug}` } } },
     });
     const hourly = Array.from({ length: 24 }, (_, h) => ({ hour: `${String(h).padStart(2, '0')}h`, value: 0 }));
-    hourRows.forEach((r) => { hourly[Number(r.dimensionValues[0].value)].value = Number(r.metricValues[0].value); });
+    hourRows.forEach((r) => { const slot = hourly[Number(r.dimensionValues[0].value)]; if (slot) slot.value = Number(r.metricValues[0].value); });
     const peak = daily.reduce((best, d) => (!best || d.value > best.value ? d : best), null);
     const secFilter = { filter: { fieldName: 'pagePath', stringFilter: { matchType: 'BEGINS_WITH', value: `/${slug}` } } };
     const byViews = [{ metric: { metricName: 'screenPageViews' }, desc: true }];
@@ -709,10 +709,11 @@ async function buildProperty(token, propertyId, brand, range) {
   const hourlyViews = Array.from({ length: 24 }, (_, h) => ({ hour: `${String(h).padStart(2, '0')}h`, vistas: 0, sesiones: 0 }));
   hourRows.forEach((r) => {
     const h = Number(r.dimensionValues[0].value);
+    if (!hourlyViews[h]) return;
     hourlyViews[h].vistas = num(r, 0);
     hourlyViews[h].sesiones = num(r, 1);
   });
-  hourPrevRows.forEach((r) => { hourlyViews[Number(r.dimensionValues[0].value)].vistasPrev = num(r, 0); });
+  hourPrevRows.forEach((r) => { const slot = hourlyViews[Number(r.dimensionValues[0].value)]; if (slot) slot.vistasPrev = num(r, 0); });
   const prevDailyViews = dailyPrevRows.map((r) => ({ date: r.dimensionValues[0].value, value: num(r, 0) }));
 
   const byName = (rows, name) => rows.find((r) => r.dimensionValues.some((v) => v.value === name));

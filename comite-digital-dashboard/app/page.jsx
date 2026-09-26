@@ -54,6 +54,7 @@ function presetOptions() {
     { label: 'Mes actual (hasta hoy)', value: `${isoDate(new Date(Date.UTC(y, now.getUTCMonth(), 1)))}|${isoDate(now)}` },
     { label: 'Últimos 30 días', value: `${isoDate(new Date(now.getTime() - 29 * 86400000))}|${isoDate(now)}` },
     { label: 'Últimos 7 días', value: `${isoDate(new Date(now.getTime() - 6 * 86400000))}|${isoDate(now)}` },
+    { label: 'Últimos 3 meses cerrados', value: `${isoDate(new Date(Date.UTC(y, now.getUTCMonth() - 3, 1)))}|${isoDate(new Date(Date.UTC(y, now.getUTCMonth(), 0)))}` },
   ];
   for (let m = now.getUTCMonth() - 1; m >= 0; m -= 1) {
     opts.push({ label: `${MONTH_NAMES[m]} ${y}`, value: `${isoDate(new Date(Date.UTC(y, m, 1)))}|${isoDate(new Date(Date.UTC(y, m + 1, 0)))}` });
