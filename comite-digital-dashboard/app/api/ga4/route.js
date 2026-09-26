@@ -504,6 +504,9 @@ async function buildAudience(token, propertyId, r, brand) {
     ['News & Politics', 'Noticias y política'], ['Technology', 'Tecnología'], ['Business Professionals', 'Profesionales de negocios'],
     ['Shoppers', 'Compradores'], ['Media & Entertainment', 'Medios y entretenimiento'], ['Arts & Entertainment', 'Arte y entretenimiento'],
     ['Lifestyles & Hobbies', 'Estilo de vida y hobbies'], ['Banking & Finance', 'Banca y finanzas'], ['Soccer Fans', 'Fútbol'], ['Sports Fans', 'Aficionados al deporte'],
+    ['Home Decor Enthusiasts', 'Aficionados a la decoración'], ['Travel Buffs', 'Viajeros frecuentes'], ['Cooking Enthusiasts', 'Cocina'], ['Aspiring Chefs', 'Aspirantes a chef'],
+    ['Shopping Enthusiasts', 'Aficionados a las compras'], ['Auto Enthusiasts', 'Aficionados a los autos'], ['Beauty Mavens', 'Expertos en belleza'], ['Luxury Shoppers', 'Compradores de lujo'],
+    ['Foodies', 'Foodies'], ['Wine Enthusiasts', 'Amantes del vino'], ['Frequently Dining Out', 'Salen a comer con frecuencia'], ['Fashionistas', 'Fashionistas'], ['Value Shoppers', 'Compradores de ofertas'],
     ['Avid News Readers', 'Lectores de noticias'], ['Technophiles', 'Tecnófilos'], ['Entertainment News Enthusiasts', 'Noticias de entretenimiento'], ['Avid Local News Readers', 'Noticias locales'],
   ];
   const esInterest = (path) => {

@@ -1259,9 +1259,24 @@ export default function Dashboard() {
                         const genderData = M.rows.map((r) => ({ name: r.name, Mujeres: r.values[0], Hombres: r.values[1] }));
                         const generalData = (A.interests || []).map((x) => ({ name: x.name, value: x.pct }));
                         const allVals = [...M.rows.flatMap((r) => r.values), ...generalData.map((x) => x.value)];
-                        const top = Math.ceil(Math.max(...allVals) * 10) / 10;
+                        const top = Math.ceil(Math.max(...allVals) * 20) / 20;
+                        const step = top <= 0.2 ? 0.05 : 0.1;
                         const domain = [0, top];
-                        const ticks = Array.from({ length: Math.round(top * 10) + 1 }, (_, i) => i / 10);
+                        const ticks = Array.from({ length: Math.round(top / step) + 1 }, (_, i) => Math.round(i * step * 100) / 100);
+                        const labelTick = (props) => {
+                          const { x, y, payload } = props;
+                          const [parent, leaf] = String(payload.value).split(' › ');
+                          return (
+                            <text x={x - 8} y={y} textAnchor="end" fill="#555">
+                              {leaf ? (
+                                <>
+                                  <tspan x={x - 8} dy="-3" fontSize="10" fill="#888">{parent}</tspan>
+                                  <tspan x={x - 8} dy="13" fontSize="11.5" fontWeight="600">{leaf}</tspan>
+                                </>
+                              ) : <tspan x={x - 8} dy="4" fontSize="11.5" fontWeight="600">{parent}</tspan>}
+                            </text>
+                          );
+                        };
                         const pctF = (v) => `${(v * 100).toFixed(0)}%`;
                         const axisProps = { type: 'number', domain, ticks, tickFormatter: pctF, tick: { fontSize: 10 } };
                         const lab = { position: 'right', formatter: pctF, style: { fontSize: 10, fill: '#444' } };
@@ -1276,7 +1291,7 @@ export default function Dashboard() {
                                     <BarChart data={generalData} layout="vertical" margin={chartMargin} barCategoryGap="30%">
                                       <CartesianGrid strokeDasharray="3 3" horizontal={false} />
                                       <XAxis {...axisProps} />
-                                      <YAxis type="category" dataKey="name" width={130} tick={{ fontSize: 11 }} />
+                                      <YAxis type="category" dataKey="name" width={215} tick={labelTick} />
                                       <Tooltip formatter={(v) => pctF(v)} />
                                       <Bar dataKey="value" name="Usuarios con el interés">
                                         {generalData.map((x, k) => <Cell key={x.name} fill={k === 0 ? T.highlight : T.accent} />)}
@@ -1295,7 +1310,7 @@ export default function Dashboard() {
                                   <BarChart data={genderData} layout="vertical" margin={chartMargin} barGap={2} barCategoryGap="22%">
                                     <CartesianGrid strokeDasharray="3 3" horizontal={false} />
                                     <XAxis {...axisProps} />
-                                    <YAxis type="category" dataKey="name" width={130} tick={{ fontSize: 11 }} />
+                                    <YAxis type="category" dataKey="name" width={215} tick={labelTick} />
                                     <Tooltip formatter={(v) => pctF(v)} />
                                     <Legend />
                                     <Bar dataKey="Mujeres" fill={T.accent}><LabelList dataKey="Mujeres" {...lab} /></Bar>
