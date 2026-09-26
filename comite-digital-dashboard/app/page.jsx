@@ -27,6 +27,8 @@ function groupChannels(all) {
     .filter((g) => g.items.length > 0);
 }
 
+const MIN_PAGE_VIEWS = 90;
+
 const CHANNEL_SHORT = {
   'Organic Search': 'Búsqueda', 'Organic Social': 'Redes', 'Organic Video': 'Video', 'Organic Shopping': 'Shopping',
   'Paid Social': 'Meta', 'Paid Search': 'Google Ads', 'Paid Other': 'Otros', 'Paid Video': 'YouTube', 'Paid Shopping': 'Shopping',
@@ -856,7 +858,7 @@ export default function Dashboard() {
                       );
                     })()}
                   </div>
-                  {aboveAvg.some((d) => sec.topPageByDay?.[d.label]) && (
+                  {(aboveAvg.some((d) => (sec.topPageByDay?.[d.label]?.views || 0) >= MIN_PAGE_VIEWS) || (sec.topPagesByDay?.[sec.peak?.label] || []).some((x) => x.views >= MIN_PAGE_VIEWS)) && (
                     <div style={{ ...styles.card, marginBottom: '30px' }}>
                       <div style={styles.cardTitle}>Página #1 de cada día destacado · {sec.label}</div>
                       <div style={{ overflowX: 'auto', marginTop: '8px' }}>
@@ -890,7 +892,7 @@ export default function Dashboard() {
                               };
                               const rows = [];
                               const peakLabel = sec.peak?.label;
-                              const peakList = peakLabel ? sec.topPagesByDay?.[peakLabel] : null;
+                              const peakList = peakLabel ? (sec.topPagesByDay?.[peakLabel] || []).filter((x) => x.views >= MIN_PAGE_VIEWS) : null;
                               if (peakList?.length) {
                                 peakList.forEach((pg, k) => rows.push(
                                   <tr key={`peak-${k}`} style={{ background: '#fff6ee' }}>
@@ -907,7 +909,7 @@ export default function Dashboard() {
                                 ));
                               }
                               aboveAvg
-                                .filter((d) => d.label !== peakLabel && sec.topPageByDay?.[d.label])
+                                .filter((d) => d.label !== peakLabel && sec.topPageByDay?.[d.label] && sec.topPageByDay[d.label].views >= MIN_PAGE_VIEWS)
                                 .sort((x, y) => sec.topPageByDay[y.label].views - sec.topPageByDay[x.label].views)
                                 .forEach((d) => rows.push(
                                   <tr key={d.label}>
