@@ -29,6 +29,9 @@ function groupChannels(all) {
 
 const MIN_PAGE_VIEWS = 90;
 
+// Se descartan envíos de prueba: menos de 10 enviados o 100% de apertura.
+const isRealEmail = (e) => e.sent >= 10 && !(e.delivered > 0 && e.open >= e.delivered);
+
 const CHANNEL_SHORT = {
   'Organic Search': 'Búsqueda', 'Organic Social': 'Redes', 'Organic Video': 'Video', 'Organic Shopping': 'Shopping',
   'Paid Social': 'Meta', 'Paid Search': 'Google Ads', 'Paid Other': 'Otros', 'Paid Video': 'YouTube', 'Paid Shopping': 'Shopping',
@@ -2290,7 +2293,7 @@ export default function Dashboard() {
           const share = TR.siteViews ? TR.views / TR.siteViews : 0;
           const prevShare = TR.prevSiteViews ? TR.prevViews / TR.prevSiteViews : null;
           const ppd = prevShare !== null ? (share - prevShare) * 100 : null;
-          const sendLabels = new Set((E?.emails || []).filter((e) => e.sentAt).map((e) => { const d = new Date(e.sentAt); return `${d.getUTCDate()} ${['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'][d.getUTCMonth()]}`; }));
+          const sendLabels = new Set((E?.emails || []).filter((e) => isRealEmail(e) && e.sentAt).map((e) => { const d = new Date(e.sentAt); return `${d.getUTCDate()} ${['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'][d.getUTCMonth()]}`; }));
           const maxDaily = Math.max(0, ...(TR.daily || []).map((d) => d.value));
           const campTotal = (TR.campaigns || []).reduce((a, c) => a + c.views, 0);
           return (
@@ -2335,7 +2338,7 @@ export default function Dashboard() {
                   if (!bestWin || sum > bestWin.sum) bestWin = { i, sum };
                 }
                 const totalH = byHour.reduce((a, h) => a + h.value, 0);
-                const sends = [...(E?.emails || []), ...(E?.prevEmails || [])].filter((e) => e.kind !== 'automated' && e.sent > 1 && e.sentAt);
+                const sends = [...(E?.emails || []), ...(E?.prevEmails || [])].filter((e) => e.kind !== 'automated' && isRealEmail(e) && e.sentAt);
                 const perDay = DOWL.map((label, d) => {
                   const l = sends.filter((e) => bog(e.sentAt).getUTCDay() === d);
                   const del = l.reduce((a, e) => a + e.delivered, 0);
@@ -2475,7 +2478,7 @@ export default function Dashboard() {
                 daily.forEach((d) => { val[d.date] = d.value; });
                 const key = (iso) => iso.slice(0, 10).replace(/-/g, '');
                 const addDays = (k, n) => { const d = new Date(Date.UTC(+k.slice(0, 4), +k.slice(4, 6) - 1, +k.slice(6))); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10).replace(/-/g, ''); };
-                const sends = (E?.emails || []).filter((e) => e.kind !== 'automated' && e.sent > 1 && e.sentAt);
+                const sends = (E?.emails || []).filter((e) => e.kind !== 'automated' && isRealEmail(e) && e.sentAt);
                 const sendKeys = sends.map((e) => key(e.sentAt));
                 const windowKeys = new Set(sendKeys.flatMap((k) => [k, addDays(k, 1)]));
                 const base = daily.filter((d) => !windowKeys.has(d.date));
@@ -2486,7 +2489,7 @@ export default function Dashboard() {
                   const extra = web - 2 * baseline;
                   return { e, web, extra, mult: baseline ? web / (2 * baseline) : 0, per1000: e.delivered ? (Math.max(extra, 0) / e.delivered) * 1000 : 0 };
                 }).sort((x, y) => y.extra - x.extra);
-                const totalDelivered = (E?.emails || []).reduce((a, e) => a + e.delivered, 0);
+                const totalDelivered = (E?.emails || []).filter(isRealEmail).reduce((a, e) => a + e.delivered, 0);
                 const identified = (TR.campaigns || []).filter((c) => c.name !== '(not set)').reduce((a, c) => a + c.views, 0);
                 const identPct = TR.views ? identified / TR.views : 0;
                 const totalSrc = (TR.sources || []).reduce((a, x) => a + x.views, 0);
@@ -2545,18 +2548,48 @@ export default function Dashboard() {
                         <div style={styles.cardSubtext}>Vistas extra = vistas desde email el día del envío y el siguiente, menos lo que el canal recibe en un día normal ({Math.round(baseline)} vistas/día). Es una estimación que no depende de utm_campaign.</div>
                       </div>
                     )}
-                    {(TR.pages || []).length > 0 && (
-                      <div style={{ ...styles.card, marginTop: '20px' }}>
-                        <div style={styles.cardTitle}>Qué leen quienes llegan por email</div>
-                        {TR.pages.slice(0, 8).map((p, k) => (
-                          <div key={p.path} style={{ marginTop: '10px' }}>
-                            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}><span style={{ overflowWrap: 'anywhere' }}>{p.path === '/' ? 'Home (portada)' : p.path}</span><strong>{nf(p.views)} · {pagesTotal ? ((p.views / pagesTotal) * 100).toFixed(0) : 0}%</strong></div>
-                            <div style={{ background: T.soft, borderRadius: '4px', height: '8px', marginTop: '3px' }}><div style={{ width: `${pagesTotal ? (p.views / pagesTotal) * 100 : 0}%`, background: k === 0 ? T.highlight : T.accent, height: '8px', borderRadius: '4px' }} /></div>
-                          </div>
-                        ))}
-                        <div style={styles.cardSubtext}>Porcentaje sobre las 8 páginas más vistas desde email.</div>
-                      </div>
-                    )}
+                    {((TR.articles || []).length > 0 || (TR.pages || []).length > 0) && (() => {
+                      const arts = TR.articles || [];
+                      const total = TR.articleTotal || arts.reduce((x, a) => x + a.views, 0);
+                      const fmtDate = (iso) => (iso ? new Date(`${iso}T12:00:00Z`).toLocaleDateString('es-CO', { day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' }) : '\u2014');
+                      return (
+                        <div style={{ ...styles.card, marginTop: '20px' }}>
+                          <div style={styles.cardTitle}>Artículos más leídos desde email · {rangeLabel}</div>
+                          {arts.length > 0 ? (
+                            <div style={{ overflowX: 'auto', marginTop: '8px' }}>
+                              <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '720px' }}>
+                                <thead>
+                                  <tr>{['#', 'Artículo', 'Sección', 'Publicado', 'Vistas', '% de artículos', 'Entradas'].map((h, k) => <th key={h} style={{ textAlign: k > 3 ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                                </thead>
+                                <tbody>
+                                  {arts.map((a, k) => (
+                                    <tr key={a.path} style={{ background: k === 0 ? '#fff6ee' : 'transparent' }}>
+                                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', fontWeight: 800, color: k < 3 ? T.accent : '#888' }}>{k + 1}</td>
+                                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>
+                                        <div style={{ fontWeight: 700 }}>{a.title || a.path}</div>
+                                        {a.title && <div style={{ fontSize: '11px', color: '#888', overflowWrap: 'anywhere' }}>{a.path}</div>}
+                                      </td>
+                                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', textTransform: 'capitalize' }}>{a.topic}</td>
+                                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', whiteSpace: 'nowrap' }}>{fmtDate(a.date)}</td>
+                                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right', fontWeight: 700 }}>{nf(a.views)}</td>
+                                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' }}>{total ? ((a.views / total) * 100).toFixed(1) : 0}%</td>
+                                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' }}>{nf(a.entries)}</td>
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
+                          ) : null}
+                          {(TR.otherPages || []).length > 0 && (
+                            <div style={{ marginTop: '12px', fontSize: '12px', color: '#444' }}>
+                              <strong>Otras páginas muy visitadas (no son artículos):</strong>{' '}
+                              {TR.otherPages.map((p, k) => <span key={p.path}>{k ? ' · ' : ''}{p.path === '/' ? 'Portada' : p.path} <strong>{nf(p.views)}</strong></span>)}
+                            </div>
+                          )}
+                          <div style={styles.cardSubtext}>Vistas: veces que se abrió el artículo en sesiones que llegaron por el canal Email. Entradas: sesiones que empezaron directamente en ese artículo. Los títulos y fechas salen del sitio.</div>
+                        </div>
+                      );
+                    })()}
                     {((TR.secondClicks || []).length > 0 || (TR.flows || []).length > 0) && (() => {
                       const destList = (TR.secondClicks || []).slice(0, 6).map((x) => [x.path, x.views]);
                       const destTotal = TR.secondTotal || destList.reduce((a, x) => a + x[1], 0);
@@ -2626,8 +2659,8 @@ export default function Dashboard() {
           const click = sum(list, 'click'); const unsub = sum(list, 'unsubscribed'); const bounce = sum(list, 'bounce');
           return { sent, delivered, open, click, unsub, bounce, openRate: delivered ? open / delivered : 0, clickRate: delivered ? click / delivered : 0, ctor: open ? click / open : 0, unsubRate: delivered ? unsub / delivered : 0, bounceRate: sent ? bounce / sent : 0 };
         };
-        const cur = agg((E.emails || []).filter((e) => e.sent > 1));
-        const prv = agg((E.prevEmails || []).filter((e) => e.sent > 1));
+        const cur = agg((E.emails || []).filter((e) => isRealEmail(e)));
+        const prv = agg((E.prevEmails || []).filter((e) => isRealEmail(e)));
         const hasPrev = (E.prevEmails || []).length > 0;
         const rel = (a, b) => (b ? a / b - 1 : null);
         const pc = (v, d = 1) => `${(v * 100).toFixed(d)}%`;
@@ -2638,7 +2671,7 @@ export default function Dashboard() {
             {hasPrev ? renderChange(change, lowerBetter, prevText) : null}
           </div>
         );
-        const sorted = [...(E.emails || [])].filter((e) => e.sent > 1).sort((a, b) => new Date(a.sentAt || 0) - new Date(b.sentAt || 0));
+        const sorted = [...(E.emails || [])].filter((e) => isRealEmail(e)).sort((a, b) => new Date(a.sentAt || 0) - new Date(b.sentAt || 0));
         const batchOnly = sorted.filter((e) => e.kind !== 'automated');
         const chartData = batchOnly.map((e) => ({
           label: e.sentAt ? `${new Date(e.sentAt).getUTCDate()} ${['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'][new Date(e.sentAt).getUTCMonth()]}` : e.name.slice(0, 12),
@@ -2669,23 +2702,6 @@ export default function Dashboard() {
 
                 {TR && <div style={{ ...styles.sectionTitle, fontSize: '16px', margin: '30px 0 12px' }}>Aporte a la web · tráfico desde email</div>}
                 {trafficBlock}
-
-                <div style={{ ...styles.card, marginTop: '20px' }}>
-                  <div style={styles.cardTitle}>Apertura y clics por envío</div>
-                  <div style={{ width: '100%', height: 300, marginTop: '12px' }}>
-                    <ResponsiveContainer>
-                      <BarChart data={chartData} margin={{ top: 24, right: 10, left: 0, bottom: 0 }}>
-                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                        <XAxis dataKey="label" tick={{ fontSize: 11 }} />
-                        <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} width={40} />
-                        <Tooltip formatter={(v) => `${(v * 100).toFixed(1)}%`} />
-                        <Legend />
-                        <Bar dataKey="Apertura" fill={T.accent}><LabelList dataKey="Apertura" position="top" formatter={(v) => `${(v * 100).toFixed(0)}%`} style={{ fontSize: 10, fill: '#444' }} /></Bar>
-                        <Bar dataKey="Clics" fill="#333333"><LabelList dataKey="Clics" position="top" formatter={(v) => `${(v * 100).toFixed(1)}%`} style={{ fontSize: 10, fill: '#444' }} /></Bar>
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </div>
-                </div>
 
                 <div style={{ ...styles.card, marginTop: '20px' }}>
                   <div style={styles.cardTitle}>Detalle de envíos</div>

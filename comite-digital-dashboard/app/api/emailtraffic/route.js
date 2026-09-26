@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { resolveRange } from '../../lib/range';
 import { getAccessToken, runReport } from '../../lib/ga4';
 import { isMock, mockEmailTraffic } from '../../lib/mock';
@@ -9,6 +10,27 @@ const MONTHS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', '
 const EMAIL = { filter: { fieldName: 'sessionDefaultChannelGroup', stringFilter: { matchType: 'EXACT', value: 'Email' } } };
 
 const SITE = { axxis: 'revistaaxxis.com.co', diners: 'revistadiners.com.co' };
+const decodeEntities = (t) => String(t || '')
+  .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
+  .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCharCode(parseInt(n, 16)))
+  .replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&nbsp;/g, ' ');
+const titleCache = new Map();
+
+async function postInfo(domain, path) {
+  const segs = path.split('/').filter(Boolean);
+  const slug = segs[segs.length - 1];
+  const key = `${domain}|${slug}`;
+  if (titleCache.has(key)) return titleCache.get(key);
+  let info = { title: null, date: null };
+  try {
+    const r = await axios.get(`https://${domain}/wp-json/wp/v2/posts`, { params: { slug, _fields: 'date,title' }, timeout: 8000 });
+    const post = r.data?.[0];
+    if (post) info = { title: decodeEntities(post.title?.rendered), date: post.date.slice(0, 10) };
+  } catch { /* sin título si el sitio no responde */ }
+  titleCache.set(key, info);
+  return info;
+}
+
 
 async function build(token, propertyId, range, domain) {
   const both = [
@@ -53,6 +75,14 @@ async function build(token, propertyId, range, domain) {
     .filter((x) => x.views > 0 && !x.path.includes('/wp-content/'))
     .sort((a, b) => b.views - a.views);
   const secondTotal = secondClicks.reduce((a, x) => a + x.views, 0);
+  const pageRows = allPages.map((r) => ({ path: r.dimensionValues[0].value, views: Number(r.metricValues[0].value) })).filter((x) => !x.path.includes('/wp-content/'));
+  const isArticle = (p) => p.split('/').filter(Boolean).length >= 2 && !/^\/(marketplace|carrito|producto|mi-cuenta|finalizar-compra)/.test(p);
+  const articleRows = pageRows.filter((x) => isArticle(x.path)).sort((a, b) => b.views - a.views).slice(0, 15);
+  const infos = [];
+  for (let i = 0; i < articleRows.length; i += 5) infos.push(...(await Promise.all(articleRows.slice(i, i + 5).map((a) => postInfo(domain, a.path)))));
+  const articles = articleRows.map((a, k) => ({ path: a.path, views: a.views, entries: landingSessions[norm(a.path)] || 0, title: infos[k].title, date: infos[k].date, topic: (a.path.split('/').filter(Boolean)[0] || '').replace(/-/g, ' ') }));
+  const otherPages = pageRows.filter((x) => !isArticle(x.path)).sort((a, b) => b.views - a.views).slice(0, 5);
+  const articleTotal = pageRows.filter((x) => isArticle(x.path)).reduce((a, x) => a + x.views, 0);
   const pathOf = (u) => { try { return new URL(u).pathname; } catch { return u; } };
   const flows = flowRows.map((r) => ({ from: pathOf(r.dimensionValues[0].value), to: r.dimensionValues[1].value, views: Number(r.metricValues[0].value) })).filter((f) => f.from !== f.to && !f.from.includes('/wp-content/'));
   const q = (rows) => (rows[0] ? { sec: Number(rows[0].metricValues[0].value), bounce: Number(rows[0].metricValues[1].value), engagement: Number(rows[0].metricValues[2].value), sessions: Number(rows[0].metricValues[3].value) } : null);
@@ -68,6 +98,9 @@ async function build(token, propertyId, range, domain) {
     siteSessions: pick(siteTotals, 'cur', 1),
     campaigns: campaigns.map((r) => ({ name: r.dimensionValues[0].value, views: Number(r.metricValues[0].value), sessions: Number(r.metricValues[1].value) })),
     flows,
+    articles,
+    otherPages,
+    articleTotal,
     byHour,
     byDow,
     secondClicks: secondClicks.slice(0, 10),
