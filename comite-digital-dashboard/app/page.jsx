@@ -2281,6 +2281,72 @@ export default function Dashboard() {
 
       {ready && section === 'pauta' && (
       <>
+      {/* Always on vs resto */}
+      {data.pauta?.brands && (() => {
+        const brandsP = data.pauta.brands;
+        const all = Object.keys(brandsP).flatMap((b) => (brandsP[b].campaigns || []).map((c) => ({ ...c, brandKey: b })));
+        const totS = all.reduce((a, c) => a + c.spend, 0);
+        const totPrevS = all.reduce((a, c) => a + (c.prevSpend || 0), 0);
+        if (!all.length || !totS) return null;
+        const isAO = (c) => /seguidores|always\s*on|trueplay/i.test(c.name) && !/agosto|julio|septiembre|junio|octubre|mayo/i.test(c.name);
+        const isFollow = (c) => /seguidores/i.test(c.name);
+        const groups = [
+          { k: 'seg', t: 'Always on · Seguidores', list: all.filter((c) => isAO(c) && isFollow(c)) },
+          { k: 'tra', t: 'Always on · Tráfico', list: all.filter((c) => isAO(c) && !isFollow(c)) },
+          { k: 'res', t: 'Resto de campañas', list: all.filter((c) => !isAO(c)) },
+        ];
+        const avg = (() => { const l = all.reduce((a, c) => a + c.linkClicks, 0); return l ? totS / l : 0; })();
+        const agg = (list) => {
+          const s = list.reduce((a, c) => a + c.spend, 0);
+          const ps = list.reduce((a, c) => a + (c.prevSpend || 0), 0);
+          const lc = list.reduce((a, c) => a + c.linkClicks, 0);
+          const im = list.reduce((a, c) => a + (c.impressions || 0), 0);
+          const rc = list.reduce((a, c) => a + (c.reach || 0), 0);
+          const rs = list.reduce((a, c) => a + (c.results || 0), 0);
+          return { n: list.length, share: s / totS, prevShare: totPrevS ? ps / totPrevS : null, lc, clickShare: 0, cpcRatio: lc && avg ? s / lc / avg : null, ctr: im ? (lc / im) * 100 : null, cpmRatio: null, im, rc, rs, s };
+        };
+        const rows = groups.map((g) => ({ ...g, m: agg(g.list) }));
+        const totLc = rows.reduce((a, r) => a + r.m.lc, 0);
+        const totIm = rows.reduce((a, r) => a + r.m.im, 0);
+        const cpmAvg = totIm ? totS / totIm : 0;
+        rows.forEach((r) => { r.m.clickShare = totLc ? r.m.lc / totLc : 0; r.m.cpmRatio = r.m.im && cpmAvg ? r.m.s / r.m.im / cpmAvg : null; });
+        const td = { padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' };
+        const fmtDelta = (cur, prev) => (prev == null ? '' : `${(cur - prev) >= 0 ? '+' : ''}${((cur - prev) * 100).toFixed(1)} pts vs mes anterior (${(prev * 100).toFixed(1)}%)`);
+        const ao = rows.slice(0, 2).reduce((a, r) => a + r.m.share, 0);
+        const aoClicks = rows.slice(0, 2).reduce((a, r) => a + r.m.clickShare, 0);
+        return (
+          <div style={{ ...styles.card, marginBottom: '24px' }}>
+            <div style={{ ...styles.cardTitle, fontSize: '14px', margin: 0 }}>Always on (Seguidores y Tráfico permanente) vs resto de campañas · {rangeLabel}</div>
+            <div style={styles.cardSubtext}>Always on: campañas permanentes de Seguidores, Tráfico always on y tráfico al home (trueplay). Resto: campañas mensuales de contenido y de clientes. Costo por clic y CPM se muestran frente al promedio de la cuenta (1,0x = promedio).</div>
+            <div style={{ overflowX: 'auto', marginTop: '8px' }}>
+              <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '760px' }}>
+                <thead>
+                  <tr>{['Grupo', 'Campañas', '% de la inversión', 'vs mes anterior', '% de clics en enlace', 'Costo por clic vs promedio', 'CTR', 'CPM vs promedio', 'Alcance'].map((h, k) => <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                </thead>
+                <tbody>
+                  {rows.map((r) => (
+                    <tr key={r.k}>
+                      <td style={{ ...td, textAlign: 'left', fontWeight: 700 }}>{r.t}</td>
+                      <td style={td}>{r.m.n}</td>
+                      <td style={{ ...td, fontWeight: 800 }}>{(r.m.share * 100).toFixed(1)}%</td>
+                      <td style={{ ...td, fontSize: '11px', color: '#666' }}>{r.m.prevShare == null ? '—' : fmtDelta(r.m.share, r.m.prevShare)}</td>
+                      <td style={td}>{(r.m.clickShare * 100).toFixed(1)}%</td>
+                      <td style={{ ...td, fontWeight: 800, color: r.m.cpcRatio > 1.5 ? '#c62828' : r.m.cpcRatio != null && r.m.cpcRatio < 0.9 ? '#2e7d32' : '#222' }}>{r.m.cpcRatio == null ? '—' : `${r.m.cpcRatio.toFixed(1)}x`}</td>
+                      <td style={td}>{r.m.ctr == null ? '—' : `${r.m.ctr.toFixed(2)}%`}</td>
+                      <td style={td}>{r.m.cpmRatio == null ? '—' : `${r.m.cpmRatio.toFixed(1)}x`}</td>
+                      <td style={td}>{nf(r.m.rc)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div style={{ marginTop: '10px', fontSize: '13px', lineHeight: 1.6 }}>
+              Las campañas always on consumen <strong>{(ao * 100).toFixed(1)}%</strong> de la inversión y traen <strong>{(aoClicks * 100).toFixed(1)}%</strong> de los clics en enlace. Las de Seguidores buscan interacciones, no clics, por eso su costo por clic no es comparable con el de tráfico.
+            </div>
+          </div>
+        );
+      })()}
+
       {/* Campañas con peor costo por clic */}
       {data.pauta?.brands && (() => {
         const brandsP = data.pauta.brands;
