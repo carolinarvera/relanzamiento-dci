@@ -19,8 +19,8 @@ const tag = (xml, name) => { const m = new RegExp(`<${name}[^>]*>(.*?)</${name}>
 // Categorías reales de cada sitio (WordPress): AXXIS = Arquitectura, Diseño, Decoración, Especiales.
 // Diners = Cultura, Estilo de vida, Tendencias, Gastronomía, Viajes, Salud y Fitness, Tecnología, entre otras.
 const CATS = [
-  { key: 'arquitectura', label: 'Arquitectura', brands: ['axxis'], q: 'arquitectura OR construcción OR vivienda OR urbanismo', re: /arquitect|construccion|vivienda|inmobiliari|urbanismo|paisajismo|estadio|edificio|obra civil/ },
-  { key: 'diseno', label: 'Diseño', brands: ['axxis'], q: 'diseño OR interiorismo OR mobiliario OR diseño industrial', re: /diseno|interiorismo|mobiliario|disenador|design/ },
+  { key: 'arquitectura', label: 'Arquitectura', brands: ['axxis'], q: 'arquitectura OR construcción OR vivienda OR urbanismo', re: /arquitect|construccion|vivienda|inmobiliari|urbanismo|paisajismo|edificio|obra civil/ },
+  { key: 'diseno', label: 'Diseño', brands: ['axxis'], q: 'diseño OR interiorismo OR mobiliario OR diseño industrial', re: /diseno|interiorismo|mobiliario|disenador|\bdesign\b/ },
   { key: 'decoracion', label: 'Decoración', brands: ['axxis'], q: 'decoración OR decoración del hogar OR muebles OR tendencias hogar', re: /decoracion|hogar|muebles|amoblar|remodelacion/ },
   { key: 'especiales', label: 'Coyuntura y especiales (sismos)', brands: ['axxis', 'diners'], q: 'sismo OR terremoto OR temblor Colombia', re: /sismo|terremoto|temblor|epicentro|damnificad|emergencia|acopio/ },
   { key: 'cultura', label: 'Cultura, cine, series y música', brands: ['diners'], q: 'cine OR series OR música OR exposición OR libros', re: /cine|pelicula|serie |series|musica|concierto|festival|artista|cantante|album|libro|exposicion|teatro|podcast|netflix|estreno|gira|actor|actriz|cultura/ },
