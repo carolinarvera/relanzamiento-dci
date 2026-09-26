@@ -1419,8 +1419,9 @@ export default function Dashboard() {
       <>
       {/* Tendencias del día en Colombia */}
       {(() => {
-        const D = data.dailytrends;
-        if (!D || D.error || !D.news) return null;
+        const Dall = data.dailytrends;
+        const D = Dall?.brands?.[activeTab] ? { ...Dall.brands[activeTab], fetchedAt: Dall.fetchedAt, totalTrends: Dall.totalTrends } : null;
+        if (!Dall || Dall.error || !D) return null;
         const when = new Date(D.fetchedAt);
         const hhmm = when.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Bogota' });
         const bogDay = when.toLocaleDateString('es-CO', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'America/Bogota' });
@@ -1431,8 +1432,8 @@ export default function Dashboard() {
         };
         return (
           <div style={{ ...styles.card, marginBottom: '24px' }}>
-            <div style={{ ...styles.cardTitle, fontSize: '14px' }}>Tendencias del día en Colombia · solo categorías relacionadas</div>
-            <div style={styles.cardSubtext}>{bogDay}, actualizado {hhmm} (hora Colombia). Búsquedas en tendencia de Google Trends filtradas a los temas de la revista, y noticias de las últimas 24 horas en cada categoría relacionada.</div>
+            <div style={{ ...styles.cardTitle, fontSize: '14px' }}>Tendencias del día en Colombia · categorías de {activeTab === 'axxis' ? 'AXXIS' : 'Diners'}</div>
+            <div style={styles.cardSubtext}>{bogDay}, actualizado {hhmm} (hora Colombia). Búsquedas en tendencia de Google Trends filtradas a las categorías de {activeTab === 'axxis' ? 'AXXIS (arquitectura, diseño, decoración y especiales)' : 'Diners (cultura, estilo de vida, gastronomía, viajes, salud, tecnología y tendencias)'}, y noticias de las últimas 24 horas en cada una.</div>
 
             <div style={{ ...styles.cardTitle, fontSize: '11px', marginTop: '16px' }}>Búsquedas en tendencia hoy relacionadas con la revista</div>
             {D.trends.length > 0 ? (
@@ -1457,7 +1458,7 @@ export default function Dashboard() {
             {D.trends.length > 0 && <div style={styles.cardSubtext}>Se descartaron {D.filteredOut} de {D.totalTrends} tendencias por no corresponder a los temas de la revista.</div>}
 
             <div style={{ ...styles.cardTitle, fontSize: '11px', marginTop: '18px' }}>Qué se está publicando hoy en cada categoría (últimas 24 horas)</div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '18px', marginTop: '8px', alignItems: 'start' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(3, Math.max(1, D.news.filter((c) => c.items.length > 0).length))}, minmax(0, 1fr))`, gap: '18px', marginTop: '8px', alignItems: 'start' }}>
               {D.news.filter((c) => c.items.length > 0).map((c) => (
                 <div key={c.key}>
                   <div style={{ fontSize: '13px', fontWeight: 800, color: T.accent }}>{c.label} <span style={{ color: '#888', fontWeight: 500 }}>· {c.total}{c.total >= 100 ? '+' : ''} notas</span></div>

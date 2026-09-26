@@ -15,13 +15,17 @@ const decode = (t) => String(t || '')
 const plain = (t) => String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 const tag = (xml, name) => { const m = new RegExp(`<${name}[^>]*>(.*?)</${name}>`, 's').exec(xml); return m ? decode(m[1]).trim() : ''; };
 
+// Categorías reales de cada sitio (WordPress): AXXIS = Arquitectura, Diseño, Decoración, Especiales.
+// Diners = Cultura, Estilo de vida, Tendencias, Gastronomía, Viajes, Salud y Fitness, Tecnología, entre otras.
 const CATS = [
-  { key: 'arquitectura', label: 'Arquitectura, diseño y decoración', q: 'arquitectura OR diseño OR interiorismo OR decoración', re: /arquitect|diseno|interiorismo|decoracion|construccion|vivienda|inmobiliari|urbanismo|paisajismo|museo|estadio/ },
-  { key: 'gastro', label: 'Gastronomía', q: 'restaurantes OR gastronomía OR chef OR cocina colombiana', re: /restaurante|gastronom|chef|cocina|comida|receta|vino|cocteler|cafe |brunch|lechona|50 best/ },
-  { key: 'viajes', label: 'Viajes y turismo', q: 'viajes OR turismo OR destinos OR hoteles', re: /viaje|turismo|destino|hotel|playa|aerolinea|vuelos|resort|escapada|vacaciones|aeropuerto/ },
-  { key: 'cultura', label: 'Cultura y entretenimiento', q: 'cine OR series OR música OR exposición OR libros', re: /cine|pelicula|serie |series|musica|concierto|festival|artista|cantante|album|libro|exposicion|teatro|podcast|netflix|estreno|gira|actor|actriz|cultura/ },
-  { key: 'moda', label: 'Moda, lujo y bienestar', q: 'moda OR lujo OR relojes OR joyería OR belleza', re: /moda|lujo|reloj|joyeria|belleza|desfile|diseñador|disenador|bienestar|maquillaje|perfume|cartier|rolex/ },
-  { key: 'coyuntura', label: 'Coyuntura y servicio (sismos)', q: 'sismo OR terremoto OR temblor Colombia', re: /sismo|terremoto|temblor|epicentro|damnificad|emergencia|acopio/ },
+  { key: 'arquitectura', label: 'Arquitectura, diseño y decoración', brands: ['axxis'], q: 'arquitectura OR diseño OR interiorismo OR decoración', re: /arquitect|diseno|interiorismo|decoracion|construccion|vivienda|inmobiliari|urbanismo|paisajismo|museo|estadio/ },
+  { key: 'especiales', label: 'Coyuntura y especiales (sismos)', brands: ['axxis', 'diners'], q: 'sismo OR terremoto OR temblor Colombia', re: /sismo|terremoto|temblor|epicentro|damnificad|emergencia|acopio/ },
+  { key: 'cultura', label: 'Cultura, cine, series y música', brands: ['diners'], q: 'cine OR series OR música OR exposición OR libros', re: /cine|pelicula|serie |series|musica|concierto|festival|artista|cantante|album|libro|exposicion|teatro|podcast|netflix|estreno|gira|actor|actriz|cultura/ },
+  { key: 'gastro', label: 'Gastronomía', brands: ['diners'], q: 'restaurantes OR gastronomía OR chef OR cocina colombiana', re: /restaurante|gastronom|chef|cocina|comida|receta|vino|cocteler|cafe |brunch|lechona|50 best/ },
+  { key: 'viajes', label: 'Viajes y turismo', brands: ['diners'], q: 'viajes OR turismo OR destinos OR hoteles', re: /viaje|turismo|destino|hotel|playa|aerolinea|vuelos|resort|escapada|vacaciones|aeropuerto/ },
+  { key: 'estilo', label: 'Estilo de vida y tendencias (moda, lujo, belleza)', brands: ['diners'], q: 'moda OR lujo OR relojes OR joyería OR belleza', re: /moda|lujo|reloj|joyeria|belleza|desfile|maquillaje|perfume|cartier|rolex|tendencia/ },
+  { key: 'salud', label: 'Salud y bienestar', brands: ['diners'], q: 'salud OR bienestar OR fitness OR nutrición', re: /salud|bienestar|fitness|nutricion|ejercicio|dieta|sueno|mental/ },
+  { key: 'tecnologia', label: 'Tecnología', brands: ['diners'], q: 'tecnología OR inteligencia artificial OR gadgets', re: /tecnolog|inteligencia artificial|gadget|celular|openai|robot|apple|google/ },
 ];
 
 async function fetchTrends() {
@@ -35,9 +39,9 @@ async function fetchTrends() {
   });
 }
 
-function categorize(t) {
+function categorize(t, brand) {
   const hay = plain(`${t.query} ${t.news.map((n) => `${n.title} ${n.url.replace(/[-_/]/g, ' ')}`).join(' ')}`);
-  return CATS.find((c) => c.re.test(hay)) || null;
+  return CATS.filter((c) => c.brands.includes(brand)).find((c) => c.re.test(hay)) || null;
 }
 
 async function fetchNews(cat) {
@@ -59,8 +63,12 @@ export async function GET() {
   try {
     if (cache && Date.now() - cache.at < TTL_MS) return Response.json(cache.value);
     const [trends, ...news] = await Promise.all([fetchTrends(), ...CATS.map((c) => fetchNews(c).catch(() => ({ key: c.key, label: c.label, total: 0, items: [] })))]);
-    const matched = trends.map((t) => ({ ...t, category: categorize(t) })).filter((t) => t.category).map((t) => ({ ...t, category: { key: t.category.key, label: t.category.label } }));
-    const value = { fetchedAt: new Date().toISOString(), totalTrends: trends.length, filteredOut: trends.length - matched.length, trends: matched, news };
+    const brands = {};
+    ['axxis', 'diners'].forEach((brand) => {
+      const matched = trends.map((t) => ({ ...t, category: categorize(t, brand) })).filter((t) => t.category).map((t) => ({ ...t, category: { key: t.category.key, label: t.category.label } }));
+      brands[brand] = { filteredOut: trends.length - matched.length, trends: matched, news: news.filter((c) => CATS.find((x) => x.key === c.key).brands.includes(brand)) };
+    });
+    const value = { fetchedAt: new Date().toISOString(), totalTrends: trends.length, brands };
     cache = { at: Date.now(), value };
     return Response.json(value);
   } catch (error) {
