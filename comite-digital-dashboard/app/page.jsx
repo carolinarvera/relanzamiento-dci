@@ -151,6 +151,7 @@ export default function Dashboard() {
   const [trends, setTrends] = useState(null);
   const [trendDays, setTrendDays] = useState(30);
   const [newsWin, setNewsWin] = useState('1d');
+  const [pautaObj, setPautaObj] = useState('trafico');
   const [newsByWin, setNewsByWin] = useState({});
   const [traficoOpen, setTraficoOpen] = useState(false);
   const [trafico, setTrafico] = useState(null);
@@ -2280,6 +2281,75 @@ export default function Dashboard() {
 
       {ready && section === 'pauta' && (
       <>
+      {/* Campañas con peor costo por clic */}
+      {data.pauta?.brands && (() => {
+        const brandsP = data.pauta.brands;
+        const all = Object.keys(brandsP).flatMap((b) => (brandsP[b].campaigns || []).map((c) => ({ ...c, brandKey: b })));
+        if (!all.length) return null;
+        const totS = all.reduce((a, c) => a + c.spend, 0);
+        const totL = all.reduce((a, c) => a + c.linkClicks, 0);
+        if (!totS || !totL) return null;
+        const avg = totS / totL;
+        const OBJ = { OUTCOME_TRAFFIC: 'Tráfico', OUTCOME_AWARENESS: 'Alcance', OUTCOME_ENGAGEMENT: 'Interacciones', OUTCOME_SALES: 'Ventas', OUTCOME_LEADS: 'Clientes potenciales' };
+        const pool = all.filter((c) => (pautaObj === 'trafico' ? c.objective === 'OUTCOME_TRAFFIC' : true) && c.spend >= totS * 0.003);
+        const ranked = pool.map((c) => ({ ...c, ratio: c.linkClicks ? c.spend / c.linkClicks / avg : Infinity, over: (c.spend - c.linkClicks * avg) / totS }))
+          .sort((a, b) => (b.ratio === a.ratio ? b.spend - a.spend : b.ratio - a.ratio));
+        const worst = ranked.slice(0, 10);
+        const worstSpend = worst.reduce((a, c) => a + c.spend, 0);
+        const worstClicks = worst.reduce((a, c) => a + c.linkClicks, 0);
+        const bName = { axxis: 'AXXIS', diners: 'Diners', gamma: 'Gamma', otras: 'Otras' };
+        const poolSpend = pool.reduce((a, c) => a + c.spend, 0);
+        const poolClicks = pool.reduce((a, c) => a + c.linkClicks, 0);
+        const btn = (k, t) => (
+          <button onClick={() => setPautaObj(k)} style={{ padding: '4px 12px', fontSize: '12px', border: 'none', cursor: 'pointer', borderRadius: '12px', fontWeight: 700, background: pautaObj === k ? T.accent : '#e5e5e5', color: pautaObj === k ? '#fff' : '#444' }}>{t}</button>
+        );
+        return (
+          <div style={{ ...styles.card, marginBottom: '24px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+              <div style={{ ...styles.cardTitle, fontSize: '14px', margin: 0 }}>Las 10 campañas con costo por clic en enlace más alto · {rangeLabel}</div>
+              <div style={{ display: 'flex', gap: '6px' }}>{btn('trafico', 'Solo tráfico')}{btn('todas', 'Todos los objetivos')}</div>
+            </div>
+            <div style={styles.cardSubtext}>Costo por clic en enlace de cada campaña frente al promedio de toda la cuenta (100% de la inversión de las marcas y clientes). 1,0x es el promedio; 2,0x significa que cada clic cuesta el doble. Solo campañas con al menos 0,3% de la inversión de la cuenta.</div>
+            {worst.length === 0 ? (
+              <div style={{ fontSize: '13px', color: '#555', marginTop: '10px' }}>No hay campañas con inversión suficiente para comparar.</div>
+            ) : (
+              <>
+                <div style={{ overflowX: 'auto', marginTop: '8px' }}>
+                  <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '820px' }}>
+                    <thead>
+                      <tr>{['#', 'Campaña', 'Marca', 'Línea', 'Objetivo', '% de la inversión', 'Clics en enlace', 'Costo por clic vs promedio', 'Sobrecosto (% de la inversión)'].map((h, k) => <th key={h} style={{ textAlign: k > 4 ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                    </thead>
+                    <tbody>
+                      {worst.map((c, k) => {
+                        const td = { padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' };
+                        return (
+                          <tr key={c.id || c.name} style={{ background: k === 0 ? '#fff6ee' : 'transparent' }}>
+                            <td style={{ ...td, textAlign: 'left', fontWeight: 800, color: k < 3 ? '#c62828' : '#888' }}>{k + 1}</td>
+                            <td style={{ ...td, textAlign: 'left', maxWidth: '360px', overflowWrap: 'anywhere', fontWeight: 600 }}>{c.name}</td>
+                            <td style={{ ...td, textAlign: 'left' }}>{bName[c.brandKey] || c.brandKey}</td>
+                            <td style={{ ...td, textAlign: 'left', textTransform: 'capitalize' }}>{c.payer}</td>
+                            <td style={{ ...td, textAlign: 'left' }}>{OBJ[c.objective] || c.objective}</td>
+                            <td style={td}>{((c.spend / totS) * 100).toFixed(2)}%</td>
+                            <td style={td}>{nf(c.linkClicks)}</td>
+                            <td style={{ ...td, fontWeight: 800, color: '#c62828' }}>{Number.isFinite(c.ratio) ? `${c.ratio.toFixed(1)}x` : 'Sin clics'}</td>
+                            <td style={{ ...td, color: c.over > 0 ? '#c62828' : '#222' }}>{c.over > 0 ? `${(c.over * 100).toFixed(2)}%` : '—'}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+                <div style={{ marginTop: '10px', fontSize: '13px', lineHeight: 1.6 }}>
+                  Estas 10 campañas concentran <strong>{poolSpend ? ((worstSpend / poolSpend) * 100).toFixed(1) : 0}%</strong> de la inversión {pautaObj === 'trafico' ? 'de tráfico' : 'analizada'} y traen <strong>{poolClicks ? ((worstClicks / poolClicks) * 100).toFixed(1) : 0}%</strong> de los clics en enlace.
+                  {pautaObj === 'todas' ? ' Con todos los objetivos, las campañas de alcance o interacciones salen caras en clics porque no buscan clics en enlace; por eso "Solo tráfico" es la comparación justa.' : ''}
+                </div>
+                <div style={styles.cardSubtext}>Sobrecosto = lo que se pagó por encima de lo que costarían esos mismos clics al promedio de la cuenta, como % de la inversión total de la cuenta. Por confidencialidad se muestran solo valores relativos.</div>
+              </>
+            )}
+          </div>
+        );
+      })()}
+
       {/* Informe de pauta */}
       {data.pauta?.brands && (() => {
         const brandKey = activeTab;
