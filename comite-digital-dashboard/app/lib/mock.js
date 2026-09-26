@@ -191,3 +191,29 @@ export function mockEmails(range) {
     mock: true,
   };
 }
+
+export function mockEmailTraffic(range) {
+  const emails = mockEmails(range);
+  const build = (brand, scale) => {
+    const list = emails[brand].emails;
+    const slug = (e) => e.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-$/, '');
+    const r = rng(brand === 'axxis' ? 41 : 43);
+    const campaigns = list.map((e) => { const views = Math.round((1800 + r() * 2200) * scale); return { name: slug(e), views, sessions: Math.round(views * 0.62) }; });
+    campaigns.push({ name: '(not set)', views: Math.round(900 * scale), sessions: Math.round(540 * scale) });
+    const views = campaigns.reduce((a, c) => a + c.views, 0);
+    const days = [];
+    for (let t = new Date(`${range.start}T00:00:00Z`); t <= new Date(`${range.end}T00:00:00Z`); t = new Date(t.getTime() + 86400000)) days.push(new Date(t));
+    const sendDays = new Set(list.map((e) => e.sentAt.slice(0, 10)));
+    const daily = days.map((d) => {
+      const iso = d.toISOString().slice(0, 10);
+      const spike = sendDays.has(iso) ? 1500 : ([...sendDays].some((sd) => Math.abs((new Date(sd) - d) / 86400000) === 1) ? 600 : 0);
+      return { date: iso.replace(/-/g, ''), label: `${d.getUTCDate()} ${MONTHS[d.getUTCMonth()]}`, value: Math.round((120 + r() * 80 + spike) * scale) };
+    });
+    return {
+      views, prevViews: Math.round(views * 0.88), sessions: Math.round(views * 0.62), prevSessions: Math.round(views * 0.62 * 0.9), users: Math.round(views * 0.5), prevUsers: Math.round(views * 0.5 * 0.9),
+      siteViews: Math.round(views / 0.03), prevSiteViews: Math.round(views / 0.03 * 1.1), siteSessions: Math.round(views / 0.03 * 0.69),
+      campaigns: campaigns.sort((a, b) => b.views - a.views), sources: [{ name: 'hs_email', views: Math.round(views * 0.8) }, { name: 'newsletter', views: Math.round(views * 0.2) }], daily,
+    };
+  };
+  return { range, axxis: build('axxis', 1), diners: build('diners', 1.6), mock: true };
+}

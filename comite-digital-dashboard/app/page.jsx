@@ -78,7 +78,7 @@ const SECTIONS = [
   { key: 'seo', label: 'SEO', apis: ['gsc', 'seo'] },
   { key: 'redes', label: 'Redes sociales', apis: ['meta'] },
   { key: 'pauta', label: 'Pauta', apis: ['pauta'] },
-  { key: 'emails', label: 'Emails', apis: ['emails'] },
+  { key: 'emails', label: 'Emails', apis: ['emails', 'emailtraffic'] },
 ];
 const CHANNEL_COLORS = {
   'Búsqueda orgánica': { bg: '#e6f4ea', fg: '#1e6b34' },
@@ -89,10 +89,10 @@ const CHANNEL_COLORS = {
   Email: { bg: '#fce4ec', fg: '#ad1457' },
   default: { bg: '#eee', fg: '#444' },
 };
-const API_NAMES = { gsc: 'Search Console', ga4: 'GA4', meta: 'Meta', seo: 'SEO', pauta: 'Pauta', emails: 'Emails' };
+const API_NAMES = { gsc: 'Search Console', ga4: 'GA4', meta: 'Meta', seo: 'SEO', pauta: 'Pauta', emails: 'Emails', emailtraffic: 'Tráfico de email' };
 
 export default function Dashboard() {
-  const [data, setData] = useState({ gsc: {}, ga4: {}, meta: {}, seo: {}, pauta: {}, emails: {} });
+  const [data, setData] = useState({ gsc: {}, ga4: {}, meta: {}, seo: {}, pauta: {}, emails: {}, emailtraffic: {} });
   const [errorsBy, setErrorsBy] = useState({});
   const [loadedKey, setLoadedKey] = useState({});
   const [loading, setLoading] = useState(false);
@@ -359,6 +359,7 @@ export default function Dashboard() {
     meta: data.meta?.axxis || {},
     seo: data.seo?.axxis || null,
     emails: data.emails?.axxis || null,
+    emailtraffic: data.emailtraffic?.axxis || null,
   };
 
   const dinersData = {
@@ -367,6 +368,7 @@ export default function Dashboard() {
     meta: data.meta?.diners || {},
     seo: data.seo?.diners || null,
     emails: data.emails?.diners || null,
+    emailtraffic: data.emailtraffic?.diners || null,
   };
 
   const current = activeTab === 'axxis' ? axxisData : dinersData;
@@ -2281,9 +2283,104 @@ export default function Dashboard() {
 
       {ready && section === 'emails' && (() => {
         const E = current.emails;
+        const TR = current.emailtraffic;
+        const norm = (t) => String(t || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+        const rel0 = (a, b) => (b ? a / b - 1 : null);
+        const trafficBlock = TR ? (() => {
+          const share = TR.siteViews ? TR.views / TR.siteViews : 0;
+          const prevShare = TR.prevSiteViews ? TR.prevViews / TR.prevSiteViews : null;
+          const ppd = prevShare !== null ? (share - prevShare) * 100 : null;
+          const sendLabels = new Set((E?.emails || []).filter((e) => e.sentAt).map((e) => { const d = new Date(e.sentAt); return `${d.getUTCDate()} ${['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'][d.getUTCMonth()]}`; }));
+          const maxDaily = Math.max(0, ...(TR.daily || []).map((d) => d.value));
+          const campTotal = (TR.campaigns || []).reduce((a, c) => a + c.views, 0);
+          return (
+            <>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: '20px' }}>
+                <div style={styles.card}>
+                  <div style={styles.cardTitle}>Vistas web desde email</div>
+                  <div style={styles.cardValue}>{nf(TR.views)}</div>
+                  {renderChange(rel0(TR.views, TR.prevViews), false, nf(TR.prevViews))}
+                </div>
+                <div style={styles.card}>
+                  <div style={styles.cardTitle}>Peso sobre las vistas del sitio</div>
+                  <div style={styles.cardValue}>{(share * 100).toFixed(2)}%</div>
+                  {ppd !== null && <div style={styles.change(ppd >= 0)}>{ppd >= 0 ? '\u2191' : '\u2193'} {Math.abs(ppd).toFixed(2)} pp vs mes anterior</div>}
+                  {prevShare !== null && <div style={styles.cardSubtext}>Mes anterior: <strong>{(prevShare * 100).toFixed(2)}%</strong></div>}
+                </div>
+                <div style={styles.card}>
+                  <div style={styles.cardTitle}>Sesiones desde email</div>
+                  <div style={styles.cardValue}>{nf(TR.sessions)}</div>
+                  {renderChange(rel0(TR.sessions, TR.prevSessions), false, nf(TR.prevSessions))}
+                </div>
+                <div style={styles.card}>
+                  <div style={styles.cardTitle}>Usuarios desde email</div>
+                  <div style={styles.cardValue}>{nf(TR.users)}</div>
+                  {renderChange(rel0(TR.users, TR.prevUsers), false, nf(TR.prevUsers))}
+                </div>
+              </div>
+
+              {(TR.daily || []).length > 0 && (
+                <div style={{ ...styles.card, marginTop: '20px' }}>
+                  <div style={styles.cardTitle}>Vistas diarias desde email · los días de envío en naranja oscuro</div>
+                  <div style={{ width: '100%', height: 260, marginTop: '12px' }}>
+                    <ResponsiveContainer>
+                      <BarChart data={TR.daily} margin={{ top: 14, right: 10, left: 0, bottom: 0 }}>
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                        <XAxis dataKey="label" tick={{ fontSize: 10 }} interval={3} />
+                        <YAxis tick={{ fontSize: 10 }} width={40} />
+                        <Tooltip formatter={(v) => v.toLocaleString('es-CO')} />
+                        <Bar dataKey="value" name="Vistas desde email">
+                          {TR.daily.map((d) => <Cell key={d.date} fill={sendLabels.has(d.label) ? T.highlight : T.accent} />)}
+                        </Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                  <div style={styles.cardSubtext}>{sendLabels.size ? 'Los días de envío salen de HubSpot.' : 'Conecta HubSpot para marcar los días de envío.'} Pico: {nf(maxDaily)} vistas en un día.</div>
+                </div>
+              )}
+
+              {(TR.campaigns || []).length > 0 && (
+                <div style={{ ...styles.card, marginTop: '20px' }}>
+                  <div style={styles.cardTitle}>Tráfico por campaña de email (utm_campaign)</div>
+                  <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '8px' }}>
+                    <thead>
+                      <tr>
+                        {['Campaña', 'Vistas', '% del email', 'Sesiones'].map((h, k) => (
+                          <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {TR.campaigns.slice(0, 10).map((c, k) => (
+                        <tr key={c.name}>
+                          <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', fontWeight: k === 0 ? 700 : 400, overflowWrap: 'anywhere' }}>{c.name === '(not set)' ? 'Sin campaña identificada' : c.name}</td>
+                          <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right', fontWeight: 700 }}>{nf(c.views)}</td>
+                          <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' }}>{campTotal ? ((c.views / campTotal) * 100).toFixed(0) : 0}%</td>
+                          <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' }}>{nf(c.sessions)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                  <div style={styles.cardSubtext}>Tráfico del canal Email de GA4. Si una campaña aparece como "sin campaña identificada", el enlace del email no lleva utm_campaign.</div>
+                </div>
+              )}
+            </>
+          );
+        })() : null;
         if (!E) {
-          return <div style={{ ...styles.card, color: '#555' }}>Sin datos de emails. Revisa el mensaje de error de arriba (el token de HubSpot debe estar configurado en Vercel).</div>;
+          return (
+            <>
+              <h2 style={styles.sectionTitle}>Emails · aporte a la web · {rangeLabel}</h2>
+              {trafficBlock}
+              <div style={{ ...styles.card, color: '#555', marginTop: '20px' }}>Las métricas de envío (aperturas, clics, bajas) requieren el token de HubSpot configurado en Vercel. Revisa el mensaje de error de arriba.</div>
+            </>
+          );
         }
+        const webViewsFor = (e) => {
+          const keys = [norm(e.name), norm(e.subject)].filter((k) => k.length >= 6);
+          const hit = (TR?.campaigns || []).find((c) => { const cn = norm(c.name); return cn.length >= 6 && keys.some((k) => k.includes(cn) || cn.includes(k)); });
+          return hit ? hit.views : null;
+        };
         const sum = (list, k) => (list || []).reduce((a, e) => a + (e[k] || 0), 0);
         const agg = (list) => {
           const sent = sum(list, 'sent'); const delivered = sum(list, 'delivered'); const open = sum(list, 'open');
@@ -2325,6 +2422,9 @@ export default function Dashboard() {
                   {tile('Bajas', pc(cur.unsubRate, 2), rel(cur.unsubRate, prv.unsubRate), pc(prv.unsubRate, 2), true)}
                 </div>
 
+                {TR && <div style={{ ...styles.sectionTitle, fontSize: '16px', margin: '30px 0 12px' }}>Aporte a la web · tráfico desde email</div>}
+                {trafficBlock}
+
                 <div style={{ ...styles.card, marginTop: '20px' }}>
                   <div style={styles.cardTitle}>Apertura y clics por envío</div>
                   <div style={{ width: '100%', height: 300, marginTop: '12px' }}>
@@ -2345,10 +2445,10 @@ export default function Dashboard() {
                 <div style={{ ...styles.card, marginTop: '20px' }}>
                   <div style={styles.cardTitle}>Detalle de envíos</div>
                   <div style={{ overflowX: 'auto', marginTop: '8px' }}>
-                    <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '720px' }}>
+                    <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '800px' }}>
                       <thead>
                         <tr>
-                          {['Fecha', 'Email', 'Enviados', 'Apertura', 'Clics', 'CTOR', 'Bajas'].map((h, k) => (
+                          {['Fecha', 'Email', 'Enviados', 'Apertura', 'Clics', 'CTOR', 'Bajas', 'Vistas web'].map((h, k) => (
                             <th key={h} style={{ textAlign: k > 1 ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>
                           ))}
                         </tr>
@@ -2372,13 +2472,14 @@ export default function Dashboard() {
                               <td style={{ ...td, fontWeight: 700 }}>{pc(cr, 2)}</td>
                               <td style={td}>{pc(co)}</td>
                               <td style={td}>{pc(ur, 2)}</td>
+                              <td style={{ ...td, fontWeight: 700 }}>{webViewsFor(e) === null ? '\u2014' : nf(webViewsFor(e))}</td>
                             </tr>
                           );
                         })}
                       </tbody>
                     </table>
                   </div>
-                  <div style={styles.cardSubtext}>Apertura y clics sobre entregados; CTOR = clics sobre aperturas. La marca se asigna por el nombre o asunto del email ("AXXIS" o "Diners"). Las aperturas pueden estar infladas por la protección de privacidad de Apple Mail.</div>
+                  <div style={styles.cardSubtext}>Apertura y clics sobre entregados; CTOR = clics sobre aperturas. La marca se asigna por el nombre o asunto del email ("AXXIS" o "Diners"). "Vistas web" se asigna cuando el nombre de la campaña (utm_campaign) coincide con el nombre o asunto del email. Las aperturas pueden estar infladas por la protección de privacidad de Apple Mail.</div>
                 </div>
               </>
             )}
