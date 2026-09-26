@@ -386,12 +386,28 @@ async function buildSections(token, propertyId, brand, range) {
   return { articles, sections, summary: top ? { topSection: top.label, topArticle: top.topPages[0]?.path || null } : null };
 }
 
+const AUDIENCE_TTL_MS = 60 * 60 * 1000;
+const audienceCache = new Map();
+
+async function cachedAudience(token, propertyId, r, brand) {
+  const key = `${propertyId}|${r.start}|${r.end}`;
+  const hit = audienceCache.get(key);
+  if (hit && Date.now() - hit.at < AUDIENCE_TTL_MS) return hit.value;
+  const value = await buildAudience(token, propertyId, r, brand);
+  // Solo se guarda si los datos sujetos a cuota llegaron completos; si no, se reintenta en la siguiente carga.
+  if (!value.debug?.length) audienceCache.set(key, { at: Date.now(), value });
+  else if (hit) return { ...hit.value, stale: true };
+  return value;
+}
+
 async function buildAudience(token, propertyId, r, brand) {
   const range = { startDate: r.start, endDate: r.end };
   const rep = (dimension, metrics, extra = {}) =>
     runReport(token, propertyId, { dateRanges: [range], dimensions: [{ name: dimension }], metrics: metrics.map((name) => ({ name })), ...extra });
 
   const aiFilter = { filter: { fieldName: 'sessionDefaultChannelGroup', stringFilter: { matchType: 'EXACT', value: 'AI Assistant' } } };
+  const dbg = [];
+  const trap = (label) => (e) => { dbg.push(`${label}: ${e.response?.data?.error?.message || e.message}`); return []; };
   const [devices, channels, gender, age, ageGender, cityRows, countryRows, aiSources, aiLanding, prevChannels, prevDevices, newVsRet, newChan, retChan, regionRows, osRows, osPrevRows, brandRows, intRows, intGenderRows, intAgeRows, qualityRows] = await Promise.all([
     rep('deviceCategory', ['totalUsers']),
     rep('sessionDefaultChannelGroup', ['sessions', 'screenPageViews', 'totalUsers'], { orderBys: [{ metric: { metricName: 'sessions' }, desc: true }] }),
@@ -440,9 +456,9 @@ async function buildAudience(token, propertyId, r, brand) {
     rep('operatingSystem', ['totalUsers'], { orderBys: [{ metric: { metricName: 'totalUsers' }, desc: true }] }).catch(() => []),
     runReport(token, propertyId, { dateRanges: [{ startDate: r.prevStart, endDate: r.prevEnd }], dimensions: [{ name: 'operatingSystem' }], metrics: [{ name: 'totalUsers' }] }).catch(() => []),
     rep('mobileDeviceBranding', ['totalUsers'], { orderBys: [{ metric: { metricName: 'totalUsers' }, desc: true }] }).catch(() => []),
-    rep('brandingInterest', ['totalUsers'], { limit: 400, orderBys: [{ metric: { metricName: 'totalUsers' }, desc: true }] }).catch(() => []),
-    runReport(token, propertyId, { dateRanges: [range], dimensions: [{ name: 'brandingInterest' }, { name: 'userGender' }], metrics: [{ name: 'totalUsers' }], limit: 10000 }).catch(() => []),
-    runReport(token, propertyId, { dateRanges: [range], dimensions: [{ name: 'brandingInterest' }, { name: 'userAgeBracket' }], metrics: [{ name: 'totalUsers' }], limit: 10000 }).catch(() => []),
+    rep('brandingInterest', ['totalUsers'], { limit: 400, orderBys: [{ metric: { metricName: 'totalUsers' }, desc: true }] }).catch(trap('interests')),
+    runReport(token, propertyId, { dateRanges: [range], dimensions: [{ name: 'brandingInterest' }, { name: 'userGender' }], metrics: [{ name: 'totalUsers' }], limit: 10000 }).catch(trap('interestsGender')),
+    runReport(token, propertyId, { dateRanges: [range], dimensions: [{ name: 'brandingInterest' }, { name: 'userAgeBracket' }], metrics: [{ name: 'totalUsers' }], limit: 10000 }).catch(trap('interestsAge')),
     rep('sessionDefaultChannelGroup', ['averageSessionDuration', 'bounceRate', 'engagementRate', 'sessions']).catch(() => []),
   ]);
   const returningChannels = retChan.map((x) => ({ name: x.dimensionValues[0].value, sessions: Number(x.metricValues[0].value) }));
@@ -553,6 +569,7 @@ async function buildAudience(token, propertyId, r, brand) {
     brands: brands.length ? brands : null,
     interests: interests.length ? interests.map(({ raw, ...rest }) => rest) : null,
     interestsCoverage,
+    debug: dbg,
     interestsBySegment,
     returning,
     newDuration,
@@ -631,7 +648,7 @@ async function buildProperty(token, propertyId, brand, range) {
       metrics: [{ name: 'screenPageViews' }, { name: 'totalUsers' }],
     }),
     buildSections(token, propertyId, brand, range),
-    buildAudience(token, propertyId, range, brand),
+    cachedAudience(token, propertyId, range, brand),
     runReport(token, propertyId, {
       dateRanges: [{ startDate: range.start, endDate: range.end }],
       dimensions: [{ name: 'hour' }],
