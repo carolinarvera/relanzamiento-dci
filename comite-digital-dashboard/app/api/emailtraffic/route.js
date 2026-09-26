@@ -8,19 +8,54 @@ export const maxDuration = 60;
 const MONTHS = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
 const EMAIL = { filter: { fieldName: 'sessionDefaultChannelGroup', stringFilter: { matchType: 'EXACT', value: 'Email' } } };
 
-async function build(token, propertyId, range) {
+const SITE = { axxis: 'revistaaxxis.com.co', diners: 'revistadiners.com.co' };
+
+async function build(token, propertyId, range, domain) {
   const both = [
     { startDate: range.start, endDate: range.end, name: 'cur' },
     { startDate: range.prevStart, endDate: range.prevEnd, name: 'prev' },
   ];
   const cur = [{ startDate: range.start, endDate: range.end }];
-  const [totals, siteTotals, campaigns, sources, daily] = await Promise.all([
+  const QUAL = ['averageSessionDuration', 'bounceRate', 'engagementRate', 'sessions'].map((name) => ({ name }));
+  const internal = { andGroup: { expressions: [EMAIL, { filter: { fieldName: 'pageReferrer', stringFilter: { matchType: 'CONTAINS', value: domain } } }] } };
+  const [totals, siteTotals, campaigns, sources, daily, pages, qEmail, qSite, flowRows, allPages, dowHour, landings] = await Promise.all([
     runReport(token, propertyId, { dateRanges: both, metrics: ['screenPageViews', 'sessions', 'totalUsers'].map((name) => ({ name })), dimensionFilter: EMAIL }),
     runReport(token, propertyId, { dateRanges: both, metrics: ['screenPageViews', 'sessions'].map((name) => ({ name })) }),
     runReport(token, propertyId, { dateRanges: cur, dimensions: [{ name: 'sessionCampaignName' }], metrics: ['screenPageViews', 'sessions'].map((name) => ({ name })), dimensionFilter: EMAIL, orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }], limit: 40 }),
     runReport(token, propertyId, { dateRanges: cur, dimensions: [{ name: 'sessionSource' }], metrics: [{ name: 'screenPageViews' }], dimensionFilter: EMAIL, orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }], limit: 8 }),
     runReport(token, propertyId, { dateRanges: cur, dimensions: [{ name: 'date' }], metrics: [{ name: 'screenPageViews' }], dimensionFilter: EMAIL, orderBys: [{ dimension: { dimensionName: 'date' } }] }),
+    runReport(token, propertyId, { dateRanges: cur, dimensions: [{ name: 'pagePath' }], metrics: [{ name: 'screenPageViews' }], dimensionFilter: EMAIL, orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }], limit: 12 }),
+    runReport(token, propertyId, { dateRanges: cur, metrics: QUAL, dimensionFilter: EMAIL }),
+    runReport(token, propertyId, { dateRanges: cur, metrics: QUAL }),
+    runReport(token, propertyId, { dateRanges: cur, dimensions: [{ name: 'pageReferrer' }, { name: 'pagePath' }], metrics: [{ name: 'screenPageViews' }], dimensionFilter: internal, orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }], limit: 60 }).catch(() => []),
+    runReport(token, propertyId, { dateRanges: cur, dimensions: [{ name: 'pagePath' }], metrics: [{ name: 'screenPageViews' }], dimensionFilter: EMAIL, orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }], limit: 400 }).catch(() => []),
+    runReport(token, propertyId, { dateRanges: [{ startDate: range.prevStart, endDate: range.end }], dimensions: [{ name: 'dayOfWeek' }, { name: 'hour' }], metrics: [{ name: 'screenPageViews' }], dimensionFilter: EMAIL, limit: 200 }).catch(() => []),
+    runReport(token, propertyId, { dateRanges: cur, dimensions: [{ name: 'landingPage' }], metrics: [{ name: 'sessions' }], dimensionFilter: EMAIL, orderBys: [{ metric: { metricName: 'sessions' }, desc: true }], limit: 400 }).catch(() => []),
   ]);
+  const byHour = Array.from({ length: 24 }, (_, h) => ({ hour: `${String(h).padStart(2, '0')}h`, value: 0 }));
+  const dowSum = Array(7).fill(0);
+  dowHour.forEach((r) => {
+    const d = Number(r.dimensionValues[0].value);
+    const h = Number(r.dimensionValues[1].value);
+    const v = Number(r.metricValues[0].value);
+    byHour[h].value += v;
+    dowSum[d] += v;
+  });
+  const countDow = Array(7).fill(0);
+  for (let t = new Date(`${range.prevStart}T00:00:00Z`); t <= new Date(`${range.end}T00:00:00Z`); t = new Date(t.getTime() + 86400000)) countDow[t.getUTCDay()] += 1;
+  const DOW = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+  const byDow = [1, 2, 3, 4, 5, 6, 0].map((d) => ({ label: DOW[d], value: countDow[d] ? Math.round(dowSum[d] / countDow[d]) : 0 }));
+  const landingSessions = {};
+  const norm = (p) => (p.split('?')[0].replace(/\/+$/, '') || '/');
+  landings.forEach((r) => { const p = norm(r.dimensionValues[0].value); landingSessions[p] = (landingSessions[p] || 0) + Number(r.metricValues[0].value); });
+  const secondClicks = allPages
+    .map((r) => { const path = r.dimensionValues[0].value; const views = Number(r.metricValues[0].value); return { path, views: Math.max(0, views - (landingSessions[norm(path)] || 0)) }; })
+    .filter((x) => x.views > 0 && !x.path.includes('/wp-content/'))
+    .sort((a, b) => b.views - a.views);
+  const secondTotal = secondClicks.reduce((a, x) => a + x.views, 0);
+  const pathOf = (u) => { try { return new URL(u).pathname; } catch { return u; } };
+  const flows = flowRows.map((r) => ({ from: pathOf(r.dimensionValues[0].value), to: r.dimensionValues[1].value, views: Number(r.metricValues[0].value) })).filter((f) => f.from !== f.to && !f.from.includes('/wp-content/'));
+  const q = (rows) => (rows[0] ? { sec: Number(rows[0].metricValues[0].value), bounce: Number(rows[0].metricValues[1].value), engagement: Number(rows[0].metricValues[2].value), sessions: Number(rows[0].metricValues[3].value) } : null);
   const pick = (rows, name, i) => {
     const r = rows.find((x) => x.dimensionValues.some((v) => v.value === name));
     return r ? Number(r.metricValues[i].value) : 0;
@@ -32,6 +67,13 @@ async function build(token, propertyId, range) {
     siteViews: pick(siteTotals, 'cur', 0), prevSiteViews: pick(siteTotals, 'prev', 0),
     siteSessions: pick(siteTotals, 'cur', 1),
     campaigns: campaigns.map((r) => ({ name: r.dimensionValues[0].value, views: Number(r.metricValues[0].value), sessions: Number(r.metricValues[1].value) })),
+    flows,
+    byHour,
+    byDow,
+    secondClicks: secondClicks.slice(0, 10),
+    secondTotal,
+    pages: pages.map((r) => ({ path: r.dimensionValues[0].value, views: Number(r.metricValues[0].value) })),
+    quality: { email: q(qEmail), site: q(qSite) },
     sources: sources.map((r) => ({ name: r.dimensionValues[0].value, views: Number(r.metricValues[0].value) })),
     daily: daily.map((r) => {
       const d = r.dimensionValues[0].value;
@@ -47,8 +89,8 @@ export async function GET(request) {
     if (isMock(params)) return Response.json(mockEmailTraffic(range));
     const token = await getAccessToken();
     const [axxis, diners] = await Promise.all([
-      build(token, process.env.GA4_AXXIS_ID, range),
-      build(token, process.env.GA4_DINERS_ID, range),
+      build(token, process.env.GA4_AXXIS_ID, range, SITE.axxis),
+      build(token, process.env.GA4_DINERS_ID, range, SITE.diners),
     ]);
     return Response.json({ range, axxis, diners });
   } catch (error) {

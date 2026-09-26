@@ -212,6 +212,12 @@ export function mockEmailTraffic(range) {
     return {
       views, prevViews: Math.round(views * 0.88), sessions: Math.round(views * 0.62), prevSessions: Math.round(views * 0.62 * 0.9), users: Math.round(views * 0.5), prevUsers: Math.round(views * 0.5 * 0.9),
       siteViews: Math.round(views / 0.03), prevSiteViews: Math.round(views / 0.03 * 1.1), siteSessions: Math.round(views / 0.03 * 0.69),
+      pages: [['/arquitectura/casa-en-la-montana/', 0.16], ['/diseno/interiorismo-objetos-bazar/', 0.12], ['/decoracion/apartamento-escandinavo/', 0.09], ['/arquitectura/museo-de-arte-moderno/', 0.07], ['/', 0.06]].map(([path, f]) => ({ path, views: Math.round(views * f) })), quality: { email: { sec: 96, bounce: 0.38, engagement: 0.62, sessions: Math.round(views * 0.62) }, site: { sec: 83, bounce: 0.48, engagement: 0.52, sessions: Math.round(views / 0.03 * 0.69) } },
+      byHour: Array.from({ length: 24 }, (_, h) => ({ hour: `${String(h).padStart(2, '0')}h`, value: Math.round(views / 31 * (h >= 6 && h <= 22 ? 0.02 + 0.05 * Math.exp(-((h - 9) ** 2) / 8) + 0.03 * Math.exp(-((h - 20) ** 2) / 6) : 0.005) * 8) })),
+      byDow: [['Lun', 1.0], ['Mar', 1.35], ['Mié', 1.1], ['Jue', 0.95], ['Vie', 0.8], ['Sáb', 0.7], ['Dom', 0.9]].map(([label, f]) => ({ label, value: Math.round(views / 31 * f) })),
+      secondClicks: [['/', 0.10], ['/arquitectura/', 0.07], ['/diseno/', 0.05], ['/marketplace/', 0.04], ['/arquitectura/museo-de-arte-moderno/', 0.03]].map(([path, f]) => ({ path, views: Math.round(views * f) })),
+      secondTotal: Math.round(views * 0.62),
+      flows: [['/arquitectura/casa-en-la-montana/', '/arquitectura/museo-de-arte-moderno/', 0.05], ['/arquitectura/casa-en-la-montana/', '/', 0.03], ['/', '/marketplace/', 0.03], ['/diseno/interiorismo-objetos-bazar/', '/diseno/cocina-minimalista/', 0.025], ['/decoracion/apartamento-escandinavo/', '/marketplace/', 0.02]].map(([from, to, f]) => ({ from, to, views: Math.round(views * f) })),
       campaigns: campaigns.sort((a, b) => b.views - a.views), sources: [{ name: 'hs_email', views: Math.round(views * 0.8) }, { name: 'newsletter', views: Math.round(views * 0.2) }], daily,
     };
   };

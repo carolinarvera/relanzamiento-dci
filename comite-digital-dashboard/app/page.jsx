@@ -2319,51 +2319,282 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              {(TR.daily || []).length > 0 && (
-                <div style={{ ...styles.card, marginTop: '20px' }}>
-                  <div style={styles.cardTitle}>Vistas diarias desde email · los días de envío en naranja oscuro</div>
-                  <div style={{ width: '100%', height: 260, marginTop: '12px' }}>
-                    <ResponsiveContainer>
-                      <BarChart data={TR.daily} margin={{ top: 14, right: 10, left: 0, bottom: 0 }}>
-                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                        <XAxis dataKey="label" tick={{ fontSize: 10 }} interval={3} />
-                        <YAxis tick={{ fontSize: 10 }} width={40} />
-                        <Tooltip formatter={(v) => v.toLocaleString('es-CO')} />
-                        <Bar dataKey="value" name="Vistas desde email">
-                          {TR.daily.map((d) => <Cell key={d.date} fill={sendLabels.has(d.label) ? T.highlight : T.accent} />)}
-                        </Bar>
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </div>
-                  <div style={styles.cardSubtext}>{sendLabels.size ? 'Los días de envío salen de HubSpot.' : 'Conecta HubSpot para marcar los días de envío.'} Pico: {nf(maxDaily)} vistas en un día.</div>
-                </div>
-              )}
+              {((TR.byHour || []).length > 0 || (E?.emails || []).length > 0) && (() => {
+                const DOWL = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+                const DOWF = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
+                const bog = (iso) => new Date(new Date(iso).getTime() - 5 * 3600000);
+                const byDow = TR.byDow || [];
+                const byHour = TR.byHour || [];
+                const maxD = Math.max(0, ...byDow.map((d) => d.value));
+                const maxH = Math.max(0, ...byHour.map((h) => h.value));
+                const avgD = byDow.length ? byDow.reduce((a, d) => a + d.value, 0) / byDow.length : 0;
+                const bestDay = byDow.find((d) => d.value === maxD);
+                let bestWin = null;
+                for (let i = 0; i + 2 < byHour.length; i += 1) {
+                  const sum = byHour[i].value + byHour[i + 1].value + byHour[i + 2].value;
+                  if (!bestWin || sum > bestWin.sum) bestWin = { i, sum };
+                }
+                const totalH = byHour.reduce((a, h) => a + h.value, 0);
+                const sends = [...(E?.emails || []), ...(E?.prevEmails || [])].filter((e) => e.kind !== 'automated' && e.sent > 1 && e.sentAt);
+                const perDay = DOWL.map((label, d) => {
+                  const l = sends.filter((e) => bog(e.sentAt).getUTCDay() === d);
+                  const del = l.reduce((a, e) => a + e.delivered, 0);
+                  const op = l.reduce((a, e) => a + e.open, 0);
+                  const cl = l.reduce((a, e) => a + e.click, 0);
+                  return { label, n: l.length, open: del ? op / del : 0, click: del ? cl / del : 0, ctor: op ? cl / op : 0 };
+                });
+                const order = [1, 2, 3, 4, 5, 6, 0].map((d) => perDay[d]);
+                const reliable = order.filter((d) => d.n >= 2);
+                const bestOpen = reliable.slice().sort((x, y) => y.open - x.open)[0];
+                const bestClick = reliable.slice().sort((x, y) => y.click - x.click)[0];
+                const BUCKETS = [['Mañana (05:00 a 11:59)', 5, 11], ['Tarde (12:00 a 17:59)', 12, 17], ['Noche (18:00 a 23:59)', 18, 23], ['Madrugada (00:00 a 04:59)', 0, 4]];
+                const perBucket = BUCKETS.map(([label, lo, hi]) => {
+                  const l = sends.filter((e) => { const h = bog(e.sentAt).getUTCHours(); return h >= lo && h <= hi; });
+                  const del = l.reduce((a, e) => a + e.delivered, 0);
+                  const op = l.reduce((a, e) => a + e.open, 0);
+                  const cl = l.reduce((a, e) => a + e.click, 0);
+                  return { label, lo, n: l.length, open: del ? op / del : 0, click: del ? cl / del : 0, ctor: op ? cl / op : 0 };
+                }).filter((b) => b.n > 0);
+                const bkReliable = perBucket.filter((b) => b.n >= 2);
+                const bestBkOpen = bkReliable.slice().sort((x, y) => y.open - x.open)[0];
+                const bestBkClick = bkReliable.slice().sort((x, y) => y.click - x.click)[0];
+                const hh = (h) => `${String(h).padStart(2, '0')}:00`;
+                const tips = [];
+                if (bestDay && maxD) tips.push(`El ${DOWF[DOWL.indexOf(bestDay.label)]} es el día en que más vistas web llegan desde email: ${nf(maxD)} por día en promedio, ${avgD ? Math.round((maxD / avgD - 1) * 100) : 0}% sobre el promedio de la semana.`);
+                if (bestWin && totalH) tips.push(`La franja de mayor lectura es de ${hh(bestWin.i)} a ${hh(bestWin.i + 3)}: concentra ${Math.round((bestWin.sum / totalH) * 100)}% de las vistas desde email.`);
+                if (bestOpen) tips.push(`Por día de envío, los ${DOWF[DOWL.indexOf(bestOpen.label)]} tienen la mejor apertura (${(bestOpen.open * 100).toFixed(1)}%, ${bestOpen.n} envíos)${bestClick && bestClick.label !== bestOpen.label ? ` y los ${DOWF[DOWL.indexOf(bestClick.label)]} los mejores clics (${(bestClick.click * 100).toFixed(2)}%)` : bestClick ? ` y también los mejores clics (${(bestClick.click * 100).toFixed(2)}%)` : ''}.`);
+                if (perBucket.length > 1) tips.push(`Los envíos salen en ${perBucket.length} franjas (${perBucket.map((b) => `${b.label.split(' ')[0].toLowerCase()}: ${b.n}`).join(', ')}). ${bestBkOpen ? `La franja de ${bestBkOpen.label.split(' ')[0].toLowerCase()} logra la mejor apertura (${(bestBkOpen.open * 100).toFixed(1)}%)` : 'Aún hay pocos envíos por franja para comparar'}${bestBkClick && bestBkOpen ? (bestBkClick.label === bestBkOpen.label ? ' y también los mejores clics.' : ` y la de ${bestBkClick.label.split(' ')[0].toLowerCase()} los mejores clics (${(bestBkClick.click * 100).toFixed(2)}%).`) : '.'}`);
+                else if (perBucket.length === 1 && bestWin) tips.push(`Todos los envíos salen en la franja de ${perBucket[0].label.split(' ')[0].toLowerCase()}, mientras la lectura llega sobre todo de ${hh(bestWin.i)} a ${hh(bestWin.i + 3)}. Conviene probar otra franja.`);
+                if (!reliable.length && sends.length) tips.push('Aún hay pocos envíos por día de la semana para comparar aperturas: cada día necesita al menos 2 envíos.');
+                return (
+                  <>
+                    <div style={{ ...styles.card, marginTop: '20px', background: '#f5f1e6' }}>
+                      <div style={styles.cardTitle}>Mejores días y horas para enviar</div>
+                      <ul style={{ margin: '8px 0 0', paddingLeft: '18px', fontSize: '13px', lineHeight: 1.6 }}>{tips.map((t, k) => <li key={k}>{t}</li>)}</ul>
+                      <div style={styles.cardSubtext}>Lectura y llegada a la web: GA4, canal Email, {rangeLabel} y el periodo anterior juntos. Apertura y clics: HubSpot, por día de envío, horario Colombia. Es una guía: con pocos envíos por día conviene probar antes de fijar un horario.</div>
+                    </div>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '20px', marginTop: '20px' }}>
+                      {byDow.length > 0 && (
+                        <div style={styles.card}>
+                          <div style={styles.cardTitle}>Vistas web desde email por día de la semana (promedio por día)</div>
+                          <div style={{ width: '100%', height: 260, marginTop: '12px' }}>
+                            <ResponsiveContainer>
+                              <BarChart data={byDow} margin={{ top: 22, right: 10, left: 0, bottom: 0 }}>
+                                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                                <XAxis dataKey="label" tick={{ fontSize: 11 }} />
+                                <YAxis tick={{ fontSize: 10 }} width={40} />
+                                <Tooltip formatter={(v) => v.toLocaleString('es-CO')} />
+                                <Bar dataKey="value" name="Vistas por día">
+                                  {byDow.map((d) => <Cell key={d.label} fill={d.value === maxD ? T.highlight : T.accent} />)}
+                                  <LabelList dataKey="value" position="top" formatter={(v) => nf(v)} style={{ fontSize: 10, fill: '#444' }} />
+                                </Bar>
+                              </BarChart>
+                            </ResponsiveContainer>
+                          </div>
+                        </div>
+                      )}
+                      {byHour.length > 0 && (
+                        <div style={styles.card}>
+                          <div style={styles.cardTitle}>Vistas web desde email por hora del día</div>
+                          <div style={{ width: '100%', height: 260, marginTop: '12px' }}>
+                            <ResponsiveContainer>
+                              <BarChart data={byHour} margin={{ top: 22, right: 10, left: 0, bottom: 0 }}>
+                                <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                                <XAxis dataKey="hour" tick={{ fontSize: 10 }} interval={2} />
+                                <YAxis tick={{ fontSize: 10 }} width={40} />
+                                <Tooltip formatter={(v) => v.toLocaleString('es-CO')} />
+                                <Bar dataKey="value" name="Vistas">
+                                  {byHour.map((h) => <Cell key={h.hour} fill={h.value === maxH && maxH > 0 ? T.highlight : T.accent} />)}
+                                </Bar>
+                              </BarChart>
+                            </ResponsiveContainer>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                    {sends.length > 0 && (
+                      <div style={{ ...styles.card, marginTop: '20px' }}>
+                        <div style={styles.cardTitle}>Rendimiento de los envíos por día de envío</div>
+                        <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '8px' }}>
+                          <thead>
+                            <tr>{['Día', 'Envíos', 'Apertura', 'Clics', 'CTOR'].map((h, k) => <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                          </thead>
+                          <tbody>
+                            {order.filter((d) => d.n > 0).map((d) => {
+                              const isOpen = bestOpen && bestOpen.label === d.label;
+                              const isClick = bestClick && bestClick.label === d.label;
+                              const td = { padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' };
+                              return (
+                                <tr key={d.label}>
+                                  <td style={{ ...td, textAlign: 'left', fontWeight: 700 }}>{DOWF[DOWL.indexOf(d.label)]}</td>
+                                  <td style={{ ...td, color: d.n < 2 ? '#c62828' : '#222' }}>{d.n}{d.n < 2 ? ' (muestra baja)' : ''}</td>
+                                  <td style={{ ...td, fontWeight: isOpen ? 800 : 400, background: isOpen ? '#fff6ee' : 'transparent' }}>{(d.open * 100).toFixed(1)}%</td>
+                                  <td style={{ ...td, fontWeight: isClick ? 800 : 400, background: isClick ? '#fff6ee' : 'transparent' }}>{(d.click * 100).toFixed(2)}%</td>
+                                  <td style={td}>{(d.ctor * 100).toFixed(1)}%</td>
+                                </tr>
+                              );
+                            })}
+                          </tbody>
+                        </table>
+                        <div style={styles.cardSubtext}>Envíos de {rangeLabel} y del periodo anterior (sin automáticos ni pruebas). Se marca en naranja el mejor día solo entre los que tienen 2 o más envíos.</div>
+                      </div>
+                    )}
+                    {perBucket.length > 0 && (
+                      <div style={{ ...styles.card, marginTop: '20px' }}>
+                        <div style={styles.cardTitle}>Rendimiento de los envíos por franja horaria de envío (hora Colombia)</div>
+                        <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '8px' }}>
+                          <thead>
+                            <tr>{['Franja', 'Envíos', 'Apertura', 'Clics', 'CTOR'].map((h, k) => <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                          </thead>
+                          <tbody>
+                            {perBucket.map((b) => {
+                              const isOpen = bestBkOpen && bestBkOpen.label === b.label;
+                              const isClick = bestBkClick && bestBkClick.label === b.label;
+                              const td = { padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' };
+                              return (
+                                <tr key={b.label}>
+                                  <td style={{ ...td, textAlign: 'left', fontWeight: 700 }}>{b.label}</td>
+                                  <td style={{ ...td, color: b.n < 2 ? '#c62828' : '#222' }}>{b.n}{b.n < 2 ? ' (muestra baja)' : ''}</td>
+                                  <td style={{ ...td, fontWeight: isOpen ? 800 : 400, background: isOpen ? '#fff6ee' : 'transparent' }}>{(b.open * 100).toFixed(1)}%</td>
+                                  <td style={{ ...td, fontWeight: isClick ? 800 : 400, background: isClick ? '#fff6ee' : 'transparent' }}>{(b.click * 100).toFixed(2)}%</td>
+                                  <td style={td}>{(b.ctor * 100).toFixed(1)}%</td>
+                                </tr>
+                              );
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+                    )}
+                  </>
+                );
+              })()}
 
-              {(TR.campaigns || []).length > 0 && (
-                <div style={{ ...styles.card, marginTop: '20px' }}>
-                  <div style={styles.cardTitle}>Tráfico por campaña de email (utm_campaign)</div>
-                  <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '8px' }}>
-                    <thead>
-                      <tr>
-                        {['Campaña', 'Vistas', '% del email', 'Sesiones'].map((h, k) => (
-                          <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>
+              {(() => {
+                const daily = TR.daily || [];
+                const val = {};
+                daily.forEach((d) => { val[d.date] = d.value; });
+                const key = (iso) => iso.slice(0, 10).replace(/-/g, '');
+                const addDays = (k, n) => { const d = new Date(Date.UTC(+k.slice(0, 4), +k.slice(4, 6) - 1, +k.slice(6))); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10).replace(/-/g, ''); };
+                const sends = (E?.emails || []).filter((e) => e.kind !== 'automated' && e.sent > 1 && e.sentAt);
+                const sendKeys = sends.map((e) => key(e.sentAt));
+                const windowKeys = new Set(sendKeys.flatMap((k) => [k, addDays(k, 1)]));
+                const base = daily.filter((d) => !windowKeys.has(d.date));
+                const baseline = base.length ? base.reduce((a, d) => a + d.value, 0) / base.length : 0;
+                const rows = sends.map((e) => {
+                  const k = key(e.sentAt);
+                  const web = (val[k] || 0) + (val[addDays(k, 1)] || 0);
+                  const extra = web - 2 * baseline;
+                  return { e, web, extra, mult: baseline ? web / (2 * baseline) : 0, per1000: e.delivered ? (Math.max(extra, 0) / e.delivered) * 1000 : 0 };
+                }).sort((x, y) => y.extra - x.extra);
+                const totalDelivered = (E?.emails || []).reduce((a, e) => a + e.delivered, 0);
+                const identified = (TR.campaigns || []).filter((c) => c.name !== '(not set)').reduce((a, c) => a + c.views, 0);
+                const identPct = TR.views ? identified / TR.views : 0;
+                const totalSrc = (TR.sources || []).reduce((a, x) => a + x.views, 0);
+                const topSrc = (TR.sources || [])[0];
+                const Q = TR.quality;
+                const avgExtra = rows.length ? rows.reduce((a, r) => a + Math.max(r.extra, 0), 0) / rows.length : 0;
+                const bestRow = rows[0];
+                const insights = [];
+                if (rows.length && baseline) insights.push(`Un día normal el sitio recibe unas ${Math.round(baseline)} vistas desde email; cada envío suma en promedio ${Math.round(avgExtra).toLocaleString('es-CO')} vistas extra en el día del envío y el siguiente.`);
+                if (bestRow && bestRow.extra > 0) insights.push(`El envío que más tráfico llevó fue "${bestRow.e.subject || bestRow.e.name}": ${Math.round(bestRow.extra).toLocaleString('es-CO')} vistas extra (x${bestRow.mult.toFixed(1)} sobre un día normal).`);
+                if (totalDelivered && TR.views) insights.push(`Por cada 1.000 emails entregados llegan unas ${((TR.views / totalDelivered) * 1000).toFixed(0)} vistas web desde el canal Email.`);
+                if (Q?.email && Q?.site) insights.push(`Quienes llegan por email ${Q.email.sec >= Q.site.sec ? 'leen más' : 'leen menos'} que el promedio del sitio: ${fmtHMS(Q.email.sec)} frente a ${fmtHMS(Q.site.sec)}, con rebote de ${(Q.email.bounce * 100).toFixed(0)}% frente a ${(Q.site.bounce * 100).toFixed(0)}%.`);
+                if (TR.views) insights.push(`Solo el ${(identPct * 100).toFixed(0)}% del tráfico de email trae campaña identificada. Sin utm_campaign no se puede atribuir el resto a un envío específico.`);
+                if (topSrc && totalSrc) insights.push(`${((topSrc.views / totalSrc) * 100).toFixed(0)}% del tráfico de email viene de "${topSrc.name}"${(TR.sources || []).length > 1 ? `; el resto llega desde otras plataformas de envío (${(TR.sources || []).slice(1, 3).map((x) => x.name).join(', ')}).` : '.'}`);
+                const pagesTotal = (TR.pages || []).reduce((a, p) => a + p.views, 0);
+                return (
+                  <>
+                    {insights.length > 0 && (
+                      <div style={{ ...styles.card, marginTop: '20px', background: '#f5f1e6' }}>
+                        <div style={styles.cardTitle}>Lo que dicen los datos</div>
+                        <ul style={{ margin: '8px 0 0', paddingLeft: '18px', fontSize: '13px', lineHeight: 1.6 }}>
+                          {insights.map((t, k) => <li key={k}>{t}</li>)}
+                        </ul>
+                      </div>
+                    )}
+                    {rows.length > 0 && (
+                      <div style={{ ...styles.card, marginTop: '20px' }}>
+                        <div style={styles.cardTitle}>Qué trae cada envío a la web</div>
+                        <div style={{ overflowX: 'auto', marginTop: '8px' }}>
+                          <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '640px' }}>
+                            <thead>
+                              <tr>
+                                {['Envío', 'Fecha', 'Entregados', 'Vistas web (día + siguiente)', 'Vistas extra', 'Vs día normal', 'Extra por 1.000 entregados'].map((h, k) => (
+                                  <th key={h} style={{ textAlign: k > 2 ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>
+                                ))}
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {rows.map((r, k) => {
+                                const td = { padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' };
+                                return (
+                                  <tr key={r.e.id} style={{ background: k === 0 ? '#fff6ee' : 'transparent' }}>
+                                    <td style={{ ...td, textAlign: 'left' }}><div style={{ fontWeight: 700 }}>{r.e.subject || r.e.name}</div><div style={{ fontSize: '11px', color: '#888' }}>{r.e.name}{k === 0 ? <span style={{ marginLeft: '6px', background: T.highlight, color: '#fff', fontSize: '10px', fontWeight: 700, padding: '1px 7px', borderRadius: '10px' }}>MÁS TRÁFICO</span> : null}</div></td>
+                                    <td style={{ ...td, textAlign: 'left', whiteSpace: 'nowrap' }}>{new Date(r.e.sentAt).toLocaleDateString('es-CO', { day: 'numeric', month: 'short', timeZone: 'UTC' })}</td>
+                                    <td style={td}>{nf(r.e.delivered)}</td>
+                                    <td style={td}>{nf(r.web)}</td>
+                                    <td style={{ ...td, fontWeight: 700, color: r.extra >= 0 ? '#2e7d32' : '#c62828' }}>{r.extra >= 0 ? '+' : ''}{Math.round(r.extra).toLocaleString('es-CO')}</td>
+                                    <td style={td}>x{r.mult.toFixed(1)}</td>
+                                    <td style={td}>{r.per1000.toFixed(1)}</td>
+                                  </tr>
+                                );
+                              })}
+                            </tbody>
+                          </table>
+                        </div>
+                        <div style={styles.cardSubtext}>Vistas extra = vistas desde email el día del envío y el siguiente, menos lo que el canal recibe en un día normal ({Math.round(baseline)} vistas/día). Es una estimación que no depende de utm_campaign.</div>
+                      </div>
+                    )}
+                    {(TR.pages || []).length > 0 && (
+                      <div style={{ ...styles.card, marginTop: '20px' }}>
+                        <div style={styles.cardTitle}>Qué leen quienes llegan por email</div>
+                        {TR.pages.slice(0, 8).map((p, k) => (
+                          <div key={p.path} style={{ marginTop: '10px' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}><span style={{ overflowWrap: 'anywhere' }}>{p.path === '/' ? 'Home (portada)' : p.path}</span><strong>{nf(p.views)} · {pagesTotal ? ((p.views / pagesTotal) * 100).toFixed(0) : 0}%</strong></div>
+                            <div style={{ background: T.soft, borderRadius: '4px', height: '8px', marginTop: '3px' }}><div style={{ width: `${pagesTotal ? (p.views / pagesTotal) * 100 : 0}%`, background: k === 0 ? T.highlight : T.accent, height: '8px', borderRadius: '4px' }} /></div>
+                          </div>
                         ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {TR.campaigns.slice(0, 10).map((c, k) => (
-                        <tr key={c.name}>
-                          <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', fontWeight: k === 0 ? 700 : 400, overflowWrap: 'anywhere' }}>{c.name === '(not set)' ? 'Sin campaña identificada' : c.name}</td>
-                          <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right', fontWeight: 700 }}>{nf(c.views)}</td>
-                          <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' }}>{campTotal ? ((c.views / campTotal) * 100).toFixed(0) : 0}%</td>
-                          <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' }}>{nf(c.sessions)}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                  <div style={styles.cardSubtext}>Tráfico del canal Email de GA4. Si una campaña aparece como "sin campaña identificada", el enlace del email no lleva utm_campaign.</div>
-                </div>
-              )}
+                        <div style={styles.cardSubtext}>Porcentaje sobre las 8 páginas más vistas desde email.</div>
+                      </div>
+                    )}
+                    {((TR.secondClicks || []).length > 0 || (TR.flows || []).length > 0) && (() => {
+                      const destList = (TR.secondClicks || []).slice(0, 6).map((x) => [x.path, x.views]);
+                      const destTotal = TR.secondTotal || destList.reduce((a, x) => a + x[1], 0);
+                      const label = (p) => (p === '/' ? 'Home (portada)' : p);
+                      return (
+                        <div style={{ ...styles.card, marginTop: '20px' }}>
+                          <div style={styles.cardTitle}>Segundo clic: a dónde van después de la primera página</div>
+                          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '24px', marginTop: '10px', alignItems: 'start' }}>
+                            <div>
+                              <div style={{ ...styles.cardTitle, fontSize: '11px' }}>Páginas más vistas después de la primera ({nf(destTotal)} vistas en total)</div>
+                              {destList.map(([path, v], k) => (
+                                <div key={path} style={{ marginTop: '10px' }}>
+                                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}><span style={{ overflowWrap: 'anywhere' }}>{label(path)}</span><strong>{nf(v)} · {destTotal ? ((v / destTotal) * 100).toFixed(0) : 0}%</strong></div>
+                                  <div style={{ background: T.soft, borderRadius: '4px', height: '8px', marginTop: '3px' }}><div style={{ width: `${destTotal ? (v / destTotal) * 100 : 0}%`, background: k === 0 ? T.highlight : T.accent, height: '8px', borderRadius: '4px' }} /></div>
+                                </div>
+                              ))}
+                            </div>
+                            <div>
+                              <div style={{ ...styles.cardTitle, fontSize: '11px' }}>Recorridos más comunes</div>
+                              <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '6px' }}>
+                                <tbody>
+                                  {TR.flows.slice(0, 6).map((f) => (
+                                    <tr key={`${f.from}>${f.to}`}>
+                                      <td style={{ padding: '6px 4px', borderBottom: '1px solid #eee', overflowWrap: 'anywhere' }}>{label(f.from)} <span style={{ color: '#888' }}>{'\u2192'}</span> <strong>{label(f.to)}</strong></td>
+                                      <td style={{ padding: '6px 4px', borderBottom: '1px solid #eee', textAlign: 'right', fontWeight: 700 }}>{nf(f.views)}</td>
+                                    </tr>
+                                  ))}
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                          <div style={styles.cardSubtext}>Páginas vistas en sesiones que empezaron por email, sin contar la página de entrada (vistas de la página menos las sesiones que aterrizaron ahí). Los recorridos son una muestra de los más repetidos, sin el archivo de notificaciones push.</div>
+                        </div>
+                      );
+                    })()}
+                  </>
+                );
+              })()}
             </>
           );
         })() : null;
@@ -2395,8 +2626,8 @@ export default function Dashboard() {
           const click = sum(list, 'click'); const unsub = sum(list, 'unsubscribed'); const bounce = sum(list, 'bounce');
           return { sent, delivered, open, click, unsub, bounce, openRate: delivered ? open / delivered : 0, clickRate: delivered ? click / delivered : 0, ctor: open ? click / open : 0, unsubRate: delivered ? unsub / delivered : 0, bounceRate: sent ? bounce / sent : 0 };
         };
-        const cur = agg(E.emails);
-        const prv = agg(E.prevEmails);
+        const cur = agg((E.emails || []).filter((e) => e.sent > 1));
+        const prv = agg((E.prevEmails || []).filter((e) => e.sent > 1));
         const hasPrev = (E.prevEmails || []).length > 0;
         const rel = (a, b) => (b ? a / b - 1 : null);
         const pc = (v, d = 1) => `${(v * 100).toFixed(d)}%`;
@@ -2407,13 +2638,18 @@ export default function Dashboard() {
             {hasPrev ? renderChange(change, lowerBetter, prevText) : null}
           </div>
         );
-        const sorted = [...(E.emails || [])].sort((a, b) => new Date(a.sentAt || 0) - new Date(b.sentAt || 0));
-        const batchOnly = sorted.filter((e) => e.kind !== 'automated' && e.sent > 0);
+        const sorted = [...(E.emails || [])].filter((e) => e.sent > 1).sort((a, b) => new Date(a.sentAt || 0) - new Date(b.sentAt || 0));
+        const batchOnly = sorted.filter((e) => e.kind !== 'automated');
         const chartData = batchOnly.map((e) => ({
           label: e.sentAt ? `${new Date(e.sentAt).getUTCDate()} ${['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'][new Date(e.sentAt).getUTCMonth()]}` : e.name.slice(0, 12),
           Apertura: e.delivered ? e.open / e.delivered : 0,
           Clics: e.delivered ? e.click / e.delivered : 0,
         }));
+        const rate = (e, k) => (e.delivered ? e[k] / e.delivered : 0);
+        const maxOpenR = Math.max(0.0001, ...batchOnly.map((e) => rate(e, 'open')));
+        const maxClickR = Math.max(0.0001, ...batchOnly.map((e) => rate(e, 'click')));
+        const score = (e) => (rate(e, 'open') / maxOpenR + rate(e, 'click') / maxClickR) / 2;
+        const ranked = [...batchOnly].sort((a, b) => score(b) - score(a)).concat(sorted.filter((e) => e.kind === 'automated').sort((a, b) => score(b) - score(a)));
         const best = batchOnly.slice().sort((a, b) => (b.delivered ? b.click / b.delivered : 0) - (a.delivered ? a.click / a.delivered : 0))[0];
         return (
           <>
@@ -2457,13 +2693,13 @@ export default function Dashboard() {
                     <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '800px' }}>
                       <thead>
                         <tr>
-                          {['Fecha', 'Email', 'Enviados', 'Apertura', 'Clics', 'CTOR', 'Bajas', 'Vistas web'].map((h, k) => (
-                            <th key={h} style={{ textAlign: k > 1 ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>
+                          {['#', 'Fecha', 'Email', 'Enviados', 'Apertura', 'Clics', 'CTOR', 'Bajas', 'Vistas web'].map((h, k) => (
+                            <th key={h} style={{ textAlign: k > 2 ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>
                           ))}
                         </tr>
                       </thead>
                       <tbody>
-                        {sorted.filter((e) => e.sent > 0).slice().reverse().map((e) => {
+                        {ranked.map((e, idx) => {
                           const or = e.delivered ? e.open / e.delivered : 0;
                           const cr = e.delivered ? e.click / e.delivered : 0;
                           const co = e.open ? e.click / e.open : 0;
@@ -2471,10 +2707,11 @@ export default function Dashboard() {
                           const td = { padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' };
                           return (
                             <tr key={e.id} style={{ background: best && best.id === e.id ? '#fff6ee' : 'transparent' }}>
-                              <td style={{ ...td, textAlign: 'left', whiteSpace: 'nowrap' }}>{e.kind === 'automated' ? 'Automático' : (e.sentAt ? new Date(e.sentAt).toLocaleDateString('es-CO', { day: 'numeric', month: 'short', timeZone: 'UTC' }) : '\u2014')}</td>
+                              <td style={{ ...td, textAlign: 'left', fontWeight: 800, color: idx < 3 && e.kind !== 'automated' ? T.accent : '#888' }}>{e.kind === 'automated' ? '\u2014' : idx + 1}</td>
+                              <td style={{ ...td, textAlign: 'left', whiteSpace: 'nowrap' }}>{e.kind === 'automated' ? 'Automático' : (e.sentAt ? <><div>{new Date(e.sentAt).toLocaleDateString('es-CO', { day: 'numeric', month: 'short', timeZone: 'UTC' })}</div><div style={{ fontSize: '11px', color: '#888' }}>{['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'][new Date(new Date(e.sentAt).getTime() - 5 * 3600000).getUTCDay()]} {String(new Date(new Date(e.sentAt).getTime() - 5 * 3600000).getUTCHours()).padStart(2, '0')}:{String(new Date(e.sentAt).getUTCMinutes()).padStart(2, '0')}</div></> : '\u2014')}</td>
                               <td style={{ ...td, textAlign: 'left' }}>
                                 <div style={{ fontWeight: 700 }}>{e.subject || e.name}</div>
-                                <div style={{ fontSize: '11px', color: '#888' }}>{e.name}{best && best.id === e.id ? <span style={{ marginLeft: '6px', background: T.highlight, color: '#fff', fontSize: '10px', fontWeight: 700, padding: '1px 7px', borderRadius: '10px' }}>MEJOR CTR</span> : null}</div>
+                                <div style={{ fontSize: '11px', color: '#888' }}>{e.name}{best && best.id === e.id ? <span style={{ marginLeft: '6px', background: T.highlight, color: '#fff', fontSize: '10px', fontWeight: 700, padding: '1px 7px', borderRadius: '10px' }}>MEJOR RENDIMIENTO</span> : null}</div>
                               </td>
                               <td style={td}>{nf(e.sent)}</td>
                               <td style={{ ...td, fontWeight: 700 }}>{pc(or)}</td>
@@ -2488,7 +2725,7 @@ export default function Dashboard() {
                       </tbody>
                     </table>
                   </div>
-                  <div style={styles.cardSubtext}>Apertura y clics sobre entregados; CTOR = clics sobre aperturas. La marca se asigna por el nombre o asunto del email ("AXXIS" o "Diners"). "Vistas web" se asigna cuando el nombre de la campaña (utm_campaign) coincide con el nombre o asunto del email. Las aperturas pueden estar infladas por la protección de privacidad de Apple Mail.</div>
+                  <div style={styles.cardSubtext}>Ordenado de mejor a peor rendimiento: promedia la tasa de apertura y la de clics de cada envío, cada una medida frente al mejor envío del periodo. Los automáticos van al final. Apertura y clics sobre entregados; CTOR = clics sobre aperturas. La marca se asigna por el nombre o asunto del email ("AXXIS" o "Diners"). "Vistas web" se asigna cuando el nombre de la campaña (utm_campaign) coincide con el nombre o asunto del email. Las aperturas pueden estar infladas por la protección de privacidad de Apple Mail.</div>
                 </div>
               </>
             )}
