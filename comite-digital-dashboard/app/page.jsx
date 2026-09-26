@@ -123,7 +123,7 @@ const THEMES = {
 const SECTIONS = [
   { key: 'resumen', label: 'Resumen', apis: ['ga4', 'meta', 'pauta'] },
   { key: 'web', label: 'Web', apis: ['ga4', 'gsc'] },
-  { key: 'seo', label: 'SEO', apis: ['gsc', 'seo', 'ga4', 'meta', 'emailtraffic'] },
+  { key: 'seo', label: 'SEO', apis: ['gsc', 'seo', 'ga4', 'meta', 'emailtraffic', 'dailytrends'] },
   { key: 'redes', label: 'Redes sociales', apis: ['meta'] },
   { key: 'pauta', label: 'Pauta', apis: ['pauta'] },
   { key: 'emails', label: 'Emails', apis: ['emails', 'emailtraffic'] },
@@ -137,10 +137,10 @@ const CHANNEL_COLORS = {
   Email: { bg: '#fce4ec', fg: '#ad1457' },
   default: { bg: '#eee', fg: '#444' },
 };
-const API_NAMES = { gsc: 'Search Console', ga4: 'GA4', meta: 'Meta', seo: 'SEO', pauta: 'Pauta', emails: 'Emails', emailtraffic: 'Tráfico de email' };
+const API_NAMES = { gsc: 'Search Console', ga4: 'GA4', meta: 'Meta', seo: 'SEO', pauta: 'Pauta', emails: 'Emails', emailtraffic: 'Tráfico de email', dailytrends: 'Tendencias del día' };
 
 export default function Dashboard() {
-  const [data, setData] = useState({ gsc: {}, ga4: {}, meta: {}, seo: {}, pauta: {}, emails: {}, emailtraffic: {} });
+  const [data, setData] = useState({ gsc: {}, ga4: {}, meta: {}, seo: {}, pauta: {}, emails: {}, emailtraffic: {}, dailytrends: {} });
   const [errorsBy, setErrorsBy] = useState({});
   const [loadedKey, setLoadedKey] = useState({});
   const [loading, setLoading] = useState(false);
@@ -1417,6 +1417,66 @@ export default function Dashboard() {
 
       {ready && section === 'seo' && (
       <>
+      {/* Tendencias del día en Colombia */}
+      {(() => {
+        const D = data.dailytrends;
+        if (!D || D.error || !D.news) return null;
+        const when = new Date(D.fetchedAt);
+        const hhmm = when.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Bogota' });
+        const bogDay = when.toLocaleDateString('es-CO', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'America/Bogota' });
+        const ago = (iso) => {
+          const m = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+          if (!Number.isFinite(m) || m < 0) return '';
+          return m < 60 ? `hace ${m} min` : `hace ${Math.round(m / 60)} h`;
+        };
+        return (
+          <div style={{ ...styles.card, marginBottom: '24px' }}>
+            <div style={{ ...styles.cardTitle, fontSize: '14px' }}>Tendencias del día en Colombia · solo categorías relacionadas</div>
+            <div style={styles.cardSubtext}>{bogDay}, actualizado {hhmm} (hora Colombia). Búsquedas en tendencia de Google Trends filtradas a los temas de la revista, y noticias de las últimas 24 horas en cada categoría relacionada.</div>
+
+            <div style={{ ...styles.cardTitle, fontSize: '11px', marginTop: '16px' }}>Búsquedas en tendencia hoy relacionadas con la revista</div>
+            {D.trends.length > 0 ? (
+              <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '6px' }}>
+                <thead>
+                  <tr>{['Búsqueda', 'Categoría', 'Búsquedas', 'Titular relacionado'].map((h, k) => <th key={h} style={{ textAlign: k === 2 ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                </thead>
+                <tbody>
+                  {D.trends.map((t) => (
+                    <tr key={t.query}>
+                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', fontWeight: 700, textTransform: 'capitalize' }}>{t.query}</td>
+                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>{t.category.label}</td>
+                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right', fontWeight: 700 }}>{t.traffic}</td>
+                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>{t.news[0] ? <a href={t.news[0].url} target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>{t.news[0].title} <span style={{ color: '#888' }}>· {t.news[0].source}</span></a> : '—'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <div style={{ fontSize: '13px', color: '#555', marginTop: '6px' }}>Ninguna de las {D.totalTrends} búsquedas en tendencia de este momento corresponde a los temas de la revista. Se descartaron {D.filteredOut} (deportes, política y otros).</div>
+            )}
+            {D.trends.length > 0 && <div style={styles.cardSubtext}>Se descartaron {D.filteredOut} de {D.totalTrends} tendencias por no corresponder a los temas de la revista.</div>}
+
+            <div style={{ ...styles.cardTitle, fontSize: '11px', marginTop: '18px' }}>Qué se está publicando hoy en cada categoría (últimas 24 horas)</div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '18px', marginTop: '8px', alignItems: 'start' }}>
+              {D.news.filter((c) => c.items.length > 0).map((c) => (
+                <div key={c.key}>
+                  <div style={{ fontSize: '13px', fontWeight: 800, color: T.accent }}>{c.label} <span style={{ color: '#888', fontWeight: 500 }}>· {c.total}{c.total >= 100 ? '+' : ''} notas</span></div>
+                  <ul style={{ margin: '6px 0 0', paddingLeft: '16px', fontSize: '12px', lineHeight: 1.5 }}>
+                    {c.items.slice(0, 4).map((n) => (
+                      <li key={n.url} style={{ marginBottom: '4px' }}>
+                        <a href={n.url} target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>{n.title}</a>
+                        <span style={{ color: '#888' }}> · {n.source}{n.publishedAt ? ` · ${ago(n.publishedAt)}` : ''}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            <div style={styles.cardSubtext}>Fuentes: Google Trends (búsquedas en tendencia de Colombia) y Google Noticias (últimas 24 horas por categoría). El número de notas indica cuánta cobertura hay hoy, hasta 100. Se actualiza cada 30 minutos.</div>
+          </div>
+        );
+      })()}
+
       {/* Insights de contenido */}
       {(() => {
         const G = current.ga4 || {};
