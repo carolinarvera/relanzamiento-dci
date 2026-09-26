@@ -2379,7 +2379,15 @@ export default function Dashboard() {
         const webViewsFor = (e) => {
           const keys = [norm(e.name), norm(e.subject)].filter((k) => k.length >= 6);
           const hit = (TR?.campaigns || []).find((c) => { const cn = norm(c.name); return cn.length >= 6 && keys.some((k) => k.includes(cn) || cn.includes(k)); });
-          return hit ? hit.views : null;
+          if (hit) return hit.views;
+          const MESES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+          if (!e.sentAt || e.kind === 'automated') return null;
+          const d = new Date(e.sentAt);
+          const byDate = (TR?.campaigns || []).find((c) => {
+            const m = /^(\d{4})\s+([A-Za-zÁÉÍÓÚáéíóú]+)\s+(\d{1,2})\b/.exec(c.name);
+            return m && Number(m[1]) === d.getUTCFullYear() && MESES.indexOf(m[2].toLowerCase()) === d.getUTCMonth() && Number(m[3]) === d.getUTCDate();
+          });
+          return byDate ? byDate.views : null;
         };
         const sum = (list, k) => (list || []).reduce((a, e) => a + (e[k] || 0), 0);
         const agg = (list) => {
@@ -2400,12 +2408,13 @@ export default function Dashboard() {
           </div>
         );
         const sorted = [...(E.emails || [])].sort((a, b) => new Date(a.sentAt || 0) - new Date(b.sentAt || 0));
-        const chartData = sorted.map((e) => ({
+        const batchOnly = sorted.filter((e) => e.kind !== 'automated' && e.sent > 0);
+        const chartData = batchOnly.map((e) => ({
           label: e.sentAt ? `${new Date(e.sentAt).getUTCDate()} ${['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'][new Date(e.sentAt).getUTCMonth()]}` : e.name.slice(0, 12),
           Apertura: e.delivered ? e.open / e.delivered : 0,
           Clics: e.delivered ? e.click / e.delivered : 0,
         }));
-        const best = sorted.slice().sort((a, b) => (b.delivered ? b.click / b.delivered : 0) - (a.delivered ? a.click / a.delivered : 0))[0];
+        const best = batchOnly.slice().sort((a, b) => (b.delivered ? b.click / b.delivered : 0) - (a.delivered ? a.click / a.delivered : 0))[0];
         return (
           <>
             <h2 style={styles.sectionTitle}>Emails · HubSpot · {rangeLabel}</h2>
@@ -2454,7 +2463,7 @@ export default function Dashboard() {
                         </tr>
                       </thead>
                       <tbody>
-                        {sorted.slice().reverse().map((e) => {
+                        {sorted.filter((e) => e.sent > 0).slice().reverse().map((e) => {
                           const or = e.delivered ? e.open / e.delivered : 0;
                           const cr = e.delivered ? e.click / e.delivered : 0;
                           const co = e.open ? e.click / e.open : 0;
@@ -2462,7 +2471,7 @@ export default function Dashboard() {
                           const td = { padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' };
                           return (
                             <tr key={e.id} style={{ background: best && best.id === e.id ? '#fff6ee' : 'transparent' }}>
-                              <td style={{ ...td, textAlign: 'left', whiteSpace: 'nowrap' }}>{e.sentAt ? new Date(e.sentAt).toLocaleDateString('es-CO', { day: 'numeric', month: 'short', timeZone: 'UTC' }) : '\u2014'}</td>
+                              <td style={{ ...td, textAlign: 'left', whiteSpace: 'nowrap' }}>{e.kind === 'automated' ? 'Automático' : (e.sentAt ? new Date(e.sentAt).toLocaleDateString('es-CO', { day: 'numeric', month: 'short', timeZone: 'UTC' }) : '\u2014')}</td>
                               <td style={{ ...td, textAlign: 'left' }}>
                                 <div style={{ fontWeight: 700 }}>{e.subject || e.name}</div>
                                 <div style={{ fontSize: '11px', color: '#888' }}>{e.name}{best && best.id === e.id ? <span style={{ marginLeft: '6px', background: T.highlight, color: '#fff', fontSize: '10px', fontWeight: 700, padding: '1px 7px', borderRadius: '10px' }}>MEJOR CTR</span> : null}</div>

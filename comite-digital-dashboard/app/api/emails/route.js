@@ -5,51 +5,58 @@ import { isMock, mockEmails } from '../../lib/mock';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
-const BASE = 'https://api.hubapi.com/marketing/v3/emails/statistics/list';
+const API = 'https://api.hubapi.com/marketing/v3/emails';
+const detailCache = new Map();
+const DETAIL_TTL_MS = 60 * 60 * 1000;
 
-const pick = (obj, names) => {
-  for (const n of names) if (obj && obj[n] !== undefined && obj[n] !== null) return Number(obj[n]) || 0;
-  return 0;
-};
-
-function brandOf(text) {
-  if (/axxis/i.test(text)) return 'axxis';
-  if (/diners/i.test(text)) return 'diners';
-  return null;
+function brandOf(d) {
+  const test = (t) => (/axxis/i.test(t) ? 'axxis' : /diners/i.test(t) ? 'diners' : null);
+  return test(d.from?.fromName || '') || test(d.name || '') || test(d.subject || '') || test(d.from?.replyTo || '');
 }
 
-async function fetchStats(token, startIso, endIso) {
-  const res = await axios.get(BASE, {
-    params: { startTimestamp: startIso, endTimestamp: endIso },
-    headers: { Authorization: `Bearer ${token}` },
-  });
-  return res.data;
-}
-
-function normalize(email) {
-  const st = email.stats?.counters || email.counters || email.stats || {};
-  return {
-    id: String(email.id),
-    name: email.name || '',
-    subject: email.subject || email.emailSubject || '',
-    sentAt: email.publishedAt || email.publishDate || email.sendTime || email.updatedAt || email.createdAt || null,
-    sent: pick(st, ['sent']),
-    delivered: pick(st, ['delivered']),
-    open: pick(st, ['open', 'opened']),
-    click: pick(st, ['click', 'clicked']),
-    bounce: pick(st, ['bounce', 'bounced']),
-    unsubscribed: pick(st, ['unsubscribed', 'unsubscribe']),
-  };
-}
-
-function splitByBrand(list) {
-  const out = { axxis: [], diners: [] };
-  list.map(normalize).forEach((e) => {
-    const b = brandOf(`${e.name} ${e.subject}`);
-    if (b) out[b].push(e);
-  });
+async function pool(items, size, fn) {
+  const out = new Array(items.length);
+  let i = 0;
+  await Promise.all(Array.from({ length: Math.min(size, items.length) }, async () => {
+    while (i < items.length) {
+      const k = i;
+      i += 1;
+      out[k] = await fn(items[k]);
+    }
+  }));
   return out;
 }
+
+const uniq = (list) => [...new Set((list || []).map(String))];
+
+async function listIds(headers, start, end) {
+  const res = await axios.get(`${API}/statistics/list`, { params: { startTimestamp: `${start}T00:00:00Z`, endTimestamp: `${end}T23:59:59Z` }, headers });
+  return uniq(res.data.emails);
+}
+
+async function counters(headers, id, start, end) {
+  const res = await axios.get(`${API}/statistics/list`, { params: { startTimestamp: `${start}T00:00:00Z`, endTimestamp: `${end}T23:59:59Z`, emailIds: id }, headers });
+  return res.data.aggregate?.counters || {};
+}
+
+async function detail(headers, id) {
+  const hit = detailCache.get(id);
+  if (hit && Date.now() - hit.at < DETAIL_TTL_MS) return hit.value;
+  const res = await axios.get(`${API}/${id}`, { headers });
+  const d = res.data;
+  const value = {
+    id: String(d.id), name: d.name || '', subject: d.subject || '', from: d.from || {},
+    kind: d.state === 'AUTOMATED' || d.type === 'AUTOMATED_EMAIL' ? 'automated' : 'batch',
+    sentAt: d.publishDate || d.publishedAt || null,
+  };
+  detailCache.set(id, { at: Date.now(), value });
+  return value;
+}
+
+const row = (d, c) => ({
+  id: d.id, name: d.name, subject: d.subject, kind: d.kind, sentAt: d.sentAt,
+  sent: c.sent || 0, delivered: c.delivered || 0, open: c.open || 0, click: c.click || 0, bounce: c.bounce || 0, unsubscribed: c.unsubscribed || 0,
+});
 
 export async function GET(request) {
   try {
@@ -57,24 +64,36 @@ export async function GET(request) {
     const range = resolveRange(params);
     if (isMock(params)) return Response.json(mockEmails(range));
     const token = process.env.HUBSPOT_TOKEN;
-    if (!token) return Response.json({ error: 'HUBSPOT_TOKEN no configurado en Vercel (token de app privada de HubSpot con permiso marketing-email o content)' }, { status: 502 });
-    const [cur, prev] = await Promise.all([
-      fetchStats(token, `${range.start}T00:00:00Z`, `${range.end}T23:59:59Z`),
-      fetchStats(token, `${range.prevStart}T00:00:00Z`, `${range.prevEnd}T23:59:59Z`).catch(() => ({ emails: [] })),
+    if (!token) return Response.json({ error: 'HUBSPOT_TOKEN no configurado en Vercel' }, { status: 502 });
+    const headers = { Authorization: `Bearer ${token}` };
+
+    const [curIds, prevIds] = await Promise.all([
+      listIds(headers, range.start, range.end),
+      listIds(headers, range.prevStart, range.prevEnd).catch(() => []),
     ]);
-    const c = splitByBrand(cur.emails || []);
-    const p = splitByBrand(prev.emails || []);
-    const body = {
-      range,
-      axxis: { emails: c.axxis, prevEmails: p.axxis },
-      diners: { emails: c.diners, prevEmails: p.diners },
-      unassigned: (cur.emails || []).length - c.axxis.length - c.diners.length,
-    };
-    if (params.get('debug') === '1') body.sample = (cur.emails || [])[0] || null;
-    return Response.json(body);
+    const allIds = uniq([...curIds, ...prevIds]);
+    const details = {};
+    (await pool(allIds, 6, (id) => detail(headers, id).catch(() => null))).forEach((d) => { if (d) details[d.id] = d; });
+
+    const out = { axxis: { emails: [], prevEmails: [] }, diners: { emails: [], prevEmails: [] } };
+    let unassigned = 0;
+    await pool(curIds, 6, async (id) => {
+      const d = details[id];
+      if (!d) return;
+      const b = brandOf(d);
+      if (!b) { unassigned += 1; return; }
+      out[b].emails.push(row(d, await counters(headers, id, range.start, range.end).catch(() => ({}))));
+    });
+    await pool(prevIds, 6, async (id) => {
+      const d = details[id];
+      const b = d && brandOf(d);
+      if (!b) return;
+      out[b].prevEmails.push(row(d, await counters(headers, id, range.prevStart, range.prevEnd).catch(() => ({}))));
+    });
+    return Response.json({ range, ...out, unassigned });
   } catch (error) {
-    const detail = error.response?.data?.message || error.response?.data?.error || error.message;
-    console.error('Emails API Error:', detail);
-    return Response.json({ error: `HubSpot: ${detail}` }, { status: 502 });
+    const detailMsg = error.response?.data?.message || error.response?.data?.error || error.message;
+    console.error('Emails API Error:', detailMsg);
+    return Response.json({ error: `HubSpot: ${detailMsg}` }, { status: 502 });
   }
 }
