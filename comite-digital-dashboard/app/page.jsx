@@ -1436,9 +1436,6 @@ export default function Dashboard() {
         const D = Dall?.brands?.[activeTab] ? { ...Dall.brands[activeTab], fetchedAt: Dall.fetchedAt, totalTrends: Dall.totalTrends, news: winData?.brands?.[activeTab]?.news || null } : null;
         const WIN_LABEL = { '1d': 'últimas 24 horas', '7d': 'últimos 7 días', '14d': 'últimos 14 días' };
         if (!Dall || Dall.error || !D) return null;
-        const when = new Date(D.fetchedAt);
-        const hhmm = when.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Bogota' });
-        const bogDay = when.toLocaleDateString('es-CO', { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'America/Bogota' });
         const ago = (iso) => {
           const m = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
           if (!Number.isFinite(m) || m < 0) return '';
@@ -1448,10 +1445,10 @@ export default function Dashboard() {
         return (
           <div style={{ ...styles.card, marginBottom: '24px' }}>
             <div style={{ ...styles.cardTitle, fontSize: '14px' }}>Tendencias del día en Colombia · categorías de {activeTab === 'axxis' ? 'AXXIS' : 'Diners'}</div>
-            <div style={styles.cardSubtext}>{bogDay}, actualizado {hhmm} (hora Colombia). Búsquedas en tendencia de Google Trends filtradas a las categorías de {activeTab === 'axxis' ? 'AXXIS (arquitectura, diseño, decoración y especiales)' : 'Diners (cultura, estilo de vida, gastronomía, viajes, salud, tecnología y tendencias)'}, y noticias recientes de cada una (eliges el periodo más abajo).</div>
 
-            <div style={{ ...styles.cardTitle, fontSize: '11px', marginTop: '16px' }}>Búsquedas en tendencia hoy relacionadas con la revista</div>
-            {D.trends.length > 0 ? (
+            {D.trends.length > 0 && (
+              <>
+                <div style={{ ...styles.cardTitle, fontSize: '11px', marginTop: '16px' }}>Búsquedas en tendencia hoy relacionadas</div>
               <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '6px' }}>
                 <thead>
                   <tr>{['Búsqueda', 'Categoría', 'Búsquedas', 'Titular relacionado'].map((h, k) => <th key={h} style={{ textAlign: k === 2 ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
@@ -1467,10 +1464,8 @@ export default function Dashboard() {
                   ))}
                 </tbody>
               </table>
-            ) : (
-              <div style={{ fontSize: '13px', color: '#555', marginTop: '6px' }}>Ninguna de las {D.totalTrends} búsquedas en tendencia de este momento corresponde a los temas de la revista. Se descartaron {D.filteredOut} (deportes, política y otros).</div>
+              </>
             )}
-            {D.trends.length > 0 && <div style={styles.cardSubtext}>Se descartaron {D.filteredOut} de {D.totalTrends} tendencias por no corresponder a los temas de la revista.</div>}
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginTop: '18px' }}>
               <div style={{ ...styles.cardTitle, fontSize: '11px', margin: 0 }}>Qué se está publicando en cada categoría</div>
@@ -1484,12 +1479,12 @@ export default function Dashboard() {
             {!D.news ? (
               <div style={{ fontSize: '13px', color: '#555', marginTop: '10px' }}>Cargando noticias de los {WIN_LABEL[newsWin]}…</div>
             ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(3, Math.max(1, D.news.filter((c) => c.items.length > 0).length))}, minmax(0, 1fr))`, gap: '18px', marginTop: '8px', alignItems: 'start' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: `repeat(${(() => { const n = D.news.filter((c) => c.items.length > 0).length; return n === 4 ? 2 : Math.min(3, Math.max(1, n)); })()}, minmax(0, 1fr))`, gap: '18px', marginTop: '8px', alignItems: 'start' }}>
               {D.news.filter((c) => c.items.length > 0).map((c) => (
                 <div key={c.key}>
                   <div style={{ fontSize: '13px', fontWeight: 800, color: T.accent }}>{c.label} <span style={{ color: '#888', fontWeight: 500 }}>· {c.total}{c.total >= 100 ? '+' : ''} notas</span></div>
                   <ul style={{ margin: '6px 0 0', paddingLeft: '16px', fontSize: '12px', lineHeight: 1.5 }}>
-                    {c.items.slice(0, 4).map((n) => (
+                    {c.items.slice(0, 5).map((n) => (
                       <li key={n.url} style={{ marginBottom: '4px' }}>
                         <a href={n.url} target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>{n.title}</a>
                         <span style={{ color: '#888' }}> · {n.source}{n.publishedAt ? ` · ${ago(n.publishedAt)}` : ''}</span>
