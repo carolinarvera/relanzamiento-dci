@@ -578,44 +578,109 @@ export default function Dashboard() {
                   );
                 })()}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px', alignItems: 'start' }}>
-                  {current.ga4.audience.ai?.sources?.length > 0 && (
-                    <div style={styles.card}>
-<div>
-                        <div style={styles.cardTitle}>Asistentes de IA que envían tráfico</div>
-                        <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '6px' }}>
-                          <thead>
-                            <tr style={{ background: '#f0f0f0' }}>
-                              <th style={{ padding: '6px', textAlign: 'left' }}>Asistente</th>
-                              <th style={{ padding: '6px', textAlign: 'right' }}>Vistas</th>
-                              <th style={{ padding: '6px', textAlign: 'right' }}>Sesiones</th>
-                              <th style={{ padding: '6px', textAlign: 'right' }}>Usuarios</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {current.ga4.audience.ai.sources.map((a) => (
-                              <tr key={a.name}>
-                                <td style={{ padding: '6px', borderBottom: '1px solid #eee' }}>{a.name}</td>
-                                <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(a.views)}</td>
-                                <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(a.sessions)}</td>
-                                <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(a.users)}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                        {current.ga4.audience.ai.pages?.length > 0 && (
-                          <div style={{ marginTop: '12px' }}>
-                            <div style={styles.cardTitle}>Artículos a los que llegan (sesiones)</div>
-                            <ol style={{ fontSize: '12px', paddingLeft: '18px', margin: '6px 0 0' }}>
-                              {current.ga4.audience.ai.pages.map((pg) => (
-                                <li key={pg.path} style={{ marginBottom: '4px' }}>{pg.title || pg.path} <strong>· {nf(pg.sessions)}</strong></li>
-                              ))}
-                            </ol>
-                          </div>
-                        )}
+                  {current.ga4.audience.ai?.sources?.length > 0 && (() => {
+                    const A = current.ga4.audience;
+                    const ai = A.ai;
+                    const aiCh = (A.channels || []).find((c) => c.name === 'AI Assistant');
+                    const totV = (A.channels || []).reduce((x, c) => x + (c.views || 0), 0);
+                    const chg = aiCh && aiCh.prevViews ? aiCh.views / aiCh.prevViews - 1 : null;
+                    const topSrc = ai.sources.slice().sort((x, y) => y.views - x.views)[0];
+                    const srcTotal = ai.sources.reduce((x, c) => x + c.views, 0);
+                    const secMap = {};
+                    (ai.pages || []).forEach((pg) => { const sec = (pg.path.split('/')[1] || 'inicio').replace(/-/g, ' '); secMap[sec] = (secMap[sec] || 0) + pg.sessions; });
+                    const secTotal = Object.values(secMap).reduce((x, v) => x + v, 0);
+                    const secs = Object.entries(secMap).sort((x, y) => y[1] - x[1]).slice(0, 5);
+                    const Q = ai.quality;
+                    const qRows = [['Tráfico de asistentes de IA', Q?.ai], ['Búsqueda orgánica', Q?.organic], ['Todo el sitio', Q?.site]].filter((r) => r[1]);
+                    const kpi = (title, value, sub) => (
+                      <div style={{ background: '#f7f5f2', borderRadius: '8px', padding: '12px 14px' }}>
+                        <div style={styles.cardTitle}>{title}</div>
+                        <div style={{ fontSize: '24px', fontWeight: 800, color: T.accent }}>{value}</div>
+                        {sub}
                       </div>
-
-                    </div>
-                  )}
+                    );
+                    return (
+                      <div style={{ ...styles.card, gridColumn: '1 / -1' }}>
+                        <div style={styles.cardTitle}>Asistentes de IA que envían tráfico</div>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: '14px', marginTop: '10px' }}>
+                          {aiCh && kpi('Vistas desde IA', nf(aiCh.views), <>{renderChange(chg, false, aiCh.prevViews ? nf(aiCh.prevViews) : null)}</>)}
+                          {aiCh && totV > 0 && kpi('Peso sobre las vistas del sitio', `${((aiCh.views / totV) * 100).toFixed(2)}%`, <div style={styles.cardSubtext}>{nf(aiCh.sessions)} sesiones · {nf(aiCh.users)} usuarios</div>)}
+                          {topSrc && kpi('Asistente principal', topSrc.name, <div style={styles.cardSubtext}>{srcTotal ? ((topSrc.views / srcTotal) * 100).toFixed(0) : 0}% de las vistas de IA</div>)}
+                          {Q?.ai && Q?.organic && kpi('Duración vs búsqueda', `${Q.ai.sec >= Q.organic.sec ? '\u25B2' : '\u25BC'} ${Math.abs((Q.ai.sec / Q.organic.sec - 1) * 100).toFixed(0)}%`, <div style={styles.cardSubtext}>IA {fmtHMS(Q.ai.sec)} · búsqueda {fmtHMS(Q.organic.sec)}</div>)}
+                        </div>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '24px', marginTop: '18px', alignItems: 'start' }}>
+                          <div>
+                            <div style={styles.cardTitle}>Calidad del tráfico</div>
+                            <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '6px' }}>
+                              <thead>
+                                <tr style={{ background: '#f0f0f0' }}>
+                                  <th style={{ padding: '6px', textAlign: 'left' }}>Origen</th>
+                                  <th style={{ padding: '6px', textAlign: 'right' }}>Duración</th>
+                                  <th style={{ padding: '6px', textAlign: 'right' }}>Rebote</th>
+                                  <th style={{ padding: '6px', textAlign: 'right' }}>Interacción</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {qRows.map(([label, q], k) => (
+                                  <tr key={label} style={{ fontWeight: k === 0 ? 700 : 400 }}>
+                                    <td style={{ padding: '6px', borderBottom: '1px solid #eee' }}>{label}</td>
+                                    <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{fmtHMS(q.sec)}</td>
+                                    <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{(q.bounce * 100).toFixed(0)}%</td>
+                                    <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{(q.engagement * 100).toFixed(0)}%</td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                            <div style={styles.cardSubtext}>Rebote menor y duración mayor que la búsqueda indican tráfico más comprometido.</div>
+                          </div>
+                          <div>
+                            <div style={styles.cardTitle}>Por asistente</div>
+                            <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '6px' }}>
+                              <thead>
+                                <tr style={{ background: '#f0f0f0' }}>
+                                  <th style={{ padding: '6px', textAlign: 'left' }}>Asistente</th>
+                                  <th style={{ padding: '6px', textAlign: 'right' }}>Vistas</th>
+                                  <th style={{ padding: '6px', textAlign: 'right' }}>% de IA</th>
+                                  <th style={{ padding: '6px', textAlign: 'right' }}>Sesiones</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {ai.sources.slice().sort((x, y) => y.views - x.views).map((a) => (
+                                  <tr key={a.name}>
+                                    <td style={{ padding: '6px', borderBottom: '1px solid #eee' }}>{a.name}</td>
+                                    <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(a.views)}</td>
+                                    <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{srcTotal ? ((a.views / srcTotal) * 100).toFixed(0) : 0}%</td>
+                                    <td style={{ padding: '6px', textAlign: 'right', borderBottom: '1px solid #eee' }}>{nf(a.sessions)}</td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
+                          </div>
+                          <div>
+                            <div style={styles.cardTitle}>Secciones que más cita la IA</div>
+                            {secs.map(([name, v], k) => (
+                              <div key={name} style={{ marginTop: '8px' }}>
+                                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', textTransform: 'capitalize' }}><span>{name}</span><strong>{secTotal ? ((v / secTotal) * 100).toFixed(0) : 0}%</strong></div>
+                                <div style={{ background: T.soft, borderRadius: '4px', height: '8px', marginTop: '3px' }}>
+                                  <div style={{ width: `${secTotal ? (v / secTotal) * 100 : 0}%`, background: k === 0 ? T.highlight : T.accent, height: '8px', borderRadius: '4px' }} />
+                                </div>
+                              </div>
+                            ))}
+                            {ai.pages?.length > 0 && (
+                              <>
+                                <div style={{ ...styles.cardTitle, marginTop: '14px' }}>Artículos a los que llegan (sesiones)</div>
+                                <ol style={{ fontSize: '12px', paddingLeft: '18px', margin: '6px 0 0' }}>
+                                  {ai.pages.slice(0, 5).map((pg) => (
+                                    <li key={pg.path} style={{ marginBottom: '4px', overflowWrap: 'anywhere' }}>{pg.title || pg.path} <strong>· {nf(pg.sessions)}</strong></li>
+                                  ))}
+                                </ol>
+                              </>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })()}
                 </div>
               </div>
             )}
@@ -1103,7 +1168,7 @@ export default function Dashboard() {
                 </div>
                 {(() => {
                   const A = current.ga4.audience;
-                  if (!A.interests && !A.os && !A.regions) return null;
+                  
                   const bar = (label, pct, color, extra, dec) => (
                     <div key={label} style={{ marginTop: '10px' }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px' }}>
@@ -1218,7 +1283,7 @@ export default function Dashboard() {
                                     </BarChart>
                                   </ResponsiveContainer>
                                 </div>
-                                {A.interestsCoverage != null && <div style={{ ...styles.cardSubtext, minHeight: '36px' }}>GA4 clasifica intereses en {(A.interestsCoverage * 100).toFixed(0)}% de los usuarios; un usuario puede tener varios.</div>}
+                                {A.interestsCoverage != null && <div style={{ ...styles.cardSubtext, minHeight: '36px' }}>Categorías de intereses de Google (algunas en inglés). GA4 las asigna al {(A.interestsCoverage * 100).toFixed(0)}% de los usuarios; un usuario puede tener varios.</div>}
                               </div>
                             )}
                             <div style={styles.card}>

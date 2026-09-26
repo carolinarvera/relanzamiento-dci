@@ -392,7 +392,7 @@ async function buildAudience(token, propertyId, r, brand) {
     runReport(token, propertyId, { dateRanges: [range], dimensions: [{ name: dimension }], metrics: metrics.map((name) => ({ name })), ...extra });
 
   const aiFilter = { filter: { fieldName: 'sessionDefaultChannelGroup', stringFilter: { matchType: 'EXACT', value: 'AI Assistant' } } };
-  const [devices, channels, gender, age, ageGender, cityRows, countryRows, aiSources, aiLanding, prevChannels, prevDevices, newVsRet, newChan, retChan] = await Promise.all([
+  const [devices, channels, gender, age, ageGender, cityRows, countryRows, aiSources, aiLanding, prevChannels, prevDevices, newVsRet, newChan, retChan, regionRows, osRows, osPrevRows, brandRows, intRows, intGenderRows, intAgeRows, qualityRows] = await Promise.all([
     rep('deviceCategory', ['totalUsers']),
     rep('sessionDefaultChannelGroup', ['sessions', 'screenPageViews', 'totalUsers'], { orderBys: [{ metric: { metricName: 'sessions' }, desc: true }] }),
     rep('userGender', ['totalUsers']).catch(() => []),
@@ -436,6 +436,14 @@ async function buildAudience(token, propertyId, r, brand) {
       dimensionFilter: { filter: { fieldName: 'newVsReturning', stringFilter: { matchType: 'EXACT', value: 'returning' } } },
       limit: 30,
     }).catch(() => []),
+    rep('region', ['totalUsers'], { limit: 8, dimensionFilter: { filter: { fieldName: 'country', stringFilter: { matchType: 'EXACT', value: 'Colombia' } } }, orderBys: [{ metric: { metricName: 'totalUsers' }, desc: true }] }).catch(() => []),
+    rep('operatingSystem', ['totalUsers'], { orderBys: [{ metric: { metricName: 'totalUsers' }, desc: true }] }).catch(() => []),
+    runReport(token, propertyId, { dateRanges: [{ startDate: r.prevStart, endDate: r.prevEnd }], dimensions: [{ name: 'operatingSystem' }], metrics: [{ name: 'totalUsers' }] }).catch(() => []),
+    rep('mobileDeviceBranding', ['totalUsers'], { orderBys: [{ metric: { metricName: 'totalUsers' }, desc: true }] }).catch(() => []),
+    rep('brandingInterest', ['totalUsers'], { limit: 400, orderBys: [{ metric: { metricName: 'totalUsers' }, desc: true }] }).catch(() => []),
+    runReport(token, propertyId, { dateRanges: [range], dimensions: [{ name: 'brandingInterest' }, { name: 'userGender' }], metrics: [{ name: 'totalUsers' }], limit: 10000 }).catch(() => []),
+    runReport(token, propertyId, { dateRanges: [range], dimensions: [{ name: 'brandingInterest' }, { name: 'userAgeBracket' }], metrics: [{ name: 'totalUsers' }], limit: 10000 }).catch(() => []),
+    rep('sessionDefaultChannelGroup', ['averageSessionDuration', 'bounceRate', 'engagementRate', 'sessions']).catch(() => []),
   ]);
   const returningChannels = retChan.map((x) => ({ name: x.dimensionValues[0].value, sessions: Number(x.metricValues[0].value) }));
   const returningDuration = { sec: null, prevSec: null };
@@ -475,8 +483,74 @@ async function buildAudience(token, propertyId, r, brand) {
   const known = (list) => list.filter((x) => x.name !== 'unknown' && x.name !== '(not set)');
   const renorm = (list) => { const t = list.reduce((a, x) => a + x.value, 0); return list.map((x) => ({ ...x, pct: t ? x.value / t : 0 })); };
 
+  const grandUsers = Number(countryRows.totals?.[0]?.value || 0) || share(devices).reduce((a, x) => a + x.value, 0);
+  const REG_ES = { Bogota: 'Bogotá D.C.', Atlantico: 'Atlántico', Bolivar: 'Bolívar', Boyaca: 'Boyacá', Narino: 'Nariño', Cordoba: 'Córdoba', Quindio: 'Quindío', Caqueta: 'Caquetá', Choco: 'Chocó', Guainia: 'Guainía', Vaupes: 'Vaupés', Norte_de_Santander: 'Norte de Santander' };
+  const regions = regionRows
+    .filter((x) => !['(not set)', ''].includes(x.dimensionValues[0].value))
+    .slice(0, 6)
+    .map((x) => ({ name: REG_ES[x.dimensionValues[0].value] || x.dimensionValues[0].value, pct: grandUsers ? Number(x.metricValues[0].value) / grandUsers : 0 }));
+  const OS_ES = { Macintosh: 'macOS', 'Chrome OS': 'ChromeOS' };
+  const osPrev = share(osPrevRows);
+  const osList = share(osRows).filter((x) => x.name !== '(not set)').slice(0, 5).map((x) => ({ name: OS_ES[x.name] || x.name, pct: x.pct, prevPct: (osPrev.find((y) => y.name === x.name) || {}).pct ?? null }));
+  const brands = share(brandRows).filter((x) => !['(not set)', ''].includes(x.name)).slice(0, 5).map((x) => ({ name: x.name, pct: x.pct }));
+  const intUsers = (rows) => rows.filter((x) => x.dimensionValues[0].value !== '(not set)');
+  const intTotal = grandUsers;
+  const notSetRow = intRows.find((x) => x.dimensionValues[0].value === '(not set)');
+  const REL = /travel|food|dining|home|garden|luxury|architect|interior|design|fashion|apparel|beauty|wine|restaurant|real estate|vehicle|auto|culture|art|shopper|hotel|resort/i;
+  const INT_ES = [
+    ['Travel', 'Viajes'], ['Food & Dining', 'Gastronomía'], ['Home & Garden', 'Hogar y jardín'], ['Luxury', 'Lujo'], ['Fashion', 'Moda'], ['Apparel', 'Ropa'],
+    ['Beauty & Wellness', 'Belleza y bienestar'], ['Wine', 'Vinos'], ['Restaurant', 'Restaurantes'], ['Real Estate', 'Bienes raíces'],
+    ['Vehicles & Transportation', 'Vehículos'], ['Autos & Vehicles', 'Vehículos'], ['Auto', 'Autos'], ['Sports & Fitness', 'Deportes y fitness'],
+    ['News & Politics', 'Noticias y política'], ['Technology', 'Tecnología'], ['Business Professionals', 'Profesionales de negocios'],
+    ['Shoppers', 'Compradores'], ['Media & Entertainment', 'Medios y entretenimiento'], ['Arts & Entertainment', 'Arte y entretenimiento'],
+    ['Lifestyles & Hobbies', 'Estilo de vida y hobbies'], ['Banking & Finance', 'Banca y finanzas'], ['Soccer Fans', 'Fútbol'], ['Sports Fans', 'Aficionados al deporte'],
+    ['Avid News Readers', 'Lectores de noticias'], ['Technophiles', 'Tecnófilos'], ['Entertainment News Enthusiasts', 'Noticias de entretenimiento'], ['Avid Local News Readers', 'Noticias locales'],
+  ];
+  const esInterest = (path) => {
+    const parts = path.split('/').slice(-2);
+    return parts.map((t) => (INT_ES.find(([en]) => en === t) || [null, t])[1]).join(' › ');
+  };
+  const allInt = intUsers(intRows);
+  const relevant = allInt.filter((x) => REL.test(x.dimensionValues[0].value)).slice(0, 6);
+  const rest = allInt.filter((x) => !relevant.includes(x)).slice(0, 6 - relevant.length);
+  const pickedInt = [...relevant, ...rest];
+  const interests = pickedInt.map((x) => ({ raw: x.dimensionValues[0].value, name: esInterest(x.dimensionValues[0].value), pct: intTotal ? Number(x.metricValues[0].value) / intTotal : 0 }));
+  const interestsCoverage = intTotal && notSetRow ? 1 - Number(notSetRow.metricValues[0].value) / intTotal : null;
+  const segTotals = { Mujeres: 0, Hombres: 0 };
+  gender.forEach((x) => { const n = x.dimensionValues[0].value; if (n === 'female') segTotals.Mujeres = Number(x.metricValues[0].value); if (n === 'male') segTotals.Hombres = Number(x.metricValues[0].value); });
+  const ageTotals = {};
+  age.forEach((x) => { ageTotals[x.dimensionValues[0].value] = Number(x.metricValues[0].value); });
+  const ageKeys = Object.keys(ageTotals).filter((k) => k !== 'unknown' && k !== '(not set)').sort();
+  const cell = (rows, interest, seg) => {
+    const r = rows.find((x) => x.dimensionValues[0].value === interest && x.dimensionValues[1].value === seg);
+    return r ? Number(r.metricValues[0].value) : 0;
+  };
+  const interestsBySegment = interests.length && (Object.values(segTotals).some(Boolean) || ageKeys.length) ? {
+    segments: ['Mujeres', 'Hombres', ...ageKeys],
+    rows: interests.map((it) => ({
+      name: it.name,
+      values: [
+        segTotals.Mujeres ? cell(intGenderRows, it.raw, 'female') / segTotals.Mujeres : 0,
+        segTotals.Hombres ? cell(intGenderRows, it.raw, 'male') / segTotals.Hombres : 0,
+        ...ageKeys.map((k) => (ageTotals[k] ? cell(intAgeRows, it.raw, k) / ageTotals[k] : 0)),
+      ],
+    })),
+  } : null;
+  const qOf = (name) => {
+    const r = qualityRows.find((x) => x.dimensionValues[0].value === name);
+    return r ? { sec: Number(r.metricValues[0].value), bounce: Number(r.metricValues[1].value), engagement: Number(r.metricValues[2].value), sessions: Number(r.metricValues[3].value) } : null;
+  };
+  const qSessions = qualityRows.reduce((a, x) => a + Number(x.metricValues[3].value), 0);
+  const qw = (i) => (qSessions ? qualityRows.reduce((a, x) => a + Number(x.metricValues[i].value) * Number(x.metricValues[3].value), 0) / qSessions : 0);
+  const aiQuality = { ai: qOf('AI Assistant'), organic: qOf('Organic Search'), site: qSessions ? { sec: qw(0), bounce: qw(1), engagement: qw(2), sessions: qSessions } : null };
   const sessionsTotal = channels.reduce((a, r) => a + Number(r.metricValues[0].value), 0);
   return {
+    regions: regions.length ? regions : null,
+    os: osList.length ? osList : null,
+    brands: brands.length ? brands : null,
+    interests: interests.length ? interests.map(({ raw, ...rest }) => rest) : null,
+    interestsCoverage,
+    interestsBySegment,
     returning,
     newDuration,
     newChannels,
@@ -507,6 +581,7 @@ async function buildAudience(token, propertyId, r, brand) {
     ai: {
       sources: aiSources.map((r) => ({ name: r.dimensionValues[0].value, sessions: Number(r.metricValues[0].value), views: Number(r.metricValues[1].value), users: Number(r.metricValues[2].value) })),
       pages: aiPages.map((a) => ({ path: a.path, sessions: a.views, title: a.title })),
+      quality: aiQuality,
     },
     cities: geo(cityRows),
     countries: geo(countryRows),
