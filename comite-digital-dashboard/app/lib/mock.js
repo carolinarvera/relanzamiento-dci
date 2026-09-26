@@ -165,3 +165,29 @@ export function mockGsc(range) {
 }
 
 export const isMock = (searchParams) => process.env.NODE_ENV !== 'production' && searchParams.get('mock') === '1';
+
+export function mockEmails(range) {
+  const r = rng(29);
+  const mk = (brand, n, scale, startMs) => Array.from({ length: n }, (_, i) => {
+    const sent = Math.round((9000 + r() * 4000) * scale);
+    const delivered = Math.round(sent * (0.97 + r() * 0.02));
+    const open = Math.round(delivered * (0.26 + r() * 0.16));
+    const click = Math.round(open * (0.07 + r() * 0.1));
+    return {
+      id: `${brand}-${startMs}-${i}`,
+      name: `Newsletter ${brand === 'axxis' ? 'AXXIS' : 'Diners'} · Edición ${i + 1}`,
+      subject: brand === 'axxis' ? ['Casas que dialogan con la montaña', 'Diseño colombiano en Milán', 'Cocinas para recibir', 'El regreso del bambú', 'Interiores en tonos tierra'][i % 5] : ['Dónde comer esta semana', 'Escapadas de fin de semana', 'Los mejores brunch de Bogotá', 'Hoteles con alma', 'Vinos para regalar'][i % 5],
+      sentAt: new Date(startMs + i * 4 * 86400000).toISOString(),
+      sent, delivered, open, click,
+      bounce: Math.round(sent * 0.012), unsubscribed: Math.round(delivered * (0.002 + r() * 0.002)),
+    };
+  });
+  const start = new Date(`${range.start}T12:00:00Z`).getTime();
+  const pstart = new Date(`${range.prevStart}T12:00:00Z`).getTime();
+  return {
+    range,
+    axxis: { emails: mk('axxis', 7, 1, start), prevEmails: mk('axxis', 7, 0.92, pstart) },
+    diners: { emails: mk('diners', 7, 1.6, start), prevEmails: mk('diners', 6, 1.5, pstart) },
+    mock: true,
+  };
+}

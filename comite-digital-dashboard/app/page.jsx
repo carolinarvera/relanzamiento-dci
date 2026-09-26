@@ -78,6 +78,7 @@ const SECTIONS = [
   { key: 'seo', label: 'SEO', apis: ['gsc', 'seo'] },
   { key: 'redes', label: 'Redes sociales', apis: ['meta'] },
   { key: 'pauta', label: 'Pauta', apis: ['pauta'] },
+  { key: 'emails', label: 'Emails', apis: ['emails'] },
 ];
 const CHANNEL_COLORS = {
   'Búsqueda orgánica': { bg: '#e6f4ea', fg: '#1e6b34' },
@@ -88,10 +89,10 @@ const CHANNEL_COLORS = {
   Email: { bg: '#fce4ec', fg: '#ad1457' },
   default: { bg: '#eee', fg: '#444' },
 };
-const API_NAMES = { gsc: 'Search Console', ga4: 'GA4', meta: 'Meta', seo: 'SEO', pauta: 'Pauta' };
+const API_NAMES = { gsc: 'Search Console', ga4: 'GA4', meta: 'Meta', seo: 'SEO', pauta: 'Pauta', emails: 'Emails' };
 
 export default function Dashboard() {
-  const [data, setData] = useState({ gsc: {}, ga4: {}, meta: {}, seo: {}, pauta: {} });
+  const [data, setData] = useState({ gsc: {}, ga4: {}, meta: {}, seo: {}, pauta: {}, emails: {} });
   const [errorsBy, setErrorsBy] = useState({});
   const [loadedKey, setLoadedKey] = useState({});
   const [loading, setLoading] = useState(false);
@@ -357,6 +358,7 @@ export default function Dashboard() {
     ga4: data.ga4?.axxis || {},
     meta: data.meta?.axxis || {},
     seo: data.seo?.axxis || null,
+    emails: data.emails?.axxis || null,
   };
 
   const dinersData = {
@@ -364,6 +366,7 @@ export default function Dashboard() {
     ga4: data.ga4?.diners || {},
     meta: data.meta?.diners || {},
     seo: data.seo?.diners || null,
+    emails: data.emails?.diners || null,
   };
 
   const current = activeTab === 'axxis' ? axxisData : dinersData;
@@ -2275,6 +2278,113 @@ export default function Dashboard() {
       })()}
       </>
       )}
+
+      {ready && section === 'emails' && (() => {
+        const E = current.emails;
+        if (!E) {
+          return <div style={{ ...styles.card, color: '#555' }}>Sin datos de emails. Revisa el mensaje de error de arriba (el token de HubSpot debe estar configurado en Vercel).</div>;
+        }
+        const sum = (list, k) => (list || []).reduce((a, e) => a + (e[k] || 0), 0);
+        const agg = (list) => {
+          const sent = sum(list, 'sent'); const delivered = sum(list, 'delivered'); const open = sum(list, 'open');
+          const click = sum(list, 'click'); const unsub = sum(list, 'unsubscribed'); const bounce = sum(list, 'bounce');
+          return { sent, delivered, open, click, unsub, bounce, openRate: delivered ? open / delivered : 0, clickRate: delivered ? click / delivered : 0, ctor: open ? click / open : 0, unsubRate: delivered ? unsub / delivered : 0, bounceRate: sent ? bounce / sent : 0 };
+        };
+        const cur = agg(E.emails);
+        const prv = agg(E.prevEmails);
+        const hasPrev = (E.prevEmails || []).length > 0;
+        const rel = (a, b) => (b ? a / b - 1 : null);
+        const pc = (v, d = 1) => `${(v * 100).toFixed(d)}%`;
+        const tile = (title, value, change, prevText, lowerBetter) => (
+          <div style={styles.card}>
+            <div style={styles.cardTitle}>{title}</div>
+            <div style={styles.cardValue}>{value}</div>
+            {hasPrev ? renderChange(change, lowerBetter, prevText) : null}
+          </div>
+        );
+        const sorted = [...(E.emails || [])].sort((a, b) => new Date(a.sentAt || 0) - new Date(b.sentAt || 0));
+        const chartData = sorted.map((e) => ({
+          label: e.sentAt ? `${new Date(e.sentAt).getUTCDate()} ${['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'][new Date(e.sentAt).getUTCMonth()]}` : e.name.slice(0, 12),
+          Apertura: e.delivered ? e.open / e.delivered : 0,
+          Clics: e.delivered ? e.click / e.delivered : 0,
+        }));
+        const best = sorted.slice().sort((a, b) => (b.delivered ? b.click / b.delivered : 0) - (a.delivered ? a.click / a.delivered : 0))[0];
+        return (
+          <>
+            <h2 style={styles.sectionTitle}>Emails · HubSpot · {rangeLabel}</h2>
+            {sorted.length === 0 ? (
+              <div style={{ ...styles.card, color: '#555' }}>No hay emails de {activeTab === 'axxis' ? 'AXXIS' : 'Diners'} enviados en este periodo. Las marcas se identifican porque el nombre o el asunto del email contiene "{activeTab === 'axxis' ? 'AXXIS' : 'Diners'}".</div>
+            ) : (
+              <>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '20px' }}>
+                  {tile('Enviados', nf(cur.sent), rel(cur.sent, prv.sent), nf(prv.sent))}
+                  {tile('Entregados', nf(cur.delivered), rel(cur.delivered, prv.delivered), nf(prv.delivered))}
+                  {tile('Tasa de apertura', pc(cur.openRate), rel(cur.openRate, prv.openRate), pc(prv.openRate))}
+                  {tile('Tasa de clics', pc(cur.clickRate, 2), rel(cur.clickRate, prv.clickRate), pc(prv.clickRate, 2))}
+                  {tile('Clics sobre aperturas (CTOR)', pc(cur.ctor), rel(cur.ctor, prv.ctor), pc(prv.ctor))}
+                  {tile('Bajas', pc(cur.unsubRate, 2), rel(cur.unsubRate, prv.unsubRate), pc(prv.unsubRate, 2), true)}
+                </div>
+
+                <div style={{ ...styles.card, marginTop: '20px' }}>
+                  <div style={styles.cardTitle}>Apertura y clics por envío</div>
+                  <div style={{ width: '100%', height: 300, marginTop: '12px' }}>
+                    <ResponsiveContainer>
+                      <BarChart data={chartData} margin={{ top: 24, right: 10, left: 0, bottom: 0 }}>
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                        <XAxis dataKey="label" tick={{ fontSize: 11 }} />
+                        <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => `${(v * 100).toFixed(0)}%`} width={40} />
+                        <Tooltip formatter={(v) => `${(v * 100).toFixed(1)}%`} />
+                        <Legend />
+                        <Bar dataKey="Apertura" fill={T.accent}><LabelList dataKey="Apertura" position="top" formatter={(v) => `${(v * 100).toFixed(0)}%`} style={{ fontSize: 10, fill: '#444' }} /></Bar>
+                        <Bar dataKey="Clics" fill="#333333"><LabelList dataKey="Clics" position="top" formatter={(v) => `${(v * 100).toFixed(1)}%`} style={{ fontSize: 10, fill: '#444' }} /></Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
+                </div>
+
+                <div style={{ ...styles.card, marginTop: '20px' }}>
+                  <div style={styles.cardTitle}>Detalle de envíos</div>
+                  <div style={{ overflowX: 'auto', marginTop: '8px' }}>
+                    <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '720px' }}>
+                      <thead>
+                        <tr>
+                          {['Fecha', 'Email', 'Enviados', 'Apertura', 'Clics', 'CTOR', 'Bajas'].map((h, k) => (
+                            <th key={h} style={{ textAlign: k > 1 ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {sorted.slice().reverse().map((e) => {
+                          const or = e.delivered ? e.open / e.delivered : 0;
+                          const cr = e.delivered ? e.click / e.delivered : 0;
+                          const co = e.open ? e.click / e.open : 0;
+                          const ur = e.delivered ? e.unsubscribed / e.delivered : 0;
+                          const td = { padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' };
+                          return (
+                            <tr key={e.id} style={{ background: best && best.id === e.id ? '#fff6ee' : 'transparent' }}>
+                              <td style={{ ...td, textAlign: 'left', whiteSpace: 'nowrap' }}>{e.sentAt ? new Date(e.sentAt).toLocaleDateString('es-CO', { day: 'numeric', month: 'short', timeZone: 'UTC' }) : '\u2014'}</td>
+                              <td style={{ ...td, textAlign: 'left' }}>
+                                <div style={{ fontWeight: 700 }}>{e.subject || e.name}</div>
+                                <div style={{ fontSize: '11px', color: '#888' }}>{e.name}{best && best.id === e.id ? <span style={{ marginLeft: '6px', background: T.highlight, color: '#fff', fontSize: '10px', fontWeight: 700, padding: '1px 7px', borderRadius: '10px' }}>MEJOR CTR</span> : null}</div>
+                              </td>
+                              <td style={td}>{nf(e.sent)}</td>
+                              <td style={{ ...td, fontWeight: 700 }}>{pc(or)}</td>
+                              <td style={{ ...td, fontWeight: 700 }}>{pc(cr, 2)}</td>
+                              <td style={td}>{pc(co)}</td>
+                              <td style={td}>{pc(ur, 2)}</td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                  <div style={styles.cardSubtext}>Apertura y clics sobre entregados; CTOR = clics sobre aperturas. La marca se asigna por el nombre o asunto del email ("AXXIS" o "Diners"). Las aperturas pueden estar infladas por la protección de privacidad de Apple Mail.</div>
+                </div>
+              </>
+            )}
+          </>
+        );
+      })()}
 
       {!ready && (
         <div style={{ ...styles.card, textAlign: 'center', padding: '40px', color: '#555' }}>
