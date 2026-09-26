@@ -5,7 +5,8 @@ export const maxDuration = 30;
 
 const UA = { 'User-Agent': 'Mozilla/5.0 (compatible; ComiteDigitalDashboard/1.0)' };
 const TTL_MS = 30 * 60 * 1000;
-let cache = null;
+const cache = {};
+const WINDOWS = { '1d': '1d', '7d': '7d', '14d': '14d' };
 
 const decode = (t) => String(t || '')
   .replace(/<!\[CDATA\[(.*?)\]\]>/gs, '$1')
@@ -44,8 +45,8 @@ function categorize(t, brand) {
   return CATS.filter((c) => c.brands.includes(brand)).find((c) => c.re.test(hay)) || null;
 }
 
-async function fetchNews(cat) {
-  const url = `https://news.google.com/rss/search?q=${encodeURIComponent(`${cat.q} when:1d`)}&hl=es-419&gl=CO&ceid=CO:es-419`;
+async function fetchNews(cat, win) {
+  const url = `https://news.google.com/rss/search?q=${encodeURIComponent(`${cat.q} when:${win}`)}&hl=es-419&gl=CO&ceid=CO:es-419`;
   const r = await axios.get(url, { headers: UA, timeout: 15000, responseType: 'text' });
   const items = [...String(r.data).matchAll(/<item>(.*?)<\/item>/gs)].map((m) => m[1]);
   const list = items.map((it) => {
@@ -59,17 +60,18 @@ async function fetchNews(cat) {
   return { key: cat.key, label: cat.label, total: uniq.length, items: uniq.slice(0, 5) };
 }
 
-export async function GET() {
+export async function GET(request) {
   try {
-    if (cache && Date.now() - cache.at < TTL_MS) return Response.json(cache.value);
-    const [trends, ...news] = await Promise.all([fetchTrends(), ...CATS.map((c) => fetchNews(c).catch(() => ({ key: c.key, label: c.label, total: 0, items: [] })))]);
+    const win = WINDOWS[new URL(request.url).searchParams.get('window')] || '1d';
+    if (cache[win] && Date.now() - cache[win].at < TTL_MS) return Response.json(cache[win].value);
+    const [trends, ...news] = await Promise.all([fetchTrends(), ...CATS.map((c) => fetchNews(c, win).catch(() => ({ key: c.key, label: c.label, total: 0, items: [] })))]);
     const brands = {};
     ['axxis', 'diners'].forEach((brand) => {
       const matched = trends.map((t) => ({ ...t, category: categorize(t, brand) })).filter((t) => t.category).map((t) => ({ ...t, category: { key: t.category.key, label: t.category.label } }));
       brands[brand] = { filteredOut: trends.length - matched.length, trends: matched, news: news.filter((c) => CATS.find((x) => x.key === c.key).brands.includes(brand)) };
     });
-    const value = { fetchedAt: new Date().toISOString(), totalTrends: trends.length, brands };
-    cache = { at: Date.now(), value };
+    const value = { fetchedAt: new Date().toISOString(), window: win, totalTrends: trends.length, brands };
+    cache[win] = { at: Date.now(), value };
     return Response.json(value);
   } catch (error) {
     console.error('Daily trends error:', error.message);

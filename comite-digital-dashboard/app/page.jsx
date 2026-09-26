@@ -150,11 +150,23 @@ export default function Dashboard() {
   const [draft, setDraft] = useState({ start: '', end: '' });
   const [trends, setTrends] = useState(null);
   const [trendDays, setTrendDays] = useState(30);
+  const [newsWin, setNewsWin] = useState('1d');
+  const [newsByWin, setNewsByWin] = useState({});
   const [traficoOpen, setTraficoOpen] = useState(false);
   const [trafico, setTrafico] = useState(null);
   const rangeKey = range ? `${range.start}|${range.end}` : 'default';
   const sectionDef = SECTIONS.find((x) => x.key === section);
   const ready = sectionDef.apis.every((a) => loadedKey[a] === rangeKey);
+
+  useEffect(() => {
+    if (section !== 'seo' || newsWin === '1d' || newsByWin[newsWin]) return undefined;
+    let cancelled = false;
+    fetch(`/api/dailytrends?window=${newsWin}`, { cache: 'no-store' })
+      .then((r) => r.json())
+      .then((j) => { if (!cancelled && !j.error) setNewsByWin((m) => ({ ...m, [newsWin]: j })); })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [section, newsWin]); // eslint-disable-line
 
   useEffect(() => {
     if (section !== 'seo') return undefined;
@@ -1420,7 +1432,9 @@ export default function Dashboard() {
       {/* Tendencias del día en Colombia */}
       {(() => {
         const Dall = data.dailytrends;
-        const D = Dall?.brands?.[activeTab] ? { ...Dall.brands[activeTab], fetchedAt: Dall.fetchedAt, totalTrends: Dall.totalTrends } : null;
+        const winData = newsWin === '1d' ? Dall : (newsByWin[newsWin] || null);
+        const D = Dall?.brands?.[activeTab] ? { ...Dall.brands[activeTab], fetchedAt: Dall.fetchedAt, totalTrends: Dall.totalTrends, news: winData?.brands?.[activeTab]?.news || null } : null;
+        const WIN_LABEL = { '1d': 'últimas 24 horas', '7d': 'últimos 7 días', '14d': 'últimos 14 días' };
         if (!Dall || Dall.error || !D) return null;
         const when = new Date(D.fetchedAt);
         const hhmm = when.toLocaleTimeString('es-CO', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Bogota' });
@@ -1428,12 +1442,13 @@ export default function Dashboard() {
         const ago = (iso) => {
           const m = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
           if (!Number.isFinite(m) || m < 0) return '';
-          return m < 60 ? `hace ${m} min` : `hace ${Math.round(m / 60)} h`;
+          if (m < 60) return `hace ${m} min`;
+          return m < 1440 ? `hace ${Math.round(m / 60)} h` : `hace ${Math.round(m / 1440)} d`;
         };
         return (
           <div style={{ ...styles.card, marginBottom: '24px' }}>
             <div style={{ ...styles.cardTitle, fontSize: '14px' }}>Tendencias del día en Colombia · categorías de {activeTab === 'axxis' ? 'AXXIS' : 'Diners'}</div>
-            <div style={styles.cardSubtext}>{bogDay}, actualizado {hhmm} (hora Colombia). Búsquedas en tendencia de Google Trends filtradas a las categorías de {activeTab === 'axxis' ? 'AXXIS (arquitectura, diseño, decoración y especiales)' : 'Diners (cultura, estilo de vida, gastronomía, viajes, salud, tecnología y tendencias)'}, y noticias de las últimas 24 horas en cada una.</div>
+            <div style={styles.cardSubtext}>{bogDay}, actualizado {hhmm} (hora Colombia). Búsquedas en tendencia de Google Trends filtradas a las categorías de {activeTab === 'axxis' ? 'AXXIS (arquitectura, diseño, decoración y especiales)' : 'Diners (cultura, estilo de vida, gastronomía, viajes, salud, tecnología y tendencias)'}, y noticias recientes de cada una (eliges el periodo más abajo).</div>
 
             <div style={{ ...styles.cardTitle, fontSize: '11px', marginTop: '16px' }}>Búsquedas en tendencia hoy relacionadas con la revista</div>
             {D.trends.length > 0 ? (
@@ -1457,7 +1472,18 @@ export default function Dashboard() {
             )}
             {D.trends.length > 0 && <div style={styles.cardSubtext}>Se descartaron {D.filteredOut} de {D.totalTrends} tendencias por no corresponder a los temas de la revista.</div>}
 
-            <div style={{ ...styles.cardTitle, fontSize: '11px', marginTop: '18px' }}>Qué se está publicando hoy en cada categoría (últimas 24 horas)</div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginTop: '18px' }}>
+              <div style={{ ...styles.cardTitle, fontSize: '11px', margin: 0 }}>Qué se está publicando en cada categoría</div>
+              <div style={{ display: 'flex', gap: '6px' }}>
+                {[['1d', '24 horas'], ['7d', '7 días'], ['14d', '14 días']].map(([k, label]) => (
+                  <button key={k} onClick={() => setNewsWin(k)} style={{ padding: '4px 12px', fontSize: '12px', border: 'none', cursor: 'pointer', borderRadius: '12px', fontWeight: 700, background: newsWin === k ? T.accent : '#e5e5e5', color: newsWin === k ? '#fff' : '#444' }}>{label}</button>
+                ))}
+              </div>
+              <span style={{ fontSize: '12px', color: '#888' }}>{WIN_LABEL[newsWin]}</span>
+            </div>
+            {!D.news ? (
+              <div style={{ fontSize: '13px', color: '#555', marginTop: '10px' }}>Cargando noticias de los {WIN_LABEL[newsWin]}…</div>
+            ) : (
             <div style={{ display: 'grid', gridTemplateColumns: `repeat(${Math.min(3, Math.max(1, D.news.filter((c) => c.items.length > 0).length))}, minmax(0, 1fr))`, gap: '18px', marginTop: '8px', alignItems: 'start' }}>
               {D.news.filter((c) => c.items.length > 0).map((c) => (
                 <div key={c.key}>
@@ -1473,7 +1499,8 @@ export default function Dashboard() {
                 </div>
               ))}
             </div>
-            <div style={styles.cardSubtext}>Fuentes: Google Trends (búsquedas en tendencia de Colombia) y Google Noticias (últimas 24 horas por categoría). El número de notas indica cuánta cobertura hay hoy, hasta 100. Se actualiza cada 30 minutos.</div>
+            )}
+            <div style={styles.cardSubtext}>Fuentes: Google Trends (búsquedas en tendencia de Colombia) y Google Noticias (por categoría). El número de notas indica cuánta cobertura hay en el periodo elegido, hasta 100. Las búsquedas en tendencia siempre son las de hoy. Se actualiza cada 30 minutos.</div>
           </div>
         );
       })()}
