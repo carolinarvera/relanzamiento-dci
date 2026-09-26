@@ -27,6 +27,50 @@ function groupChannels(all) {
     .filter((g) => g.items.length > 0);
 }
 
+
+const plain = (t) => String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+const CONTENT_THEMES = [
+  { key: 'coyuntura', label: 'Coyuntura y servicio (sismo, ayuda)', re: /sismo|terremoto|emergencia|acopio|damnificad|edificaciones|danos en su vivienda|seguridad de su vivienda|evaluar inmuebles/ },
+  { key: 'gastro', label: 'Gastronomía y restaurantes', re: /restaurante|gastronom|comer|lechona|brunch|chef|cocina|cocteler|cafe|vino|50 best|comida|speakeasy|bar oculto/ },
+  { key: 'viajes', label: 'Viajes y destinos', re: /destino|viaje|playa|resort|hotel|italia|termales|escapada|beach|cabo de la vela|lugares para|cerca de bogota|fin de semana/ },
+  { key: 'arquitectura', label: 'Arquitectura y proyectos', re: /arquitectur|casa |edificio|colegio|estadio|hacienda|construir|vivienda|proyecto|paisaje|bosque|rancheria|neoclasic|restauro|restauracion/ },
+  { key: 'diseno', label: 'Diseño e interiorismo', re: /diseno|interiorismo|objetos|mobiliario|espacios atemporales|tendencias/ },
+  { key: 'decoracion', label: 'Decoración y hogar', re: /decoracion|apartamento|hogar|madera/ },
+  { key: 'cultura', label: 'Cultura y entretenimiento', re: /serie|pelicula|streaming|musica|gira|exposicion|libro|poema|cine|kafka|macondo|cien anos|biopic|arjona|teatro|cicatriz/ },
+  { key: 'sostenibilidad', label: 'Sostenibilidad y memoria', re: /sostenib|memoria|materiales|verde|jardin|viento|nativo|reciclad/ },
+];
+
+function themeShares(items) {
+  const acc = {};
+  let total = 0;
+  items.forEach((it) => {
+    const txt = plain(it.text);
+    const hit = CONTENT_THEMES.filter((t) => t.re.test(txt));
+    const w = Math.max(it.weight || 0, 0);
+    if (!w) return;
+    total += w;
+    if (!hit.length) { acc.otros = (acc.otros || 0) + w; return; }
+    hit.forEach((t) => { acc[t.key] = (acc[t.key] || 0) + w / hit.length; });
+  });
+  const out = {};
+  Object.keys(acc).forEach((k) => { out[k] = total ? acc[k] / total : 0; });
+  return { shares: out, n: items.length, total };
+}
+
+function titlePatterns(titles) {
+  const t = titles.filter(Boolean);
+  const n = t.length || 1;
+  const count = (re) => t.filter((x) => re.test(plain(x))).length;
+  return {
+    n: t.length,
+    list: count(/\b\d+\b|\b(siete|cinco|diez|seis|ocho|nueve|veinte|veintidos)\b/),
+    howto: count(/claves|como |guia|consejos|que hacer|por que/),
+    question: t.filter((x) => /^\s*¿/.test(x)).length,
+    local: count(/bogota|colombia|medellin|cartagena|la guajira|choco|chia/),
+    pct: (c) => Math.round((c / n) * 100),
+  };
+}
+
 const MIN_PAGE_VIEWS = 90;
 
 // Se descartan envíos de prueba: menos de 10 enviados o 100% de apertura.
@@ -79,7 +123,7 @@ const THEMES = {
 const SECTIONS = [
   { key: 'resumen', label: 'Resumen', apis: ['ga4', 'meta', 'pauta'] },
   { key: 'web', label: 'Web', apis: ['ga4', 'gsc'] },
-  { key: 'seo', label: 'SEO', apis: ['gsc', 'seo'] },
+  { key: 'seo', label: 'SEO', apis: ['gsc', 'seo', 'ga4', 'meta', 'emailtraffic'] },
   { key: 'redes', label: 'Redes sociales', apis: ['meta'] },
   { key: 'pauta', label: 'Pauta', apis: ['pauta'] },
   { key: 'emails', label: 'Emails', apis: ['emails', 'emailtraffic'] },
@@ -1373,6 +1417,110 @@ export default function Dashboard() {
 
       {ready && section === 'seo' && (
       <>
+      {/* Insights de contenido */}
+      {(() => {
+        const G = current.ga4 || {};
+        const ET = current.emailtraffic;
+        const MT = current.meta || {};
+        const seen = {};
+        (G.topArticles || []).forEach((a) => { seen[a.path] = { text: `${a.title || ''} ${a.path.replace(/[-_/]/g, ' ')}`, weight: a.views }; });
+        (G.sections || []).forEach((sec) => (sec.topPages || []).forEach((pg) => { if (!seen[pg.path]) seen[pg.path] = { text: pg.path.replace(/[-_/]/g, ' '), weight: pg.views }; }));
+        const webItems = Object.values(seen);
+        const emailItems = (ET?.articles || []).map((a) => ({ text: `${a.title || ''} ${a.path.replace(/[-_/]/g, ' ')}`, weight: a.views }));
+        const igPosts = MT.instagram?.detail?.topPosts || [];
+        const fbPosts = MT.facebook?.detail?.topPosts || [];
+        const igItems = igPosts.map((p) => ({ text: p.caption, weight: p.interactions }));
+        const fbItems = fbPosts.map((p) => ({ text: p.caption, weight: (p.clicks || 0) + (p.interactions || 0) }));
+        const srcs = [
+          { key: 'web', label: 'Web (páginas más vistas)', short: 'Web', items: webItems },
+          { key: 'email', label: 'Email', short: 'Email', items: emailItems },
+          { key: 'ig', label: 'Instagram', short: 'Instagram', items: igItems },
+          { key: 'fb', label: 'Facebook', short: 'Facebook', items: fbItems },
+        ].map((x) => ({ ...x, ...themeShares(x.items) })).filter((x) => x.n >= 3 && x.total > 0);
+        if (srcs.length < 2) return null;
+        const sh = (src, key) => (src.shares[key] || 0);
+        const rows = CONTENT_THEMES.map((t) => ({ ...t, avg: srcs.reduce((a, x) => a + sh(x, t.key), 0) / srcs.length }))
+          .filter((t) => srcs.some((x) => sh(x, t.key) >= 0.03))
+          .sort((a, b) => b.avg - a.avg);
+        const pctS = (v) => `${Math.round(v * 100)}%`;
+        const byKey = (k) => srcs.find((x) => x.key === k);
+        const web = byKey('web');
+        const social = srcs.filter((x) => x.key === 'ig' || x.key === 'fb');
+        const insights = [];
+        const recos = [];
+        const cross = rows.filter((t) => srcs.filter((x) => sh(x, t.key) >= 0.2).length >= 2);
+        cross.slice(0, 2).forEach((t) => insights.push(`${t.label} gana en varios canales a la vez: ${srcs.map((x) => `${x.short} ${pctS(sh(x, t.key))}`).join(', ')}. Es el tema con demanda más confirmada.`));
+        if (web && social.length) {
+          rows.forEach((t) => {
+            const soc = social.reduce((a, x) => a + sh(x, t.key), 0) / social.length;
+            const w = sh(web, t.key);
+            if (soc - w >= 0.25) {
+              insights.push(`${t.label} pesa ${pctS(soc)} en lo mejor de redes pero solo ${pctS(w)} en las páginas más vistas de la web: hay interés que la web no está aprovechando.`);
+              recos.push(`Llevar a la web lo que ya funciona en redes: publicar notas de ${t.label.toLowerCase()} con enlace desde las publicaciones que hoy dan más interacciones.`);
+            } else if (w - soc >= 0.25) {
+              insights.push(`${t.label} domina la web (${pctS(w)}) y casi no aparece entre lo mejor de redes (${pctS(soc)}): conviene probarlo como carrusel o reel.`);
+              recos.push(`Convertir los artículos más leídos de ${t.label.toLowerCase()} en carruseles de Instagram con enlace a la nota.`);
+            }
+          });
+        }
+        const types = {};
+        igPosts.forEach((p) => { const k = p.type || 'Otro'; (types[k] = types[k] || []).push(p); });
+        const typeList = Object.entries(types).map(([k, l]) => ({ k, n: l.length, avg: l.reduce((a, p) => a + (p.interactions || 0), 0) / l.length, saved: l.reduce((a, p) => a + (p.saved || 0), 0) / l.length })).sort((a, b) => b.avg - a.avg);
+        if (typeList.length && igPosts.length >= 3) {
+          const t0 = typeList[0];
+          insights.push(`En las ${igPosts.length} mejores publicaciones de Instagram predomina el formato ${typeList.slice().sort((a, b) => b.n - a.n)[0].k.toLowerCase()} (${typeList.slice().sort((a, b) => b.n - a.n)[0].n} de ${igPosts.length}). ${t0.k} promedia ${Math.round(t0.avg).toLocaleString('es-CO')} interacciones y ${Math.round(t0.saved).toLocaleString('es-CO')} guardados por publicación.`);
+        }
+        const bestIg = igPosts.slice().sort((a, b) => (b.interactions || 0) - (a.interactions || 0))[0];
+        if (bestIg) insights.push(`La mejor publicación de Instagram fue "${String(bestIg.caption || '').replace(/\s+/g, ' ').slice(0, 90)}…": ${nf(bestIg.interactions)} interacciones, ${nf(bestIg.saved)} guardados y ${nf(bestIg.shares)} compartidos.`);
+        const bestFb = fbPosts.slice().sort((a, b) => (b.clicks || 0) - (a.clicks || 0))[0];
+        if (bestFb && bestFb.clicks) insights.push(`En Facebook, la publicación que más tráfico llevó a la web fue "${String(bestFb.caption || '').replace(/\s+/g, ' ').slice(0, 80)}…": ${nf(bestFb.clicks)} clics en el enlace.`);
+        const titles = [...(G.topArticles || []).map((a) => a.title), ...(ET?.articles || []).map((a) => a.title)].filter(Boolean);
+        const pat = titlePatterns(titles);
+        if (pat.n >= 4) insights.push(`En los ${pat.n} títulos más leídos (web y email): ${pat.pct(pat.list)}% usan lista o número, ${pat.pct(pat.howto)}% son guías o claves y ${pat.pct(pat.local)}% mencionan un lugar concreto de Colombia.`);
+        if (rows[0]) recos.unshift(`Armar una serie recurrente de ${rows[0].label.toLowerCase()}: es el tema con mejor desempeño combinado (${srcs.map((x) => `${x.short} ${pctS(sh(x, rows[0].key))}`).join(', ')}).`);
+        const coy = rows.find((t) => t.key === 'coyuntura' && srcs.some((x) => sh(x, 'coyuntura') >= 0.15));
+        if (coy) recos.push('Mantener un paquete de contenido de servicio para la coyuntura (guías de qué hacer, dónde ayudar): rinde en web, email y redes cuando hay una emergencia.');
+        if (pat.n >= 4 && pat.list + pat.howto >= pat.n / 2) recos.push('Usar títulos con número o promesa concreta ("10 destinos…", "Claves para…") en los temas de servicio y guías locales.');
+        const cell = (v) => ({ padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'center', fontWeight: v >= 0.2 ? 800 : 500, color: v >= 0.35 ? '#fff' : '#222', background: v > 0 ? `rgba(216, 67, 21, ${Math.min(0.08 + v * 1.4, 0.9)})` : 'transparent' });
+        return (
+          <div style={{ ...styles.card, marginBottom: '24px' }}>
+            <div style={{ ...styles.cardTitle, fontSize: '14px' }}>Insights de contenido · qué crear · {rangeLabel}</div>
+            <div style={styles.cardSubtext}>Cruza las páginas más vistas de la web, los artículos más leídos desde email y las mejores publicaciones de Instagram y Facebook de {activeTab === 'axxis' ? 'AXXIS' : 'Diners'}. Cada canal pesa según su medida: vistas (web y email), interacciones (Instagram) y clics más interacciones (Facebook).</div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1.1fr) minmax(0, 1fr)', gap: '24px', marginTop: '14px', alignItems: 'start' }}>
+              <div>
+                <div style={{ ...styles.cardTitle, fontSize: '11px' }}>Temas por canal (% del desempeño de cada canal)</div>
+                <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '6px' }}>
+                  <thead>
+                    <tr>
+                      <th style={{ textAlign: 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>Tema</th>
+                      {srcs.map((x) => <th key={x.key} style={{ padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{x.short}</th>)}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {rows.map((t) => (
+                      <tr key={t.key}>
+                        <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', fontWeight: 700 }}>{t.label}</td>
+                        {srcs.map((x) => <td key={x.key} style={cell(sh(x, t.key))}>{sh(x, t.key) >= 0.01 ? pctS(sh(x, t.key)) : '—'}</td>)}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <div style={styles.cardSubtext}>Un artículo puede sumar a más de un tema. Base: {srcs.map((x) => `${x.short} ${x.n}`).join(', ')} elementos.</div>
+              </div>
+              <div>
+                <div style={{ ...styles.cardTitle, fontSize: '11px' }}>Lo que dicen los datos</div>
+                <ul style={{ margin: '8px 0 0', paddingLeft: '18px', fontSize: '13px', lineHeight: 1.6 }}>{insights.slice(0, 6).map((t, k) => <li key={k} style={{ marginBottom: '4px' }}>{t}</li>)}</ul>
+              </div>
+            </div>
+            {recos.length > 0 && (
+              <div style={{ marginTop: '16px', background: '#f5f1e6', borderRadius: '8px', padding: '12px 16px' }}>
+                <div style={{ ...styles.cardTitle, fontSize: '11px' }}>Qué crear</div>
+                <ol style={{ margin: '8px 0 0', paddingLeft: '18px', fontSize: '13px', lineHeight: 1.6 }}>{recos.slice(0, 5).map((t, k) => <li key={k} style={{ marginBottom: '4px' }}>{t}</li>)}</ol>
+              </div>
+            )}
+          </div>
+        );
+      })()}
       {/* GSC */}
       <div style={styles.section}>
         <h2 style={styles.sectionTitle}>Google Search Console</h2>
