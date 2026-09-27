@@ -155,6 +155,20 @@ export default function Dashboard() {
   const [newsByWin, setNewsByWin] = useState({});
   const [traficoOpen, setTraficoOpen] = useState(false);
   const [trafico, setTrafico] = useState(null);
+  const [campDeep, setCampDeep] = useState({});
+  const [campOpenIds, setCampOpenIds] = useState({});
+  const loadCampaignDeep = (id) => {
+    setCampDeep((s) => ({ ...s, [id]: 'loading' }));
+    const qs = range ? `&start=${range.start}&end=${range.end}` : '';
+    fetch(`/api/pauta-campaign?campaignId=${id}${qs}`)
+      .then((r) => r.json())
+      .then((j) => setCampDeep((s) => ({ ...s, [id]: j })))
+      .catch((e) => setCampDeep((s) => ({ ...s, [id]: { error: e.message } })));
+  };
+  const toggleCampaignDeep = (id) => {
+    setCampOpenIds((s) => ({ ...s, [id]: !s[id] }));
+    if (!campDeep[id]) loadCampaignDeep(id);
+  };
   const rangeKey = range ? `${range.start}|${range.end}` : 'default';
   const sectionDef = SECTIONS.find((x) => x.key === section);
   const ready = sectionDef.apis.every((a) => loadedKey[a] === rangeKey);
@@ -2436,6 +2450,152 @@ export default function Dashboard() {
           );
         };
 
+        const campaignDeepDive = (c) => {
+          const open = !!campOpenIds[c.id];
+          const d = campDeep[c.id];
+          const dateFmt = (s) => { const [, mo, da] = s.split('-'); return `${da}/${mo}`; };
+          return (
+            <div key={c.id} style={{ marginBottom: '4px' }}>
+              <button onClick={() => toggleCampaignDeep(c.id)} style={{ marginTop: '2px', padding: '8px 14px', border: `1px solid ${T.accent}`, borderRadius: '4px', background: open ? T.accent : '#fff', color: open ? '#fff' : T.accent, fontWeight: 600, cursor: 'pointer', fontSize: '12px' }}>
+                {open ? 'Ocultar' : 'Ver'} detalle completo de "{c.name}" (rendimiento, demográficos, conjuntos de anuncios y anuncios)
+              </button>
+              {open && (
+                d === 'loading' ? <div style={{ ...styles.card, textAlign: 'center', padding: '24px', color: '#555' }}>Cargando detalle de la campaña…</div>
+                : d?.error ? <div style={{ ...styles.card, color: '#b71c1c' }}>No se pudo cargar: {d.error}</div>
+                : !d ? null : (
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', marginTop: '8px' }}>
+                    {/* Resumen del rendimiento */}
+                    <div style={styles.card}>
+                      <div style={styles.cardTitle}>Resumen del rendimiento · {c.name}</div>
+                      <div style={{ display: 'flex', gap: '30px', margin: '10px 0' }}>
+                        <div><div style={{ fontSize: '11px', color: '#777', textTransform: 'uppercase' }}>Impresiones</div><div style={{ fontSize: '26px', fontWeight: 800 }}>{nf(d.totals.impressions)}</div></div>
+                        <div><div style={{ fontSize: '11px', color: '#777', textTransform: 'uppercase' }}>Alcance</div><div style={{ fontSize: '26px', fontWeight: 800 }}>{nf(d.totals.reach)}</div></div>
+                        <div><div style={{ fontSize: '11px', color: '#777', textTransform: 'uppercase' }}>CPC</div><div style={{ fontSize: '26px', fontWeight: 800 }}>{d.totals.cpc == null ? '—' : cop(d.totals.cpc)}</div></div>
+                      </div>
+                      {d.daily.length > 0 && (
+                        <ResponsiveContainer width="100%" height={220}>
+                          <AreaChart data={d.daily.map((r) => ({ ...r, label: dateFmt(r.date) }))}>
+                            <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                            <XAxis dataKey="label" fontSize={11} interval="preserveStartEnd" />
+                            <YAxis fontSize={11} />
+                            <Tooltip formatter={(v) => nf(v)} />
+                            <Area type="monotone" dataKey="impressions" name="Impresiones" stroke={T.accent} fill={T.accent} fillOpacity={0.25} />
+                          </AreaChart>
+                        </ResponsiveContainer>
+                      )}
+                    </div>
+
+                    {/* Distribución por sexo y edad */}
+                    <div style={styles.card}>
+                      <div style={styles.cardTitle}>Distribución por sexo y edad</div>
+                      {(() => {
+                        const ages = [...new Set(d.demographics.rows.map((r) => r.age))].sort();
+                        const chartData = ages.map((age) => {
+                          const row = { age };
+                          d.demographics.rows.filter((r) => r.age === age).forEach((r) => { row[r.genderLabel] = r.reach; });
+                          return row;
+                        });
+                        const m = d.demographics.byGenderTotal.male || 0;
+                        const f = d.demographics.byGenderTotal.female || 0;
+                        const totR = d.demographics.totalReach || (m + f);
+                        const spendOf = (g) => d.demographics.rows.filter((r) => r.gender === g).reduce((a, r) => a + r.spend, 0);
+                        const resultsOf = (g) => d.demographics.rows.filter((r) => r.gender === g).reduce((a, r) => a + r.results, 0);
+                        const cprOf = (g) => { const rs = resultsOf(g); return rs ? spendOf(g) / rs : null; };
+                        return (
+                          <>
+                            {chartData.length > 0 && (
+                              <ResponsiveContainer width="100%" height={260}>
+                                <BarChart data={chartData}>
+                                  <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                                  <XAxis dataKey="age" fontSize={11} />
+                                  <YAxis fontSize={11} />
+                                  <Tooltip formatter={(v) => nf(v)} />
+                                  <Legend />
+                                  <Bar dataKey="Hombres" fill="#5b3fd6" />
+                                  <Bar dataKey="Mujeres" fill={T.accent2 || '#2bbfae'} />
+                                </BarChart>
+                              </ResponsiveContainer>
+                            )}
+                            <div style={{ display: 'flex', gap: '30px', marginTop: '10px', fontSize: '13px' }}>
+                              <div><strong>Hombres</strong> {totR ? ((m / totR) * 100).toFixed(0) : 0}% ({nf(m)}){cprOf('male') != null && <div style={{ color: '#666', fontSize: '12px' }}>Costo por resultado: {cop(cprOf('male'))}</div>}</div>
+                              <div><strong>Mujeres</strong> {totR ? ((f / totR) * 100).toFixed(0) : 0}% ({nf(f)}){cprOf('female') != null && <div style={{ color: '#666', fontSize: '12px' }}>Costo por resultado: {cop(cprOf('female'))}</div>}</div>
+                            </div>
+                          </>
+                        );
+                      })()}
+                    </div>
+
+                    {/* Conjuntos de anuncios y segmentación */}
+                    <div style={styles.card}>
+                      <div style={styles.cardTitle}>Conjuntos de anuncios y segmentación</div>
+                      {!d.adsets.length ? <div style={styles.cardSubtext}>Sin conjuntos de anuncios.</div> : (
+                        <div style={{ overflowX: 'auto', marginTop: '8px' }}>
+                          <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '760px' }}>
+                            <thead>
+                              <tr>{['Conjunto de anuncios', 'Estado', 'Edad', 'Género', 'Ubicación', 'Intereses'].map((h, k) => <th key={h} style={{ textAlign: k ? 'left' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                            </thead>
+                            <tbody>
+                              {d.adsets.map((a) => (
+                                <tr key={a.id}>
+                                  <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', fontWeight: 600, maxWidth: '260px', overflowWrap: 'anywhere' }}>{a.name}</td>
+                                  <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>{a.status}</td>
+                                  <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>{a.ageMin ?? '—'}{a.ageMax ? `-${a.ageMax}` : ''}</td>
+                                  <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>{a.genders}</td>
+                                  <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>{a.geo || '—'}</td>
+                                  <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', maxWidth: '260px', overflowWrap: 'anywhere' }}>{a.interests?.length ? a.interests.join(', ') : '—'}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Rendimiento por anuncio */}
+                    <div style={styles.card}>
+                      <div style={styles.cardTitle}>Rendimiento por anuncio</div>
+                      {!d.ads.length ? <div style={styles.cardSubtext}>Sin anuncios con datos en este periodo.</div> : (
+                        <div style={{ overflowX: 'auto', marginTop: '8px' }}>
+                          <table style={{ width: '100%', fontSize: '11px', borderCollapse: 'collapse', minWidth: '1400px' }}>
+                            <thead>
+                              <tr>{['Anuncio', 'Impresiones', 'Alcance', 'Frecuencia', 'CPM', 'CPC', 'Clics en enlace', 'Visitas a la página de destino', 'Visitas al perfil', 'Seguimientos de Instagram', 'Reproducciones 3 s', 'Tiempo prom. reproducción', 'Retención 25/50/75/100%'].map((h, k) => <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '7px 5px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '10px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                            </thead>
+                            <tbody>
+                              {d.ads.map((ad) => {
+                                const dash = '—';
+                                const pct = (v) => (v === null || v === undefined ? dash : `${(v * 100).toFixed(1)}%`);
+                                const tdd = { padding: '7px 5px', borderBottom: '1px solid #eee', textAlign: 'right' };
+                                return (
+                                  <tr key={ad.id}>
+                                    <td style={{ ...tdd, textAlign: 'left', maxWidth: '220px', overflowWrap: 'anywhere', fontWeight: 600 }}>{ad.name}</td>
+                                    <td style={tdd}>{nf(ad.impressions)}</td>
+                                    <td style={tdd}>{nf(ad.reach)}</td>
+                                    <td style={tdd}>{ad.frequency ? ad.frequency.toFixed(2) : dash}</td>
+                                    <td style={tdd}>{ad.impressions ? cop(ad.cpm) : dash}</td>
+                                    <td style={tdd}>{ad.linkClicks ? cop(ad.cpc) : dash}</td>
+                                    <td style={tdd}>{nf(ad.linkClicks)}</td>
+                                    <td style={tdd}>{ad.landingPageViews === null ? dash : nf(ad.landingPageViews)}</td>
+                                    <td style={tdd}>{ad.profileVisits === null ? dash : nf(ad.profileVisits)}</td>
+                                    <td style={tdd}>{ad.igFollows === null ? dash : nf(ad.igFollows)}</td>
+                                    <td style={tdd}>{ad.videoViews3s === null ? dash : nf(ad.videoViews3s)}</td>
+                                    <td style={tdd}>{ad.avgWatchSeconds === null ? dash : `${ad.avgWatchSeconds.toFixed(1)} s`}</td>
+                                    <td style={tdd}>{ad.videoViews3s ? `${pct(ad.retention.p25)} · ${pct(ad.retention.p50)} · ${pct(ad.retention.p75)} · ${pct(ad.retention.p100)}` : dash}</td>
+                                  </tr>
+                                );
+                              })}
+                            </tbody>
+                          </table>
+                        </div>
+                      )}
+                      <div style={styles.cardSubtext}>Campos de video (reproducciones 3 s, tiempo promedio, retención) solo existen en anuncios de video. "—" significa que Meta no devolvió ese dato para el anuncio.</div>
+                    </div>
+                  </div>
+                )
+              )}
+            </div>
+          );
+        };
+
         return (
           <div style={styles.section}>
             <h2 style={styles.sectionTitle}>Informe de gestión · Pauta · {brandName} · {rangeLabel}</h2>
@@ -2489,12 +2649,14 @@ export default function Dashboard() {
 
             {/* Fila 8: rendimiento always on tráfico */}
             {miniTable(aoTrafico, 'Rendimiento de campaña · Always on tráfico')}
+            {aoTrafico.map((c) => campaignDeepDive(c))}
 
             {/* Fila 9: pastillas always on tráfico */}
             {pillRow(aoTrafico, false)}
 
             {/* Fila 10: rendimiento always on seguidores */}
             {miniTable(aoSeguidores, 'Rendimiento de campaña · Always on seguidores')}
+            {aoSeguidores.map((c) => campaignDeepDive(c))}
 
             {/* Fila 11: pastillas always on seguidores */}
             {pillRow(aoSeguidores, false)}
