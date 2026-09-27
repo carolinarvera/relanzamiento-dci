@@ -2304,8 +2304,10 @@ export default function Dashboard() {
         const rankedEditorial = editorial.slice().sort((x, y) => (x.spend / x.linkClicks) - (y.spend / y.linkClicks));
         const worstEditorial = rankedEditorial.slice(-5).reverse();
         const byPlatform = (grp, re) => grp.filter((c) => re.test(c.name));
-        const bestEditorialFB = byPlatform(rankedEditorial, /facebook/i).slice(0, 5);
-        const bestEditorialIG = byPlatform(rankedEditorial, /instagram/i).slice(0, 5);
+        const editorialFB = byPlatform(rankedEditorial, /facebook/i);
+        const editorialIG = byPlatform(rankedEditorial, /instagram/i);
+        const bestEditorialFB = editorialFB.slice(0, 5);
+        const bestEditorialIG = editorialIG.slice(0, 5);
 
         const agg = (grp) => {
           const spend = grp.reduce((a, c) => a + c.spend, 0);
@@ -2353,10 +2355,10 @@ export default function Dashboard() {
           );
         };
 
-        const miniTable = (grp, title, subtext, showTotals) => {
+        const miniTable = (grp, title, subtext, totalsGrp) => {
           const td = { padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' };
-          const tot = showTotals ? agg(grp) : null;
-          const totSpend = showTotals ? grp.reduce((a, c) => a + c.spend, 0) : 0;
+          const tot = totalsGrp ? agg(totalsGrp) : null;
+          const totSpend = totalsGrp ? totalsGrp.reduce((a, c) => a + c.spend, 0) : 0;
           return (
             <div style={{ ...styles.card, marginBottom: '4px' }}>
               <div style={{ ...styles.cardTitle, fontSize: '14px', margin: 0 }}>{title}</div>
@@ -2382,7 +2384,7 @@ export default function Dashboard() {
                       ))}
                       {tot && (
                         <tr style={{ background: T.soft }}>
-                          <td style={{ ...td, textAlign: 'left', fontWeight: 800 }}>Total (Inversión, Impresiones, Alcance, CTR, CPM, CPC)</td>
+                          <td style={{ ...td, textAlign: 'left', fontWeight: 800 }}>Total de todas las campañas editoriales de este grupo ({totalsGrp.length}), no solo el top 5</td>
                           <td style={{ ...td, fontWeight: 800 }}>{cop(totSpend)}</td>
                           <td style={td}>—</td>
                           <td style={{ ...td, fontWeight: 800 }}>{nf(tot.impressions)}</td>
@@ -2473,8 +2475,8 @@ export default function Dashboard() {
             {pillRow(list, true)}
 
             {/* Fila 4: top 5 mejor rendimiento (editorial) */}
-            {miniTable(bestEditorialIG, 'Top 5 campañas con mejor rendimiento · Instagram (solo editorial)', 'Ordenadas por menor costo por clic en enlace. Solo campañas editoriales (excluye content de clientes y always on).', true)}
-            {miniTable(bestEditorialFB, 'Top 5 campañas con mejor rendimiento · Facebook (solo editorial)', 'Ordenadas por menor costo por clic en enlace. Solo campañas editoriales (excluye content de clientes y always on).', true)}
+            {miniTable(bestEditorialIG, 'Top 5 campañas con mejor rendimiento · Instagram (solo editorial)', 'Ordenadas por menor costo por clic en enlace. Solo campañas editoriales (excluye content de clientes y always on).', editorialIG)}
+            {miniTable(bestEditorialFB, 'Top 5 campañas con mejor rendimiento · Facebook (solo editorial)', 'Ordenadas por menor costo por clic en enlace. Solo campañas editoriales (excluye content de clientes y always on).', editorialFB)}
 
             {/* Fila 6: calidad GA4 (editorial) */}
             {gaQuality(editorial)}
