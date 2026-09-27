@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { resolveRange } from '../../lib/range';
+import { getAccessToken, runReport } from '../../lib/ga4';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -100,6 +101,37 @@ const totals = (list) => {
   };
 };
 
+const GA4_PROPS = { axxis: process.env.GA4_AXXIS_ID, diners: process.env.GA4_DINERS_ID };
+
+async function ga4CampaignQuality(brand, range) {
+  const propertyId = GA4_PROPS[brand];
+  if (!propertyId) return {};
+  try {
+    const token = await getAccessToken();
+    const rows = await runReport(token, propertyId, {
+      dateRanges: [{ startDate: range.start, endDate: range.end }],
+      dimensions: [{ name: 'sessionCampaignName' }],
+      metrics: [{ name: 'sessions' }, { name: 'bounceRate' }, { name: 'engagementRate' }, { name: 'screenPageViewsPerSession' }],
+      dimensionFilter: { filter: { fieldName: 'sessionDefaultChannelGroup', stringFilter: { value: 'Paid Social' } } },
+      limit: 250,
+    });
+    const map = {};
+    rows.forEach((r) => {
+      const name = r.dimensionValues[0].value;
+      if (!name || name === '(not set)') return;
+      map[name] = {
+        sessions: Number(r.metricValues[0].value || 0),
+        bounceRate: Number(r.metricValues[1].value || 0),
+        engagementRate: Number(r.metricValues[2].value || 0),
+        pagesPerSession: Number(r.metricValues[3].value || 0),
+      };
+    });
+    return map;
+  } catch (e) {
+    return { __error: e.response?.data?.error?.message || e.message };
+  }
+}
+
 export async function GET(request) {
   try {
     const range = resolveRange(new URL(request.url).searchParams);
@@ -139,13 +171,18 @@ export async function GET(request) {
           })),
       };
     };
+    const [gaAxxis, gaDiners] = await Promise.all([ga4CampaignQuality('axxis', range), ga4CampaignQuality('diners', range)]);
+    const GA_QUALITY = { axxis: gaAxxis, diners: gaDiners };
     const out = {};
     ['axxis', 'diners', 'gamma', 'otras'].forEach((b) => {
       const list = cur.filter((c) => c.brand === b);
       const prevList = prev.filter((c) => c.brand === b);
       const all = enrich(list, prevList);
+      const gaMap = GA_QUALITY[b] && !GA_QUALITY[b].__error ? GA_QUALITY[b] : {};
+      all.campaigns.forEach((c) => { c.ga4 = gaMap[c.name] || null; });
       out[b] = {
         ...all,
+        ga4Error: GA_QUALITY[b]?.__error || null,
         spendShare: grand ? all.totals.spend / grand : 0,
         cliente: enrich(list.filter((c) => c.payer === 'cliente'), prevList.filter((c) => c.payer === 'cliente')),
         clients: Object.values(

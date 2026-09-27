@@ -2416,6 +2416,49 @@ export default function Dashboard() {
         );
       })()}
 
+      {/* Calidad de tráfico por campaña (GA4) */}
+      {data.pauta?.brands?.[activeTab]?.campaigns && (() => {
+        const brandP = data.pauta.brands[activeTab];
+        if (brandP.ga4Error) {
+          return (
+            <div style={{ ...styles.card, marginBottom: '24px' }}>
+              <div style={{ ...styles.cardTitle, fontSize: '14px', margin: 0 }}>Calidad de tráfico por campaña (GA4)</div>
+              <div style={{ fontSize: '13px', color: '#c62828', marginTop: '8px' }}>No se pudo cruzar con GA4: {brandP.ga4Error}</div>
+            </div>
+          );
+        }
+        const withGa = (brandP.campaigns || []).filter((c) => c.ga4 && c.ga4.sessions >= 20);
+        if (!withGa.length) return null;
+        const ranked = withGa.slice().sort((a, b) => b.ga4.sessions - a.ga4.sessions).slice(0, 15);
+        const td = { padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' };
+        return (
+          <div style={{ ...styles.card, marginBottom: '24px' }}>
+            <div style={{ ...styles.cardTitle, fontSize: '14px', margin: 0 }}>Calidad de tráfico por campaña, validado en GA4 · {rangeLabel}</div>
+            <div style={styles.cardSubtext}>Sesiones que llegaron por cada campaña (canal Paid Social en GA4, cruzado por nombre de campaña), su rebote y el % de sesiones "motivadas" (10s+, con conversión o 2+ páginas vistas) como proxy de lectura de más de una página. Solo campañas con 20+ sesiones registradas en GA4. Si una campaña no aparece aquí, GA4 no le atribuyó sesiones con ese nombre exacto (puede deberse a UTMs distintos o tráfico muy bajo).</div>
+            <div style={{ overflowX: 'auto', marginTop: '8px' }}>
+              <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '760px' }}>
+                <thead>
+                  <tr>{['Campaña', 'Clics en enlace (Meta)', 'Sesiones (GA4)', 'Rebote', '% sesiones +1 página (proxy)', 'Páginas / sesión'].map((h, k) => <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                </thead>
+                <tbody>
+                  {ranked.map((c) => (
+                    <tr key={c.id || c.name}>
+                      <td style={{ ...td, textAlign: 'left', maxWidth: '340px', overflowWrap: 'anywhere', fontWeight: 600 }}>{c.name}</td>
+                      <td style={td}>{nf(c.linkClicks)}</td>
+                      <td style={td}>{nf(c.ga4.sessions)}</td>
+                      <td style={{ ...td, fontWeight: 700, color: c.ga4.bounceRate > 0.6 ? '#c62828' : '#222' }}>{(c.ga4.bounceRate * 100).toFixed(1)}%</td>
+                      <td style={{ ...td, fontWeight: 700 }}>{(c.ga4.engagementRate * 100).toFixed(1)}%</td>
+                      <td style={td}>{c.ga4.pagesPerSession.toFixed(2)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div style={styles.cardSubtext}>GA4 no reporta directamente "% de sesiones con más de una página vista"; usamos engagementRate (sesiones motivadas) como el proxy más cercano disponible en la API estándar.</div>
+          </div>
+        );
+      })()}
+
       {/* Informe de pauta */}
       {data.pauta?.brands && (() => {
         const brandKey = activeTab;
