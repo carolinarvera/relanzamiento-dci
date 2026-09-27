@@ -2294,34 +2294,137 @@ export default function Dashboard() {
         const CLIENT = T.accent;
         const OWN = T.ink;
 
-        const list = (b.campaigns || []).map((c) => c);
-        const totS = list.reduce((a, c) => a + c.spend, 0);
-        const totPrevS = list.reduce((a, c) => a + (c.prevSpend || 0), 0);
+        const list = b.campaigns || [];
         const isAO = (c) => /seguidores|always\s*on|trueplay/i.test(c.name) && !/agosto|julio|septiembre|junio|octubre|mayo/i.test(c.name);
-        const aoList = list.filter(isAO);
-        const restList = list.filter((c) => !isAO(c));
-        const aoSpend = aoList.reduce((a, c) => a + c.spend, 0);
-        const aoClicks = aoList.reduce((a, c) => a + c.linkClicks, 0);
-        const totClicks = list.reduce((a, c) => a + c.linkClicks, 0);
-        const aoPrevSpend = aoList.reduce((a, c) => a + (c.prevSpend || 0), 0);
+        const isFollow = (c) => /seguidores/i.test(c.name);
+        const isEditorial = (c) => /editorial/i.test(c.name) && !isAO(c);
+        const aoTrafico = list.filter((c) => isAO(c) && !isFollow(c));
+        const aoSeguidores = list.filter((c) => isAO(c) && isFollow(c));
+        const editorial = list.filter(isEditorial).filter((c) => c.linkClicks > 0);
+        const rankedEditorial = editorial.slice().sort((x, y) => (x.spend / x.linkClicks) - (y.spend / y.linkClicks));
+        const bestEditorial = rankedEditorial.slice(0, 5);
+        const worstEditorial = rankedEditorial.slice(-5).reverse();
 
-        const worst = list.filter((c) => c.spend >= totS * 0.01 && c.linkClicks).map((c) => ({ ...c, cpc: c.spend / c.linkClicks })).sort((x, y) => y.cpc - x.cpc)[0];
+        const agg = (grp) => {
+          const spend = grp.reduce((a, c) => a + c.spend, 0);
+          const impressions = grp.reduce((a, c) => a + (c.impressions || 0), 0);
+          const reach = grp.reduce((a, c) => a + (c.reach || 0), 0);
+          const linkClicks = grp.reduce((a, c) => a + (c.linkClicks || 0), 0);
+          return {
+            impressions, reach,
+            ctr: impressions ? (linkClicks / impressions) * 100 : null,
+            cpm: impressions ? (spend / impressions) * 1000 : null,
+            cpc: linkClicks ? spend / linkClicks : null,
+          };
+        };
+
+        const pillRow = (grp, withPrev) => {
+          const m = agg(grp);
+          return (
+            <div style={styles.grid}>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Impresiones</div>
+                <div style={styles.cardValue}>{nf(m.impressions)}</div>
+                {withPrev && renderChange(rel(b.totals.impressions, b.prevTotals.impressions), false, nf(b.prevTotals.impressions))}
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Alcance</div>
+                <div style={styles.cardValue}>{nf(m.reach)}</div>
+                {withPrev && renderChange(rel(b.totals.reach, b.prevTotals.reach), false, nf(b.prevTotals.reach))}
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>CTR (enlace)</div>
+                <div style={styles.cardValue}>{m.ctr == null ? '—' : `${m.ctr.toFixed(2)}%`}</div>
+                {withPrev && renderPP(b.totals.ctr, b.prevTotals.impressions ? b.prevTotals.linkClicks / b.prevTotals.impressions : null)}
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>CPM</div>
+                <div style={styles.cardValue}>{m.cpm == null ? '—' : cop(m.cpm)}</div>
+                {withPrev && renderChange(rel(b.totals.cpm, b.prevTotals.cpm), true, cop(b.prevTotals.cpm))}
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>CPC</div>
+                <div style={styles.cardValue}>{m.cpc == null ? '—' : cop(m.cpc)}</div>
+                {withPrev && renderChange(rel(b.totals.cpc, b.prevTotals.cpc), true, cop(b.prevTotals.cpc))}
+              </div>
+            </div>
+          );
+        };
+
+        const miniTable = (grp, title, subtext) => {
+          const td = { padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' };
+          return (
+            <div style={{ ...styles.card, marginBottom: '4px' }}>
+              <div style={{ ...styles.cardTitle, fontSize: '14px', margin: 0 }}>{title}</div>
+              {subtext && <div style={styles.cardSubtext}>{subtext}</div>}
+              {!grp.length ? <div style={{ fontSize: '13px', color: '#555', marginTop: '10px' }}>Sin campañas para mostrar.</div> : (
+                <div style={{ overflowX: 'auto', marginTop: '8px' }}>
+                  <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '760px' }}>
+                    <thead>
+                      <tr>{['Campaña', 'Inversión', '% inv.', 'Impresiones', 'Alcance', 'Clics enlace', 'CTR', 'CPC'].map((h, k) => <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                    </thead>
+                    <tbody>
+                      {grp.map((c) => (
+                        <tr key={c.id || c.name}>
+                          <td style={{ ...td, textAlign: 'left', maxWidth: '320px', overflowWrap: 'anywhere', fontWeight: 600 }}>{c.name}</td>
+                          <td style={td}>{cop(c.spend)}</td>
+                          <td style={td}>{((c.spendShare || 0) * 100).toFixed(2)}%</td>
+                          <td style={td}>{nf(c.impressions)}</td>
+                          <td style={td}>{nf(c.reach)}</td>
+                          <td style={td}>{nf(c.linkClicks)}</td>
+                          <td style={td}>{c.impressions ? `${((c.linkClicks / c.impressions) * 100).toFixed(2)}%` : '—'}</td>
+                          <td style={{ ...td, fontWeight: 700 }}>{c.linkClicks ? cop(c.spend / c.linkClicks) : '—'}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+          );
+        };
+
+        const gaQuality = (grp) => {
+          const withGa = grp.filter((c) => c.ga4 && c.ga4.sessions >= 10);
+          const td = { padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' };
+          return (
+            <div style={{ ...styles.card, marginBottom: '4px' }}>
+              <div style={{ ...styles.cardTitle, fontSize: '14px', margin: 0 }}>Calidad de tráfico por campaña, validado en GA4 (solo editorial) · {rangeLabel}</div>
+              <div style={styles.cardSubtext}>Sesiones por campaña (Paid Social en GA4, cruzado por nombre), rebote y % de sesiones "motivadas" (proxy de lectura de más de una página). Solo campañas con 10+ sesiones en GA4.</div>
+              {!withGa.length ? <div style={{ fontSize: '13px', color: '#555', marginTop: '10px' }}>Sin cruce de GA4 disponible para estas campañas.</div> : (
+                <div style={{ overflowX: 'auto', marginTop: '8px' }}>
+                  <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '700px' }}>
+                    <thead>
+                      <tr>{['Campaña', 'Sesiones (GA4)', 'Rebote', '% sesiones +1 página (proxy)', 'Páginas / sesión'].map((h, k) => <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                    </thead>
+                    <tbody>
+                      {withGa.map((c) => (
+                        <tr key={c.id || c.name}>
+                          <td style={{ ...td, textAlign: 'left', maxWidth: '320px', overflowWrap: 'anywhere', fontWeight: 600 }}>{c.name}</td>
+                          <td style={td}>{nf(c.ga4.sessions)}</td>
+                          <td style={{ ...td, fontWeight: 700, color: c.ga4.bounceRate > 0.6 ? '#c62828' : '#222' }}>{(c.ga4.bounceRate * 100).toFixed(1)}%</td>
+                          <td style={{ ...td, fontWeight: 700 }}>{(c.ga4.engagementRate * 100).toFixed(1)}%</td>
+                          <td style={td}>{c.ga4.pagesPerSession.toFixed(2)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+          );
+        };
 
         return (
           <div style={styles.section}>
             <h2 style={styles.sectionTitle}>Informe de gestión · Pauta · {brandName} · {rangeLabel}</h2>
 
+            {/* Fila 1 */}
             <div style={styles.grid}>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Inversión total {brandName}</div>
                 <div style={styles.cardValue}>{cop(totalBrand)}</div>
                 {renderChange(rel(totalBrand, b.prevTotals.spend), false, cop(b.prevTotals.spend))}
-              </div>
-              <div style={{ ...styles.card, borderTop: `4px solid ${CLIENT}` }}>
-                <div style={styles.cardTitle}>Pauta de clientes</div>
-                <div style={styles.cardValue}>{cop(clientBrand)}</div>
-                {renderChange(rel(clientBrand, b.cliente.prevTotals.spend), false, cop(b.cliente.prevTotals.spend))}
-                <div style={styles.cardSubtext}>{(clientShare * 100).toFixed(1)}% de la inversión · la pagan los clientes</div>
               </div>
               <div style={{ ...styles.card, borderTop: `4px solid ${OWN}` }}>
                 <div style={styles.cardTitle}>Pauta propia</div>
@@ -2329,25 +2432,15 @@ export default function Dashboard() {
                 {renderChange(rel(ownBrand, b.propia.prevTotals.spend), false, cop(b.propia.prevTotals.spend))}
                 <div style={styles.cardSubtext}>{((1 - clientShare) * 100).toFixed(1)}% de la inversión · la asume Gamma</div>
               </div>
-              <div style={styles.card}>
-                <div style={styles.cardTitle}>CTR (enlace)</div>
-                <div style={styles.cardValue}>{(b.totals.ctr * 100).toFixed(2)}%</div>
-                {renderPP(b.totals.ctr, b.prevTotals.impressions ? b.prevTotals.linkClicks / b.prevTotals.impressions : null)}
-              </div>
-              <div style={styles.card}>
-                <div style={styles.cardTitle}>CPC</div>
-                <div style={styles.cardValue}>{b.totals.linkClicks ? cop(b.totals.cpc) : '—'}</div>
-                {renderChange(rel(b.totals.cpc, b.prevTotals.cpc), true, cop(b.prevTotals.cpc))}
-                <div style={styles.cardSubtext}>menor es mejor</div>
-              </div>
-              <div style={styles.card}>
-                <div style={styles.cardTitle}>Always on (Seguidores + Tráfico)</div>
-                <div style={styles.cardValue}>{totS ? ((aoSpend / totS) * 100).toFixed(1) : '0.0'}%</div>
-                {renderChange(rel(aoSpend / (totS || 1), aoPrevSpend / (totPrevS || 1)), false, totPrevS ? `${((aoPrevSpend / totPrevS) * 100).toFixed(1)}%` : null)}
-                <div style={styles.cardSubtext}>{totClicks ? ((aoClicks / totClicks) * 100).toFixed(1) : '0.0'}% de los clics en enlace</div>
+              <div style={{ ...styles.card, borderTop: `4px solid ${CLIENT}` }}>
+                <div style={styles.cardTitle}>Pauta de clientes</div>
+                <div style={styles.cardValue}>{cop(clientBrand)}</div>
+                {renderChange(rel(clientBrand, b.cliente.prevTotals.spend), false, cop(b.cliente.prevTotals.spend))}
+                <div style={styles.cardSubtext}>{(clientShare * 100).toFixed(1)}% de la inversión · la pagan los clientes</div>
               </div>
             </div>
 
+            {/* Fila 2 */}
             <div style={{ ...styles.card, marginTop: '4px' }}>
               <div style={styles.cardTitle}>Revista {brandName} · inversión en Meta: clientes vs propia</div>
               <div style={{ display: 'flex', height: '26px', borderRadius: '13px', overflow: 'hidden', background: '#eee', margin: '12px 0' }}>
@@ -2360,11 +2453,32 @@ export default function Dashboard() {
               </div>
             </div>
 
-            <div style={{ ...styles.card, marginTop: '16px', fontSize: '13px', lineHeight: 1.6 }}>
-              <div style={styles.cardTitle}>Lectura del mes</div>
-              {(() => { const spendRel = rel(totalBrand, b.prevTotals.spend); return (<>{brandName} invirtió <strong>{cop(totalBrand)}</strong> en Meta ({spendRel == null ? 'sin dato del mes anterior' : `${spendRel >= 0 ? '+' : ''}${(spendRel * 100).toFixed(1)}% vs mes anterior`}).</>); })()} El <strong>{clientShare ? (clientShare * 100).toFixed(0) : 0}%</strong> lo pagan clientes. Las campañas always on (Seguidores + Tráfico permanente) usan <strong>{totS ? ((aoSpend / totS) * 100).toFixed(1) : 0}%</strong> del presupuesto y traen <strong>{totClicks ? ((aoClicks / totClicks) * 100).toFixed(1) : 0}%</strong> de los clics.
-              {worst ? <> La campaña con peor costo por clic del mes es <strong>&ldquo;{worst.name}&rdquo;</strong>.</> : ''}
-            </div>
+            {/* Fila 3: pastillas generales */}
+            {pillRow(list, true)}
+
+            {/* Fila 4: top 5 mejor rendimiento (editorial) */}
+            {miniTable(bestEditorial, 'Top 5 campañas con mejor rendimiento (solo editorial)', 'Ordenadas por menor costo por clic en enlace. Solo campañas editoriales (excluye content de clientes y always on).')}
+
+            {/* Fila 5: pastillas del top 5 mejor */}
+            {pillRow(bestEditorial, false)}
+
+            {/* Fila 6: calidad GA4 (editorial) */}
+            {gaQuality(editorial)}
+
+            {/* Fila 7: top 5 peor rendimiento (editorial) */}
+            {miniTable(worstEditorial, 'Top 5 campañas con peor rendimiento (solo editorial)', 'Ordenadas por mayor costo por clic en enlace. Solo campañas editoriales.')}
+
+            {/* Fila 8: rendimiento always on tráfico */}
+            {miniTable(aoTrafico, 'Rendimiento de campaña · Always on tráfico')}
+
+            {/* Fila 9: pastillas always on tráfico */}
+            {pillRow(aoTrafico, false)}
+
+            {/* Fila 10: rendimiento always on seguidores */}
+            {miniTable(aoSeguidores, 'Rendimiento de campaña · Always on seguidores')}
+
+            {/* Fila 11: pastillas always on seguidores */}
+            {pillRow(aoSeguidores, false)}
           </div>
         );
       })()}
