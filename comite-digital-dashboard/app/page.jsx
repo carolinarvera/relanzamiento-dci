@@ -2660,6 +2660,42 @@ export default function Dashboard() {
             {/* Fila 7: calidad GA4 (editorial) */}
             {gaQuality(editorial)}
 
+            {/* Recomendados para sumar a Always on tráfico */}
+            {(() => {
+              const reco = [
+                ...bestEditorialIG.map((c) => ({ ...c, platform: 'Instagram' })),
+                ...bestEditorialFB.map((c) => ({ ...c, platform: 'Facebook' })),
+              ].sort((a, b) => (a.spend / a.linkClicks) - (b.spend / b.linkClicks));
+              const td = { padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' };
+              return (
+                <div style={{ ...styles.card, marginBottom: '4px', borderTop: `4px solid ${T.accent}` }}>
+                  <div style={{ ...styles.cardTitle, fontSize: '14px', margin: 0 }}>Anuncios editoriales recomendados para sumar a "Always on tráfico" (IG + FB)</div>
+                  <div style={styles.cardSubtext}>Son los editoriales con mejor costo por clic del mes (de los Top 5 IG y Top 5 FB de arriba). En vez de crear un ad set nuevo por cada uno, la recomendación es meterlos como anuncios rotando dentro del mismo ad set consolidado de tráfico always on, para no perder el historial de aprendizaje.</div>
+                  {!reco.length ? <div style={{ fontSize: '13px', color: '#555', marginTop: '10px' }}>Sin candidatos editoriales este periodo.</div> : (
+                    <div style={{ overflowX: 'auto', marginTop: '8px' }}>
+                      <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '780px' }}>
+                        <thead>
+                          <tr>{['Campaña', 'Plataforma', 'Fecha de creación', 'CTR', 'CPC', 'Clics en enlace'].map((h, k) => <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                        </thead>
+                        <tbody>
+                          {reco.map((c) => (
+                            <tr key={c.id || c.name}>
+                              <td style={{ ...td, textAlign: 'left', maxWidth: '340px', overflowWrap: 'anywhere', fontWeight: 600 }}>{c.name}</td>
+                              <td style={{ ...td, textAlign: 'right' }}>{c.platform}</td>
+                              <td style={td}>{c.createdTime || '—'}</td>
+                              <td style={td}>{c.impressions ? `${((c.linkClicks / c.impressions) * 100).toFixed(2)}%` : '—'}</td>
+                              <td style={{ ...td, fontWeight: 800, color: '#2e7d32' }}>{cop(c.spend / c.linkClicks)}</td>
+                              <td style={td}>{nf(c.linkClicks)}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                </div>
+              );
+            })()}
+
             {/* Fila 8: rendimiento always on tráfico */}
             {miniTable(aoTrafico, 'Rendimiento de campaña · Always on tráfico')}
             {aoTrafico.map((c) => campaignDeepDive(c))}
