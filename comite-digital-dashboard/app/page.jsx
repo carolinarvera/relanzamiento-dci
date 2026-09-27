@@ -2302,7 +2302,6 @@ export default function Dashboard() {
         const aoSeguidores = list.filter((c) => isAO(c) && isFollow(c));
         const editorial = list.filter(isEditorial).filter((c) => c.linkClicks > 0);
         const rankedEditorial = editorial.slice().sort((x, y) => (x.spend / x.linkClicks) - (y.spend / y.linkClicks));
-        const bestEditorial = rankedEditorial.slice(0, 5);
         const worstEditorial = rankedEditorial.slice(-5).reverse();
         const byPlatform = (grp, re) => grp.filter((c) => re.test(c.name));
         const bestEditorialFB = byPlatform(rankedEditorial, /facebook/i).slice(0, 5);
@@ -2354,8 +2353,10 @@ export default function Dashboard() {
           );
         };
 
-        const miniTable = (grp, title, subtext) => {
+        const miniTable = (grp, title, subtext, showTotals) => {
           const td = { padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right' };
+          const tot = showTotals ? agg(grp) : null;
+          const totSpend = showTotals ? grp.reduce((a, c) => a + c.spend, 0) : 0;
           return (
             <div style={{ ...styles.card, marginBottom: '4px' }}>
               <div style={{ ...styles.cardTitle, fontSize: '14px', margin: 0 }}>{title}</div>
@@ -2379,6 +2380,18 @@ export default function Dashboard() {
                           <td style={{ ...td, fontWeight: 700 }}>{c.linkClicks ? cop(c.spend / c.linkClicks) : '—'}</td>
                         </tr>
                       ))}
+                      {tot && (
+                        <tr style={{ background: T.soft }}>
+                          <td style={{ ...td, textAlign: 'left', fontWeight: 800 }}>Total (Inversión, Impresiones, Alcance, CTR, CPM, CPC)</td>
+                          <td style={{ ...td, fontWeight: 800 }}>{cop(totSpend)}</td>
+                          <td style={td}>—</td>
+                          <td style={{ ...td, fontWeight: 800 }}>{nf(tot.impressions)}</td>
+                          <td style={{ ...td, fontWeight: 800 }}>{nf(tot.reach)}</td>
+                          <td style={td}>—</td>
+                          <td style={{ ...td, fontWeight: 800 }}>{tot.ctr == null ? '—' : `${tot.ctr.toFixed(2)}%`}</td>
+                          <td style={{ ...td, fontWeight: 800 }}>{tot.cpc == null ? '—' : cop(tot.cpc)} {tot.cpm != null && <span style={{ fontWeight: 400, color: '#666' }}>· CPM {cop(tot.cpm)}</span>}</td>
+                        </tr>
+                      )}
                     </tbody>
                   </table>
                 </div>
@@ -2460,11 +2473,8 @@ export default function Dashboard() {
             {pillRow(list, true)}
 
             {/* Fila 4: top 5 mejor rendimiento (editorial) */}
-            {miniTable(bestEditorialFB, 'Top 5 campañas con mejor rendimiento · Facebook (solo editorial)', 'Ordenadas por menor costo por clic en enlace. Solo campañas editoriales (excluye content de clientes y always on).')}
-            {miniTable(bestEditorialIG, 'Top 5 campañas con mejor rendimiento · Instagram (solo editorial)', 'Ordenadas por menor costo por clic en enlace. Solo campañas editoriales (excluye content de clientes y always on).')}
-
-            {/* Fila 5: pastillas del top 5 mejor */}
-            {pillRow(bestEditorial, false)}
+            {miniTable(bestEditorialIG, 'Top 5 campañas con mejor rendimiento · Instagram (solo editorial)', 'Ordenadas por menor costo por clic en enlace. Solo campañas editoriales (excluye content de clientes y always on).', true)}
+            {miniTable(bestEditorialFB, 'Top 5 campañas con mejor rendimiento · Facebook (solo editorial)', 'Ordenadas por menor costo por clic en enlace. Solo campañas editoriales (excluye content de clientes y always on).', true)}
 
             {/* Fila 6: calidad GA4 (editorial) */}
             {gaQuality(editorial)}
