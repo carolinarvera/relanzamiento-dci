@@ -2367,12 +2367,13 @@ export default function Dashboard() {
                 <div style={{ overflowX: 'auto', marginTop: '8px' }}>
                   <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '760px' }}>
                     <thead>
-                      <tr>{['Campaña', 'Inversión', '% inv.', 'Impresiones', 'Alcance', 'Clics enlace', 'CTR', 'CPC'].map((h, k) => <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                      <tr>{['Campaña', 'Fecha de creación', 'Inversión', '% inv.', 'Impresiones', 'Alcance', 'Clics enlace', 'CTR', 'CPC'].map((h, k) => <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
                     </thead>
                     <tbody>
                       {grp.map((c) => (
                         <tr key={c.id || c.name}>
                           <td style={{ ...td, textAlign: 'left', maxWidth: '320px', overflowWrap: 'anywhere', fontWeight: 600 }}>{c.name}</td>
+                          <td style={td}>{c.createdTime || '—'}</td>
                           <td style={td}>{cop(c.spend)}</td>
                           <td style={td}>{((c.spendShare || 0) * 100).toFixed(2)}%</td>
                           <td style={td}>{nf(c.impressions)}</td>
@@ -2385,6 +2386,7 @@ export default function Dashboard() {
                       {tot && (
                         <tr style={{ background: T.soft }}>
                           <td style={{ ...td, textAlign: 'left', fontWeight: 800 }}>Total de todas las campañas editoriales de este grupo ({totalsGrp.length}), no solo el top 5</td>
+                          <td style={td}>—</td>
                           <td style={{ ...td, fontWeight: 800 }}>{cop(totSpend)}</td>
                           <td style={td}>—</td>
                           <td style={{ ...td, fontWeight: 800 }}>{nf(tot.impressions)}</td>
@@ -2413,12 +2415,13 @@ export default function Dashboard() {
                 <div style={{ overflowX: 'auto', marginTop: '8px' }}>
                   <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '700px' }}>
                     <thead>
-                      <tr>{['Campaña', 'Sesiones (GA4)', 'Rebote', '% sesiones +1 página (proxy)', 'Páginas / sesión'].map((h, k) => <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                      <tr>{['Campaña', 'Fecha de creación', 'Sesiones (GA4)', 'Rebote', '% sesiones +1 página (proxy)', 'Páginas / sesión'].map((h, k) => <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
                     </thead>
                     <tbody>
                       {withGa.map((c) => (
                         <tr key={c.id || c.name}>
                           <td style={{ ...td, textAlign: 'left', maxWidth: '320px', overflowWrap: 'anywhere', fontWeight: 600 }}>{c.name}</td>
+                          <td style={td}>{c.createdTime || '—'}</td>
                           <td style={td}>{nf(c.ga4.sessions)}</td>
                           <td style={{ ...td, fontWeight: 700, color: c.ga4.bounceRate > 0.6 ? '#c62828' : '#222' }}>{(c.ga4.bounceRate * 100).toFixed(1)}%</td>
                           <td style={{ ...td, fontWeight: 700 }}>{(c.ga4.engagementRate * 100).toFixed(1)}%</td>
@@ -2606,7 +2609,7 @@ export default function Dashboard() {
                 <div style={{ overflowX: 'auto', marginTop: '8px' }}>
                   <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '820px' }}>
                     <thead>
-                      <tr>{['#', 'Campaña', 'Marca', 'Línea', 'Objetivo', '% de la inversión', 'Clics en enlace', 'Costo por clic vs promedio', 'Sobrecosto (% de la inversión)'].map((h, k) => <th key={h} style={{ textAlign: k > 4 ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                      <tr>{['#', 'Campaña', 'Fecha de creación', 'Marca', 'Línea', 'Objetivo', '% de la inversión', 'Clics en enlace', 'Costo por clic vs promedio', 'Sobrecosto (% de la inversión)'].map((h, k) => <th key={h} style={{ textAlign: k > 5 ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
                     </thead>
                     <tbody>
                       {worst.map((c, k) => {
@@ -2615,6 +2618,7 @@ export default function Dashboard() {
                           <tr key={c.id || c.name} style={{ background: k === 0 ? '#fff6ee' : 'transparent' }}>
                             <td style={{ ...td, textAlign: 'left', fontWeight: 800, color: k < 3 ? '#c62828' : '#888' }}>{k + 1}</td>
                             <td style={{ ...td, textAlign: 'left', maxWidth: '360px', overflowWrap: 'anywhere', fontWeight: 600 }}>{c.name}</td>
+                            <td style={{ ...td, textAlign: 'left' }}>{c.createdTime || '—'}</td>
                             <td style={{ ...td, textAlign: 'left' }}>{bName[c.brandKey] || c.brandKey}</td>
                             <td style={{ ...td, textAlign: 'left', textTransform: 'capitalize' }}>{c.payer}</td>
                             <td style={{ ...td, textAlign: 'left' }}>{OBJ[c.objective] || c.objective}</td>
@@ -2661,12 +2665,13 @@ export default function Dashboard() {
             <div style={{ overflowX: 'auto', marginTop: '8px' }}>
               <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '760px' }}>
                 <thead>
-                  <tr>{['Campaña', 'Clics en enlace (Meta)', 'Sesiones (GA4)', 'Rebote', '% sesiones +1 página (proxy)', 'Páginas / sesión'].map((h, k) => <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                  <tr>{['Campaña', 'Fecha de creación', 'Clics en enlace (Meta)', 'Sesiones (GA4)', 'Rebote', '% sesiones +1 página (proxy)', 'Páginas / sesión'].map((h, k) => <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
                 </thead>
                 <tbody>
                   {ranked.map((c) => (
                     <tr key={c.id || c.name}>
                       <td style={{ ...td, textAlign: 'left', maxWidth: '340px', overflowWrap: 'anywhere', fontWeight: 600 }}>{c.name}</td>
+                      <td style={td}>{c.createdTime || '—'}</td>
                       <td style={td}>{nf(c.linkClicks)}</td>
                       <td style={td}>{nf(c.ga4.sessions)}</td>
                       <td style={{ ...td, fontWeight: 700, color: c.ga4.bounceRate > 0.6 ? '#c62828' : '#222' }}>{(c.ga4.bounceRate * 100).toFixed(1)}%</td>
@@ -2706,6 +2711,7 @@ export default function Dashboard() {
               <thead>
                 <tr style={{ background: T.soft }}>
                   <th style={{ ...head, textAlign: 'left' }}>Campaña</th>
+                  <th style={{ ...head, textAlign: 'left' }}>Fecha de creación</th>
                   <th style={{ ...head, textAlign: 'left' }}>Resultado</th>
                   <th style={head}>Inversión</th>
                   <th style={head}>% inv.</th>
@@ -2722,6 +2728,7 @@ export default function Dashboard() {
                 {list.slice(0, limit).map((c) => (
                   <tr key={c.id}>
                     <td style={{ ...cell, maxWidth: '280px' }}>{c.name}</td>
+                    <td style={{ ...cell, textAlign: 'left' }}>{c.createdTime || '—'}</td>
                     <td style={cell}>{c.resultLabel}</td>
                     <td style={num}><strong>{cop(c.spend)}</strong></td>
                     <td style={num}>{(c.spendShare * 100).toFixed(1)}%</td>

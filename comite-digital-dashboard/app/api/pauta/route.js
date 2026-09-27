@@ -59,31 +59,36 @@ async function accountCampaigns(account, token, range) {
     access_token: token,
   });
   if (!rows.length) return { cur: [], prev: [] };
-  const camps = await paged(`https://graph.facebook.com/v19.0/${account.id}/campaigns`, { fields: 'id,objective', limit: 500, access_token: token }).catch(() => []);
+  const camps = await paged(`https://graph.facebook.com/v19.0/${account.id}/campaigns`, { fields: 'id,objective,effective_status,created_time', limit: 500, access_token: token }).catch(() => []);
   const objective = Object.fromEntries(camps.map((c) => [c.id, c.objective]));
-  const shaped = rows.map((r) => {
-    const obj = objective[r.campaign_id] || null;
-    const def = RESULT_BY_OBJECTIVE[obj] || { label: 'Clics en enlace', types: ['link_click'] };
-    const actions = Object.fromEntries((r.actions || []).map((a) => [a.action_type, Number(a.value)]));
-    const results = def.types.length ? def.types.reduce((a, t) => a + (actions[t] || 0), 0) : Number(r.reach || 0);
-    return {
-      id: r.campaign_id,
-      name: r.campaign_name,
-      brand: brandOf(r.campaign_name),
-      payer: payerOf(r.campaign_name),
-      client: clientOf(r.campaign_name),
-      objective: obj,
-      resultLabel: def.label,
-      currency: account.currency,
-      spend: Number(r.spend || 0),
-      impressions: Number(r.impressions || 0),
-      reach: Number(r.reach || 0),
-      clicks: Number(r.clicks || 0),
-      linkClicks: Number(r.inline_link_clicks || 0),
-      results,
-      isPrev: r.date_start === range.prevStart,
-    };
-  });
+  const effStatus = Object.fromEntries(camps.map((c) => [c.id, c.effective_status]));
+  const createdTime = Object.fromEntries(camps.map((c) => [c.id, c.created_time]));
+  const shaped = rows
+    .filter((r) => effStatus[r.campaign_id] === 'ACTIVE')
+    .map((r) => {
+      const obj = objective[r.campaign_id] || null;
+      const def = RESULT_BY_OBJECTIVE[obj] || { label: 'Clics en enlace', types: ['link_click'] };
+      const actions = Object.fromEntries((r.actions || []).map((a) => [a.action_type, Number(a.value)]));
+      const results = def.types.length ? def.types.reduce((a, t) => a + (actions[t] || 0), 0) : Number(r.reach || 0);
+      return {
+        id: r.campaign_id,
+        name: r.campaign_name,
+        brand: brandOf(r.campaign_name),
+        payer: payerOf(r.campaign_name),
+        client: clientOf(r.campaign_name),
+        objective: obj,
+        resultLabel: def.label,
+        currency: account.currency,
+        spend: Number(r.spend || 0),
+        impressions: Number(r.impressions || 0),
+        reach: Number(r.reach || 0),
+        clicks: Number(r.clicks || 0),
+        linkClicks: Number(r.inline_link_clicks || 0),
+        results,
+        createdTime: createdTime[r.campaign_id] ? createdTime[r.campaign_id].slice(0, 10) : null,
+        isPrev: r.date_start === range.prevStart,
+      };
+    });
   return { cur: shaped.filter((c) => !c.isPrev), prev: shaped.filter((c) => c.isPrev) };
 }
 
