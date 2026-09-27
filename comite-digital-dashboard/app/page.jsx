@@ -2675,7 +2675,7 @@ export default function Dashboard() {
                     <div style={{ overflowX: 'auto', marginTop: '8px' }}>
                       <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '780px' }}>
                         <thead>
-                          <tr>{['Campaña', 'Plataforma', 'Fecha de creación', 'CTR', 'CPC', 'Clics en enlace'].map((h, k) => <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                          <tr>{['Campaña', 'Plataforma', 'Fecha de creación', 'Impresiones', 'Alcance', 'CTR', 'CPC', 'Clics en enlace'].map((h, k) => <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
                         </thead>
                         <tbody>
                           {reco.map((c) => (
@@ -2683,6 +2683,8 @@ export default function Dashboard() {
                               <td style={{ ...td, textAlign: 'left', maxWidth: '340px', overflowWrap: 'anywhere', fontWeight: 600 }}>{c.name}</td>
                               <td style={{ ...td, textAlign: 'right' }}>{c.platform}</td>
                               <td style={td}>{c.createdTime || '—'}</td>
+                              <td style={td}>{nf(c.impressions)}</td>
+                              <td style={td}>{nf(c.reach)}</td>
                               <td style={td}>{c.impressions ? `${((c.linkClicks / c.impressions) * 100).toFixed(2)}%` : '—'}</td>
                               <td style={{ ...td, fontWeight: 800, color: '#2e7d32' }}>{cop(c.spend / c.linkClicks)}</td>
                               <td style={td}>{nf(c.linkClicks)}</td>
