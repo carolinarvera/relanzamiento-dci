@@ -2304,6 +2304,9 @@ export default function Dashboard() {
         const rankedEditorial = editorial.slice().sort((x, y) => (x.spend / x.linkClicks) - (y.spend / y.linkClicks));
         const bestEditorial = rankedEditorial.slice(0, 5);
         const worstEditorial = rankedEditorial.slice(-5).reverse();
+        const byPlatform = (grp, re) => grp.filter((c) => re.test(c.name));
+        const bestEditorialFB = byPlatform(rankedEditorial, /facebook/i).slice(0, 5);
+        const bestEditorialIG = byPlatform(rankedEditorial, /instagram/i).slice(0, 5);
 
         const agg = (grp) => {
           const spend = grp.reduce((a, c) => a + c.spend, 0);
@@ -2457,7 +2460,8 @@ export default function Dashboard() {
             {pillRow(list, true)}
 
             {/* Fila 4: top 5 mejor rendimiento (editorial) */}
-            {miniTable(bestEditorial, 'Top 5 campañas con mejor rendimiento (solo editorial)', 'Ordenadas por menor costo por clic en enlace. Solo campañas editoriales (excluye content de clientes y always on).')}
+            {miniTable(bestEditorialFB, 'Top 5 campañas con mejor rendimiento · Facebook (solo editorial)', 'Ordenadas por menor costo por clic en enlace. Solo campañas editoriales (excluye content de clientes y always on).')}
+            {miniTable(bestEditorialIG, 'Top 5 campañas con mejor rendimiento · Instagram (solo editorial)', 'Ordenadas por menor costo por clic en enlace. Solo campañas editoriales (excluye content de clientes y always on).')}
 
             {/* Fila 5: pastillas del top 5 mejor */}
             {pillRow(bestEditorial, false)}
