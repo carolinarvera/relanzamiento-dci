@@ -2554,7 +2554,18 @@ export default function Dashboard() {
                     {/* Rendimiento por anuncio */}
                     <div style={styles.card}>
                       <div style={styles.cardTitle}>Rendimiento por anuncio</div>
-                      {!d.ads.length ? <div style={styles.cardSubtext}>Sin anuncios con datos en este periodo.</div> : (
+                      {!d.ads.length ? <div style={styles.cardSubtext}>Sin anuncios con datos en este periodo.</div> : (() => {
+                        const withClicks = d.ads.filter((a) => a.linkClicks > 0);
+                        const avgCpc = withClicks.length ? withClicks.reduce((a, x) => a + x.spend, 0) / withClicks.reduce((a, x) => a + x.linkClicks, 0) : null;
+                        const perfColor = (ad) => {
+                          if (!avgCpc || !ad.linkClicks) return null;
+                          const ratio = ad.cpc / avgCpc;
+                          if (ratio <= 0.9) return '#2e7d32';
+                          if (ratio <= 1.3) return '#f9a825';
+                          return '#c62828';
+                        };
+                        const perfBg = { '#2e7d32': '#eef7ee', '#f9a825': '#fff8e1', '#c62828': '#fdecea' };
+                        return (
                         <div style={{ overflowX: 'auto', marginTop: '8px' }}>
                           <table style={{ width: '100%', fontSize: '11px', borderCollapse: 'collapse', minWidth: '1400px' }}>
                             <thead>
@@ -2564,15 +2575,16 @@ export default function Dashboard() {
                               {d.ads.map((ad) => {
                                 const dash = '—';
                                 const pct = (v) => (v === null || v === undefined ? dash : `${(v * 100).toFixed(1)}%`);
+                                const color = perfColor(ad);
                                 const tdd = { padding: '7px 5px', borderBottom: '1px solid #eee', textAlign: 'right' };
                                 return (
-                                  <tr key={ad.id}>
+                                  <tr key={ad.id} style={{ background: color ? perfBg[color] : 'transparent', borderLeft: color ? `4px solid ${color}` : '4px solid transparent' }}>
                                     <td style={{ ...tdd, textAlign: 'left', maxWidth: '220px', overflowWrap: 'anywhere', fontWeight: 600 }}>{ad.name}</td>
                                     <td style={tdd}>{nf(ad.impressions)}</td>
                                     <td style={tdd}>{nf(ad.reach)}</td>
                                     <td style={tdd}>{ad.frequency ? ad.frequency.toFixed(2) : dash}</td>
                                     <td style={tdd}>{ad.impressions ? cop(ad.cpm) : dash}</td>
-                                    <td style={tdd}>{ad.linkClicks ? cop(ad.cpc) : dash}</td>
+                                    <td style={{ ...tdd, fontWeight: 800, color: color || 'inherit' }}>{ad.linkClicks ? cop(ad.cpc) : dash}</td>
                                     <td style={tdd}>{nf(ad.linkClicks)}</td>
                                     <td style={tdd}>{ad.landingPageViews === null ? dash : nf(ad.landingPageViews)}</td>
                                     <td style={tdd}>{ad.profileVisits === null ? dash : nf(ad.profileVisits)}</td>
@@ -2586,8 +2598,9 @@ export default function Dashboard() {
                             </tbody>
                           </table>
                         </div>
-                      )}
-                      <div style={styles.cardSubtext}>Campos de video (reproducciones 3 s, tiempo promedio, retención) solo existen en anuncios de video. "—" significa que Meta no devolvió ese dato para el anuncio.</div>
+                        );
+                      })()}
+                      <div style={styles.cardSubtext}>Verde: CPC ≤ 0,9x el promedio de los anuncios de esta campaña. Amarillo: 0,9x-1,3x (requiere ajuste). Rojo: más de 1,3x (peor performance). Campos de video (reproducciones 3 s, tiempo promedio, retención) solo existen en anuncios de video. "—" significa que Meta no devolvió ese dato para el anuncio.</div>
                     </div>
                   </div>
                 )
