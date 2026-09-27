@@ -2281,6 +2281,99 @@ export default function Dashboard() {
 
       {ready && section === 'pauta' && (
       <>
+      {/* Informe de gestión · Pauta (resumen para comité) */}
+      {data.pauta?.brands?.[activeTab] && (() => {
+        const brandName = activeTab === 'axxis' ? 'AXXIS' : 'Diners';
+        const b = data.pauta.brands[activeTab];
+        const cop = (v) => `$ ${Math.round(v).toLocaleString('es-CO')}`;
+        const rel = (cur, prev) => (prev ? cur / prev - 1 : null);
+        const totalBrand = b.totals.spend;
+        const clientBrand = b.cliente.totals.spend;
+        const ownBrand = b.propia.totals.spend;
+        const clientShare = totalBrand ? clientBrand / totalBrand : 0;
+        const CLIENT = T.accent;
+        const OWN = T.ink;
+
+        const list = (b.campaigns || []).map((c) => c);
+        const totS = list.reduce((a, c) => a + c.spend, 0);
+        const totPrevS = list.reduce((a, c) => a + (c.prevSpend || 0), 0);
+        const isAO = (c) => /seguidores|always\s*on|trueplay/i.test(c.name) && !/agosto|julio|septiembre|junio|octubre|mayo/i.test(c.name);
+        const aoList = list.filter(isAO);
+        const restList = list.filter((c) => !isAO(c));
+        const aoSpend = aoList.reduce((a, c) => a + c.spend, 0);
+        const aoClicks = aoList.reduce((a, c) => a + c.linkClicks, 0);
+        const totClicks = list.reduce((a, c) => a + c.linkClicks, 0);
+        const aoPrevSpend = aoList.reduce((a, c) => a + (c.prevSpend || 0), 0);
+
+        const worst = list.filter((c) => c.spend >= totS * 0.01 && c.linkClicks).map((c) => ({ ...c, cpc: c.spend / c.linkClicks })).sort((x, y) => y.cpc - x.cpc)[0];
+
+        return (
+          <div style={styles.section}>
+            <h2 style={styles.sectionTitle}>Informe de gestión · Pauta · {brandName} · {rangeLabel}</h2>
+
+            <div style={styles.grid}>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Inversión total {brandName}</div>
+                <div style={styles.cardValue}>{cop(totalBrand)}</div>
+                {renderChange(rel(totalBrand, b.prevTotals.spend), false, cop(b.prevTotals.spend))}
+              </div>
+              <div style={{ ...styles.card, borderTop: `4px solid ${CLIENT}` }}>
+                <div style={styles.cardTitle}>Pauta de clientes</div>
+                <div style={styles.cardValue}>{cop(clientBrand)}</div>
+                {renderChange(rel(clientBrand, b.cliente.prevTotals.spend), false, cop(b.cliente.prevTotals.spend))}
+                <div style={styles.cardSubtext}>{(clientShare * 100).toFixed(1)}% de la inversión · la pagan los clientes</div>
+              </div>
+              <div style={{ ...styles.card, borderTop: `4px solid ${OWN}` }}>
+                <div style={styles.cardTitle}>Pauta propia</div>
+                <div style={styles.cardValue}>{cop(ownBrand)}</div>
+                {renderChange(rel(ownBrand, b.propia.prevTotals.spend), false, cop(b.propia.prevTotals.spend))}
+                <div style={styles.cardSubtext}>{((1 - clientShare) * 100).toFixed(1)}% de la inversión · la asume Gamma</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>CTR (enlace)</div>
+                <div style={styles.cardValue}>{(b.totals.ctr * 100).toFixed(2)}%</div>
+                {renderPP(b.totals.ctr, b.prevTotals.impressions ? b.prevTotals.linkClicks / b.prevTotals.impressions : null)}
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>CPC</div>
+                <div style={styles.cardValue}>{b.totals.linkClicks ? cop(b.totals.cpc) : '—'}</div>
+                {renderChange(rel(b.totals.cpc, b.prevTotals.cpc), true, cop(b.prevTotals.cpc))}
+                <div style={styles.cardSubtext}>menor es mejor</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Always on (Seguidores + Tráfico)</div>
+                <div style={styles.cardValue}>{totS ? ((aoSpend / totS) * 100).toFixed(1) : '0.0'}%</div>
+                {renderChange(rel(aoSpend / (totS || 1), aoPrevSpend / (totPrevS || 1)), false, totPrevS ? `${((aoPrevSpend / totPrevS) * 100).toFixed(1)}%` : null)}
+                <div style={styles.cardSubtext}>{totClicks ? ((aoClicks / totClicks) * 100).toFixed(1) : '0.0'}% de los clics en enlace</div>
+              </div>
+            </div>
+
+            <div style={{ ...styles.card, marginTop: '4px' }}>
+              <div style={styles.cardTitle}>Revista {brandName} · inversión en Meta: clientes vs propia</div>
+              <div style={{ display: 'flex', height: '26px', borderRadius: '13px', overflow: 'hidden', background: '#eee', margin: '12px 0' }}>
+                <div title={`Clientes ${cop(clientBrand)}`} style={{ width: `${totalBrand ? (clientBrand / totalBrand) * 100 : 0}%`, background: CLIENT }} />
+                <div title={`Propia ${cop(ownBrand)}`} style={{ width: `${totalBrand ? (ownBrand / totalBrand) * 100 : 0}%`, background: OWN }} />
+              </div>
+              <div style={{ display: 'flex', gap: '16px', fontSize: '12px' }}>
+                <span><span style={{ display: 'inline-block', width: '10px', height: '10px', background: CLIENT, marginRight: '6px' }} />Clientes: <strong>{totalBrand ? ((clientBrand / totalBrand) * 100).toFixed(1) : '0.0'}%</strong></span>
+                <span><span style={{ display: 'inline-block', width: '10px', height: '10px', background: OWN, marginRight: '6px' }} />Propia: <strong>{totalBrand ? ((ownBrand / totalBrand) * 100).toFixed(1) : '0.0'}%</strong></span>
+              </div>
+            </div>
+
+            <div style={{ ...styles.card, marginTop: '16px', fontSize: '13px', lineHeight: 1.6 }}>
+              <div style={styles.cardTitle}>Lectura del mes</div>
+              {(() => { const spendRel = rel(totalBrand, b.prevTotals.spend); return (<>{brandName} invirtió <strong>{cop(totalBrand)}</strong> en Meta ({spendRel == null ? 'sin dato del mes anterior' : `${spendRel >= 0 ? '+' : ''}${(spendRel * 100).toFixed(1)}% vs mes anterior`}).</>); })()} El <strong>{clientShare ? (clientShare * 100).toFixed(0) : 0}%</strong> lo pagan clientes. Las campañas always on (Seguidores + Tráfico permanente) usan <strong>{totS ? ((aoSpend / totS) * 100).toFixed(1) : 0}%</strong> del presupuesto y traen <strong>{totClicks ? ((aoClicks / totClicks) * 100).toFixed(1) : 0}%</strong> de los clics.
+              {worst ? <> La campaña con peor costo por clic del mes es <strong>&ldquo;{worst.name}&rdquo;</strong>.</> : ''}
+            </div>
+          </div>
+        );
+      })()}
+
+      <div style={{ margin: '40px 0 16px', paddingTop: '20px', borderTop: '2px dashed #ccc' }}>
+        <div style={{ fontSize: '15px', fontWeight: 800, color: '#666' }}>Detalle de soporte (no es parte del informe de gestión)</div>
+        <div style={{ fontSize: '12px', color: '#888', marginTop: '4px' }}>Todo lo de aquí en adelante es material de respaldo para auditar el dato. Vamos decidiendo juntos qué pastillas se eliminan.</div>
+      </div>
+
       {/* Always on vs resto */}
       {data.pauta?.brands && (() => {
         const brandsP = data.pauta.brands;
