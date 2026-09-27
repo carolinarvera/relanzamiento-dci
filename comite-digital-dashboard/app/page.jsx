@@ -2481,11 +2481,11 @@ export default function Dashboard() {
             {miniTable(bestEditorialIG, 'Top 5 campañas con mejor rendimiento · Instagram (solo editorial)', 'Ordenadas por menor costo por clic en enlace. Solo campañas editoriales (excluye content de clientes y always on).', editorialIG)}
             {miniTable(bestEditorialFB, 'Top 5 campañas con mejor rendimiento · Facebook (solo editorial)', 'Ordenadas por menor costo por clic en enlace. Solo campañas editoriales (excluye content de clientes y always on).', editorialFB)}
 
-            {/* Fila 6: calidad GA4 (editorial) */}
-            {gaQuality(editorial)}
-
-            {/* Fila 7: top 5 peor rendimiento (editorial) */}
+            {/* Fila 6: top 5 peor rendimiento (editorial) */}
             {miniTable(worstEditorial, 'Top 5 campañas con peor rendimiento (solo editorial)', 'Ordenadas por mayor costo por clic en enlace. Solo campañas editoriales.')}
+
+            {/* Fila 7: calidad GA4 (editorial) */}
+            {gaQuality(editorial)}
 
             {/* Fila 8: rendimiento always on tráfico */}
             {miniTable(aoTrafico, 'Rendimiento de campaña · Always on tráfico')}
