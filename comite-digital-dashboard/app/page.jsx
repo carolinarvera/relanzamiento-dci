@@ -2427,25 +2427,33 @@ export default function Dashboard() {
               <div style={styles.cardSubtext}>Sesiones por campaña (Paid Social en GA4, cruzado por nombre), rebote y % de sesiones "motivadas" (proxy de lectura de más de una página). Solo campañas con 10+ sesiones en GA4.</div>
               {!withGa.length ? <div style={{ fontSize: '13px', color: '#555', marginTop: '10px' }}>Sin cruce de GA4 disponible para estas campañas.</div> : (
                 <div style={{ overflowX: 'auto', marginTop: '8px' }}>
-                  <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '700px' }}>
+                  <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', minWidth: '760px' }}>
                     <thead>
-                      <tr>{['Campaña', 'Fecha de creación', 'Sesiones (GA4)', 'Rebote', '% sesiones +1 página (proxy)', 'Páginas / sesión'].map((h, k) => <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                      <tr>{['Campaña', 'Fecha de creación', 'Sesiones (GA4)', 'Rebote', '% sesiones +1 página (proxy)', 'Páginas / sesión', 'Apagar campaña'].map((h, k) => <th key={h} style={{ textAlign: k ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
                     </thead>
                     <tbody>
-                      {withGa.map((c) => (
-                        <tr key={c.id || c.name}>
-                          <td style={{ ...td, textAlign: 'left', maxWidth: '320px', overflowWrap: 'anywhere', fontWeight: 600 }}>{c.name}</td>
-                          <td style={td}>{c.createdTime || '—'}</td>
-                          <td style={td}>{nf(c.ga4.sessions)}</td>
-                          <td style={{ ...td, fontWeight: 700, color: c.ga4.bounceRate > 0.6 ? '#c62828' : '#222' }}>{(c.ga4.bounceRate * 100).toFixed(1)}%</td>
-                          <td style={{ ...td, fontWeight: 700 }}>{(c.ga4.engagementRate * 100).toFixed(1)}%</td>
-                          <td style={td}>{c.ga4.pagesPerSession.toFixed(2)}</td>
-                        </tr>
-                      ))}
+                      {withGa.map((c) => {
+                        const br = c.ga4.bounceRate;
+                        const decision = br > 0.65 ? 'SÍ' : br >= 0.45 ? 'Optimizar' : 'NO';
+                        const decColor = { SÍ: '#c62828', Optimizar: '#f9a825', NO: '#2e7d32' }[decision];
+                        const decBg = { SÍ: '#fdecea', Optimizar: '#fff8e1', NO: '#eef7ee' }[decision];
+                        return (
+                          <tr key={c.id || c.name}>
+                            <td style={{ ...td, textAlign: 'left', maxWidth: '320px', overflowWrap: 'anywhere', fontWeight: 600 }}>{c.name}</td>
+                            <td style={td}>{c.createdTime || '—'}</td>
+                            <td style={td}>{nf(c.ga4.sessions)}</td>
+                            <td style={{ ...td, fontWeight: 700, color: c.ga4.bounceRate > 0.6 ? '#c62828' : '#222' }}>{(c.ga4.bounceRate * 100).toFixed(1)}%</td>
+                            <td style={{ ...td, fontWeight: 700 }}>{(c.ga4.engagementRate * 100).toFixed(1)}%</td>
+                            <td style={td}>{c.ga4.pagesPerSession.toFixed(2)}</td>
+                            <td style={td}><span style={{ display: 'inline-block', padding: '3px 10px', borderRadius: '10px', fontWeight: 800, fontSize: '11px', color: decColor, background: decBg }}>{decision}</span></td>
+                          </tr>
+                        );
+                      })}
                     </tbody>
                   </table>
                 </div>
               )}
+              <div style={styles.cardSubtext}>Apagar campaña: SÍ = rebote mayor a 65% (tráfico que no lee nada). Optimizar = rebote entre 45% y 65% (revisar creativo o landing antes de decidir). NO = rebote menor a 45% (tráfico de calidad, mantener).</div>
             </div>
           );
         };
