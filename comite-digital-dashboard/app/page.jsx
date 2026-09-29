@@ -1628,6 +1628,44 @@ export default function Dashboard() {
               <div style={{ ...styles.card, marginTop: '20px', borderTop: (seo.errorPages.total || 0) > 0 ? '4px solid #c62828' : undefined }}>
                 <div style={styles.cardTitle}>Páginas con error ("Page Not Found") · {rangeLabel}</div>
                 <div style={styles.cardSubtext}>Vistas de GA4 cuyo título de página contiene "Not Found" / "404" / "no encontrada". Son enlaces rotos que la gente sigue visitando: la ruta listada es donde cayó el usuario, no necesariamente el enlace de origen.</div>
+
+                {!seo.errorPages.error && (seo.errorPages.distinctCur + seo.errorPages.distinctPrev) > 0 && (
+                  <>
+                    <div style={{ display: 'flex', gap: '24px', margin: '14px 0 4px' }}>
+                      <div><div style={{ fontSize: '11px', color: '#777', textTransform: 'uppercase' }}>Páginas con error · mes anterior</div><div style={{ fontSize: '22px', fontWeight: 800 }}>{seo.errorPages.distinctPrev}</div></div>
+                      <div><div style={{ fontSize: '11px', color: '#777', textTransform: 'uppercase' }}>Páginas con error · mes actual</div><div style={{ fontSize: '22px', fontWeight: 800 }}>{seo.errorPages.distinctCur}</div></div>
+                      <div><div style={{ fontSize: '11px', color: '#2e7d32', textTransform: 'uppercase' }}>Arregladas</div><div style={{ fontSize: '22px', fontWeight: 800, color: '#2e7d32' }}>{seo.errorPages.fixed}</div></div>
+                      <div><div style={{ fontSize: '11px', color: '#c62828', textTransform: 'uppercase' }}>Nuevas</div><div style={{ fontSize: '22px', fontWeight: 800, color: '#c62828' }}>{seo.errorPages.nuevas}</div></div>
+                    </div>
+                    <ResponsiveContainer width="100%" height={220}>
+                      <BarChart data={[
+                        { label: 'Mes anterior', 'Páginas con error': seo.errorPages.distinctPrev },
+                        { label: 'Mes actual', 'Páginas con error': seo.errorPages.distinctCur },
+                        { label: 'Arregladas', 'Páginas con error': seo.errorPages.fixed },
+                        { label: 'Nuevas', 'Páginas con error': seo.errorPages.nuevas },
+                      ]}>
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                        <XAxis dataKey="label" fontSize={11} />
+                        <YAxis fontSize={11} allowDecimals={false} />
+                        <Tooltip />
+                        <Bar dataKey="Páginas con error" radius={[4, 4, 0, 0]}>
+                          {[seo.errorPages.distinctPrev, seo.errorPages.distinctCur, seo.errorPages.fixed, seo.errorPages.nuevas].map((v, i) => (
+                            <Cell key={i} fill={['#888', T.accent, '#2e7d32', '#c62828'][i]} />
+                          ))}
+                        </Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                    {seo.errorPages.fixedPages.length > 0 && (
+                      <div style={{ marginTop: '8px' }}>
+                        <div style={{ ...styles.cardTitle, fontSize: '11px', color: '#2e7d32' }}>Páginas arregladas este periodo</div>
+                        <ul style={{ margin: '6px 0 0', paddingLeft: '18px', fontSize: '12px', lineHeight: 1.6 }}>
+                          {seo.errorPages.fixedPages.map((p) => <li key={p.path}>{p.path} <span style={{ color: '#888' }}>({nf(p.views)} vistas el mes anterior)</span></li>)}
+                        </ul>
+                      </div>
+                    )}
+                  </>
+                )}
+
                 {seo.errorPages.error ? (
                   <div style={{ fontSize: '13px', color: '#b71c1c', marginTop: '10px' }}>No se pudo consultar GA4: {seo.errorPages.error}</div>
                 ) : !seo.errorPages.pages.length ? (

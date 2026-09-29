@@ -97,28 +97,49 @@ async function query(token, siteUrl, body) {
 
 const shape = (r, key) => ({ key, clicks: r.clicks, impressions: r.impressions, ctr: r.ctr, position: r.position });
 
+async function queryErrorPages(token, propertyId, startDate, endDate) {
+  const res = await axios.post(
+    `https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`,
+    {
+      dateRanges: [{ startDate, endDate }],
+      dimensions: [{ name: 'pagePath' }, { name: 'pageTitle' }],
+      metrics: [{ name: 'screenPageViews' }],
+      dimensionFilter: { orGroup: { expressions: ['404', 'not found', 'page not found', 'no encontrada', 'no encontrado'].map((v) => ({ filter: { fieldName: 'pageTitle', stringFilter: { matchType: 'CONTAINS', value: v, caseSensitive: false } } })) } },
+      orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }],
+      limit: 100000,
+    },
+    { headers: { Authorization: `Bearer ${token}` } },
+  );
+  const rows = res.data.rows || [];
+  return rows.map((r) => ({ path: r.dimensionValues[0].value, title: r.dimensionValues[1].value, views: Number(r.metricValues[0].value || 0) }));
+}
+
 async function fetchErrorPages(token, propertyId, range) {
   try {
-    const res = await axios.post(
-      `https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`,
-      {
-        dateRanges: [{ startDate: range.start, endDate: range.end }],
-        dimensions: [{ name: 'pagePath' }, { name: 'pageTitle' }],
-        metrics: [{ name: 'screenPageViews' }],
-        dimensionFilter: { orGroup: { expressions: ['404', 'not found', 'page not found', 'no encontrada', 'no encontrado'].map((v) => ({ filter: { fieldName: 'pageTitle', stringFilter: { matchType: 'CONTAINS', value: v, caseSensitive: false } } })) } },
-        orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }],
-        limit: 15,
-      },
-      { headers: { Authorization: `Bearer ${token}` } },
-    );
-    const rows = res.data.rows || [];
-    const total = rows.reduce((a, r) => a + Number(r.metricValues[0].value || 0), 0);
+    const [curPages, prevPages] = await Promise.all([
+      queryErrorPages(token, propertyId, range.start, range.end),
+      queryErrorPages(token, propertyId, range.prevStart, range.prevEnd),
+    ]);
+    const curSet = new Set(curPages.map((p) => p.path));
+    const prevSet = new Set(prevPages.map((p) => p.path));
+    const fixed = prevPages.filter((p) => !curSet.has(p.path));
+    const nuevas = curPages.filter((p) => !prevSet.has(p.path));
+    const persisten = curPages.filter((p) => prevSet.has(p.path));
+    const total = curPages.reduce((a, r) => a + r.views, 0);
+    const prevTotal = prevPages.reduce((a, r) => a + r.views, 0);
     return {
       total,
-      pages: rows.map((r) => ({ path: r.dimensionValues[0].value, title: r.dimensionValues[1].value, views: Number(r.metricValues[0].value || 0) })),
+      prevTotal,
+      pages: curPages.slice(0, 15),
+      distinctCur: curPages.length,
+      distinctPrev: prevPages.length,
+      fixed: fixed.length,
+      nuevas: nuevas.length,
+      persisten: persisten.length,
+      fixedPages: fixed.slice(0, 15),
     };
   } catch (e) {
-    return { total: 0, pages: [], error: e.response?.data?.error?.message || e.message };
+    return { total: 0, prevTotal: 0, pages: [], distinctCur: 0, distinctPrev: 0, fixed: 0, nuevas: 0, persisten: 0, fixedPages: [], error: e.response?.data?.error?.message || e.message };
   }
 }
 
