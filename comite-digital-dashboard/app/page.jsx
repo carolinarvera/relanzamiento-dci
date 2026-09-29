@@ -152,6 +152,7 @@ export default function Dashboard() {
   const [trendDays, setTrendDays] = useState(30);
   const [newsWin, setNewsWin] = useState('1d');
   const [pautaObj, setPautaObj] = useState('trafico');
+  const [seoIdeasOpen, setSeoIdeasOpen] = useState(false);
   const [newsByWin, setNewsByWin] = useState({});
   const [traficoOpen, setTraficoOpen] = useState(false);
   const [trafico, setTrafico] = useState(null);
@@ -1444,77 +1445,6 @@ export default function Dashboard() {
 
       {ready && section === 'seo' && (
       <>
-      {/* Tendencias del día en Colombia */}
-      {(() => {
-        const Dall = data.dailytrends;
-        const winData = newsWin === '1d' ? Dall : (newsByWin[newsWin] || null);
-        const D = Dall?.brands?.[activeTab] ? { ...Dall.brands[activeTab], fetchedAt: Dall.fetchedAt, totalTrends: Dall.totalTrends, news: winData?.brands?.[activeTab]?.news || null } : null;
-        const WIN_LABEL = { '1d': 'últimas 24 horas', '7d': 'últimos 7 días', '14d': 'últimos 14 días' };
-        if (!Dall || Dall.error || !D) return null;
-        const ago = (iso) => {
-          const m = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
-          if (!Number.isFinite(m) || m < 0) return '';
-          if (m < 60) return `hace ${m} min`;
-          return m < 1440 ? `hace ${Math.round(m / 60)} h` : `hace ${Math.round(m / 1440)} d`;
-        };
-        return (
-          <div style={{ ...styles.card, marginBottom: '24px' }}>
-            <div style={{ ...styles.cardTitle, fontSize: '14px' }}>Tendencias del día en Colombia · categorías de {activeTab === 'axxis' ? 'AXXIS' : 'Diners'}</div>
-
-            {D.trends.length > 0 && (
-              <>
-                <div style={{ ...styles.cardTitle, fontSize: '11px', marginTop: '16px' }}>Búsquedas en tendencia hoy relacionadas</div>
-              <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '6px' }}>
-                <thead>
-                  <tr>{['Búsqueda', 'Categoría', 'Búsquedas', 'Titular relacionado'].map((h, k) => <th key={h} style={{ textAlign: k === 2 ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
-                </thead>
-                <tbody>
-                  {D.trends.map((t) => (
-                    <tr key={t.query}>
-                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', fontWeight: 700, textTransform: 'capitalize' }}>{t.query}</td>
-                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>{t.category.label}</td>
-                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right', fontWeight: 700 }}>{t.traffic}</td>
-                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>{t.news[0] ? <a href={t.news[0].url} target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>{t.news[0].title} <span style={{ color: '#888' }}>· {t.news[0].source}</span></a> : '—'}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              </>
-            )}
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginTop: '18px' }}>
-              <div style={{ ...styles.cardTitle, fontSize: '11px', margin: 0 }}>Qué se está publicando en cada categoría</div>
-              <div style={{ display: 'flex', gap: '6px' }}>
-                {[['1d', '24 horas'], ['7d', '7 días'], ['14d', '14 días']].map(([k, label]) => (
-                  <button key={k} onClick={() => setNewsWin(k)} style={{ padding: '4px 12px', fontSize: '12px', border: 'none', cursor: 'pointer', borderRadius: '12px', fontWeight: 700, background: newsWin === k ? T.accent : '#e5e5e5', color: newsWin === k ? '#fff' : '#444' }}>{label}</button>
-                ))}
-              </div>
-              <span style={{ fontSize: '12px', color: '#888' }}>{WIN_LABEL[newsWin]}</span>
-            </div>
-            {!D.news ? (
-              <div style={{ fontSize: '13px', color: '#555', marginTop: '10px' }}>Cargando noticias de los {WIN_LABEL[newsWin]}…</div>
-            ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: `repeat(${(() => { const n = D.news.filter((c) => c.items.length > 0).length; return n === 4 ? 2 : Math.min(3, Math.max(1, n)); })()}, minmax(0, 1fr))`, gap: '18px', marginTop: '8px', alignItems: 'start' }}>
-              {D.news.filter((c) => c.items.length > 0).map((c) => (
-                <div key={c.key}>
-                  <div style={{ fontSize: '13px', fontWeight: 800, color: T.accent }}>{c.label} <span style={{ color: '#888', fontWeight: 500 }}>· {c.total}{c.total >= 100 ? '+' : ''} notas</span></div>
-                  <ul style={{ margin: '6px 0 0', paddingLeft: '16px', fontSize: '12px', lineHeight: 1.5 }}>
-                    {c.items.slice(0, 5).map((n) => (
-                      <li key={n.url} style={{ marginBottom: '4px' }}>
-                        <a href={n.url} target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>{n.title}</a>
-                        <span style={{ color: '#888' }}> · {n.source}{n.publishedAt ? ` · ${ago(n.publishedAt)}` : ''}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-            )}
-            <div style={styles.cardSubtext}>Fuentes: Google Trends (búsquedas en tendencia de Colombia) y Google Noticias (por categoría). El número de notas indica cuánta cobertura hay en el periodo elegido, hasta 100. Las búsquedas en tendencia siempre son las de hoy. Se actualiza cada 30 minutos.</div>
-          </div>
-        );
-      })()}
-
       {/* Insights de contenido */}
       {(() => {
         const G = current.ga4 || {};
@@ -1643,6 +1573,16 @@ export default function Dashboard() {
             <div style={styles.cardValue}>{current.gsc?.position?.toFixed(1) || 0}</div>
             <div style={styles.cardSubtext}>en búsquedas</div>
           </div>
+          <div style={styles.card}>
+            <div style={styles.cardTitle}>Tiempo de lectura promedio</div>
+            <div style={styles.cardValue}>{current.ga4?.avgSessionDuration || '—'}</div>
+            {renderChange(current.ga4?.avgSessionDurationChange, false, null)}
+          </div>
+          <div style={{ ...styles.card, borderTop: (current.seo?.errorPages?.total || 0) > 0 ? '4px solid #c62828' : undefined }}>
+            <div style={styles.cardTitle}>Páginas con error</div>
+            <div style={styles.cardValue}>{nf(current.seo?.errorPages?.total || 0)}</div>
+            <div style={styles.cardSubtext}>vistas perdidas en "Page Not Found" · {rangeLabel}</div>
+          </div>
         </div>
       </div>
 
@@ -1683,6 +1623,38 @@ export default function Dashboard() {
               <div style={styles.cardTitle}>Rendimiento orgánico por páginas (Top 10)</div>
               {table(seo.pages, 'Página')}
             </div>
+
+            {seo.errorPages && (
+              <div style={{ ...styles.card, marginTop: '20px', borderTop: (seo.errorPages.total || 0) > 0 ? '4px solid #c62828' : undefined }}>
+                <div style={styles.cardTitle}>Páginas con error ("Page Not Found") · {rangeLabel}</div>
+                <div style={styles.cardSubtext}>Vistas de GA4 cuyo título de página contiene "Not Found" / "404" / "no encontrada". Son enlaces rotos que la gente sigue visitando: la ruta listada es donde cayó el usuario, no necesariamente el enlace de origen.</div>
+                {seo.errorPages.error ? (
+                  <div style={{ fontSize: '13px', color: '#b71c1c', marginTop: '10px' }}>No se pudo consultar GA4: {seo.errorPages.error}</div>
+                ) : !seo.errorPages.pages.length ? (
+                  <div style={{ fontSize: '13px', color: '#2e7d32', marginTop: '10px', fontWeight: 600 }}>Sin tráfico a páginas de error en este periodo.</div>
+                ) : (
+                  <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '8px', fontSize: '12px' }}>
+                    <thead>
+                      <tr style={{ background: T.soft }}>
+                        <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Ruta</th>
+                        <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Título de página</th>
+                        <th style={{ padding: '8px', textAlign: 'right', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Vistas perdidas</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {seo.errorPages.pages.map((p, k) => (
+                        <tr key={p.path + k}>
+                          <td style={{ padding: '8px', borderBottom: '1px solid #eee', wordBreak: 'break-all', fontWeight: 600 }}>{p.path}</td>
+                          <td style={{ padding: '8px', borderBottom: '1px solid #eee', color: '#666' }}>{p.title}</td>
+                          <td style={{ padding: '8px', borderBottom: '1px solid #eee', textAlign: 'right', fontWeight: 800, color: '#c62828' }}>{nf(p.views)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+            )}
+
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px', marginTop: '20px' }}>
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Consultas orgánicas según posición (Top 10 mejor posicionadas)</div>
@@ -1815,6 +1787,84 @@ export default function Dashboard() {
               ) : <div style={styles.cardSubtext}>No se pudo leer Google Trends: {seo.trends?.error}</div>}
               <div style={styles.cardSubtext}>Fuente: feed público de Google Trends (búsquedas en tendencia en Colombia, últimas 24 h). Google no ofrece API para "consultas relacionadas" por tema. Resaltado en verde: la tendencia comparte palabras con consultas que ya te traen impresiones.</div>
             </div>
+          </div>
+        );
+      })()}
+
+      {/* Ideas de contenido (no es KPI, herramienta de ideación editorial) */}
+      <div style={{ margin: '30px 0 16px', paddingTop: '20px', borderTop: '2px dashed #ccc' }}>
+        <button onClick={() => setSeoIdeasOpen((v) => !v)} style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+          <span style={{ fontSize: '15px', fontWeight: 800, color: '#666' }}>{seoIdeasOpen ? '▾' : '▸'} Ideas de contenido (no es KPI de resultado, es insumo para el equipo editorial)</span>
+        </button>
+        <div style={{ fontSize: '12px', color: '#888', marginTop: '4px' }}>Tendencias de búsqueda del día y noticias del sector, para inspirar qué publicar. No mide desempeño.</div>
+      </div>
+
+      {seoIdeasOpen && (() => {
+        const Dall = data.dailytrends;
+        const winData = newsWin === '1d' ? Dall : (newsByWin[newsWin] || null);
+        const D = Dall?.brands?.[activeTab] ? { ...Dall.brands[activeTab], fetchedAt: Dall.fetchedAt, totalTrends: Dall.totalTrends, news: winData?.brands?.[activeTab]?.news || null } : null;
+        const WIN_LABEL = { '1d': 'últimas 24 horas', '7d': 'últimos 7 días', '14d': 'últimos 14 días' };
+        if (!Dall || Dall.error || !D) return null;
+        const ago = (iso) => {
+          const m = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+          if (!Number.isFinite(m) || m < 0) return '';
+          if (m < 60) return `hace ${m} min`;
+          return m < 1440 ? `hace ${Math.round(m / 60)} h` : `hace ${Math.round(m / 1440)} d`;
+        };
+        return (
+          <div style={{ ...styles.card, marginBottom: '24px' }}>
+            <div style={{ ...styles.cardTitle, fontSize: '14px' }}>Tendencias del día en Colombia · categorías de {activeTab === 'axxis' ? 'AXXIS' : 'Diners'}</div>
+
+            {D.trends.length > 0 && (
+              <>
+                <div style={{ ...styles.cardTitle, fontSize: '11px', marginTop: '16px' }}>Búsquedas en tendencia hoy relacionadas</div>
+              <table style={{ width: '100%', fontSize: '12px', borderCollapse: 'collapse', marginTop: '6px' }}>
+                <thead>
+                  <tr>{['Búsqueda', 'Categoría', 'Búsquedas', 'Titular relacionado'].map((h, k) => <th key={h} style={{ textAlign: k === 2 ? 'right' : 'left', padding: '8px 6px', borderBottom: '2px solid #ddd', color: '#666', fontSize: '11px', textTransform: 'uppercase' }}>{h}</th>)}</tr>
+                </thead>
+                <tbody>
+                  {D.trends.map((t) => (
+                    <tr key={t.query}>
+                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', fontWeight: 700, textTransform: 'capitalize' }}>{t.query}</td>
+                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>{t.category.label}</td>
+                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee', textAlign: 'right', fontWeight: 700 }}>{t.traffic}</td>
+                      <td style={{ padding: '8px 6px', borderBottom: '1px solid #eee' }}>{t.news[0] ? <a href={t.news[0].url} target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>{t.news[0].title} <span style={{ color: '#888' }}>· {t.news[0].source}</span></a> : '—'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              </>
+            )}
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginTop: '18px' }}>
+              <div style={{ ...styles.cardTitle, fontSize: '11px', margin: 0 }}>Qué se está publicando en cada categoría</div>
+              <div style={{ display: 'flex', gap: '6px' }}>
+                {[['1d', '24 horas'], ['7d', '7 días'], ['14d', '14 días']].map(([k, label]) => (
+                  <button key={k} onClick={() => setNewsWin(k)} style={{ padding: '4px 12px', fontSize: '12px', border: 'none', cursor: 'pointer', borderRadius: '12px', fontWeight: 700, background: newsWin === k ? T.accent : '#e5e5e5', color: newsWin === k ? '#fff' : '#444' }}>{label}</button>
+                ))}
+              </div>
+              <span style={{ fontSize: '12px', color: '#888' }}>{WIN_LABEL[newsWin]}</span>
+            </div>
+            {!D.news ? (
+              <div style={{ fontSize: '13px', color: '#555', marginTop: '10px' }}>Cargando noticias de los {WIN_LABEL[newsWin]}…</div>
+            ) : (
+            <div style={{ display: 'grid', gridTemplateColumns: `repeat(${(() => { const n = D.news.filter((c) => c.items.length > 0).length; return n === 4 ? 2 : Math.min(3, Math.max(1, n)); })()}, minmax(0, 1fr))`, gap: '18px', marginTop: '8px', alignItems: 'start' }}>
+              {D.news.filter((c) => c.items.length > 0).map((c) => (
+                <div key={c.key}>
+                  <div style={{ fontSize: '13px', fontWeight: 800, color: T.accent }}>{c.label} <span style={{ color: '#888', fontWeight: 500 }}>· {c.total}{c.total >= 100 ? '+' : ''} notas</span></div>
+                  <ul style={{ margin: '6px 0 0', paddingLeft: '16px', fontSize: '12px', lineHeight: 1.5 }}>
+                    {c.items.slice(0, 5).map((n) => (
+                      <li key={n.url} style={{ marginBottom: '4px' }}>
+                        <a href={n.url} target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>{n.title}</a>
+                        <span style={{ color: '#888' }}> · {n.source}{n.publishedAt ? ` · ${ago(n.publishedAt)}` : ''}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+            )}
+            <div style={styles.cardSubtext}>Fuentes: Google Trends (búsquedas en tendencia de Colombia) y Google Noticias (por categoría). El número de notas indica cuánta cobertura hay en el periodo elegido, hasta 100. Las búsquedas en tendencia siempre son las de hoy. Se actualiza cada 30 minutos.</div>
           </div>
         );
       })()}

@@ -97,6 +97,31 @@ async function query(token, siteUrl, body) {
 
 const shape = (r, key) => ({ key, clicks: r.clicks, impressions: r.impressions, ctr: r.ctr, position: r.position });
 
+async function fetchErrorPages(token, propertyId, range) {
+  try {
+    const res = await axios.post(
+      `https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`,
+      {
+        dateRanges: [{ startDate: range.start, endDate: range.end }],
+        dimensions: [{ name: 'pagePath' }, { name: 'pageTitle' }],
+        metrics: [{ name: 'screenPageViews' }],
+        dimensionFilter: { orGroup: { expressions: ['404', 'not found', 'page not found', 'no encontrada', 'no encontrado'].map((v) => ({ filter: { fieldName: 'pageTitle', stringFilter: { matchType: 'CONTAINS', value: v, caseSensitive: false } } })) } },
+        orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }],
+        limit: 15,
+      },
+      { headers: { Authorization: `Bearer ${token}` } },
+    );
+    const rows = res.data.rows || [];
+    const total = rows.reduce((a, r) => a + Number(r.metricValues[0].value || 0), 0);
+    return {
+      total,
+      pages: rows.map((r) => ({ path: r.dimensionValues[0].value, title: r.dimensionValues[1].value, views: Number(r.metricValues[0].value || 0) })),
+    };
+  } catch (e) {
+    return { total: 0, pages: [], error: e.response?.data?.error?.message || e.message };
+  }
+}
+
 async function buildSite(token, siteUrl, range, brand) {
   const lagLimit = iso(new Date(Date.now() - 3 * 86400000));
   const endDate = range.end > lagLimit ? lagLimit : range.end;
@@ -157,11 +182,18 @@ export async function GET(request) {
       buildSite(token, process.env.GSC_AXXIS_URL, range, 'axxis'),
       buildSite(token, process.env.GSC_DINERS_URL, range, 'diners'),
     ]);
-    const [trendsAxxis, trendsDiners] = await Promise.all([fetchTrends(axxis.matchSet), fetchTrends(diners.matchSet)]);
+    const [trendsAxxis, trendsDiners, errorAxxis, errorDiners] = await Promise.all([
+      fetchTrends(axxis.matchSet),
+      fetchTrends(diners.matchSet),
+      fetchErrorPages(token, process.env.GA4_AXXIS_ID, range),
+      fetchErrorPages(token, process.env.GA4_DINERS_ID, range),
+    ]);
     delete axxis.matchSet;
     delete diners.matchSet;
     axxis.trends = trendsAxxis;
     diners.trends = trendsDiners;
+    axxis.errorPages = errorAxxis;
+    diners.errorPages = errorDiners;
     return Response.json({ range, axxis, diners });
   } catch (error) {
     const detail = error.response?.data?.error?.message || error.response?.data?.error_description || error.message;
