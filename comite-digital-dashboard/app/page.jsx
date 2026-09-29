@@ -1477,16 +1477,16 @@ export default function Dashboard() {
         const insights = [];
         const recos = [];
         const cross = rows.filter((t) => srcs.filter((x) => sh(x, t.key) >= 0.2).length >= 2);
-        cross.slice(0, 2).forEach((t) => insights.push(`${t.label} gana en varios canales a la vez: ${srcs.map((x) => `${x.short} ${pctS(sh(x, t.key))}`).join(', ')}. Es el tema con demanda más confirmada.`));
+        cross.slice(0, 2).forEach((t) => insights.push({ tag: 'Tema cruzado', color: '#8e44ad', text: `${t.label} gana en varios canales a la vez: ${srcs.map((x) => `${x.short} ${pctS(sh(x, t.key))}`).join(', ')}. Es el tema con demanda más confirmada.` }));
         if (web && social.length) {
           rows.forEach((t) => {
             const soc = social.reduce((a, x) => a + sh(x, t.key), 0) / social.length;
             const w = sh(web, t.key);
             if (soc - w >= 0.25) {
-              insights.push(`${t.label} pesa ${pctS(soc)} en lo mejor de redes pero solo ${pctS(w)} en las páginas más vistas de la web: hay interés que la web no está aprovechando.`);
+              insights.push({ tag: 'Web vs Redes', color: '#2980b9', text: `${t.label} pesa ${pctS(soc)} en lo mejor de redes pero solo ${pctS(w)} en las páginas más vistas de la web: hay interés que la web no está aprovechando.` });
               recos.push(`Llevar a la web lo que ya funciona en redes: publicar notas de ${t.label.toLowerCase()} con enlace desde las publicaciones que hoy dan más interacciones.`);
             } else if (w - soc >= 0.25) {
-              insights.push(`${t.label} domina la web (${pctS(w)}) y casi no aparece entre lo mejor de redes (${pctS(soc)}): conviene probarlo como carrusel o reel.`);
+              insights.push({ tag: 'Web vs Redes', color: '#2980b9', text: `${t.label} domina la web (${pctS(w)}) y casi no aparece entre lo mejor de redes (${pctS(soc)}): conviene probarlo como carrusel o reel.` });
               recos.push(`Convertir los artículos más leídos de ${t.label.toLowerCase()} en carruseles de Instagram con enlace a la nota.`);
             }
           });
@@ -1496,15 +1496,15 @@ export default function Dashboard() {
         const typeList = Object.entries(types).map(([k, l]) => ({ k, n: l.length, avg: l.reduce((a, p) => a + (p.interactions || 0), 0) / l.length, saved: l.reduce((a, p) => a + (p.saved || 0), 0) / l.length })).sort((a, b) => b.avg - a.avg);
         if (typeList.length && igPosts.length >= 3) {
           const t0 = typeList[0];
-          insights.push(`En las ${igPosts.length} mejores publicaciones de Instagram predomina el formato ${typeList.slice().sort((a, b) => b.n - a.n)[0].k.toLowerCase()} (${typeList.slice().sort((a, b) => b.n - a.n)[0].n} de ${igPosts.length}). ${t0.k} promedia ${Math.round(t0.avg).toLocaleString('es-CO')} interacciones y ${Math.round(t0.saved).toLocaleString('es-CO')} guardados por publicación.`);
+          insights.push({ tag: 'Formato IG', color: '#c0392b', text: `En las ${igPosts.length} mejores publicaciones de Instagram predomina el formato ${typeList.slice().sort((a, b) => b.n - a.n)[0].k.toLowerCase()} (${typeList.slice().sort((a, b) => b.n - a.n)[0].n} de ${igPosts.length}). ${t0.k} promedia ${Math.round(t0.avg).toLocaleString('es-CO')} interacciones y ${Math.round(t0.saved).toLocaleString('es-CO')} guardados por publicación.` });
         }
         const bestIg = igPosts.slice().sort((a, b) => (b.interactions || 0) - (a.interactions || 0))[0];
-        if (bestIg) insights.push(`La mejor publicación de Instagram fue "${String(bestIg.caption || '').replace(/\s+/g, ' ').slice(0, 90)}…": ${nf(bestIg.interactions)} interacciones, ${nf(bestIg.saved)} guardados y ${nf(bestIg.shares)} compartidos.`);
+        if (bestIg) insights.push({ tag: 'Mejor post IG', color: '#d35400', text: `"${String(bestIg.caption || '').replace(/\s+/g, ' ').slice(0, 90)}…": ${nf(bestIg.interactions)} interacciones, ${nf(bestIg.saved)} guardados y ${nf(bestIg.shares)} compartidos.` });
         const bestFb = fbPosts.slice().sort((a, b) => (b.clicks || 0) - (a.clicks || 0))[0];
-        if (bestFb && bestFb.clicks) insights.push(`En Facebook, la publicación que más tráfico llevó a la web fue "${String(bestFb.caption || '').replace(/\s+/g, ' ').slice(0, 80)}…": ${nf(bestFb.clicks)} clics en el enlace.`);
+        if (bestFb && bestFb.clicks) insights.push({ tag: 'Mejor post FB', color: '#1f618d', text: `"${String(bestFb.caption || '').replace(/\s+/g, ' ').slice(0, 80)}…" llevó más tráfico a la web: ${nf(bestFb.clicks)} clics en el enlace.` });
         const titles = [...(G.topArticles || []).map((a) => a.title), ...(ET?.articles || []).map((a) => a.title)].filter(Boolean);
         const pat = titlePatterns(titles);
-        if (pat.n >= 4) insights.push(`En los ${pat.n} títulos más leídos (web y email): ${pat.pct(pat.list)}% usan lista o número, ${pat.pct(pat.howto)}% son guías o claves y ${pat.pct(pat.local)}% mencionan un lugar concreto de Colombia.`);
+        if (pat.n >= 4) insights.push({ tag: 'Títulos', color: '#16a085', text: `En los ${pat.n} títulos más leídos (web y email): ${pat.pct(pat.list)}% usan lista o número, ${pat.pct(pat.howto)}% son guías o claves y ${pat.pct(pat.local)}% mencionan un lugar concreto de Colombia.` });
         if (rows[0]) recos.unshift(`Armar una serie recurrente de ${rows[0].label.toLowerCase()}: es el tema con mejor desempeño combinado (${srcs.map((x) => `${x.short} ${pctS(sh(x, rows[0].key))}`).join(', ')}).`);
         const coy = rows.find((t) => t.key === 'coyuntura' && srcs.some((x) => sh(x, 'coyuntura') >= 0.15));
         if (coy) recos.push('Mantener un paquete de contenido de servicio para la coyuntura (guías de qué hacer, dónde ayudar): rinde en web, email y redes cuando hay una emergencia.');
@@ -1537,7 +1537,14 @@ export default function Dashboard() {
               </div>
               <div>
                 <div style={{ ...styles.cardTitle, fontSize: '11px' }}>Lo que dicen los datos</div>
-                <ul style={{ margin: '8px 0 0', paddingLeft: '18px', fontSize: '13px', lineHeight: 1.6 }}>{insights.slice(0, 6).map((t, k) => <li key={k} style={{ marginBottom: '4px' }}>{t}</li>)}</ul>
+                <div style={{ marginTop: '8px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {insights.slice(0, 6).map((ins, k) => (
+                    <div key={k} style={{ display: 'flex', gap: '10px', alignItems: 'flex-start', background: '#fafafa', borderLeft: `3px solid ${ins.color}`, borderRadius: '4px', padding: '8px 10px' }}>
+                      <span style={{ flexShrink: 0, fontSize: '10px', fontWeight: 800, textTransform: 'uppercase', color: '#fff', background: ins.color, borderRadius: '10px', padding: '2px 8px', letterSpacing: '0.3px' }}>{ins.tag}</span>
+                      <span style={{ fontSize: '13px', lineHeight: 1.5 }}>{ins.text}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
             {recos.length > 0 && (
@@ -1619,10 +1626,6 @@ export default function Dashboard() {
         return (
           <div style={styles.section}>
             <h2 style={styles.sectionTitle}>Rendimiento SEO · {rangeLabel}</h2>
-            <div style={styles.card}>
-              <div style={styles.cardTitle}>Rendimiento orgánico por páginas (Top 10)</div>
-              {table(seo.pages, 'Página')}
-            </div>
 
             {seo.errorPages && (
               <div style={{ ...styles.card, marginTop: '20px', borderTop: (seo.errorPages.total || 0) > 0 ? '4px solid #c62828' : undefined }}>
@@ -1758,72 +1761,6 @@ export default function Dashboard() {
                 {table(seo.opportunities, 'Consulta')}
                 <div style={styles.cardSubtext}>Mucha demanda y todavía en segunda página o borde de la primera: buenas candidatas para nuevo contenido o mejora.</div>
               </div>
-            </div>
-            <div style={{ ...styles.card, marginTop: '20px' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', alignItems: 'center' }}>
-                <div style={styles.cardTitle}>Noticias del sector · temas de la revista</div>
-                <select value={trendDays} onChange={(e) => setTrendDays(Number(e.target.value))} style={{ padding: '6px', borderRadius: '4px', border: '1px solid #ccc' }}>
-                  <option value={7}>Últimos 7 días</option>
-                  <option value={30}>Últimos 30 días</option>
-                  <option value={90}>Últimos 90 días</option>
-                </select>
-              </div>
-              {!trends && <div style={styles.cardSubtext}>Consultando Google Trends…</div>}
-              {trends?.error && <div style={{ ...styles.cardSubtext, color: '#b71c1c' }}>No se pudo leer Google Trends: {trends.error}</div>}
-              {trends?.topics && (
-                <div style={{ overflowX: 'auto', marginTop: '12px' }}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '520px' }}>
-                    <thead>
-                      <tr style={{ background: T.soft }}>
-                        <th style={{ ...head, textAlign: 'left', width: '13%' }}>Tema</th>
-                        <th style={{ ...head, textAlign: 'left' }}>Noticias del sector (últimos días)</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {trends.topics.map((t) => (
-                        <tr key={t.keyword} style={{ verticalAlign: 'top' }}>
-                          <td style={{ ...cell, fontWeight: 700, textTransform: 'capitalize' }}>{t.keyword}</td>
-                          <td style={cell}>
-                            {t.news?.length ? t.news.map((n) => (
-                              <div key={n.url || n.title} style={{ marginBottom: '6px' }}>
-                                <a href={n.url} target="_blank" rel="noreferrer" style={{ color: '#0b57d0' }}>{n.title}</a>
-                                <span style={{ color: '#888' }}> · {n.source} · {n.date}</span>
-                              </div>
-                            )) : <span style={{ color: '#999' }}>sin noticias recientes</span>}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              )}
-              <div style={styles.cardSubtext}>Noticias recientes de Colombia por tema (Google News), con búsquedas pensadas para el nicho de la revista.</div>
-            </div>
-            <div style={{ ...styles.card, marginTop: '20px' }}>
-              <div style={styles.cardTitle}>Tendencias generales del día en Colombia (todas las categorías)</div>
-              {Array.isArray(seo.trends) ? (
-                <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '8px' }}>
-                  <thead>
-                    <tr style={{ background: T.soft }}>
-                      <th style={{ ...head, textAlign: 'left' }}>Tendencia</th>
-                      <th style={head}>Búsquedas aprox.</th>
-                      <th style={{ ...head, textAlign: 'left' }}>Noticia relacionada</th>
-                      <th style={{ ...head, textAlign: 'left' }}>Coincide con tus temas</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {seo.trends.map((t) => (
-                      <tr key={t.title} style={{ background: t.matches.length ? '#eef7ee' : 'transparent' }}>
-                        <td style={{ ...cell, fontWeight: 600 }}>{t.title}</td>
-                        <td style={num}>{t.traffic}</td>
-                        <td style={cell}>{t.newsUrl ? <a href={t.newsUrl} target="_blank" rel="noreferrer" style={{ color: T.accent }}>{t.news}</a> : t.news} <span style={{ color: '#999' }}>{t.source ? `· ${t.source}` : ''}</span></td>
-                        <td style={cell}>{t.matches.length ? t.matches.join(', ') : '\u2014'}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              ) : <div style={styles.cardSubtext}>No se pudo leer Google Trends: {seo.trends?.error}</div>}
-              <div style={styles.cardSubtext}>Fuente: feed público de Google Trends (búsquedas en tendencia en Colombia, últimas 24 h). Google no ofrece API para "consultas relacionadas" por tema. Resaltado en verde: la tendencia comparte palabras con consultas que ya te traen impresiones.</div>
             </div>
           </div>
         );
