@@ -72,6 +72,26 @@ Ficha técnica idéntica a Diners en formatos de alto impacto, con tarifa entre 
 
 ---
 
+## 2.bis La columna vertebral: Pauta Dinámica
+
+El plan compra Pauta Dinámica los 12 meses. Son $145.200.000, el 24,5% de los medios propios del año y la única línea que garantiza presencia ininterrumpida en todos los canales de Diners.
+
+**Qué incluye cada entrega, por $12.100.000 netos:**
+
+| Componente | Entregable |
+|---|---|
+| Impreso | Doble página de Content Marketing en la revista |
+| Website | Content Marketing replicado en la web de la revista |
+| Pauta display | Un banner, según disponibilidad, por 100.000 impresiones |
+| Social media | Dos posts en Facebook, un post en Instagram, dos historias en Instagram |
+| Newsletter | Envío de la versión digital del Content Marketing |
+
+**Por qué este formato y no una página suelta:** una página corriente impar cuesta $23.600.000 y entrega solo impreso. La Pauta Dinámica cuesta la mitad y entrega impreso, web, display, social y newsletter. Es el formato con mejor relación entre inversión y superficie de contacto de todo el tarifario.
+
+**Ojo con el newsletter.** El paquete comercial promete envío a 400.000 contactos. Los envíos reales medidos en HubSpot fueron 22.000 el 19 de junio y 11.000 el 14 de junio. Si DCI audita esa cifra, se cae la credibilidad de todo el paquete. Hay que reconciliarla antes de enero. Ver sección 8.
+
+---
+
 ## 3. Detalle mes a mes · T1 2027
 
 ### Mes 1 · Enero · "Declarar el territorio"
@@ -333,6 +353,7 @@ Responsable de ejecución: Sebastián Díaz.
 3. **Coherencia de Beneficios Suscriptores.** El programa tiene decisiones abiertas y naming contradictorio en equipos paralelos. Cerrarlo antes de exponerlo a un tarjetahabiente.
 4. **Carga de audiencias de Davivienda.** Si no se resuelve la viabilidad legal, se pierde la audiencia de mayor retorno y la pauta se encarece.
 5. **Capacidad editorial.** Ocho experiencias OBI más cubrimiento mensual es carga real sobre Simón Granja y el equipo audiovisual. Validar antes de comprometer el calendario.
+6. **Dos formatos sin confirmar.** El tarifario que Carolina validó el 2026-10-01 trae 25 líneas de Diners y todas coinciden con el plan. No incluye "El producto del mes" ni "Cubrimiento de eventos", ambos a $7.300.000, que sí aparecían en las láminas del media kit. El plan los usa cinco veces (febrero, marzo, mayo, agosto y octubre) por $36.500.000. Si salieron del catálogo, se reemplazan por Ruta al estilo Diners a $6.200.000 y el plan baja $5.500.000.
 
 ---
 
