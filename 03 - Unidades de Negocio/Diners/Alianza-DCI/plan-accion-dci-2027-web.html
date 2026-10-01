@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Relanzamiento Diners Club International 2027 · Ediciones Gamma</title>
+<style>
+  :root{
+    --navy:#0A2540; --ink:#12233a; --bronze:#8C6A2E; --gold:#8A6B1F; --gold-fill:#D2A855;
+    --wine:#8C3A3A; --axxis:#D4581F; --green:#1E6B4F;
+    --muted:rgba(18,35,58,.6); --line:rgba(10,37,64,.14);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--serif);color:var(--ink);background:#FBFAF8;-webkit-font-smoothing:antialiased;padding-bottom:4rem}
+  .wrap{max-width:1320px;margin:0 auto;padding:0 3.5vw}
+
+  header.hero{background:var(--navy);color:#fff;padding:3.4rem 0 2.6rem}
+  header.hero .eyebrow{font-family:var(--sans);font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:#D2A855;font-weight:700;margin-bottom:.9rem}
+  header.hero h1{font-size:clamp(1.8rem,4vw,3rem);line-height:1.04;font-weight:600;letter-spacing:-.01em}
+  header.hero h1 em{color:#D2A855;font-style:italic}
+  header.hero p{font-family:var(--sans);font-size:.88rem;color:rgba(255,255,255,.75);margin-top:1rem;max-width:78ch;line-height:1.55}
+  .heromet{display:flex;gap:2.4rem;margin-top:1.8rem;flex-wrap:wrap}
+  .heromet div{border-left:2px solid rgba(210,168,85,.55);padding-left:.8rem}
+  .heromet .v{font-size:1.5rem;font-weight:700;line-height:1}
+  .heromet .l{font-family:var(--sans);font-size:.66rem;color:rgba(255,255,255,.6);margin-top:.3rem;letter-spacing:.04em}
+
+  nav{position:sticky;top:0;z-index:40;background:rgba(251,250,248,.97);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;gap:.4rem;padding-top:.65rem;padding-bottom:.65rem;flex-wrap:wrap;align-items:center}
+  nav a{font-family:var(--sans);font-size:.68rem;letter-spacing:.07em;text-transform:uppercase;font-weight:700;
+        text-decoration:none;color:var(--navy);border:1px solid var(--line);border-radius:2px;padding:.34rem .64rem;transition:.18s}
+  nav a:hover{border-color:var(--gold);color:var(--gold)}
+  nav a.q{border-color:rgba(138,107,31,.45);color:var(--gold)}
+
+  section{padding-top:2.6rem}
+  h2{font-size:clamp(1.4rem,2.8vw,2.1rem);font-weight:600;color:var(--navy);letter-spacing:-.01em;line-height:1.1}
+  .lead{font-size:1rem;line-height:1.6;color:rgba(18,35,58,.86);max-width:92ch;margin-top:.7rem}
+  .shead{display:flex;align-items:baseline;gap:1rem;padding-bottom:.6rem;border-bottom:2px solid var(--navy);margin-bottom:1rem}
+  .shead .tag{font-family:var(--sans);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-left:auto}
+
+  .grid{display:grid;gap:.85rem;margin-top:1rem}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .card{background:#fff;border:1px solid var(--line);border-radius:3px;padding:1rem 1.1rem}
+  .card.hl{border-color:var(--gold);background:rgba(154,111,31,.07)}
+  .card.wine{border-color:rgba(140,58,58,.35);background:rgba(140,58,58,.05)}
+  .card h3{font-size:1rem;font-weight:700;color:var(--gold);margin-bottom:.35rem}
+  .card p{font-size:.86rem;line-height:1.5;color:rgba(18,35,58,.82)}
+  .tier{font-family:var(--sans);font-size:.57rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.4rem;font-weight:700}
+  .card.hl .tier{color:var(--gold)}
+  .card.wine .tier{color:var(--wine)}
+  .bigfig{font-size:1.7rem;font-weight:700;color:var(--navy);line-height:1}
+  .flabel{font-family:var(--sans);font-size:.68rem;color:var(--muted);margin-top:.3rem;line-height:1.35}
+  .blist{list-style:none;margin:.3rem 0 0;padding:0}
+  .blist li{position:relative;padding:.17rem 0 .17rem .9rem;font-size:.84rem;line-height:1.4;color:rgba(18,35,58,.85)}
+  .blist li::before{content:"";position:absolute;left:0;top:.56rem;width:4px;height:4px;border-radius:50%;background:var(--bronze)}
+  .blist li strong{color:var(--navy);font-weight:700}
+
+  .qhead{display:flex;align-items:flex-end;gap:1.5rem;padding:1.1rem 1.2rem;background:var(--navy);color:#fff;border-radius:3px;margin-bottom:1rem;flex-wrap:wrap}
+  .qhead h2{color:#fff;font-size:1.6rem;margin-top:.15rem}
+  .qtag{font-family:var(--sans);font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;color:#D2A855;font-weight:700}
+  .qobj{font-family:var(--sans);font-size:.8rem;color:rgba(255,255,255,.72);margin-top:.3rem}
+  .qnum{margin-left:auto;text-align:right}
+  .qnum .qv{font-size:1.5rem;font-weight:700;line-height:1}
+  .qnum .ql{font-family:var(--sans);font-size:.66rem;color:rgba(255,255,255,.6);margin-top:.3rem}
+
+  h3.mes{font-family:var(--serif);font-size:1.12rem;font-weight:600;color:var(--navy);margin:1.5rem 0 .2rem;display:flex;align-items:baseline;gap:.8rem}
+  h3.mes::after{content:"";height:1px;flex:1;background:var(--line);order:3}
+  h3.mes .mestot{font-family:var(--sans);font-size:.68rem;color:var(--muted);font-weight:700;letter-spacing:.03em;order:2;white-space:nowrap}
+  h3.mes.pauta{color:var(--gold)}
+
+  .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:3px;background:#fff;margin-top:.5rem}
+  table{width:100%;border-collapse:collapse;font-size:.75rem;min-width:1060px}
+  th,td{text-align:left;padding:.45rem .6rem;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-family:var(--sans);font-size:.59rem;letter-spacing:.1em;text-transform:uppercase;color:#fff;background:var(--navy);font-weight:700;position:sticky;top:0;z-index:2}
+  td:first-child{font-weight:700;color:var(--navy);width:13%}
+  td.car{color:rgba(18,35,58,.74);font-size:.73rem;line-height:1.42}
+  td.fmt{font-family:var(--sans);font-size:.68rem;color:var(--bronze);font-weight:700;line-height:1.35;width:11%}
+  td.pr,th.pr{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;font-weight:700;color:var(--navy);width:9%}
+  tbody tr:nth-child(even) td{background:#FAF8F4}
+  tbody tr:hover td{background:rgba(154,111,31,.07)}
+  tr.tot td{background:var(--navy);color:#fff;font-weight:700;font-size:.76rem}
+  tr.tot td:first-child{color:#fff}
+  tr.tot:hover td{background:var(--navy)}
+  .chip{display:inline-block;font-family:var(--sans);font-size:.57rem;letter-spacing:.08em;text-transform:uppercase;
+        font-weight:700;padding:.14rem .4rem;border-radius:2px;white-space:nowrap}
+  .chip.d{background:rgba(10,37,64,.1);color:var(--navy)}
+  .chip.a{background:rgba(212,88,31,.13);color:var(--axxis)}
+  .chip.p{background:rgba(138,107,31,.13);color:var(--gold)}
+  .obj{display:inline-block;font-family:var(--sans);font-size:.63rem;font-weight:700;color:var(--green);line-height:1.3}
+
+  .flag{border-left:2px solid var(--wine);background:rgba(140,58,58,.06);padding:.8rem 1rem;margin-top:1rem;border-radius:2px}
+  .flag p{font-family:var(--sans);font-size:.78rem;line-height:1.5;color:rgba(18,35,58,.85)}
+  .flag strong{color:var(--navy)}
+  footer{margin-top:3rem;padding-top:1.3rem;border-top:1px solid var(--line);
+         font-family:var(--sans);font-size:.7rem;color:var(--muted);line-height:1.7}
+  @media(max-width:860px){
+    .g2,.g3,.g4{grid-template-columns:1fr}
+    .qnum{margin-left:0;text-align:left}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Diners Club International &amp; Ediciones Gamma</div>
+    <h1>Plan de relanzamiento y reposicionamiento<br><em>Interesting Life</em></h1>
+    <p>Estrategia de marketing y plan de acción detallado. Enero a diciembre de 2027. Cada pieza con su contenido, objetivo, segmentación, tipo de formato y tiempo al aire.</p>
+    <div class="heromet">
+      <div><div class="v">59</div><div class="l">Piezas en medios propios</div></div>
+      <div><div class="v">20</div><div class="l">Campañas de pauta digital</div></div>
+      <div><div class="v">169K</div><div class="l">Tarjetahabientes · 18.4K Black</div></div>
+      <div><div class="v">1.133.000</div><div class="l">Alcance mensual del ecosistema</div></div>
+      <div><div class="v">8</div><div class="l">Experiencias OBI en el año</div></div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="wrap">
+    <a href="#estrategia">Estrategia</a>
+    <a href="#audiencias">Audiencias</a>
+    <a href="#palanca">Palanca</a>
+    <a href="#backbone">Pauta dinámica</a>
+    <a class="q" href="#t1">T1 Irrupción</a>
+    <a class="q" href="#t2">T2 Prueba</a>
+    <a class="q" href="#t3">T3 Expansión</a>
+    <a class="q" href="#t4">T4 Consolidación</a>
+    <a href="#kpis">KPIs</a>
+    <a href="#riesgos">Riesgos</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<section id="estrategia">
+  <div class="shead"><h2>La estrategia</h2><span class="tag">Posicionamiento</span></div>
+  <p class="lead">169.000 tarjetahabientes con ingreso promedio de $10.4M y ticket de $295K que usan la tarjeta para débitos automáticos. No falta capacidad de gasto. Falta un motivo para sacarla en el momento de pagar. Visa y Mastercard ya ganaron la ubicuidad: compiten por estar en todas partes y por descuentos de uso. Diners no puede ganar ahí.</p>
+  <p class="lead">La jugada es ocupar el territorio que la marca inventó y que nadie más puede reclamar con legitimidad local: el club de estilo de vida premium. El activo que lo hace posible es una revista homónima de 60 años con 146.000 suscriptores del mismo perfil del tarjetahabiente.</p>
+  <div class="grid g2">
+    <div class="card hl">
+      <h3>Frente 1 · Relanzamiento de marca</h3>
+      <p>Posicionamiento enfocado en generar conexión orgánica con audiencias de alto perfil. Liderar las categorías favoritas del cliente: viajes, restaurantes premium, supermercados selectos y bienestar.</p>
+      <ul class="blist"><li>Definición de audiencia y territorio</li><li>Creación de contenido dirigido</li><li>Alcance y activación de marca</li></ul>
+    </div>
+    <div class="card hl">
+      <h3>Frente 2 · Posicionamiento de beneficios</h3>
+      <p>Los beneficios permanentes sostienen la retención en el tiempo. Las experiencias exclusivas construyen estatus social y conversación.</p>
+      <ul class="blist"><li><strong>AON</strong> Always On, descuentos activos todo el año</li><li><strong>OBI</strong> Only By Invitation, experiencias efímeras</li><li>Patrocinios de franquicia</li></ul>
+    </div>
+  </div>
+  <div class="grid g4">
+    <div class="card"><span class="tier">T1 · Ene a Mar</span><div class="bigfig">Irrupción</div><div class="flabel">Que sepa que Diners cambió · $ *** · 29%</div></div>
+    <div class="card"><span class="tier">T2 · Abr a Jun</span><div class="bigfig">Prueba</div><div class="flabel">Que lo use por primera vez · $ *** · 23%</div></div>
+    <div class="card"><span class="tier">T3 · Jul a Sep</span><div class="bigfig">Expansión</div><div class="flabel">Que lo repita y se abra a Blue · $ *** · 20%</div></div>
+    <div class="card"><span class="tier">T4 · Oct a Dic</span><div class="bigfig">Consolidación</div><div class="flabel">Que se vuelva hábito · $ *** · 27%</div></div>
+  </div>
+  <div class="flag"><p><strong>La curva es de dos picos.</strong> Enero por el lanzamiento con portada falsa. Noviembre por la edición especial anual y la temporada alta de gasto. El valle de julio a octubre es deliberado: ahí el programa debe sostenerse con redención, no con pauta. Reparto por medio: Diners $ *** (75%) y AXXIS $ *** (25%).</p></div>
+</section>
+
+<section id="audiencias">
+  <div class="shead"><h2>A quién le hablamos</h2><span class="tag">Segmentación</span></div>
+  <p class="lead">Tres arquetipos dentro del mismo portafolio. Misma tarjeta, motivaciones distintas. Cada pieza del plan apunta a uno de los tres, nunca a los tres a la vez.</p>
+  <div class="grid g3">
+    <div class="card hl">
+      <span class="tier">Segmento afín a la marca</span>
+      <h3>El Consumidor Estratégico · 45+</h3>
+      <p>Alto patrimonio. Espera que el mundo se adapte a su ritmo, sin fricción. Alto poder de compra y liquidez.</p>
+      <ul class="blist">
+        <li><strong>Afinidades:</strong> tiquetes ejecutivos, hoteles de alta gama, alta gastronomía, seguros internacionales, golf y clubes privados</li>
+        <li><strong>Reto:</strong> riesgo alto de mover su gasto a Visa Infinite o Mastercard Black</li>
+        <li><strong>Dónde se le llega:</strong> LinkedIn, impreso de alto impacto, experiencias OBI</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tier">Segmento afín al valor</span>
+      <h3>El Consumidor Tradicional · 51+</h3>
+      <p>Se mueve por la rutina y una lealtad de marca de años. Profesionales consolidados y de larga trayectoria.</p>
+      <ul class="blist">
+        <li><strong>Afinidades:</strong> viajes curados, alojamientos boutique y experiencias culinarias clásicas</li>
+        <li><strong>Reto:</strong> uso pasivo, casi todo en pagos automáticos y recurrentes</li>
+        <li><strong>Dónde se le llega:</strong> impreso, newsletter, eventos ancla patrocinados</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tier">Audiencia altamente receptiva</span>
+      <h3>El Consumidor de Valor Activo · 35+</h3>
+      <p>Pico de productividad. Muy activo donde pasan las experiencias. Ingreso medio-alto y alto.</p>
+      <ul class="blist">
+        <li><strong>Afinidades:</strong> tecnología premium, ecosistemas digitales, restaurantes de tendencia</li>
+        <li><strong>Reto:</strong> competencia intensa por el primer lugar de la billetera en el gasto diario</li>
+        <li><strong>Dónde se le llega:</strong> Meta, AXXIS, video con personaje, pop-ups</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="palanca">
+  <div class="shead"><h2>La palanca de marketing</h2><span class="tag">Lo que mueve el plan</span></div>
+  <p class="lead">Sin la palanca esto es pauta. Con la palanca es un programa con funnel medible.</p>
+  <div class="grid g3">
+    <div class="card hl">
+      <span class="tier">Palanca principal</span>
+      <h3>Suscripción regalo con código de activación</h3>
+      <p>DCI regala la suscripción a la Revista Diners. Cada ejemplar lleva un código único impreso en faja o postal que activa Beneficios Suscriptores.</p>
+      <ul class="blist">
+        <li>Único touchpoint físico mensual con el tarjetahabiente</li>
+        <li>Convierte alcance en registro rastreable por cohorte y por segmento</li>
+        <li>Genera dato de primera parte sin depender de la base de Davivienda</li>
+        <li>Costo marginal bajo: la revista ya se imprime</li>
+        <li><strong>Secuencia:</strong> Black primero (18.400), Blue priorizado después</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tier">Palanca secundaria</span>
+      <h3>El aliado paga la visibilidad</h3>
+      <p>Modelo ya validado: el aliado gastronómico paga por aparecer, no Gamma por el descuento.</p>
+      <ul class="blist">
+        <li>Cada aliado reduce el costo neto del AON para DCI</li>
+        <li>Aumenta la oferta sin inversión adicional</li>
+        <li>Meta año 1: <strong>120 aliados activos</strong></li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tier">Palanca terciaria</span>
+      <h3>AXXIS como multiplicador</h3>
+      <p>Ficha técnica idéntica a Diners en formatos de alto impacto, con tarifa entre 4% y 28% menor.</p>
+      <ul class="blist">
+        <li>Amplía cobertura sin disparar el presupuesto</li>
+        <li>Alcanza al Consumidor de Valor Activo que Diners no cubre con la misma profundidad</li>
+        <li>Cuando DCI presione por precio, se mueve peso a AXXIS en vez de dar descuento</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="backbone">
+  <div class="shead"><h2>La columna vertebral</h2><span class="tag">Pauta dinámica</span></div>
+  <p class="lead">El plan compra Pauta Dinámica los 12 meses. Son $ *** al año, el 24,5% de los medios propios, y es la única línea que garantiza presencia ininterrumpida en los cinco canales de Diners.</p>
+  <div class="grid g2">
+    <div class="card hl">
+      <span class="tier">Qué incluye cada entrega · $ *** netos</span>
+      <ul class="blist">
+        <li><strong>Impreso:</strong> doble página de Content Marketing en la revista</li>
+        <li><strong>Website:</strong> Content Marketing replicado en la web de la revista</li>
+        <li><strong>Pauta display:</strong> un banner, según disponibilidad, por 100.000 impresiones</li>
+        <li><strong>Social media:</strong> dos posts en Facebook, un post en Instagram, dos historias en Instagram</li>
+        <li><strong>Newsletter:</strong> envío de la versión digital del Content Marketing</li>
+      </ul>
+    </div>
+    <div class="card">
+      <span class="tier">Por qué este formato y no una página suelta</span>
+      <p>Una página corriente impar cuesta <strong>$ ***</strong> y entrega solo impreso.</p>
+      <p style="margin-top:.5rem">La Pauta Dinámica cuesta <strong>la mitad</strong> y entrega cinco canales. Es el formato con mejor relación entre inversión y superficie de contacto de todo el tarifario, y por eso es la base del plan y no un complemento.</p>
+    </div>
+  </div>
+</section>
+
+<section id="plan">
+  <div class="shead"><h2>Plan de acción</h2><span class="tag">59 piezas · 12 meses</span></div>
+  <p class="lead">Cada pieza con su medio, tipo de formato, contenido, objetivo, segmentación y tiempo al aire. La pauta digital va agrupada por trimestre porque las campañas corren de forma continua, no por mes.</p>
+</section>
+
+<section id="t1">
+<div class="qhead"><div><span class="qtag">T1 · Enero a Marzo</span><h2>Irrupción</h2><p class="qobj">Que el tarjetahabiente sepa que Diners cambió</p></div><div class="qnum"><div class="qv">$ ***</div><div class="ql">$ *** medios propios · $ *** pauta digital</div></div></div>
+<h3 class="mes">Enero <span class="mestot">$ *** propios · $ *** pauta</span></h3>
+<div class="tscroll"><table>
+<thead><tr><th>Pieza</th><th>Medio</th><th>Tipo de formato</th><th>Contenido</th><th>Objetivo</th><th>Segmentación</th><th>Tiempo al aire</th><th class="pr">Inversión</th></tr></thead><tbody>
+<tr class="us"><td>Portada falsa</td><td><span class="chip d">Diners</span></td><td class="fmt">Impreso alto impacto</td><td class="car">Manifiesto Interesting Life. La carta de relanzamiento de la franquicia, envolviendo la portada</td><td><span class="obj">Notoriedad</span></td><td class="car">146.000 suscriptores de la revista</td><td class="car">1 edición · 30 días en circulación</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Pauta dinámica doble página</td><td><span class="chip d">Diners</span></td><td class="fmt">Crossmedia</td><td class="car">Qué es Interesting Life y qué cambia para el tarjetahabiente</td><td><span class="obj">Notoriedad y consideración</span></td><td class="car">Suscriptores impreso, 737K usuarios web, newsletter</td><td class="car">Impreso 30 días · banner 100K impresiones · social 7 días</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Historias Diners</td><td><span class="chip d">Diners</span></td><td class="fmt">Video serie de 3 capítulos</td><td class="car">El ADN de Diners: 1963, el club, la mesa</td><td><span class="obj">Notoriedad y afinidad</span></td><td class="car">Instagram y web Diners, audiencia 35+</td><td class="car">3 piezas distribuidas en el mes</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Toma de la web</td><td><span class="chip d">Diners</span></td><td class="fmt">Display full skin</td><td class="car">Lanzamiento Interesting Life en primera posición</td><td><span class="obj">Notoriedad</span></td><td class="car">Visitantes de revistadiners.com.co</td><td class="car">7 días · ~100.000 impresiones</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Pre home + pre articles</td><td><span class="chip d">Diners</span></td><td class="fmt">Display interstitial</td><td class="car">Invitación a activar el código del ejemplar</td><td><span class="obj">Conversión</span></td><td class="car">Visitantes web, foco gastronomía y viajes</td><td class="car">7 días · ~50.000 impresiones</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Content con header</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Content marketing digital</td><td class="car">El diseño de una vida interesante: espacios y experiencias</td><td><span class="obj">Notoriedad</span></td><td class="car">Audiencia AXXIS 35+, arquitectura y diseño</td><td class="car">Nota permanente · header 7 días</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Newsletter</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Email dedicado</td><td class="car">Presentación del programa a la base AXXIS</td><td><span class="obj">Consideración</span></td><td class="car">44.000 registros AXXIS</td><td class="car">1 envío + 1 refuerzo</td><td class="pr">$ ***</td></tr>
+<tr class="tot"><td colspan="7">Subtotal medios propios · Enero</td><td class="pr">$ ***</td></tr>
+</tbody></table></div>
+<h3 class="mes">Febrero <span class="mestot">$ *** propios · $ *** pauta</span></h3>
+<div class="tscroll"><table>
+<thead><tr><th>Pieza</th><th>Medio</th><th>Tipo de formato</th><th>Contenido</th><th>Objetivo</th><th>Segmentación</th><th>Tiempo al aire</th><th class="pr">Inversión</th></tr></thead><tbody>
+<tr class="us"><td>Pauta dinámica doble página</td><td><span class="chip d">Diners</span></td><td class="fmt">Crossmedia</td><td class="car">AON: los beneficios que ya están activos en gastronomía</td><td><span class="obj">Consideración</span></td><td class="car">Suscriptores, web y newsletter Diners</td><td class="car">Impreso 30 días · banner 100K · social 7 días</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>El producto del mes</td><td><span class="chip d">Diners</span></td><td class="fmt">Video reel + nota web</td><td class="car">Diners Recomienda: el restaurante del mes</td><td><span class="obj">Consideración y conversión</span></td><td class="car">Instagram y web Diners, 35 a 55 años</td><td class="car">Reel 1 mes · nota permanente</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Billboard x2</td><td><span class="chip d">Diners</span></td><td class="fmt">Display</td><td class="car">Recordatorio de activación del código</td><td><span class="obj">Conversión</span></td><td class="car">Visitantes web Diners</td><td class="car">2 periodos de 7 días</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Tour AXXIS</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Video editorial</td><td class="car">Recorrido por un espacio aliado del programa</td><td><span class="obj">Consideración</span></td><td class="car">Audiencia AXXIS</td><td class="car">Video + amplificación 2 semanas</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Content</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Content marketing digital</td><td class="car">Dónde comer bien según AXXIS</td><td><span class="obj">Consideración</span></td><td class="car">Audiencia AXXIS</td><td class="car">Nota permanente</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Newsletter</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Email dedicado</td><td class="car">Beneficios vivos del mes</td><td><span class="obj">Conversión</span></td><td class="car">44.000 registros AXXIS</td><td class="car">1 envío + 1 refuerzo</td><td class="pr">$ ***</td></tr>
+<tr class="tot"><td colspan="7">Subtotal medios propios · Febrero</td><td class="pr">$ ***</td></tr>
+</tbody></table></div>
+<h3 class="mes">Marzo <span class="mestot">$ *** propios · $ *** pauta</span></h3>
+<div class="tscroll"><table>
+<thead><tr><th>Pieza</th><th>Medio</th><th>Tipo de formato</th><th>Contenido</th><th>Objetivo</th><th>Segmentación</th><th>Tiempo al aire</th><th class="pr">Inversión</th></tr></thead><tbody>
+<tr class="us"><td>Pauta dinámica doble página</td><td><span class="chip d">Diners</span></td><td class="fmt">Crossmedia</td><td class="car">La primera experiencia OBI y cómo se accede</td><td><span class="obj">Consideración</span></td><td class="car">Suscriptores y web Diners</td><td class="car">Impreso 30 días · banner 100K · social 7 días</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Cubrimiento de eventos</td><td><span class="chip d">Diners</span></td><td class="fmt">Video reel + artículo</td><td class="car">Cubrimiento de la primera cata privada con maridaje de autor</td><td><span class="obj">Prueba social</span></td><td class="car">Instagram y web Diners</td><td class="car">Reel 1 mes · artículo permanente</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Ruta al estilo Diners</td><td><span class="chip d">Diners</span></td><td class="fmt">Video entrevista</td><td class="car">El chef detrás de la cata</td><td><span class="obj">Afinidad</span></td><td class="car">Instagram y web Diners, 35+</td><td class="car">Video + amplificación 2 semanas</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Toma de la web</td><td><span class="chip d">Diners</span></td><td class="fmt">Display full skin</td><td class="car">Invitación a la siguiente OBI</td><td><span class="obj">Conversión</span></td><td class="car">Visitantes web Diners</td><td class="car">7 días · ~100.000 impresiones</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Un café con AXXIS</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Video conversación</td><td class="car">Diseño y gastronomía: el espacio de la experiencia</td><td><span class="obj">Afinidad</span></td><td class="car">Audiencia AXXIS</td><td class="car">Video + amplificación 2 semanas</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Newsletter</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Email dedicado</td><td class="car">Invitación OBI para la base AXXIS</td><td><span class="obj">Conversión</span></td><td class="car">44.000 registros AXXIS</td><td class="car">1 envío + 1 refuerzo</td><td class="pr">$ ***</td></tr>
+<tr class="tot"><td colspan="7">Subtotal medios propios · Marzo</td><td class="pr">$ ***</td></tr>
+</tbody></table></div>
+<h3 class="mes pauta">Pauta digital T1</h3>
+<div class="tscroll"><table>
+<thead><tr><th>Campaña</th><th>Canal</th><th>Tipo de formato</th><th>Objetivo</th><th>Segmentación</th><th>Tiempo al aire</th><th class="pr">Inversión</th></tr></thead><tbody>
+<tr class="us"><td>Lanzamiento Interesting Life</td><td><span class="chip p">Meta · IG y FB</span></td><td class="fmt">Video 15s vertical + carrusel</td><td><span class="obj">Notoriedad y video view</span></td><td class="car">Lookalike 1% de base Black · afinidad gastronomía, viajes premium y lujo</td><td class="car">Ene a Mar · siempre activa</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Defensa de marca</td><td><span class="chip p">Google Search</span></td><td class="fmt">Texto + sitelinks</td><td><span class="obj">Captura de intención</span></td><td class="car">Marca: Diners Club, beneficios Diners, tarjeta Diners</td><td class="car">Ene a Mar · siempre activa</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Conquista de categoría</td><td><span class="chip p">Google Search + YouTube</span></td><td class="fmt">Texto + video bumper 6s</td><td><span class="obj">Intención alta</span></td><td class="car">Restaurantes Bogotá, experiencias gastronómicas, Visa Infinite, Mastercard Black</td><td class="car">Ene a Mar · siempre activa</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Hogares afluentes</td><td><span class="chip p">Programática y CTV</span></td><td class="fmt">Display y video 20s</td><td><span class="obj">Alcance incremental</span></td><td class="car">NSE alto en Bogotá, Medellín, Cali y Barranquilla</td><td class="car">Ene a Mar · pulsos de 2 semanas</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Consumidor Estratégico</td><td><span class="chip p">LinkedIn</span></td><td class="fmt">Single image + mensaje directo</td><td><span class="obj">Alcance de precisión</span></td><td class="car">Alta gerencia, 45+, empresas de 200 empleados en adelante</td><td class="car">Ene a Mar · siempre activa</td><td class="pr">$ ***</td></tr>
+<tr class="tot"><td colspan="6">Subtotal pauta digital · T1</td><td class="pr">$ ***</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="t2">
+<div class="qhead"><div><span class="qtag">T2 · Abril a Junio</span><h2>Prueba</h2><p class="qobj">Que lo use por primera vez</p></div><div class="qnum"><div class="qv">$ ***</div><div class="ql">$ *** medios propios · $ *** pauta digital</div></div></div>
+<h3 class="mes">Abril <span class="mestot">$ *** propios · $ *** pauta</span></h3>
+<div class="tscroll"><table>
+<thead><tr><th>Pieza</th><th>Medio</th><th>Tipo de formato</th><th>Contenido</th><th>Objetivo</th><th>Segmentación</th><th>Tiempo al aire</th><th class="pr">Inversión</th></tr></thead><tbody>
+<tr class="us"><td>Postal sobre portada</td><td><span class="chip d">Diners</span></td><td class="fmt">Impreso alto impacto</td><td class="car">Carnet físico de beneficios adherido a la portada</td><td><span class="obj">Conversión</span></td><td class="car">146.000 suscriptores</td><td class="car">1 edición</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Pauta dinámica doble página</td><td><span class="chip d">Diners</span></td><td class="fmt">Crossmedia</td><td class="car">El carnet: cómo usarlo en los 30 aliados activos</td><td><span class="obj">Conversión</span></td><td class="car">Suscriptores y web Diners</td><td class="car">Impreso 30 días · banner 100K · social 7 días</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Billboard con video</td><td><span class="chip d">Diners</span></td><td class="fmt">Display video</td><td class="car">Demostración de uso del beneficio en caja</td><td><span class="obj">Conversión</span></td><td class="car">Visitantes web Diners</td><td class="car">7 días</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Content con header</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Content marketing digital</td><td class="car">Los espacios donde vale la pena usar la tarjeta</td><td><span class="obj">Consideración</span></td><td class="car">Audiencia AXXIS</td><td class="car">Nota permanente · header 7 días</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Newsletter</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Email dedicado</td><td class="car">El carnet llegó</td><td><span class="obj">Conversión</span></td><td class="car">44.000 registros AXXIS</td><td class="car">1 envío + 1 refuerzo</td><td class="pr">$ ***</td></tr>
+<tr class="tot"><td colspan="7">Subtotal medios propios · Abril</td><td class="pr">$ ***</td></tr>
+</tbody></table></div>
+<h3 class="mes">Mayo <span class="mestot">$ *** propios · $ *** pauta</span></h3>
+<div class="tscroll"><table>
+<thead><tr><th>Pieza</th><th>Medio</th><th>Tipo de formato</th><th>Contenido</th><th>Objetivo</th><th>Segmentación</th><th>Tiempo al aire</th><th class="pr">Inversión</th></tr></thead><tbody>
+<tr class="us"><td>Pauta dinámica doble página</td><td><span class="chip d">Diners</span></td><td class="fmt">Crossmedia</td><td class="car">Diners Recomienda de temporada</td><td><span class="obj">Consideración</span></td><td class="car">Suscriptores y web Diners</td><td class="car">Impreso 30 días · banner 100K · social 7 días</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>El producto del mes</td><td><span class="chip d">Diners</span></td><td class="fmt">Video reel + nota web</td><td class="car">El destino del mes</td><td><span class="obj">Consideración</span></td><td class="car">Instagram y web Diners</td><td class="car">Reel 1 mes · nota permanente</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Barra fija con fold on</td><td><span class="chip d">Diners</span></td><td class="fmt">Display desplegable</td><td class="car">Segunda OBI con cupos limitados</td><td><span class="obj">Conversión</span></td><td class="car">Visitantes web Diners</td><td class="car">7 días</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Conversando con</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Video entrevista</td><td class="car">Un referente del diseño y su mesa favorita</td><td><span class="obj">Afinidad</span></td><td class="car">Audiencia AXXIS</td><td class="car">Video + amplificación 2 semanas</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Newsletter</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Email dedicado</td><td class="car">Segunda OBI</td><td><span class="obj">Conversión</span></td><td class="car">44.000 registros AXXIS</td><td class="car">1 envío + 1 refuerzo</td><td class="pr">$ ***</td></tr>
+<tr class="tot"><td colspan="7">Subtotal medios propios · Mayo</td><td class="pr">$ ***</td></tr>
+</tbody></table></div>
+<h3 class="mes">Junio <span class="mestot">$ *** propios · $ *** pauta</span></h3>
+<div class="tscroll"><table>
+<thead><tr><th>Pieza</th><th>Medio</th><th>Tipo de formato</th><th>Contenido</th><th>Objetivo</th><th>Segmentación</th><th>Tiempo al aire</th><th class="pr">Inversión</th></tr></thead><tbody>
+<tr class="us"><td>Gatefold 2 cuerpos</td><td><span class="chip d">Diners</span></td><td class="fmt">Impreso alto impacto desplegable</td><td class="car">Catálogo desplegable de experiencias del semestre</td><td><span class="obj">Consideración y conversión</span></td><td class="car">Circulación total Diners</td><td class="car">1 edición · 30 días</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Pauta dinámica doble página</td><td><span class="chip d">Diners</span></td><td class="fmt">Crossmedia</td><td class="car">Balance del primer semestre del programa</td><td><span class="obj">Retención</span></td><td class="car">Suscriptores y web Diners</td><td class="car">Impreso 30 días · banner 100K · social 7 días</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Content</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Content marketing digital</td><td class="car">Las experiencias del semestre vistas desde el diseño</td><td><span class="obj">Consideración</span></td><td class="car">Audiencia AXXIS</td><td class="car">Nota permanente</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Newsletter</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Email dedicado</td><td class="car">Catálogo de experiencias</td><td><span class="obj">Conversión</span></td><td class="car">44.000 registros AXXIS</td><td class="car">1 envío + 1 refuerzo</td><td class="pr">$ ***</td></tr>
+<tr class="tot"><td colspan="7">Subtotal medios propios · Junio</td><td class="pr">$ ***</td></tr>
+</tbody></table></div>
+<h3 class="mes pauta">Pauta digital T2</h3>
+<div class="tscroll"><table>
+<thead><tr><th>Campaña</th><th>Canal</th><th>Tipo de formato</th><th>Objetivo</th><th>Segmentación</th><th>Tiempo al aire</th><th class="pr">Inversión</th></tr></thead><tbody>
+<tr class="us"><td>Activación del carnet</td><td><span class="chip p">Meta · IG y FB</span></td><td class="fmt">Reel + collection</td><td><span class="obj">Conversión a registro</span></td><td class="car">Retargeting de visitantes de la landing que no activaron código</td><td class="car">Abr a Jun · siempre activa</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Redención de beneficios</td><td><span class="chip p">Meta · IG y FB</span></td><td class="fmt">Dynamic ads por aliado</td><td><span class="obj">Conversión a redención</span></td><td class="car">Registrados sin ninguna redención en 30 días</td><td class="car">Abr a Jun · siempre activa</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Intención gastronómica</td><td><span class="chip p">Google Search + YouTube</span></td><td class="fmt">Texto + video in-stream</td><td><span class="obj">Conversión</span></td><td class="car">Búsquedas de restaurantes y reservas en las 4 ciudades</td><td class="car">Abr a Jun · siempre activa</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Sostenimiento afluente</td><td><span class="chip p">Programática y CTV</span></td><td class="fmt">Display y video 20s</td><td><span class="obj">Alcance</span></td><td class="car">NSE alto, afinidad gastronomía y viajes</td><td class="car">Abr a Jun · pulsos quincenales</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Invitación OBI</td><td><span class="chip p">LinkedIn</span></td><td class="fmt">Mensaje directo segmentado</td><td><span class="obj">Conversión a evento</span></td><td class="car">Segmento Black identificado por cargo e industria</td><td class="car">Abr a Jun · por evento</td><td class="pr">$ ***</td></tr>
+<tr class="tot"><td colspan="6">Subtotal pauta digital · T2</td><td class="pr">$ ***</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="t3">
+<div class="qhead"><div><span class="qtag">T3 · Julio a Septiembre</span><h2>Expansión</h2><p class="qobj">Que lo repita y se extienda a Blue</p></div><div class="qnum"><div class="qv">$ ***</div><div class="ql">$ *** medios propios · $ *** pauta digital</div></div></div>
+<h3 class="mes">Julio <span class="mestot">$ *** propios · $ *** pauta</span></h3>
+<div class="tscroll"><table>
+<thead><tr><th>Pieza</th><th>Medio</th><th>Tipo de formato</th><th>Contenido</th><th>Objetivo</th><th>Segmentación</th><th>Tiempo al aire</th><th class="pr">Inversión</th></tr></thead><tbody>
+<tr class="us"><td>Pauta dinámica doble página</td><td><span class="chip d">Diners</span></td><td class="fmt">Crossmedia</td><td class="car">El programa se abre a más tarjetahabientes</td><td><span class="obj">Notoriedad en nuevo segmento</span></td><td class="car">Suscriptores y web Diners</td><td class="car">Impreso 30 días · banner 100K · social 7 días</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Ruta al estilo Diners</td><td><span class="chip d">Diners</span></td><td class="fmt">Video entrevista</td><td class="car">Un tarjetahabiente cuenta su experiencia</td><td><span class="obj">Prueba social</span></td><td class="car">Instagram y web Diners</td><td class="car">Video + amplificación 2 semanas</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Toma de la web</td><td><span class="chip d">Diners</span></td><td class="fmt">Display full skin</td><td class="car">Apertura del programa a Blue priorizado</td><td><span class="obj">Conversión</span></td><td class="car">Visitantes web Diners</td><td class="car">7 días · ~100.000 impresiones</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Tour AXXIS con personaje</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Video con personaje y dron</td><td class="car">Recorrido con un referente por un espacio del programa</td><td><span class="obj">Afinidad y alcance</span></td><td class="car">Audiencia AXXIS más seguidores del personaje</td><td class="car">Video + amplificación 3 semanas</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Newsletter</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Email dedicado</td><td class="car">Apertura del programa</td><td><span class="obj">Conversión</span></td><td class="car">44.000 registros AXXIS</td><td class="car">1 envío + 1 refuerzo</td><td class="pr">$ ***</td></tr>
+<tr class="tot"><td colspan="7">Subtotal medios propios · Julio</td><td class="pr">$ ***</td></tr>
+</tbody></table></div>
+<h3 class="mes">Agosto <span class="mestot">$ *** propios · $ *** pauta</span></h3>
+<div class="tscroll"><table>
+<thead><tr><th>Pieza</th><th>Medio</th><th>Tipo de formato</th><th>Contenido</th><th>Objetivo</th><th>Segmentación</th><th>Tiempo al aire</th><th class="pr">Inversión</th></tr></thead><tbody>
+<tr class="us"><td>Pauta dinámica doble página</td><td><span class="chip d">Diners</span></td><td class="fmt">Crossmedia</td><td class="car">Tercera OBI y nuevos aliados del programa</td><td><span class="obj">Consideración</span></td><td class="car">Suscriptores y web Diners</td><td class="car">Impreso 30 días · banner 100K · social 7 días</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Cubrimiento de eventos</td><td><span class="chip d">Diners</span></td><td class="fmt">Video reel + artículo</td><td class="car">Cubrimiento de la tercera experiencia OBI</td><td><span class="obj">Prueba social</span></td><td class="car">Instagram y web Diners</td><td class="car">Reel 1 mes · artículo permanente</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Cubrimiento AXXIS</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Video + 1 página impresa</td><td class="car">La misma experiencia contada desde AXXIS</td><td><span class="obj">Alcance cruzado</span></td><td class="car">Audiencia AXXIS</td><td class="car">1 edición + video con amplificación</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Newsletter</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Email dedicado</td><td class="car">Resumen de la OBI</td><td><span class="obj">Retención</span></td><td class="car">44.000 registros AXXIS</td><td class="car">1 envío + 1 refuerzo</td><td class="pr">$ ***</td></tr>
+<tr class="tot"><td colspan="7">Subtotal medios propios · Agosto</td><td class="pr">$ ***</td></tr>
+</tbody></table></div>
+<h3 class="mes">Septiembre <span class="mestot">$ *** propios · $ *** pauta</span></h3>
+<div class="tscroll"><table>
+<thead><tr><th>Pieza</th><th>Medio</th><th>Tipo de formato</th><th>Contenido</th><th>Objetivo</th><th>Segmentación</th><th>Tiempo al aire</th><th class="pr">Inversión</th></tr></thead><tbody>
+<tr class="us"><td>Cintillo</td><td><span class="chip d">Diners</span></td><td class="fmt">Impreso alto impacto</td><td class="car">Faja de renovación: trae un amigo al programa</td><td><span class="obj">Retención y referidos</span></td><td class="car">146.000 suscriptores</td><td class="car">1 edición</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Pauta dinámica doble página</td><td><span class="chip d">Diners</span></td><td class="fmt">Crossmedia</td><td class="car">Mecánica de referidos entre tarjetahabientes</td><td><span class="obj">Retención</span></td><td class="car">Suscriptores y web Diners</td><td class="car">Impreso 30 días · banner 100K · social 7 días</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Un café con AXXIS con personaje</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Video dos cámaras con personaje</td><td class="car">Conversación sobre lo que significa pertenecer a un club</td><td><span class="obj">Afinidad</span></td><td class="car">Audiencia AXXIS más seguidores del personaje</td><td class="car">Video + amplificación 3 semanas</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Newsletter</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Email dedicado</td><td class="car">Programa de referidos</td><td><span class="obj">Conversión</span></td><td class="car">44.000 registros AXXIS</td><td class="car">1 envío + 1 refuerzo</td><td class="pr">$ ***</td></tr>
+<tr class="tot"><td colspan="7">Subtotal medios propios · Septiembre</td><td class="pr">$ ***</td></tr>
+</tbody></table></div>
+<h3 class="mes pauta">Pauta digital T3</h3>
+<div class="tscroll"><table>
+<thead><tr><th>Campaña</th><th>Canal</th><th>Tipo de formato</th><th>Objetivo</th><th>Segmentación</th><th>Tiempo al aire</th><th class="pr">Inversión</th></tr></thead><tbody>
+<tr class="us"><td>Apertura a Blue</td><td><span class="chip p">Meta · IG y FB</span></td><td class="fmt">Video 15s + carrusel</td><td><span class="obj">Notoriedad en nuevo segmento</span></td><td class="car">Lookalike de Blue priorizado 35 a 50 años de alto consumo</td><td class="car">Jul a Sep · siempre activa</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Referidos</td><td><span class="chip p">Meta · IG y FB</span></td><td class="fmt">Reel + formulario instantáneo</td><td><span class="obj">Conversión por referido</span></td><td class="car">Registrados activos con al menos una redención</td><td class="car">Jul a Sep · siempre activa</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Intención sostenida</td><td><span class="chip p">Google Search + YouTube</span></td><td class="fmt">Texto + video</td><td><span class="obj">Conversión</span></td><td class="car">Marca e intención de categoría</td><td class="car">Jul a Sep · siempre activa</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Alcance de mantenimiento</td><td><span class="chip p">Programática y CTV</span></td><td class="fmt">Display</td><td><span class="obj">Alcance</span></td><td class="car">NSE alto</td><td class="car">Jul a Sep · pulsos mensuales</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Consumidor Estratégico</td><td><span class="chip p">LinkedIn</span></td><td class="fmt">Single image</td><td><span class="obj">Alcance de precisión</span></td><td class="car">Alta gerencia 45+</td><td class="car">Jul a Sep · siempre activa</td><td class="pr">$ ***</td></tr>
+<tr class="tot"><td colspan="6">Subtotal pauta digital · T3</td><td class="pr">$ ***</td></tr>
+</tbody></table></div>
+</section>
+
+<section id="t4">
+<div class="qhead"><div><span class="qtag">T4 · Octubre a Diciembre</span><h2>Consolidación</h2><p class="qobj">Que se vuelva hábito y quede documentado</p></div><div class="qnum"><div class="qv">$ ***</div><div class="ql">$ *** medios propios · $ *** pauta digital</div></div></div>
+<h3 class="mes">Octubre <span class="mestot">$ *** propios · $ *** pauta</span></h3>
+<div class="tscroll"><table>
+<thead><tr><th>Pieza</th><th>Medio</th><th>Tipo de formato</th><th>Contenido</th><th>Objetivo</th><th>Segmentación</th><th>Tiempo al aire</th><th class="pr">Inversión</th></tr></thead><tbody>
+<tr class="us"><td>Pauta dinámica doble página</td><td><span class="chip d">Diners</span></td><td class="fmt">Crossmedia</td><td class="car">Convocatoria de historias para la edición especial</td><td><span class="obj">Consideración</span></td><td class="car">Suscriptores y web Diners</td><td class="car">Impreso 30 días · banner 100K · social 7 días</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>El producto del mes</td><td><span class="chip d">Diners</span></td><td class="fmt">Video reel + nota web</td><td class="car">Lo mejor del año según Diners Recomienda</td><td><span class="obj">Retención</span></td><td class="car">Instagram y web Diners</td><td class="car">Reel 1 mes · nota permanente</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Pre home + pre articles</td><td><span class="chip d">Diners</span></td><td class="fmt">Display interstitial</td><td class="car">Anticipo de la edición especial</td><td><span class="obj">Notoriedad</span></td><td class="car">Visitantes web Diners</td><td class="car">7 días · ~50.000 impresiones</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Content con header</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Content marketing digital</td><td class="car">Anticipo de la edición especial desde AXXIS</td><td><span class="obj">Notoriedad</span></td><td class="car">Audiencia AXXIS</td><td class="car">Nota permanente · header 7 días</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Newsletter</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Email dedicado</td><td class="car">Viene la edición especial</td><td><span class="obj">Notoriedad</span></td><td class="car">44.000 registros AXXIS</td><td class="car">1 envío + 1 refuerzo</td><td class="pr">$ ***</td></tr>
+<tr class="tot"><td colspan="7">Subtotal medios propios · Octubre</td><td class="pr">$ ***</td></tr>
+</tbody></table></div>
+<h3 class="mes">Noviembre <span class="mestot">$ *** propios · $ *** pauta</span></h3>
+<div class="tscroll"><table>
+<thead><tr><th>Pieza</th><th>Medio</th><th>Tipo de formato</th><th>Contenido</th><th>Objetivo</th><th>Segmentación</th><th>Tiempo al aire</th><th class="pr">Inversión</th></tr></thead><tbody>
+<tr class="us"><td>Cuadernillo 16 páginas</td><td><span class="chip d">Diners</span></td><td class="fmt">Impreso alto impacto desprendible</td><td class="car">Edición especial Interesting Life: balance del año, aliados y testimonios</td><td><span class="obj">Retención y renovación</span></td><td class="car">Circulación total Diners</td><td class="car">1 edición · pieza coleccionable</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Pauta dinámica doble página</td><td><span class="chip d">Diners</span></td><td class="fmt">Crossmedia</td><td class="car">Los números del año y lo que viene</td><td><span class="obj">Retención</span></td><td class="car">Suscriptores y web Diners</td><td class="car">Impreso 30 días · banner 100K · social 7 días</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Doble página</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Impreso</td><td class="car">Interesting Life contado desde el diseño</td><td><span class="obj">Alcance</span></td><td class="car">Circulación total AXXIS</td><td class="car">1 edición</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Newsletter</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Email dedicado</td><td class="car">Edición especial</td><td><span class="obj">Retención</span></td><td class="car">44.000 registros AXXIS</td><td class="car">1 envío + 1 refuerzo</td><td class="pr">$ ***</td></tr>
+<tr class="tot"><td colspan="7">Subtotal medios propios · Noviembre</td><td class="pr">$ ***</td></tr>
+</tbody></table></div>
+<h3 class="mes">Diciembre <span class="mestot">$ *** propios · $ *** pauta</span></h3>
+<div class="tscroll"><table>
+<thead><tr><th>Pieza</th><th>Medio</th><th>Tipo de formato</th><th>Contenido</th><th>Objetivo</th><th>Segmentación</th><th>Tiempo al aire</th><th class="pr">Inversión</th></tr></thead><tbody>
+<tr class="us"><td>Historias Diners</td><td><span class="chip d">Diners</span></td><td class="fmt">Video serie de 3 capítulos</td><td class="car">Tres historias de tarjetahabientes del año</td><td><span class="obj">Prueba social y retención</span></td><td class="car">Instagram y web Diners</td><td class="car">3 piezas distribuidas en el mes</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Pauta dinámica doble página</td><td><span class="chip d">Diners</span></td><td class="fmt">Crossmedia</td><td class="car">Temporada: dónde usar la tarjeta en diciembre</td><td><span class="obj">Conversión</span></td><td class="car">Suscriptores y web Diners</td><td class="car">Impreso 30 días · banner 100K · social 7 días</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Toma de la web</td><td><span class="chip d">Diners</span></td><td class="fmt">Display full skin</td><td class="car">Cierre de año y beneficios de temporada</td><td><span class="obj">Conversión</span></td><td class="car">Visitantes web Diners</td><td class="car">7 días · ~100.000 impresiones</td><td class="pr">$ ***</td></tr>
+<tr class="ax"><td>Newsletter</td><td><span class="chip a">AXXIS</span></td><td class="fmt">Email dedicado</td><td class="car">Cierre de año</td><td><span class="obj">Retención</span></td><td class="car">44.000 registros AXXIS</td><td class="car">1 envío + 1 refuerzo</td><td class="pr">$ ***</td></tr>
+<tr class="tot"><td colspan="7">Subtotal medios propios · Diciembre</td><td class="pr">$ ***</td></tr>
+</tbody></table></div>
+<h3 class="mes pauta">Pauta digital T4</h3>
+<div class="tscroll"><table>
+<thead><tr><th>Campaña</th><th>Canal</th><th>Tipo de formato</th><th>Objetivo</th><th>Segmentación</th><th>Tiempo al aire</th><th class="pr">Inversión</th></tr></thead><tbody>
+<tr class="us"><td>Edición especial</td><td><span class="chip p">Meta · IG y FB</span></td><td class="fmt">Reel + carrusel coleccionable</td><td><span class="obj">Retención y renovación</span></td><td class="car">Toda la base registrada más lookalike de activos</td><td class="car">Oct a Dic · pico en noviembre</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Temporada alta</td><td><span class="chip p">Meta · IG y FB</span></td><td class="fmt">Dynamic ads por aliado</td><td><span class="obj">Conversión a redención</span></td><td class="car">Registrados activos, foco en gastronomía y regalo</td><td class="car">Nov a Dic · siempre activa</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Intención de temporada</td><td><span class="chip p">Google Search + YouTube</span></td><td class="fmt">Texto + video</td><td><span class="obj">Conversión</span></td><td class="car">Restaurantes, regalos y experiencias de fin de año</td><td class="car">Oct a Dic · siempre activa</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Alcance de cierre</td><td><span class="chip p">Programática y CTV</span></td><td class="fmt">Display y video</td><td><span class="obj">Alcance</span></td><td class="car">NSE alto en las 4 ciudades</td><td class="car">Nov a Dic · pulsos semanales</td><td class="pr">$ ***</td></tr>
+<tr class="us"><td>Renovación Black</td><td><span class="chip p">LinkedIn</span></td><td class="fmt">Mensaje directo</td><td><span class="obj">Retención</span></td><td class="car">Segmento Black con baja redención</td><td class="car">Oct a Dic · siempre activa</td><td class="pr">$ ***</td></tr>
+<tr class="tot"><td colspan="6">Subtotal pauta digital · T4</td><td class="pr">$ ***</td></tr>
+</tbody></table></div>
+</section>
+<section id="kpis">
+  <div class="shead"><h2>Tablero de KPIs</h2><span class="tag">Año 1</span></div>
+  <div class="tscroll">
+  <table style="min-width:720px">
+    <thead><tr><th>KPI</th><th>Línea base</th><th class="pr">Meta año 1</th><th>Tipo</th><th>Fuente de medición</th></tr></thead>
+    <tbody>
+      <tr><td>Suscripciones regalo activas</td><td>0</td><td class="pr">30.200</td><td><span class="obj">Adopción</span></td><td class="car">CRM de circulación</td></tr>
+      <tr><td>Registros en Beneficios Suscriptores</td><td>0</td><td class="pr">25.000</td><td><span class="obj">Adopción</span></td><td class="car">Backend de la plataforma</td></tr>
+      <tr><td>Redenciones AON</td><td>0</td><td class="pr">60.000</td><td><span class="obj">Efectividad</span></td><td class="car">Backend de la plataforma</td></tr>
+      <tr><td>Aliados gastronómicos activos</td><td>0</td><td class="pr">120</td><td><span class="obj">Oferta</span></td><td class="car">Beneficios Suscriptores</td></tr>
+      <tr><td>Experiencias OBI ejecutadas</td><td>0</td><td class="pr">8 eventos · 600 asistentes</td><td><span class="obj">Efectividad</span></td><td class="car">BU Experiencias</td></tr>
+      <tr><td>Afinidad de marca en gastronomía</td><td>Medir en enero</td><td class="pr">+12 puntos</td><td><span class="obj">Efectividad</span></td><td class="car">Encuesta pre y post</td></tr>
+      <tr><td>Transacciones en categoría gastronomía</td><td>Medir en enero</td><td class="pr">+15%</td><td><span class="obj">Negocio</span></td><td class="car">Reporte Davivienda</td></tr>
+      <tr><td>Costo por registro</td><td>0</td><td class="pr">menor o igual a $ ***</td><td><span class="obj">Eficiencia</span></td><td class="car">Pauta sobre registros</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="grid g3">
+    <div class="card hl"><span class="tier">Hitos del T1</span><ul class="blist">
+      <li>Enero: 7.360 activaciones y 1.100 registros</li>
+      <li>Febrero: 10.120 activaciones, 2.800 registros y 450 redenciones</li>
+      <li>Marzo: 11.960 activaciones, 4.600 registros y la primera OBI</li></ul></div>
+    <div class="card"><span class="tier">Regla de medición</span><p>No mezclar métricas de alcance con métricas de negocio en el mismo reporte. Gamma responde por alcance, adopción y efectividad. El crecimiento de tarjetas activas es responsabilidad de Davivienda.</p></div>
+    <div class="card wine"><span class="tier">Advertencia</span><p>Las cifras de afinidad y de transacciones son propuestas, no proyecciones validadas. Hay que calibrarlas con la data transaccional real de Davivienda antes de comprometerlas en el acuerdo.</p></div>
+  </div>
+</section>
+
+<section id="riesgos">
+  <div class="shead"><h2>Lo que puede romper el plan</h2><span class="tag">Resolver antes de enero</span></div>
+  <div class="grid g3">
+    <div class="card wine"><span class="tier">1 · El newsletter</span><p>El media kit reporta 400.000 contactos. Los envíos reales medidos en HubSpot fueron 22.000 el 19 de junio y 11.000 el 14 de junio. No sustentar valor de newsletter con la cifra del kit ante DCI.</p></div>
+    <div class="card wine"><span class="tier">2 · La pasarela de suscripciones</span><p>Sigue rota: 9 personas llegaron a checkout con cero ingresos. Si la suscripción regalo genera demanda orgánica, no hay dónde capturarla.</p></div>
+    <div class="card"><span class="tier">3 · Coherencia de Beneficios</span><p>El programa tiene decisiones abiertas y naming contradictorio en equipos paralelos. Cerrarlo antes de exponerlo a un tarjetahabiente.</p></div>
+    <div class="card"><span class="tier">4 · Audiencias de Davivienda</span><p>Si no se resuelve la viabilidad legal bajo Ley 1581, se pierde la audiencia de mayor retorno y la pauta se encarece.</p></div>
+    <div class="card"><span class="tier">5 · Capacidad editorial</span><p>Ocho experiencias OBI más cubrimiento mensual es carga real sobre el equipo editorial y audiovisual. Validar antes de comprometer el calendario.</p></div>
+    <div class="card hl"><span class="tier">Ventana de preparación</span><p><strong>Octubre a diciembre de 2026.</strong> Aprobación interna, cotización de las tres líneas abiertas, cierre de coherencia de Beneficios, arreglo de la pasarela y encuesta de línea base. Si eso no está listo, enero se corre.</p></div>
+  </div>
+  <div class="flag"><p><strong>Tres líneas de presupuesto siguen abiertas.</strong> Circulación de la suscripción regalo (220.800 ejemplares en el año), honorarios y fee de administración de Gamma, y producción de las 8 experiencias OBI. Sin ellas la cotización está incompleta y deja el trabajo estratégico de Gamma sin cobrar.</p></div>
+</section>
+
+<footer>
+  Ediciones Gamma · Plan de relanzamiento Diners Club International · Enero a diciembre de 2027<br>
+  Tarifas de lista 2026 sin descuentos. Impreso en tarifa bruta, digital en tarifa neta, ambas sujetas a IVA.<br>
+  Documento confidencial de uso comercial.
+</footer>
+
+</div>
+</body>
+</html>

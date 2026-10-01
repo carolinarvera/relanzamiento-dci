@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Relanzamiento DCI 2027 · Ediciones Gamma</title>
+<style>
+  :root{
+    --navy:#0A2540; --ink:#12233a;
+    --bronze:#8C6A2E; --gold:#8A6B1F; --gold-fill:#D2A855; --wine:#8C3A3A;
+    --axxis:#D4581F; --green:#1E6B4F;
+    --muted:rgba(18,35,58,.62); --line:rgba(10,37,64,.16);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--serif);color:var(--ink);background:#FFF;-webkit-font-smoothing:antialiased}
+  .deck{height:100vh;overflow-y:scroll;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+  .slide{min-height:100vh;scroll-snap-align:start;position:relative;display:flex;flex-direction:column;justify-content:center;padding:5vh 6vw;background:#FFF;border-bottom:1px solid rgba(10,37,64,.1)}
+  .slide::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 50% at 15% 90%,rgba(140,106,46,.05),transparent 60%),linear-gradient(180deg,rgba(10,37,64,0),rgba(10,37,64,.02))}
+  .wrap{max-width:1180px;margin:0 auto;width:100%;position:relative;z-index:1}
+  .eyebrow{font-family:var(--sans);font-size:.7rem;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:.9rem}
+  .eyebrow::after{content:"";height:1px;flex:1;max-width:120px;background:var(--line)}
+  h1{font-size:clamp(2rem,5vw,3.6rem);line-height:1.03;font-weight:600;letter-spacing:-.01em;color:var(--navy)}
+  h2{font-size:clamp(1.4rem,3vw,2.2rem);line-height:1.1;font-weight:600;letter-spacing:-.01em;margin-bottom:.5rem;color:var(--navy)}
+  h3{font-size:1.02rem;font-weight:700;color:var(--gold);margin-bottom:.4rem}
+  p{font-size:clamp(.94rem,1.4vw,1.1rem);line-height:1.55;color:rgba(18,35,58,.88)}
+  .subhead{font-family:var(--sans);font-size:.88rem;color:var(--gold);font-weight:600;margin-top:.3rem}
+  .muted{color:var(--muted)}
+  strong{color:var(--navy);font-weight:700}
+  .cover-sub{font-size:clamp(1rem,1.7vw,1.26rem);color:var(--ink);max-width:62ch;margin:1.3rem 0 2rem}
+  .brandline{font-family:var(--sans);font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line);padding-top:1rem;display:inline-block}
+  .grid{display:grid;gap:.8rem;margin-top:.9rem}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  .g21{grid-template-columns:1.35fr 1fr}
+  .card{background:#F7F5F0;border:1px solid var(--line);border-radius:3px;padding:.9rem 1rem}
+  .card.hl{border-color:var(--gold);background:rgba(154,111,31,.08)}
+  .card.wine{border-color:rgba(140,58,58,.4);background:rgba(140,58,58,.06)}
+  .card p{font-size:.86rem;line-height:1.46;color:rgba(18,35,58,.8)}
+  .tier{font-family:var(--sans);font-size:.57rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.4rem;font-weight:700}
+  .card.hl .tier{color:var(--gold)}
+  .card.wine .tier{color:var(--wine)}
+  .bigfig{font-size:clamp(1.5rem,3vw,2.3rem);font-weight:700;color:var(--navy);line-height:1}
+  .bigfig.sm{font-size:1.4rem}
+  .flabel{font-family:var(--sans);font-size:.68rem;color:var(--muted);margin-top:.3rem;line-height:1.3}
+  .translabel{font-family:var(--serif);font-size:1.02rem;font-weight:600;color:var(--gold);margin:1.1rem 0 .3rem;display:flex;align-items:center;gap:.8rem}
+  .translabel::after{content:"";height:1px;flex:1;background:var(--line)}
+  .tscroll{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:.5rem}
+  table{width:100%;border-collapse:collapse;font-size:.72rem;min-width:520px}
+  th,td{text-align:left;padding:.3rem .55rem;border-bottom:1px solid rgba(10,37,64,.13);vertical-align:top}
+  th{font-family:var(--sans);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  td{color:rgba(18,35,58,.85)}
+  tr.us td{background:rgba(154,111,31,.055)}
+  tr.us td:first-child{color:var(--navy);font-weight:700}
+  tr.ax td:first-child{color:var(--axxis);font-weight:700}
+  tr.tot td{background:var(--navy);color:#fff;font-weight:700;font-size:.76rem}
+  td.pr,th.pr{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  td.pr{font-weight:700;color:var(--navy)}
+  td.tbd{color:var(--wine);font-family:var(--sans);font-size:.66rem;font-weight:700}
+  .blist{list-style:none;margin:.25rem 0 0;padding:0}
+  .blist li{position:relative;padding:.16rem 0 .16rem .9rem;font-size:.82rem;line-height:1.38;color:rgba(18,35,58,.85)}
+  .blist li::before{content:"";position:absolute;left:0;top:.52rem;width:4px;height:4px;border-radius:50%;background:var(--bronze)}
+  .blist li strong{color:var(--navy)}
+  .bars{margin-top:.8rem}
+  .bar{display:grid;grid-template-columns:42px 1fr 112px;align-items:center;gap:.6rem;margin-bottom:.32rem}
+  .bar .m{font-family:var(--sans);font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;font-weight:700}
+  .bar .track{height:15px;background:rgba(10,37,64,.07);border-radius:2px;overflow:hidden;display:flex}
+  .bar .f1{height:100%;background:var(--navy)}
+  .bar .f2{height:100%;background:var(--gold-fill)}
+  .bar .v{font-family:var(--sans);font-size:.7rem;text-align:right;font-variant-numeric:tabular-nums;color:var(--navy);font-weight:700}
+  .bar.peak .v{color:var(--gold)}
+  .legend{display:flex;gap:1.2rem;margin-top:.6rem;font-family:var(--sans);font-size:.68rem;color:var(--muted)}
+  .legend span{display:flex;align-items:center;gap:.35rem}
+  .sw{width:11px;height:11px;border-radius:2px;display:inline-block}
+  .flag{border-left:2px solid var(--wine);background:rgba(140,58,58,.07);padding:.65rem .9rem;margin-top:.8rem;border-radius:2px}
+  .flag p{font-family:var(--sans);font-size:.76rem;line-height:1.45;color:rgba(18,35,58,.85)}
+  .phase{display:flex;gap:.5rem;margin-top:.8rem}
+  .ph{flex:1;border:1px solid var(--line);border-radius:3px;padding:.75rem .85rem;background:#F7F5F0}
+  .ph.on{border-color:var(--gold);background:rgba(154,111,31,.09)}
+  .ph .q{font-family:var(--sans);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .ph .n{font-size:1.15rem;font-weight:700;color:var(--navy);margin:.25rem 0 .1rem}
+  .ph .d{font-family:var(--sans);font-size:.7rem;color:var(--muted);line-height:1.35}
+  .closing{text-align:center}
+  .closing .big{font-size:clamp(1.6rem,4vw,2.9rem);line-height:1.14;font-weight:600;color:var(--navy)}
+  .closing .big em{color:var(--gold);font-style:italic}
+  .dots{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:20;display:flex;flex-direction:column;gap:8px}
+  .dots button{width:8px;height:8px;border-radius:50%;border:1px solid var(--navy);background:transparent;cursor:pointer;padding:0;transition:.25s}
+  .dots button.active{background:var(--navy);transform:scale(1.3)}
+  .pageno{position:fixed;left:22px;bottom:18px;font-family:var(--sans);font-size:.7rem;letter-spacing:.14em;color:var(--muted);z-index:20}
+  .conf{position:fixed;right:22px;bottom:18px;font-family:var(--sans);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(18,35,58,.4);z-index:20}
+  @media(max-width:900px){
+    .slide{padding:7vh 7vw;min-height:auto;padding-top:11vh;padding-bottom:11vh}
+    .g2,.g3,.g4,.g21{grid-template-columns:1fr}
+    .phase{flex-direction:column}
+    .dots,.pageno,.conf{display:none}
+  }
+  @media(prefers-reduced-motion:reduce){html,.deck{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <!-- 1 PORTADA -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Diners Club International &amp; Ediciones Gamma</div>
+      <h1>Plan de relanzamiento<br>y reposicionamiento<br><strong style="color:var(--gold)">Interesting Life.</strong></h1>
+      <p class="cover-sub">Año 1 completo con detalle operativo del primer trimestre. Acciones, inversión, pauta digital y KPIs mes a mes.</p>
+      <span class="brandline">Enero a Diciembre 2027 · Ediciones Gamma</span>
+    </div>
+  </section>
+
+  <!-- 2 LA DECISIÓN -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">La decisión en una página</div>
+      <h2>El problema no es la plata. Es la razón.</h2>
+      <p style="max-width:88ch;font-size:1rem">169.000 tarjetahabientes con ingreso promedio de $10.4M y ticket de $295K que usan la tarjeta para débitos automáticos. No falta capacidad de gasto. Falta un motivo para sacarla en el momento de pagar.</p>
+      <div class="grid g3" style="margin-top:1.1rem">
+        <div class="card hl">
+          <span class="tier">La jugada</span>
+          <p>No competir por ubicuidad. Ocupar el territorio de experiencias con <strong>Interesting Life</strong>, usando el activo que ninguna franquicia rival tiene en Colombia: una revista homónima de 60 años con 146.000 suscriptores del mismo perfil.</p>
+        </div>
+        <div class="card hl">
+          <span class="tier">La palanca</span>
+          <p>La <strong>suscripción regalo con código de activación</strong>. Cada ejemplar que llega a la casa trae un código único que activa Beneficios Suscriptores. Convierte un regalo pasivo en registro medible y en dato de primera parte.</p>
+        </div>
+        <div class="card wine">
+          <span class="tier">El riesgo de no hacerlo</span>
+          <p>Mastercard está construyendo el territorio experiencial premium en Colombia. Cuando se consolide, recuperarlo cuesta el triple.</p>
+        </div>
+      </div>
+      <div class="grid g4" style="margin-top:.8rem">
+        <div class="card"><div class="bigfig">$1.053M</div><div class="flabel">Inversión en medios año 1</div></div>
+        <div class="card"><div class="bigfig">169K</div><div class="flabel">Tarjetahabientes · 18.4K Black</div></div>
+        <div class="card"><div class="bigfig">1.133.000</div><div class="flabel">Alcance mensual del ecosistema</div></div>
+        <div class="card"><div class="bigfig">3</div><div class="flabel">Líneas de presupuesto por cerrar</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 ARQUITECTURA DEL AÑO -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Arquitectura del año</div>
+      <h2>Un objetivo por trimestre.</h2>
+      <p class="subhead">Nada de hacer todo al tiempo. Cada trimestre persigue una sola cosa.</p>
+      <div class="phase">
+        <div class="ph on"><div class="q">T1 · Ene-Mar</div><div class="n">Irrupción</div><div class="d">Que el tarjetahabiente sepa que Diners cambió</div><div class="n" style="font-size:.95rem;margin-top:.5rem">$308.850.000 · 29%</div></div>
+        <div class="ph"><div class="q">T2 · Abr-Jun</div><div class="n">Prueba</div><div class="d">Que lo use por primera vez</div><div class="n" style="font-size:.95rem;margin-top:.5rem">$246.800.000 · 23%</div></div>
+        <div class="ph"><div class="q">T3 · Jul-Sep</div><div class="n">Expansión</div><div class="d">Que lo repita y se extienda a Blue</div><div class="n" style="font-size:.95rem;margin-top:.5rem">$209.500.000 · 20%</div></div>
+        <div class="ph"><div class="q">T4 · Oct-Dic</div><div class="n">Consolidación</div><div class="d">Que se vuelva hábito y quede documentado</div><div class="n" style="font-size:.95rem;margin-top:.5rem">$287.950.000 · 27%</div></div>
+      </div>
+      <div class="grid g2" style="margin-top:.9rem">
+        <div class="card">
+          <span class="tier">La curva es de dos picos</span>
+          <p>Enero por el lanzamiento con portada falsa. Noviembre por la edición especial anual y la temporada alta de gasto. El valle de julio a octubre es deliberado: ahí el programa debe sostenerse con redención, no con pauta.</p>
+        </div>
+        <div class="card hl">
+          <span class="tier">Reparto por medio</span>
+          <p><strong>Diners $444.400.000 (75%)</strong> y <strong>AXXIS $148.700.000 (25%)</strong>. AXXIS entra como extensión de audiencia afluente, no como refuerzo: cubre al arquetipo de Valor Activo de 35 años en adelante que Diners no alcanza con la misma profundidad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 PALANCAS -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">La palanca de marketing</div>
+      <h2>Sin el código, esto es pauta. Con el código, es un programa.</h2>
+      <div class="grid g3" style="margin-top:.9rem">
+        <div class="card hl">
+          <span class="tier">Palanca principal</span>
+          <h3>Suscripción regalo con código de activación</h3>
+          <p style="font-size:.84rem">DCI regala la suscripción. Cada ejemplar lleva un código único impreso en faja o postal que activa Beneficios Suscriptores.</p>
+          <ul class="blist">
+            <li>Único touchpoint físico mensual con el tarjetahabiente</li>
+            <li>Convierte alcance en registro rastreable por cohorte</li>
+            <li>Genera dato de primera parte sin depender de la base de Davivienda</li>
+            <li>Costo marginal bajo: la revista ya se imprime</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tier">Palanca secundaria</span>
+          <h3>El aliado paga la visibilidad</h3>
+          <p style="font-size:.84rem">Modelo ya validado en Beneficios Suscriptores: el aliado gastronómico paga por aparecer, no Gamma por el descuento.</p>
+          <ul class="blist">
+            <li>Cada aliado reduce el costo neto del AON para DCI</li>
+            <li>Aumenta la oferta sin inversión adicional</li>
+            <li>Meta año 1: <strong>120 aliados activos</strong></li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="tier">Palanca terciaria</span>
+          <h3>AXXIS como multiplicador</h3>
+          <p style="font-size:.84rem">Ficha técnica idéntica a Diners en formatos de alto impacto, con tarifa entre 4% y 28% menor.</p>
+          <ul class="blist">
+            <li>Amplía cobertura sin disparar el presupuesto</li>
+            <li>Cuando DCI presione por precio, la respuesta es mover peso a AXXIS, no dar descuento</li>
+          </ul>
+        </div>
+      </div>
+      <div class="flag">
+        <p><strong>Secuencia de la palanca principal.</strong> Black primero (18.400, los de mayor gasto). Blue priorizado después, enfocado en el bloque de 35 a 50 años de alto consumo.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 PAUTA DINÁMICA -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">La columna vertebral</div>
+      <h2>Pauta Dinámica, los 12 meses.</h2>
+      <p class="subhead">$145.200.000 al año. El 24,5% de los medios propios y la única línea que garantiza presencia ininterrumpida.</p>
+      <div class="grid g21" style="margin-top:.9rem">
+        <div class="card hl">
+          <span class="tier">Qué incluye cada entrega · $12.100.000 netos</span>
+          <div class="tscroll">
+          <table style="min-width:420px">
+            <thead><tr><th>Componente</th><th>Entregable</th></tr></thead>
+            <tbody>
+              <tr class="us"><td>Impreso</td><td>Doble página de Content Marketing en la revista</td></tr>
+              <tr class="us"><td>Website</td><td>Content Marketing replicado en la web de la revista</td></tr>
+              <tr class="us"><td>Pauta display</td><td>Un banner, según disponibilidad, por 100.000 impresiones</td></tr>
+              <tr class="us"><td>Social media</td><td>Dos posts en Facebook, un post en Instagram, dos historias en Instagram</td></tr>
+              <tr class="us"><td>Newsletter</td><td>Envío de la versión digital del Content Marketing</td></tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+        <div>
+          <div class="card">
+            <span class="tier">Por qué este formato y no una página suelta</span>
+            <p>Una página corriente impar cuesta <strong>$23.600.000</strong> y entrega solo impreso.</p>
+            <p style="margin-top:.4rem">La Pauta Dinámica cuesta <strong>la mitad</strong> y entrega cinco canales. Es el formato con mejor relación entre inversión y superficie de contacto de todo el tarifario.</p>
+          </div>
+          <div class="card wine" style="margin-top:.7rem">
+            <span class="tier">Riesgo número uno del plan</span>
+            <p>El paquete promete envío a 400.000 contactos. Los envíos reales medidos en HubSpot fueron 22.000 el 19 de junio y 11.000 el 14 de junio. Si DCI audita esa cifra se cae la credibilidad del paquete completo. Reconciliar antes de enero.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 ENERO -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Mes 1 · Enero 2027 · Irrupción</div>
+      <h2>Declarar el territorio.</h2>
+      <p class="subhead">Inversión del mes: $145.050.000 · $85.050.000 en medios propios y $60.000.000 en pauta digital</p>
+      <div class="tscroll">
+      <table>
+        <thead><tr><th>Acción</th><th>Medio</th><th>Características</th><th class="pr">Valor</th></tr></thead>
+        <tbody>
+          <tr class="us"><td>Portada falsa</td><td>Diners impreso</td><td>Solo suscriptores, 146K ejemplares. Manifiesto Interesting Life. 4x4 tintas, esmaltado 200 g plastificado</td><td class="pr">$43.700.000</td></tr>
+          <tr class="us"><td>Pauta dinámica doble página</td><td>Diners crossmedia</td><td>Impreso + réplica web + banner 100K + newsletter + 2 FB + 1 IG + 2 stories</td><td class="pr">$12.100.000</td></tr>
+          <tr class="us"><td>Historias Diners</td><td>Diners digital</td><td>Serie de 3 capítulos sobre el ADN de la franquicia. Nota web + newsletter + social</td><td class="pr">$9.400.000</td></tr>
+          <tr class="us"><td>Toma de la web</td><td>Diners display</td><td>Full skin 7 días, ~100K impresiones</td><td class="pr">$5.800.000</td></tr>
+          <tr class="us"><td>Pre home + pre articles</td><td>Diners display</td><td>Interstitial 7 días, ~50K impresiones</td><td class="pr">$5.300.000</td></tr>
+          <tr class="ax"><td>Content con header</td><td>AXXIS digital</td><td>Content marketing con header de marca fijo + redes + newsletter</td><td class="pr">$6.100.000</td></tr>
+          <tr class="ax"><td>Newsletter</td><td>AXXIS</td><td>Envío dedicado + refuerzo, 44K registros</td><td class="pr">$2.650.000</td></tr>
+          <tr class="tot"><td colspan="3">Subtotal medios propios</td><td class="pr">$85.050.000</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="card hl" style="margin-top:.7rem">
+        <span class="tier">Acciones sin costo de medios</span>
+        <p style="font-size:.84rem">Envío del primer ejemplar con código de activación a los 18.400 Black · Landing Interesting Life publicada · <strong>Encuesta de línea base de afinidad antes de que salga la pauta</strong>, sin esta medición no hay forma de probar el efecto en diciembre · 10 aliados gastronómicos firmados</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 ENERO PAUTA Y KPIS -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Mes 1 · Enero 2027</div>
+      <h2>Pauta digital y metas.</h2>
+      <div class="grid g2" style="margin-top:.8rem">
+        <div>
+          <div class="translabel" style="margin-top:0">Pauta digital · $60.000.000</div>
+          <div class="tscroll">
+          <table style="min-width:400px">
+            <thead><tr><th>Canal</th><th>Objetivo</th><th>Audiencia</th><th class="pr">Inversión</th></tr></thead>
+            <tbody>
+              <tr class="us"><td>Meta</td><td>Alcance y video view</td><td>Lookalike 1% de base Black, afinidad gastronomía y viajes premium</td><td class="pr">$24.000.000</td></tr>
+              <tr class="us"><td>Google + YouTube</td><td>Marca e intención</td><td>"Diners Club", "beneficios tarjeta", "restaurantes Bogotá"</td><td class="pr">$18.000.000</td></tr>
+              <tr class="us"><td>Programática y CTV</td><td>Hogares altos ingresos</td><td>NSE alto en Bogotá, Medellín, Cali y Barranquilla</td><td class="pr">$12.000.000</td></tr>
+              <tr class="us"><td>LinkedIn</td><td>Consumidor Estratégico</td><td>Alta gerencia, 45+, empresas de 200 empleados en adelante</td><td class="pr">$6.000.000</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p class="muted" style="font-family:var(--sans);font-size:.74rem;margin-top:.5rem">Reparto por objetivo: 60% alcance, 40% conversión a registro.</p>
+        </div>
+        <div>
+          <div class="translabel" style="margin-top:0">KPIs de enero</div>
+          <div class="tscroll">
+          <table style="min-width:360px">
+            <thead><tr><th>KPI</th><th class="pr">Meta</th><th>Fuente</th></tr></thead>
+            <tbody>
+              <tr class="us"><td>Impactos netos del lanzamiento</td><td class="pr">3.500.000</td><td>Metricool, Meta, GAM</td></tr>
+              <tr class="us"><td>Suscripción regalo activada</td><td class="pr">7.360</td><td>CRM circulación</td></tr>
+              <tr class="us"><td>Registros en Beneficios</td><td class="pr">1.100</td><td>Backend plataforma</td></tr>
+              <tr class="us"><td>Sesiones en landing</td><td class="pr">25.000</td><td>GA4</td></tr>
+              <tr class="us"><td>CTR pauta digital</td><td class="pr">≥ 0,80%</td><td>Meta, Google Ads</td></tr>
+              <tr class="us"><td>CPM programática</td><td class="pr">≤ $18.000</td><td>DSP</td></tr>
+              <tr class="us"><td>Encuesta de línea base</td><td class="pr">Ejecutada</td><td>Investigación</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p class="muted" style="font-family:var(--sans);font-size:.74rem;margin-top:.5rem">La activación del 40% sobre los 18.400 Black es la meta que condiciona todo el trimestre.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8 FEBRERO -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Mes 2 · Febrero 2027 · Irrupción</div>
+      <h2>Dar la prueba.</h2>
+      <p class="subhead">Inversión del mes: $82.850.000 · $37.850.000 en medios propios y $45.000.000 en pauta digital</p>
+      <div class="grid g21" style="margin-top:.7rem">
+        <div>
+          <div class="tscroll">
+          <table style="min-width:430px">
+            <thead><tr><th>Acción</th><th>Características</th><th class="pr">Valor</th></tr></thead>
+            <tbody>
+              <tr class="us"><td>Pauta dinámica doble página</td><td>Segunda entrega de la narrativa. Foco en AON gastronomía</td><td class="pr">$12.100.000</td></tr>
+              <tr class="us"><td>El producto del mes</td><td>Primera entrega de "Diners Recomienda". Reel + nota + banner 100K + newsletter + social</td><td class="pr">$7.300.000</td></tr>
+              <tr class="us"><td>Billboard 7 días x2</td><td>Dos periodos de exhibición</td><td class="pr">$4.100.000</td></tr>
+              <tr class="ax"><td>Tour AXXIS</td><td>Recorrido editorial por un espacio aliado</td><td class="pr">$6.400.000</td></tr>
+              <tr class="ax"><td>Content</td><td>Content marketing + redes + newsletter</td><td class="pr">$5.300.000</td></tr>
+              <tr class="ax"><td>Newsletter</td><td>Envío dedicado + refuerzo</td><td class="pr">$2.650.000</td></tr>
+              <tr class="tot"><td colspan="2">Subtotal medios propios</td><td class="pr">$37.850.000</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <div class="card" style="margin-top:.6rem">
+            <span class="tier">Sin costo de medios</span>
+            <p style="font-size:.82rem">AON activo con los primeros descuentos vivos en la plataforma · Segundo envío con recordatorio de activación a quienes no redimieron el código · Onboarding de aliados 11 a 15</p>
+          </div>
+        </div>
+        <div>
+          <div class="card hl">
+            <span class="tier">Pauta digital · $45.000.000</span>
+            <ul class="blist">
+              <li><strong>Meta $20.000.000</strong> conversión a registro</li>
+              <li><strong>Google + YouTube $13.000.000</strong> intención y remarketing</li>
+              <li><strong>Programática y CTV $8.000.000</strong> alcance incremental</li>
+              <li><strong>LinkedIn $4.000.000</strong> Consumidor Estratégico</li>
+            </ul>
+            <p style="font-size:.8rem;margin-top:.5rem">Reparto 45% alcance, 55% conversión. Entra retargeting sobre quienes vieron la landing y no se registraron.</p>
+          </div>
+          <div class="card" style="margin-top:.7rem">
+            <span class="tier">KPIs de febrero</span>
+            <ul class="blist">
+              <li>Activación acumulada <strong>55% = 10.120</strong></li>
+              <li>Registros acumulados <strong>2.800</strong></li>
+              <li>Primeras redenciones AON <strong>450</strong></li>
+              <li>Aliados gastronómicos activos <strong>15</strong></li>
+              <li>Costo por registro <strong>≤ $38.000</strong></li>
+              <li>Recordación asistida de Interesting Life <strong>18%</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 MARZO -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Mes 3 · Marzo 2027 · Irrupción</div>
+      <h2>Convertir.</h2>
+      <p class="subhead">Inversión del mes: $80.950.000 · $40.950.000 en medios propios y $40.000.000 en pauta digital</p>
+      <div class="grid g21" style="margin-top:.7rem">
+        <div>
+          <div class="tscroll">
+          <table style="min-width:430px">
+            <thead><tr><th>Acción</th><th>Características</th><th class="pr">Valor</th></tr></thead>
+            <tbody>
+              <tr class="us"><td>Pauta dinámica doble página</td><td>Tercera entrega. Foco en la primera experiencia OBI</td><td class="pr">$12.100.000</td></tr>
+              <tr class="us"><td>Cubrimiento de eventos</td><td>Cubrimiento editorial de la primera cata OBI. Reel + artículo + banner 100K + newsletter + social</td><td class="pr">$7.300.000</td></tr>
+              <tr class="us"><td>Ruta al estilo Diners</td><td>Video entrevista con el chef o vocero de la experiencia</td><td class="pr">$6.200.000</td></tr>
+              <tr class="us"><td>Toma de la web</td><td>Full skin 7 días</td><td class="pr">$5.800.000</td></tr>
+              <tr class="ax"><td>Un café con AXXIS</td><td>Video conversación con un referente de diseño</td><td class="pr">$6.900.000</td></tr>
+              <tr class="ax"><td>Newsletter</td><td>Envío dedicado + refuerzo</td><td class="pr">$2.650.000</td></tr>
+              <tr class="tot"><td colspan="2">Subtotal medios propios</td><td class="pr">$40.950.000</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <div class="card hl" style="margin-top:.6rem">
+            <span class="tier">El hito del trimestre</span>
+            <p style="font-size:.82rem"><strong>Primera experiencia OBI:</strong> cata privada con maridaje de autor. Acceso solo por invitación, pago exclusivo con tarjeta DCI. Es la primera prueba de que el territorio existe en la vida real y no solo en la revista.</p>
+          </div>
+        </div>
+        <div>
+          <div class="card hl">
+            <span class="tier">Pauta digital · $40.000.000</span>
+            <ul class="blist">
+              <li><strong>Meta $16.000.000</strong> conversión y redención</li>
+              <li><strong>Google + YouTube $12.000.000</strong> intención alta</li>
+              <li><strong>Programática y CTV $8.000.000</strong> sostenimiento</li>
+              <li><strong>LinkedIn $4.000.000</strong> invitación OBI al segmento Black</li>
+            </ul>
+            <p style="font-size:.8rem;margin-top:.5rem">Reparto 35% alcance, 65% conversión. Aparece una campaña nueva de redención dirigida solo a registrados que no han usado un beneficio.</p>
+          </div>
+          <div class="card" style="margin-top:.7rem">
+            <span class="tier">KPIs de marzo</span>
+            <ul class="blist">
+              <li>Activación acumulada <strong>65% = 11.960</strong></li>
+              <li>Registros acumulados <strong>4.600</strong></li>
+              <li>Redenciones AON del mes <strong>1.200</strong></li>
+              <li>OBI ejecutada <strong>1 evento, 60 asistentes</strong></li>
+              <li>Pago con DCI en la OBI <strong>100%</strong></li>
+              <li>Aliados activos <strong>30</strong></li>
+              <li>Transacciones en gastronomía <strong>+8%</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10 T2 T3 T4 -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Meses 4 a 12 · vista trimestral</div>
+      <h2>De la prueba al hábito.</h2>
+      <div class="translabel">T2 · Abril a Junio · Prueba · $246.800.000</div>
+      <div class="tscroll">
+      <table>
+        <thead><tr><th>Mes</th><th>Hito</th><th class="pr">Propios</th><th class="pr">Pauta</th><th class="pr">Total</th></tr></thead>
+        <tbody>
+          <tr class="us"><td>Abril</td><td>Postal sobre portada con el carnet físico de beneficios</td><td class="pr">$43.050.000</td><td class="pr">$35.000.000</td><td class="pr">$78.050.000</td></tr>
+          <tr class="us"><td>Mayo</td><td>Segunda OBI y "Diners Recomienda" de temporada</td><td class="pr">$31.800.000</td><td class="pr">$35.000.000</td><td class="pr">$66.800.000</td></tr>
+          <tr class="us"><td>Junio</td><td>Gatefold 2 cuerpos: el catálogo de experiencias del semestre</td><td class="pr">$66.950.000</td><td class="pr">$35.000.000</td><td class="pr">$101.950.000</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="muted" style="font-family:var(--sans);font-size:.75rem;margin-top:.35rem">Foco: pasar de registro a redención. La métrica que manda es redenciones por tarjetahabiente activo, no registros nuevos.</p>
+
+      <div class="translabel">T3 · Julio a Septiembre · Expansión · $209.500.000</div>
+      <div class="tscroll">
+      <table>
+        <thead><tr><th>Mes</th><th>Hito</th><th class="pr">Propios</th><th class="pr">Pauta</th><th class="pr">Total</th></tr></thead>
+        <tbody>
+          <tr class="us"><td>Julio</td><td>Apertura a Blue priorizado. Tour AXXIS con personaje</td><td class="pr">$37.250.000</td><td class="pr">$30.000.000</td><td class="pr">$67.250.000</td></tr>
+          <tr class="us"><td>Agosto</td><td>Cubrimiento cruzado Diners y AXXIS de la tercera OBI</td><td class="pr">$28.950.000</td><td class="pr">$30.000.000</td><td class="pr">$58.950.000</td></tr>
+          <tr class="us"><td>Septiembre</td><td>Cintillo: campaña de renovación y referidos</td><td class="pr">$53.300.000</td><td class="pr">$30.000.000</td><td class="pr">$83.300.000</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="muted" style="font-family:var(--sans);font-size:.75rem;margin-top:.35rem">Foco: ampliar base sin perder densidad de uso. Entra el mecanismo de referidos entre tarjetahabientes.</p>
+
+      <div class="translabel">T4 · Octubre a Diciembre · Consolidación · $287.950.000</div>
+      <div class="tscroll">
+      <table>
+        <thead><tr><th>Mes</th><th>Hito</th><th class="pr">Propios</th><th class="pr">Pauta</th><th class="pr">Total</th></tr></thead>
+        <tbody>
+          <tr class="us"><td>Octubre</td><td>Preparación de la edición especial. Encuesta ola 2</td><td class="pr">$33.450.000</td><td class="pr">$30.000.000</td><td class="pr">$63.450.000</td></tr>
+          <tr class="us"><td>Noviembre</td><td>Cuadernillo de 16 páginas: edición especial Interesting Life, más doble página AXXIS</td><td class="pr">$104.550.000</td><td class="pr">$50.000.000</td><td class="pr">$154.550.000</td></tr>
+          <tr class="us"><td>Diciembre</td><td>Historias Diners de cierre de año. Temporada alta de gasto</td><td class="pr">$29.950.000</td><td class="pr">$40.000.000</td><td class="pr">$69.950.000</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="muted" style="font-family:var(--sans);font-size:.75rem;margin-top:.35rem">La edición especial anual es el activo que justifica la renovación del acuerdo. Debe salir con el balance del año y testimonios de tarjetahabientes.</p>
+    </div>
+  </section>
+
+  <!-- 11 CURVA DE INVERSIÓN -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Inversión consolidada</div>
+      <h2>$1.053.100.000 en el año.</h2>
+      <p class="subhead">Tarifas de lista 2026 sin descuentos. Impreso en tarifa bruta, digital en tarifa neta, ambas sujetas a IVA.</p>
+      <div class="bars">
+        <div class="bar peak"><span class="m">Ene</span><span class="track"><span class="f1" style="width:55.0%"></span><span class="f2" style="width:38.8%"></span></span><span class="v">$145.050.000</span></div>
+        <div class="bar"><span class="m">Feb</span><span class="track"><span class="f1" style="width:24.5%"></span><span class="f2" style="width:29.1%"></span></span><span class="v">$82.850.000</span></div>
+        <div class="bar"><span class="m">Mar</span><span class="track"><span class="f1" style="width:26.5%"></span><span class="f2" style="width:25.9%"></span></span><span class="v">$80.950.000</span></div>
+        <div class="bar"><span class="m">Abr</span><span class="track"><span class="f1" style="width:27.9%"></span><span class="f2" style="width:22.6%"></span></span><span class="v">$78.050.000</span></div>
+        <div class="bar"><span class="m">May</span><span class="track"><span class="f1" style="width:20.6%"></span><span class="f2" style="width:22.6%"></span></span><span class="v">$66.800.000</span></div>
+        <div class="bar"><span class="m">Jun</span><span class="track"><span class="f1" style="width:43.3%"></span><span class="f2" style="width:22.6%"></span></span><span class="v">$101.950.000</span></div>
+        <div class="bar"><span class="m">Jul</span><span class="track"><span class="f1" style="width:24.1%"></span><span class="f2" style="width:19.4%"></span></span><span class="v">$67.250.000</span></div>
+        <div class="bar"><span class="m">Ago</span><span class="track"><span class="f1" style="width:18.7%"></span><span class="f2" style="width:19.4%"></span></span><span class="v">$58.950.000</span></div>
+        <div class="bar"><span class="m">Sep</span><span class="track"><span class="f1" style="width:34.5%"></span><span class="f2" style="width:19.4%"></span></span><span class="v">$83.300.000</span></div>
+        <div class="bar"><span class="m">Oct</span><span class="track"><span class="f1" style="width:21.6%"></span><span class="f2" style="width:19.4%"></span></span><span class="v">$63.450.000</span></div>
+        <div class="bar peak"><span class="m">Nov</span><span class="track"><span class="f1" style="width:67.6%"></span><span class="f2" style="width:32.4%"></span></span><span class="v">$154.550.000</span></div>
+        <div class="bar"><span class="m">Dic</span><span class="track"><span class="f1" style="width:19.4%"></span><span class="f2" style="width:25.9%"></span></span><span class="v">$69.950.000</span></div>
+      </div>
+      <div class="legend">
+        <span><i class="sw" style="background:var(--navy)"></i> Medios propios $593.100.000</span>
+        <span><i class="sw" style="background:var(--gold-fill)"></i> Pauta digital $460.000.000</span>
+      </div>
+      <div class="flag">
+        <p><strong>Tres líneas siguen abiertas.</strong> Circulación de la suscripción regalo (18.400 x 12 = 220.800 ejemplares, lo cotiza Circulación) · Honorarios y fee de administración de Gamma (lo define Catalina con Finanzas) · Producción de las 8 experiencias OBI (BU Experiencias). Sin ellas la cotización está incompleta y deja el trabajo estratégico de Gamma sin cobrar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12 PAUTA DIGITAL AÑO -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Pauta digital · estructura del año</div>
+      <h2>$460.000.000 en cuatro canales.</h2>
+      <div class="grid g4" style="margin-top:.8rem">
+        <div class="card hl"><span class="tier">40%</span><div class="bigfig sm">$184.000.000</div><div class="flabel"><strong>Meta</strong> IG y FB. Alcance al inicio, conversión a registro después</div></div>
+        <div class="card"><span class="tier">30%</span><div class="bigfig sm">$138.000.000</div><div class="flabel"><strong>Google + YouTube</strong> Captura de intención y defensa de marca</div></div>
+        <div class="card"><span class="tier">20%</span><div class="bigfig sm">$92.000.000</div><div class="flabel"><strong>Programática y CTV</strong> Hogares de altos ingresos fuera del ecosistema propio</div></div>
+        <div class="card"><span class="tier">10%</span><div class="bigfig sm">$46.000.000</div><div class="flabel"><strong>LinkedIn</strong> Consumidor Estratégico, el más difícil de alcanzar y el de mayor gasto</div></div>
+      </div>
+      <div class="grid g2" style="margin-top:.8rem">
+        <div class="card">
+          <span class="tier">Audiencias por prioridad</span>
+          <ul class="blist">
+            <li><strong>Lookalike de la base Black.</strong> La de mayor retorno esperado. Requiere que Davivienda cargue la audiencia o se use un clean room. Verificar viabilidad bajo Ley 1581 antes de comprometerla</li>
+            <li><strong>Retargeting del ecosistema propio.</strong> Visitantes de revistadiners.com.co en gastronomía, viajes y estilo de vida. Disponible desde el día uno sin fricción legal</li>
+            <li><strong>Afinidad declarada.</strong> Gastronomía premium, viajes ejecutivos, golf, arte y diseño</li>
+            <li><strong>Intención competitiva.</strong> Búsquedas de "Visa Infinite" y "Mastercard Black". Barato y de alta señal</li>
+          </ul>
+        </div>
+        <div class="card hl">
+          <span class="tier">Evolución del reparto alcance y conversión</span>
+          <div class="tscroll">
+          <table style="min-width:300px">
+            <thead><tr><th>Fase</th><th class="pr">Alcance</th><th class="pr">Conversión</th></tr></thead>
+            <tbody>
+              <tr class="us"><td>T1 Irrupción</td><td class="pr">60%</td><td class="pr">40%</td></tr>
+              <tr class="us"><td>T2 Prueba</td><td class="pr">40%</td><td class="pr">60%</td></tr>
+              <tr class="us"><td>T3 Expansión</td><td class="pr">40%</td><td class="pr">60%</td></tr>
+              <tr class="us"><td>T4 Consolidación</td><td class="pr">30%</td><td class="pr">70%</td></tr>
+            </tbody>
+          </table>
+          </div>
+          <p style="font-size:.8rem;margin-top:.5rem">Responsable de ejecución: Sebastián Díaz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13 KPIS -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Tablero de KPIs · año 1</div>
+      <h2>Lo que vamos a mover.</h2>
+      <div class="tscroll">
+      <table>
+        <thead><tr><th>KPI</th><th>Línea base</th><th class="pr">Meta año 1</th><th>Tipo</th></tr></thead>
+        <tbody>
+          <tr class="us"><td>Suscripciones regalo activas</td><td>0</td><td class="pr">30.200</td><td>Adopción</td></tr>
+          <tr class="us"><td>Registros en Beneficios Suscriptores</td><td>0</td><td class="pr">25.000</td><td>Adopción</td></tr>
+          <tr class="us"><td>Redenciones AON</td><td>0</td><td class="pr">60.000</td><td>Efectividad</td></tr>
+          <tr class="us"><td>Aliados gastronómicos activos</td><td>0</td><td class="pr">120</td><td>Oferta</td></tr>
+          <tr class="us"><td>Experiencias OBI ejecutadas</td><td>0</td><td class="pr">8 eventos · 600 asistentes</td><td>Efectividad</td></tr>
+          <tr class="us"><td>Afinidad de marca en gastronomía</td><td>Medir en enero</td><td class="pr">+12 puntos</td><td>Efectividad</td></tr>
+          <tr class="us"><td>Transacciones en categoría gastronomía</td><td>Medir en enero</td><td class="pr">+15%</td><td>Negocio</td></tr>
+          <tr class="us"><td>Costo por registro</td><td>0</td><td class="pr">≤ $18.400 promedio</td><td>Eficiencia</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="grid g2" style="margin-top:.8rem">
+        <div class="card hl">
+          <span class="tier">Regla de medición</span>
+          <p>No mezclar métricas de alcance con métricas de negocio en el mismo reporte. Gamma responde por alcance, adopción y efectividad. El crecimiento de tarjetas activas es responsabilidad de Davivienda.</p>
+        </div>
+        <div class="card wine">
+          <span class="tier">Advertencia sobre las metas</span>
+          <p>Las cifras de afinidad y de transacciones son propuestas, no proyecciones validadas. Hay que calibrarlas con la data transaccional real de Davivienda antes de comprometerlas en el acuerdo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14 RIESGOS -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Lo que puede romper el plan</div>
+      <h2>Cinco cosas que hay que resolver antes de enero.</h2>
+      <div class="grid g2" style="margin-top:.8rem">
+        <div class="card wine">
+          <span class="tier">1 · El newsletter</span>
+          <p>El media kit reporta 400.000 contactos. Los envíos reales en HubSpot fueron 22.000 el 19 de junio y 11.000 el 14 de junio. No sustentar valor de newsletter con la cifra del kit ante DCI.</p>
+        </div>
+        <div class="card wine">
+          <span class="tier">2 · La pasarela de suscripciones</span>
+          <p>Sigue rota: 9 personas llegaron a checkout con $0 de revenue. Si la suscripción regalo genera demanda orgánica, no hay dónde capturarla.</p>
+        </div>
+        <div class="card">
+          <span class="tier">3 · Coherencia de Beneficios Suscriptores</span>
+          <p>El programa tiene decisiones abiertas y naming contradictorio en equipos paralelos. Cerrarlo antes de exponerlo a un tarjetahabiente.</p>
+        </div>
+        <div class="card">
+          <span class="tier">4 · Carga de audiencias de Davivienda</span>
+          <p>Si no se resuelve la viabilidad legal bajo Ley 1581, se pierde la audiencia de mayor retorno y la pauta se encarece.</p>
+        </div>
+        <div class="card">
+          <span class="tier">5 · Capacidad editorial</span>
+          <p>Ocho experiencias OBI más cubrimiento mensual es carga real sobre Simón Granja y el equipo audiovisual. Validar antes de comprometer el calendario.</p>
+        </div>
+        <div class="card hl">
+          <span class="tier">Ventana de preparación</span>
+          <p><strong>Octubre a diciembre de 2026.</strong> Aprobación interna, cotización de las tres líneas abiertas, cierre de coherencia de Beneficios, arreglo de la pasarela y encuesta de línea base. Si eso no está listo, enero se corre.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 15 GOBERNANZA -->
+  <section class="slide">
+    <div class="wrap">
+      <div class="eyebrow">Gobernanza</div>
+      <h2>Quién decide qué.</h2>
+      <div class="tscroll">
+      <table>
+        <thead><tr><th>Decisión</th><th>Quién</th><th>Cuándo</th></tr></thead>
+        <tbody>
+          <tr class="us"><td>Aprobación del plan y del fee de Gamma</td><td>Catalina Obregón</td><td>Antes de cualquier acercamiento a DCI</td></tr>
+          <tr class="us"><td>Ownership de Beneficios y alianzas</td><td>Paola Pantaleón</td><td>Desde el inicio, para evitar conflicto</td></tr>
+          <tr class="us"><td>Plataforma e integración</td><td>Jeison Montero</td><td>Fase de preparación</td></tr>
+          <tr class="us"><td>Pauta digital</td><td>Sebastián Díaz</td><td>Ejecución mensual</td></tr>
+          <tr class="us"><td>Editorial web</td><td>Simón Granja</td><td>Calendario de contenidos</td></tr>
+          <tr class="us"><td>Redes orgánico</td><td>Paola Gordillo</td><td>Amplificación, no email</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="flag">
+        <p><strong>El bloque que falta.</strong> El plan le cobra a DCI $1.053.100.000 de medios y $0 de estrategia y operación. Esa es la conversación con Catalina que desbloquea todo lo demás.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16 CIERRE -->
+  <section class="slide">
+    <div class="wrap closing">
+      <p class="big">Visa y Mastercard ganaron la ubicuidad.<br><em>Diners puede ganar la pertenencia.</em></p>
+      <p class="muted" style="font-family:var(--sans);font-size:.82rem;margin-top:1.6rem;letter-spacing:.04em">Plan operativo año 1 · Enero a Diciembre 2027 · Ediciones Gamma</p>
+    </div>
+  </section>
+
+</div>
+
+<div class="dots" id="dots"></div>
+<div class="pageno" id="pageno">01 / 16</div>
+<div class="conf">Confidencial · Uso interno</div>
+
+<script>
+  const deck=document.getElementById('deck');
+  const slides=[...document.querySelectorAll('.slide')];
+  const dotsWrap=document.getElementById('dots');
+  const pageno=document.getElementById('pageno');
+  const pad=n=>String(n).padStart(2,'0');
+  slides.forEach((s,i)=>{
+    const b=document.createElement('button');
+    b.setAttribute('aria-label','Ir a lámina '+(i+1));
+    b.onclick=()=>slides[i].scrollIntoView();
+    dotsWrap.appendChild(b);
+  });
+  const dots=[...dotsWrap.children];
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{
+    if(e.isIntersecting){
+      const i=slides.indexOf(e.target);
+      dots.forEach((d,j)=>d.classList.toggle('active',j===i));
+      pageno.textContent=pad(i+1)+' / '+pad(slides.length);
+    }});},{root:deck,threshold:.5});
+  slides.forEach(s=>io.observe(s));
+  let idx=0;
+  deck.addEventListener('scroll',()=>{idx=Math.round(deck.scrollTop/window.innerHeight)});
+  window.addEventListener('keydown',e=>{
+    if(e.key==='ArrowDown'||e.key==='PageDown'){e.preventDefault();slides[Math.min(idx+1,slides.length-1)].scrollIntoView()}
+    if(e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();slides[Math.max(idx-1,0)].scrollIntoView()}
+  });
+</script>
+</body>
+</html>
