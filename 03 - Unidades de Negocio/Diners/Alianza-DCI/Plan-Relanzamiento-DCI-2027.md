@@ -18,9 +18,15 @@ confidence: medium
 
 ## 0. La decisión en una página
 
-**El problema real:** DCI no tiene un problema de capacidad de gasto. Tiene 169K tarjetahabientes con ingreso promedio de $10.4M y ticket de $295K que usan la tarjeta para débitos automáticos. El problema es que no hay una razón para sacarla en el momento de pagar.
+**El problema real son dos problemas.** DCI no tiene un problema de capacidad de gasto: tiene 169K tarjetahabientes con ingreso promedio de $10.4M y ticket de $295K que usan la tarjeta para débitos automáticos. Lo que falta es (1) una razón para sacarla en el momento de pagar y (2) la certeza de que al sacarla se la reciban.
 
-**La jugada:** no competir por ubicuidad. Ocupar el territorio de experiencias con *Interesting Life*, usando el único activo que ninguna franquicia rival tiene en Colombia: una revista homónima de 60 años con 146.000 suscriptores del mismo perfil.
+**Restricción estructural de aceptación.** Diners y American Express son las franquicias menos aceptadas por el comercio en Colombia. Tres causas: Visa y Mastercard tienen mucho mayor base de tarjetahabientes y el comerciante las prioriza; habilitar Diners exige un trámite adicional con la red de pagos o con Davivienda, que al comercio pequeño y mediano no le resulta rentable; y la menor rotación no justifica el costo operativo extra. Redes modernas como Bold la integraron en 2023, pero mucho comercio tradicional sigue sin activarla.
+
+> **For future Claude:** esto no es un detalle de contexto, es una restricción de diseño. Nunca propongas para DCI mensajes de uso genérico tipo "úsala en todos tus restaurantes". Una tarjeta rechazada en una cena destruye más marca que una tarjeta que nunca se intentó. Toda comunicación de uso debe apuntar a comercios con aceptación verificada. Bold y Credibanco son redes adquirentes, no banca competidora, así que no aplica la regla de exclusión del Grupo Bolívar.
+
+**La jugada:** competir por ubicuidad está perdido de entrada, y además es imposible. La inversa es convertir la limitación en el posicionamiento: menos lugares, pero los correctos, con beneficio y con aceptación garantizada. Eso es curaduría. Ocupar el territorio de experiencias con *Interesting Life*, usando el único activo que ninguna franquicia rival tiene en Colombia: una revista homónima de 60 años con 146.000 suscriptores del mismo perfil.
+
+La red de aliados deja de ser solo un catálogo de descuentos y pasa a ser **el mapa de aceptación**. Verificar que el aliado tenga Diners activa en el datáfono es requisito de entrada al programa, no un chequeo posterior.
 
 **La palanca que lo mueve todo:** la suscripción regalo con código de activación. Cada ejemplar que llega a la casa del tarjetahabiente trae un código único que activa Beneficios Suscriptores. Eso convierte un regalo pasivo en un registro medible y en dato de primera parte. Sin ese código el plan es pauta. Con el código es un programa con funnel.
 
