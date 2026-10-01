@@ -353,7 +353,6 @@ Responsable de ejecución: Sebastián Díaz.
 3. **Coherencia de Beneficios Suscriptores.** El programa tiene decisiones abiertas y naming contradictorio en equipos paralelos. Cerrarlo antes de exponerlo a un tarjetahabiente.
 4. **Carga de audiencias de Davivienda.** Si no se resuelve la viabilidad legal, se pierde la audiencia de mayor retorno y la pauta se encarece.
 5. **Capacidad editorial.** Ocho experiencias OBI más cubrimiento mensual es carga real sobre Simón Granja y el equipo audiovisual. Validar antes de comprometer el calendario.
-6. **Dos formatos sin confirmar.** El tarifario que Carolina validó el 2026-10-01 trae 25 líneas de Diners y todas coinciden con el plan. No incluye "El producto del mes" ni "Cubrimiento de eventos", ambos a $7.300.000, que sí aparecían en las láminas del media kit. El plan los usa cinco veces (febrero, marzo, mayo, agosto y octubre) por $36.500.000. Si salieron del catálogo, se reemplazan por Ruta al estilo Diners a $6.200.000 y el plan baja $5.500.000.
 
 ---
 
@@ -369,6 +368,14 @@ Responsable de ejecución: Sebastián Díaz.
 | Redes orgánico | Paola Gordillo | Amplificación, no email |
 
 **Ventana de preparación: octubre a diciembre 2026.** Aprobación interna, cotización de las tres líneas abiertas, cierre de coherencia de Beneficios Suscriptores, arreglo de la pasarela y encuesta de línea base. Si eso no está listo, enero se corre.
+
+---
+
+## Validación de tarifas
+
+**2026-10-01, Carolina.** Tarifario Diners y AXXIS validado línea por línea contra el plan. Cero diferencias. Confirmado que "El producto del mes" y "Cubrimiento de eventos" ($7.300.000 cada uno) siguen en el catálogo 2026 y se mantienen en el plan: febrero, marzo, mayo, agosto y octubre, $36.500.000 en total.
+
+Todas las cifras de medios del plan están sobre tarifa de lista 2026 sin descuentos, según la política definida para la cotización a DCI.
 
 ---
 
