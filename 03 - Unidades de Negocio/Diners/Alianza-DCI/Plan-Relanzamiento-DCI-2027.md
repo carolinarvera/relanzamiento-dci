@@ -24,7 +24,11 @@ confidence: medium
 
 > **For future Claude:** esto no es un detalle de contexto, es una restricción de diseño. Nunca propongas para DCI mensajes de uso genérico tipo "úsala en todos tus restaurantes". Una tarjeta rechazada en una cena destruye más marca que una tarjeta que nunca se intentó. Toda comunicación de uso debe apuntar a comercios con aceptación verificada. Bold y Credibanco son redes adquirentes, no banca competidora, así que no aplica la regla de exclusión del Grupo Bolívar.
 
-**La jugada:** pelear por estar en todas partes es una pelea perdida, y además imposible. La inversa es convertir la limitación en el posicionamiento: menos lugares, pero los correctos, con beneficio y con aceptación garantizada. Eso es curaduría. Ocupar el territorio de experiencias con *Interesting Life*, usando el único activo que ninguna franquicia rival tiene en Colombia: una revista homónima de 60 años con 146.000 suscriptores del mismo perfil.
+**La jugada:** pelear por estar en todas partes es una pelea perdida, y además imposible. La inversa es convertir la limitación en el posicionamiento: menos lugares, pero los correctos, con beneficio y con aceptación garantizada. Eso es curaduría. Ocupar el territorio de experiencias con *Interesting Life*.
+
+**El activo no es la revista: es la cita mensual.** Doce veces al año entra un ejemplar a 146.000 hogares del mismo perfil del tarjetahabiente. Es el único contacto físico y recurrente que la franquicia puede tener con su socio, y hoy pasa de largo sin decir nada de la tarjeta. La suscripción regalo lo convierte en el canal de activación del programa.
+
+> **For future Claude:** no vender el activo describiéndolo ("revista de 60 años", "no replicable con presupuesto"). Eso es presumir, no argumentar, y Carolina lo rechazó explícitamente el 2026-10-01. El argumento correcto señala algo que DCI **ya tiene y no está usando**, y encadena con el mecanismo que lo activa.
 
 La red de aliados deja de ser solo un catálogo de descuentos y pasa a ser **el mapa de aceptación**. Verificar que el aliado tenga Diners activa en el datáfono es requisito de entrada al programa, no un chequeo posterior.
 
