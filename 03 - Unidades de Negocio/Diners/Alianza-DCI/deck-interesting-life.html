@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interesting Life · Relanzamiento Diners Club International</title>
+<style>
+  /* ============================================================
+     IMÁGENES — un solo lugar para cambiarlas.
+     Pega la URL de la foto en cada variable y la lámina la toma
+     automáticamente. Mientras estén vacías, se muestra el panel
+     gráfico diseñado, que es una alternativa, no un hueco.
+     ============================================================ */
+  :root{
+    --img-portada:  none;
+    --img-perfil:   none;
+    --img-problema: none;
+    --img-curaduria:none;
+    --img-eco:      none;
+    --img-palanca:  none;
+    --img-obi:      none;
+    --img-cierre:   none;
+  }
+
+  :root{
+    --cream:#F6F3EC; --paper:#FFFDF9; --navy:#0A2540; --navy-2:#143253;
+    --ink:#14263D; --muted:rgba(20,38,61,.58); --line:rgba(10,37,64,.13);
+    --gold:#8A6B1F; --gold-l:#D2A855; --wine:#8C3A3A; --axxis:#C8521B; --green:#1C6349;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:#E7E2D8;font-family:var(--serif);color:var(--ink);-webkit-font-smoothing:antialiased}
+
+  /* ---------- lámina ---------- */
+  .deck{scroll-snap-type:y mandatory;overflow-y:auto;height:100vh}
+  .s{scroll-snap-align:start;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:3vh 3vw;position:relative}
+  .f{width:min(1500px,96vw);aspect-ratio:16/9;background:var(--paper);border-radius:10px;
+     box-shadow:0 10px 50px rgba(10,37,64,.17);overflow:hidden;position:relative;display:flex}
+  @media(max-aspect-ratio:13/10){.f{aspect-ratio:auto;min-height:84vh}}
+  .pad{padding:clamp(1.3rem,3vw,3.1rem);display:flex;flex-direction:column;width:100%;min-width:0}
+
+  /* ---------- tipografía ---------- */
+  .kick{font-family:var(--sans);font-size:clamp(.5rem,.72vw,.64rem);letter-spacing:.26em;text-transform:uppercase;
+        font-weight:800;color:var(--gold);margin-bottom:.8rem}
+  .kick.on-dark{color:var(--gold-l)}
+  h1{font-size:clamp(1.7rem,4.1vw,3.5rem);line-height:1.02;font-weight:600;letter-spacing:-.018em}
+  h2{font-size:clamp(1.25rem,2.5vw,2.15rem);line-height:1.06;font-weight:600;letter-spacing:-.012em;color:var(--navy)}
+  h2 em,h1 em{font-style:italic;color:var(--gold)}
+  .on-dark h2,.on-dark h1{color:#fff}.on-dark h2 em,.on-dark h1 em{color:var(--gold-l)}
+  .sub{font-family:var(--sans);font-size:clamp(.7rem,1vw,.87rem);line-height:1.56;color:var(--muted);margin-top:.7rem;max-width:62ch}
+  .on-dark .sub{color:rgba(255,255,255,.74)}
+  .rule{height:2px;background:var(--navy);margin:.85rem 0 1.1rem;width:100%}
+  .on-dark .rule{background:var(--gold-l)}
+
+  /* ---------- rejillas ---------- */
+  .row{display:flex;gap:clamp(.5rem,1.3vw,1.1rem);flex:1;min-height:0}
+  .col{display:flex;flex-direction:column;gap:clamp(.5rem,1.3vw,1.1rem);flex:1;min-width:0}
+  .g2{display:grid;grid-template-columns:1fr 1fr}
+  .g3{display:grid;grid-template-columns:repeat(3,1fr)}
+  .g4{display:grid;grid-template-columns:repeat(4,1fr)}
+  .g2,.g3,.g4{gap:clamp(.45rem,1.1vw,.95rem);flex:1;min-height:0}
+
+  /* ---------- tarjetas ---------- */
+  .c{background:var(--cream);border:1px solid var(--line);border-radius:5px;padding:clamp(.6rem,1.25vw,1.15rem);
+     display:flex;flex-direction:column;min-width:0;min-height:0}
+  .c.gold{background:rgba(210,168,85,.17);border-color:rgba(138,107,31,.34)}
+  .c.navy{background:var(--navy);border-color:var(--navy);color:#fff}
+  .c.wine{background:rgba(140,58,58,.085);border-color:rgba(140,58,58,.3)}
+  .c.axxis{background:rgba(200,82,27,.085);border-color:rgba(200,82,27,.3)}
+  .c.plain{background:var(--paper)}
+  .lbl{font-family:var(--sans);font-size:clamp(.44rem,.62vw,.56rem);letter-spacing:.17em;text-transform:uppercase;
+       font-weight:800;color:var(--muted);margin-bottom:.4rem}
+  .c.gold .lbl{color:var(--gold)} .c.navy .lbl{color:var(--gold-l)}
+  .c.wine .lbl{color:var(--wine)} .c.axxis .lbl{color:var(--axxis)}
+  .c h3{font-size:clamp(.78rem,1.18vw,1.04rem);font-weight:700;color:var(--navy);line-height:1.16;margin-bottom:.34rem}
+  .c.navy h3{color:#fff}
+  .c p{font-family:var(--sans);font-size:clamp(.59rem,.82vw,.73rem);line-height:1.48;color:rgba(20,38,61,.82)}
+  .c.navy p{color:rgba(255,255,255,.8)}
+  .big{font-size:clamp(1.3rem,2.9vw,2.5rem);font-weight:700;color:var(--navy);line-height:.96;letter-spacing:-.02em}
+  .c.navy .big{color:#fff} .c.gold .big{color:var(--gold)}
+  .cap{font-family:var(--sans);font-size:clamp(.47rem,.66vw,.6rem);color:var(--muted);line-height:1.35;margin-top:.3rem}
+  .c.navy .cap{color:rgba(255,255,255,.62)}
+  ul{list-style:none;margin-top:.3rem}
+  li{position:relative;padding:.16rem 0 .16rem .72rem;font-family:var(--sans);
+     font-size:clamp(.57rem,.79vw,.71rem);line-height:1.42;color:rgba(20,38,61,.82)}
+  li::before{content:"";position:absolute;left:0;top:.63em;width:3.5px;height:3.5px;border-radius:50%;background:var(--gold)}
+  .c.navy li{color:rgba(255,255,255,.8)} .c.navy li::before{background:var(--gold-l)}
+  li b{color:var(--navy);font-weight:700} .c.navy li b{color:#fff}
+  .tag{display:inline-block;font-family:var(--sans);font-size:clamp(.44rem,.6vw,.54rem);letter-spacing:.1em;
+       text-transform:uppercase;font-weight:800;padding:.17rem .44rem;border-radius:2px;margin-right:.22rem}
+  .t-d{background:rgba(10,37,64,.11);color:var(--navy)}
+  .t-a{background:rgba(200,82,27,.14);color:var(--axxis)}
+  .t-g{background:rgba(138,107,31,.15);color:var(--gold)}
+
+  /* ---------- panel de imagen ---------- */
+  .ph{border-radius:5px;overflow:hidden;position:relative;background:var(--navy);min-height:0;flex:1}
+  .ph::before{content:"";position:absolute;inset:0;background-image:var(--im,none);background-size:cover;background-position:center}
+  .ph::after{content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(130% 95% at 12% 8%, rgba(210,168,85,.30), transparent 56%),
+      radial-gradient(118% 100% at 92% 96%, rgba(140,58,58,.30), transparent 58%),
+      linear-gradient(145deg, rgba(10,37,64,.90), rgba(20,50,83,.56));}
+  .ph[data-has="1"]::after{background:linear-gradient(145deg,rgba(10,37,64,.56),rgba(10,37,64,.14))}
+  .ph .in{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;
+          padding:clamp(.7rem,1.5vw,1.3rem);color:#fff;z-index:2}
+  .ph .in .q{font-size:clamp(.82rem,1.5vw,1.3rem);line-height:1.2;font-weight:600}
+  .ph .in .q em{color:var(--gold-l);font-style:italic}
+  .ph .in .m{font-family:var(--sans);font-size:clamp(.47rem,.66vw,.6rem);color:rgba(255,255,255,.62);
+             margin-top:.4rem;letter-spacing:.05em}
+  .grain{position:absolute;inset:0;z-index:1;opacity:.5;pointer-events:none;
+    background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px)}
+
+  /* ---------- barras ---------- */
+  .bars{display:flex;align-items:flex-end;gap:clamp(2px,.55vw,7px);flex:1;min-height:0;padding-top:.5rem}
+  .bar{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;gap:.3rem}
+  .bar i{display:block;width:100%;background:linear-gradient(180deg,var(--gold-l),var(--gold));border-radius:2px 2px 0 0;min-height:3px}
+  .bar.hi i{background:linear-gradient(180deg,#143253,var(--navy))}
+  .bar span{font-family:var(--sans);font-size:clamp(.4rem,.58vw,.52rem);color:var(--muted);letter-spacing:.04em}
+
+  /* ---------- pie ---------- */
+  .foot{display:flex;justify-content:space-between;align-items:center;margin-top:.8rem;
+        font-family:var(--sans);font-size:clamp(.44rem,.6vw,.55rem);color:var(--muted);letter-spacing:.09em;text-transform:uppercase}
+  .on-dark .foot{color:rgba(255,255,255,.44)}
+  .foot b{color:var(--gold);font-weight:800}
+
+  /* ---------- navegación ---------- */
+  .dots{position:fixed;right:clamp(.5rem,1.4vw,1.2rem);top:50%;transform:translateY(-50%);z-index:40;
+        display:flex;flex-direction:column;gap:.44rem}
+  .dots b{width:7px;height:7px;border-radius:50%;background:rgba(10,37,64,.26);cursor:pointer;transition:.2s;border:none;padding:0;display:block}
+  .dots b.on{background:var(--gold);transform:scale(1.5)}
+  .pg{position:fixed;left:clamp(.6rem,1.5vw,1.4rem);bottom:clamp(.6rem,1.5vw,1.2rem);z-index:40;
+      font-family:var(--sans);font-size:.62rem;letter-spacing:.14em;color:var(--muted);font-weight:800}
+  .pg b{color:var(--navy)}
+  @media print{
+    body{background:#fff}.deck{height:auto;overflow:visible}
+    .s{page-break-after:always;break-after:page;min-height:0;padding:0}
+    .f{box-shadow:none;border-radius:0;width:100%;aspect-ratio:16/9}
+    .dots,.pg{display:none}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    @page{size:landscape;margin:0}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+<!-- 01 PORTADA -->
+<section class="s"><div class="f">
+  <div class="pad" style="flex:1.05;justify-content:space-between">
+    <div>
+      <div class="kick">Diners Club International &amp; Ediciones Gamma</div>
+      <h1>Recuperando<br>la categoría<br><em>Interesting Life</em></h1>
+      <div class="sub" style="margin-top:1.1rem">Relanzamiento estratégico de marca y playbook de posicionamiento de beneficios. Plan a doce meses, detalle operativo al primer trimestre.</div>
+    </div>
+    <div class="g3" style="flex:0 0 auto">
+      <div class="c gold"><div class="lbl">Base</div><div class="big">169K</div><div class="cap">tarjetahabientes · 18.4K Black</div></div>
+      <div class="c"><div class="lbl">Alcance mensual</div><div class="big">1.133.000</div><div class="cap">ecosistema editorial Gamma</div></div>
+      <div class="c"><div class="lbl">Legitimidad</div><div class="big">60 años</div><div class="cap">de revista homónima</div></div>
+    </div>
+    <div class="foot"><span>Ediciones Gamma · Documento confidencial</span><span>2027</span></div>
+  </div>
+  <div class="ph" style="flex:.82;--im:var(--img-portada)">
+    <div class="grain"></div>
+    <div class="in"><div class="q">La tarjeta que inventó<br>la idea de <em>pertenecer</em></div>
+    <div class="m">Nueva York, 1950 · Bogotá, 1963</div></div>
+  </div>
+</div></section>
+
+<!-- 02 PERFIL -->
+<section class="s"><div class="f"><div class="pad">
+  <div class="kick">Diagnóstico · Punto de partida</div>
+  <h2>Quién es hoy el tarjetahabiente DCI</h2>
+  <div class="rule"></div>
+  <div class="row">
+    <div class="col" style="flex:1.25">
+      <div class="g4" style="flex:0 0 auto">
+        <div class="c"><div class="lbl">Base total</div><div class="big">169K</div></div>
+        <div class="c"><div class="lbl">Segmento Black</div><div class="big">11%</div><div class="cap">18.400 personas</div></div>
+        <div class="c gold"><div class="lbl">Ingreso promedio</div><div class="big">$10.4M</div><div class="cap">mensual · COP</div></div>
+        <div class="c gold"><div class="lbl">Ticket promedio</div><div class="big">$295K</div><div class="cap">por transacción</div></div>
+      </div>
+      <div class="c plain" style="flex:1">
+        <div class="lbl">El perfil real</div>
+        <p>Consumidor maduro, ligado a gastos de viaje y estilo de vida. Edad promedio 45.3 años, con el mayor bloque sobre los 51. Alto patrimonio y liquidez, baja fricción tolerada.</p>
+        <ul>
+          <li><b>El uso es pasivo.</b> La tarjeta vive en débitos automáticos y pagos recurrentes, no en el momento de decidir.</li>
+          <li><b>No hay problema de capacidad.</b> Hay capacidad de gasto de sobra y una participación mínima en el gasto discrecional.</li>
+          <li><b>El riesgo es silencioso.</b> Visa Infinite y Mastercard Black capturan ese gasto sin que la pérdida se note en la base activa.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col" style="flex:.72">
+      <div class="ph" style="--im:var(--img-perfil)"><div class="grain"></div>
+        <div class="in"><div class="q">Tiene la tarjeta.<br>No la <em>saca</em>.</div>
+        <div class="m">Participación mínima en gasto discrecional</div></div>
+      </div>
+      <div class="c navy" style="flex:0 0 auto">
+        <div class="lbl">Lo que esto significa</div>
+        <p>Una base intacta en número y erosionada en uso es el peor escenario: no dispara ninguna alarma de retención hasta que ya se perdió la relevancia.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Perfil base Privilegios · 5.853 registros</span><span><b>02</b></span></div>
+</div></div></section>
+
+<!-- 03 EL PROBLEMA SON DOS -->
+<section class="s"><div class="f"><div class="pad">
+  <div class="kick">Diagnóstico · La restricción que lo cambia todo</div>
+  <h2>El problema real son <em>dos</em> problemas</h2>
+  <div class="rule"></div>
+  <div class="row">
+    <div class="col">
+      <div class="c" style="flex:1">
+        <div class="lbl">Problema uno · De marketing</div>
+        <h3>No hay un motivo para sacarla</h3>
+        <p>La marca dejó de significar algo en el momento de pagar. Esto sí se resuelve con posicionamiento, contenido y beneficios.</p>
+      </div>
+      <div class="c wine" style="flex:1.5">
+        <div class="lbl">Problema dos · De mercado</div>
+        <h3>No en todas partes la reciben</h3>
+        <p>Diners y American Express son las franquicias menos aceptadas por el comercio en Colombia.</p>
+        <ul>
+          <li>Visa y Mastercard tienen mucha mayor base y el comerciante las prioriza</li>
+          <li>Habilitar Diners exige un trámite adicional con la red de pagos</li>
+          <li>La menor rotación no justifica el costo operativo extra al comercio pequeño y mediano</li>
+          <li>Redes como Bold la integraron, pero el comercio tradicional sigue sin activarla</li>
+        </ul>
+      </div>
+    </div>
+    <div class="col" style="flex:1.12">
+      <div class="ph" style="flex:.85;--im:var(--img-problema)"><div class="grain"></div>
+        <div class="in"><div class="q">Una tarjeta rechazada<br>hace más daño que una<br>que <em>nunca se intentó</em></div></div>
+      </div>
+      <div class="c navy" style="flex:1">
+        <div class="lbl">Por qué esto define la estrategia</div>
+        <p>No se le puede pedir al tarjetahabiente que la use en todas partes, porque en todas partes no se la reciben. Competir por ubicuidad está perdido de entrada: es una restricción de mercado, no de comunicación.</p>
+        <p style="margin-top:.5rem"><b style="color:var(--gold-l)">Consecuencia operativa:</b> ampliar la aceptación es responsabilidad de Davivienda como franquiciado. Debe quedar explícito en el acuerdo, no asumido.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Restricción estructural · validada con Carolina Ramirez</span><span><b>03</b></span></div>
+</div></div></section>
+
+<!-- 04 LA JUGADA -->
+<section class="s"><div class="f">
+  <div class="ph" style="flex:.78;--im:var(--img-curaduria)"><div class="grain"></div>
+    <div class="in"><div class="q">Menos lugares.<br>Los <em>correctos</em>.</div>
+    <div class="m">Curaduría como respuesta honesta a la aceptación limitada</div></div>
+  </div>
+  <div class="pad" style="flex:1.22">
+    <div class="kick">La estrategia</div>
+    <h2>Convertir la limitación<br>en el posicionamiento</h2>
+    <div class="rule"></div>
+    <div class="sub" style="margin-top:0">Si la aceptación es limitada, la única respuesta creíble es la selección. No "úsala en todas partes", sino "estos son los lugares que valen la pena, y aquí sí te reciben".</div>
+    <div class="g2" style="margin-top:1rem">
+      <div class="c gold">
+        <div class="lbl">Frente 1</div><h3>Relanzamiento de marca</h3>
+        <p>Conexión orgánica con audiencias de alto perfil, liderando las categorías favoritas del cliente.</p>
+        <ul><li>Viajes y hotelería</li><li>Restaurantes premium</li><li>Supermercados selectos</li><li>Bienestar</li></ul>
+      </div>
+      <div class="c gold">
+        <div class="lbl">Frente 2</div><h3>Posicionamiento de beneficios</h3>
+        <p>Los permanentes sostienen la retención. Los exclusivos construyen estatus y conversación.</p>
+        <ul><li><b>AON</b> · Always On, todo el año</li><li><b>OBI</b> · Only By Invitation</li><li>Patrocinios de franquicia</li></ul>
+      </div>
+    </div>
+    <div class="c navy" style="flex:0 0 auto;margin-top:.9rem">
+      <div class="lbl">El activo que lo hace posible</div>
+      <p>Una revista homónima de 60 años con 146.000 suscriptores del mismo perfil del tarjetahabiente. Ninguna franquicia rival tiene algo equivalente en Colombia, y no es replicable con presupuesto.</p>
+    </div>
+    <div class="foot"><span>Interesting Life</span><span><b>04</b></span></div>
+  </div>
+</div></section>
+
+<!-- 05 AUDIENCIAS -->
+<section class="s"><div class="f"><div class="pad">
+  <div class="kick">Módulo 1 · Audiencias</div>
+  <h2>A quién le hablamos</h2>
+  <div class="rule"></div>
+  <div class="sub" style="margin-top:0;margin-bottom:.9rem">Tres arquetipos dentro del mismo portafolio. Misma tarjeta, motivaciones distintas. Cada pieza del plan apunta a uno, nunca a los tres a la vez.</div>
+  <div class="g3">
+    <div class="c gold">
+      <div class="lbl">Afín a la marca · 45+</div><h3>El Consumidor Estratégico</h3>
+      <p>Alto patrimonio. Espera que el mundo se adapte a su ritmo, sin fricción.</p>
+      <ul><li><b>Afinidad:</b> tiquetes ejecutivos, hoteles de alta gama, alta gastronomía, golf y clubes privados</li>
+      <li><b>Reto:</b> riesgo alto de migrar a Visa Infinite o Mastercard Black</li>
+      <li><b>Dónde se le llega:</b> LinkedIn, impreso de alto impacto, experiencias OBI</li></ul>
+    </div>
+    <div class="c">
+      <div class="lbl">Afín al valor · 51+</div><h3>El Consumidor Tradicional</h3>
+      <p>Se mueve por la rutina y una lealtad de marca construida en años.</p>
+      <ul><li><b>Afinidad:</b> viajes curados, alojamientos boutique, cocina clásica</li>
+      <li><b>Reto:</b> uso pasivo, casi todo en pagos automáticos</li>
+      <li><b>Dónde se le llega:</b> impreso, newsletter, eventos ancla</li></ul>
+    </div>
+    <div class="c axxis">
+      <div class="lbl">Altamente receptivo · 35+</div><h3>El Consumidor de Valor Activo</h3>
+      <p>Pico de productividad. Muy activo donde pasan las experiencias.</p>
+      <ul><li><b>Afinidad:</b> tecnología premium, ecosistemas digitales, restaurantes de tendencia</li>
+      <li><b>Reto:</b> competencia intensa por el primer lugar de la billetera</li>
+      <li><b>Dónde se le llega:</b> Meta, AXXIS, video con personaje, pop-ups</li></ul>
+    </div>
+  </div>
+  <div class="foot"><span>Segmentación · base 169.000</span><span><b>05</b></span></div>
+</div></div></section>
+
+<!-- 06 ECOSISTEMA -->
+<section class="s"><div class="f"><div class="pad">
+  <div class="kick">Módulo 2 · El ecosistema</div>
+  <h2>Todo un ecosistema,<br>listo para <em>co-crear</em></h2>
+  <div class="rule"></div>
+  <div class="row">
+    <div class="col" style="flex:1.3">
+      <div class="g4" style="flex:0 0 auto">
+        <div class="c"><div class="lbl">Revista impresa</div><div class="big">146K</div><div class="cap">suscriptores</div></div>
+        <div class="c"><div class="lbl">Página web</div><div class="big">737K</div><div class="cap">usuarios únicos</div></div>
+        <div class="c"><div class="lbl">Redes sociales</div><div class="big">210K</div><div class="cap">seguidores</div></div>
+        <div class="c gold"><div class="lbl">Alcance total</div><div class="big">1.133M</div><div class="cap">mensual</div></div>
+      </div>
+      <div class="g2" style="flex:1">
+        <div class="c plain"><div class="lbl">Formatos de alto impacto</div>
+          <ul><li><b>Portada falsa</b> · envuelve la portada, máxima notoriedad</li>
+          <li><b>Gatefold</b> · desplegable de dos cuerpos</li>
+          <li><b>Cuadernillo</b> · 16 páginas, pieza coleccionable</li>
+          <li><b>Cintillo y postal</b> · adheridos al ejemplar</li></ul>
+        </div>
+        <div class="c plain"><div class="lbl">Formatos crossmedia</div>
+          <ul><li><b>Pauta dinámica</b> · impreso, web, display, social y newsletter en una sola compra</li>
+          <li><b>Historias Diners</b> · serie de video editorial</li>
+          <li><b>Toma de la web</b> · full skin por siete días</li>
+          <li><b>Ruta al estilo Diners</b> · entrevista en video</li></ul>
+        </div>
+      </div>
+    </div>
+    <div class="col" style="flex:.62">
+      <div class="ph" style="--im:var(--img-eco)"><div class="grain"></div>
+        <div class="in"><div class="q">Dos marcas,<br>un mismo <em>lector</em></div>
+        <div class="m">Revista Diners · AXXIS</div></div>
+      </div>
+      <div class="c navy" style="flex:0 0 auto">
+        <div class="lbl">La palanca de AXXIS</div>
+        <p>Ficha técnica idéntica a Diners en formatos de alto impacto, con tarifa entre 4% y 28% menor. Cuando haya presión de precio, se mueve peso a AXXIS en vez de dar descuento.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Ediciones Gamma · filial Grupo Bolívar</span><span><b>06</b></span></div>
+</div></div></section>
+
+<!-- 07 PALANCA -->
+<section class="s"><div class="f"><div class="pad">
+  <div class="kick">Módulo 3 · Lo que mueve el plan</div>
+  <h2>La palanca de marketing</h2>
+  <div class="rule"></div>
+  <div class="sub" style="margin-top:0;margin-bottom:.9rem">Sin la palanca esto es pauta. Con la palanca es un programa con funnel medible.</div>
+  <div class="g3">
+    <div class="c gold">
+      <div class="lbl">Palanca principal</div><h3>Suscripción regalo con código de activación</h3>
+      <p>DCI regala la suscripción a la Revista Diners. Cada ejemplar lleva un código único en faja o postal que activa Beneficios Suscriptores.</p>
+      <ul><li>Único touchpoint físico mensual con el tarjetahabiente</li>
+      <li>Convierte alcance en registro rastreable por cohorte</li>
+      <li>Genera dato de primera parte sin depender de la base de Davivienda</li>
+      <li>Costo marginal bajo: la revista ya se imprime</li>
+      <li><b>Secuencia:</b> Black primero, Blue priorizado después</li></ul>
+    </div>
+    <div class="c">
+      <div class="lbl">Palanca secundaria</div><h3>El aliado paga la visibilidad y garantiza la aceptación</h3>
+      <p>Modelo ya validado: el aliado gastronómico paga por aparecer, no Gamma por el descuento.</p>
+      <ul><li>Cada aliado reduce el costo neto del AON</li>
+      <li>Aumenta la oferta sin inversión adicional</li>
+      <li><b>Gate obligatorio:</b> no entra ningún aliado sin Diners verificada en el datáfono</li>
+      <li>La red de aliados es el mapa de aceptación</li>
+      <li><b>Meta año 1:</b> 120 aliados verificados</li></ul>
+    </div>
+    <div class="c axxis">
+      <div class="lbl">Palanca terciaria</div><h3>AXXIS como multiplicador</h3>
+      <p>Amplía cobertura sin disparar el presupuesto y alcanza al Consumidor de Valor Activo que Diners no cubre con la misma profundidad.</p>
+      <ul><li>Misma ficha técnica, tarifa menor</li>
+      <li>Audiencia de diseño, arquitectura y estilo de vida</li>
+      <li>Permite cruzar la misma experiencia en dos marcas</li></ul>
+    </div>
+  </div>
+  <div class="foot"><span>Beneficios Suscriptores</span><span><b>07</b></span></div>
+</div></div></section>
+
+<!-- 08 PAUTA DINAMICA -->
+<section class="s"><div class="f">
+  <div class="pad" style="flex:1.3">
+    <div class="kick">La columna vertebral</div>
+    <h2>Pauta dinámica:<br>cinco canales, <em>una compra</em></h2>
+    <div class="rule"></div>
+    <div class="sub" style="margin-top:0">El plan la compra los doce meses. Es cerca de una cuarta parte de los medios propios y la única línea que garantiza presencia ininterrumpida en todos los canales de Diners.</div>
+    <div class="g2" style="margin-top:1rem">
+      <div class="c gold"><div class="lbl">Qué incluye cada entrega</div>
+        <ul><li><b>Impreso</b> · doble página de content marketing</li>
+        <li><b>Website</b> · el mismo content replicado en la web</li>
+        <li><b>Display</b> · un banner por 100.000 impresiones</li>
+        <li><b>Social</b> · dos posts Facebook, uno Instagram, dos historias</li>
+        <li><b>Newsletter</b> · envío de la versión digital</li></ul>
+      </div>
+      <div class="c plain"><div class="lbl">Por qué este formato y no una página suelta</div>
+        <p>Una página corriente impar entrega solo impreso y cuesta casi el doble.</p>
+        <p style="margin-top:.5rem">La pauta dinámica entrega cinco canales por la mitad del valor. Es el formato con mejor relación entre inversión y superficie de contacto de todo el tarifario, y por eso es la base del plan y no un complemento.</p>
+      </div>
+    </div>
+    <div class="foot"><span>12 entregas en el año</span><span><b>08</b></span></div>
+  </div>
+  <div class="ph" style="flex:.72;--im:var(--img-palanca)"><div class="grain"></div>
+    <div class="in"><div class="q">La mitad del valor.<br>Cinco veces la <em>superficie</em>.</div></div>
+  </div>
+</div></section>
+
+<!-- 09 EL AÑO -->
+<section class="s"><div class="f"><div class="pad">
+  <div class="kick">La arquitectura del año</div>
+  <h2>Cuatro trimestres, una curva de dos picos</h2>
+  <div class="rule"></div>
+  <div class="row">
+    <div class="col" style="flex:1.1">
+      <div class="g4" style="flex:0 0 auto">
+        <div class="c navy"><div class="lbl">T1 · Ene a Mar</div><div class="big" style="font-size:clamp(.95rem,1.8vw,1.5rem)">Irrupción</div><div class="cap">Que sepa que Diners cambió · 29%</div></div>
+        <div class="c"><div class="lbl">T2 · Abr a Jun</div><div class="big" style="font-size:clamp(.95rem,1.8vw,1.5rem)">Prueba</div><div class="cap">Que lo use por primera vez · 23%</div></div>
+        <div class="c"><div class="lbl">T3 · Jul a Sep</div><div class="big" style="font-size:clamp(.95rem,1.8vw,1.5rem)">Expansión</div><div class="cap">Que repita y se abra a Blue · 20%</div></div>
+        <div class="c gold"><div class="lbl">T4 · Oct a Dic</div><div class="big" style="font-size:clamp(.95rem,1.8vw,1.5rem)">Consolidación</div><div class="cap">Que se vuelva hábito · 27%</div></div>
+      </div>
+      <div class="c plain" style="flex:1">
+        <div class="lbl">Distribución de la inversión por mes · porcentaje del año</div>
+        <div class="bars">
+          <div class="bar hi"><i style="height:100%"></i><span>Ene</span></div>
+          <div class="bar"><i style="height:48%"></i><span>Feb</span></div>
+          <div class="bar"><i style="height:51%"></i><span>Mar</span></div>
+          <div class="bar"><i style="height:57%"></i><span>Abr</span></div>
+          <div class="bar"><i style="height:44%"></i><span>May</span></div>
+          <div class="bar"><i style="height:62%"></i><span>Jun</span></div>
+          <div class="bar"><i style="height:41%"></i><span>Jul</span></div>
+          <div class="bar"><i style="height:38%"></i><span>Ago</span></div>
+          <div class="bar"><i style="height:40%"></i><span>Sep</span></div>
+          <div class="bar"><i style="height:45%"></i><span>Oct</span></div>
+          <div class="bar hi"><i style="height:92%"></i><span>Nov</span></div>
+          <div class="bar"><i style="height:50%"></i><span>Dic</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="col" style="flex:.56">
+      <div class="c navy" style="flex:1">
+        <div class="lbl">Por qué dos picos</div>
+        <p><b style="color:var(--gold-l)">Enero</b> por el lanzamiento con portada falsa: la irrupción solo funciona si es imposible de ignorar.</p>
+        <p style="margin-top:.5rem"><b style="color:var(--gold-l)">Noviembre</b> por la edición especial anual y la temporada alta de gasto.</p>
+        <p style="margin-top:.5rem">El valle de julio a octubre es deliberado. Ahí el programa debe sostenerse con redención, no con pauta. Si no se sostiene, el diseño del beneficio está mal, no el medio.</p>
+      </div>
+      <div class="c" style="flex:0 0 auto">
+        <div class="lbl">Reparto por medio</div>
+        <p><span class="tag t-d">Diners 75%</span><span class="tag t-a">AXXIS 25%</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>59 piezas en medios propios · 20 campañas de pauta digital</span><span><b>09</b></span></div>
+</div></div></section>
+
+<!-- 10 T1 -->
+<section class="s"><div class="f"><div class="pad">
+  <div class="kick">Detalle operativo · Primer trimestre</div>
+  <h2>T1 · <em>Irrupción</em></h2>
+  <div class="rule"></div>
+  <div class="g3" style="flex:0 0 auto">
+    <div class="c navy"><div class="lbl">Enero · Lanzamiento</div>
+      <ul><li><b>Portada falsa</b> · manifiesto Interesting Life, 146.000 suscriptores</li>
+      <li><b>Pauta dinámica</b> · qué cambia para el tarjetahabiente</li>
+      <li><b>Historias Diners</b> · serie de tres capítulos sobre el ADN de la marca</li>
+      <li><b>Toma de la web</b> · full skin, siete días</li>
+      <li><b>AXXIS</b> · content con header y newsletter</li></ul>
+    </div>
+    <div class="c"><div class="lbl">Febrero · Activación AON</div>
+      <ul><li><b>Pauta dinámica</b> · los beneficios ya activos en gastronomía</li>
+      <li><b>El producto del mes</b> · Diners Recomienda, el restaurante del mes</li>
+      <li><b>Billboard x2</b> · recordatorio de activación del código</li>
+      <li><b>AXXIS</b> · Tour, content y newsletter</li></ul>
+    </div>
+    <div class="c"><div class="lbl">Marzo · Primera OBI</div>
+      <ul><li><b>Pauta dinámica</b> · la primera experiencia y cómo se accede</li>
+      <li><b>Cubrimiento</b> · cata privada con maridaje de autor</li>
+      <li><b>Ruta al estilo Diners</b> · el chef detrás de la cata</li>
+      <li><b>Toma de la web</b> · invitación a la siguiente OBI</li>
+      <li><b>AXXIS</b> · Un café con AXXIS y newsletter</li></ul>
+    </div>
+  </div>
+  <div class="row" style="margin-top:.9rem;flex:0 0 auto">
+    <div class="c gold" style="flex:1.5"><div class="lbl">Pauta digital del trimestre · cinco campañas siempre activas</div>
+      <p><span class="tag t-g">Meta</span> lanzamiento Interesting Life, lookalike 1% de base Black &nbsp;
+         <span class="tag t-g">Search</span> defensa de marca &nbsp;
+         <span class="tag t-g">Search + YouTube</span> conquista de categoría sobre aliados verificados &nbsp;
+         <span class="tag t-g">Programática y CTV</span> hogares afluentes en cuatro ciudades &nbsp;
+         <span class="tag t-g">LinkedIn</span> Consumidor Estratégico, alta gerencia 45+</p>
+    </div>
+    <div class="c plain" style="flex:.8"><div class="lbl">Hitos de salida</div>
+      <ul><li>Enero · 7.360 activaciones, 1.100 registros</li>
+      <li>Febrero · 10.120 activaciones, 450 redenciones</li>
+      <li>Marzo · 11.960 activaciones, 4.600 registros</li></ul>
+    </div>
+  </div>
+  <div class="foot"><span>Detalle completo por pieza en el plan de acción</span><span><b>10</b></span></div>
+</div></div></section>
+
+<!-- 11 KPIS -->
+<section class="s"><div class="f"><div class="pad">
+  <div class="kick">Cómo se mide</div>
+  <h2>Tablero de KPIs · año uno</h2>
+  <div class="rule"></div>
+  <div class="g4" style="flex:0 0 auto">
+    <div class="c gold"><div class="lbl">Adopción</div><div class="big">30.200</div><div class="cap">suscripciones regalo activas</div></div>
+    <div class="c gold"><div class="lbl">Adopción</div><div class="big">25.000</div><div class="cap">registros en Beneficios</div></div>
+    <div class="c"><div class="lbl">Efectividad</div><div class="big">60.000</div><div class="cap">redenciones AON</div></div>
+    <div class="c"><div class="lbl">Oferta</div><div class="big">120</div><div class="cap">aliados activos y verificados</div></div>
+  </div>
+  <div class="g4" style="flex:0 0 auto;margin-top:.8rem">
+    <div class="c"><div class="lbl">Efectividad</div><div class="big">8</div><div class="cap">experiencias OBI · 600 asistentes</div></div>
+    <div class="c"><div class="lbl">Habilitador</div><div class="big">100%</div><div class="cap">aliados con aceptación verificada</div></div>
+    <div class="c"><div class="lbl">Marca</div><div class="big">+12</div><div class="cap">puntos de afinidad en gastronomía</div></div>
+    <div class="c navy"><div class="lbl">Negocio</div><div class="big">+15%</div><div class="cap">transacciones en el universo aceptado</div></div>
+  </div>
+  <div class="row" style="margin-top:.9rem;flex:0 0 auto">
+    <div class="c plain" style="flex:1"><div class="lbl">Regla de medición</div>
+      <p>No mezclar métricas de alcance con métricas de negocio en el mismo reporte. Gamma responde por alcance, adopción y efectividad. El crecimiento de tarjetas activas es responsabilidad de Davivienda.</p>
+    </div>
+    <div class="c wine" style="flex:1"><div class="lbl">Advertencia honesta</div>
+      <p>Las cifras de afinidad y de transacciones son propuestas, no proyecciones validadas. Hay que calibrarlas con la data transaccional real de Davivienda antes de comprometerlas en el acuerdo.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Medición por cohorte y por segmento</span><span><b>11</b></span></div>
+</div></div></section>
+
+<!-- 12 RIESGOS -->
+<section class="s"><div class="f"><div class="pad">
+  <div class="kick">Antes de enero</div>
+  <h2>Lo que puede <em>romper</em> el plan</h2>
+  <div class="rule"></div>
+  <div class="g3" style="flex:1">
+    <div class="c wine"><div class="lbl">Riesgo 1</div><h3>La aceptación en comercios</h3>
+      <p>Si el plan genera intención hacia comercios que no reciben la tarjeta, cada intento fallido destruye marca. Mitigación: comunicar solo sobre aliados verificados.</p></div>
+    <div class="c wine"><div class="lbl">Riesgo 2</div><h3>El newsletter</h3>
+      <p>El media kit reporta 400.000 contactos. Los envíos reales medidos fueron 22.000 y 11.000. No sustentar valor con la cifra del kit.</p></div>
+    <div class="c wine"><div class="lbl">Riesgo 3</div><h3>La pasarela de suscripciones</h3>
+      <p>Sigue rota: nueve personas llegaron a checkout con cero ingresos. Si la suscripción regalo genera demanda orgánica, no hay dónde capturarla.</p></div>
+    <div class="c"><div class="lbl">Riesgo 4</div><h3>Coherencia de Beneficios</h3>
+      <p>Decisiones abiertas y naming contradictorio en equipos paralelos. Cerrarlo antes de exponerlo a un tarjetahabiente.</p></div>
+    <div class="c"><div class="lbl">Riesgo 5</div><h3>Audiencias de Davivienda</h3>
+      <p>Sin resolver la viabilidad legal bajo Ley 1581 se pierde la audiencia de mayor retorno y la pauta se encarece.</p></div>
+    <div class="c"><div class="lbl">Riesgo 6</div><h3>Capacidad editorial</h3>
+      <p>Ocho OBI más cubrimiento mensual es carga real sobre el equipo. Validar antes de comprometer calendario.</p></div>
+  </div>
+  <div class="c gold" style="flex:0 0 auto;margin-top:.9rem">
+    <div class="lbl">Ventana de preparación · octubre a diciembre de 2026</div>
+    <p>Aprobación interna, cotización de las líneas abiertas, cierre de coherencia de Beneficios, arreglo de la pasarela, censo de aceptación de los aliados candidatos y encuesta de línea base. <b>Si eso no está listo, enero se corre.</b></p>
+  </div>
+  <div class="foot"><span>Riesgos identificados por Ediciones Gamma</span><span><b>12</b></span></div>
+</div></div></section>
+
+<!-- 13 CIERRE -->
+<section class="s"><div class="f on-dark" style="background:var(--navy)">
+  <div class="pad" style="flex:1.1;justify-content:space-between">
+    <div>
+      <div class="kick on-dark">Lo que proponemos</div>
+      <h2 style="font-size:clamp(1.5rem,3.2vw,2.7rem)">Diners no necesita<br>estar en todas partes.<br>Necesita <em>significar algo</em><br>en las que importan.</h2>
+    </div>
+    <div class="g3" style="flex:0 0 auto">
+      <div class="c" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.16)">
+        <div class="lbl" style="color:var(--gold-l)">Fase 1 · T1</div><p style="color:rgba(255,255,255,.84)">Definir Interesting Life y hacerlo imposible de ignorar</p></div>
+      <div class="c" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.16)">
+        <div class="lbl" style="color:var(--gold-l)">Fase 2 · T2 y T3</div><p style="color:rgba(255,255,255,.84)">Activar la estructura: carnet, aliados verificados y primeras OBI</p></div>
+      <div class="c" style="background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.16)">
+        <div class="lbl" style="color:var(--gold-l)">Fase 3 · T4</div><p style="color:rgba(255,255,255,.84)">Consolidar el hábito y documentar el año</p></div>
+    </div>
+    <div class="foot"><span>Carolina Ramirez · Head of Growth &amp; Business · Ediciones Gamma</span><span><b>13</b></span></div>
+  </div>
+  <div class="ph" style="flex:.8;--im:var(--img-cierre)"><div class="grain"></div>
+    <div class="in"><div class="q"><em>Interesting Life</em></div>
+    <div class="m">edicionesgamma.com</div></div>
+  </div>
+</div></section>
+
+</div>
+
+<div class="dots" id="dots"></div>
+<div class="pg" id="pg"></div>
+
+<script>
+(function(){
+  var deck=document.getElementById('deck'), ss=[].slice.call(document.querySelectorAll('.s'));
+  var dots=document.getElementById('dots'), pg=document.getElementById('pg');
+
+  /* si una variable de imagen tiene URL, se marca el panel para bajar el velo */
+  [].forEach.call(document.querySelectorAll('.ph'),function(p){
+    var v=getComputedStyle(p).getPropertyValue('--im').trim();
+    if(v && v!=='none') p.setAttribute('data-has','1');
+  });
+
+  ss.forEach(function(s,i){
+    var b=document.createElement('button'); b.title='Lámina '+(i+1);
+    b.addEventListener('click',function(){ s.scrollIntoView({behavior:'smooth'}); });
+    dots.appendChild(b);
+  });
+  var bs=[].slice.call(dots.children);
+  function mark(i){ bs.forEach(function(b,j){ b.className=j===i?'on':''; });
+    pg.innerHTML='<b>'+String(i+1).padStart(2,'0')+'</b> / '+String(ss.length).padStart(2,'0'); }
+  if(window.IntersectionObserver){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting) mark(ss.indexOf(e.target)); });
+    },{root:deck,threshold:.55});
+    ss.forEach(function(s){ io.observe(s); });
+  }
+  mark(0);
+  addEventListener('keydown',function(e){
+    var i=bs.findIndex(function(b){return b.className==='on';});
+    if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){ e.preventDefault(); if(ss[i+1]) ss[i+1].scrollIntoView({behavior:'smooth'}); }
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp'){ e.preventDefault(); if(ss[i-1]) ss[i-1].scrollIntoView({behavior:'smooth'}); }
+    if(e.key==='Home'){ e.preventDefault(); ss[0].scrollIntoView({behavior:'smooth'}); }
+    if(e.key==='End'){ e.preventDefault(); ss[ss.length-1].scrollIntoView({behavior:'smooth'}); }
+  });
+})();
+</script>
+</body>
+</html>
