@@ -24,7 +24,7 @@ confidence: medium
 
 > **For future Claude:** esto no es un detalle de contexto, es una restricción de diseño. Nunca propongas para DCI mensajes de uso genérico tipo "úsala en todos tus restaurantes". Una tarjeta rechazada en una cena destruye más marca que una tarjeta que nunca se intentó. Toda comunicación de uso debe apuntar a comercios con aceptación verificada. Bold y Credibanco son redes adquirentes, no banca competidora, así que no aplica la regla de exclusión del Grupo Bolívar.
 
-**La jugada:** competir por ubicuidad está perdido de entrada, y además es imposible. La inversa es convertir la limitación en el posicionamiento: menos lugares, pero los correctos, con beneficio y con aceptación garantizada. Eso es curaduría. Ocupar el territorio de experiencias con *Interesting Life*, usando el único activo que ninguna franquicia rival tiene en Colombia: una revista homónima de 60 años con 146.000 suscriptores del mismo perfil.
+**La jugada:** pelear por estar en todas partes es una pelea perdida, y además imposible. La inversa es convertir la limitación en el posicionamiento: menos lugares, pero los correctos, con beneficio y con aceptación garantizada. Eso es curaduría. Ocupar el territorio de experiencias con *Interesting Life*, usando el único activo que ninguna franquicia rival tiene en Colombia: una revista homónima de 60 años con 146.000 suscriptores del mismo perfil.
 
 La red de aliados deja de ser solo un catálogo de descuentos y pasa a ser **el mapa de aceptación**. Verificar que el aliado tenga Diners activa en el datáfono es requisito de entrada al programa, no un chequeo posterior.
 
