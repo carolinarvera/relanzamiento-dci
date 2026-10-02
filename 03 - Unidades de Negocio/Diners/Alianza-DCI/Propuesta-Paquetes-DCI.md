@@ -156,25 +156,31 @@ El paquete B, más la trayectoria que siguió Ecuador.
 | OBI | 3 | 8 | 8 ampliadas |
 | Dato propio | Sí | Sí, a escala | Sí, a escala |
 
-## Time Well Spent · decisiones ya tomadas y lo que falta
+## Diners Collections · decisiones ya tomadas y lo que falta
 
-**Formato (decidido por Carolina, 2026-10-01).** El cuadernillo mensual se reemplaza por **Time Well Spent**, una sección fija en las últimas páginas de cada edición, con descuento adicional condicionado a pagar con la tarjeta. El compendio coleccionable se produce una vez al año, en noviembre.
+**Formato (decidido por Carolina, 2026-10-01).** El cuadernillo mensual se reemplaza por **Diners Collections**, una sección fija en las últimas páginas de cada edición, con descuento adicional condicionado a pagar con la tarjeta. El compendio coleccionable se produce una vez al año, en noviembre.
 
 **Inventario (resuelto).** Es una **sección nueva y complementaria** al programa de beneficios, no sale del inventario que se le vende a anunciantes. No hay canibalización de display, así que no compite con la línea del forecast.
 
-**Regla editorial no negociable.** La entrada a Time Well Spent la define el editor. Pagar amplía la ficha (tamaño, foto, destacado), no compra el lugar. Sin esa regla la sección se lee como publirreportaje y se cae el diferencial completo de Collections, que es ser criterio y no pauta.
+**Regla editorial no negociable.** La entrada a Diners Collections la define el editor. Pagar amplía la ficha (tamaño, foto, destacado), no compra el lugar. Sin esa regla la sección se lee como publirreportaje y se cae el diferencial completo de Collections, que es ser criterio y no pauta.
 
 > **For future Claude:** Carolina rechazó explícitamente que se le diera la razón sin análisis. En decisiones de formato y de negocio, presentar pros, contras y el riesgo que la propuesta no contempla, y recién después recomendar.
 
 **Pendiente de costear:** paginación incremental. Una sección nueva son páginas adicionales de papel e impresión en 12 ediciones. Es menor que perder inventario de display, pero no es cero y hoy no está en el presupuesto.
 
-**Nombre aprobado (2026-10-01): Time Well Spent.**
+**Nombre aprobado (2026-10-01): Collections, en material siempre como Diners Collections.**
+
+Decisión de Carolina. Es la palabra que el propio cliente usó en su direccionamiento, así que llega reconocida y no hay que instalarla.
+
+> **RIESGO ABIERTO:** *The Mastercard Collection* es un programa vivo del competidor directo en Colombia, junto con World Legend y Priceless. Usar Collections nos sitúa en su terreno nominal. Mitigación acordada: nunca escribirlo suelto, siempre **Diners Collections**. Si Mastercard escala su programa, reevaluar.
+
+Descartados en el proceso: *La Lista* (plano, incluye en vez de excluir), *The Reserve* y *The Table* (encerrados en gastronomía), *The Circle* (territorio común de lealtad), *The Art of Living* (dominio público), *Time Well Spent* (recomendado por criterio de recurso escaso, descartado por el cliente).
 
 Criterio de decisión: el arquetipo tiene patrimonio consolidado, así que su recurso escaso es el tiempo, no el dinero. Un programa que cura dónde gastar dinero compite con Visa y Mastercard donde ellas ganan; uno que cura dónde invertir tiempo compite donde no están. Reencuadra el beneficio de *ahorre en esta cuenta* a *esto merece su tiempo*, que es la única forma de que un descuento no convierta a Diners en una franquicia de descuentos.
 
 Descartados: *La Lista* (plano, incluye en vez de excluir), *The Reserve* y *The Table* (encerrados en gastronomía, el territorio es más amplio), *The Circle* (territorio común de programas de lealtad), *The Art of Living* (dominio público, no apropiable). Segunda opción conservada: *Moments of Interest*, por el doble sentido de *interest* en una franquicia de crédito.
 
-**Pendiente de aprobar:** nada del nombre. "Time Well Spent" es provisional. Encadena con el sello en la vitrina ("Este lugar está en Time Well Spent"). Alternativas descartadas por menos apropiables: "Las Mesas Interesting Life", "El Directorio Interesting Life".
+**Pendiente de aprobar:** nada del nombre. "Diners Collections" es provisional. Encadena con el sello en la vitrina ("Este lugar está en Diners Collections"). Alternativas descartadas por menos apropiables: "Las Mesas Interesting Life", "El Directorio Interesting Life".
 
 ## Lo que hay que resolver antes de enviar
 
