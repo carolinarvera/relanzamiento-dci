@@ -18,6 +18,9 @@ confidence: medium
 
 ## 0. La decisión en una página
 
+
+> **ALCANCE REVISADO 2026-10-02.** El programa se llama **Mesa Diners Club** y su sección editorial **La Mesa Diners**. Cobertura año uno: **solo Bogotá**, día fijo semanal, restaurantes con datáfono verificado. Oferta: suscripción con **60% de beneficio**, no regalo. Meta ancla: **920 suscripciones**, el 5% de los 18.400 Black. Toda cifra mayor en este documento es de la versión anterior y está superada. El año uno es piloto, no despliegue.
+
 **El problema real son dos problemas.** DCI no tiene un problema de capacidad de gasto: tiene 169K tarjetahabientes con ingreso promedio de $10.4M y ticket de $295K que usan la tarjeta para débitos automáticos. Lo que falta es (1) una razón para sacarla en el momento de pagar y (2) la certeza de que al sacarla se la reciban.
 
 **Restricción estructural de aceptación.** Diners y American Express son las franquicias menos aceptadas por el comercio en Colombia. Tres causas: Visa y Mastercard tienen mucho mayor base de tarjetahabientes y el comerciante las prioriza; habilitar Diners exige un trámite adicional con la red de pagos o con Davivienda, que al comercio pequeño y mediano no le resulta rentable; y la menor rotación no justifica el costo operativo extra. Redes modernas como Bold la integraron en 2023, pero mucho comercio tradicional sigue sin activarla.

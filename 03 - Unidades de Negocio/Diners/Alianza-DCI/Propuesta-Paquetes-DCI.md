@@ -156,23 +156,23 @@ El paquete B, más la trayectoria que siguió Ecuador.
 | OBI | 3 | 8 | 8 ampliadas |
 | Dato propio | Sí | Sí, a escala | Sí, a escala |
 
-## Diners Collections · decisiones ya tomadas y lo que falta
+## Mesa Diners Club · decisiones ya tomadas y lo que falta
 
-**Formato (decidido por Carolina, 2026-10-01).** El cuadernillo mensual se reemplaza por **Diners Collections**, una sección fija en las últimas páginas de cada edición, con descuento adicional condicionado a pagar con la tarjeta. El compendio coleccionable se produce una vez al año, en noviembre.
+**Formato (decidido por Carolina, 2026-10-01).** El cuadernillo mensual se reemplaza por **Mesa Diners Club**, una sección fija en las últimas páginas de cada edición, con descuento adicional condicionado a pagar con la tarjeta. El compendio coleccionable se produce una vez al año, en noviembre.
 
 **Inventario (resuelto).** Es una **sección nueva y complementaria** al programa de beneficios, no sale del inventario que se le vende a anunciantes. No hay canibalización de display, así que no compite con la línea del forecast.
 
-**Regla editorial no negociable.** La entrada a Diners Collections la define el editor. Pagar amplía la ficha (tamaño, foto, destacado), no compra el lugar. Sin esa regla la sección se lee como publirreportaje y se cae el diferencial completo de Collections, que es ser criterio y no pauta.
+**Regla editorial no negociable.** La entrada a Mesa Diners Club la define el editor. Pagar amplía la ficha (tamaño, foto, destacado), no compra el lugar. Sin esa regla la sección se lee como publirreportaje y se cae el diferencial completo de Collections, que es ser criterio y no pauta.
 
 > **For future Claude:** Carolina rechazó explícitamente que se le diera la razón sin análisis. En decisiones de formato y de negocio, presentar pros, contras y el riesgo que la propuesta no contempla, y recién después recomendar.
 
 **Pendiente de costear:** paginación incremental. Una sección nueva son páginas adicionales de papel e impresión en 12 ediciones. Es menor que perder inventario de display, pero no es cero y hoy no está en el presupuesto.
 
-**Nombre aprobado (2026-10-01): Collections, en material siempre como Diners Collections.**
+**Nombre aprobado (2026-10-01): Collections, en material siempre como Mesa Diners Club.**
 
 Decisión de Carolina. Es la palabra que el propio cliente usó en su direccionamiento, así que llega reconocida y no hay que instalarla.
 
-> **RIESGO ABIERTO:** *The Mastercard Collection* es un programa vivo del competidor directo en Colombia, junto con World Legend y Priceless. Usar Collections nos sitúa en su terreno nominal. Mitigación acordada: nunca escribirlo suelto, siempre **Diners Collections**. Si Mastercard escala su programa, reevaluar.
+> **RIESGO ABIERTO:** *The Mastercard Collection* es un programa vivo del competidor directo en Colombia, junto con World Legend y Priceless. Usar Collections nos sitúa en su terreno nominal. Mitigación acordada: nunca escribirlo suelto, siempre **Mesa Diners Club**. Si Mastercard escala su programa, reevaluar.
 
 Descartados en el proceso: *La Lista* (plano, incluye en vez de excluir), *The Reserve* y *The Table* (encerrados en gastronomía), *The Circle* (territorio común de lealtad), *The Art of Living* (dominio público), *Time Well Spent* (recomendado por criterio de recurso escaso, descartado por el cliente).
 
@@ -180,7 +180,35 @@ Criterio de decisión: el arquetipo tiene patrimonio consolidado, así que su re
 
 Descartados: *La Lista* (plano, incluye en vez de excluir), *The Reserve* y *The Table* (encerrados en gastronomía, el territorio es más amplio), *The Circle* (territorio común de programas de lealtad), *The Art of Living* (dominio público, no apropiable). Segunda opción conservada: *Moments of Interest*, por el doble sentido de *interest* en una franquicia de crédito.
 
-**Pendiente de aprobar:** nada del nombre. "Diners Collections" es provisional. Encadena con el sello en la vitrina ("Este lugar está en Diners Collections"). Alternativas descartadas por menos apropiables: "Las Mesas Interesting Life", "El Directorio Interesting Life".
+**Pendiente de aprobar:** nada del nombre. "Mesa Diners Club" es provisional. Encadena con el sello en la vitrina ("Este lugar está en Mesa Diners Club"). Alternativas descartadas por menos apropiables: "Las Mesas Interesting Life", "El Directorio Interesting Life".
+
+
+## ALCANCE DEFINITIVO (2026-10-02) — reemplaza todo lo anterior
+
+Carolina cerró el alcance tras editar el deck. Esto manda sobre cualquier cifra previa en este documento.
+
+| Decisión | Valor |
+|---|---|
+| Nombre del programa | **Mesa Diners Club** |
+| Nombre de la sección editorial | **La Mesa Diners** |
+| Cobertura año 1 | **Solo Bogotá** |
+| Frecuencia | Día fijo semanal, **miércoles** |
+| Requisito de aliado | Datáfono con Diners verificado |
+| Condición | Reserva obligatoria |
+| Oferta de suscripción | **60% de beneficio** sobre la suscripción, no regalo |
+| Meta de suscripciones | **920** (5% de los 18.400 Black) |
+
+**Cifras derivadas, con supuestos declarados y pendientes de confirmar:**
+registros 640 (70% de activación), redenciones 2.560 (4 por registro activo al año), aliados 40, OBI 6 eventos con 150 invitados (25 por evento).
+
+> **For future Claude:** el año uno es **piloto, no despliegue**. Cualquier cifra de 30.200 suscripciones, 25.000 registros, 60.000 redenciones, 120 aliados o 600 asistentes es de una versión anterior y está mal. El ancla única es 920.
+
+**Errores detectados en el deck de Carolina, pendientes de corregir por ella:**
+1. La lámina de Experiencias OBI tiene copiado el contenido de Mesa Diners Club. Las dos columnas repiten beneficio porcentual, miércoles, datáfono y reserva, e incluso el encabezado "LA MESA DINERS". OBI debe hablar de cupo limitado, invitación y lo que no se compra.
+2. La lámina 08 se titula "Experiencias OBI" y es la de opciones. Hay dos versiones incompletas, una con Especial / Colección / Insignia y otra con Presupuesto.
+3. La portada dice "Diners Club internacional", en minúscula y en español. Es Diners Club International.
+
+**Riesgo abierto:** el día elegido, miércoles, es exactamente el de Modo Tasty en Ecuador. Si el cliente lo nota puede leerse como copia. Alternativa propuesta y no resuelta: jueves, que además es mejor día de restaurante en Bogotá.
 
 ## Lo que hay que resolver antes de enviar
 
