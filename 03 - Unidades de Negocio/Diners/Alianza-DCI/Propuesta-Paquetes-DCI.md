@@ -156,6 +156,20 @@ El paquete B, más la trayectoria que siguió Ecuador.
 | OBI | 3 | 8 | 8 ampliadas |
 | Dato propio | Sí | Sí, a escala | Sí, a escala |
 
+## La Lista · decisiones ya tomadas y lo que falta
+
+**Formato (decidido por Carolina, 2026-10-01).** El cuadernillo mensual se reemplaza por **La Lista**, una sección fija en las últimas páginas de cada edición, con descuento adicional condicionado a pagar con la tarjeta. El compendio coleccionable se produce una vez al año, en noviembre.
+
+**Inventario (resuelto).** Es una **sección nueva y complementaria** al programa de beneficios, no sale del inventario que se le vende a anunciantes. No hay canibalización de display, así que no compite con la línea del forecast.
+
+**Regla editorial no negociable.** La entrada a La Lista la define el editor. Pagar amplía la ficha (tamaño, foto, destacado), no compra el lugar. Sin esa regla la sección se lee como publirreportaje y se cae el diferencial completo de Collections, que es ser criterio y no pauta.
+
+> **For future Claude:** Carolina rechazó explícitamente que se le diera la razón sin análisis. En decisiones de formato y de negocio, presentar pros, contras y el riesgo que la propuesta no contempla, y recién después recomendar.
+
+**Pendiente de costear:** paginación incremental. Una sección nueva son páginas adicionales de papel e impresión en 12 ediciones. Es menor que perder inventario de display, pero no es cero y hoy no está en el presupuesto.
+
+**Pendiente de aprobar:** el nombre. "La Lista · Interesting Life" es provisional. Encadena con el sello en la vitrina ("Este lugar está en La Lista"). Alternativas descartadas por menos apropiables: "Las Mesas Interesting Life", "El Directorio Interesting Life".
+
 ## Lo que hay que resolver antes de enviar
 
 1. **Confirmar qué entienden por Collections.** Es la única ambigüedad del brief.
