@@ -156,19 +156,25 @@ El paquete B, más la trayectoria que siguió Ecuador.
 | OBI | 3 | 8 | 8 ampliadas |
 | Dato propio | Sí | Sí, a escala | Sí, a escala |
 
-## La Lista · decisiones ya tomadas y lo que falta
+## Time Well Spent · decisiones ya tomadas y lo que falta
 
-**Formato (decidido por Carolina, 2026-10-01).** El cuadernillo mensual se reemplaza por **La Lista**, una sección fija en las últimas páginas de cada edición, con descuento adicional condicionado a pagar con la tarjeta. El compendio coleccionable se produce una vez al año, en noviembre.
+**Formato (decidido por Carolina, 2026-10-01).** El cuadernillo mensual se reemplaza por **Time Well Spent**, una sección fija en las últimas páginas de cada edición, con descuento adicional condicionado a pagar con la tarjeta. El compendio coleccionable se produce una vez al año, en noviembre.
 
 **Inventario (resuelto).** Es una **sección nueva y complementaria** al programa de beneficios, no sale del inventario que se le vende a anunciantes. No hay canibalización de display, así que no compite con la línea del forecast.
 
-**Regla editorial no negociable.** La entrada a La Lista la define el editor. Pagar amplía la ficha (tamaño, foto, destacado), no compra el lugar. Sin esa regla la sección se lee como publirreportaje y se cae el diferencial completo de Collections, que es ser criterio y no pauta.
+**Regla editorial no negociable.** La entrada a Time Well Spent la define el editor. Pagar amplía la ficha (tamaño, foto, destacado), no compra el lugar. Sin esa regla la sección se lee como publirreportaje y se cae el diferencial completo de Collections, que es ser criterio y no pauta.
 
 > **For future Claude:** Carolina rechazó explícitamente que se le diera la razón sin análisis. En decisiones de formato y de negocio, presentar pros, contras y el riesgo que la propuesta no contempla, y recién después recomendar.
 
 **Pendiente de costear:** paginación incremental. Una sección nueva son páginas adicionales de papel e impresión en 12 ediciones. Es menor que perder inventario de display, pero no es cero y hoy no está en el presupuesto.
 
-**Pendiente de aprobar:** el nombre. "La Lista · Interesting Life" es provisional. Encadena con el sello en la vitrina ("Este lugar está en La Lista"). Alternativas descartadas por menos apropiables: "Las Mesas Interesting Life", "El Directorio Interesting Life".
+**Nombre aprobado (2026-10-01): Time Well Spent.**
+
+Criterio de decisión: el arquetipo tiene patrimonio consolidado, así que su recurso escaso es el tiempo, no el dinero. Un programa que cura dónde gastar dinero compite con Visa y Mastercard donde ellas ganan; uno que cura dónde invertir tiempo compite donde no están. Reencuadra el beneficio de *ahorre en esta cuenta* a *esto merece su tiempo*, que es la única forma de que un descuento no convierta a Diners en una franquicia de descuentos.
+
+Descartados: *La Lista* (plano, incluye en vez de excluir), *The Reserve* y *The Table* (encerrados en gastronomía, el territorio es más amplio), *The Circle* (territorio común de programas de lealtad), *The Art of Living* (dominio público, no apropiable). Segunda opción conservada: *Moments of Interest*, por el doble sentido de *interest* en una franquicia de crédito.
+
+**Pendiente de aprobar:** nada del nombre. "Time Well Spent" es provisional. Encadena con el sello en la vitrina ("Este lugar está en Time Well Spent"). Alternativas descartadas por menos apropiables: "Las Mesas Interesting Life", "El Directorio Interesting Life".
 
 ## Lo que hay que resolver antes de enviar
 
