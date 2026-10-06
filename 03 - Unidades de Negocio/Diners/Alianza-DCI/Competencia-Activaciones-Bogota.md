@@ -160,3 +160,84 @@ El espectáculo se recuerda una semana. La marca en la vitrina acompaña cada de
 
 **Está como lámina de benchmark en la propuesta.** Es el argumento de eficiencia más claro que tenemos frente a un presupuesto que no alcanza para activaciones de recinto.
 
+---
+
+## 8. Nubank: cómo se compra visibilidad sin presupuesto de patrocinio
+
+| Jugada | Qué hace |
+|---|---|
+| **Festival Brilla Bogotá** | Alianza principal de la temporada navideña. Preventa, 30% de descuento en entrada y **Fast Pass morado** para entrar sin fila. Pista de hielo y Zona Nu con luces, fotos y bebidas calientes |
+| **Monserrate iluminado** | Toma simbólica de un hito de la ciudad bajo el concepto de desmonopolizar las finanzas |
+| **Gamificación** | Trivias de educación financiera con premios, referidos, pop-ups en zonas universitarias y rosas con merchandising morado |
+
+### La idea que sí nos sirve: el Fast Pass
+
+Nubank entrega dos cosas en Brilla: descuento en la entrada y **carril exprés para no hacer fila**. La segunda cuesta casi nada a la marca, porque el recinto concede el carril, y vale más que la primera para quien tiene con qué pagar la entrada.
+
+**Para un Clubmember de 45 a 55 años con patrimonio consolidado, el recurso escaso es el tiempo, no el dinero.** Una mesa garantizada sin espera vale más que un porcentaje sobre la cuenta, y le cuesta menos al aliado que un descuento profundo.
+
+**Recomendación aplicada:** el beneficio de Mesa Diners Club deja de ser solo un porcentaje y pasa a incluir **mesa garantizada**. Resuelve tres cosas a la vez: diferencia de un descuento genérico, encaja con el perfil, y baja el costo para el aliado, que es quien paga.
+
+### La segunda lección: cada competidor es dueño de algo
+
+| Marca | De qué es dueña |
+|---|---|
+| Visa | Los festivales masivos y el Mundial |
+| Mastercard | El fútbol local y la mesa de prestigio |
+| Nubank | La Navidad en Bogotá y el color morado |
+| **Diners** | **Nada, todavía** |
+
+Las tres compraron un símbolo, una temporada o un territorio, y lo repiten. Diners no tiene ninguno.
+
+**Lo que sí puede ser suyo, y es más barato:** un día de la semana. Nubank es dueña de diciembre, una vez al año. El día fijo de Mesa Diners Club ocurre **cincuenta y dos veces**. La propiedad por repetición cuesta menos que la propiedad por patrocinio y se acumula.
+
+### Lo que descartamos de Nubank
+
+Trivias con premios, referidos gamificados, pop-ups universitarios y merchandising de ropa. Son correctos para su público joven y masivo, y están a dos generaciones del nuestro.
+
+---
+
+## 9. Visa: el detalle, y una corrección a la sección anterior
+
+| Jugada | Qué hace |
+|---|---|
+| **Gira del Trofeo FIFA** | Exhibición del trofeo en Bogotá con **Grupo Aval y Banco de Bogotá**. Acceso por sorteo entre compras registradas |
+| **El Palco Antenna** | Fan zones en puntos de Bogotá con descuentos en gastronomía y Golden Tickets al Mundial |
+| **Arco interactivo** | Penal contra un profesional en centros comerciales y eventos corporativos, con producto oficial FIFA como premio |
+| **Estéreo Picnic y Movistar Arena** | Ecosistema cien por ciento sin efectivo, stands interactivos y zonas VIP de descanso |
+| **Tap to Pay** | Quien paga sin contacto recibe **fila rápida o cashback** |
+
+### La corrección: el Fast Pass ya es estándar de categoría
+
+En la sección anterior propuse la mesa garantizada tomando el Fast Pass de Nubank como idea diferencial. **Visa también lo usa**, en festivales y con Tap to Pay. Dos de tres competidores entregan el mismo mecanismo.
+
+La mesa garantizada sigue siendo correcta para nuestro perfil, y hay que dejar de presentarla como hallazgo. Lo que sí es distinto es **dónde** se aplica.
+
+| | Dónde lo usan ellos | Dónde lo usamos nosotros |
+|---|---|---|
+| Fast Pass | Entrada a un festival, una vez al año | Una mesa, todas las semanas |
+| Contexto | Multitud, fila, evento | Reserva, lugar escogido, rutina |
+
+Ellos resuelven una fila. Nosotros entregamos un lugar reservado en un sitio que ya pasó por un criterio. Es el mismo mecanismo en un contexto que no comparten.
+
+### El patrón que une a los tres
+
+Esta es la lectura que vale para toda la propuesta.
+
+| Marca | Qué compra | Duración |
+|---|---|---|
+| Mastercard | Puertas en centros comerciales | Cuatro días |
+| Nubank | La Navidad y Monserrate | Una temporada |
+| Visa | El Mundial y los festivales | Un evento |
+
+**Los tres compran momentos. Ninguno construye rutinas.**
+
+Un trofeo pasa por Bogotá una vez. Un festival dura un fin de semana. Una Navidad dura un mes. Todo lo que proponemos ocurre cada semana o cada mes, durante doce meses: el día fijo, la sección de la revista, el sello en la vitrina.
+
+No podemos competir por el momento. Podemos ser los únicos en la rutina, y para una tarjeta que necesita salir de la billetera con frecuencia, la rutina es lo que importa.
+
+### Una nota sobre los aliados bancarios
+
+Visa activa en Colombia con Grupo Aval y Banco de Bogotá. Son emisores que están fuera del perímetro del Grupo Bolívar, así que no son interlocutores posibles, pero el dato sirve para dimensionar: **el músculo de activación de Visa en el país viene en parte de alianzas con emisores que Diners no necesita, porque Diners es franquicia exclusiva de un solo banco.**
+
+Esa exclusividad es una ventaja que no estamos nombrando en la propuesta: todo el presupuesto de la franquicia se concentra en un solo emisor, en lugar de repartirse entre varios.
