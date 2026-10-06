@@ -96,16 +96,18 @@ Deja la puerta abierta. *Saber dónde* sirve para una mesa, para un hotel y para
 
 ## El plan de 12 semanas
 
-Diseñado sobre la Opción A. Cuatro bloques de tres semanas, cada uno con un trabajo distinto.
+Diseñado sobre la Opción A. Doce semanas que arrancan con la firma, no en un mes del calendario. Cuatro bloques de tres semanas, cada uno con un trabajo distinto.
+
+Tres meses es también la duración correcta para lo que falta por resolver: el presupuesto anual no está confirmado y las acciones no están costeadas. Un trimestre se puede firmar hoy y deja el año abierto.
 
 ### Lógica de la secuencia
 
-| Bloque | Semanas | Trabajo |
-|---|---|---|
-| Instalación | 1 a 3 | Que la marca vuelva a existir en la conversación |
-| Demostración | 4 a 6 | Que el criterio se vea, no se declare |
-| Prueba | 7 a 9 | Que haya evidencia de terceros |
-| Conversión | 10 a 12 | Que haya una ruta clara a pedir la tarjeta |
+| Bloque | Semanas | Mes | Trabajo |
+|---|---|---|---|
+| Instalación | 1 a 3 | Mes 1 | Que la marca vuelva a existir en la conversación |
+| Demostración | 4 a 6 | Mes 2 | Que el criterio se vea, no se declare |
+| Prueba | 7 a 9 | Mes 3 | Que haya evidencia de terceros |
+| Conversión | 10 a 12 | Mes 3 | Que haya una ruta clara a pedir la tarjeta |
 
 ### Semana a semana
 
@@ -152,9 +154,23 @@ El único indicador que cierra el negocio es el último. Los tres anteriores exp
 
 ---
 
+---
+
+## Qué sigue después de las doce semanas
+
+El trimestre no es un piloto suelto. Deja tres cosas construidas que el año siguiente necesita.
+
+| Lo que queda construido | Para qué sirve después |
+|---|---|
+| El posicionamiento instalado y medido | Entra al año con una línea base de recordación, no desde cero |
+| La red de aliados verificados | Es el catálogo que el programa de beneficios necesita para existir |
+| El primer dato propio de conversión | Permite dimensionar el presupuesto anual con un costo por solicitud real, no estimado |
+
+**La decisión del año se toma con datos de la semana 12**, no con proyecciones. Esa es la razón de fondo para empezar por un trimestre: hoy no hay con qué defender un compromiso de doce meses, y en tres meses sí lo habrá.
+
 ## Lo que falta para cerrar esto
 
 1. **Tarifas de medios externos.** Las de Gamma están cerradas. Meta, Google, programática, CTV y LinkedIn necesitan cotización. Sin eso, los porcentajes son estructura, no presupuesto.
-2. **Confirmar la ventana.** El plan está diseñado para enero a marzo de 2027, alineado al arranque de la campaña LATAM. Si se usa el presupuesto retroactivo de 2026, se comprime a octubre-diciembre.
+2. **Fijar la fecha de arranque.** El plan corre doce semanas desde la firma, sin depender del mes. Lo único que cambia con la fecha es la temporada gastronómica de la semana 4 y el calendario de la experiencia de la semana 9.
 3. **El censo de aceptación.** Las semanas 7 y 10 dependen de tener aliados verificados. Si no están, esas dos semanas se caen.
 4. **La aprobación del posicionamiento.** Todo el plan está construido sobre la Opción A. Cambiar de opción cambia el contenido de las 12 semanas, no la estructura.
