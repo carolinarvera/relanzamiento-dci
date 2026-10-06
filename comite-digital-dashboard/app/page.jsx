@@ -1040,7 +1040,6 @@ export default function Dashboard() {
                           return <Cell key={h.hour} fill={h.vistas === max ? T.highlight : T.accent} />;
                         })}
                       </Bar>
-                      <Bar dataKey="sesiones" name="Sesiones" fill="#333333" legendType="square" />
                       <Bar dataKey="vistasPrev" name="Vistas mes anterior" fill="#c9c2b8" legendType="square" />
                     </BarChart>
                   </ResponsiveContainer>
