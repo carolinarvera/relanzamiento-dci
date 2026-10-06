@@ -126,3 +126,37 @@ Queda libre, y encaja con nuestro activo: **la gastronomía de criterio, fuera d
 2. **La lámina del sello.** Agregar el contraste con la activación de recinto, que es el argumento de eficiencia más fuerte que tenemos.
 3. **La semana 9 de la campaña.** El cubrimiento de la experiencia debe mostrar un lugar desconocido, no un chef famoso. Si la primera experiencia es con un nombre reconocido, confirmamos la comparación con Mastercard en la primera salida.
 4. **Pendiente de verificar.** Esta información llegó sin fuente citada. Antes de usarla frente al cliente conviene confirmar el patrocinio de Mastercard a BogotáEats y el acuerdo con Inter Bogotá.
+
+---
+
+## 7. Caso de referencia: Abriendo Puertas, Mastercard Colombia
+
+Campaña experiencial regional lanzada en Colombia en **junio de 2025**, enfocada en Mastercard Débito.
+
+| | |
+|---|---|
+| Mecánica | Puertas gigantes con lector NFC que se abren acercando la tarjeta |
+| Dinámica | Juego de realidad virtual y puntos canjeables por experiencias |
+| Duración | **Cuatro días**, de 10 de la mañana a 6 de la tarde |
+| Ubicación | Fontanar y Centro Mayor en Bogotá, El Tesoro en Medellín, Buenavista II en Barranquilla |
+| Apoyo | Embajadores de marca explicando los beneficios de la tarjeta |
+| Público | Masivo, con foco en débito |
+
+**La frase de la dirección de marketing:** *"Los beneficios no solo se cuentan, se viven."*
+
+### Qué nos dice
+
+**El problema de comprensión es de toda la categoría.** Mastercard, con presupuesto de patrocinio global, monta puertas gigantes y pone embajadores a explicar qué da la tarjeta. Es el mismo problema que mide el Brand Health Tracker de Diners entre prospectos.
+
+**La solución que escogen es hacer el beneficio físico.** La puerta funciona como metáfora del acceso: un objeto que se abre con la tarjeta. Esa es la idea transferible, no la ejecución.
+
+**Y confirma el movimiento de Mastercard hacia abajo.** Esta campaña es de débito y de público masivo. Refuerza que el Clubmember clásico de 45 a 55 años está quedando desatendido.
+
+### Cómo lo usamos
+
+El sello en vitrina es la misma idea a otra escala. Ellos alquilan cuatro puertas durante cuatro días en centros comerciales; nosotros marcamos cuarenta entradas durante doce meses, en el punto donde se decide con qué tarjeta pagar.
+
+El espectáculo se recuerda una semana. La marca en la vitrina acompaña cada decisión de pago del año.
+
+**Está como lámina de benchmark en la propuesta.** Es el argumento de eficiencia más claro que tenemos frente a un presupuesto que no alcanza para activaciones de recinto.
+
