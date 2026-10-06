@@ -59,10 +59,11 @@ async function accountCampaigns(account, token, range) {
     access_token: token,
   });
   if (!rows.length) return { cur: [], prev: [] };
-  const camps = await paged(`https://graph.facebook.com/v19.0/${account.id}/campaigns`, { fields: 'id,objective,effective_status,created_time', limit: 500, access_token: token }).catch(() => []);
+  const camps = await paged(`https://graph.facebook.com/v19.0/${account.id}/campaigns`, { fields: 'id,objective,effective_status,created_time,stop_time', limit: 500, access_token: token }).catch(() => []);
   const objective = Object.fromEntries(camps.map((c) => [c.id, c.objective]));
   const effStatus = Object.fromEntries(camps.map((c) => [c.id, c.effective_status]));
   const createdTime = Object.fromEntries(camps.map((c) => [c.id, c.created_time]));
+  const stopTime = Object.fromEntries(camps.map((c) => [c.id, c.stop_time]));
   const shaped = rows
     .filter((r) => effStatus[r.campaign_id] === 'ACTIVE')
     .map((r) => {
@@ -86,6 +87,7 @@ async function accountCampaigns(account, token, range) {
         linkClicks: Number(r.inline_link_clicks || 0),
         results,
         createdTime: createdTime[r.campaign_id] ? createdTime[r.campaign_id].slice(0, 10) : null,
+        running: !stopTime[r.campaign_id] || Date.parse(stopTime[r.campaign_id]) > Date.now(),
         isPrev: r.date_start === range.prevStart,
       };
     });

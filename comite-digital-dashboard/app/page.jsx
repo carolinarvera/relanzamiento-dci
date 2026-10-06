@@ -2340,7 +2340,7 @@ export default function Dashboard() {
         const aoSeguidores = list.filter((c) => isAO(c) && isFollow(c));
         const editorial = list.filter(isEditorial).filter((c) => c.linkClicks > 0);
         const rankedEditorial = editorial.slice().sort((x, y) => (x.spend / x.linkClicks) - (y.spend / y.linkClicks));
-        const worstEditorial = rankedEditorial.slice(-5).reverse();
+        const worstEditorial = rankedEditorial.filter((c) => c.running !== false).slice(-5).reverse();
         const byPlatform = (grp, re) => grp.filter((c) => re.test(c.name));
         const editorialFB = byPlatform(rankedEditorial, /facebook/i);
         const editorialIG = byPlatform(rankedEditorial, /instagram/i);
@@ -2687,7 +2687,7 @@ export default function Dashboard() {
             {miniTable(bestEditorialFB, 'Top 5 campañas con mejor rendimiento · Facebook (solo editorial)', 'Ordenadas por menor costo por clic en enlace. Solo campañas editoriales (excluye content de clientes y always on).', editorialFB)}
 
             {/* Fila 6: top 5 peor rendimiento (editorial) */}
-            {miniTable(worstEditorial, 'Top 5 campañas con peor rendimiento (solo editorial)', 'Ordenadas por mayor costo por clic en enlace. Solo campañas editoriales.')}
+            {miniTable(worstEditorial, 'Top 5 campañas con peor rendimiento (solo editorial)', 'Ordenadas por mayor costo por clic en enlace. Solo campañas editoriales activas hoy (no pausadas ni con fecha de fin vencida).')}
 
             {/* Fila 7: calidad GA4 (editorial) */}
             {gaQuality(editorial)}
