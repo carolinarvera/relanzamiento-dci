@@ -156,7 +156,25 @@ El único indicador que cierra el negocio es el último. Los tres anteriores exp
 
 ---
 
-## Qué sigue después de las doce semanas
+---
+
+## Dónde encaja este trimestre en el plan completo
+
+El plan tiene tres fases. Las doce semanas de este documento son la fase 3 del primer trimestre, y dependen de que la fase 1 esté cerrada.
+
+| Fase | Qué cubre | Horizonte |
+|---|---|---|
+| **1 · Planeación** | Posicionamiento, arquetipos, censo de aceptación, línea base, KPIs acordados con Davivienda | Previa al arranque |
+| **2 · Generación de alianzas** | Negociación con comercios, verificación de datáfono, modelo de visibilidad pagada, sello, selección editorial | **Los doce meses**, con el primer trimestre en detalle |
+| **3 · Puesta en marcha** | La campaña, la sección mensual, las experiencias y el reporte | Trimestre a trimestre |
+
+**La fase 2 marca el ritmo del año.** Una red de aliados verificados no se construye en doce semanas, y por eso el plan es anual aunque el detalle sea trimestral.
+
+**El corte de estatus de la semana 12** cierra el trimestre y decide el siguiente: si el alcance sube, se mantiene o se ajusta. Esa decisión se toma con el dato propio de conversión, no con una proyección.
+
+**Dependencia dura.** Las semanas 7 y 10 necesitan aliados ya verificados. Si la fase 1 no cerró el censo antes del arranque, esas dos semanas no existen.
+
+## Qué queda construido al cerrar el trimestre
 
 El trimestre no es un piloto suelto. Deja tres cosas construidas que el año siguiente necesita.
 
@@ -166,7 +184,7 @@ El trimestre no es un piloto suelto. Deja tres cosas construidas que el año sig
 | La red de aliados verificados | Es el catálogo que el programa de beneficios necesita para existir |
 | El primer dato propio de conversión | Permite dimensionar el presupuesto anual con un costo por solicitud real, no estimado |
 
-**La decisión del año se toma con datos de la semana 12**, no con proyecciones. Esa es la razón de fondo para empezar por un trimestre: hoy no hay con qué defender un compromiso de doce meses, y en tres meses sí lo habrá.
+**La decisión del trimestre siguiente se toma con datos de la semana 12**, no con proyecciones. El plan es anual porque la red de aliados lo exige; el detalle es trimestral porque hoy no hay con qué comprometer doce meses de ejecución fina.
 
 ## Lo que falta para cerrar esto
 
