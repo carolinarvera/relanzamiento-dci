@@ -72,37 +72,48 @@ Y es defendible ante la franquicia: no estamos contradiciendo el territorio glob
 
 ---
 
-## 4. La estrategia, en tres frentes
+## 4. La estrategia, bajo los dos objetivos
 
-### Frente 1 - Instalar la marca ante quien no la tiene
+Los dos objetivos del encargo son el relanzamiento estratégico de marca y el posicionamiento de beneficios. Todo lo que sigue cuelga de ahí. La aceptación no es un tercer objetivo: es la condición que atraviesa los dos.
 
-Es el encargo literal y es donde el activo editorial no tiene competencia.
+### Objetivo 1 - Relanzamiento estratégico de marca
 
-La revista entra a 146.000 hogares del perfil premium colombiano, y la mayoría de esos lectores **no son tarjetahabientes Diners**. Ningún beneficio de tarjeta llega ahí. Ninguna campaña de Davivienda llega ahí, porque Davivienda le habla a sus propios clientes.
+Dirigido a quien todavía no tiene la tarjeta, que es el mandato que quedó acordado para Gamma.
 
-La investigación global de la franquicia mide la brecha: entre prospectos, solo 7 de cada 100 dice entender del todo los beneficios de Diners, contra 47 de Visa. Once aspiran a tenerla, contra 42.
+**Por qué aquí el activo editorial no tiene competencia.** La revista entra a 146.000 hogares del perfil premium colombiano, y la mayoría de esos lectores no son tarjetahabientes Diners. Ningún beneficio de tarjeta llega ahí. Ninguna campaña de Davivienda llega ahí, porque el banco le habla a sus propios clientes.
 
-**Qué hacemos:** contenido editorial de marca, no publicidad de producto. El relato de una tarjeta que nació de un club de comensales y que todavía escoge mejor que nadie dónde comer.
+La investigación global de la franquicia mide el tamaño del hueco. Entre prospectos, 7 de cada 100 dice entender del todo los beneficios de Diners, contra 47 de Visa. Once aspiran a tenerla, contra 42.
 
-### Frente 2 - Dar una razón concreta para pedirla
+**Qué hacemos:**
 
-El posicionamiento sin conversión es gasto. Y aquí hay una pieza que la reunión confirmó y que cambia el tablero: **la apertura digital de la tarjeta ya está habilitada en la app de Davivienda**.
+- Contenido editorial de marca, no publicidad de producto. El relato de una tarjeta que nació de un club de comensales y que todavía escoge mejor que nadie dónde comer.
+- Presencia sostenida en los dos medios del ecosistema, con peso en Diners y apoyo de AXXIS para alcanzar al perfil 35+.
+- Cobertura de las experiencias como contenido, no como evento cerrado. Lo que pasa adentro alcanza a quien no estuvo.
 
-Eso significa que Gamma puede construir un embudo completo sin tocar la base de datos del banco:
+**Y una pieza que la reunión destrabó.** La apertura digital de la tarjeta ya está habilitada en la app de Davivienda. Eso permite cerrar el ciclo completo sin tocar la base del banco:
 
-contenido editorial -> consideración -> solicitud digital
+contenido editorial, consideración, solicitud digital.
 
-Es medible de punta a punta y es atribuible a nuestros medios. Es la métrica que convierte el contrato en algo defendible al año dos.
+Es medible de punta a punta y atribuible a nuestros medios. Es la métrica que vuelve defendible el contrato al año dos.
 
-**Qué hacemos:** cada pieza editorial cierra con una ruta clara a la apertura digital. No un banner: una continuación natural del contenido.
+### Objetivo 2 - Posicionamiento de beneficios
 
-### Frente 3 - Hacer que la tarjeta se pueda usar donde se promete
+Los beneficios existen y el tarjetahabiente no los conoce. La investigación global lo confirma: Diners gana en ofertas de dining entre sus propios clientes con 56 contra 23 de American Express y de Visa, y entre prospectos cae a 16. La ventaja está construida y no está visible.
+
+**Qué hacemos:**
+
+- **La red de aliados con aceptación verificada.** Un solo filtro de entrada: que el comercio tenga Diners habilitada en el datáfono.
+- **La sección editorial donde vive el beneficio.** La lista deja de ser un catálogo y pasa a ser una recomendación firmada. Es lo que convierte un descuento en un criterio.
+- **El sello en la vitrina.** Señala dónde funciona antes de entrar. Es la pieza de menor costo unitario del plan.
+- **Las experiencias por invitación.** Para el segmento alto, el acceso limitado construye el estatus que ningún descuento replica.
+
+**El ajuste de perfil se aplica aquí.** La selección se define por criterio editorial, con foco en establecimientos accesibles, no en alta cocina. Eso responde al perfil local, al presupuesto y a la aceptación al mismo tiempo.
+
+### La condición que atraviesa los dos
 
 La aceptación es el riesgo de retención número uno declarado por la propia franquicia, y la reunión lo confirmó como problema histórico en Colombia.
 
-**Qué hacemos:** la red de aliados se construye con un solo filtro de entrada, que el comercio tenga Diners habilitada en el datáfono. El sello en la vitrina señala dónde funciona. Es la condición para que el resto del plan no destruya marca.
-
----
+Mientras no esté resuelta, cada peso invertido en los dos objetivos corre el riesgo de producir un intento fallido en caja. Por eso el censo de aceptación va primero, antes de cualquier comunicación de uso.
 
 ## 5. El mecanismo, ajustado al presupuesto
 
@@ -113,7 +124,7 @@ La aceptación es el riesgo de retención número uno declarado por la propia fr
 | Suscripción regalo sobre base Black | Distribución por canales de Davivienda o mecanismo alterno |
 | Público: tarjetahabiente | Público: prospecto, con el tarjetahabiente a cargo del banco |
 
-El programa gastronómico sigue existiendo, pero cambia de función. Deja de ser un motor de transacción y pasa a ser **la prueba del posicionamiento**. La marca dice que escoge bien, y la lista demuestra que escoge bien.
+El programa gastronómico sigue existiendo y cambia de función. Pasa de motor de transacción a **prueba del posicionamiento**. La marca dice que escoge bien, y la lista lo demuestra. Así el objetivo 2 alimenta al objetivo 1 en vez de competir con él.
 
 ---
 
