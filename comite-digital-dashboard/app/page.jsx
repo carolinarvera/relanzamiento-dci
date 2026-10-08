@@ -2263,6 +2263,49 @@ export default function Dashboard() {
         if (fbTop && fbTop.clicks) a3.push({ head: 'Mejor publicación de Facebook', text: `"${String(fbTop.caption || '').slice(0, 70)}…" llevó ${num0(fbTop.clicks)} clics a la web: usar su formato y su tema como plantilla.` });
         if (!a3.length) a3.push({ head: 'Sin datos', text: 'No hay datos suficientes de redes para recomendar.' });
 
+        // Por qué cambiaron las vistas
+        const viewsCur = groups.reduce((a, g) => a + g.views, 0);
+        const viewsPrev = groups.reduce((a, g) => a + (g.prevViews || 0), 0);
+        const viewsDelta = viewsCur - viewsPrev;
+        const viewsPct = viewsPrev ? viewsCur / viewsPrev - 1 : null;
+        const CH_ES = { 'Organic Search': 'Búsqueda orgánica', Direct: 'Directo', 'Organic Social': 'Redes orgánico', 'Paid Social': 'Pauta Meta', 'Paid Search': 'Pauta Google', Email: 'Email', Referral: 'Referido', 'AI Assistant': 'Asistentes de IA', Unassigned: 'No asignado', 'Cross-network': 'Cross-network', 'Paid Shopping': 'Pauta Shopping', 'Paid Other': 'Pauta otros', Display: 'Display', Affiliates: 'Afiliados', 'Organic Video': 'Video orgánico' };
+        const chDelta = (ga.audience?.channels || []).map((c) => ({ name: CH_ES[c.name] || c.name, delta: (c.views || 0) - (c.prevViews || 0), cur: c.views || 0, prev: c.prevViews || 0 })).filter((x) => x.cur || x.prev).sort((x, y) => Math.abs(y.delta) - Math.abs(x.delta));
+        const secDelta = secs.filter((x) => x.change !== null && x.change !== undefined && x.change > -1).map((x) => { const prev = x.views / (1 + x.change); return { name: x.label, delta: x.views - prev, cur: x.views, prev }; }).sort((x, y) => Math.abs(y.delta) - Math.abs(x.delta));
+        const sessCh = ga.sessionsChange;
+        const pvCh = ga.pageviewsChange;
+        const ppsCur = ga.sessions ? ga.pageviews / ga.sessions : null;
+        const ppsPrev = sessCh != null && pvCh != null && ga.sessions && ga.pageviews ? (ga.pageviews / (1 + pvCh)) / (ga.sessions / (1 + sessCh)) : null;
+        const ppsCh = ppsCur && ppsPrev ? ppsCur / ppsPrev - 1 : null;
+        const dCur = ga.dailyViews || [];
+        const dPrev = ga.prevDailyViews || [];
+        const dayDiffs = dCur.map((d, i) => ({ label: d.label, cur: d.value, prev: dPrev[i]?.value, delta: dPrev[i] ? d.value - dPrev[i].value : null })).filter((d) => d.delta !== null);
+        const worstDays = dayDiffs.slice().sort((x, y) => x.delta - y.delta).slice(0, 3);
+        const bestDays = dayDiffs.slice().sort((x, y) => y.delta - x.delta).slice(0, 3);
+        const up = viewsDelta >= 0;
+        const maxAbs = (list) => Math.max(1, ...list.map((x) => Math.abs(x.delta)));
+        const sgn = (v) => `${v >= 0 ? '+' : '\u2212'}${num0(Math.abs(v))}`;
+        const bars = (list, color) => {
+          const m = maxAbs(list);
+          return list.slice(0, 6).map((x) => (
+            <div key={x.name} style={{ display: 'grid', gridTemplateColumns: '130px 1fr 130px', gap: '8px', alignItems: 'center', fontSize: '12px', marginBottom: '5px' }}>
+              <div style={{ fontWeight: 600 }}>{x.name}</div>
+              <div style={{ display: 'flex', height: '14px', background: '#eee', borderRadius: '3px', position: 'relative' }}>
+                <div style={{ position: 'absolute', left: x.delta >= 0 ? '50%' : `${50 - (Math.abs(x.delta) / m) * 50}%`, width: `${(Math.abs(x.delta) / m) * 50}%`, height: '100%', background: x.delta >= 0 ? '#2e7d32' : '#c62828', borderRadius: '3px' }} />
+                <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: '1px', background: '#999' }} />
+              </div>
+              <div style={{ textAlign: 'right', fontWeight: 700, color: x.delta >= 0 ? '#2e7d32' : '#c62828' }}>{sgn(x.delta)}{x.prev ? ` (${pctC(x.cur / x.prev - 1)})` : ''}</div>
+            </div>
+          ));
+        };
+        const topCh = chDelta[0];
+        const secondCh = chDelta[1];
+        const topSecD = secDelta[0];
+        const readTxt = [
+          `Las vistas ${up ? 'subieron' : 'bajaron'} ${viewsPct != null ? pc(Math.abs(viewsPct), 1) : ''} (${sgn(viewsDelta)} vistas frente al periodo anterior).`,
+          topCh ? `El canal que más explica el cambio es ${topCh.name} (${sgn(topCh.delta)}${topCh.prev ? `, ${pctC(topCh.cur / topCh.prev - 1)}` : ''})${secondCh && Math.sign(secondCh.delta) !== Math.sign(topCh.delta) ? `, compensado en parte por ${secondCh.name} (${sgn(secondCh.delta)})` : secondCh ? ` y luego ${secondCh.name} (${sgn(secondCh.delta)})` : ''}.` : '',
+          topSecD ? `Por sección, ${topSecD.name} movió ${sgn(topSecD.delta)} vistas.` : '',
+          sessCh != null && ppsCh != null ? `En volumen vs profundidad: las sesiones ${sessCh >= 0 ? 'subieron' : 'bajaron'} ${pc(Math.abs(sessCh), 1)} y las páginas por sesión ${ppsCh >= 0 ? 'subieron' : 'bajaron'} ${pc(Math.abs(ppsCh), 1)} (${ppsCur.toFixed(2).replace('.', ',')} ahora).` : '',
+        ].filter(Boolean).join(' ');
         const actionBox = (n, title, items) => (
           <div style={{ ...styles.card, background: '#f3f1ee', borderLeft: '4px solid #d84315' }}>
             <div style={{ fontSize: '13px', fontWeight: 800, color: '#d84315', textTransform: 'uppercase' }}>Acción estratégica {n}: <span style={{ color: '#222' }}>{title}</span></div>
@@ -2322,6 +2365,46 @@ export default function Dashboard() {
                 {actionBox(1, 'Tiempo de lectura y calidad del tráfico', a1)}
               </div>
             </div>
+
+            {viewsPrev > 0 && (
+              <div style={{ ...styles.card, marginTop: '20px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px', alignItems: 'baseline' }}>
+                  <div style={{ fontSize: '20px', fontWeight: 800, color: T.ink }}>¿Por qué {up ? 'subieron' : 'bajaron'} las vistas?</div>
+                  <div style={{ fontSize: '14px' }}>{num0(viewsPrev)} → <strong>{num0(viewsCur)}</strong> {chip(viewsPct)}</div>
+                </div>
+                <div style={{ fontSize: '14px', lineHeight: 1.6, margin: '10px 0 14px', background: '#f7f7f9', padding: '10px 12px', borderRadius: '6px' }}>{readTxt}</div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '24px' }}>
+                  <div>
+                    <div style={styles.cardTitle}>Aporte de cada canal al cambio (vistas)</div>
+                    <div style={{ marginTop: '8px' }}>{bars(chDelta)}</div>
+                    <div style={styles.cardSubtext}>Diferencia de vistas por canal frente al periodo anterior equivalente. El orgánico se muestra abierto en búsqueda, directo y redes.</div>
+                  </div>
+                  <div>
+                    <div style={styles.cardTitle}>Aporte de cada sección al cambio (vistas)</div>
+                    <div style={{ marginTop: '8px' }}>{secDelta.length ? bars(secDelta) : <div style={styles.cardSubtext}>Sin datos de secciones.</div>}</div>
+                    <div style={styles.cardSubtext}>Las secciones suman solo una parte de las vistas; el resto es home y otras páginas.</div>
+                  </div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '14px', marginTop: '16px' }}>
+                  <div style={{ background: '#f3f1ee', borderRadius: '6px', padding: '10px 12px' }}>
+                    <div style={{ fontSize: '11px', fontWeight: 700, color: '#555', textTransform: 'uppercase' }}>Volumen: sesiones</div>
+                    <div style={{ fontSize: '20px', fontWeight: 800 }}>{nf(ga.sessions)}{chip(sessCh)}</div>
+                  </div>
+                  <div style={{ background: '#f3f1ee', borderRadius: '6px', padding: '10px 12px' }}>
+                    <div style={{ fontSize: '11px', fontWeight: 700, color: '#555', textTransform: 'uppercase' }}>Profundidad: páginas por sesión</div>
+                    <div style={{ fontSize: '20px', fontWeight: 800 }}>{ppsCur ? ppsCur.toFixed(2).replace('.', ',') : '\u2014'}{chip(ppsCh)}</div>
+                  </div>
+                  <div style={{ background: '#fbe9e7', borderRadius: '6px', padding: '10px 12px' }}>
+                    <div style={{ fontSize: '11px', fontWeight: 700, color: '#555', textTransform: 'uppercase' }}>Días con mayor caída vs periodo anterior</div>
+                    <div style={{ fontSize: '12px', marginTop: '4px' }}>{worstDays.filter((d) => d.delta < 0).map((d) => <div key={d.label}>{d.label}: <strong style={{ color: '#c62828' }}>{sgn(d.delta)}</strong></div>)}{!worstDays.some((d) => d.delta < 0) && 'Ninguno'}</div>
+                  </div>
+                  <div style={{ background: '#e8f5e9', borderRadius: '6px', padding: '10px 12px' }}>
+                    <div style={{ fontSize: '11px', fontWeight: 700, color: '#555', textTransform: 'uppercase' }}>Días con mayor alza vs periodo anterior</div>
+                    <div style={{ fontSize: '12px', marginTop: '4px' }}>{bestDays.filter((d) => d.delta > 0).map((d) => <div key={d.label}>{d.label}: <strong style={{ color: '#2e7d32' }}>{sgn(d.delta)}</strong></div>)}{!bestDays.some((d) => d.delta > 0) && 'Ninguno'}</div>
+                  </div>
+                </div>
+              </div>
+            )}
 
             {groups.length > 0 && (
               <div style={{ ...styles.card, marginTop: '20px', background: '#f3f1ee' }}>
