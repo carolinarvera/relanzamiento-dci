@@ -121,7 +121,7 @@ const THEMES = {
 };
 
 const SECTIONS = [
-  { key: 'resumen', label: 'Resumen', apis: ['ga4', 'meta', 'pauta'] },
+  { key: 'resumen', label: 'Resumen', apis: ['ga4', 'meta', 'pauta', 'seo', 'emails'] },
   { key: 'web', label: 'Web', apis: ['ga4', 'gsc'] },
   { key: 'seo', label: 'SEO', apis: ['gsc', 'seo', 'ga4', 'meta', 'emailtraffic', 'dailytrends'] },
   { key: 'redes', label: 'Redes sociales', apis: ['meta'] },
@@ -2208,40 +2208,67 @@ export default function Dashboard() {
           </a>
         );
         const pctC = (v) => (v === null || v === undefined || !Number.isFinite(v) ? null : `${v >= 0 ? '+' : ''}${(v * 100).toFixed(Math.abs(v) >= 1 ? 0 : 1)}%`);
+        const num0 = (v) => Math.round(v).toLocaleString('es-CO');
+        const pc = (v, d = 0) => `${(v * 100).toFixed(d)}%`;
+        const seoB = current.seo || {};
+        const emailsB = (current.emails?.emails || []).filter(isRealEmail);
+        const chs = ga.audience?.channels || [];
+        const totSess = chs.reduce((a, c) => a + (c.sessions || 0), 0);
+        const paidSess = chs.filter((c) => /^Paid|Cross-network|Display/.test(c.name)).reduce((a, c) => a + (c.sessions || 0), 0);
+        const paidShare = totSess ? paidSess / totSess : 0;
+        const camps = (pauta?.campaigns || []).filter((c) => c.ga4 && c.ga4.sessions >= 50);
+        const badCamps = camps.filter((c) => c.ga4.bounceRate > 0.65);
+        const badSess = badCamps.reduce((a, c) => a + c.ga4.sessions, 0);
+        const campSess = camps.reduce((a, c) => a + c.ga4.sessions, 0);
+        const orgBounce = ga.organic?.bounceRate;
+        const paidBounce = campSess ? camps.reduce((a, c) => a + c.ga4.bounceRate * c.ga4.sessions, 0) / campSess : null;
         const durChange = ga.avgSessionDurationChange;
         const bounce = ga.bounceRate;
-        const errTotal = current.seo?.errorPages?.total || 0;
-        const action1 = {
-          title: durChange !== null && durChange !== undefined && durChange > 0.03 && (bounce || 0) < 0.5 ? 'Sostener tiempo de lectura' : 'Incrementar tiempo de lectura',
-          lines: [
-            `Tiempo promedio por sesión ${ga.avgSessionDuration || '\u2014'}${durChange != null ? ` (${pctC(durChange)} vs periodo anterior)` : ''}${bounce != null ? `, rebote ${(bounce * 100).toFixed(0)}%` : ''}.`,
-            'Artículos continuos, enlaces internos y series para incrementar los tiempos de interacción en el sitio.',
-          ],
-        };
-        const withChange = groups.filter((g) => g.prevViews > 0).map((g) => ({ ...g, ch: g.views / g.prevViews - 1 }));
-        const falling = withChange.filter((g) => g.ch < -0.03).sort((a, b) => a.ch - b.ch);
-        const action2Items = [];
-        const orgRow = groups.find((g) => g.name === 'Orgánico');
-        const emailRow = groups.find((g) => g.name === 'Email');
-        const pautaRow = groups.find((g) => g.name === 'Pauta');
-        if (orgRow && (falling.some((g) => g.name === 'Orgánico') || errTotal > 0)) action2Items.push(`SEO: corrección y ajuste${errTotal > 0 ? ` (${nf(errTotal)} vistas caen en páginas con error)` : ''}`);
-        if (emailRow && emailRow.pct < 0.08) action2Items.push(`Email: optimización (solo ${(emailRow.pct * 100).toFixed(1)}% del tráfico, hay espacio para crecer)`);
-        else if (emailRow && falling.some((g) => g.name === 'Email')) action2Items.push('Email: optimización (el tráfico cayó frente al periodo anterior)');
-        if (pautaRow && pautaRow.pct > 0.5) action2Items.push(`Pauta: ${(pautaRow.pct * 100).toFixed(0)}% del tráfico depende de pauta paga, reforzar el orgánico para reducir dependencia`);
-        falling.filter((g) => !['Orgánico', 'Email', 'Pauta', 'No asignado / otros'].includes(g.name)).slice(0, 1).forEach((g) => action2Items.push(`${g.name}: recuperar tráfico (${pctC(g.ch)} vs periodo anterior)`));
-        if (!action2Items.length) action2Items.push('Mantener la mezcla actual y escalar el canal con mejor crecimiento');
+        const arts = (ga.topArticles || []).slice(0, 3);
+
+        // Acción 1: tiempo de lectura y calidad del tráfico
+        const a1 = [];
+        a1.push({ head: 'Diagnóstico', text: `Tiempo por sesión ${ga.avgSessionDuration || '—'}${durChange != null ? ` (${pctC(durChange)} vs periodo anterior)` : ''}, rebote ${bounce != null ? pc(bounce) : '—'}${ga.bounceRateChange != null ? ` (${pctC(ga.bounceRateChange)})` : ''}${orgBounce != null && paidBounce != null ? `. El tráfico orgánico rebota ${pc(orgBounce)} y el de pauta ${pc(paidBounce)}` : ''}.` });
+        if (badCamps.length) a1.push({ head: 'Pauta que baja la lectura', text: `${badCamps.length} de ${camps.length} campañas con tráfico medido en GA4 tienen rebote mayor a 65% y concentran ${pc(campSess ? badSess / campSess : 0)} de las sesiones de pauta (${num0(badSess)}). Pausarlas o cambiar el creativo/landing antes de seguir invirtiendo (detalle en Pauta, columna "Apagar campaña").` });
+        else if (paidShare > 0.4) a1.push({ head: 'Dependencia de pauta', text: `La pauta aporta ${pc(paidShare)} de las sesiones: medir su rebote por campaña en la pestaña Pauta.` });
+        if (arts.length) a1.push({ head: 'Dónde está la lectura', text: `Los artículos más leídos (${arts.map((x) => `"${String(x.title || x.path).slice(0, 48)}" ${num0(x.views)}`).join('; ')}) son la puerta de entrada: enlazar 2 notas relacionadas dentro de cada uno y cerrar con una serie del mismo tema para alargar la sesión.` });
+
+        // Acción 2: fuentes de tráfico
+        const a2 = [];
+        const oChg = ga.organic?.viewsChange;
+        const opp = (seoB.opportunities || []).slice(0, 3);
+        if (oChg != null && oChg < -0.05) a2.push({ head: 'Orgánico en caída', text: `Las vistas orgánicas bajaron ${pc(Math.abs(oChg))}.${opp.length ? ` Hay consultas con demanda en posición 8-20 que se pueden empujar a la primera página: ${opp.map((o) => `"${o.key}" (${num0(o.impressions)} impresiones, posición ${o.position.toFixed(1).replace('.', ',')})`).join('; ')}. Actualizar o crear la nota que responda cada una.` : ''}` });
+        else if (opp.length) a2.push({ head: 'SEO con demanda sin capturar', text: `Consultas en posición 8-20 con muchas impresiones: ${opp.map((o) => `"${o.key}" (${num0(o.impressions)} impresiones, posición ${o.position.toFixed(1).replace('.', ',')})`).join('; ')}. Llevarlas a la primera página con una nota nueva o actualizada.` });
+        const er = seoB.errorPages;
+        if (er && er.total > 0) { const tp = er.pages?.[0]; a2.push({ head: 'Páginas con error', text: `${num0(er.total)} vistas cayeron en "Page Not Found"${er.prevTotal ? ` (${pctC(er.total / er.prevTotal - 1)} vs periodo anterior)` : ''}.${tp ? ` La principal es ${tp.path} (${num0(tp.views)} vistas): redirigir o corregir el enlace.` : ''}` }); }
+        if (emailsB.length) {
+          const sent = emailsB.reduce((a, x) => a + x.sent, 0);
+          const clicks = emailsB.reduce((a, x) => a + x.click, 0);
+          const best = (emailsB.filter((x) => x.sent >= 1000).length ? emailsB.filter((x) => x.sent >= 1000) : emailsB).slice().sort((x, y) => y.click / (y.sent || 1) - x.click / (x.sent || 1))[0];
+          a2.push({ head: 'Email', text: `${emailsB.length} envíos reales y ${num0(sent)} correos enviados dejaron ${num0(clicks)} clics (${pc(sent ? clicks / sent : 0, 1)} de lo enviado). Mejor envío: "${String(best.subject || best.name).slice(0, 60)}" con ${pc(best.click / (best.sent || 1), 1)} de clic: replicar ese asunto y tema, y poner el enlace principal en el primer bloque.` });
+        }
+        if (paidShare > 0.5) a2.push({ head: 'Mezcla de canales', text: `${pc(paidShare)} de las sesiones vienen de pauta: cada punto que crezca el orgánico (búsqueda + directo) reduce esa dependencia.` });
+        if (!a2.length) a2.push({ head: 'Mantener', text: 'Sin alertas en fuentes de tráfico este periodo: sostener la mezcla actual.' });
+
+        // Acción 3: redes sociales
+        const a3 = [];
         const igEng = ig?.period?.engagementRate;
-        const fbEng = fb?.engagementRate;
-        const topIgType = ig?.topPosts?.[0]?.type;
-        const action3Lines = [];
-        if (igEng != null && fbEng != null) action3Lines.push(`Engagement IG ${(igEng * 100).toFixed(1)}% vs FB ${(fbEng * 100).toFixed(1)}%: priorizar el formato que mejor convierte en cada red.`);
-        if (topIgType) action3Lines.push(`El formato con mejor resultado en Instagram fue ${String(topIgType).toLowerCase()}: replicarlo con los artículos más leídos de la web.`);
-        if (ga.social?.instagram?.shareChange != null && ga.social?.facebook?.shareChange != null) action3Lines.push(`Aporte al tráfico: IG ${pctC(ga.social.instagram.shareChange)}, FB ${pctC(ga.social.facebook.shareChange)}. Incluir enlace a la nota en las publicaciones para llevar alcance a la web.`);
-        if (!action3Lines.length) action3Lines.push('Implementar nuevos formatos digitales para incrementar el alcance de los artículos.');
-        const actionBox = (n, title, body) => (
+        const igEngPrev = ig?.period?.prevEngagementRate;
+        const igTop = ig?.topPosts || [];
+        const topType = igTop.length ? Object.entries(igTop.reduce((m, x) => { m[x.type] = (m[x.type] || 0) + 1; return m; }, {})).sort((x, y) => y[1] - x[1])[0] : null;
+        if (igEng != null) a3.push({ head: 'Instagram', text: `Alcance ${ig?.period?.reachChange != null ? pctC(ig.period.reachChange) : ''} y engagement ${pc(igEng, 1)}${igEngPrev != null ? ` (antes ${pc(igEngPrev, 1)})` : ''}.${igEngPrev != null && igEng < igEngPrev ? ' El alcance crece pero la interacción por alcance baja: publicar menos piezas genéricas y más de los temas que ya lideran.' : ''}${topType ? ` ${topType[1]} de las ${igTop.length} mejores publicaciones son ${String(topType[0]).toLowerCase()}: priorizar ese formato.` : ''}` });
+        const sIg = ga.social?.instagram; const sFb = ga.social?.facebook;
+        if (sIg && sFb && sIg.sessions > 0 && sFb.sessions > 0) a3.push({ head: 'Tráfico a la web', text: `Facebook lleva ${(sFb.sessions / sIg.sessions).toFixed(1).replace('.', ',')} veces más sesiones a la web que Instagram (${num0(sFb.sessions)} vs ${num0(sIg.sessions)}). Mantener el enlace a la nota en cada publicación de Facebook y en Instagram usar historias con enlace y el enlace de la bio.` });
+        const fbTop = fb?.topPosts?.[0];
+        if (fbTop && fbTop.clicks) a3.push({ head: 'Mejor publicación de Facebook', text: `"${String(fbTop.caption || '').slice(0, 70)}…" llevó ${num0(fbTop.clicks)} clics a la web: usar su formato y su tema como plantilla.` });
+        if (!a3.length) a3.push({ head: 'Sin datos', text: 'No hay datos suficientes de redes para recomendar.' });
+
+        const actionBox = (n, title, items) => (
           <div style={{ ...styles.card, background: '#f3f1ee', borderLeft: '4px solid #d84315' }}>
             <div style={{ fontSize: '13px', fontWeight: 800, color: '#d84315', textTransform: 'uppercase' }}>Acción estratégica {n}: <span style={{ color: '#222' }}>{title}</span></div>
-            <div style={{ fontSize: '13px', lineHeight: 1.55, marginTop: '6px' }}>{body}</div>
+            <ul style={{ margin: '8px 0 0', paddingLeft: '18px', fontSize: '13px', lineHeight: 1.55 }}>
+              {items.map((it, k) => <li key={k} style={{ marginBottom: '5px' }}><strong>{it.head}:</strong> {it.text}</li>)}
+            </ul>
           </div>
         );
         return (
@@ -2292,7 +2319,7 @@ export default function Dashboard() {
                     </>
                   ) : <div style={styles.cardSubtext}>Sin datos</div>}
                 </div>
-                {actionBox(1, action1.title, action1.lines.map((l, k) => <div key={k} style={{ marginBottom: '4px' }}>{l}</div>))}
+                {actionBox(1, 'Tiempo de lectura y calidad del tráfico', a1)}
               </div>
             </div>
 
@@ -2311,7 +2338,7 @@ export default function Dashboard() {
                     </div>
                   ))}
                 </div>
-                <div style={{ marginTop: '16px' }}>{actionBox(2, 'Prioridad del periodo', <ul style={{ margin: 0, paddingLeft: '18px' }}>{action2Items.map((t, k) => <li key={k}>{t}</li>)}</ul>)}</div>
+                <div style={{ marginTop: '16px' }}>{actionBox(2, 'Fuentes de tráfico', a2)}</div>
               </div>
             )}
 
@@ -2360,7 +2387,7 @@ export default function Dashboard() {
                   {postCard(fb?.topPosts?.[0], 'fb', 'Facebook · mejor publicación')}
                 </div>
               </div>
-              <div style={{ marginTop: '16px' }}>{actionBox(3, 'Nuevos formatos para ampliar alcance', action3Lines.map((l, k) => <div key={k} style={{ marginBottom: '4px' }}>{l}</div>))}</div>
+              <div style={{ marginTop: '16px' }}>{actionBox(3, 'Redes sociales', a3)}</div>
             </div>
           </div>
         );
