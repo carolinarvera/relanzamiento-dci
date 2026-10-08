@@ -2278,7 +2278,14 @@ export default function Dashboard() {
         const ppsCh = ppsCur && ppsPrev ? ppsCur / ppsPrev - 1 : null;
         const dCur = ga.dailyViews || [];
         const dPrev = ga.prevDailyViews || [];
-        const dayDiffs = dCur.map((d, i) => ({ label: d.label, cur: d.value, prev: dPrev[i]?.value, delta: dPrev[i] ? d.value - dPrev[i].value : null })).filter((d) => d.delta !== null);
+        const WDN = ['dom', 'lun', 'mar', 'mié', 'jue', 'vie', 'sáb'];
+        const wdOf = (ymd) => (ymd ? WDN[new Date(Date.UTC(+ymd.slice(0, 4), +ymd.slice(4, 6) - 1, +ymd.slice(6))).getUTCDay()] : '');
+        const dayDiffs = dCur.map((d, i) => ({ label: `${d.label} (${wdOf(d.date)})`, prevLabel: dPrev[i] ? `${Number(dPrev[i].date.slice(6))}/${dPrev[i].date.slice(4, 6)} (${wdOf(dPrev[i].date)})` : '', cur: d.value, prev: dPrev[i]?.value, delta: dPrev[i] ? d.value - dPrev[i].value : null })).filter((d) => d.delta !== null);
+        const contamPrev = dPrev.filter((d) => d.date >= '20260722' && d.date <= '20260811');
+        const cleanPrev = dPrev.filter((d) => d.date >= '20260812');
+        const cleanAvgPrev = cleanPrev.length >= 5 ? cleanPrev.reduce((a, d) => a + d.value, 0) / cleanPrev.length : null;
+        const avgCur = dCur.length ? dCur.reduce((a, d) => a + d.value, 0) / dCur.length : null;
+        const cleanCh = cleanAvgPrev && avgCur ? avgCur / cleanAvgPrev - 1 : null;
         const worstDays = dayDiffs.slice().sort((x, y) => x.delta - y.delta).slice(0, 3);
         const bestDays = dayDiffs.slice().sort((x, y) => y.delta - x.delta).slice(0, 3);
         const up = viewsDelta >= 0;
@@ -2373,6 +2380,12 @@ export default function Dashboard() {
                   <div style={{ fontSize: '14px' }}>{num0(viewsPrev)} → <strong>{num0(viewsCur)}</strong> {chip(viewsPct)}</div>
                 </div>
                 <div style={{ fontSize: '14px', lineHeight: 1.6, margin: '10px 0 14px', background: '#f7f7f9', padding: '10px 12px', borderRadius: '6px' }}>{readTxt}</div>
+                {contamPrev.length > 0 && (
+                  <div style={{ background: '#fff8e1', borderLeft: '4px solid #f9a825', padding: '10px 12px', borderRadius: '4px', fontSize: '13px', lineHeight: 1.55, marginBottom: '14px' }}>
+                    <strong>Ojo con la base de comparación:</strong> {contamPrev.length} de {dPrev.length} días del periodo anterior (hasta el 11 de agosto) tienen el tag de GA4 mezclado entre AXXIS y Diners, lo que infló esas vistas. Parte de la caída es efecto de esa base, no pérdida real de audiencia.
+                    {cleanAvgPrev && avgCur ? <> Comparación limpia (solo desde el 12 de agosto, promedio diario): <strong>{num0(cleanAvgPrev)}</strong> → <strong>{num0(avgCur)}</strong> {chip(cleanCh)} vistas por día.</> : null}
+                  </div>
+                )}
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(360px, 1fr))', gap: '24px' }}>
                   <div>
                     <div style={styles.cardTitle}>Aporte de cada canal al cambio (vistas)</div>
@@ -2396,11 +2409,11 @@ export default function Dashboard() {
                   </div>
                   <div style={{ background: '#fbe9e7', borderRadius: '6px', padding: '10px 12px' }}>
                     <div style={{ fontSize: '11px', fontWeight: 700, color: '#555', textTransform: 'uppercase' }}>Días con mayor caída vs periodo anterior</div>
-                    <div style={{ fontSize: '12px', marginTop: '4px' }}>{worstDays.filter((d) => d.delta < 0).map((d) => <div key={d.label}>{d.label}: <strong style={{ color: '#c62828' }}>{sgn(d.delta)}</strong></div>)}{!worstDays.some((d) => d.delta < 0) && 'Ninguno'}</div>
+                    <div style={{ fontSize: '12px', marginTop: '4px' }}>{worstDays.filter((d) => d.delta < 0).map((d) => <div key={d.label}>{d.label} vs {d.prevLabel}: <strong style={{ color: '#c62828' }}>{sgn(d.delta)}</strong></div>)}{!worstDays.some((d) => d.delta < 0) && 'Ninguno'}</div>
                   </div>
                   <div style={{ background: '#e8f5e9', borderRadius: '6px', padding: '10px 12px' }}>
                     <div style={{ fontSize: '11px', fontWeight: 700, color: '#555', textTransform: 'uppercase' }}>Días con mayor alza vs periodo anterior</div>
-                    <div style={{ fontSize: '12px', marginTop: '4px' }}>{bestDays.filter((d) => d.delta > 0).map((d) => <div key={d.label}>{d.label}: <strong style={{ color: '#2e7d32' }}>{sgn(d.delta)}</strong></div>)}{!bestDays.some((d) => d.delta > 0) && 'Ninguno'}</div>
+                    <div style={{ fontSize: '12px', marginTop: '4px' }}>{bestDays.filter((d) => d.delta > 0).map((d) => <div key={d.label}>{d.label} vs {d.prevLabel}: <strong style={{ color: '#2e7d32' }}>{sgn(d.delta)}</strong></div>)}{!bestDays.some((d) => d.delta > 0) && 'Ninguno'}</div>
                   </div>
                 </div>
               </div>
