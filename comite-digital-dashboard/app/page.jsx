@@ -139,6 +139,48 @@ const CHANNEL_COLORS = {
 };
 const API_NAMES = { gsc: 'Search Console', ga4: 'GA4', meta: 'Meta', seo: 'SEO', pauta: 'Pauta', emails: 'Emails', emailtraffic: 'Tráfico de email', dailytrends: 'Tendencias del día' };
 
+function AiQueries({ brand, pages, range, accent }) {
+  const [d, setD] = useState(null);
+  const paths = (pages || []).slice(0, 8).map((x) => x.path).filter(Boolean);
+  const key = `${brand}|${range ? `${range.start}|${range.end}` : ''}|${paths.join('|')}`;
+  useEffect(() => {
+    if (!paths.length) return undefined;
+    let off = false;
+    setD(null);
+    const qs = range ? `&start=${range.start}&end=${range.end}` : '';
+    fetch(`/api/aiqueries?brand=${brand}&paths=${encodeURIComponent(paths.join('|'))}${qs}`)
+      .then((r) => r.json()).then((j) => { if (!off) setD(j); }).catch((e) => { if (!off) setD({ error: e.message }); });
+    return () => { off = true; };
+  }, [key]); // eslint-disable-line
+  const th = { padding: '6px', textAlign: 'right', fontSize: '11px', color: '#666', textTransform: 'uppercase' };
+  const td = { padding: '6px', borderBottom: '1px solid #eee', textAlign: 'right', fontSize: '12px' };
+  return (
+    <div style={{ marginTop: '22px', borderTop: '1px solid #eee', paddingTop: '14px' }}>
+      <div style={{ fontSize: '12px', fontWeight: 700, color: '#555', textTransform: 'uppercase' }}>Palabras de búsqueda asociadas a las páginas que llegan desde IA</div>
+      <div style={{ fontSize: '12px', color: '#777', margin: '4px 0 8px', lineHeight: 1.5 }}>ChatGPT, Gemini y el resto no comparten lo que escribió la persona (GA4 solo registra el asistente, no la pregunta). Lo más cercano y verificable son las consultas de Google que llevan a esas mismas páginas: indican con qué palabras se busca ese tema.</div>
+      {!paths.length ? <div style={{ fontSize: '12px', color: '#888' }}>Sin páginas de destino de IA en este periodo.</div>
+        : !d ? <div style={{ fontSize: '12px', color: '#888' }}>Consultando Search Console…</div>
+        : d.error ? <div style={{ fontSize: '12px', color: '#b71c1c' }}>No se pudo consultar: {d.error}</div>
+        : !d.queries.length ? <div style={{ fontSize: '12px', color: '#888' }}>Search Console no devolvió consultas para esas páginas en este periodo.</div> : (
+          <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+            <thead><tr style={{ background: '#f0f0f0' }}><th style={{ ...th, textAlign: 'left' }}>Consulta</th><th style={th}>Clics</th><th style={th}>Impresiones</th><th style={th}>Posición</th><th style={th}>Páginas IA</th></tr></thead>
+            <tbody>
+              {d.queries.map((q) => (
+                <tr key={q.query}>
+                  <td style={{ ...td, textAlign: 'left', fontWeight: 600, overflowWrap: 'anywhere' }}>{q.query}</td>
+                  <td style={{ ...td, fontWeight: 800, color: accent }}>{q.clicks.toLocaleString('es-CO')}</td>
+                  <td style={td}>{q.impressions.toLocaleString('es-CO')}</td>
+                  <td style={td}>{q.position != null ? q.position.toFixed(1).replace('.', ',') : '\u2014'}</td>
+                  <td style={td}>{q.pages}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+    </div>
+  );
+}
+
 export default function Dashboard() {
   const [data, setData] = useState({ gsc: {}, ga4: {}, meta: {}, seo: {}, pauta: {}, emails: {}, emailtraffic: {}, dailytrends: {} });
   const [errorsBy, setErrorsBy] = useState({});
@@ -685,11 +727,10 @@ export default function Dashboard() {
                     return (
                       <div style={{ ...styles.card, gridColumn: '1 / -1' }}>
                         <div style={styles.cardTitle}>Asistentes de IA que envían tráfico</div>
-                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, minmax(0, 1fr))', gap: '14px', marginTop: '10px' }}>
+                        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '14px', marginTop: '10px' }}>
                           {aiCh && kpi('Vistas desde IA', nf(aiCh.views), <>{renderChange(chg, false, aiCh.prevViews ? nf(aiCh.prevViews) : null)}</>)}
                           {aiCh && totV > 0 && kpi('Peso sobre las vistas del sitio', `${((aiCh.views / totV) * 100).toFixed(2)}%`, <div style={styles.cardSubtext}>{nf(aiCh.sessions)} sesiones · {nf(aiCh.users)} usuarios</div>)}
                           {topSrc && kpi('Asistente principal', topSrc.name, <div style={styles.cardSubtext}>{srcTotal ? ((topSrc.views / srcTotal) * 100).toFixed(0) : 0}% de las vistas de IA</div>)}
-                          {Q?.ai && Q?.organic && kpi('Duración vs búsqueda', `${Q.ai.sec >= Q.organic.sec ? '\u25B2' : '\u25BC'} ${Math.abs((Q.ai.sec / Q.organic.sec - 1) * 100).toFixed(0)}%`, <div style={styles.cardSubtext}>IA {fmtHMS(Q.ai.sec)} · búsqueda {fmtHMS(Q.organic.sec)}</div>)}
                         </div>
                         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '24px', marginTop: '18px', alignItems: 'start' }}>
                           <div>
@@ -761,6 +802,7 @@ export default function Dashboard() {
                             )}
                           </div>
                         </div>
+                        <AiQueries brand={activeTab} pages={ai.pages} range={range} accent={T.accent} />
                       </div>
                     );
                   })()}
