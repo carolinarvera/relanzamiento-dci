@@ -2166,7 +2166,16 @@ export default function Dashboard() {
         const topSec = secs.slice().sort((x, y) => y.views - x.views)[0];
         const growth = secs.filter((x) => x !== topSec && x.change !== null && x.change !== undefined).sort((x, y) => y.change - x.change)[0];
         const art = ga.topArticles?.[0];
-        const groups = ga.audience?.channels ? groupChannels(ga.audience.channels).filter((g) => g.pct > 0) : [];
+        const rawGroups = ga.audience?.channels ? groupChannels(ga.audience.channels).filter((g) => g.pct > 0) : [];
+        const orgG = rawGroups.find((g) => g.name === 'Orgánico');
+        const dirG = rawGroups.find((g) => g.name === 'Directo');
+        const orgMerged = orgG || dirG ? {
+          name: 'Orgánico', color: (orgG || dirG).color, items: [...(orgG?.items || []), ...(dirG?.items || [])],
+          sessions: (orgG?.sessions || 0) + (dirG?.sessions || 0), views: (orgG?.views || 0) + (dirG?.views || 0), users: (orgG?.users || 0) + (dirG?.users || 0),
+          pct: (orgG?.pct || 0) + (dirG?.pct || 0), prevPct: (orgG?.prevPct || 0) + (dirG?.prevPct || 0), prevViews: (orgG?.prevViews || 0) + (dirG?.prevViews || 0),
+          note: 'incluye tráfico directo',
+        } : null;
+        const groups = [...(orgMerged ? [orgMerged] : []), ...rawGroups.filter((g) => g.name !== 'Orgánico' && g.name !== 'Directo')].sort((a, b) => b.pct - a.pct);
         const meta = current.meta || {};
         const ig = meta.instagram?.detail;
         const fb = meta.facebook?.detail;
@@ -2197,6 +2206,43 @@ export default function Dashboard() {
               <div style={{ color: '#777', marginTop: '4px' }}>{kind} · {post.date} · {nf(post.interactions)} interacciones</div>
             </div>
           </a>
+        );
+        const pctC = (v) => (v === null || v === undefined || !Number.isFinite(v) ? null : `${v >= 0 ? '+' : ''}${(v * 100).toFixed(Math.abs(v) >= 1 ? 0 : 1)}%`);
+        const durChange = ga.avgSessionDurationChange;
+        const bounce = ga.bounceRate;
+        const errTotal = current.seo?.errorPages?.total || 0;
+        const action1 = {
+          title: durChange !== null && durChange !== undefined && durChange > 0.03 && (bounce || 0) < 0.5 ? 'Sostener tiempo de lectura' : 'Incrementar tiempo de lectura',
+          lines: [
+            `Tiempo promedio por sesión ${ga.avgSessionDuration || '\u2014'}${durChange != null ? ` (${pctC(durChange)} vs periodo anterior)` : ''}${bounce != null ? `, rebote ${(bounce * 100).toFixed(0)}%` : ''}.`,
+            'Artículos continuos, enlaces internos y series para incrementar los tiempos de interacción en el sitio.',
+          ],
+        };
+        const withChange = groups.filter((g) => g.prevViews > 0).map((g) => ({ ...g, ch: g.views / g.prevViews - 1 }));
+        const falling = withChange.filter((g) => g.ch < -0.03).sort((a, b) => a.ch - b.ch);
+        const action2Items = [];
+        const orgRow = groups.find((g) => g.name === 'Orgánico');
+        const emailRow = groups.find((g) => g.name === 'Email');
+        const pautaRow = groups.find((g) => g.name === 'Pauta');
+        if (orgRow && (falling.some((g) => g.name === 'Orgánico') || errTotal > 0)) action2Items.push(`SEO: corrección y ajuste${errTotal > 0 ? ` (${nf(errTotal)} vistas caen en páginas con error)` : ''}`);
+        if (emailRow && emailRow.pct < 0.08) action2Items.push(`Email: optimización (solo ${(emailRow.pct * 100).toFixed(1)}% del tráfico, hay espacio para crecer)`);
+        else if (emailRow && falling.some((g) => g.name === 'Email')) action2Items.push('Email: optimización (el tráfico cayó frente al periodo anterior)');
+        if (pautaRow && pautaRow.pct > 0.5) action2Items.push(`Pauta: ${(pautaRow.pct * 100).toFixed(0)}% del tráfico depende de pauta paga, reforzar el orgánico para reducir dependencia`);
+        falling.filter((g) => !['Orgánico', 'Email', 'Pauta', 'No asignado / otros'].includes(g.name)).slice(0, 1).forEach((g) => action2Items.push(`${g.name}: recuperar tráfico (${pctC(g.ch)} vs periodo anterior)`));
+        if (!action2Items.length) action2Items.push('Mantener la mezcla actual y escalar el canal con mejor crecimiento');
+        const igEng = ig?.period?.engagementRate;
+        const fbEng = fb?.engagementRate;
+        const topIgType = ig?.topPosts?.[0]?.type;
+        const action3Lines = [];
+        if (igEng != null && fbEng != null) action3Lines.push(`Engagement IG ${(igEng * 100).toFixed(1)}% vs FB ${(fbEng * 100).toFixed(1)}%: priorizar el formato que mejor convierte en cada red.`);
+        if (topIgType) action3Lines.push(`El formato con mejor resultado en Instagram fue ${String(topIgType).toLowerCase()}: replicarlo con los artículos más leídos de la web.`);
+        if (ga.social?.instagram?.shareChange != null && ga.social?.facebook?.shareChange != null) action3Lines.push(`Aporte al tráfico: IG ${pctC(ga.social.instagram.shareChange)}, FB ${pctC(ga.social.facebook.shareChange)}. Incluir enlace a la nota en las publicaciones para llevar alcance a la web.`);
+        if (!action3Lines.length) action3Lines.push('Implementar nuevos formatos digitales para incrementar el alcance de los artículos.');
+        const actionBox = (n, title, body) => (
+          <div style={{ ...styles.card, background: '#f3f1ee', borderLeft: '4px solid #d84315' }}>
+            <div style={{ fontSize: '13px', fontWeight: 800, color: '#d84315', textTransform: 'uppercase' }}>Acción estratégica {n}: <span style={{ color: '#222' }}>{title}</span></div>
+            <div style={{ fontSize: '13px', lineHeight: 1.55, marginTop: '6px' }}>{body}</div>
+          </div>
         );
         return (
           <div style={styles.section}>
@@ -2246,6 +2292,7 @@ export default function Dashboard() {
                     </>
                   ) : <div style={styles.cardSubtext}>Sin datos</div>}
                 </div>
+                {actionBox(1, action1.title, action1.lines.map((l, k) => <div key={k} style={{ marginBottom: '4px' }}>{l}</div>))}
               </div>
             </div>
 
@@ -2259,11 +2306,12 @@ export default function Dashboard() {
                   {groups.map((g) => (
                     <div key={g.name} style={{ borderTop: `3px solid ${g.color}`, paddingTop: '8px' }}>
                       <div><span style={{ fontSize: '30px', fontWeight: 800 }}>{(g.pct * 100).toFixed(g.pct < 0.1 ? 1 : 0)}%</span>{chip(g.prevPct ? g.pct / g.prevPct - 1 : null)}</div>
-                      <div style={{ fontSize: '15px', fontWeight: 700, color: T.ink }}>{g.name}</div>
+                      <div style={{ fontSize: '15px', fontWeight: 700, color: T.ink }}>{g.name}{g.note ? <span style={{ fontSize: '11px', fontWeight: 400, color: '#777' }}> ({g.note})</span> : null}</div>
                       <div style={{ fontSize: '13px' }}>Visitas <strong>{nf(g.views)}</strong>{chip(g.prevViews ? g.views / g.prevViews - 1 : null)}</div>
                     </div>
                   ))}
                 </div>
+                <div style={{ marginTop: '16px' }}>{actionBox(2, 'Prioridad del periodo', <ul style={{ margin: 0, paddingLeft: '18px' }}>{action2Items.map((t, k) => <li key={k}>{t}</li>)}</ul>)}</div>
               </div>
             )}
 
@@ -2312,6 +2360,7 @@ export default function Dashboard() {
                   {postCard(fb?.topPosts?.[0], 'fb', 'Facebook · mejor publicación')}
                 </div>
               </div>
+              <div style={{ marginTop: '16px' }}>{actionBox(3, 'Nuevos formatos para ampliar alcance', action3Lines.map((l, k) => <div key={k} style={{ marginBottom: '4px' }}>{l}</div>))}</div>
             </div>
           </div>
         );
