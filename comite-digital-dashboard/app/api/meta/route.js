@@ -26,7 +26,7 @@ const chg = (cur, prev) => (prev ? cur / prev - 1 : null);
 async function fbRange(pageId, pageToken, since, until) {
   const r = await axios.get(`https://graph.facebook.com/v19.0/${pageId}/insights`, {
     params: {
-      metric: 'page_media_view,page_total_media_view_unique,page_actions_post_reactions_total,page_views_total,page_daily_follows,page_daily_unfollows_unique',
+      metric: 'page_media_view,page_total_media_view_unique,page_actions_post_reactions_total,page_views_total',
       period: 'total_over_range',
       since,
       until,
@@ -35,6 +35,13 @@ async function fbRange(pageId, pageToken, since, until) {
   });
   const out = {};
   (r.data.data || []).forEach((m) => { out[m.name] = sumVal(m.values?.[0]?.value); });
+  // Seguidores nuevos y bajas: Meta no devuelve total_over_range para estas métricas, se suman los valores diarios.
+  await Promise.all(['page_daily_follows', 'page_daily_unfollows_unique'].map(async (metric) => {
+    try {
+      const d = await axios.get(`https://graph.facebook.com/v19.0/${pageId}/insights`, { params: { metric, period: 'day', since, until, access_token: pageToken } });
+      out[metric] = ((d.data.data?.[0]?.values) || []).reduce((a, v) => a + (typeof v.value === 'number' ? v.value : 0), 0);
+    } catch { out[metric] = 0; }
+  }));
   return out;
 }
 
