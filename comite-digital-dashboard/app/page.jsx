@@ -189,6 +189,12 @@ export default function Dashboard() {
   const [section, setSection] = useState('web');
   const [activeTab, setActiveTab] = useState('axxis');
   const [range, setRange] = useState(null);
+  const [maxDate, setMaxDate] = useState('');
+  const [presets, setPresets] = useState([]);
+  useEffect(() => {
+    setMaxDate(new Date().toISOString().slice(0, 10));
+    setPresets(presetOptions());
+  }, []);
   const [draft, setDraft] = useState({ start: '', end: '' });
   const [trends, setTrends] = useState(null);
   const [trendDays, setTrendDays] = useState(30);
@@ -527,11 +533,11 @@ export default function Dashboard() {
         >
           <option value="">Atajos…</option>
           <option value="default">Último mes cerrado (por defecto)</option>
-          {presetOptions().map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
+          {presets.map((o) => <option key={o.value} value={o.value}>{o.label}</option>)}
         </select>
-        <input type="date" value={draft.start || data.ga4?.range?.start || ''} max={new Date().toISOString().slice(0, 10)} onChange={(e) => setDraft({ ...draft, start: e.target.value, end: draft.end || data.ga4?.range?.end || '' })} style={{ padding: '7px', borderRadius: '4px', border: '1px solid #ccc' }} />
+        <input type="date" value={draft.start || data.ga4?.range?.start || ''} max={maxDate || undefined} onChange={(e) => setDraft({ ...draft, start: e.target.value, end: draft.end || data.ga4?.range?.end || '' })} style={{ padding: '7px', borderRadius: '4px', border: '1px solid #ccc' }} />
         <span>a</span>
-        <input type="date" value={draft.end || data.ga4?.range?.end || ''} max={new Date().toISOString().slice(0, 10)} onChange={(e) => setDraft({ ...draft, end: e.target.value, start: draft.start || data.ga4?.range?.start || '' })} style={{ padding: '7px', borderRadius: '4px', border: '1px solid #ccc' }} />
+        <input type="date" value={draft.end || data.ga4?.range?.end || ''} max={maxDate || undefined} onChange={(e) => setDraft({ ...draft, end: e.target.value, start: draft.start || data.ga4?.range?.start || '' })} style={{ padding: '7px', borderRadius: '4px', border: '1px solid #ccc' }} />
         <button
           style={{ padding: '8px 16px', border: 'none', borderRadius: '4px', background: T.accent, color: 'white', cursor: 'pointer', fontWeight: 600 }}
           onClick={() => { if (draft.start && draft.end && draft.start <= draft.end) setRange({ start: draft.start, end: draft.end }); }}
