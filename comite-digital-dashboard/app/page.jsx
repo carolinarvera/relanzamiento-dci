@@ -222,6 +222,21 @@ export default function Dashboard() {
   const sectionDef = SECTIONS.find((x) => x.key === section);
   const ready = sectionDef.apis.every((a) => loadedKey[a] === rangeKey);
 
+  // Las tendencias deben estar al día aunque la pestaña quede abierta días: se refrescan cada 15 min y al volver a la pestaña.
+  useEffect(() => {
+    if (section !== 'seo') return undefined;
+    const refresh = () => {
+      fetch('/api/dailytrends?window=1d', { cache: 'no-store' })
+        .then((r) => r.json())
+        .then((j) => { if (!j.error) { setData((d) => ({ ...d, dailytrends: j })); setNewsByWin({}); } })
+        .catch(() => {});
+    };
+    const onVis = () => { if (document.visibilityState === 'visible') refresh(); };
+    const t = setInterval(refresh, 15 * 60 * 1000);
+    document.addEventListener('visibilitychange', onVis);
+    return () => { clearInterval(t); document.removeEventListener('visibilitychange', onVis); };
+  }, [section]);
+
   useEffect(() => {
     if (section !== 'seo' || newsWin === '1d' || newsByWin[newsWin]) return undefined;
     let cancelled = false;
@@ -1886,7 +1901,7 @@ export default function Dashboard() {
               ))}
             </div>
             )}
-            <div style={styles.cardSubtext}>Fuentes: Google Trends (búsquedas en tendencia de Colombia) y Google Noticias (por categoría). El número de notas indica cuánta cobertura hay en el periodo elegido, hasta 100. Las búsquedas en tendencia siempre son las de hoy. Se actualiza cada 30 minutos.</div>
+            <div style={styles.cardSubtext}>Fuentes: Google Trends (búsquedas en tendencia de Colombia) y Google Noticias (por categoría). El número de notas indica cuánta cobertura hay en el periodo elegido, hasta 100. Las búsquedas en tendencia siempre son las de hoy. Solo se muestran notas de los últimos 7 días, de la más reciente a la más vieja. Se actualiza cada 15 minutos{D.fetchedAt ? ` · última consulta ${new Date(D.fetchedAt).toLocaleString('es-CO', { timeZone: 'America/Bogota', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}` : ''}.</div>
           </div>
         );
       })()}
