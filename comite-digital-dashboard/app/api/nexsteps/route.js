@@ -47,7 +47,10 @@ export async function GET(request) {
     const now = new Date();
     const period = u.searchParams.get('period');
     let sp = u.searchParams;
-    if (period === 'current') {
+    if (period === 'last30') {
+      const endD = new Date(now.getTime() - 86400000);
+      sp = new URLSearchParams({ start: iso(new Date(endD.getTime() - 29 * 86400000)), end: iso(endD) });
+    } else if (period === 'current') {
       sp = new URLSearchParams({ start: iso(new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1))), end: iso(now) });
     }
     const range = resolveRange(sp);
