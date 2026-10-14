@@ -6,7 +6,9 @@ export const maxDuration = 30;
 const UA = { 'User-Agent': 'Mozilla/5.0 (compatible; ComiteDigitalDashboard/1.0)' };
 const TTL_MS = 30 * 60 * 1000;
 const cache = {};
-const WINDOWS = { '1d': '1d', '7d': '7d', '14d': '14d' };
+// Máximo 7 días: la ventana de 14 días trae notas viejas, se mapea a 7.
+const WINDOWS = { '1d': '1d', '7d': '7d', '14d': '7d' };
+const MAX_AGE_DAYS = { '1d': 1.5, '7d': 7 };
 
 const decode = (t) => String(t || '')
   .replace(/<!\[CDATA\[(.*?)\]\]>/gs, '$1')
@@ -57,8 +59,12 @@ async function fetchNews(cat, win) {
     const title = source && full.endsWith(` - ${source}`) ? full.slice(0, -(source.length + 3)) : full;
     return { title, source, url: tag(it, 'link'), publishedAt: tag(it, 'pubDate') };
   });
+  const maxAge = (MAX_AGE_DAYS[win] || 7) * 86400000;
+  const fresh = list
+    .filter((x) => { const t = Date.parse(x.publishedAt); return Number.isFinite(t) && Date.now() - t <= maxAge; })
+    .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
   const seen = new Set();
-  const uniq = list.filter((x) => { const k = plain(x.title).slice(0, 60); if (seen.has(k)) return false; seen.add(k); return true; });
+  const uniq = fresh.filter((x) => { const k = plain(x.title).slice(0, 60); if (seen.has(k)) return false; seen.add(k); return true; });
   return { key: cat.key, label: cat.label, total: uniq.length, items: uniq.slice(0, 5) };
 }
 

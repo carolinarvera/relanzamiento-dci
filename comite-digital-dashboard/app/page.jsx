@@ -1861,7 +1861,7 @@ export default function Dashboard() {
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap', marginTop: '18px' }}>
               <div style={{ ...styles.cardTitle, fontSize: '11px', margin: 0 }}>Qué se está publicando en cada categoría</div>
               <div style={{ display: 'flex', gap: '6px' }}>
-                {[['1d', '24 horas'], ['7d', '7 días'], ['14d', '14 días']].map(([k, label]) => (
+                {[['1d', '24 horas'], ['7d', '7 días']].map(([k, label]) => (
                   <button key={k} onClick={() => setNewsWin(k)} style={{ padding: '4px 12px', fontSize: '12px', border: 'none', cursor: 'pointer', borderRadius: '12px', fontWeight: 700, background: newsWin === k ? T.accent : '#e5e5e5', color: newsWin === k ? '#fff' : '#444' }}>{label}</button>
                 ))}
               </div>
