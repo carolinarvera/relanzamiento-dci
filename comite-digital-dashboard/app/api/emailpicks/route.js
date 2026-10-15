@@ -112,6 +112,32 @@ function photoText(paras, title, keywords) {
   if (!t) { t = decode(title); }
   return /[.!?]$/.test(t) ? t : `${t}.`;
 }
+// El párrafo bajo la foto del email es la bajada (extracto) que ya escribió el editor, recortada en frase completa
+function blockParagraph(excerpt, fallback) {
+  const base = decode(excerpt).replace(/\s*\[…\]\s*$/, '').replace(/\s*(Leer más|Seguir leyendo)\s*»?\s*$/i, '').trim();
+  const sents = base.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ¿¡“"])/).filter(Boolean);
+  let t = '';
+  for (const sn of sents) { if (`${t} ${sn}`.trim().length > 270) break; t = `${t} ${sn}`.trim(); }
+  if (!t && sents[0]) {
+    const c = sents[0].slice(0, 255); const i = Math.max(c.lastIndexOf(', '), c.lastIndexOf('; '));
+    t = c.slice(0, i > 120 ? i : c.lastIndexOf(' ')).replace(/[,;:\s]+$/, '');
+  }
+  if (t.length < 100 && fallback) t = `${t} ${fallback}`.trim();
+  return /[.!?]$/.test(t) ? t : `${t}.`;
+}
+// Título corto para el bloque del email (borrador): sin muletillas de arranque y en una sola cláusula
+function blockTitle(title) {
+  let t = decode(title).replace(/\s*[-|–]\s*Revista (AXXIS|Diners)\s*$/i, '');
+  t = t.replace(/^(el diseño de|esta es|este es|así es|así será|estos son|estas son|conozca|descubra)\s+/i, '').replace(/^./, (x) => x.toUpperCase());
+  const m = t.match(/^(?:una|un)\s+(.*?)\s+que se transformó en\s+(.*)$/i);
+  if (m) t = `De ${m[1]} a ${m[2]}`;
+  // se deja el título completo (hasta 95 caracteres) antes que cortarlo a mitad de frase
+  if (t.length <= 95) return t;
+  const first = t.split(/[:;]/)[0];
+  if (first.length >= 20 && first.length <= 95) return first;
+  const c = t.slice(0, 95); return trimTail(c.slice(0, c.lastIndexOf(' ')));
+}
+
 const CTA_LINE = { 'Arquitectura y proyectos': 'Conozca el proyecto y vea las fotos en la nota.', 'Diseño e interiorismo': 'Vea el diseño y los detalles en la nota.', 'Decoración y hogar': 'Vea el espacio y las ideas en la nota.', 'Gastronomía': 'Vea el lugar y cómo llegar en la nota.', 'Viajes y destinos': 'Vea el recorrido y cómo llegar en la nota.', 'Cultura y entretenimiento': 'Lea la historia completa en la nota.' };
 // Párrafo para despertar el clic: una frase gancho con el protagonista o el lugar, un dato que complete y una invitación concreta
 function teaserFrom(paras, title, keywords, theme) {
@@ -149,7 +175,7 @@ const CTA = { 'Arquitectura y proyectos': 'Ver el proyecto', 'Diseño e interior
 async function enrich(a, th) {
   const r = await axios.get(`${a.siteOrigin}/wp-json/wp/v2/posts/${a.id}`, { params: { _fields: 'content' }, timeout: 15000 }).then((x) => x.data).catch(() => null);
   const paras = articleText(r?.content?.rendered);
-  return { paras, teaser: teaserFrom(paras.length ? paras : [decode(a.excerpt)], a.title, keywordsFrom(a.title, paras, th), th), keywords: keywordsFrom(a.title, paras, th), text: photoText(paras.length ? paras : [decode(a.excerpt)], a.title, keywordsFrom(a.title, paras, th)) };
+  return { paras, paragraph: blockParagraph(a.excerpt, ''), blockTitle: blockTitle(a.title), teaser: teaserFrom(paras.length ? paras : [decode(a.excerpt)], a.title, keywordsFrom(a.title, paras, th), th), keywords: keywordsFrom(a.title, paras, th), text: photoText(paras.length ? paras : [decode(a.excerpt)], a.title, keywordsFrom(a.title, paras, th)) };
 }
 
 // Etiqueta corta de cada nota para armar el asunto de un email con varias noticias
@@ -285,7 +311,7 @@ export async function GET(request) {
         rank: i + 1, title: x.c.title, url: x.c.url, published: x.c.published, theme: x.th, views: x.c.views, viewsPerDay: x.c.viewsPerDay, engSec: x.c.engSec,
         score: x.score, interest: x.interest, openPotential: x.openPct, why,
         headline: subject, headlineChars: subject.length, subject, subjectChars: subject.length, preview, previewChars: preview.length,
-        keywords: ex.keywords, teaser: ex.teaser, teaserChars: ex.teaser.length, photoText: ex.text, photoTextChars: ex.text.length, button: CTA[x.th] || 'Leer la nota',
+        keywords: ex.keywords, teaser: ex.teaser, teaserChars: ex.teaser.length, paragraph: ex.paragraph, paragraphChars: ex.paragraph.length, blockTitle: ex.blockTitle, blockTitleChars: ex.blockTitle.length, photoText: ex.text, photoTextChars: ex.text.length, button: CTA[x.th] || 'Leer la nota',
       };
     });
     // Mejor horario de envío según clic sobre entregados
@@ -315,8 +341,18 @@ export async function GET(request) {
     const previewList = fit(labels.filter((_, i) => i !== leadIdx).slice(0, 3), 76, '');
     const emailPreview = { text: `También: ${previewList}.`, chars: `También: ${previewList}.`.length };
     const bestSubjects = emails.filter((e) => e.subject || e.name).map((e) => ({ subject: e.subject || e.name, sentAt: e.sentAt, open: e.open / e.delivered, click: e.click / e.delivered, sent: e.sent })).sort((a, b) => b.open - a.open).slice(0, 3);
+    const lower = (x) => x.replace(/^./, (c) => c.toLowerCase());
+    const themesRank = Object.entries(picks.reduce((m, p) => { m[p.theme] = (m[p.theme] || 0) + 1; return m; }, {})).sort((a, b) => b[1] - a[1]).map((x) => x[0]);
+    const THEME_NOUN = { 'Arquitectura y proyectos': 'arquitectura', 'Diseño e interiorismo': 'diseño', 'Decoración y hogar': 'decoración', 'Gastronomía': 'gastronomía', 'Viajes y destinos': 'viajes', 'Cultura y entretenimiento': 'cultura', 'Sostenibilidad y memoria': 'sostenibilidad', 'Otros temas': 'actualidad' };
+    const themeText = listJoin(themesRank.slice(0, 2).map((t) => THEME_NOUN[t] || lower(t)));
+    const NUM = ['', 'una', 'dos', 'tres', 'cuatro', 'cinco'];
+    const GENERIC = /^(colombia|bogotá|bogota|medellín|medellin|cali|cartagena)$/i;
+    const names = picks.map((p) => p.keywords.find((k) => /^[A-ZÁÉÍÓÚÑ]/.test(k) && !GENERIC.test(k) && k.length <= 28)).filter(Boolean);
+    const two = themesRank.filter((t) => picks.filter((p) => p.theme === t).length >= 2).slice(0, 2);
+    const themeTxt = listJoin((two.length ? two : themesRank.slice(0, 1)).map((t) => THEME_NOUN[t] || lower(t)));
+    const intro = `En este envío reunimos ${picks.length === 5 ? 'cinco' : NUM[picks.length] || picks.length} historias de ${themeTxt} para descubrir esta semana, con lo más leído de ${brandName} en los últimos días. Cada nota trae su foto, un párrafo y el botón para leerla completa.`;
     const data = {
-      brand, fetchedAt: new Date().toISOString(), picks, bestSlot, email: { subjects, preview: emailPreview, labels, lead: L1, bestSubjects, avgOpen: allOpen },
+      brand, fetchedAt: new Date().toISOString(), picks, bestSlot, email: { subjects, preview: emailPreview, labels, lead: L1, bestSubjects, avgOpen: allOpen, intro, introChars: intro.length },
       basis: { articles: wp.length, withTraffic: cands.length, excludedAlreadySent: cands.length - fresh.length, trainingEmails: emails.length, avgClick: allClick, avgOpen: allOpen },
     };
     CACHE.set(brand, { at: Date.now(), data });
