@@ -262,6 +262,7 @@ function shortLabel(title, keywords) {
 }
 function listJoin(a) { return a.length <= 1 ? a.join('') : `${a.slice(0, -1).join(', ')} y ${a[a.length - 1]}`; }
 function fit(parts, max, tail) {
+  if (!parts || !parts.length) return '';
   // quita elementos del final hasta que quepa en `max` caracteres
   for (let n = parts.length; n >= 1; n -= 1) { const t = n === 1 ? parts[0] + (tail || '') : `${listJoin(parts.slice(0, n))}${tail || ''}`; if (t.length <= max) return t; }
   return parts[0].slice(0, max);
@@ -414,11 +415,12 @@ export async function GET(request) {
     const storedMatch = stored && stored.forUrls.filter((u) => pickKeys.has(u)).length >= 2;
     const subjectSource = storedMatch ? 'redactado' : 'automatico';
     const finalSubjects = (storedMatch ? stored.subjects.map((x) => ({ text: x.text, chars: x.text.length, why: x.why })) : subjects).map((x) => ({ ...x, checks: subjectChecks(x.text) }));
-    const finalPreview = (storedMatch ? { ...stored.preview, chars: stored.preview.text.length } : emailPreview);
-    finalPreview.check = finalPreview.chars >= 40 && finalPreview.chars <= 130 ? 'ok' : 'revisar'; // preheader: entre 40 y 130 caracteres
+    // Preheader: dos opciones, entre 40 y 130 caracteres cada una
+    const finalPreviews = (storedMatch ? stored.previews : [{ text: emailPreview.text, why: 'Borrador automático con las otras notas del envío.' }]).map((x) => ({ text: x.text, chars: x.text.length, why: x.why, check: x.text.length >= 40 && x.text.length <= 130 ? 'ok' : 'revisar' }));
+    const finalPreview = finalPreviews[0];
     const featureLifts = Object.fromEntries(Object.entries(FL).map(([k, v]) => [k, { lift: v.lift, n: v.n }]));
     const data = {
-      brand, fetchedAt: new Date().toISOString(), picks, bestSlot, email: { subjects: finalSubjects, preview: finalPreview, subjectSource, recommended: storedMatch ? stored.recommended : 0, writtenAt: storedMatch ? stored.writtenAt : null, featureLifts, labels, lead: L1, bestSubjects, avgOpen: allOpen, intro, introChars: intro.length },
+      brand, fetchedAt: new Date().toISOString(), picks, bestSlot, email: { subjects: finalSubjects, preview: finalPreview, previews: finalPreviews, subjectSource, recommended: storedMatch ? stored.recommended : 0, writtenAt: storedMatch ? stored.writtenAt : null, featureLifts, labels, lead: L1, bestSubjects, avgOpen: allOpen, intro, introChars: intro.length },
       basis: { articles: wp.length, withTraffic: cands.length, excludedAlreadySent: cands.length - fresh.length, trainingEmails: emails.length, avgClick: allClick, avgOpen: allOpen },
     };
     CACHE.set(brand, { at: Date.now(), data });

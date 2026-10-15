@@ -64,12 +64,19 @@
      "chars": 39
     }
    ],
-   "preview": {
-    "text": "Una casa antigua que se reinventa, un apartamento donde el tiempo es materia y una villa funcionalista iluminada con vidrio checo.",
-    "why": "Complementa el asunto con tres imágenes concretas y fieles a las notas, sin repetirlo ni revelar los proyectos.",
-    "chars": 130
-   },
-   "writtenAt": "2026-10-14"
+   "writtenAt": "2026-10-14",
+   "previews": [
+    {
+     "text": "Una casa antigua que se reinventa, un apartamento donde el tiempo es materia y una villa funcionalista iluminada con vidrio checo.",
+     "why": "Tres imágenes concretas y fieles a las notas, sin repetir el asunto ni revelar los proyectos.",
+     "chars": 130
+    },
+    {
+     "text": "Tres lecturas del habitar: qué conservar de una casa, cómo el tiempo se vuelve material y por qué el vidrio puede ser luz.",
+     "why": "Formula las tres notas como preguntas abiertas: despierta curiosidad por el proceso creativo sin dar las respuestas.",
+     "chars": 122
+    }
+   ]
   },
   "diners": {
    "forUrls": [
@@ -95,12 +102,19 @@
      "chars": 46
     }
    ],
-   "preview": {
-    "text": "Además: el cómic periodístico que escucha a la selva herida y la carrera de Latinoamérica hacia el Óscar 2027.",
-    "why": "Suma dos temas concretos que el asunto no menciona.",
-    "chars": 110
-   },
-   "writtenAt": "2026-10-14"
+   "writtenAt": "2026-10-14",
+   "previews": [
+    {
+     "text": "Además: el cómic periodístico que escucha a la selva herida y la carrera de Latinoamérica hacia el Óscar 2027.",
+     "why": "Suma dos temas concretos que el asunto no menciona.",
+     "chars": 110
+    },
+    {
+     "text": "Diseño, luz y materiales que vuelven inolvidable un restaurante, y la mirada de un periodista sobre la selva herida.",
+     "why": "Conecta la nota principal con la segunda por su tono de reflexión, sin repetir el asunto.",
+     "chars": 116
+    }
+   ]
   }
  }
 }
