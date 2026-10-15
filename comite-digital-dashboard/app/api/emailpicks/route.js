@@ -23,7 +23,7 @@ const THEMES = [
 ];
 const PLACES = /bogota|colombia|medellin|cartagena|cali\b|barranquilla|caribe|chia|santa marta|guajira|choco|chapinero|candelaria/;
 
-const decode = (t) => String(t || '').replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n))).replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&hellip;/g, '…').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+const decode = (t) => String(t || '').replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n))).replace(/&nbsp;|&#160;/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&hellip;/g, '…').replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
 const plain = (t) => decode(t).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
 const words = (t) => new Set(plain(t).replace(/[^a-z0-9 ]/g, ' ').split(' ').filter((w) => w.length >= 5 && !STOP.has(w)));
 const themeOf = (t) => { const p = plain(t); const h = THEMES.find((x) => x[1].test(p)); return h ? h[0] : 'Otros temas'; };
@@ -53,15 +53,163 @@ function previewFrom(excerpt, title) {
   return `${c.slice(0, sp > 50 ? sp : 90).replace(/[,;:\s]+$/, '')}…`;
 }
 
-async function trainingEmails(origin, brand) {
-  const end = new Date(Date.now() - DAY);
-  const calls = [0, 60].map((off) => {
-    const e = new Date(end.getTime() - off * DAY); const s = new Date(e.getTime() - 29 * DAY);
-    return axios.get(`${origin}/api/emails`, { params: { start: iso(s), end: iso(e) }, timeout: 40000 }).then((r) => r.data[brand] || {}).catch(() => ({}));
+const NAME_STOP = new Set('Esta Este Estos Estas El La Los Las Un Una Unos Unas En Con Por Para De Del Al Se Su Sus Lo Es Son Fue Fueron Como Más Muy Pero También Cuando Donde Desde Hasta Entre Sobre Sin Ya Hay Han Ser Tiene Tienen Después Durante Además Así Allí Aquí Hoy Foto Fotografías Fotografía Arquitectura Diseño Proyecto Equipo Cortesía Conozca Descubra'.split(' '));
+const CREDIT = /^(arquitectura|arquitectos?|dise[ñn]o|fotograf[ií]as?|fotos?|ubicaci[óo]n|construcci[óo]n|paisajismo|interiorismo|cortes[ií]a|área|area|año|equipo|texto|estructura|ingenier[ií]a|colaboradores?|iluminaci[óo]n|mobiliario|cliente)\s*[:\-]/i;
+
+function articleText(html) {
+  const clean = String(html || '').replace(/<figure[\s\S]*?<\/figure>/gi, ' ').replace(/<figcaption[\s\S]*?<\/figcaption>/gi, ' ').replace(/<(script|style)[\s\S]*?<\/\1>/gi, ' ');
+  const paras = (clean.match(/<p[^>]*>[\s\S]*?<\/p>/gi) || []).map((x) => decode(x)).filter((x) => x.length >= 60 && !CREDIT.test(x) && !/^(fotograf|cr[ée]ditos|siga|lea tambi|te puede interesar|conozca m[aá]s)/i.test(x));
+  return paras;
+}
+function keywordsFrom(title, paras, theme) {
+  const text = `${title}. ${paras.slice(0, 6).join(' ')}`;
+  const counts = new Map();
+  const re = /\b([A-ZÁÉÍÓÚÑ][\p{L}'’-]+(?:\s+(?:(?:de|del|la|los|las|y|da|do)\s+)?[A-ZÁÉÍÓÚÑ][\p{L}'’-]+){0,3})/gu;
+  let m;
+  while ((m = re.exec(text))) {
+    let k = m[1].trim();
+    const before = text.slice(Math.max(0, m.index - 3), m.index).trim();
+    const sentenceStart = m.index === 0 || /[.!?¿¡"“]$/.test(before) || before === '';
+    const parts = k.split(' ');
+    if (NAME_STOP.has(parts[0])) { k = parts.slice(1).join(' '); if (!k) continue; }
+    if (k.length < 4 || NAME_STOP.has(k)) continue;
+    // una sola palabra al inicio de oración suele ser un verbo o conector, no un nombre propio
+    if (sentenceStart && k.split(' ').length === 1) continue;
+    counts.set(k, (counts.get(k) || 0) + 1);
+  }
+  const names = [...counts.entries()].filter(([k, c]) => k.includes(' ') || c >= 2 || plain(title).includes(plain(k))).sort((a, b) => b[1] - a[1] || b[0].length - a[0].length).map((x) => x[0]);
+  const out = [];
+  const add = (k) => { const n = plain(k); if (k && !out.some((o) => plain(o).includes(n) || n.includes(plain(o)))) out.push(k); };
+  names.slice(0, 4).forEach(add);
+  const place = (plain(text).match(PLACES) || [])[0];
+  if (place) add(place.replace(/^./, (c) => c.toUpperCase()));
+  const topic = { 'Arquitectura y proyectos': 'arquitectura colombiana', 'Diseño e interiorismo': 'diseño de interiores', 'Decoración y hogar': 'decoración del hogar', 'Gastronomía': 'gastronomía', 'Viajes y destinos': 'viajes', 'Cultura y entretenimiento': 'cultura', 'Sostenibilidad y memoria': 'arquitectura sostenible' }[theme];
+  if (topic) add(topic);
+  return out.slice(0, 6);
+}
+function photoText(paras, title, keywords) {
+  const names = keywords.filter((k) => /^[A-ZÁÉÍÓÚÑ]/.test(k));
+  const cands = [];
+  paras.slice(0, 5).forEach((para, pi) => {
+    para.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ¿¡“"])/).forEach((sn, si) => {
+      const t = sn.trim();
+      if (t.length < 60 || t.length > 200 || /^\(|le puede interesar|lea también|vea también/i.test(t)) return;
+      if ((t.match(/\(/g) || []).length !== (t.match(/\)/g) || []).length) return;
+      if ((t.match(/["“”]/g) || []).length % 2) return;
+      if (/^(sin embargo|además|por otro lado|por eso|pero|esto|eso|ello|así|y|de ahí|allí|ahí|por ello|en ese|en esa|con esto)(?![\p{L}])/iu.test(t) || /^(lo anterior|esas?|esos|aquel|aquella|dicho|dicha|tal)(?![\p{L}])/iu.test(t)) return;
+      if (/\b(nosotros|trabajamos|decidimos|pensamos|imaginamos)\b/i.test(t)) return;
+      let sc = 0;
+      names.forEach((k) => { if (t.includes(k)) sc += 2; });
+      if (PLACES.test(plain(t))) sc += 1;
+      if (/\d/.test(t)) sc += 1;
+      sc -= pi * 0.3 + si * 0.1;
+      cands.push({ t, sc });
+    });
   });
-  const parts = await Promise.all(calls);
+  cands.sort((a, b) => b.sc - a.sc);
+  // Sin una frase que nombre al protagonista o el lugar, el título de la nota es mejor texto que una frase genérica
+  let t = cands[0] && cands[0].sc >= 1 ? cands[0].t : '';
+  if (!t) { t = decode(title); }
+  return /[.!?]$/.test(t) ? t : `${t}.`;
+}
+const CTA_LINE = { 'Arquitectura y proyectos': 'Conozca el proyecto y vea las fotos en la nota.', 'Diseño e interiorismo': 'Vea el diseño y los detalles en la nota.', 'Decoración y hogar': 'Vea el espacio y las ideas en la nota.', 'Gastronomía': 'Vea el lugar y cómo llegar en la nota.', 'Viajes y destinos': 'Vea el recorrido y cómo llegar en la nota.', 'Cultura y entretenimiento': 'Lea la historia completa en la nota.' };
+// Párrafo para despertar el clic: una frase gancho con el protagonista o el lugar, un dato que complete y una invitación concreta
+function teaserFrom(paras, title, keywords, theme) {
+  const names = keywords.filter((k) => /^[A-ZÁÉÍÓÚÑ]/.test(k));
+  const cands = [];
+  paras.slice(0, 6).forEach((para, pi) => {
+    para.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ¿¡“"])/).forEach((sn, si) => {
+      const t = sn.trim();
+      if (t.length < 50 || t.length > 190 || /^\(|le puede interesar|lea también|vea también/i.test(t)) return;
+      if ((t.match(/\(/g) || []).length !== (t.match(/\)/g) || []).length) return;
+      if ((t.match(/["“”]/g) || []).length % 2) return;
+      if (/^(sin embargo|además|por otro lado|por eso|pero|esto|eso|ello|así|y|de ahí|allí|ahí|por ello|en ese|en esa|con esto)(?![\p{L}])/iu.test(t) || /^(lo anterior|esas?|esos|aquel|aquella|dicho|dicha|tal)(?![\p{L}])/iu.test(t)) return;
+      if (/\b(nosotros|trabajamos|decidimos|pensamos|imaginamos)\b/i.test(t)) return;
+      let sc = 0;
+      names.forEach((k) => { if (t.includes(k)) sc += 2; });
+      if (PLACES.test(plain(t))) sc += 1;
+      if (/\d/.test(t)) sc += 1.5;
+      sc -= pi * 0.25;
+      cands.push({ t, sc, pi, si });
+    });
+  });
+  cands.sort((a, b) => b.sc - a.sc);
+  const hook = cands[0] && cands[0].sc >= 1 ? cands[0] : null;
+  const detail = cands.find((c) => hook && c !== hook && c.pi !== hook.pi && c.sc >= 0.5) || cands.find((c) => hook && c !== hook && c.sc >= 0.5);
+  const parts = [];
+  if (hook) parts.push(hook.t); else parts.push(`${decode(title).replace(/[.!?]+$/, '')}.`);
+  if (detail) parts.push(detail.t);
+  let cta = CTA_LINE[theme] || 'Lea la nota completa.';
+  let text = `${parts.join(' ')} ${cta}`;
+  if (text.length > 330 && parts.length > 1) { parts.pop(); text = `${parts.join(' ')} ${cta}`; }
+  return text;
+}
+const CTA = { 'Arquitectura y proyectos': 'Ver el proyecto', 'Diseño e interiorismo': 'Ver el diseño', 'Decoración y hogar': 'Ver el espacio', 'Gastronomía': 'Conocer el lugar', 'Viajes y destinos': 'Ver el destino', 'Cultura y entretenimiento': 'Leer la nota' };
+
+async function enrich(a, th) {
+  const r = await axios.get(`${a.siteOrigin}/wp-json/wp/v2/posts/${a.id}`, { params: { _fields: 'content' }, timeout: 15000 }).then((x) => x.data).catch(() => null);
+  const paras = articleText(r?.content?.rendered);
+  return { paras, teaser: teaserFrom(paras.length ? paras : [decode(a.excerpt)], a.title, keywordsFrom(a.title, paras, th), th), keywords: keywordsFrom(a.title, paras, th), text: photoText(paras.length ? paras : [decode(a.excerpt)], a.title, keywordsFrom(a.title, paras, th)) };
+}
+
+// Etiqueta corta de cada nota para armar el asunto de un email con varias noticias
+function shortLabel(title, keywords) {
+  const t = decode(title).replace(/\s*[-|–]\s*Revista (AXXIS|Diners)\s*$/i, '');
+  const clean = (c) => trimTail(c.replace(/^(esta es|este es|así es|así será|estos son|estas son|conozca|descubra|esta|este|estos|estas|el|la|los|las|un|una)\s+/i, '').trim()).replace(/^./, (x) => x.toUpperCase());
+  const GENERIC = /^(colombia|bogotá|bogota|medellín|medellin)$/i;
+  // 1) sustantivo + nombre propio o lugar que aparece en el título (p. ej. "casa en Nocaima", "firma Albornoz Arquitectos")
+  for (const k of (keywords || []).filter((x) => !GENERIC.test(x) && /^[A-ZÁÉÍÓÚÑ]/.test(x))) {
+    const i = t.indexOf(k);
+    if (i < 0) continue;
+    const before = t.slice(0, i).trim().split(' ');
+    let pre = before.slice(-2).join(' ');
+    if (/^(que|de|del|la|el|y|en|para|con|por|se|su)$/i.test(before[before.length - 1] || '') && before.length > 2) pre = before.slice(-3).join(' ');
+    const lab = clean(`${pre} ${k}`.trim());
+    if (lab.length >= 10 && lab.length <= 40) return lab;
+  }
+  // 2) primera cláusula del título
+  let c = t.split(/:|\s+(?:que|donde|cuyo|cuya|para|con|a partir|tras|en el que|en la que)\s+/i)[0].trim();
+  c = clean(c);
+  if (c.split(' ').length <= 2 || c.length < 14) c = clean(t.split(' ').slice(0, 6).join(' '));
+  if (c.length > 38) { const k = c.slice(0, 38); c = clean(k.slice(0, k.lastIndexOf(' ') > 15 ? k.lastIndexOf(' ') : 38)); }
+  return c;
+}
+function listJoin(a) { return a.length <= 1 ? a.join('') : `${a.slice(0, -1).join(', ')} y ${a[a.length - 1]}`; }
+function fit(parts, max, tail) {
+  // quita elementos del final hasta que quepa en `max` caracteres
+  for (let n = parts.length; n >= 1; n -= 1) { const t = n === 1 ? parts[0] + (tail || '') : `${listJoin(parts.slice(0, n))}${tail || ''}`; if (t.length <= max) return t; }
+  return parts[0].slice(0, max);
+}
+
+// HubSpot limita las consultas por segundo: se consulta una vez por ventana para las dos revistas, con reintento y copia de respaldo
+const EMAIL_RAW = new Map();
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+async function emailWindow(origin, off) {
+  const key = `w${off}`;
+  const hit = EMAIL_RAW.get(key);
+  if (hit && hit.data && Date.now() - hit.at < 30 * 60 * 1000) return hit.data;
+  if (hit && hit.pending) return hit.pending;
+  const end = new Date(Date.now() - DAY - off * DAY); const start = new Date(end.getTime() - 29 * DAY);
+  const pending = (async () => {
+    for (let attempt = 0; attempt < 3; attempt += 1) {
+      // eslint-disable-next-line no-await-in-loop
+      const r = await axios.get(`${origin}/api/emails`, { params: { start: iso(start), end: iso(end) }, timeout: 40000 }).then((x) => x.data).catch(() => null);
+      const ok = r && !r.error && ((r.axxis?.emails || []).some((e) => e.sent > 0) || (r.diners?.emails || []).some((e) => e.sent > 0));
+      if (ok) { EMAIL_RAW.set(key, { at: Date.now(), data: r }); return r; }
+      // eslint-disable-next-line no-await-in-loop
+      await sleep(4000);
+    }
+    return hit?.data || null; // última copia buena, aunque esté vieja
+  })();
+  EMAIL_RAW.set(key, { ...(hit || {}), pending });
+  const out = await pending;
+  const cur = EMAIL_RAW.get(key); if (cur) delete cur.pending;
+  return out;
+}
+async function trainingEmails(origin, brand) {
+  const parts = await Promise.all([0, 60].map((off) => emailWindow(origin, off)));
   const seen = new Set(); const out = [];
-  parts.forEach((p) => [...(p.emails || []), ...(p.prevEmails || [])].forEach((e) => { if (e.kind === 'batch' && e.sent >= 1000 && e.delivered > 0 && e.open < e.delivered && !seen.has(e.id)) { seen.add(e.id); out.push(e); } }));
+  parts.forEach((r) => { const p = r?.[brand] || {}; [...(p.emails || []), ...(p.prevEmails || [])].forEach((e) => { if (e.kind === 'batch' && e.sent >= 1000 && e.delivered > 0 && e.open < e.delivered && !seen.has(e.id)) { seen.add(e.id); out.push(e); } }); });
   return out;
 }
 
@@ -108,7 +256,7 @@ export async function GET(request) {
     const cands = wp.map((a) => {
       const title = decode(a.title?.rendered); const k = pathKey(a.link); const g = ga.get(k) || { views: 0, eng: 0, users: 0 };
       const ageDays = Math.max(1, (now - Date.parse(a.date)) / DAY);
-      return { title, url: a.link, published: a.date, excerpt: a.excerpt?.rendered || '', views: g.views, viewsPerDay: g.views / Math.min(ageDays, 21), engSec: g.users ? g.eng / g.users : 0, ageDays };
+      return { id: a.id, title, url: a.link, published: a.date, excerpt: a.excerpt?.rendered || '', views: g.views, viewsPerDay: g.views / Math.min(ageDays, 21), engSec: g.users ? g.eng / g.users : 0, ageDays };
     }).filter((c) => c.views >= 30);
     const tw = (c) => words(c.title);
     const fresh = cands.filter((c) => !recentSubjects.some((sw) => { let n = 0; tw(c).forEach((w) => { if (sw.has(w)) n += 1; }); return n >= 2 && n / Math.max(tw(c).size, 1) >= 0.4; }));
@@ -123,7 +271,10 @@ export async function GET(request) {
     scored.forEach((x) => { x.openPct = pctRank(opens, x.open); x.score = 0.55 * x.interest + 0.45 * x.openPct; });
     scored.sort((a, b) => b.score - a.score);
 
-    const picks = scored.slice(0, 5).map((x, i) => {
+    const top5 = scored.slice(0, 5);
+    const extra = await Promise.all(top5.map((x) => enrich({ id: x.c.id, title: x.c.title, excerpt: x.c.excerpt, siteOrigin: site }, x.th)));
+    const picks = top5.map((x, i) => {
+      const ex = extra[i];
       const subject = subjectFrom(x.c.title); const preview = previewFrom(x.c.excerpt, x.c.title);
       const why = [];
       why.push(`${Math.round(x.c.views).toLocaleString('es-CO')} vistas en ${Math.min(21, Math.round(x.c.ageDays))} días (${Math.round(x.c.viewsPerDay).toLocaleString('es-CO')} por día)`);
@@ -133,20 +284,44 @@ export async function GET(request) {
       return {
         rank: i + 1, title: x.c.title, url: x.c.url, published: x.c.published, theme: x.th, views: x.c.views, viewsPerDay: x.c.viewsPerDay, engSec: x.c.engSec,
         score: x.score, interest: x.interest, openPotential: x.openPct, why,
-        subject, subjectChars: subject.length, preview, previewChars: preview.length,
+        headline: subject, headlineChars: subject.length, subject, subjectChars: subject.length, preview, previewChars: preview.length,
+        keywords: ex.keywords, teaser: ex.teaser, teaserChars: ex.teaser.length, photoText: ex.text, photoTextChars: ex.text.length, button: CTA[x.th] || 'Leer la nota',
       };
     });
     // Mejor horario de envío según clic sobre entregados
     const slots = {};
     emails.forEach((e) => { const d = new Date(Date.parse(e.sentAt) - 5 * 3600000); const k = `${['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'][d.getUTCDay()]} ${String(d.getUTCHours()).padStart(2, '0')}:00`; (slots[k] = slots[k] || []).push(e); });
     const bestSlot = Object.entries(slots).filter(([, l]) => l.length >= 2).map(([k, l]) => ({ slot: k, n: l.length, click: avg(l, clickRate) })).sort((a, b) => b.click - a.click)[0] || null;
+    // Un solo email lleva varias notas: el asunto lleva la nota más fuerte al inicio y avisa que hay más; la vista previa suma el resto
+    const labels = picks.map((p) => shortLabel(p.title, p.keywords));
+    const brandName = brand === 'axxis' ? 'AXXIS' : 'Diners';
+    const n = picks.length;
+    const hasName = (txt) => picks.some((p) => p.keywords.some((k) => /^[A-ZÁÉÍÓÚÑ]/.test(k) && txt.includes(k))) || PLACES.test(plain(txt));
+    // la etiqueta principal es la de la nota con nombre propio o lugar más claro entre las dos primeras
+    const leadIdx = [0, 1].map((i) => ({ i, ok: hasName(labels[i] || ''), len: (labels[i] || '').length })).sort((a, b) => (b.ok - a.ok) || (a.len - b.len))[0].i;
+    const L1 = labels[leadIdx];
+    const checks = (txt) => ({
+      largo: txt.length <= 50 ? 'ok' : txt.length <= 60 ? 'justo' : 'largo',
+      inicio: !/^(esta semana|las |los |nuestra)/i.test(txt) ? 'ok' : 'revisar',
+      especifico: hasName(txt) ? 'ok' : 'revisar',
+      sinMayusculas: txt === txt.toUpperCase() ? 'revisar' : 'ok',
+    });
+    const mk = (text, why) => ({ text, chars: text.length, why, checks: checks(text) });
+    const subjects = [
+      mk(`${L1} y ${n - 1} historias más`, 'Lo más fuerte primero (nombre o lugar concreto) y aviso de que hay más: el asunto se lee completo en el celular'),
+      mk(`${L1}, y ${n - 1} notas para su semana`, 'Variante para probar en A/B: mismo inicio, promesa de selección'),
+      mk(`${brandName}: ${L1} y más`, 'Variante corta con la marca delante, útil si el remitente no es reconocido'),
+    ];
+    const previewList = fit(labels.filter((_, i) => i !== leadIdx).slice(0, 3), 76, '');
+    const emailPreview = { text: `También: ${previewList}.`, chars: `También: ${previewList}.`.length };
+    const bestSubjects = emails.filter((e) => e.subject || e.name).map((e) => ({ subject: e.subject || e.name, sentAt: e.sentAt, open: e.open / e.delivered, click: e.click / e.delivered, sent: e.sent })).sort((a, b) => b.open - a.open).slice(0, 3);
     const data = {
-      brand, fetchedAt: new Date().toISOString(), picks, bestSlot,
+      brand, fetchedAt: new Date().toISOString(), picks, bestSlot, email: { subjects, preview: emailPreview, labels, lead: L1, bestSubjects, avgOpen: allOpen },
       basis: { articles: wp.length, withTraffic: cands.length, excludedAlreadySent: cands.length - fresh.length, trainingEmails: emails.length, avgClick: allClick, avgOpen: allOpen },
     };
     CACHE.set(brand, { at: Date.now(), data });
     return Response.json(data, { headers: CORS });
   } catch (e) {
-    return Response.json({ error: e.response?.data?.error?.message || e.message }, { status: 502, headers: CORS });
+    return Response.json({ error: e.response?.data?.error?.message || e.message, where: String(e.stack || '').split('\n')[1] }, { status: 502, headers: CORS });
   }
 }
