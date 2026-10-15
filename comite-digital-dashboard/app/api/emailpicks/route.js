@@ -180,7 +180,7 @@ function paragraphOptions(excerpt, paras, title, keywords) {
   return { main, alt, checks };
 }
 
-// Mejores prácticas de asunto: 30 a 40 caracteres es lo ideal (se lee completo en el celular), máximo 50; gancho al inicio; dato concreto; sin tono promocional
+// Mejores prácticas de asunto: entre 30 y 50 caracteres, nunca más de 60; gancho al inicio; dato concreto; sin tono promocional
 function subjectChecks(text) {
   const t = String(text || '');
   const first30 = t.slice(0, 30);
@@ -188,7 +188,7 @@ function subjectChecks(text) {
   const caps = /\b[A-ZÁÉÍÓÚÑ]{5,}\b/.test(t) && !/\b(AXXIS|DINERS|ARTBO)\b/.test(t.replace(/[^\p{L}\s]/gu, ''));
   const concrete = (s) => /\d|[¿?]/.test(s) || /[A-ZÁÉÍÓÚÑ][a-záéíóúñ]{3,}/.test(s.slice(1)) || PLACES.test(plain(s));
   return {
-    largo: t.length >= 30 && t.length <= 40 ? 'ok' : t.length <= 50 ? 'justo' : 'largo',
+    largo: t.length >= 30 && t.length <= 50 ? 'ok' : t.length > 50 && t.length <= 60 ? 'justo' : 'largo',
     ganchoPrimero: concrete(first30) || /^[¿¡]/.test(t) ? 'ok' : 'revisar',
     datoConcreto: concrete(t) ? 'ok' : 'revisar',
     sinPromo: promo || caps ? 'revisar' : 'ok',
@@ -395,7 +395,7 @@ export async function GET(request) {
       mk(`${L1}, y ${n - 1} notas para su semana`, 'Variante para probar en A/B: mismo inicio, promesa de selección'),
       mk(`${brandName}: ${L1} y más`, 'Variante corta con la marca delante, útil si el remitente no es reconocido'),
     ];
-    const previewList = fit(labels.filter((_, i) => i !== leadIdx).slice(0, 3), 76, '');
+    const previewList = fit(labels.filter((_, i) => i !== leadIdx).slice(0, 4), 118, '');
     const emailPreview = { text: `También: ${previewList}.`, chars: `También: ${previewList}.`.length };
     const bestSubjects = emails.filter((e) => e.subject || e.name).map((e) => ({ subject: e.subject || e.name, sentAt: e.sentAt, open: e.open / e.delivered, click: e.click / e.delivered, sent: e.sent })).sort((a, b) => b.open - a.open).slice(0, 3);
     const lower = (x) => x.replace(/^./, (c) => c.toLowerCase());
@@ -414,7 +414,8 @@ export async function GET(request) {
     const storedMatch = stored && stored.forUrls.filter((u) => pickKeys.has(u)).length >= 2;
     const subjectSource = storedMatch ? 'redactado' : 'automatico';
     const finalSubjects = (storedMatch ? stored.subjects.map((x) => ({ text: x.text, chars: x.text.length, why: x.why })) : subjects).map((x) => ({ ...x, checks: subjectChecks(x.text) }));
-    const finalPreview = storedMatch ? { ...stored.preview, chars: stored.preview.text.length } : emailPreview;
+    const finalPreview = (storedMatch ? { ...stored.preview, chars: stored.preview.text.length } : emailPreview);
+    finalPreview.check = finalPreview.chars >= 40 && finalPreview.chars <= 130 ? 'ok' : 'revisar'; // preheader: entre 40 y 130 caracteres
     const featureLifts = Object.fromEntries(Object.entries(FL).map(([k, v]) => [k, { lift: v.lift, n: v.n }]));
     const data = {
       brand, fetchedAt: new Date().toISOString(), picks, bestSlot, email: { subjects: finalSubjects, preview: finalPreview, subjectSource, recommended: storedMatch ? stored.recommended : 0, writtenAt: storedMatch ? stored.writtenAt : null, featureLifts, labels, lead: L1, bestSubjects, avgOpen: allOpen, intro, introChars: intro.length },

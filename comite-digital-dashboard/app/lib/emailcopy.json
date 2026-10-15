@@ -49,24 +49,25 @@
    "recommended": 0,
    "subjects": [
     {
-     "text": "¿Qué recuerda una casa? Tres espacios",
-     "why": "Tu asunto de AXXIS con más apertura (41%) fue una pregunta con una invitación concreta; las afirmaciones simples rindieron entre 29% y 32%. Abre con la pregunta, el \"tres\" avisa que el correo trae varias notas y no se revela ningún proyecto: la curiosidad queda para el clic.",
-     "chars": 37
+     "text": "¿Qué memoria guarda una casa? Tres respuestas",
+     "why": "Tu asunto de AXXIS con más apertura (41%) fue una pregunta con una invitación concreta; las afirmaciones simples rindieron entre 29% y 32%. La pregunta es conceptual y fiel al hilo de las tres notas (memoria, tiempo, reinterpretación del espacio); el \"tres\" avisa que hay varias y no revela ningún proyecto.",
+     "chars": 45
     },
     {
-     "text": "Una villa de 1938 donde el vidrio es luz",
-     "why": "Dato concreto (año y material) con una imagen sugerente. Apuesta por una sola nota en vez del conjunto.",
-     "chars": 40
+     "text": "Una villa de 1938 donde el vidrio se vuelve luz",
+     "why": "Evocador y exacto: la villa funcionalista de Čelákovice (1938-1939) y los jarrones de Jungvirt convertidos en lámparas. Apuesta por una sola nota con una imagen que invita a abrir.",
+     "chars": 47
     },
     {
-     "text": "Tres espacios que reescriben su memoria",
-     "why": "Versión declarativa con el hilo conductor del correo; sirve de control frente a la pregunta.",
-     "chars": 39
+     "text": "Conservar no es repetir: tres lecturas del tiempo",
+     "why": "Recoge la idea central de la intervención de Basalto Studio y la extiende a las otras dos notas. Breve, conceptual y sin adelantar ningún resultado.",
+     "chars": 49
     }
    ],
    "preview": {
-    "text": "Una casa antigua, un apartamento con Proust de guía y una villa iluminada con vidrio checo.",
-    "why": "Complementa el asunto con tres referencias concretas, sin repetirlo."
+    "text": "Una casa antigua que se reinventa, un apartamento donde el tiempo es materia y una villa funcionalista iluminada con vidrio checo.",
+    "why": "Complementa el asunto con tres imágenes concretas y fieles a las notas, sin repetirlo ni revelar los proyectos.",
+    "chars": 130
    },
    "writtenAt": "2026-10-14"
   },
@@ -79,25 +80,25 @@
    "recommended": 0,
    "subjects": [
     {
-     "text": "Restaurantes más bonitos del mundo y más",
+     "text": "Los restaurantes más bonitos del mundo, y más",
      "why": "Abre con la nota más vista de la semana y con un superlativo mundial, el patrón de tu asunto de Diners con más apertura (41% y 4,4% de clic: \"un barrio de Bogotá entre los 10 más interesantes del mundo\"). El \"y más\" avisa que son varias notas sin revelarlas.",
+     "chars": 45
+    },
+    {
+     "text": "¿Qué hace inolvidable a un restaurante?",
+     "why": "Pregunta evocadora y fiel al fondo de la nota de los Restaurant & Bar Design Awards (arquitectura, luz, materiales y entorno como parte de la experiencia).",
+     "chars": 39
+    },
+    {
+     "text": "Un cómic que le da voz a la selva herida",
+     "why": "Imagen breve y fiel al libro de Fernando Cárdenas (la naturaleza como víctima silenciosa del conflicto); funciona si quieres abrir con un tema cultural.",
      "chars": 40
-    },
-    {
-     "text": "¿Qué hace memorable a un restaurante?",
-     "why": "Pregunta que invita a abrir, la estructura que mejor abrió en AXXIS; conviene probarla en Diners contra el superlativo.",
-     "chars": 37
-    },
-    {
-     "text": "Un cómic para escuchar a la selva",
-     "why": "Imagen inesperada y breve sobre la segunda nota más leída; funciona si quieres abrir con un tema cultural en vez de gastronómico.",
-     "chars": 33
     }
    ],
    "preview": {
-    "text": "Además: el cómic periodístico que escucha a la selva y la carrera latinoamericana al Óscar 2027.",
+    "text": "Además: el cómic periodístico que escucha a la selva herida y la carrera de Latinoamérica hacia el Óscar 2027.",
     "why": "Suma dos temas concretos que el asunto no menciona.",
-    "chars": 96
+    "chars": 110
    },
    "writtenAt": "2026-10-14"
   }
