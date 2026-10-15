@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { getAccessToken, runReport } from '../../lib/ga4';
+import emailCopy from '../../lib/emailcopy.json';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -138,6 +139,48 @@ function blockTitle(title) {
   const c = t.slice(0, 95); return trimTail(c.slice(0, c.lastIndexOf(' ')));
 }
 
+const ANAPHORA = /^(aquí|allí|acá|sin embargo|además|por otro lado|por eso|pero|esto|eso|ello|así|y|de ahí|allí|ahí|por ello|en ese|en esa|con esto|lo anterior|esas?|esos|aquel|aquella|dicho|dicha|tal)(?![\p{L}])/iu;
+const cleanSentence = (t) => decode(t).replace(/\s*\([^)]{0,80}\)/g, '').replace(/\s+/g, ' ').replace(/\s+([,.;:])/g, '$1').trim();
+// Párrafo sugerido: 2 frases completas, 180 a 250 caracteres, primero el protagonista o lo nuevo, sin repetir el título ni invitar al clic (eso lo hace el botón)
+function paragraphOptions(excerpt, paras, title, keywords) {
+  const names = keywords.filter((k) => /^[A-ZÁÉÍÓÚÑ]/.test(k));
+  const pool = [];
+  const push = (raw, pi, si, bonus) => {
+    const t = cleanSentence(raw);
+    if (t.length < 50 || t.length > 235 || /^\(|le puede interesar|lea también|vea también/i.test(t) || ANAPHORA.test(t)) return;
+    if ((t.match(/["“”«»]/g) || []).length % 2) return;
+    if (/\b(nosotros|nuestr[oa]s?|trabajamos|decidimos|pensamos|imaginamos|recorrí|fui|soy|estoy|me|mi|mis|conmigo)\b/i.test(t)) return;
+    let sc = bonus;
+    names.forEach((k) => { if (t.includes(k)) sc += 2; });
+    if (PLACES.test(plain(t))) sc += 1;
+    if (/\d/.test(t)) sc += 1;
+    const words = t.split(' ').length; if (words > 30) sc -= 1.5;
+    sc -= pi * 0.25 + si * 0.1;
+    pool.push({ t: /[.!?]$/.test(t) ? t : `${t}.`, sc, pi });
+  };
+  decode(excerpt).split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ¿¡“"])/).forEach((sn, si) => push(sn, 0, si, 2)); // la bajada del editor pesa más
+  paras.slice(0, 5).forEach((para, pi) => para.split(/(?<=[.!?])\s+(?=[A-ZÁÉÍÓÚÑ¿¡“"])/).forEach((sn, si) => push(sn, pi + 1, si, 0)));
+  const seen = new Set(); const uniq = pool.filter((x) => { const k = plain(x.t).slice(0, 40); if (seen.has(k)) return false; seen.add(k); return true; }).sort((a, b) => b.sc - a.sc);
+  const hook = uniq[0];
+  let main = hook ? hook.t : `${decode(title).replace(/[.!?]+$/, '')}.`;
+  if (hook) {
+    const second = uniq.find((x) => x !== hook && x.pi !== hook.pi && `${hook.t} ${x.t}`.length <= 250) || uniq.find((x) => x !== hook && `${hook.t} ${x.t}`.length <= 250);
+    if (second && hook.t.length < 170) main = hook.pi <= second.pi ? `${hook.t} ${second.t}` : `${second.t} ${hook.t}`;
+  }
+  const alt = uniq.filter((x) => x.t.length >= 90 && x.t.length <= 160).sort((a, b) => b.sc - a.sc)[0]?.t || (main.length <= 160 ? main : '');
+  const tw = words(title); const mw = words(main); let ov = 0; mw.forEach((w) => { if (tw.has(w)) ov += 1; });
+  const sents = main.split(/(?<=[.!?])\s+/).filter(Boolean);
+  const maxWords = Math.max(...sents.map((x) => x.split(' ').length));
+  const checks = {
+    largo: main.length >= 180 && main.length <= 250 ? 'ok' : main.length >= 140 && main.length <= 270 ? 'justo' : 'revisar',
+    frases: sents.length <= 2 && maxWords <= 30 ? 'ok' : 'revisar',
+    protagonista: names.some((k) => main.includes(k)) || PLACES.test(plain(main)) ? 'ok' : 'revisar',
+    sinRepetirTitulo: tw.size && ov / Math.min(tw.size, mw.size || 1) < 0.6 ? 'ok' : 'revisar',
+  };
+  return { main, alt, checks };
+}
+
+const copyKey = (u) => String(u || '').replace(/^https?:\/\//, '').replace(/\/+$/, '').toLowerCase();
 const CTA_LINE = { 'Arquitectura y proyectos': 'Conozca el proyecto y vea las fotos en la nota.', 'Diseño e interiorismo': 'Vea el diseño y los detalles en la nota.', 'Decoración y hogar': 'Vea el espacio y las ideas en la nota.', 'Gastronomía': 'Vea el lugar y cómo llegar en la nota.', 'Viajes y destinos': 'Vea el recorrido y cómo llegar en la nota.', 'Cultura y entretenimiento': 'Lea la historia completa en la nota.' };
 // Párrafo para despertar el clic: una frase gancho con el protagonista o el lugar, un dato que complete y una invitación concreta
 function teaserFrom(paras, title, keywords, theme) {
@@ -175,7 +218,9 @@ const CTA = { 'Arquitectura y proyectos': 'Ver el proyecto', 'Diseño e interior
 async function enrich(a, th) {
   const r = await axios.get(`${a.siteOrigin}/wp-json/wp/v2/posts/${a.id}`, { params: { _fields: 'content' }, timeout: 15000 }).then((x) => x.data).catch(() => null);
   const paras = articleText(r?.content?.rendered);
-  return { paras, paragraph: blockParagraph(a.excerpt, ''), blockTitle: blockTitle(a.title), teaser: teaserFrom(paras.length ? paras : [decode(a.excerpt)], a.title, keywordsFrom(a.title, paras, th), th), keywords: keywordsFrom(a.title, paras, th), text: photoText(paras.length ? paras : [decode(a.excerpt)], a.title, keywordsFrom(a.title, paras, th)) };
+  const kws = keywordsFrom(a.title, paras, th);
+  const po = paragraphOptions(a.excerpt, paras, a.title, kws);
+  return { paras, paragraph: po.main, paragraphAlt: po.alt, paragraphChecks: po.checks, blockTitle: blockTitle(a.title), teaser: teaserFrom(paras.length ? paras : [decode(a.excerpt)], a.title, keywordsFrom(a.title, paras, th), th), keywords: keywordsFrom(a.title, paras, th), text: photoText(paras.length ? paras : [decode(a.excerpt)], a.title, keywordsFrom(a.title, paras, th)) };
 }
 
 // Etiqueta corta de cada nota para armar el asunto de un email con varias noticias
@@ -247,7 +292,7 @@ export async function GET(request) {
     if (hit && Date.now() - hit.at < 15 * 60 * 1000) return Response.json(hit.data, { headers: CORS });
     const now = Date.now(); const site = SITE[brand];
     const prop = brand === 'axxis' ? process.env.GA4_AXXIS_ID : process.env.GA4_DINERS_ID;
-    const after = new Date(now - 21 * DAY).toISOString().slice(0, 19);
+    const after = new Date(now - 5 * DAY).toISOString().slice(0, 19);
 
     const [wp, emails, token] = await Promise.all([
       axios.get(`${site}/wp-json/wp/v2/posts`, { params: { per_page: 100, after, _fields: 'id,link,title,date,excerpt' }, timeout: 20000 }).then((r) => r.data).catch(() => []),
@@ -255,7 +300,7 @@ export async function GET(request) {
       getAccessToken(),
     ]);
     const rows = await runReport(token, prop, {
-      dateRanges: [{ startDate: iso(new Date(now - 21 * DAY)), endDate: iso(new Date(now - DAY)) }],
+      dateRanges: [{ startDate: iso(new Date(now - 6 * DAY)), endDate: iso(new Date(now - DAY)) }],
       dimensions: [{ name: 'pagePath' }],
       metrics: [{ name: 'screenPageViews' }, { name: 'userEngagementDuration' }, { name: 'activeUsers' }],
       limit: 5000,
@@ -282,19 +327,17 @@ export async function GET(request) {
     const cands = wp.map((a) => {
       const title = decode(a.title?.rendered); const k = pathKey(a.link); const g = ga.get(k) || { views: 0, eng: 0, users: 0 };
       const ageDays = Math.max(1, (now - Date.parse(a.date)) / DAY);
-      return { id: a.id, title, url: a.link, published: a.date, excerpt: a.excerpt?.rendered || '', views: g.views, viewsPerDay: g.views / Math.min(ageDays, 21), engSec: g.users ? g.eng / g.users : 0, ageDays };
-    }).filter((c) => c.views >= 30);
+      return { id: a.id, title, url: a.link, published: a.date, excerpt: a.excerpt?.rendered || '', views: g.views, viewsPerDay: g.views / Math.min(ageDays, 5), engSec: g.users ? g.eng / g.users : 0, ageDays };
+    }).filter((c) => c.views >= 20);
     const tw = (c) => words(c.title);
     const fresh = cands.filter((c) => !recentSubjects.some((sw) => { let n = 0; tw(c).forEach((w) => { if (sw.has(w)) n += 1; }); return n >= 2 && n / Math.max(tw(c).size, 1) >= 0.4; }));
-    const vpd = fresh.map((c) => c.viewsPerDay), eng = fresh.map((c) => c.engSec);
+    const vws = fresh.map((c) => c.views), eng = fresh.map((c) => c.engSec);
+    // Orden por mayores vistas e interés del lector (segundos de lectura por usuario); sin potencial de apertura
     const scored = fresh.map((c) => {
       const f = feats(c.title), th = themeOf(c.title);
-      let open = themeLift(th);
-      Object.keys(FL).forEach((k) => { if (f[k]) open *= Math.min(Math.max(FL[k].lift, 0.8), 1.25); });
-      return { c, f, th, open, interest: 0.6 * pctRank(vpd, c.viewsPerDay) + 0.4 * pctRank(eng, c.engSec) };
+      const interest = 0.75 * pctRank(vws, c.views) + 0.25 * pctRank(eng, c.engSec);
+      return { c, f, th, open: 1, openPct: 0, interest, score: interest };
     });
-    const opens = scored.map((x) => x.open);
-    scored.forEach((x) => { x.openPct = pctRank(opens, x.open); x.score = 0.55 * x.interest + 0.45 * x.openPct; });
     scored.sort((a, b) => b.score - a.score);
 
     const top5 = scored.slice(0, 5);
@@ -303,15 +346,14 @@ export async function GET(request) {
       const ex = extra[i];
       const subject = subjectFrom(x.c.title); const preview = previewFrom(x.c.excerpt, x.c.title);
       const why = [];
-      why.push(`${Math.round(x.c.views).toLocaleString('es-CO')} vistas en ${Math.min(21, Math.round(x.c.ageDays))} días (${Math.round(x.c.viewsPerDay).toLocaleString('es-CO')} por día)`);
+      why.push(`${Math.round(x.c.views).toLocaleString('es-CO')} vistas en ${Math.max(1, Math.min(5, Math.round(x.c.ageDays)))} ${Math.round(x.c.ageDays) <= 1 ? 'día' : 'días'} (${Math.round(x.c.viewsPerDay).toLocaleString('es-CO')} por día)`);
       if (x.c.engSec) why.push(`${Math.round(x.c.engSec)} segundos de lectura por usuario`);
-      const tl = themeLift(x.th); if (themeStat[x.th] && themeStat[x.th].length >= 2) why.push(`tema "${x.th}": ${tl >= 1 ? '+' : ''}${Math.round((tl - 1) * 100)}% frente al promedio de tus envíos (${themeStat[x.th].length} envíos)`);
-      ['place', 'number', 'question'].forEach((k) => { if (x.f[k] && FL[k].n[0] >= 3 && FL[k].lift > 1.1) why.push(`el asunto ${k === 'place' ? 'con lugar' : k === 'number' ? 'con número' : 'con pregunta'} rinde ${Math.round((FL[k].lift - 1) * 100)}% más en envíos anteriores`); });
       return {
         rank: i + 1, title: x.c.title, url: x.c.url, published: x.c.published, theme: x.th, views: x.c.views, viewsPerDay: x.c.viewsPerDay, engSec: x.c.engSec,
         score: x.score, interest: x.interest, openPotential: x.openPct, why,
         headline: subject, headlineChars: subject.length, subject, subjectChars: subject.length, preview, previewChars: preview.length,
-        keywords: ex.keywords, teaser: ex.teaser, teaserChars: ex.teaser.length, paragraph: ex.paragraph, paragraphChars: ex.paragraph.length, blockTitle: ex.blockTitle, blockTitleChars: ex.blockTitle.length, photoText: ex.text, photoTextChars: ex.text.length, button: CTA[x.th] || 'Leer la nota',
+        paragraphSource: emailCopy[copyKey(x.c.url)] ? 'redactado' : 'automatico', paragraphWhy: emailCopy[copyKey(x.c.url)]?.why || '', writtenAt: emailCopy[copyKey(x.c.url)]?.writtenAt || null,
+        keywords: ex.keywords, teaser: ex.teaser, teaserChars: ex.teaser.length, paragraph: emailCopy[copyKey(x.c.url)]?.paragraph || ex.paragraph, paragraphChars: (emailCopy[copyKey(x.c.url)]?.paragraph || ex.paragraph).length, paragraphAuto: ex.paragraph, paragraphAlt: ex.paragraphAlt, paragraphAltChars: (ex.paragraphAlt || '').length, paragraphChecks: ex.paragraphChecks, blockTitle: ex.blockTitle, blockTitleChars: ex.blockTitle.length, photoText: ex.text, photoTextChars: ex.text.length, button: CTA[x.th] || 'Leer la nota',
       };
     });
     // Mejor horario de envío según clic sobre entregados
