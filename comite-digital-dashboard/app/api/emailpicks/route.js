@@ -393,8 +393,16 @@ export async function GET(request) {
     const two = themesRank.filter((t) => picks.filter((p) => p.theme === t).length >= 2).slice(0, 2);
     const themeTxt = listJoin((two.length ? two : themesRank.slice(0, 1)).map((t) => THEME_NOUN[t] || lower(t)));
     const intro = `En este envío reunimos ${picks.length === 5 ? 'cinco' : NUM[picks.length] || picks.length} historias de ${themeTxt} para descubrir esta semana, con lo más leído de ${brandName} en los últimos días. Cada nota trae su foto, un párrafo y el botón para leerla completa.`;
+    // Asunto y vista previa redactados con criterio editorial para este conjunto de notas (si coinciden al menos 2 con las del top actual)
+    const stored = emailCopy.__email__?.[brand];
+    const pickKeys = new Set(picks.map((p) => copyKey(p.url)));
+    const storedMatch = stored && stored.forUrls.filter((u) => pickKeys.has(u)).length >= 2;
+    const subjectSource = storedMatch ? 'redactado' : 'automatico';
+    const finalSubjects = storedMatch ? stored.subjects.map((x) => ({ text: x.text, chars: x.text.length, why: x.why })) : subjects;
+    const finalPreview = storedMatch ? { ...stored.preview, chars: stored.preview.text.length } : emailPreview;
+    const featureLifts = Object.fromEntries(Object.entries(FL).map(([k, v]) => [k, { lift: v.lift, n: v.n }]));
     const data = {
-      brand, fetchedAt: new Date().toISOString(), picks, bestSlot, email: { subjects, preview: emailPreview, labels, lead: L1, bestSubjects, avgOpen: allOpen, intro, introChars: intro.length },
+      brand, fetchedAt: new Date().toISOString(), picks, bestSlot, email: { subjects: finalSubjects, preview: finalPreview, subjectSource, recommended: storedMatch ? stored.recommended : 0, writtenAt: storedMatch ? stored.writtenAt : null, featureLifts, labels, lead: L1, bestSubjects, avgOpen: allOpen, intro, introChars: intro.length },
       basis: { articles: wp.length, withTraffic: cands.length, excludedAlreadySent: cands.length - fresh.length, trainingEmails: emails.length, avgClick: allClick, avgOpen: allOpen },
     };
     CACHE.set(brand, { at: Date.now(), data });

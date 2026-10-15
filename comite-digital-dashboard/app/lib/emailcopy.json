@@ -38,5 +38,69 @@
   "paragraph": "Tres cintas latinoamericanas ganaron el Óscar a Mejor película extranjera en doce años, y las reglas acaban de cambiar. ¿Quién llevará la apuesta de cada país a la carrera de 2027? Colombia compite con Llueve sobre Babel.",
   "why": "Un dato concreto que sorprende (tres en doce años), un cambio de reglas que sugiere novedad y una pregunta abierta; revela el candidato colombiano pero no el resto de la lista.",
   "writtenAt": "2026-10-14"
+ },
+ "__email__": {
+  "axxis": {
+   "forUrls": [
+    "revistaaxxis.com.co/arquitectura/diseno-vivienda-basalto-studio",
+    "revistaaxxis.com.co/arquitectura/diseno-apartamento-cabida-arq",
+    "revistaaxxis.com.co/decoracion/jarrones-jungvirt"
+   ],
+   "recommended": 0,
+   "subjects": [
+    {
+     "text": "¿Qué recuerda una casa? Tres espacios responden",
+     "why": "Tu asunto de AXXIS con más apertura (41%) fue una pregunta con una invitación concreta; las afirmaciones simples rindieron entre 29% y 32%. El \"tres\" avisa que el correo trae varias notas y la pregunta conceptual no revela ningún proyecto: la curiosidad queda para el clic. Se lee completo en el celular.",
+     "chars": 47
+    },
+    {
+     "text": "Una villa de 1938 donde el vidrio se vuelve luz",
+     "why": "Alternativa específica para probar en A/B: un dato concreto (año, material) y una imagen sugerente. Apuesta por una sola nota en vez del conjunto.",
+     "chars": 47
+    },
+    {
+     "text": "Tres espacios que reinterpretan su memoria",
+     "why": "Versión declarativa y corta, con el hilo conductor del correo. Úsala como control en la prueba A/B frente a la pregunta.",
+     "chars": 42
+    }
+   ],
+   "preview": {
+    "text": "Una casa antigua, un apartamento con Proust de guía y una villa iluminada con vidrio checo.",
+    "why": "Complementa el asunto con tres referencias concretas, sin repetirlo.",
+    "chars": 91
+   },
+   "writtenAt": "2026-10-14"
+  },
+  "diners": {
+   "forUrls": [
+    "revistadiners.com.co/gastronomia/restaurant-bar-design-awards-2026",
+    "revistadiners.com.co/cultura/arte-y-libros/un-verde-mas-oscuro-comic",
+    "revistadiners.com.co/cultura/cine-y-tv/cine-de-latinoamerica-en-los-oscar"
+   ],
+   "recommended": 0,
+   "subjects": [
+    {
+     "text": "Los restaurantes más bonitos del mundo y 4 lecturas más",
+     "why": "Abre con la nota más vista de la semana y con un superlativo mundial, el mismo patrón de tu asunto de Diners con más apertura (41% y 4,4% de clic: \"un barrio de Bogotá entre los 10 más interesantes del mundo\"). El \"4 lecturas más\" avisa que son varias notas sin revelarlas.",
+     "chars": 55
+    },
+    {
+     "text": "Restaurantes de diseño, un cómic sobre la selva y el cine latino en los Óscar",
+     "why": "Formato de lista de temas, el de tu envío con varias notas que alcanzó 40% de apertura. Es más largo: se corta en el celular, por eso lo más fuerte va primero. Probarlo en A/B.",
+     "chars": 77
+    },
+    {
+     "text": "¿Qué hace memorable a un restaurante? Y 4 historias más",
+     "why": "Variante con pregunta, la estructura que mejor abrió en AXXIS; conviene probarla en Diners contra la versión con superlativo.",
+     "chars": 55
+    }
+   ],
+   "preview": {
+    "text": "Además: el cómic periodístico que escucha a la selva y la carrera latinoamericana al Óscar 2027.",
+    "why": "Suma dos temas concretos que el asunto no menciona.",
+    "chars": 96
+   },
+   "writtenAt": "2026-10-14"
+  }
  }
 }
