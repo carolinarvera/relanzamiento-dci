@@ -49,25 +49,24 @@
    "recommended": 0,
    "subjects": [
     {
-     "text": "¿Qué recuerda una casa? Tres espacios responden",
-     "why": "Tu asunto de AXXIS con más apertura (41%) fue una pregunta con una invitación concreta; las afirmaciones simples rindieron entre 29% y 32%. El \"tres\" avisa que el correo trae varias notas y la pregunta conceptual no revela ningún proyecto: la curiosidad queda para el clic. Se lee completo en el celular.",
-     "chars": 47
+     "text": "¿Qué recuerda una casa? Tres espacios",
+     "why": "Tu asunto de AXXIS con más apertura (41%) fue una pregunta con una invitación concreta; las afirmaciones simples rindieron entre 29% y 32%. Abre con la pregunta, el \"tres\" avisa que el correo trae varias notas y no se revela ningún proyecto: la curiosidad queda para el clic.",
+     "chars": 37
     },
     {
-     "text": "Una villa de 1938 donde el vidrio se vuelve luz",
-     "why": "Alternativa específica para probar en A/B: un dato concreto (año, material) y una imagen sugerente. Apuesta por una sola nota en vez del conjunto.",
-     "chars": 47
+     "text": "Una villa de 1938 donde el vidrio es luz",
+     "why": "Dato concreto (año y material) con una imagen sugerente. Apuesta por una sola nota en vez del conjunto.",
+     "chars": 40
     },
     {
-     "text": "Tres espacios que reinterpretan su memoria",
-     "why": "Versión declarativa y corta, con el hilo conductor del correo. Úsala como control en la prueba A/B frente a la pregunta.",
-     "chars": 42
+     "text": "Tres espacios que reescriben su memoria",
+     "why": "Versión declarativa con el hilo conductor del correo; sirve de control frente a la pregunta.",
+     "chars": 39
     }
    ],
    "preview": {
     "text": "Una casa antigua, un apartamento con Proust de guía y una villa iluminada con vidrio checo.",
-    "why": "Complementa el asunto con tres referencias concretas, sin repetirlo.",
-    "chars": 91
+    "why": "Complementa el asunto con tres referencias concretas, sin repetirlo."
    },
    "writtenAt": "2026-10-14"
   },
@@ -80,19 +79,19 @@
    "recommended": 0,
    "subjects": [
     {
-     "text": "Los restaurantes más bonitos del mundo y 4 lecturas más",
-     "why": "Abre con la nota más vista de la semana y con un superlativo mundial, el mismo patrón de tu asunto de Diners con más apertura (41% y 4,4% de clic: \"un barrio de Bogotá entre los 10 más interesantes del mundo\"). El \"4 lecturas más\" avisa que son varias notas sin revelarlas.",
-     "chars": 55
+     "text": "Restaurantes más bonitos del mundo y más",
+     "why": "Abre con la nota más vista de la semana y con un superlativo mundial, el patrón de tu asunto de Diners con más apertura (41% y 4,4% de clic: \"un barrio de Bogotá entre los 10 más interesantes del mundo\"). El \"y más\" avisa que son varias notas sin revelarlas.",
+     "chars": 40
     },
     {
-     "text": "Restaurantes de diseño, un cómic sobre la selva y el cine latino en los Óscar",
-     "why": "Formato de lista de temas, el de tu envío con varias notas que alcanzó 40% de apertura. Es más largo: se corta en el celular, por eso lo más fuerte va primero. Probarlo en A/B.",
-     "chars": 77
+     "text": "¿Qué hace memorable a un restaurante?",
+     "why": "Pregunta que invita a abrir, la estructura que mejor abrió en AXXIS; conviene probarla en Diners contra el superlativo.",
+     "chars": 37
     },
     {
-     "text": "¿Qué hace memorable a un restaurante? Y 4 historias más",
-     "why": "Variante con pregunta, la estructura que mejor abrió en AXXIS; conviene probarla en Diners contra la versión con superlativo.",
-     "chars": 55
+     "text": "Un cómic para escuchar a la selva",
+     "why": "Imagen inesperada y breve sobre la segunda nota más leída; funciona si quieres abrir con un tema cultural en vez de gastronómico.",
+     "chars": 33
     }
    ],
    "preview": {

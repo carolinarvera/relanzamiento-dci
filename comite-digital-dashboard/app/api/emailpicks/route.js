@@ -180,6 +180,21 @@ function paragraphOptions(excerpt, paras, title, keywords) {
   return { main, alt, checks };
 }
 
+// Mejores prácticas de asunto: 30 a 40 caracteres es lo ideal (se lee completo en el celular), máximo 50; gancho al inicio; dato concreto; sin tono promocional
+function subjectChecks(text) {
+  const t = String(text || '');
+  const first30 = t.slice(0, 30);
+  const promo = /(gratis|oferta|descuento|promoci[oó]n|urgente|última oportunidad|no se pierda|compre|!{1,})/i.test(t);
+  const caps = /\b[A-ZÁÉÍÓÚÑ]{5,}\b/.test(t) && !/\b(AXXIS|DINERS|ARTBO)\b/.test(t.replace(/[^\p{L}\s]/gu, ''));
+  const concrete = (s) => /\d|[¿?]/.test(s) || /[A-ZÁÉÍÓÚÑ][a-záéíóúñ]{3,}/.test(s.slice(1)) || PLACES.test(plain(s));
+  return {
+    largo: t.length >= 30 && t.length <= 40 ? 'ok' : t.length <= 50 ? 'justo' : 'largo',
+    ganchoPrimero: concrete(first30) || /^[¿¡]/.test(t) ? 'ok' : 'revisar',
+    datoConcreto: concrete(t) ? 'ok' : 'revisar',
+    sinPromo: promo || caps ? 'revisar' : 'ok',
+  };
+}
+
 const copyKey = (u) => String(u || '').replace(/^https?:\/\//, '').replace(/\/+$/, '').toLowerCase();
 const CTA_LINE = { 'Arquitectura y proyectos': 'Conozca el proyecto y vea las fotos en la nota.', 'Diseño e interiorismo': 'Vea el diseño y los detalles en la nota.', 'Decoración y hogar': 'Vea el espacio y las ideas en la nota.', 'Gastronomía': 'Vea el lugar y cómo llegar en la nota.', 'Viajes y destinos': 'Vea el recorrido y cómo llegar en la nota.', 'Cultura y entretenimiento': 'Lea la historia completa en la nota.' };
 // Párrafo para despertar el clic: una frase gancho con el protagonista o el lugar, un dato que complete y una invitación concreta
@@ -398,7 +413,7 @@ export async function GET(request) {
     const pickKeys = new Set(picks.map((p) => copyKey(p.url)));
     const storedMatch = stored && stored.forUrls.filter((u) => pickKeys.has(u)).length >= 2;
     const subjectSource = storedMatch ? 'redactado' : 'automatico';
-    const finalSubjects = storedMatch ? stored.subjects.map((x) => ({ text: x.text, chars: x.text.length, why: x.why })) : subjects;
+    const finalSubjects = (storedMatch ? stored.subjects.map((x) => ({ text: x.text, chars: x.text.length, why: x.why })) : subjects).map((x) => ({ ...x, checks: subjectChecks(x.text) }));
     const finalPreview = storedMatch ? { ...stored.preview, chars: stored.preview.text.length } : emailPreview;
     const featureLifts = Object.fromEntries(Object.entries(FL).map(([k, v]) => [k, { lift: v.lift, n: v.n }]));
     const data = {
