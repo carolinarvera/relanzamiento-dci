@@ -133,10 +133,10 @@ function blockTitle(title) {
   const m = t.match(/^(?:una|un)\s+(.*?)\s+que se transformó en\s+(.*)$/i);
   if (m) t = `De ${m[1]} a ${m[2]}`;
   // se deja el título completo (hasta 95 caracteres) antes que cortarlo a mitad de frase
-  if (t.length <= 95) return t;
+  if (t.length <= 110) return t;
   const first = t.split(/[:;]/)[0];
-  if (first.length >= 20 && first.length <= 95) return first;
-  const c = t.slice(0, 95); return trimTail(c.slice(0, c.lastIndexOf(' ')));
+  if (first.length >= 20 && first.length <= 110) return first;
+  const c = t.slice(0, 110); return trimTail(c.slice(0, c.lastIndexOf(' ')));
 }
 
 const ANAPHORA = /^(aquí|allí|acá|sin embargo|además|por otro lado|por eso|pero|esto|eso|ello|así|y|de ahí|allí|ahí|por ello|en ese|en esa|con esto|lo anterior|esas?|esos|aquel|aquella|dicho|dicha|tal)(?![\p{L}])/iu;
