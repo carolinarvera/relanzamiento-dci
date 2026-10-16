@@ -1635,6 +1635,35 @@ export default function Dashboard() {
                         </Bar>
                       </BarChart>
                     </ResponsiveContainer>
+                    <div style={{ marginTop: '12px' }}>
+                      <div style={{ ...styles.cardTitle, fontSize: '11px', color: '#c62828' }}>Páginas nuevas con error en este periodo ({nf(seo.errorPages.nuevas)})</div>
+                      {(seo.errorPages.nuevasPages || []).length > 0 ? (
+                        <div style={{ maxHeight: '380px', overflowY: 'auto', marginTop: '6px' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
+                          <thead>
+                            <tr style={{ background: T.soft, position: 'sticky', top: 0 }}>
+                              <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Ruta</th>
+                              <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Título de página</th>
+                              <th style={{ padding: '8px', textAlign: 'right', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Vistas perdidas</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {seo.errorPages.nuevasPages.map((p, k) => (
+                              <tr key={p.path + k}>
+                                <td style={{ padding: '8px', borderBottom: `1px solid ${T.line}`, wordBreak: 'break-all', fontWeight: 600 }}>
+                                  <a href={`${activeTab === 'axxis' ? 'https://revistaaxxis.com.co' : 'https://revistadiners.com.co'}${p.path}`} target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>{p.path}</a>
+                                </td>
+                                <td style={{ padding: '8px', borderBottom: `1px solid ${T.line}`, color: '#666' }}>{p.title}</td>
+                                <td style={{ padding: '8px', borderBottom: `1px solid ${T.line}`, textAlign: 'right', fontWeight: 800, color: '#c62828' }}>{nf(p.views)}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                        </div>
+                      ) : <div style={{ fontSize: '13px', color: '#2e7d32', fontWeight: 600, marginTop: '6px' }}>No aparecieron páginas nuevas con error en este periodo.</div>}
+                      {seo.errorPages.nuevas > (seo.errorPages.nuevasPages || []).length && <div style={styles.cardSubtext}>Se muestran las {(seo.errorPages.nuevasPages || []).length} con más vistas perdidas; desplázate dentro de la lista para verlas.</div>}
+                      <div style={styles.cardSubtext}>Nueva = tiene error en este periodo y no tenía error en el periodo anterior. Al abrir la ruta puedes ver a dónde apuntaba el enlace roto.</div>
+                    </div>
                     {seo.errorPages.fixedPages.length > 0 && (
                       <div style={{ marginTop: '8px' }}>
                         <div style={{ ...styles.cardTitle, fontSize: '11px', color: '#2e7d32' }}>Páginas arregladas este periodo</div>
