@@ -216,6 +216,7 @@ export default function Dashboard() {
   const [newsByWin, setNewsByWin] = useState({});
   const [traficoOpen, setTraficoOpen] = useState(false);
   const [seoTools, setSeoTools] = useState(null);
+  const [seoHealth, setSeoHealth] = useState(null);
   const [kwSearch, setKwSearch] = useState('');
   const [kwSort, setKwSort] = useState('clicks');
   const [cmpMetric, setCmpMetric] = useState('views');
@@ -275,6 +276,18 @@ export default function Dashboard() {
       .catch((e) => { if (!cancelled) setTrends({ error: e.message }); });
     return () => { cancelled = true; };
   }, [activeTab, trendDays, section]);
+
+  useEffect(() => {
+    if (section !== 'seo') return undefined;
+    let cancelled = false;
+    setSeoHealth(null);
+    const qs = range ? `&start=${range.start}&end=${range.end}` : '';
+    fetch(`/api/seo-health?brand=${activeTab}${qs}`)
+      .then((r) => r.json())
+      .then((j) => { if (!cancelled) setSeoHealth(j); })
+      .catch((e) => { if (!cancelled) setSeoHealth({ error: e.message }); });
+    return () => { cancelled = true; };
+  }, [section, activeTab, rangeKey]);
 
   useEffect(() => {
     if (section !== 'seo') return undefined;
@@ -1599,123 +1612,133 @@ export default function Dashboard() {
       {ready && section === 'seo' && (
       <>
       {/* Salud técnica (periodo en revisión) */}
-      {current.seo && (() => {
-        const seo = current.seo;
-        return (
+      {(() => {
+        const H = seoHealth;
+        const base = activeTab === 'axxis' ? 'https://revistaaxxis.com.co' : 'https://revistadiners.com.co';
+        const wrap = (children) => (
           <div style={{ ...styles.section, marginBottom: '10px' }}>
             <h2 style={styles.sectionTitle}>Salud técnica · {rangeLabel}</h2>
-            {seo.errorPages && (
-              <div style={{ ...styles.card, marginTop: '20px', borderTop: (seo.errorPages.total || 0) > 0 ? '4px solid #c62828' : undefined }}>
-                <div style={styles.cardTitle}>Páginas con error ("Page Not Found") · {rangeLabel}</div>
-                <div style={styles.cardSubtext}>Vistas de GA4 cuyo título de página contiene "Not Found" / "404" / "no encontrada". Son enlaces rotos que la gente sigue visitando: la ruta listada es donde cayó el usuario, no necesariamente el enlace de origen.</div>
-
-                {!seo.errorPages.error && (seo.errorPages.distinctCur + seo.errorPages.distinctPrev) > 0 && (
-                  <>
-                    <div style={{ display: 'flex', gap: '24px', margin: '14px 0 4px' }}>
-                      <div><div style={{ fontSize: '11px', color: '#777', textTransform: 'uppercase' }}>Páginas con error · periodo anterior</div><div style={{ fontSize: '22px', fontWeight: 800 }}>{seo.errorPages.distinctPrev}</div></div>
-                      <div><div style={{ fontSize: '11px', color: '#777', textTransform: 'uppercase' }}>Páginas con error · periodo en revisión</div><div style={{ fontSize: '22px', fontWeight: 800 }}>{seo.errorPages.distinctCur}</div></div>
-                      <div><div style={{ fontSize: '11px', color: '#2e7d32', textTransform: 'uppercase' }}>Arregladas</div><div style={{ fontSize: '22px', fontWeight: 800, color: '#2e7d32' }}>{seo.errorPages.fixed}</div></div>
-                      <div><div style={{ fontSize: '11px', color: '#c62828', textTransform: 'uppercase' }}>Nuevas</div><div style={{ fontSize: '22px', fontWeight: 800, color: '#c62828' }}>{seo.errorPages.nuevas}</div></div>
-                    </div>
-                    <ResponsiveContainer width="100%" height={220}>
-                      <BarChart data={[
-                        { label: 'Periodo anterior', 'Páginas con error': seo.errorPages.distinctPrev },
-                        { label: 'Periodo en revisión', 'Páginas con error': seo.errorPages.distinctCur },
-                        { label: 'Arregladas', 'Páginas con error': seo.errorPages.fixed },
-                        { label: 'Nuevas', 'Páginas con error': seo.errorPages.nuevas },
-                      ]}>
-                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                        <XAxis dataKey="label" fontSize={11} />
-                        <YAxis fontSize={11} allowDecimals={false} />
-                        <Tooltip />
-                        <Bar dataKey="Páginas con error" radius={[4, 4, 0, 0]}>
-                          {[seo.errorPages.distinctPrev, seo.errorPages.distinctCur, seo.errorPages.fixed, seo.errorPages.nuevas].map((v, i) => (
-                            <Cell key={i} fill={['#888', T.accent, '#2e7d32', '#c62828'][i]} />
-                          ))}
-                        </Bar>
-                      </BarChart>
-                    </ResponsiveContainer>
-                    <div style={styles.cardSubtext}>
-                      Cada barra cuenta páginas distintas con error, no vistas. Periodo en revisión = {rangeLabel}; periodo anterior = {data.seo?.range?.prevStart} a {data.seo?.range?.prevEnd}.
-                      Periodo en revisión = {nf(seo.errorPages.persisten || 0)} que siguen sin arreglar + {nf(seo.errorPages.nuevas || 0)} nuevas.
-                      Periodo anterior = {nf(seo.errorPages.persisten || 0)} que siguen sin arreglar + {nf(seo.errorPages.fixed || 0)} arregladas.
-                    </div>
-                    <div style={{ marginTop: '12px' }}>
-                      <div style={{ ...styles.cardTitle, fontSize: '11px', color: '#c62828' }}>Páginas nuevas con error en este periodo ({nf(seo.errorPages.nuevas)})</div>
-                      {(seo.errorPages.nuevasPages || []).length > 0 ? (
-                        <div style={{ maxHeight: '380px', overflowY: 'auto', marginTop: '6px' }}>
-                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
-                          <thead>
-                            <tr style={{ background: T.soft, position: 'sticky', top: 0 }}>
-                              <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Ruta</th>
-                              <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Título de página</th>
-                              <th style={{ padding: '8px', textAlign: 'right', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Vistas perdidas</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {seo.errorPages.nuevasPages.map((p, k) => (
-                              <tr key={p.path + k}>
-                                <td style={{ padding: '8px', borderBottom: `1px solid ${T.line}`, wordBreak: 'break-all', fontWeight: 600 }}>
-                                  <a href={`${activeTab === 'axxis' ? 'https://revistaaxxis.com.co' : 'https://revistadiners.com.co'}${p.path}`} target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>{p.path}</a>
-                                </td>
-                                <td style={{ padding: '8px', borderBottom: `1px solid ${T.line}`, color: '#666' }}>{p.title}</td>
-                                <td style={{ padding: '8px', borderBottom: `1px solid ${T.line}`, textAlign: 'right', fontWeight: 800, color: '#c62828' }}>{nf(p.views)}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                        </div>
-                      ) : <div style={{ fontSize: '13px', color: '#2e7d32', fontWeight: 600, marginTop: '6px' }}>No aparecieron páginas nuevas con error en este periodo.</div>}
-                      {seo.errorPages.nuevas > (seo.errorPages.nuevasPages || []).length && <div style={styles.cardSubtext}>Se muestran las {(seo.errorPages.nuevasPages || []).length} con más vistas perdidas; desplázate dentro de la lista para verlas.</div>}
-                      <div style={styles.cardSubtext}>Nueva = tiene error en este periodo y no tenía error en el periodo anterior. Al abrir la ruta puedes ver a dónde apuntaba el enlace roto.</div>
-                    </div>
-                    {seo.errorPages.fixedPages.length > 0 && (
-                      <div style={{ marginTop: '8px' }}>
-                        <div style={{ ...styles.cardTitle, fontSize: '11px', color: '#2e7d32' }}>Páginas arregladas este periodo</div>
-                        <ul style={{ margin: '6px 0 0', paddingLeft: '18px', fontSize: '12px', lineHeight: 1.6 }}>
-                          {seo.errorPages.fixedPages.map((p) => <li key={p.path}>{p.path} <span style={{ color: '#888' }}>({nf(p.views)} vistas en el periodo anterior)</span></li>)}
-                        </ul>
-                      </div>
-                    )}
-                  </>
-                )}
-
-                {seo.errorPages.error ? (
-                  <div style={{ fontSize: '13px', color: '#b71c1c', marginTop: '10px' }}>No se pudo consultar GA4: {seo.errorPages.error}</div>
-                ) : !seo.errorPages.distinctCur ? (
-                  <div style={{ fontSize: '13px', color: '#2e7d32', marginTop: '10px', fontWeight: 600 }}>Sin tráfico a páginas de error en este periodo.</div>
-                ) : (
-                  <div style={{ marginTop: '14px' }}>
-                    <div style={{ ...styles.cardTitle, fontSize: '11px', color: '#6d4c41' }}>Errores que siguen sin arreglar ({nf(seo.errorPages.persisten || 0)})</div>
-                    {(seo.errorPages.persistenPages || []).length > 0 ? (
-                      <div style={{ maxHeight: '380px', overflowY: 'auto', marginTop: '6px' }}>
-                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
-                          <thead>
-                            <tr style={{ background: T.soft, position: 'sticky', top: 0 }}>
-                              <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Ruta</th>
-                              <th style={{ padding: '8px', textAlign: 'right', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Vistas perdidas</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {seo.errorPages.persistenPages.map((p, k) => (
-                              <tr key={p.path + k}>
-                                <td style={{ padding: '8px', borderBottom: `1px solid ${T.line}`, wordBreak: 'break-all', fontWeight: 600 }}>
-                                  <a href={`${activeTab === 'axxis' ? 'https://revistaaxxis.com.co' : 'https://revistadiners.com.co'}${p.path}`} target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>{p.path}</a>
-                                </td>
-                                <td style={{ padding: '8px', borderBottom: `1px solid ${T.line}`, textAlign: 'right', fontWeight: 800, color: '#c62828' }}>{nf(p.views)}</td>
-                              </tr>
-                            ))}
-                          </tbody>
-                        </table>
-                      </div>
-                    ) : <div style={{ fontSize: '13px', color: '#2e7d32', fontWeight: 600, marginTop: '6px' }}>No quedan errores del periodo anterior sin arreglar.</div>}
-                    {(seo.errorPages.persisten || 0) > (seo.errorPages.persistenPages || []).length && <div style={styles.cardSubtext}>Se muestran las {(seo.errorPages.persistenPages || []).length} con más vistas perdidas; desplázate dentro de la lista para verlas.</div>}
-                    <div style={styles.cardSubtext}>Tenían error el periodo anterior y lo siguen teniendo: son las que el equipo web debería corregir primero (redirigir o restaurar la página).</div>
-                  </div>
-                )}
-              </div>
-            )}
+            {children}
           </div>
+        );
+        if (!H) return wrap(<div style={{ ...styles.card, textAlign: 'center', padding: '30px', color: '#555' }}>Calculando la salud técnica del sitio…</div>);
+        if (H.error) return wrap(<div style={{ ...styles.card, color: '#b71c1c' }}>No se pudo calcular la salud técnica: {H.error}</div>);
+        const C = { created: T.ink, createdErr: '#c62828', total: '#8a8a8a', fixed: '#2e7d32', pending: T.accent };
+        const kpis = [
+          { color: C.created, label: 'Páginas nuevas creadas', value: H.published, sub: 'publicadas en el periodo' },
+          { color: C.createdErr, label: 'Nuevas creadas con error', value: H.createdWithError, sub: 'de esas, ya dieron error' },
+          { color: C.total, label: 'Total de páginas con error', value: H.totalAll, sub: 'todas, últimos 12 meses' },
+          { color: C.fixed, label: 'Arregladas en el periodo', value: H.fixedPeriod, sub: 'tenían error y ya cargan bien' },
+          { color: C.pending, label: 'Pendientes por arreglar', value: H.pending, sub: 'totales, sin confirmar arreglo' },
+        ];
+        const chartPeriod = [
+          { name: 'Nuevas creadas', value: H.published, fill: C.created },
+          { name: 'Nuevas con error', value: H.createdWithError, fill: C.createdErr },
+          { name: 'Arregladas', value: H.fixedPeriod, fill: C.fixed },
+        ];
+        const chartTotal = [
+          { name: 'Total con error', value: H.totalAll, fill: C.total },
+          { name: 'Pendientes', value: H.pending, fill: C.pending },
+        ];
+        const th = { padding: '8px', fontSize: '11px', color: '#666', textTransform: 'uppercase', position: 'sticky', top: 0, background: T.soft };
+        const td = { padding: '8px', borderBottom: `1px solid ${T.line}`, fontSize: '12px' };
+        const pathCell = (pth, extra) => (
+          <td style={{ ...td, wordBreak: 'break-all' }}>
+            <a href={`${base}${pth}`} target="_blank" rel="noreferrer" style={{ color: 'inherit', fontWeight: 600 }}>{pth}</a>
+            {extra ? <div style={{ color: '#888', marginTop: '2px' }}>{extra}</div> : null}
+          </td>
+        );
+        const listCard = (title, color, count, note, headers, rows) => (
+          <div style={{ ...styles.card, borderTop: `4px solid ${color}` }}>
+            <div style={{ ...styles.cardTitle, color }}>{title} ({nf(count)})</div>
+            {rows.length ? (
+              <div style={{ maxHeight: '420px', overflowY: 'auto', marginTop: '8px' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                  <thead>
+                    <tr>{headers.map((h, i) => <th key={h} style={{ ...th, textAlign: i === 0 ? 'left' : 'right' }}>{h}</th>)}</tr>
+                  </thead>
+                  <tbody>{rows}</tbody>
+                </table>
+              </div>
+            ) : <div style={{ fontSize: '13px', color: '#2e7d32', fontWeight: 600, marginTop: '10px' }}>Ninguna en este periodo.</div>}
+            <div style={styles.cardSubtext}>{note}</div>
+          </div>
+        );
+        return wrap(
+          <>
+            <div style={{ ...styles.card, borderTop: '4px solid #c62828' }}>
+              <div style={styles.cardSubtext}>Páginas que dan "Page Not Found" según GA4 (título de página con "Not Found", "404" o "no encontrada"). Todo es del sitio de {activeTab === 'axxis' ? 'AXXIS' : 'Diners'}.</div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))', gap: '16px', margin: '16px 0' }}>
+                {kpis.map((k) => (
+                  <div key={k.label} style={{ borderLeft: `5px solid ${k.color}`, paddingLeft: '10px' }}>
+                    <div style={{ fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>{k.label}</div>
+                    <div style={{ fontSize: '30px', fontWeight: 800, color: '#111', lineHeight: 1.15 }}>{nf(k.value)}</div>
+                    <div style={{ fontSize: '11px', color: '#888' }}>{k.sub}</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 3fr) minmax(0, 2fr)', gap: '24px' }}>
+                <div>
+                  <div style={{ ...styles.cardTitle, fontSize: '11px' }}>En el periodo en revisión</div>
+                  <ResponsiveContainer width="100%" height={240}>
+                    <BarChart data={chartPeriod} margin={{ top: 22, right: 8, left: 0, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                      <XAxis dataKey="name" fontSize={11} />
+                      <YAxis fontSize={11} allowDecimals={false} />
+                      <Tooltip formatter={(v) => v.toLocaleString('es-CO')} />
+                      <Bar dataKey="value" radius={[4, 4, 0, 0]}>
+                        {chartPeriod.map((e) => <Cell key={e.name} fill={e.fill} />)}
+                        <LabelList dataKey="value" position="top" formatter={(v) => v.toLocaleString('es-CO')} style={{ fontSize: 12, fontWeight: 700 }} />
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+                <div>
+                  <div style={{ ...styles.cardTitle, fontSize: '11px' }}>Acumulado (todas las páginas)</div>
+                  <ResponsiveContainer width="100%" height={240}>
+                    <BarChart data={chartTotal} margin={{ top: 22, right: 8, left: 0, bottom: 0 }}>
+                      <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                      <XAxis dataKey="name" fontSize={11} />
+                      <YAxis fontSize={11} allowDecimals={false} />
+                      <Tooltip formatter={(v) => v.toLocaleString('es-CO')} />
+                      <Bar dataKey="value" radius={[4, 4, 0, 0]}>
+                        {chartTotal.map((e) => <Cell key={e.name} fill={e.fill} />)}
+                        <LabelList dataKey="value" position="top" formatter={(v) => v.toLocaleString('es-CO')} style={{ fontSize: 12, fontWeight: 700 }} />
+                      </Bar>
+                    </BarChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
+              <div style={styles.cardSubtext}>
+                Las dos escalas van separadas porque el acumulado es miles de veces mayor que lo del periodo. Cómo se mide cada barra:
+                nuevas creadas = notas publicadas entre el {H.range.start} y el {H.range.end}; nuevas con error = de esas, las que registraron visitas con error en el mismo periodo;
+                total con error = rutas con error en los últimos 12 meses (desde {H.windows.allFrom}); arregladas = tenían error antes del periodo y en el periodo recibieron visitas con título normal;
+                pendientes = rutas con error en los 12 meses que no se han visto cargando bien en los últimos 90 días (desde {H.windows.working90From}).
+                Los pendientes incluyen páginas antiguas que ya casi nadie visita, así que es una cota alta: {nf(H.pendingStillErroring)} de ellas siguen dando error en este periodo.
+              </div>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(330px, 1fr))', gap: '20px', marginTop: '20px', alignItems: 'start' }}>
+              {listCard('Páginas nuevas con error en este periodo', C.createdErr, H.createdWithError,
+                'Notas publicadas en el periodo que ya recibieron visitas con error. Revisar el enlace con el que se compartieron o si se vieron antes de publicarse.',
+                ['Ruta', 'Vistas con error'],
+                H.createdWithErrorPages.map((p) => (
+                  <tr key={p.path}>{pathCell(p.path, p.title)}<td style={{ ...td, textAlign: 'right', fontWeight: 800, color: '#c62828' }}>{nf(p.views)}</td></tr>
+                )))}
+              {listCard('Páginas arregladas este periodo', C.fixed, H.fixedPeriod,
+                'Tenían error antes del periodo y ahora cargan bien. Se ordena por las vistas con error que tenían antes.',
+                ['Ruta', 'Antes (error)', 'Ahora (ok)'],
+                H.fixedPeriodPages.map((p) => (
+                  <tr key={p.path}>{pathCell(p.path)}<td style={{ ...td, textAlign: 'right', color: '#c62828', fontWeight: 700 }}>{nf(p.viewsBefore)}</td><td style={{ ...td, textAlign: 'right', color: '#2e7d32', fontWeight: 700 }}>{nf(p.viewsNow)}</td></tr>
+                )))}
+              {listCard('Páginas con errores pendientes', C.pending, H.pending,
+                `Se muestran las 100 con más vistas con error en el periodo (primero) y en los últimos 12 meses. ${nf(H.pendingStillErroring)} siguen dando error este periodo: son las que el equipo web debería corregir primero (redirigir o restaurar).`,
+                ['Ruta', 'Vistas periodo', 'Vistas 12 meses'],
+                H.pendingPages.map((p) => (
+                  <tr key={p.path}>{pathCell(p.path)}<td style={{ ...td, textAlign: 'right', fontWeight: 800, color: p.viewsPeriod ? '#c62828' : '#999' }}>{nf(p.viewsPeriod)}</td><td style={{ ...td, textAlign: 'right' }}>{nf(p.views)}</td></tr>
+                )))}
+            </div>
+          </>
         );
       })()}
 
@@ -2098,7 +2121,7 @@ export default function Dashboard() {
           { color: T.accent, title: 'Optimizar títulos', big: nf(S.titles.count), unit: 'palabras en posición 4 a 10', impact: `+${nf(S.titles.potential)} clics potenciales`, how: `Se mide: CTR de estas palabras hacia ${(seoTools.targetCtr * 100).toFixed(1)}%.` },
           { color: T.accent, title: 'Reforzar contenido', big: nf(S.content.count), unit: 'palabras en posición 11 a 20', impact: `+${nf(S.content.potential)} clics potenciales`, how: 'Se mide: palabras que pasan a la primera página.' },
           { color: T.ink, title: 'Crear notas', big: nf(S.newNotes.count), unit: 'ideas con demanda y posición > 20', impact: `${nf(S.newNotes.impressions)} impresiones sin capturar`, how: 'Se mide: notas publicadas y clics que traen en 30 días.' },
-          { color: '#6d4c41', title: 'Salud técnica', big: err ? nf(err.distinctCur || 0) : dash, unit: 'páginas con error "Not Found"', impact: err ? `${nf(err.fixed || 0)} arregladas · ${nf(err.nuevas || 0)} nuevas · ${nf(err.total || 0)} vistas perdidas` : 'sin datos', how: 'Se mide: páginas con error que llegan a cero.' },
+          { color: '#6d4c41', title: 'Salud técnica', big: seoHealth && !seoHealth.error ? nf(seoHealth.pending) : dash, unit: 'páginas con error pendientes', impact: seoHealth && !seoHealth.error ? `${nf(seoHealth.fixedPeriod)} arregladas · ${nf(seoHealth.createdWithError)} nuevas con error · ${nf(seoHealth.pendingStillErroring)} siguen dando error` : 'sin datos', how: 'Se mide: pendientes que siguen dando error en el periodo.' },
         ];
         return (
           <div style={{ ...styles.section, marginBottom: '20px' }}>
