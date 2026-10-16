@@ -3,7 +3,7 @@ import { getAccessToken, runReport } from '../../lib/ga4';
 import emailCopy from '../../lib/emailcopy.json';
 
 export const dynamic = 'force-dynamic';
-export const maxDuration = 60;
+export const maxDuration = 120;
 
 // Top 5 de notas web recientes para armar el email: interés del lector (vistas por día y tiempo de lectura en GA4)
 // y potencial de apertura (qué temas y rasgos de asunto han funcionado en los envíos anteriores de HubSpot).
@@ -308,19 +308,24 @@ export async function GET(request) {
     if (hit && Date.now() - hit.at < 15 * 60 * 1000) return Response.json(hit.data, { headers: CORS });
     const now = Date.now(); const site = SITE[brand];
     const prop = brand === 'axxis' ? process.env.GA4_AXXIS_ID : process.env.GA4_DINERS_ID;
-    const after = new Date(now - 5 * DAY).toISOString().slice(0, 19);
+    const after = new Date(now - 7 * DAY).toISOString().slice(0, 19);
 
+    const retry = async (fn, tries = 2) => { for (let i = 0; i < tries; i += 1) { try { return await fn(); } catch (e) { await new Promise((res) => setTimeout(res, 2000)); } } return null; };
     const [wp, emails, token] = await Promise.all([
-      axios.get(`${site}/wp-json/wp/v2/posts`, { params: { per_page: 100, after, _fields: 'id,link,title,date,excerpt' }, timeout: 20000 }).then((r) => r.data).catch(() => []),
+      retry(() => axios.get(`${site}/wp-json/wp/v2/posts`, { params: { per_page: 100, after, _fields: 'id,link,title,date,excerpt' }, timeout: 20000 }).then((r) => r.data)),
       trainingEmails(url.origin, brand),
       getAccessToken(),
     ]);
-    const rows = await runReport(token, prop, {
-      dateRanges: [{ startDate: iso(new Date(now - 6 * DAY)), endDate: iso(new Date(now - DAY)) }],
+    if (wp === null) {
+      if (hit) return Response.json({ ...hit.data, stale: true }, { headers: CORS });
+      return Response.json({ error: 'El sitio de la revista no respondió; se reintenta en la próxima carga' }, { status: 503, headers: CORS });
+    }
+    const rows = (await retry(() => runReport(token, prop, {
+      dateRanges: [{ startDate: iso(new Date(now - 8 * DAY)), endDate: iso(new Date(now - DAY)) }],
       dimensions: [{ name: 'pagePath' }],
       metrics: [{ name: 'screenPageViews' }, { name: 'userEngagementDuration' }, { name: 'activeUsers' }],
       limit: 5000,
-    }).catch(() => []);
+    }))) || [];
     const ga = new Map(rows.map((r) => [pathKey(r.dimensionValues[0].value), { views: Number(r.metricValues[0].value), eng: Number(r.metricValues[1].value), users: Number(r.metricValues[2].value) }]));
 
     // Aprendizaje de los envíos anteriores: tasa de clic por tema y rasgos de asunto
@@ -423,7 +428,7 @@ export async function GET(request) {
       brand, fetchedAt: new Date().toISOString(), picks, bestSlot, email: { subjects: finalSubjects, preview: finalPreview, previews: finalPreviews, subjectSource, recommended: storedMatch ? stored.recommended : 0, writtenAt: storedMatch ? stored.writtenAt : null, featureLifts, labels, lead: L1, bestSubjects, avgOpen: allOpen, intro, introChars: intro.length },
       basis: { articles: wp.length, withTraffic: cands.length, excludedAlreadySent: cands.length - fresh.length, trainingEmails: emails.length, avgClick: allClick, avgOpen: allOpen },
     };
-    CACHE.set(brand, { at: Date.now(), data });
+    if (picks.length) CACHE.set(brand, { at: Date.now(), data });
     return Response.json(data, { headers: CORS });
   } catch (e) {
     return Response.json({ error: e.response?.data?.error?.message || e.message, where: String(e.stack || '').split('\n')[1] }, { status: 502, headers: CORS });

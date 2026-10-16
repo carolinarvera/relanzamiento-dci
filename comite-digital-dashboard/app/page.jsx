@@ -1764,23 +1764,6 @@ export default function Dashboard() {
                 {table(seo.byPosition, 'Consulta')}
                 <div style={styles.cardSubtext}>Consultas con al menos 100 impresiones, ordenadas por posición promedio.</div>
               </div>
-              <div style={styles.card}>
-                <div style={styles.cardTitle}>Distribución de consultas por posición</div>
-                <div style={{ width: '100%', height: 260, marginTop: '12px' }}>
-                  <ResponsiveContainer>
-                    <BarChart data={seo.buckets} margin={{ top: 20, right: 10, left: 0, bottom: 0 }}>
-                      <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                      <XAxis dataKey="label" tick={{ fontSize: 10 }} />
-                      <YAxis tick={{ fontSize: 11 }} />
-                      <Tooltip formatter={(v) => v.toLocaleString('es-CO')} />
-                      <Bar dataKey="queries" name="Consultas" fill={T.accent}>
-                        <LabelList dataKey="queries" position="top" formatter={(v) => v.toLocaleString('es-CO')} style={{ fontSize: 11 }} />
-                      </Bar>
-                    </BarChart>
-                  </ResponsiveContainer>
-                </div>
-                <div style={styles.cardSubtext}>{nf(seo.totalQueries)} consultas con impresiones{seo.truncated ? ' (tope de 25.000 de Search Console)' : ''}. Clics por rango: {seo.buckets.map((b) => `${b.label.replace('Posición ', '')}: ${nf(b.clicks)}`).join(' · ')}</div>
-              </div>
             </div>
 
             <div style={{ ...styles.cardTitle, fontSize: '14px', margin: '30px 0 10px' }}>Insumos para contenido editorial (sin consultas de marca)</div>
