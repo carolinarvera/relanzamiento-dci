@@ -97,8 +97,9 @@ export async function GET(request) {
     const endDate = range.end > lag ? lag : range.end;
     const startDate = range.start > endDate ? endDate : range.start;
     const days = Math.round((Date.parse(endDate) - Date.parse(startDate)) / 86400000) + 1;
-    const prevEnd = iso(new Date(Date.parse(startDate) - 86400000));
-    const prevStart = iso(new Date(Date.parse(startDate) - days * 86400000));
+    // periodo anterior = mismo rango de días del mes anterior (1 al 14 de octubre vs 1 al 14 de septiembre)
+    const prevStart = shift(startDate, -1);
+    const prevEnd = iso(new Date(Date.parse(prevStart) + (days - 1) * 86400000));
 
     const cur = { startDate, endDate };
     const prev = { startDate: prevStart, endDate: prevEnd };
@@ -125,13 +126,26 @@ export async function GET(request) {
     const organicTotals = ga4(token, propertyId, {
       dateRanges: [
         { startDate: range.start, endDate: range.end, name: 'cur' },
-        { startDate: range.prevStart, endDate: range.prevEnd, name: 'prev' },
+        { startDate: shift(range.start, -1), endDate: shift(range.end, -1), name: 'prev' },
       ],
-      metrics: [{ name: 'screenPageViews' }, { name: 'sessions' }, { name: 'bounceRate' }],
+      metrics: [{ name: 'screenPageViews' }, { name: 'sessions' }, { name: 'bounceRate' }, { name: 'averageSessionDuration' }],
       dimensionFilter: organicFilter,
     }).catch(() => []);
 
-    const [qCur, qPrev, pCur, pPrev, daily, gaDaily, compared, orgTot] = await Promise.all([
+    // páginas de entrada del tráfico orgánico (visitas = sesiones de GA4), actual y anterior
+    const landing = ga4(token, propertyId, {
+      dateRanges: [
+        { startDate: range.start, endDate: range.end, name: 'cur' },
+        { startDate: shift(range.start, -1), endDate: shift(range.end, -1), name: 'prev' },
+      ],
+      dimensions: [{ name: 'landingPage' }],
+      metrics: [{ name: 'sessions' }],
+      dimensionFilter: organicFilter,
+      orderBys: [{ metric: { metricName: 'sessions' }, desc: true }],
+      limit: 500,
+    }).catch(() => []);
+
+    const [qCur, qPrev, pCur, pPrev, daily, gaDaily, compared, orgTot, landingRows] = await Promise.all([
       gscAll(token, siteUrl, { ...cur, dimensions: ['query'] }),
       gscAll(token, siteUrl, { ...prev, dimensions: ['query'] }),
       gsc(token, siteUrl, { ...cur, dimensions: ['page'], rowLimit: 1000 }),
@@ -146,6 +160,7 @@ export async function GET(request) {
       }).catch(() => []),
       comparePromise,
       organicTotals,
+      landing,
     ]);
 
     // ---- totales y marca vs sin marca ----
@@ -242,10 +257,35 @@ export async function GET(request) {
     const op = orgTot.find((r) => r.dimensionValues?.some((v) => v.value === 'prev'));
     const g = (row, i) => (row ? Number(row.metricValues[i].value) : null);
     const organic = oc ? {
-      views: g(oc, 0), viewsChange: op ? pct(g(oc, 0), g(op, 0)) : null,
-      sessions: g(oc, 1), sessionsChange: op ? pct(g(oc, 1), g(op, 1)) : null,
-      bounceRate: g(oc, 2), bounceRateChange: op ? pct(g(oc, 2), g(op, 2)) : null,
+      views: g(oc, 0), viewsPrev: g(op, 0), viewsChange: op ? pct(g(oc, 0), g(op, 0)) : null,
+      sessions: g(oc, 1), sessionsPrev: g(op, 1), sessionsChange: op ? pct(g(oc, 1), g(op, 1)) : null,
+      bounceRate: g(oc, 2), bounceRatePrev: g(op, 2), bounceRateChange: op ? pct(g(oc, 2), g(op, 2)) : null,
+      avgDuration: g(oc, 3), avgDurationPrev: g(op, 3), avgDurationChange: op ? pct(g(oc, 3), g(op, 3)) : null,
     } : null;
+
+    // listado de páginas orgánicas con más visitas (GA4) unido a Search Console por ruta
+    const trim = (v) => (v.length > 1 ? v.replace(/\/+$/, '') : v);
+    const gscByPath = new Map(pagesAll.map((r) => [trim(r.key), r]));
+    const pathOf = (v) => { try { return trim(decodeURI(new URL(v, origin).pathname)); } catch { return trim(v); } };
+    const landCur = new Map();
+    const landPrev = new Map();
+    landingRows.forEach((r) => {
+      const name = r.dimensionValues[1]?.value;
+      if (r.dimensionValues[0].value === '(not set)') return;
+      const path = pathOf(r.dimensionValues[0].value);
+      const n = Number(r.metricValues[0].value);
+      const m = name === 'prev' ? landPrev : landCur;
+      m.set(path, (m.get(path) || 0) + n);
+    });
+    const pagesOrganic = [...landCur.entries()]
+      .filter(([path]) => path !== '(not set)')
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 20)
+      .map(([path, sessions]) => {
+        const gsc = gscByPath.get(path);
+        const prevS = landPrev.get(path) || 0;
+        return { key: path, sessions, prevSessions: prevS, deltaSessions: sessions - prevS, clicks: gsc ? gsc.clicks : null, impressions: gsc ? gsc.impressions : null, position: gsc ? gsc.position : null };
+      });
     const summary = {
       lost: { count: lostAll.length, clicks: -sumBy(lostAll, (r) => r.deltaClicks), pages: pageLosersAll.length, pageClicks: -sumBy(pageLosersAll, (r) => r.deltaClicks) },
       won: { count: wonAll.length, clicks: sumBy(wonAll, (r) => r.deltaClicks) },
@@ -255,15 +295,15 @@ export async function GET(request) {
     };
 
     const data = {
-      organic, summary,
+      organic, summary, pagesOrganic,
       compare,
       range: { ...range, gscStart: startDate, gscEnd: endDate, gscPrevStart: prevStart, gscPrevEnd: prevEnd },
       brand,
       kpis: {
-        clicks: kpiCur.clicks, clicksChange: pct(kpiCur.clicks, kpiPrev.clicks),
-        impressions: kpiCur.impressions, impressionsChange: pct(kpiCur.impressions, kpiPrev.impressions),
-        ctr: kpiCur.ctr, ctrDiff: kpiPrev.ctr ? kpiCur.ctr - kpiPrev.ctr : null,
-        position: kpiCur.position, positionChange: kpiPrev.position ? kpiCur.position / kpiPrev.position - 1 : null,
+        clicks: kpiCur.clicks, clicksPrev: kpiPrev.clicks, clicksChange: pct(kpiCur.clicks, kpiPrev.clicks),
+        impressions: kpiCur.impressions, impressionsPrev: kpiPrev.impressions, impressionsChange: pct(kpiCur.impressions, kpiPrev.impressions),
+        ctr: kpiCur.ctr, ctrPrev: kpiPrev.impressions ? kpiPrev.ctr : null, ctrDiff: kpiPrev.ctr ? kpiCur.ctr - kpiPrev.ctr : null,
+        position: kpiCur.position, positionPrev: kpiPrev.impressions ? kpiPrev.position : null, positionChange: kpiPrev.position ? kpiCur.position / kpiPrev.position - 1 : null,
         organicSessions: orgSessions,
         brandShare: kpiCur.clicks ? brandClicks / kpiCur.clicks : 0,
         nonBrandClicks: nonClicks, brandClicks,
