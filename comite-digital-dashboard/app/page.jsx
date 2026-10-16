@@ -88,6 +88,7 @@ function groupChannelsByViews(all) {
   return groupChannels(all.map((c) => ({ ...c, pct: tv ? (c.views || 0) / tv : 0, prevPct: tpv ? (c.prevViews || 0) / tpv : 0 })));
 }
 
+const norm2 = (t) => (t || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
 const MONTH_NAMES = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 const isoDate = (d) => d.toISOString().slice(0, 10);
 
@@ -123,7 +124,7 @@ const THEMES = {
 const SECTIONS = [
   { key: 'resumen', label: 'Resumen', apis: ['ga4', 'meta', 'pauta', 'seo', 'emails'] },
   { key: 'web', label: 'Web', apis: ['ga4', 'gsc'] },
-  { key: 'seo', label: 'SEO', apis: ['gsc', 'seo', 'ga4', 'meta', 'emailtraffic', 'dailytrends'] },
+  { key: 'seo', label: 'SEO', apis: ['seo', 'ga4', 'meta', 'emailtraffic', 'dailytrends'] },
   { key: 'redes', label: 'Redes sociales', apis: ['meta'] },
   { key: 'pauta', label: 'Pauta', apis: ['pauta'] },
   { key: 'emails', label: 'Emails', apis: ['emails', 'emailtraffic'] },
@@ -200,9 +201,13 @@ export default function Dashboard() {
   const [trendDays, setTrendDays] = useState(30);
   const [newsWin, setNewsWin] = useState('1d');
   const [pautaObj, setPautaObj] = useState('trafico');
-  const [seoIdeasOpen, setSeoIdeasOpen] = useState(false);
+  const [seoIdeasOpen, setSeoIdeasOpen] = useState(true);
   const [newsByWin, setNewsByWin] = useState({});
   const [traficoOpen, setTraficoOpen] = useState(false);
+  const [seoTools, setSeoTools] = useState(null);
+  const [kwSearch, setKwSearch] = useState('');
+  const [kwSort, setKwSort] = useState('clicks');
+  const [cmpMetric, setCmpMetric] = useState('views');
   const [trafico, setTrafico] = useState(null);
   const [campDeep, setCampDeep] = useState({});
   const [campOpenIds, setCampOpenIds] = useState({});
@@ -257,6 +262,18 @@ export default function Dashboard() {
       .catch((e) => { if (!cancelled) setTrends({ error: e.message }); });
     return () => { cancelled = true; };
   }, [activeTab, trendDays, section]);
+
+  useEffect(() => {
+    if (section !== 'seo') return undefined;
+    let cancelled = false;
+    setSeoTools(null);
+    const qs = range ? `&start=${range.start}&end=${range.end}` : '';
+    fetch(`/api/seo-tools?brand=${activeTab}${qs}`)
+      .then((r) => r.json())
+      .then((j) => { if (!cancelled) setSeoTools(j); })
+      .catch((e) => { if (!cancelled) setSeoTools({ error: e.message }); });
+    return () => { cancelled = true; };
+  }, [section, activeTab, rangeKey]);
 
   useEffect(() => {
     if (section !== 'pauta' || !traficoOpen) return undefined;
@@ -1507,8 +1524,391 @@ export default function Dashboard() {
 
       {ready && section === 'seo' && (
       <>
-      {/* Insights de contenido */}
       {(() => {
+        const seo = current.seo;
+        const G = current.ga4 || {};
+        const cell = { padding: '8px', borderBottom: `1px solid ${T.line}`, fontSize: '12px' };
+        const num = { ...cell, textAlign: 'right' };
+        const head = { padding: '8px', textAlign: 'right', fontSize: '11px', color: '#666', textTransform: 'uppercase' };
+        const dash = '—';
+        const kw = seoTools?.keywords || [];
+        const q = norm2(kwSearch);
+        const sorted = kw
+          .filter((r) => !q || norm2(r.key).includes(q))
+          .slice()
+          .sort((a, b) => (kwSort === 'delta' ? b.deltaClicks - a.deltaClicks : kwSort === 'impressions' ? b.impressions - a.impressions : kwSort === 'position' ? a.position - b.position : b.clicks - a.clicks))
+          .slice(0, 50);
+        const dClicks = (v) => (v === 0 ? <span style={{ color: '#999' }}>0</span> : <span style={{ color: v > 0 ? '#2e7d32' : '#b71c1c', fontWeight: 700 }}>{v > 0 ? '+' : ''}{nf(v)}</span>);
+        const dPos = (cur, prev) => {
+          if (prev === null || prev === undefined || cur === null) return <span style={{ color: '#999' }}>nueva</span>;
+          const d = cur - prev;
+          if (Math.abs(d) < 0.05) return <span style={{ color: '#999' }}>=</span>;
+          return <span style={{ color: d < 0 ? '#2e7d32' : '#b71c1c', fontWeight: 700 }}>{d < 0 ? '↑' : '↓'} {Math.abs(d).toFixed(1)}</span>;
+        };
+        const kwTable = (rows, opts = {}) => (
+          <div style={{ overflowX: 'auto' }}>
+            <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '640px' }}>
+              <thead>
+                <tr style={{ background: T.soft }}>
+                  <th style={{ ...head, textAlign: 'left' }}>Palabra</th>
+                  <th style={head}>Clics</th>
+                  <th style={head}>Vs anterior</th>
+                  <th style={head}>Impresiones</th>
+                  <th style={head}>CTR</th>
+                  <th style={head}>Posición</th>
+                  <th style={head}>Cambio pos.</th>
+                  {opts.potential && <th style={head}>Clics potenciales</th>}
+                  {opts.potential && <th style={{ ...head, textAlign: 'left' }}>Qué hacer</th>}
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((r, k) => (
+                  <tr key={r.key}>
+                    <td style={{ ...cell, wordBreak: 'break-word' }}><span style={{ color: '#999' }}>{k + 1}.</span> {r.key}</td>
+                    <td style={num}><strong>{nf(r.clicks)}</strong></td>
+                    <td style={num}>{dClicks(r.deltaClicks)}</td>
+                    <td style={num}>{nf(r.impressions)}</td>
+                    <td style={num}>{(r.ctr * 100).toFixed(1)}%</td>
+                    <td style={num}>{r.position === null ? dash : r.position.toFixed(1)}</td>
+                    <td style={num}>{dPos(r.position, r.prevPosition)}</td>
+                    {opts.potential && <td style={{ ...num, fontWeight: 700, color: T.accent }}>+{nf(Math.round(r.potentialClicks))}</td>}
+                    {opts.potential && <td style={cell}>{r.action}</td>}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        );
+        const step = (n, title, text) => (
+          <div style={{ margin: '34px 0 12px' }}>
+            <div style={{ fontFamily: T.headFont, fontSize: '17px', fontWeight: 800, color: T.ink }}><span style={{ color: T.accent }}>{n}.</span> {title}</div>
+            {text && <div style={{ ...styles.cardSubtext, marginTop: '2px' }}>{text}</div>}
+          </div>
+        );
+        if (!seoTools) return <div style={{ ...styles.card, textAlign: 'center', padding: '30px', color: '#555', marginBottom: '20px' }}>Cargando la estrategia SEO…</div>;
+        if (seoTools.error) return <div style={{ ...styles.card, color: '#b71c1c', marginBottom: '20px' }}>No se pudieron cargar las herramientas SEO: {seoTools.error}</div>;
+        const k = seoTools.kpis;
+        const r = seoTools.range;
+        const S = seoTools.summary;
+        const O = seoTools.organic;
+        const err = seo?.errorPages;
+        const brandName = activeTab === 'axxis' ? 'AXXIS' : 'Diners';
+        const plan = [
+          { color: '#b71c1c', title: 'Proteger', big: nf(S.lost.count), unit: 'palabras perdieron clics', impact: `-${nf(S.lost.clicks)} clics · ${nf(S.lost.pages)} páginas con caída (-${nf(S.lost.pageClicks)} clics)`, how: 'Se mide: clics recuperados de estas palabras y páginas.' },
+          { color: '#2e7d32', title: 'Aprovechar', big: nf(S.won.count), unit: 'palabras ganaron clics', impact: `+${nf(S.won.clicks)} clics`, how: 'Se mide: notas nuevas del mismo tema y su aporte de clics.' },
+          { color: T.accent, title: 'Optimizar títulos', big: nf(S.titles.count), unit: 'palabras en posición 4 a 10', impact: `+${nf(S.titles.potential)} clics potenciales`, how: `Se mide: CTR de estas palabras hacia ${(seoTools.targetCtr * 100).toFixed(1)}%.` },
+          { color: T.accent, title: 'Reforzar contenido', big: nf(S.content.count), unit: 'palabras en posición 11 a 20', impact: `+${nf(S.content.potential)} clics potenciales`, how: 'Se mide: palabras que pasan a la primera página.' },
+          { color: T.ink, title: 'Crear notas', big: nf(S.newNotes.count), unit: 'ideas con demanda y posición > 20', impact: `${nf(S.newNotes.impressions)} impresiones sin capturar`, how: 'Se mide: notas publicadas y clics que traen en 30 días.' },
+          { color: '#6d4c41', title: 'Salud técnica', big: err ? nf(err.distinctCur || 0) : dash, unit: 'páginas con error "Not Found"', impact: err ? `${nf(err.fixed || 0)} arregladas · ${nf(err.nuevas || 0)} nuevas · ${nf(err.total || 0)} vistas perdidas` : 'sin datos', how: 'Se mide: páginas con error que llegan a cero.' },
+        ];
+        return (
+          <div style={{ ...styles.section, marginBottom: '20px' }}>
+            <h2 style={styles.sectionTitle}>Estrategia SEO · {brandName} · {r.gscStart} a {r.gscEnd}</h2>
+            <div style={{ ...styles.cardSubtext, marginBottom: '6px', marginTop: '-8px' }}>Comparado con {r.gscPrevStart} a {r.gscPrevEnd}. Search Console tiene unos 3 días de retraso, por eso el rango termina antes de hoy.</div>
+
+            {step(1, 'Resultado del mes', 'Qué pasó con el tráfico que llega desde Google.')}
+            <div style={styles.grid}>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Clics orgánicos</div>
+                <div style={styles.cardValue}>{nf(k.clicks)}</div>
+                {renderChange(k.clicksChange)}
+                <div style={styles.cardSubtext}>{(k.brandShare * 100).toFixed(0)}% por búsquedas de marca</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Impresiones</div>
+                <div style={styles.cardValue}>{nf(k.impressions)}</div>
+                {renderChange(k.impressionsChange)}
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>CTR</div>
+                <div style={styles.cardValue}>{(k.ctr * 100).toFixed(2)}%</div>
+                {k.ctrDiff !== null && renderPP(k.ctr, k.ctr - k.ctrDiff)}
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Posición promedio</div>
+                <div style={styles.cardValue}>{k.position.toFixed(1)}</div>
+                {renderChange(k.positionChange, true)}
+                <div style={styles.cardSubtext}>menor es mejor</div>
+              </div>
+            </div>
+            <div style={styles.grid}>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Vistas orgánicas</div>
+                <div style={styles.cardValue}>{O ? nf(O.views) : dash}</div>
+                {O && renderChange(O.viewsChange)}
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Sesiones orgánicas</div>
+                <div style={styles.cardValue}>{O ? nf(O.sessions) : dash}</div>
+                {O && renderChange(O.sessionsChange)}
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Rebote orgánico</div>
+                <div style={styles.cardValue}>{O ? `${(O.bounceRate * 100).toFixed(1)}%` : dash}</div>
+                {O && renderChange(O.bounceRateChange, true)}
+                <div style={styles.cardSubtext}>menor es mejor</div>
+              </div>
+              <div style={styles.card}>
+                <div style={styles.cardTitle}>Tiempo de lectura promedio</div>
+                <div style={styles.cardValue}>{G.avgSessionDuration || dash}</div>
+                {renderChange(G.avgSessionDurationChange)}
+                <div style={styles.cardSubtext}>todo el tráfico del sitio</div>
+              </div>
+            </div>
+            <div style={styles.cardSubtext}>Vistas orgánicas, sesiones, rebote y lectura son de GA4 (canal Organic Search). Desde el 8 de octubre de 2026 las vistas y el rebote están distorsionados por eventos page_view duplicados; para decidir usa sesiones y clics.</div>
+
+            {seoTools.compare && (() => {
+              const cp = seoTools.compare;
+              const metricKey = cmpMetric === 'sessions' ? 'Sessions' : 'Views';
+              const [pc, pm, py] = cp.periods;
+              const val = (pd) => (cmpMetric === 'sessions' ? pd.sessions : pd.views);
+              const colors = { cur: T.accent, prevMonth: T.ink, prevYear: '#9a9a9a' };
+              return (
+                <div style={{ ...styles.card, marginTop: '20px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px', alignItems: 'center' }}>
+                    <div style={styles.cardTitle}>Tráfico orgánico por día: periodo actual vs mes anterior vs año anterior</div>
+                    <select value={cmpMetric} onChange={(e) => setCmpMetric(e.target.value)} style={{ padding: '7px', borderRadius: '4px', border: '1px solid #ccc', fontSize: '12px' }}>
+                      <option value="views">Vistas</option>
+                      <option value="sessions">Sesiones</option>
+                    </select>
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '12px', margin: '12px 0' }}>
+                    {[[pc, 'cur', 'Periodo actual'], [pm, 'prevMonth', 'Mismo rango, mes anterior'], [py, 'prevYear', 'Mismo rango, año anterior']].map(([pd, kk, title]) => (
+                      <div key={kk} style={{ borderLeft: `4px solid ${colors[kk]}`, paddingLeft: '10px' }}>
+                        <div style={{ fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>{title}</div>
+                        <div style={{ fontSize: '12px', color: '#555' }}>{pd.label}</div>
+                        <div style={{ fontSize: '20px', fontWeight: 800 }}>{pd.hasData ? nf(val(pd)) : 'sin datos'}</div>
+                        {kk !== 'cur' && pd.hasData && val(pd) > 0 && renderChange(val(pc) / val(pd) - 1)}
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ width: '100%', height: 300 }}>
+                    <ResponsiveContainer>
+                      <LineChart data={cp.points} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                        <XAxis dataKey="day" tick={{ fontSize: 11 }} label={{ value: 'Día del periodo', position: 'insideBottom', offset: -2, fontSize: 11 }} />
+                        <YAxis tick={{ fontSize: 11 }} />
+                        <Tooltip labelFormatter={(d) => `Día ${d} del periodo`} formatter={(v) => (v === null ? '—' : v.toLocaleString('es-CO'))} />
+                        <Legend />
+                        <Line type="monotone" dataKey={`cur${metricKey}`} name={pc.label} stroke={colors.cur} strokeWidth={2.5} dot={false} connectNulls />
+                        <Line type="monotone" dataKey={`prevMonth${metricKey}`} name={pm.label} stroke={colors.prevMonth} strokeWidth={2} dot={false} connectNulls />
+                        {py.hasData && <Line type="monotone" dataKey={`prevYear${metricKey}`} name={py.label} stroke={colors.prevYear} strokeWidth={2} strokeDasharray="5 3" dot={false} connectNulls />}
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </div>
+                  <div style={styles.cardSubtext}>Canal Organic Search de GA4, alineado por día del periodo. {py.hasData ? '' : 'GA4 no tiene datos del año anterior para esta propiedad. '}Para comparar contra periodos anteriores al 8 de octubre usa Sesiones.</div>
+                </div>
+              );
+            })()}
+
+            {step(2, 'Plan de acción del mes', 'Seis frentes con su tamaño y cómo se mide el avance. Las palabras que suben o caen se ven en el explorador.')}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '16px' }}>
+              {plan.map((pl) => (
+                <div key={pl.title} style={{ ...styles.card, borderTop: `4px solid ${pl.color}` }}>
+                  <div style={{ fontSize: '12px', fontWeight: 800, textTransform: 'uppercase', color: pl.color }}>{pl.title}</div>
+                  <div style={{ fontSize: '30px', fontWeight: 800, color: '#111', lineHeight: 1.1, marginTop: '6px' }}>{pl.big}</div>
+                  <div style={{ fontSize: '12px', color: '#555' }}>{pl.unit}</div>
+                  <div style={{ fontSize: '13px', fontWeight: 700, marginTop: '8px' }}>{pl.impact}</div>
+                  <div style={{ ...styles.cardSubtext, marginTop: '6px' }}>{pl.how}</div>
+                </div>
+              ))}
+            </div>
+
+            {step(3, 'Optimizar: palabras en posición 4 a 20', 'Ordenadas por clics potenciales. En posición 4 a 10 el trabajo es título y descripción; en 11 a 20, contenido y enlaces internos.')}
+            <div style={styles.card}>
+              {seoTools.opportunities.length ? kwTable(seoTools.opportunities, { potential: true }) : <div style={styles.cardSubtext}>Sin oportunidades con volumen suficiente.</div>}
+              <div style={styles.cardSubtext}>Clics potenciales = impresiones x (CTR que ya logras en posición 1 a 3, {(seoTools.targetCtr * 100).toFixed(1)}%, menos el CTR actual de la palabra). Es una estimación: asume que la palabra llega a ese CTR si sube a las primeras posiciones.</div>
+            </div>
+
+            {step(4, 'Explorador de palabras y páginas', 'Para buscar un tema, ordenar por crecimiento o caída y ver qué páginas sostienen el tráfico.')}
+            <div style={styles.card}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px', alignItems: 'center' }}>
+                <div style={styles.cardTitle}>Palabras que más traen tráfico (sin marca) · {nf(k.nonBrandQueries)} consultas</div>
+                <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  <input value={kwSearch} onChange={(e) => setKwSearch(e.target.value)} placeholder="Buscar palabra o tema" style={{ padding: '7px', borderRadius: '4px', border: '1px solid #ccc', fontSize: '12px' }} />
+                  <select value={kwSort} onChange={(e) => setKwSort(e.target.value)} style={{ padding: '7px', borderRadius: '4px', border: '1px solid #ccc', fontSize: '12px' }}>
+                    <option value="clicks">Ordenar por clics</option>
+                    <option value="delta">Ordenar por mayor crecimiento</option>
+                    <option value="impressions">Ordenar por impresiones</option>
+                    <option value="position">Ordenar por mejor posición</option>
+                  </select>
+                </div>
+              </div>
+              {kwTable(sorted)}
+              <div style={styles.cardSubtext}>Top 50 del filtro. Excluye consultas de marca y de tipo URL. "Vs anterior" = clics del periodo menos clics del periodo anterior.</div>
+            </div>
+            <div style={{ ...styles.card, marginTop: '20px' }}>
+              <div style={styles.cardTitle}>Rendimiento orgánico por páginas (Top 15)</div>
+              <div style={{ overflowX: 'auto' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '520px' }}>
+                  <thead><tr style={{ background: T.soft }}><th style={{ ...head, textAlign: 'left' }}>Página</th><th style={head}>Clics</th><th style={head}>Vs anterior</th><th style={head}>Impresiones</th><th style={head}>CTR</th><th style={head}>Posición</th></tr></thead>
+                  <tbody>
+                    {seoTools.pages.map((pg, i) => (
+                      <tr key={pg.key}>
+                        <td style={{ ...cell, wordBreak: 'break-all' }}><span style={{ color: '#999' }}>{i + 1}.</span> {pg.key}</td>
+                        <td style={num}><strong>{nf(pg.clicks)}</strong></td>
+                        <td style={num}>{dClicks(pg.deltaClicks)}</td>
+                        <td style={num}>{nf(pg.impressions)}</td>
+                        <td style={num}>{(pg.ctr * 100).toFixed(1)}%</td>
+                        <td style={num}>{pg.position.toFixed(1)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            {seoTools.truncated && <div style={styles.cardSubtext}>Search Console devolvió el máximo de 50.000 consultas; la lista es una muestra de las más relevantes.</div>}
+          </div>
+        );
+      })()}
+
+      {/* Rendimiento SEO */}
+      {current.seo && (() => {
+        const seo = current.seo;
+        const cell = { padding: '8px', borderBottom: '1px solid #eee', fontSize: '12px' };
+        const num = { ...cell, textAlign: 'right' };
+        const head = { padding: '8px', textAlign: 'right', fontSize: '11px', color: '#666', textTransform: 'uppercase' };
+        const table = (rows, keyLabel) => (
+          <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '8px' }}>
+            <thead>
+              <tr style={{ background: T.soft }}>
+                <th style={{ ...head, textAlign: 'left' }}>{keyLabel}</th>
+                <th style={head}>Clics</th>
+                <th style={head}>Impresiones</th>
+                <th style={head}>CTR</th>
+                <th style={head}>Posición</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((r, k) => (
+                <tr key={r.key + k}>
+                  <td style={{ ...cell, wordBreak: 'break-all' }}><span style={{ color: '#999' }}>{k + 1}.</span> {r.key}</td>
+                  <td style={num}><strong>{nf(r.clicks)}</strong></td>
+                  <td style={num}>{nf(r.impressions)}</td>
+                  <td style={num}>{(r.ctr * 100).toFixed(1)}%</td>
+                  <td style={num}>{r.position.toFixed(1)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        );
+        return (
+          <div style={styles.section}>
+            <h2 style={styles.sectionTitle}>Salud técnica · {rangeLabel}</h2>
+
+            {seo.errorPages && (
+              <div style={{ ...styles.card, marginTop: '20px', borderTop: (seo.errorPages.total || 0) > 0 ? '4px solid #c62828' : undefined }}>
+                <div style={styles.cardTitle}>Páginas con error ("Page Not Found") · {rangeLabel}</div>
+                <div style={styles.cardSubtext}>Vistas de GA4 cuyo título de página contiene "Not Found" / "404" / "no encontrada". Son enlaces rotos que la gente sigue visitando: la ruta listada es donde cayó el usuario, no necesariamente el enlace de origen.</div>
+
+                {!seo.errorPages.error && (seo.errorPages.distinctCur + seo.errorPages.distinctPrev) > 0 && (
+                  <>
+                    <div style={{ display: 'flex', gap: '24px', margin: '14px 0 4px' }}>
+                      <div><div style={{ fontSize: '11px', color: '#777', textTransform: 'uppercase' }}>Páginas con error · mes anterior</div><div style={{ fontSize: '22px', fontWeight: 800 }}>{seo.errorPages.distinctPrev}</div></div>
+                      <div><div style={{ fontSize: '11px', color: '#777', textTransform: 'uppercase' }}>Páginas con error · mes actual</div><div style={{ fontSize: '22px', fontWeight: 800 }}>{seo.errorPages.distinctCur}</div></div>
+                      <div><div style={{ fontSize: '11px', color: '#2e7d32', textTransform: 'uppercase' }}>Arregladas</div><div style={{ fontSize: '22px', fontWeight: 800, color: '#2e7d32' }}>{seo.errorPages.fixed}</div></div>
+                      <div><div style={{ fontSize: '11px', color: '#c62828', textTransform: 'uppercase' }}>Nuevas</div><div style={{ fontSize: '22px', fontWeight: 800, color: '#c62828' }}>{seo.errorPages.nuevas}</div></div>
+                    </div>
+                    <ResponsiveContainer width="100%" height={220}>
+                      <BarChart data={[
+                        { label: 'Mes anterior', 'Páginas con error': seo.errorPages.distinctPrev },
+                        { label: 'Mes actual', 'Páginas con error': seo.errorPages.distinctCur },
+                        { label: 'Arregladas', 'Páginas con error': seo.errorPages.fixed },
+                        { label: 'Nuevas', 'Páginas con error': seo.errorPages.nuevas },
+                      ]}>
+                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
+                        <XAxis dataKey="label" fontSize={11} />
+                        <YAxis fontSize={11} allowDecimals={false} />
+                        <Tooltip />
+                        <Bar dataKey="Páginas con error" radius={[4, 4, 0, 0]}>
+                          {[seo.errorPages.distinctPrev, seo.errorPages.distinctCur, seo.errorPages.fixed, seo.errorPages.nuevas].map((v, i) => (
+                            <Cell key={i} fill={['#888', T.accent, '#2e7d32', '#c62828'][i]} />
+                          ))}
+                        </Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                    {seo.errorPages.fixedPages.length > 0 && (
+                      <div style={{ marginTop: '8px' }}>
+                        <div style={{ ...styles.cardTitle, fontSize: '11px', color: '#2e7d32' }}>Páginas arregladas este periodo</div>
+                        <ul style={{ margin: '6px 0 0', paddingLeft: '18px', fontSize: '12px', lineHeight: 1.6 }}>
+                          {seo.errorPages.fixedPages.map((p) => <li key={p.path}>{p.path} <span style={{ color: '#888' }}>({nf(p.views)} vistas el mes anterior)</span></li>)}
+                        </ul>
+                      </div>
+                    )}
+                  </>
+                )}
+
+                {seo.errorPages.error ? (
+                  <div style={{ fontSize: '13px', color: '#b71c1c', marginTop: '10px' }}>No se pudo consultar GA4: {seo.errorPages.error}</div>
+                ) : !seo.errorPages.pages.length ? (
+                  <div style={{ fontSize: '13px', color: '#2e7d32', marginTop: '10px', fontWeight: 600 }}>Sin tráfico a páginas de error en este periodo.</div>
+                ) : (
+                  <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '8px', fontSize: '12px' }}>
+                    <thead>
+                      <tr style={{ background: T.soft }}>
+                        <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Ruta</th>
+                        <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Título de página</th>
+                        <th style={{ padding: '8px', textAlign: 'right', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Vistas perdidas</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {seo.errorPages.pages.map((p, k) => (
+                        <tr key={p.path + k}>
+                          <td style={{ padding: '8px', borderBottom: '1px solid #eee', wordBreak: 'break-all', fontWeight: 600 }}>{p.path}</td>
+                          <td style={{ padding: '8px', borderBottom: '1px solid #eee', color: '#666' }}>{p.title}</td>
+                          <td style={{ padding: '8px', borderBottom: '1px solid #eee', textAlign: 'right', fontWeight: 800, color: '#c62828' }}>{nf(p.views)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
+              </div>
+            )}
+
+
+      <div style={{ margin: '30px 0 16px', paddingTop: '20px', borderTop: '2px dashed #ccc' }}>
+        <button onClick={() => setSeoIdeasOpen((v) => !v)} style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
+          <span style={{ fontSize: '15px', fontWeight: 800, color: '#666' }}>{seoIdeasOpen ? '▾' : '▸'} Ideas de contenido (no es KPI de resultado, es insumo para el equipo editorial)</span>
+        </button>
+        <div style={{ fontSize: '12px', color: '#888', marginTop: '4px' }}>Tendencias de búsqueda del día y noticias del sector, para inspirar qué publicar. No mide desempeño.</div>
+      </div>
+
+            {seoIdeasOpen && (
+              <>
+            {seoTools?.newContent?.length > 0 && (
+              <div style={{ ...styles.card, marginBottom: '20px' }}>
+                <div style={styles.cardTitle}>Notas por escribir: mucha demanda y posición mayor a 20</div>
+                <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '8px' }}>
+                  <thead>
+                    <tr style={{ background: '#f4f6fb' }}>
+                      <th style={{ ...head, textAlign: 'left' }}>Palabra</th>
+                      <th style={head}>Impresiones</th>
+                      <th style={head}>Posición</th>
+                      <th style={head}>Clics</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {seoTools.newContent.map((r, k) => (
+                      <tr key={r.key}>
+                        <td style={{ ...cell, wordBreak: 'break-word' }}><span style={{ color: '#999' }}>{k + 1}.</span> {r.key}</td>
+                        <td style={num}><strong>{nf(r.impressions)}</strong></td>
+                        <td style={num}>{r.position.toFixed(1)}</td>
+                        <td style={num}>{nf(r.clicks)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <div style={styles.cardSubtext}>Google ya te muestra en estas búsquedas pero muy abajo. Una nota específica para cada una suele rendir más que reforzar una genérica.</div>
+              </div>
+            )}
+              </>
+            )}
+          </div>
+        );
+      })()}
+
+      {/* Insights de contenido (parte de Ideas de contenido) */}
+      {seoIdeasOpen && (() => {
         const G = current.ga4 || {};
         const ET = current.emailtraffic;
         const MT = current.meta || {};
@@ -1618,207 +2018,6 @@ export default function Dashboard() {
           </div>
         );
       })()}
-      {/* GSC */}
-      <div style={styles.section}>
-        <h2 style={styles.sectionTitle}>Google Search Console</h2>
-        <div style={styles.grid}>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Clics</div>
-            <div style={styles.cardValue}>{nf(current.gsc?.clicks)}</div>
-            <div style={styles.cardSubtext}>{rangeLabel}</div>
-          </div>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Impresiones</div>
-            <div style={styles.cardValue}>{nf(current.gsc?.impressions)}</div>
-            <div style={styles.cardSubtext}>{rangeLabel}</div>
-          </div>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>CTR Promedio</div>
-            <div style={styles.cardValue}>{current.gsc?.ctr ? (current.gsc.ctr * 100).toFixed(2) : 0}%</div>
-            <div style={styles.cardSubtext}>tasa de clics</div>
-          </div>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Posición Promedio</div>
-            <div style={styles.cardValue}>{current.gsc?.position?.toFixed(1) || 0}</div>
-            <div style={styles.cardSubtext}>en búsquedas</div>
-          </div>
-          <div style={styles.card}>
-            <div style={styles.cardTitle}>Tiempo de lectura promedio</div>
-            <div style={styles.cardValue}>{current.ga4?.avgSessionDuration || '—'}</div>
-            {renderChange(current.ga4?.avgSessionDurationChange, false, null)}
-          </div>
-          <div style={{ ...styles.card, borderTop: (current.seo?.errorPages?.total || 0) > 0 ? '4px solid #c62828' : undefined }}>
-            <div style={styles.cardTitle}>Páginas con error</div>
-            <div style={styles.cardValue}>{nf(current.seo?.errorPages?.total || 0)}</div>
-            <div style={styles.cardSubtext}>vistas perdidas en "Page Not Found" · {rangeLabel}</div>
-          </div>
-        </div>
-      </div>
-
-      {/* Rendimiento SEO */}
-      {current.seo && (() => {
-        const seo = current.seo;
-        const cell = { padding: '8px', borderBottom: '1px solid #eee', fontSize: '12px' };
-        const num = { ...cell, textAlign: 'right' };
-        const head = { padding: '8px', textAlign: 'right', fontSize: '11px', color: '#666', textTransform: 'uppercase' };
-        const table = (rows, keyLabel) => (
-          <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '8px' }}>
-            <thead>
-              <tr style={{ background: T.soft }}>
-                <th style={{ ...head, textAlign: 'left' }}>{keyLabel}</th>
-                <th style={head}>Clics</th>
-                <th style={head}>Impresiones</th>
-                <th style={head}>CTR</th>
-                <th style={head}>Posición</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((r, k) => (
-                <tr key={r.key + k}>
-                  <td style={{ ...cell, wordBreak: 'break-all' }}><span style={{ color: '#999' }}>{k + 1}.</span> {r.key}</td>
-                  <td style={num}><strong>{nf(r.clicks)}</strong></td>
-                  <td style={num}>{nf(r.impressions)}</td>
-                  <td style={num}>{(r.ctr * 100).toFixed(1)}%</td>
-                  <td style={num}>{r.position.toFixed(1)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        );
-        return (
-          <div style={styles.section}>
-            <h2 style={styles.sectionTitle}>Rendimiento SEO · {rangeLabel}</h2>
-
-            {seo.errorPages && (
-              <div style={{ ...styles.card, marginTop: '20px', borderTop: (seo.errorPages.total || 0) > 0 ? '4px solid #c62828' : undefined }}>
-                <div style={styles.cardTitle}>Páginas con error ("Page Not Found") · {rangeLabel}</div>
-                <div style={styles.cardSubtext}>Vistas de GA4 cuyo título de página contiene "Not Found" / "404" / "no encontrada". Son enlaces rotos que la gente sigue visitando: la ruta listada es donde cayó el usuario, no necesariamente el enlace de origen.</div>
-
-                {!seo.errorPages.error && (seo.errorPages.distinctCur + seo.errorPages.distinctPrev) > 0 && (
-                  <>
-                    <div style={{ display: 'flex', gap: '24px', margin: '14px 0 4px' }}>
-                      <div><div style={{ fontSize: '11px', color: '#777', textTransform: 'uppercase' }}>Páginas con error · mes anterior</div><div style={{ fontSize: '22px', fontWeight: 800 }}>{seo.errorPages.distinctPrev}</div></div>
-                      <div><div style={{ fontSize: '11px', color: '#777', textTransform: 'uppercase' }}>Páginas con error · mes actual</div><div style={{ fontSize: '22px', fontWeight: 800 }}>{seo.errorPages.distinctCur}</div></div>
-                      <div><div style={{ fontSize: '11px', color: '#2e7d32', textTransform: 'uppercase' }}>Arregladas</div><div style={{ fontSize: '22px', fontWeight: 800, color: '#2e7d32' }}>{seo.errorPages.fixed}</div></div>
-                      <div><div style={{ fontSize: '11px', color: '#c62828', textTransform: 'uppercase' }}>Nuevas</div><div style={{ fontSize: '22px', fontWeight: 800, color: '#c62828' }}>{seo.errorPages.nuevas}</div></div>
-                    </div>
-                    <ResponsiveContainer width="100%" height={220}>
-                      <BarChart data={[
-                        { label: 'Mes anterior', 'Páginas con error': seo.errorPages.distinctPrev },
-                        { label: 'Mes actual', 'Páginas con error': seo.errorPages.distinctCur },
-                        { label: 'Arregladas', 'Páginas con error': seo.errorPages.fixed },
-                        { label: 'Nuevas', 'Páginas con error': seo.errorPages.nuevas },
-                      ]}>
-                        <CartesianGrid strokeDasharray="3 3" vertical={false} />
-                        <XAxis dataKey="label" fontSize={11} />
-                        <YAxis fontSize={11} allowDecimals={false} />
-                        <Tooltip />
-                        <Bar dataKey="Páginas con error" radius={[4, 4, 0, 0]}>
-                          {[seo.errorPages.distinctPrev, seo.errorPages.distinctCur, seo.errorPages.fixed, seo.errorPages.nuevas].map((v, i) => (
-                            <Cell key={i} fill={['#888', T.accent, '#2e7d32', '#c62828'][i]} />
-                          ))}
-                        </Bar>
-                      </BarChart>
-                    </ResponsiveContainer>
-                    {seo.errorPages.fixedPages.length > 0 && (
-                      <div style={{ marginTop: '8px' }}>
-                        <div style={{ ...styles.cardTitle, fontSize: '11px', color: '#2e7d32' }}>Páginas arregladas este periodo</div>
-                        <ul style={{ margin: '6px 0 0', paddingLeft: '18px', fontSize: '12px', lineHeight: 1.6 }}>
-                          {seo.errorPages.fixedPages.map((p) => <li key={p.path}>{p.path} <span style={{ color: '#888' }}>({nf(p.views)} vistas el mes anterior)</span></li>)}
-                        </ul>
-                      </div>
-                    )}
-                  </>
-                )}
-
-                {seo.errorPages.error ? (
-                  <div style={{ fontSize: '13px', color: '#b71c1c', marginTop: '10px' }}>No se pudo consultar GA4: {seo.errorPages.error}</div>
-                ) : !seo.errorPages.pages.length ? (
-                  <div style={{ fontSize: '13px', color: '#2e7d32', marginTop: '10px', fontWeight: 600 }}>Sin tráfico a páginas de error en este periodo.</div>
-                ) : (
-                  <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '8px', fontSize: '12px' }}>
-                    <thead>
-                      <tr style={{ background: T.soft }}>
-                        <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Ruta</th>
-                        <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Título de página</th>
-                        <th style={{ padding: '8px', textAlign: 'right', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Vistas perdidas</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {seo.errorPages.pages.map((p, k) => (
-                        <tr key={p.path + k}>
-                          <td style={{ padding: '8px', borderBottom: '1px solid #eee', wordBreak: 'break-all', fontWeight: 600 }}>{p.path}</td>
-                          <td style={{ padding: '8px', borderBottom: '1px solid #eee', color: '#666' }}>{p.title}</td>
-                          <td style={{ padding: '8px', borderBottom: '1px solid #eee', textAlign: 'right', fontWeight: 800, color: '#c62828' }}>{nf(p.views)}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                )}
-              </div>
-            )}
-
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px', marginTop: '20px' }}>
-              <div style={styles.card}>
-                <div style={styles.cardTitle}>Consultas orgánicas según posición (Top 10 mejor posicionadas)</div>
-                {table(seo.byPosition, 'Consulta')}
-                <div style={styles.cardSubtext}>Consultas con al menos 100 impresiones, ordenadas por posición promedio.</div>
-              </div>
-            </div>
-
-            <div style={{ ...styles.cardTitle, fontSize: '14px', margin: '30px 0 10px' }}>Insumos para contenido editorial (sin consultas de marca)</div>
-            <div style={styles.card}>
-              <div style={styles.cardTitle}>Temas que rinden por encima de la media (Top 10)</div>
-              <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '8px' }}>
-                <thead>
-                  <tr style={{ background: T.soft }}>
-                    <th style={{ ...head, textAlign: 'left' }}>Tema</th>
-                    <th style={head}>Clics</th>
-                    <th style={head}>Impresiones</th>
-                    <th style={head}>CTR</th>
-                    <th style={head}>vs media</th>
-                    <th style={head}>Posición</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {seo.topics.map((t, k) => (
-                    <tr key={t.term}>
-                      <td style={cell}><span style={{ color: '#999' }}>{k + 1}.</span> {t.term}</td>
-                      <td style={num}><strong>{nf(t.clicks)}</strong></td>
-                      <td style={num}>{nf(t.impressions)}</td>
-                      <td style={num}>{(t.ctr * 100).toFixed(1)}%</td>
-                      <td style={{ ...num, color: '#2e7d32', fontWeight: 700 }}>{t.vsAvg.toFixed(1)}x</td>
-                      <td style={num}>{t.position.toFixed(1)}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              <div style={styles.cardSubtext}>Temas = palabras y pares de palabras agrupadas de consultas sin marca. Solo entran los que superan el CTR promedio editorial ({(seo.topicsAvgCtr * 100).toFixed(2)}%), con al menos 300 impresiones y 3 consultas distintas.</div>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '20px', marginTop: '20px' }}>
-              <div style={styles.card}>
-                <div style={styles.cardTitle}>Top 10 consultas editoriales (sin marca)</div>
-                {table(seo.editorialTop, 'Consulta')}
-                <div style={styles.cardSubtext}>Excluye consultas que incluyen el nombre de la revista y las de tipo URL.</div>
-              </div>
-              <div style={styles.card}>
-                <div style={styles.cardTitle}>Consultas con potencial: posición 8-20 (Top 10 por impresiones)</div>
-                {table(seo.opportunities, 'Consulta')}
-                <div style={styles.cardSubtext}>Mucha demanda y todavía en segunda página o borde de la primera: buenas candidatas para nuevo contenido o mejora.</div>
-              </div>
-            </div>
-          </div>
-        );
-      })()}
-
-      {/* Ideas de contenido (no es KPI, herramienta de ideación editorial) */}
-      <div style={{ margin: '30px 0 16px', paddingTop: '20px', borderTop: '2px dashed #ccc' }}>
-        <button onClick={() => setSeoIdeasOpen((v) => !v)} style={{ display: 'flex', alignItems: 'center', gap: '8px', background: 'none', border: 'none', cursor: 'pointer', padding: 0 }}>
-          <span style={{ fontSize: '15px', fontWeight: 800, color: '#666' }}>{seoIdeasOpen ? '▾' : '▸'} Ideas de contenido (no es KPI de resultado, es insumo para el equipo editorial)</span>
-        </button>
-        <div style={{ fontSize: '12px', color: '#888', marginTop: '4px' }}>Tendencias de búsqueda del día y noticias del sector, para inspirar qué publicar. No mide desempeño.</div>
-      </div>
-
       {seoIdeasOpen && (() => {
         const Dall = data.dailytrends;
         const winData = newsWin === '1d' ? Dall : (newsByWin[newsWin] || null);
