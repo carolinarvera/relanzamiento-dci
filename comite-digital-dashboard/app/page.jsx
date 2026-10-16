@@ -1634,10 +1634,10 @@ export default function Dashboard() {
         const chartPeriod = [
           { name: 'Nuevas creadas', value: H.published, fill: C.created },
           { name: 'Nuevas con error', value: H.createdWithError, fill: C.createdErr },
-          { name: 'Arregladas', value: H.fixedPeriod, fill: C.fixed },
         ];
         const chartTotal = [
           { name: 'Total con error', value: H.totalAll, fill: C.total },
+          { name: 'Arregladas', value: H.fixedPeriod, fill: C.fixed },
           { name: 'Pendientes', value: H.pending, fill: C.pending },
         ];
         const th = { padding: '8px', fontSize: '11px', color: '#666', textTransform: 'uppercase', position: 'sticky', top: 0, background: T.soft };
@@ -1677,9 +1677,9 @@ export default function Dashboard() {
                   </div>
                 ))}
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 3fr) minmax(0, 2fr)', gap: '24px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 2fr) minmax(0, 3fr)', gap: '24px' }}>
                 <div>
-                  <div style={{ ...styles.cardTitle, fontSize: '11px' }}>En el periodo en revisión</div>
+                  <div style={{ ...styles.cardTitle, fontSize: '11px' }}>Páginas creadas en el periodo en revisión</div>
                   <ResponsiveContainer width="100%" height={240}>
                     <BarChart data={chartPeriod} margin={{ top: 22, right: 8, left: 0, bottom: 0 }}>
                       <CartesianGrid strokeDasharray="3 3" vertical={false} />
@@ -1694,7 +1694,7 @@ export default function Dashboard() {
                   </ResponsiveContainer>
                 </div>
                 <div>
-                  <div style={{ ...styles.cardTitle, fontSize: '11px' }}>Acumulado (todas las páginas)</div>
+                  <div style={{ ...styles.cardTitle, fontSize: '11px' }}>Acumulado: todas las páginas con error</div>
                   <ResponsiveContainer width="100%" height={240}>
                     <BarChart data={chartTotal} margin={{ top: 22, right: 8, left: 0, bottom: 0 }}>
                       <CartesianGrid strokeDasharray="3 3" vertical={false} />
@@ -1710,7 +1710,7 @@ export default function Dashboard() {
                 </div>
               </div>
               <div style={styles.cardSubtext}>
-                Las dos escalas van separadas porque el acumulado es miles de veces mayor que lo del periodo. Cómo se mide cada barra:
+                Las dos escalas van separadas porque el acumulado es miles de veces mayor que lo del periodo. Las arregladas van en el acumulado porque descuentan del total de páginas con error. Cómo se mide cada barra:
                 nuevas creadas = notas publicadas entre el {H.range.start} y el {H.range.end}; nuevas con error = de esas, las que registraron visitas con error en el mismo periodo;
                 total con error = rutas con error en los últimos 12 meses (desde {H.windows.allFrom}); arregladas = tenían error antes del periodo y en el periodo recibieron visitas con título normal;
                 pendientes = rutas con error en los 12 meses que no se han visto cargando bien en los últimos 90 días (desde {H.windows.working90From}).
