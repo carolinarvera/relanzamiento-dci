@@ -138,9 +138,10 @@ async function fetchErrorPages(token, propertyId, range) {
       persisten: persisten.length,
       fixedPages: fixed.slice(0, 15),
       nuevasPages: nuevas.slice(0, 100),
+      persistenPages: persisten.slice(0, 100),
     };
   } catch (e) {
-    return { total: 0, prevTotal: 0, pages: [], distinctCur: 0, distinctPrev: 0, fixed: 0, nuevas: 0, persisten: 0, fixedPages: [], nuevasPages: [], error: e.response?.data?.error?.message || e.message };
+    return { total: 0, prevTotal: 0, pages: [], distinctCur: 0, distinctPrev: 0, fixed: 0, nuevas: 0, persisten: 0, fixedPages: [], nuevasPages: [], persistenPages: [], error: e.response?.data?.error?.message || e.message };
   }
 }
 

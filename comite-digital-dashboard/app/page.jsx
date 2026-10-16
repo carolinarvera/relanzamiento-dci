@@ -1612,15 +1612,15 @@ export default function Dashboard() {
                 {!seo.errorPages.error && (seo.errorPages.distinctCur + seo.errorPages.distinctPrev) > 0 && (
                   <>
                     <div style={{ display: 'flex', gap: '24px', margin: '14px 0 4px' }}>
-                      <div><div style={{ fontSize: '11px', color: '#777', textTransform: 'uppercase' }}>Páginas con error · mes anterior</div><div style={{ fontSize: '22px', fontWeight: 800 }}>{seo.errorPages.distinctPrev}</div></div>
-                      <div><div style={{ fontSize: '11px', color: '#777', textTransform: 'uppercase' }}>Páginas con error · mes actual</div><div style={{ fontSize: '22px', fontWeight: 800 }}>{seo.errorPages.distinctCur}</div></div>
+                      <div><div style={{ fontSize: '11px', color: '#777', textTransform: 'uppercase' }}>Páginas con error · periodo anterior</div><div style={{ fontSize: '22px', fontWeight: 800 }}>{seo.errorPages.distinctPrev}</div></div>
+                      <div><div style={{ fontSize: '11px', color: '#777', textTransform: 'uppercase' }}>Páginas con error · periodo en revisión</div><div style={{ fontSize: '22px', fontWeight: 800 }}>{seo.errorPages.distinctCur}</div></div>
                       <div><div style={{ fontSize: '11px', color: '#2e7d32', textTransform: 'uppercase' }}>Arregladas</div><div style={{ fontSize: '22px', fontWeight: 800, color: '#2e7d32' }}>{seo.errorPages.fixed}</div></div>
                       <div><div style={{ fontSize: '11px', color: '#c62828', textTransform: 'uppercase' }}>Nuevas</div><div style={{ fontSize: '22px', fontWeight: 800, color: '#c62828' }}>{seo.errorPages.nuevas}</div></div>
                     </div>
                     <ResponsiveContainer width="100%" height={220}>
                       <BarChart data={[
-                        { label: 'Mes anterior', 'Páginas con error': seo.errorPages.distinctPrev },
-                        { label: 'Mes actual', 'Páginas con error': seo.errorPages.distinctCur },
+                        { label: 'Periodo anterior', 'Páginas con error': seo.errorPages.distinctPrev },
+                        { label: 'Periodo en revisión', 'Páginas con error': seo.errorPages.distinctCur },
                         { label: 'Arregladas', 'Páginas con error': seo.errorPages.fixed },
                         { label: 'Nuevas', 'Páginas con error': seo.errorPages.nuevas },
                       ]}>
@@ -1635,6 +1635,11 @@ export default function Dashboard() {
                         </Bar>
                       </BarChart>
                     </ResponsiveContainer>
+                    <div style={styles.cardSubtext}>
+                      Cada barra cuenta páginas distintas con error, no vistas. Periodo en revisión = {rangeLabel}; periodo anterior = {data.seo?.range?.prevStart} a {data.seo?.range?.prevEnd}.
+                      Periodo en revisión = {nf(seo.errorPages.persisten || 0)} que siguen sin arreglar + {nf(seo.errorPages.nuevas || 0)} nuevas.
+                      Periodo anterior = {nf(seo.errorPages.persisten || 0)} que siguen sin arreglar + {nf(seo.errorPages.fixed || 0)} arregladas.
+                    </div>
                     <div style={{ marginTop: '12px' }}>
                       <div style={{ ...styles.cardTitle, fontSize: '11px', color: '#c62828' }}>Páginas nuevas con error en este periodo ({nf(seo.errorPages.nuevas)})</div>
                       {(seo.errorPages.nuevasPages || []).length > 0 ? (
@@ -1668,7 +1673,7 @@ export default function Dashboard() {
                       <div style={{ marginTop: '8px' }}>
                         <div style={{ ...styles.cardTitle, fontSize: '11px', color: '#2e7d32' }}>Páginas arregladas este periodo</div>
                         <ul style={{ margin: '6px 0 0', paddingLeft: '18px', fontSize: '12px', lineHeight: 1.6 }}>
-                          {seo.errorPages.fixedPages.map((p) => <li key={p.path}>{p.path} <span style={{ color: '#888' }}>({nf(p.views)} vistas el mes anterior)</span></li>)}
+                          {seo.errorPages.fixedPages.map((p) => <li key={p.path}>{p.path} <span style={{ color: '#888' }}>({nf(p.views)} vistas en el periodo anterior)</span></li>)}
                         </ul>
                       </div>
                     )}
@@ -1677,27 +1682,36 @@ export default function Dashboard() {
 
                 {seo.errorPages.error ? (
                   <div style={{ fontSize: '13px', color: '#b71c1c', marginTop: '10px' }}>No se pudo consultar GA4: {seo.errorPages.error}</div>
-                ) : !seo.errorPages.pages.length ? (
+                ) : !seo.errorPages.distinctCur ? (
                   <div style={{ fontSize: '13px', color: '#2e7d32', marginTop: '10px', fontWeight: 600 }}>Sin tráfico a páginas de error en este periodo.</div>
                 ) : (
-                  <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '8px', fontSize: '12px' }}>
-                    <thead>
-                      <tr style={{ background: T.soft }}>
-                        <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Ruta</th>
-                        <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Título de página</th>
-                        <th style={{ padding: '8px', textAlign: 'right', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Vistas perdidas</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {seo.errorPages.pages.map((p, k) => (
-                        <tr key={p.path + k}>
-                          <td style={{ padding: '8px', borderBottom: '1px solid #eee', wordBreak: 'break-all', fontWeight: 600 }}>{p.path}</td>
-                          <td style={{ padding: '8px', borderBottom: '1px solid #eee', color: '#666' }}>{p.title}</td>
-                          <td style={{ padding: '8px', borderBottom: '1px solid #eee', textAlign: 'right', fontWeight: 800, color: '#c62828' }}>{nf(p.views)}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                  <div style={{ marginTop: '14px' }}>
+                    <div style={{ ...styles.cardTitle, fontSize: '11px', color: '#6d4c41' }}>Errores que siguen sin arreglar ({nf(seo.errorPages.persisten || 0)})</div>
+                    {(seo.errorPages.persistenPages || []).length > 0 ? (
+                      <div style={{ maxHeight: '380px', overflowY: 'auto', marginTop: '6px' }}>
+                        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
+                          <thead>
+                            <tr style={{ background: T.soft, position: 'sticky', top: 0 }}>
+                              <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Ruta</th>
+                              <th style={{ padding: '8px', textAlign: 'right', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Vistas perdidas</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {seo.errorPages.persistenPages.map((p, k) => (
+                              <tr key={p.path + k}>
+                                <td style={{ padding: '8px', borderBottom: `1px solid ${T.line}`, wordBreak: 'break-all', fontWeight: 600 }}>
+                                  <a href={`${activeTab === 'axxis' ? 'https://revistaaxxis.com.co' : 'https://revistadiners.com.co'}${p.path}`} target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>{p.path}</a>
+                                </td>
+                                <td style={{ padding: '8px', borderBottom: `1px solid ${T.line}`, textAlign: 'right', fontWeight: 800, color: '#c62828' }}>{nf(p.views)}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      </div>
+                    ) : <div style={{ fontSize: '13px', color: '#2e7d32', fontWeight: 600, marginTop: '6px' }}>No quedan errores del periodo anterior sin arreglar.</div>}
+                    {(seo.errorPages.persisten || 0) > (seo.errorPages.persistenPages || []).length && <div style={styles.cardSubtext}>Se muestran las {(seo.errorPages.persistenPages || []).length} con más vistas perdidas; desplázate dentro de la lista para verlas.</div>}
+                    <div style={styles.cardSubtext}>Tenían error el periodo anterior y lo siguen teniendo: son las que el equipo web debería corregir primero (redirigir o restaurar la página).</div>
+                  </div>
                 )}
               </div>
             )}
