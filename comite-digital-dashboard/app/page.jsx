@@ -219,6 +219,7 @@ export default function Dashboard() {
   const [seoHealth, setSeoHealth] = useState(null);
   const [seoQuality, setSeoQuality] = useState(null);
   const [seoTech, setSeoTech] = useState(null);
+  const [techSel, setTechSel] = useState('title_long');
   const [kwSearch, setKwSearch] = useState('');
   const [kwSort, setKwSort] = useState('clicks');
   const [cmpMetric, setCmpMetric] = useState('views');
@@ -1844,7 +1845,7 @@ export default function Dashboard() {
           ['h1_missing', 'Sin H1'], ['h1_multiple', 'Más de un H1'], ['canonical_missing', 'Sin canonical'], ['canonical_diff', 'Canonical distinto a la URL'],
           ['noindex', 'Marcada como noindex'], ['not_indexed', 'No indexada en Google'], ['schema_missing', 'Sin schema'], ['og_missing', 'Sin imagen para redes (og:image)'],
           ['title_missing', 'Sin title'], ['title_long', 'Title de más de 60 caracteres'], ['title_short', 'Title corto (menos de 25)'],
-          ['desc_missing', 'Sin meta description'], ['desc_long', 'Descripción de más de 155 caracteres'], ['desc_short', 'Descripción corta (menos de 70)'],
+          ['alt_low', 'Imágenes sin texto alt (menos del 80% con alt)'], ['desc_missing', 'Sin meta description'], ['desc_long', 'Descripción de más de 155 caracteres'], ['desc_short', 'Descripción corta (menos de 70)'],
         ];
         const wrap = (children) => (
           <div style={{ ...styles.section, marginBottom: '10px' }}>
@@ -1856,16 +1857,16 @@ export default function Dashboard() {
         if (Q.error && Tt.error) return wrap(<div style={{ ...styles.card, color: '#b71c1c' }}>No se pudo hacer la revisión técnica: {Q.error}</div>);
         // universo: notas nuevas + páginas con más clics (sin duplicar)
         const uni = new Map();
-        (Q.notes || []).forEach((n) => { if (!n.fetchError) uni.set(n.path, { path: n.path, link: n.link, issues: n.tech || [], scope: 'nueva' }); });
+        (Q.notes || []).forEach((n) => { if (!n.fetchError) uni.set(n.path, { path: n.path, link: n.link, title: n.title, titleLen: n.titleLen, descLen: n.descLen, imgs: n.imgs, imgsAlt: n.imgsAlt, issues: [...(n.tech || []), ...(n.imgs && n.imgsAlt / n.imgs < 0.8 ? ['alt_low'] : [])], scope: 'nueva' }); });
         (Tt.pages || []).forEach((n) => { const prev = uni.get(n.path); if (prev) { prev.issues = [...new Set([...prev.issues, ...n.issues])]; } else uni.set(n.path, { path: n.path, link: n.link, issues: n.issues, scope: 'top' }); });
         const N = uni.size;
         const rows = KEYS.map(([k, label]) => {
           const list = [...uni.values()].filter((u) => u.issues.includes(k));
-          return { key: k, label, count: list.length, examples: list.slice(0, 3) };
+          return { key: k, label, count: list.length, list, examples: list.slice(0, 3) };
         });
         const sorted = rows.slice().sort((a, b) => b.count - a.count);
         const base = activeTab === 'axxis' ? 'https://revistaaxxis.com.co' : 'https://revistadiners.com.co';
-        const chart = sorted.map((r) => ({ name: r.label, value: r.count, fill: r.count === 0 ? '#2e7d32' : (/^(Sin H1|Más de un H1|Sin canonical|Canonical|Marcada|No indexada|Sin title|Sin meta)/.test(r.label) ? '#c62828' : T.accent) }));
+        const chart = sorted.map((r) => ({ name: r.label, value: r.count, fill: r.count === 0 ? '#2e7d32' : (/^(Imágenes sin|Sin H1|Más de un H1|Sin canonical|Canonical|Marcada|No indexada|Sin title|Sin meta)/.test(r.label) ? '#c62828' : T.accent) }));
         const clean = [...uni.values()].filter((u) => !u.issues.length).length;
         return wrap(
           <div style={{ ...styles.card, borderTop: `4px solid ${T.ink}` }}>
@@ -1909,6 +1910,54 @@ export default function Dashboard() {
                 </tbody>
               </table>
             </div>
+            {(() => {
+              const SUG = {
+                title_long: (u) => `Acortar el title${u.titleLen ? ` de ${u.titleLen} a 60 caracteres o menos` : ''}; dejar la palabra clave al inicio.`,
+                title_short: () => 'Ampliar el title a 25 caracteres o más con la palabra clave principal.',
+                title_missing: () => 'Agregar un title con la palabra clave principal.',
+                desc_long: (u) => `Reescribir la descripción${u.descLen ? ` de ${u.descLen} a 155 caracteres o menos` : ''}.`,
+                desc_short: () => 'Ampliar la descripción a 70 caracteres o más, con gancho y palabra clave.',
+                desc_missing: () => 'Escribir la meta description (70 a 155 caracteres).',
+                alt_low: (u) => `Agregar texto alt descriptivo a las imágenes${u.imgs ? ` (${u.imgsAlt} de ${u.imgs} tienen alt)` : ''}.`,
+                h1_missing: () => 'Agregar un H1 con el título de la nota.',
+                h1_multiple: () => 'Dejar un solo H1; los demás pasan a H2.',
+                canonical_missing: () => 'Agregar la etiqueta canonical apuntando a la URL de la nota.',
+                canonical_diff: () => 'Revisar el canonical: apunta a una URL distinta a la de la nota.',
+                noindex: () => 'Quitar noindex si la nota debe aparecer en Google.',
+                not_indexed: () => 'Pedir indexación en Search Console y revisar enlaces internos hacia la nota.',
+                schema_missing: () => 'Agregar schema Article (plugin SEO).',
+                og_missing: () => 'Definir la imagen para redes (og:image).',
+              };
+              const cur = sorted.find((r) => r.key === techSel) || sorted[0];
+              return (
+                <div style={{ marginTop: '16px' }}>
+                  <div style={styles.cardTitle}>Qué ajustar, por tipo de problema</div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', margin: '8px 0' }}>
+                    {sorted.filter((r) => r.count > 0).map((r) => (
+                      <button key={r.key} type="button" onClick={() => setTechSel(r.key)} style={{ cursor: 'pointer', border: `1px solid ${T.accent}`, borderRadius: '14px', padding: '4px 10px', fontSize: '12px', fontWeight: 600, background: cur.key === r.key ? T.accent : '#fff', color: cur.key === r.key ? '#fff' : T.ink }}>
+                        {r.label} · {r.count}
+                      </button>
+                    ))}
+                  </div>
+                  <div style={{ maxHeight: '420px', overflow: 'auto' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '560px' }}>
+                      <thead><tr style={{ background: T.soft }}>
+                        <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Nota</th>
+                        <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Sugerencia</th>
+                      </tr></thead>
+                      <tbody>
+                        {cur.list.map((u) => (
+                          <tr key={u.path}>
+                            <td style={{ padding: '8px', borderBottom: `1px solid ${T.line}`, fontSize: '12px', wordBreak: 'break-all' }}><a href={`${base}${u.path}`} target="_blank" rel="noreferrer" style={{ color: 'inherit', fontWeight: 600 }}>{u.title || u.path}</a></td>
+                            <td style={{ padding: '8px', borderBottom: `1px solid ${T.line}`, fontSize: '12px' }}>{(SUG[cur.key] || (() => 'Revisar.'))(u)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              );
+            })()}
             {(Q.unread > 0 || Tt.unread > 0) && <div style={styles.cardSubtext}>No se pudo leer {nf((Q.unread || 0) + (Tt.unread || 0))} página(s) publicada(s); quedan fuera del conteo.</div>}
           </div>
         );
