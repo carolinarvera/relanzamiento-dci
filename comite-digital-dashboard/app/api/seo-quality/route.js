@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { resolveRange } from '../../lib/range';
-import { toks, unesc, getAccessToken, pool, parseHead, analyzeContent, fetchHtml, techIssues } from '../../lib/seoaudit';
+import { toks, unesc, getAccessToken, pool, parseHead, analyzeContent, fetchHtml, techIssues , buildFixes } from '../../lib/seoaudit';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
-const SITES = { axxis: { site: 'https://revistaaxxis.com.co', gsc: 'GSC_AXXIS_URL' }, diners: { site: 'https://revistadiners.com.co', gsc: 'GSC_DINERS_URL' } };
+const SITES = { axxis: { site: 'https://revistaaxxis.com.co', gsc: 'GSC_AXXIS_URL', name: 'Revista AXXIS' }, diners: { site: 'https://revistadiners.com.co', gsc: 'GSC_DINERS_URL', name: 'Revista Diners' } };
+const SITE_NAME = { axxis: 'Revista AXXIS', diners: 'Revista Diners' };
 const CACHE = new Map();
 const TTL = 30 * 60 * 1000;
 const iso = (d) => d.toISOString().slice(0, 10);
@@ -169,6 +170,7 @@ export async function GET(request) {
         words: r.words, titleLen: r.title.length, descLen: r.desc.length, h2: r.h2, imgs: r.imgs, imgsAlt: r.imgsAlt, internal: r.internal,
         indexStatus: r.indexStatus || null, impressions: r.impressions, clicks: r.clicks, mainQuery: r.mainQuery,
         errors: r.errors, warns: r.warns, fetchError: r.fetchError || null, tech: techIssues(r),
+        fixes: buildFixes(r, [...techIssues(r), ...(r.imgs && r.imgsAlt / r.imgs < 0.8 ? ['alt_low'] : [])], SITES[brand].name),
       })),
       seconds: Math.round((Date.now() - t0) / 1000),
     };

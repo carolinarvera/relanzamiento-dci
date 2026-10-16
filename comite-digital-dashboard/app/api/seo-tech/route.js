@@ -1,11 +1,12 @@
 import axios from 'axios';
 import { resolveRange } from '../../lib/range';
-import { getAccessToken, pool, parseHead, fetchHtml, techIssues, TECH_LABELS } from '../../lib/seoaudit';
+import { getAccessToken, pool, parseHead, fetchHtml, techIssues, TECH_LABELS , buildFixes } from '../../lib/seoaudit';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
-const SITES = { axxis: { site: 'https://revistaaxxis.com.co', gsc: 'GSC_AXXIS_URL' }, diners: { site: 'https://revistadiners.com.co', gsc: 'GSC_DINERS_URL' } };
+const SITES = { axxis: { site: 'https://revistaaxxis.com.co', gsc: 'GSC_AXXIS_URL', name: 'Revista AXXIS' }, diners: { site: 'https://revistadiners.com.co', gsc: 'GSC_DINERS_URL', name: 'Revista Diners' } };
+const SITE_NAME = { axxis: 'Revista AXXIS', diners: 'Revista Diners' };
 const CACHE = new Map();
 const TTL = 30 * 60 * 1000;
 const iso = (d) => d.toISOString().slice(0, 10);
@@ -66,7 +67,7 @@ export async function GET(request) {
       audited: audited.length,
       unread: audited.length - read.length,
       withIssues: read.filter((n) => n.issues.length).length,
-      pages: read.map((n) => ({ path: n.path, link: n.link, clicks: n.clicks, issues: n.issues })),
+      pages: read.map((n) => ({ path: n.path, link: n.link, clicks: n.clicks, issues: n.issues, title: n.h1s[0] || n.title, titleLen: n.title.length, descLen: n.desc.length, fixes: buildFixes(n, n.issues, SITE_NAME[brand]) })),
       issues: Object.entries(counts).map(([k, list]) => ({ key: k, label: TECH_LABELS[k], pages: list.length, examples: list.sort((a, b) => b.clicks - a.clicks).slice(0, 5) })).sort((a, b) => b.pages - a.pages),
       seconds: Math.round((Date.now() - t0) / 1000),
     };

@@ -70,6 +70,8 @@ export function analyzeContent(html, host) {
     internal,
     external: links.filter((h) => h.startsWith('http') && !h.includes(host)).length,
     first100: text.split(' ').slice(0, 100).join(' '),
+    noAlt: imgs.filter((a) => !(a.alt || '').trim() && a.src).slice(0, 4).map((a) => a.src),
+    firstImg: (imgs.find((a) => a.src) || {}).src || '',
   };
 }
 
@@ -120,4 +122,66 @@ export function techIssues(n) {
   const st = String(n.indexStatus || '');
   if (n.indexStatus && !/^(Submitted and indexed|Indexed)/.test(st)) out.push('not_indexed');
   return out;
+}
+
+
+// ---- textos sugeridos para corregir (se construyen con el contenido real de la nota) ----
+const cutWords = (t, max) => {
+  if (t.length <= max) return t;
+  const cut = t.slice(0, max + 1);
+  const i = cut.lastIndexOf(' ');
+  let out = cut.slice(0, i > max * 0.6 ? i : max).replace(/[\s,;:\-–—|]+$/, '');
+  const dangling = /\s+(y|e|o|u|de|del|la|el|los|las|en|con|para|por|un|una|que|se|su|sus|al|a|como|más|mas)$/i;
+  while (dangling.test(out)) out = out.replace(dangling, '').replace(/[\s,;:\-–—|]+$/, '');
+  return out;
+};
+
+export function suggestTitle(title, h1, siteName) {
+  let t = (title || '').trim();
+  const suffix = new RegExp(`\\s*[-–—|·]\\s*(${siteName}|Revista[^-–—|]*)$`, 'i');
+  const base = t.replace(suffix, '').trim();
+  if (base && base.length >= 25 && base.length <= 60) return base;
+  if (base.length > 60) {
+    const parts = base.split(/\s*[:|–—]\s*/);
+    if (parts[0].length >= 25 && parts[0].length <= 60) return parts[0];
+    return cutWords(base, 60);
+  }
+  const h = (h1 || '').trim();
+  if (h && h.length >= 25) return cutWords(h, 60);
+  return `${base || h} | ${siteName}`.slice(0, 60);
+}
+
+export function suggestDesc(desc, n) {
+  const d = (desc || '').trim();
+  if (d.length > 155) {
+    const sentence = d.match(/^[^.!?]{70,155}[.!?]/);
+    if (sentence) return sentence[0];
+    return `${cutWords(d, 152)}.`;
+  }
+  const src = (n.first100 || '').trim() || d;
+  if (!src) return '';
+  const sentence = src.match(/^[^.!?]{70,155}[.!?]/);
+  return sentence ? sentence[0] : `${cutWords(src, 152)}.`;
+}
+
+const altFromSrc = (src, title) => {
+  const f = decodeURIComponent((src.split('/').pop() || '').replace(/\.[a-z0-9]+$/i, '')).replace(/-\d+x\d+$/, '').replace(/[-_]+/g, ' ').trim();
+  return f ? `${f.charAt(0).toUpperCase()}${f.slice(1)}${title ? ` - ${cutWords(title, 38).replace(/\s+(y|e|o|u|de|del|la|el|los|las|en|con|para|por|un|una)$/i, '')}` : ''}` : (title || '');
+};
+
+export function buildFixes(n, issues, siteName) {
+  const fx = {};
+  if (issues.includes('title_long') || issues.includes('title_short') || issues.includes('title_missing')) {
+    fx.title = { current: n.title || '', suggested: suggestTitle(n.title, (n.h1s || [])[0], siteName) };
+  }
+  if (issues.includes('desc_long') || issues.includes('desc_short') || issues.includes('desc_missing')) {
+    fx.desc = { current: n.desc || '', suggested: suggestDesc(n.desc, n) };
+  }
+  if (issues.includes('alt_low') && (n.noAlt || []).length) {
+    fx.alt = n.noAlt.map((src) => ({ src: src.split('/').pop(), suggested: altFromSrc(src, n.titleWp || (n.h1s || [])[0] || n.title) }));
+  }
+  if (issues.includes('h1_missing')) fx.h1 = { current: '', suggested: n.titleWp || n.title || '' };
+  if (issues.includes('og_missing') && n.firstImg) fx.og = { current: '', suggested: n.firstImg };
+  if (issues.includes('canonical_missing') || issues.includes('canonical_diff')) fx.canonical = { current: n.canonical || '', suggested: n.link };
+  return fx;
 }

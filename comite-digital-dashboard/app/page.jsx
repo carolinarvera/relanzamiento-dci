@@ -1857,8 +1857,8 @@ export default function Dashboard() {
         if (Q.error && Tt.error) return wrap(<div style={{ ...styles.card, color: '#b71c1c' }}>No se pudo hacer la revisión técnica: {Q.error}</div>);
         // universo: notas nuevas + páginas con más clics (sin duplicar)
         const uni = new Map();
-        (Q.notes || []).forEach((n) => { if (!n.fetchError) uni.set(n.path, { path: n.path, link: n.link, title: n.title, titleLen: n.titleLen, descLen: n.descLen, imgs: n.imgs, imgsAlt: n.imgsAlt, issues: [...(n.tech || []), ...(n.imgs && n.imgsAlt / n.imgs < 0.8 ? ['alt_low'] : [])], scope: 'nueva' }); });
-        (Tt.pages || []).forEach((n) => { const prev = uni.get(n.path); if (prev) { prev.issues = [...new Set([...prev.issues, ...n.issues])]; } else uni.set(n.path, { path: n.path, link: n.link, issues: n.issues, scope: 'top' }); });
+        (Q.notes || []).forEach((n) => { if (!n.fetchError) uni.set(n.path, { path: n.path, link: n.link, title: n.title, titleLen: n.titleLen, descLen: n.descLen, fixes: n.fixes || {}, imgs: n.imgs, imgsAlt: n.imgsAlt, issues: [...(n.tech || []), ...(n.imgs && n.imgsAlt / n.imgs < 0.8 ? ['alt_low'] : [])], scope: 'nueva' }); });
+        (Tt.pages || []).forEach((n) => { const prev = uni.get(n.path); if (prev) { prev.issues = [...new Set([...prev.issues, ...n.issues])]; prev.fixes = { ...(n.fixes || {}), ...prev.fixes }; } else uni.set(n.path, { path: n.path, link: n.link, title: n.title, titleLen: n.titleLen, descLen: n.descLen, fixes: n.fixes || {}, issues: n.issues, scope: 'top' }); });
         const N = uni.size;
         const rows = KEYS.map(([k, label]) => {
           const list = [...uni.values()].filter((u) => u.issues.includes(k));
@@ -1940,18 +1940,30 @@ export default function Dashboard() {
                     ))}
                   </div>
                   <div style={{ maxHeight: '420px', overflow: 'auto' }}>
-                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '560px' }}>
+                    <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '720px' }}>
                       <thead><tr style={{ background: T.soft }}>
                         <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Nota</th>
-                        <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Sugerencia</th>
+                        <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Texto actual</th>
+                        <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Texto sugerido (propuesta automática, revisar antes de pegar)</th>
                       </tr></thead>
                       <tbody>
-                        {cur.list.map((u) => (
-                          <tr key={u.path}>
-                            <td style={{ padding: '8px', borderBottom: `1px solid ${T.line}`, fontSize: '12px', wordBreak: 'break-all' }}><a href={`${base}${u.path}`} target="_blank" rel="noreferrer" style={{ color: 'inherit', fontWeight: 600 }}>{u.title || u.path}</a></td>
-                            <td style={{ padding: '8px', borderBottom: `1px solid ${T.line}`, fontSize: '12px' }}>{(SUG[cur.key] || (() => 'Revisar.'))(u)}</td>
-                          </tr>
-                        ))}
+                        {cur.list.map((u) => {
+                          const FK = { title_long: 'title', title_short: 'title', title_missing: 'title', desc_long: 'desc', desc_short: 'desc', desc_missing: 'desc', alt_low: 'alt', h1_missing: 'h1', og_missing: 'og', canonical_missing: 'canonical', canonical_diff: 'canonical' }[cur.key];
+                          const fx = FK ? (u.fixes || {})[FK] : null;
+                          const td2 = { padding: '8px', borderBottom: `1px solid ${T.line}`, fontSize: '12px', verticalAlign: 'top' };
+                          const copy = (t) => { try { navigator.clipboard.writeText(t); } catch (e) { /* sin portapapeles */ } };
+                          return (
+                            <tr key={u.path}>
+                              <td style={{ ...td2, wordBreak: 'break-all', minWidth: '200px' }}><a href={`${base}${u.path}`} target="_blank" rel="noreferrer" style={{ color: 'inherit', fontWeight: 600 }}>{u.title || u.path}</a></td>
+                              <td style={{ ...td2, minWidth: '240px', color: '#666' }}>
+                                {Array.isArray(fx) ? fx.map((a) => <div key={a.src}>{a.src} <span style={{ color: '#c62828' }}>(sin alt)</span></div>) : fx ? (<>{fx.current || <em>vacío</em>}{FK === 'title' || FK === 'desc' ? <div style={{ color: '#999' }}>{fx.current.length} caracteres</div> : null}</>) : '\u2014'}
+                              </td>
+                              <td style={{ ...td2, minWidth: '260px' }}>
+                                {Array.isArray(fx) ? fx.map((a) => <div key={a.src}>{a.suggested}</div>) : fx && fx.suggested ? (<><span style={{ fontWeight: 600 }}>{fx.suggested}</span>{FK === 'title' || FK === 'desc' ? <div style={{ color: '#2e7d32' }}>{fx.suggested.length} caracteres</div> : null}<button type="button" onClick={() => copy(fx.suggested)} style={{ marginTop: '4px', cursor: 'pointer', border: `1px solid ${T.accent}`, background: '#fff', borderRadius: '10px', fontSize: '11px', padding: '1px 8px' }}>Copiar</button></>) : <span style={{ color: '#999' }}>Sin texto sugerido disponible</span>}
+                              </td>
+                            </tr>
+                          );
+                        })}
                       </tbody>
                     </table>
                   </div>
