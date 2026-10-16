@@ -217,6 +217,8 @@ export default function Dashboard() {
   const [traficoOpen, setTraficoOpen] = useState(false);
   const [seoTools, setSeoTools] = useState(null);
   const [seoHealth, setSeoHealth] = useState(null);
+  const [seoQuality, setSeoQuality] = useState(null);
+  const [seoTech, setSeoTech] = useState(null);
   const [kwSearch, setKwSearch] = useState('');
   const [kwSort, setKwSort] = useState('clicks');
   const [cmpMetric, setCmpMetric] = useState('views');
@@ -276,6 +278,23 @@ export default function Dashboard() {
       .catch((e) => { if (!cancelled) setTrends({ error: e.message }); });
     return () => { cancelled = true; };
   }, [activeTab, trendDays, section]);
+
+  useEffect(() => {
+    if (section !== 'seo') return undefined;
+    let cancelled = false;
+    setSeoQuality(null);
+    setSeoTech(null);
+    const qs = range ? `&start=${range.start}&end=${range.end}` : '';
+    fetch(`/api/seo-quality?brand=${activeTab}${qs}`)
+      .then((r) => r.json())
+      .then((j) => { if (!cancelled) setSeoQuality(j); })
+      .catch((e) => { if (!cancelled) setSeoQuality({ error: e.message }); });
+    fetch(`/api/seo-tech?brand=${activeTab}${qs}`)
+      .then((r) => r.json())
+      .then((j) => { if (!cancelled) setSeoTech(j); })
+      .catch((e) => { if (!cancelled) setSeoTech({ error: e.message }); });
+    return () => { cancelled = true; };
+  }, [section, activeTab, rangeKey]);
 
   useEffect(() => {
     if (section !== 'seo') return undefined;
@@ -1611,6 +1630,81 @@ export default function Dashboard() {
 
       {ready && section === 'seo' && (
       <>
+      {/* Primero: tráfico orgánico por día vs mes anterior vs año anterior */}
+      {(() => {
+        const { dash } = seoUi;
+        if (!seoTools) return <div style={{ ...styles.card, textAlign: 'center', padding: '30px', color: '#555', marginBottom: '20px' }}>Cargando la estrategia SEO…</div>;
+        if (seoTools.error) return <div style={{ ...styles.card, color: '#b71c1c', marginBottom: '20px' }}>No se pudieron cargar las herramientas SEO: {seoTools.error}</div>;
+        return (
+          <div style={{ ...styles.section, marginBottom: '20px' }}>
+            {seoTools.compare && (() => {
+              const cp = seoTools.compare;
+              const metricKey = cmpMetric === 'sessions' ? 'Sessions' : 'Views';
+              const [pc, pm, py] = cp.periods;
+              const val = (pd) => (cmpMetric === 'sessions' ? pd.sessions : pd.views);
+              const COL = { cur: T.accent, prevMonth: '#1f6fb2', prevYear: '#6b6b6b' };
+              const MES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+              const dayLabel = (start, i) => { const d = new Date(Date.parse(start) + i * 86400000); return `${d.getUTCDate()} ${MES[d.getUTCMonth()]} ${d.getUTCFullYear()}`; };
+              const pts = cp.points.map((pt, i) => ({ ...pt, label: dayLabel(pc.start, i).slice(0, -5), curDate: dayLabel(pc.start, i), prevMonthDate: dayLabel(pm.start, i), prevYearDate: dayLabel(py.start, i) }));
+              const showDots = pts.length <= 31;
+              const Tip = ({ active, payload }) => {
+                if (!active || !payload || !payload.length) return null;
+                const row = payload[0].payload;
+                const items = [['cur', 'Periodo actual'], ['prevMonth', 'Mes anterior'], ['prevYear', 'Año anterior']];
+                return (
+                  <div style={{ background: '#fff', border: '1px solid #ddd', borderRadius: '6px', padding: '10px 12px', fontSize: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.12)' }}>
+                    <div style={{ fontWeight: 800, marginBottom: '6px' }}>Día {row.day} del periodo</div>
+                    {items.map(([kk, nm]) => (kk === 'prevYear' && !py.hasData ? null : (
+                      <div key={kk} style={{ display: 'flex', gap: '8px', alignItems: 'baseline', marginTop: '3px' }}>
+                        <span style={{ width: '10px', height: '10px', background: COL[kk], display: 'inline-block', borderRadius: '2px' }} />
+                        <span style={{ color: '#666' }}>{nm} ({row[`${kk}Date`]})</span>
+                        <strong style={{ marginLeft: 'auto' }}>{row[`${kk}${metricKey}`] === null ? dash : row[`${kk}${metricKey}`].toLocaleString('es-CO')}</strong>
+                      </div>
+                    )))}
+                  </div>
+                );
+              };
+              return (
+                <div style={styles.card}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px', alignItems: 'center' }}>
+                    <div style={styles.cardTitle}>Tráfico orgánico por día: periodo actual vs mes anterior vs año anterior</div>
+                    <select value={cmpMetric} onChange={(e) => setCmpMetric(e.target.value)} style={{ padding: '7px', borderRadius: '4px', border: '1px solid #ccc', fontSize: '12px' }}>
+                      <option value="views">Vistas</option>
+                      <option value="sessions">Sesiones</option>
+                    </select>
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '12px', margin: '14px 0' }}>
+                    {[[pc, 'cur', 'Periodo actual', 'línea gruesa con puntos'], [pm, 'prevMonth', 'Mismo rango, mes anterior', 'línea azul'], [py, 'prevYear', 'Mismo rango, año anterior', 'línea gris punteada']].map(([pd, kk, title, hint]) => (
+                      <div key={kk} style={{ borderLeft: `5px solid ${COL[kk]}`, paddingLeft: '10px' }}>
+                        <div style={{ fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>{title} <span style={{ textTransform: 'none', color: '#999' }}>({hint})</span></div>
+                        <div style={{ fontSize: '12px', color: '#555' }}>{pd.label}</div>
+                        <div style={{ fontSize: '22px', fontWeight: 800 }}>{pd.hasData ? nf(val(pd)) : 'sin datos'}</div>
+                        {kk !== 'cur' && pd.hasData && val(pd) > 0 && renderChange(val(pc) / val(pd) - 1)}
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ width: '100%', height: 360 }}>
+                    <ResponsiveContainer>
+                      <LineChart data={pts} margin={{ top: 10, right: 16, left: 0, bottom: 6 }}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#e5e5e5" />
+                        <XAxis dataKey="label" tick={{ fontSize: 11 }} minTickGap={18} />
+                        <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => v.toLocaleString('es-CO')} width={56} />
+                        <Tooltip content={<Tip />} />
+                        <Legend verticalAlign="top" height={30} />
+                        {py.hasData && <Line type="monotone" dataKey={`prevYear${metricKey}`} name="Año anterior" stroke={COL.prevYear} strokeWidth={2.5} strokeDasharray="6 4" dot={false} connectNulls />}
+                        <Line type="monotone" dataKey={`prevMonth${metricKey}`} name="Mes anterior" stroke={COL.prevMonth} strokeWidth={2.5} dot={false} connectNulls />
+                        <Line type="monotone" dataKey={`cur${metricKey}`} name="Periodo actual" stroke={COL.cur} strokeWidth={4} dot={showDots ? { r: 3.5, fill: COL.cur } : false} activeDot={{ r: 6 }} connectNulls />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </div>
+                  <div style={styles.cardSubtext}>Canal Organic Search de GA4, alineado por día del periodo. El eje inferior muestra las fechas del periodo actual; al pasar el cursor ves la fecha de cada línea. {py.hasData ? '' : 'GA4 no tiene datos del año anterior para esta propiedad. '}Desde el 8 de octubre de 2026 las vistas están infladas por eventos page_view duplicados: para comparar contra periodos anteriores usa Sesiones.</div>
+                </div>
+              );
+            })()}
+          </div>
+        );
+      })()}
+
       {/* Salud técnica (periodo en revisión) */}
       {(() => {
         const H = seoHealth;
@@ -1742,80 +1836,196 @@ export default function Dashboard() {
         );
       })()}
 
+      {/* Buenas prácticas técnicas de SEO */}
+      {(() => {
+        const Q = seoQuality;
+        const Tt = seoTech;
+        const KEYS = [
+          ['h1_missing', 'Sin H1'], ['h1_multiple', 'Más de un H1'], ['canonical_missing', 'Sin canonical'], ['canonical_diff', 'Canonical distinto a la URL'],
+          ['noindex', 'Marcada como noindex'], ['not_indexed', 'No indexada en Google'], ['schema_missing', 'Sin schema'], ['og_missing', 'Sin imagen para redes (og:image)'],
+          ['title_missing', 'Sin title'], ['title_long', 'Title de más de 60 caracteres'], ['title_short', 'Title corto (menos de 25)'],
+          ['desc_missing', 'Sin meta description'], ['desc_long', 'Descripción de más de 155 caracteres'], ['desc_short', 'Descripción corta (menos de 70)'],
+        ];
+        const wrap = (children) => (
+          <div style={{ ...styles.section, marginBottom: '10px' }}>
+            <h2 style={styles.sectionTitle}>Buenas prácticas técnicas de SEO · {rangeLabel}</h2>
+            {children}
+          </div>
+        );
+        if (!Q || !Tt) return wrap(<div style={{ ...styles.card, textAlign: 'center', padding: '24px', color: '#555' }}>Revisando el HTML de las notas nuevas y de las páginas con más clics… puede tardar hasta un minuto.</div>);
+        if (Q.error && Tt.error) return wrap(<div style={{ ...styles.card, color: '#b71c1c' }}>No se pudo hacer la revisión técnica: {Q.error}</div>);
+        // universo: notas nuevas + páginas con más clics (sin duplicar)
+        const uni = new Map();
+        (Q.notes || []).forEach((n) => { if (!n.fetchError) uni.set(n.path, { path: n.path, link: n.link, issues: n.tech || [], scope: 'nueva' }); });
+        (Tt.pages || []).forEach((n) => { const prev = uni.get(n.path); if (prev) { prev.issues = [...new Set([...prev.issues, ...n.issues])]; } else uni.set(n.path, { path: n.path, link: n.link, issues: n.issues, scope: 'top' }); });
+        const N = uni.size;
+        const rows = KEYS.map(([k, label]) => {
+          const list = [...uni.values()].filter((u) => u.issues.includes(k));
+          return { key: k, label, count: list.length, examples: list.slice(0, 3) };
+        });
+        const sorted = rows.slice().sort((a, b) => b.count - a.count);
+        const base = activeTab === 'axxis' ? 'https://revistaaxxis.com.co' : 'https://revistadiners.com.co';
+        const chart = sorted.map((r) => ({ name: r.label, value: r.count, fill: r.count === 0 ? '#2e7d32' : (/^(Sin H1|Más de un H1|Sin canonical|Canonical|Marcada|No indexada|Sin title|Sin meta)/.test(r.label) ? '#c62828' : T.accent) }));
+        const clean = [...uni.values()].filter((u) => !u.issues.length).length;
+        return wrap(
+          <div style={{ ...styles.card, borderTop: `4px solid ${T.ink}` }}>
+            <div style={styles.cardSubtext}>
+              Se revisa el HTML publicado de {nf(N)} páginas: las notas nuevas del periodo ({nf(Q.audited || 0)}) y las {nf(Tt.audited || 0)} páginas con más clics en Google. No es un rastreo de todo el sitio.
+              {' '}{nf(clean)} de {nf(N)} no tienen ningún problema técnico. Verde = ninguna página afectada; rojo = problema grave (indexación, H1, canonical, title o descripción ausentes); naranja = ajuste de longitud o datos estructurados.
+            </div>
+            <div style={{ width: '100%', height: Math.max(260, chart.length * 28), marginTop: '12px' }}>
+              <ResponsiveContainer>
+                <BarChart data={chart} layout="vertical" margin={{ top: 4, right: 40, left: 10, bottom: 4 }}>
+                  <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+                  <XAxis type="number" allowDecimals={false} fontSize={11} domain={[0, Math.max(N, 1)]} />
+                  <YAxis type="category" dataKey="name" width={230} fontSize={11} />
+                  <Tooltip formatter={(v) => `${v} de ${N} páginas`} />
+                  <Bar dataKey="value" radius={[0, 4, 4, 0]} minPointSize={2}>
+                    {chart.map((e) => <Cell key={e.name} fill={e.fill} />)}
+                    <LabelList dataKey="value" position="right" style={{ fontSize: 12, fontWeight: 700 }} />
+                  </Bar>
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+            <div style={{ overflowX: 'auto', marginTop: '8px' }}>
+              <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '560px' }}>
+                <thead>
+                  <tr style={{ background: T.soft }}>
+                    <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Problema</th>
+                    <th style={{ padding: '8px', textAlign: 'right', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Páginas</th>
+                    <th style={{ padding: '8px', textAlign: 'left', fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>Ejemplos</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sorted.map((r) => (
+                    <tr key={r.key}>
+                      <td style={{ padding: '8px', borderBottom: `1px solid ${T.line}`, fontSize: '12px', fontWeight: 600 }}>{r.label}</td>
+                      <td style={{ padding: '8px', borderBottom: `1px solid ${T.line}`, fontSize: '12px', textAlign: 'right', fontWeight: 800, color: r.count ? '#c62828' : '#2e7d32' }}>{r.count ? `${nf(r.count)} de ${nf(N)}` : '0 ✓'}</td>
+                      <td style={{ padding: '8px', borderBottom: `1px solid ${T.line}`, fontSize: '12px', wordBreak: 'break-all' }}>
+                        {r.examples.length ? r.examples.map((e, i) => <span key={e.path}>{i ? ' · ' : ''}<a href={`${base}${e.path}`} target="_blank" rel="noreferrer" style={{ color: 'inherit' }}>{e.path.length > 46 ? `${e.path.slice(0, 46)}…` : e.path}</a></span>) : <span style={{ color: '#999' }}>ninguna</span>}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            {(Q.unread > 0 || Tt.unread > 0) && <div style={styles.cardSubtext}>No se pudo leer {nf((Q.unread || 0) + (Tt.unread || 0))} página(s) publicada(s); quedan fuera del conteo.</div>}
+          </div>
+        );
+      })()}
+
+      {/* Calidad SEO de notas nuevas */}
+      {(() => {
+        const Q = seoQuality;
+        const wrap = (children) => (
+          <div style={{ ...styles.section, marginBottom: '10px' }}>
+            <h2 style={styles.sectionTitle}>Calidad SEO de notas nuevas · {rangeLabel}</h2>
+            {children}
+          </div>
+        );
+        if (!Q) return wrap(<div style={{ ...styles.card, textAlign: 'center', padding: '24px', color: '#555' }}>Revisando las notas publicadas en el periodo…</div>);
+        if (Q.error) return wrap(<div style={{ ...styles.card, color: '#b71c1c' }}>No se pudo revisar la calidad de las notas: {Q.error}</div>);
+        const base = activeTab === 'axxis' ? 'https://revistaaxxis.com.co' : 'https://revistadiners.com.co';
+        const LV = { rojo: '#c62828', amarillo: '#f9a825', verde: '#2e7d32' };
+        const th = { padding: '8px', fontSize: '11px', color: '#666', textTransform: 'uppercase', position: 'sticky', top: 0, background: T.soft, whiteSpace: 'nowrap' };
+        const td = { padding: '8px', borderBottom: `1px solid ${T.line}`, fontSize: '12px', verticalAlign: 'top' };
+        const chip = (txt, color, key) => <span key={key} style={{ display: 'inline-block', margin: '2px 4px 2px 0', padding: '2px 7px', borderRadius: '10px', fontSize: '11px', background: `${color}1f`, color, fontWeight: 600 }}>{txt}</span>;
+        return wrap(
+          <>
+            <div style={{ ...styles.card, borderTop: `4px solid ${T.accent}` }}>
+              <div style={styles.cardSubtext}>
+                {nf(Q.total)} notas publicadas del {Q.range.start} al {Q.range.end}{Q.total > Q.audited ? ` (se revisan las ${nf(Q.audited)} primeras)` : ''}. Se lee el HTML publicado de cada una y se cruza con Search Console (impresiones, consulta principal e indexación). La palabra clave objetivo de cada nota no está disponible por API; se usa la consulta que más impresiones le trae.
+              </div>
+              <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', margin: '14px 0' }}>
+                {[['rojo', 'Con errores que corregir'], ['amarillo', 'Solo con ajustes'], ['verde', 'Sin observaciones']].map(([k, label]) => (
+                  <div key={k} style={{ borderLeft: `5px solid ${LV[k]}`, paddingLeft: '10px' }}>
+                    <div style={{ fontSize: '30px', fontWeight: 800, lineHeight: 1.1 }}>{nf(Q.levels[k])}</div>
+                    <div style={{ fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>{label}</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ ...styles.cardTitle, fontSize: '11px' }}>Cuántas notas cumplen cada criterio</div>
+              <div style={{ overflowX: 'auto' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '560px', marginTop: '6px' }}>
+                  <tbody>
+                    {Q.criteria.map((c) => {
+                      const pct = c.total ? c.ok / c.total : 0;
+                      const col = pct >= 0.8 ? '#2e7d32' : pct >= 0.5 ? '#f9a825' : '#c62828';
+                      return (
+                        <tr key={c.key}>
+                          <td style={{ ...td, width: '38%', fontWeight: 600 }}>{c.label}</td>
+                          <td style={{ ...td, width: '30%' }}>
+                            <div style={{ background: '#eee', borderRadius: '4px', height: '10px' }}><div style={{ width: `${pct * 100}%`, background: col, height: '10px', borderRadius: '4px' }} /></div>
+                          </td>
+                          <td style={{ ...td, textAlign: 'right', fontWeight: 800, color: col, whiteSpace: 'nowrap' }}>{nf(c.ok)} de {nf(c.total)}</td>
+                          <td style={{ ...td, color: '#888' }}>{c.standard}</td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div style={{ ...styles.card, marginTop: '20px' }}>
+              <div style={styles.cardTitle}>Detalle por nota (las de más observaciones primero)</div>
+              <div style={{ maxHeight: '560px', overflow: 'auto', marginTop: '8px' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '980px' }}>
+                  <thead>
+                    <tr>
+                      <th style={{ ...th, textAlign: 'left' }}>Nota</th>
+                      <th style={th}>Días</th>
+                      <th style={th}>Palabras</th>
+                      <th style={th}>Title</th>
+                      <th style={th}>Desc.</th>
+                      <th style={th}>Alt</th>
+                      <th style={th}>Enl. int.</th>
+                      <th style={th}>Impresiones</th>
+                      <th style={{ ...th, textAlign: 'left' }}>Consulta principal</th>
+                      <th style={{ ...th, textAlign: 'left' }}>Qué revisar</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {Q.notes.map((n) => (
+                      <tr key={n.link}>
+                        <td style={{ ...td, minWidth: '230px' }}>
+                          <span style={{ display: 'inline-block', width: '9px', height: '9px', borderRadius: '50%', background: LV[n.level], marginRight: '6px' }} />
+                          <a href={n.link} target="_blank" rel="noreferrer" style={{ color: 'inherit', fontWeight: 700 }}>{n.title}</a>
+                          <div style={{ color: '#999', wordBreak: 'break-all' }}>{n.path}</div>
+                        </td>
+                        <td style={{ ...td, textAlign: 'right' }}>{n.ageDays}</td>
+                        <td style={{ ...td, textAlign: 'right', color: n.words < 300 ? '#c62828' : n.words < 600 ? '#b26a00' : undefined }}>{nf(n.words)}</td>
+                        <td style={{ ...td, textAlign: 'right', color: n.titleLen > 65 || n.titleLen < 25 ? '#b26a00' : undefined }}>{n.titleLen || '—'}</td>
+                        <td style={{ ...td, textAlign: 'right', color: n.descLen > 165 || n.descLen < 70 ? '#b26a00' : undefined }}>{n.descLen || '—'}</td>
+                        <td style={{ ...td, textAlign: 'right', color: n.imgs && n.imgsAlt / n.imgs < 0.8 ? '#c62828' : undefined }}>{n.imgsAlt}/{n.imgs}</td>
+                        <td style={{ ...td, textAlign: 'right', color: n.internal < 3 ? '#b26a00' : undefined }}>{n.internal}</td>
+                        <td style={{ ...td, textAlign: 'right' }}>{nf(n.impressions)}</td>
+                        <td style={{ ...td, minWidth: '160px' }}>{n.mainQuery ? (<><div style={{ fontWeight: 600 }}>{n.mainQuery.query}</div><div style={{ color: '#888' }}>{nf(n.mainQuery.impressions)} impr. · pos. {n.mainQuery.position}{n.mainQuery.inTitle && n.mainQuery.inSlug ? ' · en título y URL' : ''}</div></>) : <span style={{ color: '#999' }}>sin datos aún</span>}</td>
+                        <td style={{ ...td, minWidth: '300px' }}>
+                          {n.errors.map((e, i) => chip(e, '#c62828', `e${i}`))}
+                          {n.warns.map((w, i) => chip(w, '#b26a00', `w${i}`))}
+                          {!n.errors.length && !n.warns.length && <span style={{ color: '#2e7d32', fontWeight: 700 }}>Sin observaciones</span>}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div style={styles.cardSubtext}>Estándares: title hasta 60 caracteres, descripción de 70 a 155, un H1, texto de 600 palabras o más con subtítulos H2, alt en las imágenes, 3 o más enlaces internos, schema de artículo, canonical propio e indexación.</div>
+            </div>
+          </>
+        );
+      })()}
+
       {/* Tráfico orgánico por día + 1. Resultado del mes */}
       {(() => {
         const { dash, step, prevLine, fmtDur } = seoUi;
-        if (!seoTools) return <div style={{ ...styles.card, textAlign: 'center', padding: '30px', color: '#555', marginBottom: '20px' }}>Cargando la estrategia SEO…</div>;
-        if (seoTools.error) return <div style={{ ...styles.card, color: '#b71c1c', marginBottom: '20px' }}>No se pudieron cargar las herramientas SEO: {seoTools.error}</div>;
+        if (!seoTools || seoTools.error) return null;
         const k = seoTools.kpis;
         const r = seoTools.range;
         const O = seoTools.organic;
         return (
           <div style={{ ...styles.section, marginBottom: '20px' }}>
-            {seoTools.compare && (() => {
-              const cp = seoTools.compare;
-              const metricKey = cmpMetric === 'sessions' ? 'Sessions' : 'Views';
-              const [pc, pm, py] = cp.periods;
-              const val = (pd) => (cmpMetric === 'sessions' ? pd.sessions : pd.views);
-              const COL = { cur: T.accent, prevMonth: '#1f6fb2', prevYear: '#6b6b6b' };
-              const MES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
-              const dayLabel = (start, i) => { const d = new Date(Date.parse(start) + i * 86400000); return `${d.getUTCDate()} ${MES[d.getUTCMonth()]} ${d.getUTCFullYear()}`; };
-              const pts = cp.points.map((pt, i) => ({ ...pt, label: dayLabel(pc.start, i).slice(0, -5), curDate: dayLabel(pc.start, i), prevMonthDate: dayLabel(pm.start, i), prevYearDate: dayLabel(py.start, i) }));
-              const showDots = pts.length <= 31;
-              const Tip = ({ active, payload }) => {
-                if (!active || !payload || !payload.length) return null;
-                const row = payload[0].payload;
-                const items = [['cur', 'Periodo actual'], ['prevMonth', 'Mes anterior'], ['prevYear', 'Año anterior']];
-                return (
-                  <div style={{ background: '#fff', border: '1px solid #ddd', borderRadius: '6px', padding: '10px 12px', fontSize: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.12)' }}>
-                    <div style={{ fontWeight: 800, marginBottom: '6px' }}>Día {row.day} del periodo</div>
-                    {items.map(([kk, nm]) => (kk === 'prevYear' && !py.hasData ? null : (
-                      <div key={kk} style={{ display: 'flex', gap: '8px', alignItems: 'baseline', marginTop: '3px' }}>
-                        <span style={{ width: '10px', height: '10px', background: COL[kk], display: 'inline-block', borderRadius: '2px' }} />
-                        <span style={{ color: '#666' }}>{nm} ({row[`${kk}Date`]})</span>
-                        <strong style={{ marginLeft: 'auto' }}>{row[`${kk}${metricKey}`] === null ? dash : row[`${kk}${metricKey}`].toLocaleString('es-CO')}</strong>
-                      </div>
-                    )))}
-                  </div>
-                );
-              };
-              return (
-                <div style={styles.card}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px', alignItems: 'center' }}>
-                    <div style={styles.cardTitle}>Tráfico orgánico por día: periodo actual vs mes anterior vs año anterior</div>
-                    <select value={cmpMetric} onChange={(e) => setCmpMetric(e.target.value)} style={{ padding: '7px', borderRadius: '4px', border: '1px solid #ccc', fontSize: '12px' }}>
-                      <option value="views">Vistas</option>
-                      <option value="sessions">Sesiones</option>
-                    </select>
-                  </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '12px', margin: '14px 0' }}>
-                    {[[pc, 'cur', 'Periodo actual', 'línea gruesa con puntos'], [pm, 'prevMonth', 'Mismo rango, mes anterior', 'línea azul'], [py, 'prevYear', 'Mismo rango, año anterior', 'línea gris punteada']].map(([pd, kk, title, hint]) => (
-                      <div key={kk} style={{ borderLeft: `5px solid ${COL[kk]}`, paddingLeft: '10px' }}>
-                        <div style={{ fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>{title} <span style={{ textTransform: 'none', color: '#999' }}>({hint})</span></div>
-                        <div style={{ fontSize: '12px', color: '#555' }}>{pd.label}</div>
-                        <div style={{ fontSize: '22px', fontWeight: 800 }}>{pd.hasData ? nf(val(pd)) : 'sin datos'}</div>
-                        {kk !== 'cur' && pd.hasData && val(pd) > 0 && renderChange(val(pc) / val(pd) - 1)}
-                      </div>
-                    ))}
-                  </div>
-                  <div style={{ width: '100%', height: 360 }}>
-                    <ResponsiveContainer>
-                      <LineChart data={pts} margin={{ top: 10, right: 16, left: 0, bottom: 6 }}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#e5e5e5" />
-                        <XAxis dataKey="label" tick={{ fontSize: 11 }} minTickGap={18} />
-                        <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => v.toLocaleString('es-CO')} width={56} />
-                        <Tooltip content={<Tip />} />
-                        <Legend verticalAlign="top" height={30} />
-                        {py.hasData && <Line type="monotone" dataKey={`prevYear${metricKey}`} name="Año anterior" stroke={COL.prevYear} strokeWidth={2.5} strokeDasharray="6 4" dot={false} connectNulls />}
-                        <Line type="monotone" dataKey={`prevMonth${metricKey}`} name="Mes anterior" stroke={COL.prevMonth} strokeWidth={2.5} dot={false} connectNulls />
-                        <Line type="monotone" dataKey={`cur${metricKey}`} name="Periodo actual" stroke={COL.cur} strokeWidth={4} dot={showDots ? { r: 3.5, fill: COL.cur } : false} activeDot={{ r: 6 }} connectNulls />
-                      </LineChart>
-                    </ResponsiveContainer>
-                  </div>
-                  <div style={styles.cardSubtext}>Canal Organic Search de GA4, alineado por día del periodo. El eje inferior muestra las fechas del periodo actual; al pasar el cursor ves la fecha de cada línea. {py.hasData ? '' : 'GA4 no tiene datos del año anterior para esta propiedad. '}Desde el 8 de octubre de 2026 las vistas están infladas por eventos page_view duplicados: para comparar contra periodos anteriores usa Sesiones.</div>
-                </div>
-              );
-            })()}
 
             {step(1, 'Resultado del mes', `Comparado con ${r.gscPrevStart} a ${r.gscPrevEnd}. Search Console tiene unos 3 días de retraso, por eso el rango (${r.gscStart} a ${r.gscEnd}) termina antes de hoy. Debajo de cada cifra va el valor del periodo anterior.`)}
             <div style={styles.grid}>
