@@ -593,7 +593,7 @@ export default function Dashboard() {
 
   const dailyList = current.ga4?.dailyViews || [];
   const dailyAvg = dailyList.length ? dailyList.reduce((a, d) => a + d.value, 0) / dailyList.length : 0;
-  const dailyThreshold = dailyAvg * 1.15;
+  const dailyThreshold = activeTab === 'axxis' ? 4500 : dailyAvg * 1.15;
   const aboveAvg = dailyList.filter((d) => d.value > dailyThreshold);
   const rangeLabel = (section === 'seo' && data.seo?.range?.label) || data.ga4?.range?.label || data.gsc?.range?.label || data.seo?.range?.label || data.meta?.range?.label || data.pauta?.range?.label || '';
   const insightsLabel = data.ga4?.range?.label || rangeLabel;
@@ -978,7 +978,7 @@ export default function Dashboard() {
           <div style={{ marginTop: '40px' }}>
             <div style={{ ...styles.card, padding: '28px', borderTop: `4px solid ${T.accent}`, boxShadow: '0 4px 14px rgba(0,0,0,0.12)' }}>
               <div style={{ ...styles.cardTitle, fontSize: '18px', color: '#222' }}>Visitas diarias: {insightsLabel}</div>
-              <div style={{ fontSize: '12px', color: '#888', marginTop: '4px' }}>Se destacan los {aboveAvg.length} días por encima de {Math.round(dailyThreshold).toLocaleString('es-CO')} vistas/día (promedio + 15%).{current.ga4.viewsCorrected ? ' Desde el 8 de octubre las vistas son estimadas (sin el page_view duplicado).' : ''}</div>
+              <div style={{ fontSize: '12px', color: '#888', marginTop: '4px' }}>Se destacan los {aboveAvg.length} días por encima de {Math.round(dailyThreshold).toLocaleString('es-CO')} vistas/día ({activeTab === 'axxis' ? 'umbral fijo' : 'promedio + 15%'}).{current.ga4.viewsCorrected ? ' Desde el 8 de octubre las vistas son estimadas (sin el page_view duplicado).' : ''}</div>
               <div style={{ width: '100%', height: 460, marginTop: '16px' }}>
                   <ResponsiveContainer>
                     <AreaChart data={current.ga4.dailyViews} margin={{ top: 30, right: 20, left: 0, bottom: 0 }}>

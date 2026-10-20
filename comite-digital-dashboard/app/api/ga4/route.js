@@ -13,13 +13,13 @@ export async function GET(request) {
     const range = resolveRange(new URL(request.url).searchParams);
     if (isMock(new URL(request.url).searchParams)) return Response.json(mockGa4(range));
     const token = await getAccessToken();
-    const [axxis, diners] = await Promise.all([
-      buildProperty(token, process.env.GA4_AXXIS_ID, 'axxis', range),
-      buildProperty(token, process.env.GA4_DINERS_ID, 'diners', range),
-    ]);
     const [fa, fd] = await Promise.all([
       getDupFactors(token, process.env.GA4_AXXIS_ID, range).catch(() => null),
       getDupFactors(token, process.env.GA4_DINERS_ID, range).catch(() => null),
+    ]);
+    const [axxis, diners] = await Promise.all([
+      buildProperty(token, process.env.GA4_AXXIS_ID, 'axxis', range, fa),
+      buildProperty(token, process.env.GA4_DINERS_ID, 'diners', range, fd),
     ]);
     return Response.json({ range, axxis: applyDupFix(parseGA4Response(axxis), fa), diners: applyDupFix(parseGA4Response(diners), fd) });
   } catch (error) {
@@ -201,10 +201,13 @@ const CHANNEL_ES = {
   'Organic Video': 'Video orgánico', 'Cross-network': 'Cross-network', Affiliates: 'Afiliados',
 };
 
-async function buildAboveAvgAnalysis(token, propertyId, range, dailyViews) {
+async function buildAboveAvgAnalysis(token, propertyId, range, dailyViews, fix, brand) {
   if (!dailyViews.length) return [];
-  const avg = dailyViews.reduce((a, d) => a + d.value, 0) / dailyViews.length;
-  const days = dailyViews.filter((d) => d.value > avg * ABOVE_AVG_FACTOR);
+  // se compara con las vistas corregidas (sin el page_view duplicado); AXXIS usa un umbral fijo de 4.500 vistas por día
+  const adj = (d) => d.value * (fix && fix.active ? (fix.day[d.date] ?? 1) : 1);
+  const avg = dailyViews.reduce((a, d) => a + adj(d), 0) / dailyViews.length;
+  const threshold = brand === 'axxis' ? 4500 : avg * ABOVE_AVG_FACTOR;
+  const days = dailyViews.filter((d) => adj(d) > threshold);
   if (!days.length) return [];
   const dateRanges = [{ startDate: range.start, endDate: range.end }];
   const wanted = new Set(days.map((d) => d.date));
@@ -617,7 +620,7 @@ async function buildAudience(token, propertyId, r, brand) {
 
 const byNameEarly = (rows, name) => rows.find((r) => r.dimensionValues.some((v) => v.value === name));
 
-async function buildProperty(token, propertyId, brand, range) {
+async function buildProperty(token, propertyId, brand, range, fix) {
   const today = new Date();
   const monthStart = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), 1));
   const dayOfMonth = today.getUTCDate() - 1 || 1;
@@ -734,7 +737,7 @@ async function buildProperty(token, propertyId, brand, range) {
     const d = r.dimensionValues[0].value;
     return { date: d, label: `${Number(d.slice(6))} ${MONTHS[Number(d.slice(4, 6)) - 1]}`, value: num(r, 0) };
   });
-  const aboveAvgDays = await buildAboveAvgAnalysis(token, propertyId, range, dailyViews);
+  const aboveAvgDays = await buildAboveAvgAnalysis(token, propertyId, range, dailyViews, fix, brand);
 
   const dr = (name) => byName(partial, name);
   const cur = dr('cur');
