@@ -3128,9 +3128,9 @@ export default function Dashboard() {
           <div>
             {(() => {
               const cp = trafficCmp;
-              const metricKey = trafficMetric === 'views' ? 'Views' : 'Sessions';
+              const metricKey = trafficMetric === 'views' ? 'Views' : trafficMetric === 'viewsEst' ? 'ViewsEst' : 'Sessions';
               const [pc, pm, py] = cp.periods;
-              const val = (pd) => (trafficMetric === 'views' ? pd.views : pd.sessions);
+              const val = (pd) => (trafficMetric === 'views' ? pd.views : trafficMetric === 'viewsEst' ? pd.viewsEst : pd.sessions);
               const COL = { cur: T.accent, prevMonth: '#1f6fb2', prevYear: '#6b6b6b' };
               const MES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
               const dayLabel = (start, i) => { const d = new Date(Date.parse(start) + i * 86400000); return `${d.getUTCDate()} ${MES[d.getUTCMonth()]} ${d.getUTCFullYear()}`; };
@@ -3159,7 +3159,8 @@ export default function Dashboard() {
                     <div style={styles.cardTitle}>Tráfico total por día: periodo actual vs mismo periodo anterior vs mismo periodo del año anterior</div>
                     <select value={trafficMetric} onChange={(e) => setTrafficMetric(e.target.value)} style={{ padding: '7px', borderRadius: '4px', border: '1px solid #ccc', fontSize: '12px' }}>
                       <option value="sessions">Sesiones</option>
-                      <option value="views">Vistas</option>
+                      <option value="viewsEst">Vistas estimadas (sin duplicado)</option>
+                      <option value="views">Vistas reportadas por GA4</option>
                     </select>
                   </div>
                   <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '12px', margin: '14px 0' }}>
@@ -3186,7 +3187,7 @@ export default function Dashboard() {
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
-                  <div style={styles.cardSubtext}>Todos los canales de GA4 (orgánico, directo, pauta, email y redes), alineado por día del periodo. El eje inferior muestra las fechas del periodo actual; al pasar el cursor ves la fecha de cada línea. {py.hasData ? '' : 'GA4 no tiene datos del año anterior para esta propiedad. '}Desde el 8 de octubre de 2026 las vistas están infladas por eventos page_view duplicados: para comparar contra periodos anteriores usa Sesiones.</div>
+                  <div style={styles.cardSubtext}>Todos los canales de GA4 (orgánico, directo, pauta, email y redes), alineado por día del periodo. El eje inferior muestra las fechas del periodo actual; al pasar el cursor ves la fecha de cada línea. {py.hasData ? '' : 'GA4 no tiene datos del año anterior para esta propiedad. '}Desde el 8 de octubre de 2026 GA4 reporta las vistas multiplicadas por 4 a 8 por eventos page_view repetidos. Las vistas estimadas desde esa fecha son sesiones de cada canal por las páginas por sesión que tenía ese canal del 8 de septiembre al 7 de octubre; antes del 8 de octubre son las reales. Es una estimación hasta que se corrija la etiqueta.</div>
                 </div>
               );
             })()}

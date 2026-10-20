@@ -5,6 +5,8 @@ import { getAccessToken } from '../../lib/seoaudit';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
+const DUP_FROM = '2026-10-08'; // desde esta fecha GA4 duplica page_view
+const DUP_BASE = { start: '2026-09-08', end: '2026-10-07' };
 const PROPS = { axxis: 'GA4_AXXIS_ID', diners: 'GA4_DINERS_ID' };
 const CACHE = new Map();
 const TTL = 20 * 60 * 1000;
@@ -50,22 +52,42 @@ export async function GET(request) {
       { key: 'prevYear', start: shift(range.start, -12) },
     ].map((p) => ({ ...p, end: p.end || cutEnd(p.start) }));
 
+    const post = async (body) => (await axios.post(
+      `https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`,
+      body,
+      { headers: { Authorization: `Bearer ${token}` }, timeout: 30000 },
+    ).catch(() => ({ data: {} }))).data.rows || [];
+
+    // Páginas por sesión de cada canal ANTES del page_view duplicado (8 sep a 7 oct 2026), para estimar vistas reales
+    const baseRows = await post({ dateRanges: [{ startDate: DUP_BASE.start, endDate: DUP_BASE.end }], dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'sessions' }, { name: 'screenPageViews' }], limit: 50 });
+    const ratio = {};
+    let bs = 0; let bv = 0;
+    baseRows.forEach((r) => { const se = Number(r.metricValues[0].value); const vi = Number(r.metricValues[1].value); ratio[r.dimensionValues[0].value] = se ? vi / se : 0; bs += se; bv += vi; });
+    const avgRatio = bs ? bv / bs : 0;
+
     const compared = await Promise.all(periods.map(async (pd) => {
-      const res = await axios.post(
-        `https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runReport`,
-        { dateRanges: [{ startDate: pd.start, endDate: pd.end }], dimensions: [{ name: 'date' }], metrics: [{ name: 'screenPageViews' }, { name: 'sessions' }], orderBys: [{ dimension: { dimensionName: 'date' } }], limit: 400 },
-        { headers: { Authorization: `Bearer ${token}` }, timeout: 30000 },
-      ).catch(() => ({ data: {} }));
+      const rows = await post({ dateRanges: [{ startDate: pd.start, endDate: pd.end }], dimensions: [{ name: 'date' }, { name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'screenPageViews' }, { name: 'sessions' }], limit: 10000 });
       const byDate = {};
-      (res.data.rows || []).forEach((r) => { byDate[r.dimensionValues[0].value] = { views: Number(r.metricValues[0].value), sessions: Number(r.metricValues[1].value) }; });
+      rows.forEach((r) => {
+        const d = r.dimensionValues[0].value;
+        const ch = r.dimensionValues[1].value;
+        const vi = Number(r.metricValues[0].value);
+        const se = Number(r.metricValues[1].value);
+        const dup = `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6)}` >= DUP_FROM;
+        const est = dup ? se * (ratio[ch] || avgRatio) : vi;
+        const x = byDate[d] || { views: 0, sessions: 0, viewsEst: 0 };
+        x.views += vi; x.sessions += se; x.viewsEst += est;
+        byDate[d] = x;
+      });
+      Object.values(byDate).forEach((x) => { x.viewsEst = Math.round(x.viewsEst); });
       return { ...pd, label: labelRange(pd.start, pd.end), byDate };
     }));
 
     const data = {
-      brand,
+      brand, dupFrom: DUP_FROM,
       periods: compared.map((c) => {
         const vals = Object.values(c.byDate);
-        return { key: c.key, label: c.label, start: c.start, end: c.end, views: vals.reduce((a, v) => a + v.views, 0), sessions: vals.reduce((a, v) => a + v.sessions, 0), hasData: vals.length > 0 };
+        return { key: c.key, label: c.label, start: c.start, end: c.end, views: vals.reduce((a, v) => a + v.views, 0), viewsEst: vals.reduce((a, v) => a + v.viewsEst, 0), sessions: vals.reduce((a, v) => a + v.sessions, 0), hasData: vals.length > 0 };
       }),
       points: Array.from({ length: dayCount }, (_, i) => {
         const pt = { day: i + 1 };
@@ -73,6 +95,7 @@ export async function GET(request) {
           const v = c.byDate[addDays(c.start, i)];
           pt[`${c.key}Views`] = v ? v.views : null;
           pt[`${c.key}Sessions`] = v ? v.sessions : null;
+          pt[`${c.key}ViewsEst`] = v ? v.viewsEst : null;
         });
         return pt;
       }),
