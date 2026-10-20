@@ -150,7 +150,7 @@ export async function GET(request) {
     const accounts = await paged('https://graph.facebook.com/v19.0/me/adaccounts', { fields: 'id,name,currency,account_status', limit: 50, access_token: token });
 
     const errors = [];
-    const results = await Promise.all(accounts.map((a) => accountCampaigns(a, token, range).catch((e) => { errors.push(`${a.name}: ` + (e.response?.data?.error?.message || e.message)); return { cur: [], prev: [] }; })));
+    const results = await Promise.all(accounts.map((a) => accountCampaigns(a, token, range).catch(() => new Promise((r) => setTimeout(r, 1500)).then(() => accountCampaigns(a, token, range))).catch((e) => { errors.push(`${a.name}: ` + (e.response?.data?.error?.message || e.message)); return { cur: [], prev: [] }; })));
     const cur = results.flatMap((r) => r.cur);
     const prev = results.flatMap((r) => r.prev);
     if (errors.length && !cur.length) {
