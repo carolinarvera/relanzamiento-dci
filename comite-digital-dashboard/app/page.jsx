@@ -722,6 +722,11 @@ export default function Dashboard() {
       {/* GA4 */}
       <div style={styles.section}>
         <h2 style={styles.sectionTitle}>Informe Web</h2>
+        {current.ga4?.viewsCorrected && (
+          <div style={{ ...styles.card, borderLeft: '5px solid #f9a825', marginBottom: '14px', fontSize: '13px', color: '#444' }}>
+            <strong>Vistas estimadas.</strong> Desde el 8 de octubre de 2026 GA4 repite el evento page_view y las vistas llegan multiplicadas por 4 a 8. En esta pestaña las vistas de esos días (totales, por día, hora, sección, nota y canal) son una estimación: sesiones de cada canal por las páginas por sesión que tenía antes del 8 de octubre. Con el periodo elegido las vistas reportadas se reducen a {Math.round(current.ga4.viewsCorrected.factor * 100)}%. Sesiones y usuarios no cambian. Rebote, engagement y páginas por sesión siguen distorsionados y no se corrigen.
+          </div>
+        )}
         <div style={styles.grid}>
           <div style={styles.card}>
             <div style={styles.cardTitle}>Vistas</div>

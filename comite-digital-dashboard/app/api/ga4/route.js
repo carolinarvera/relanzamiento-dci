@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { resolveRange } from '../../lib/range';
 import { isMock, mockGa4 } from '../../lib/mock';
+import { getDupFactors, applyDupFix } from '../../lib/dupfix';
 
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
@@ -16,7 +17,11 @@ export async function GET(request) {
       buildProperty(token, process.env.GA4_AXXIS_ID, 'axxis', range),
       buildProperty(token, process.env.GA4_DINERS_ID, 'diners', range),
     ]);
-    return Response.json({ range, axxis: parseGA4Response(axxis), diners: parseGA4Response(diners) });
+    const [fa, fd] = await Promise.all([
+      getDupFactors(token, process.env.GA4_AXXIS_ID, range).catch(() => null),
+      getDupFactors(token, process.env.GA4_DINERS_ID, range).catch(() => null),
+    ]);
+    return Response.json({ range, axxis: applyDupFix(parseGA4Response(axxis), fa), diners: applyDupFix(parseGA4Response(diners), fd) });
   } catch (error) {
     const detail = error.response?.data?.error_description || error.response?.data?.error?.message || error.message;
     console.error('GA4 API Error:', detail);
