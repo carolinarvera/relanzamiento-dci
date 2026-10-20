@@ -219,6 +219,8 @@ export default function Dashboard() {
   const [seoHealth, setSeoHealth] = useState(null);
   const [seoQuality, setSeoQuality] = useState(null);
   const [seoTech, setSeoTech] = useState(null);
+  const [trafficCmp, setTrafficCmp] = useState(null);
+  const [trafficMetric, setTrafficMetric] = useState('sessions');
   const [techSel, setTechSel] = useState('title_long');
   const [kwSearch, setKwSearch] = useState('');
   const [kwSort, setKwSort] = useState('clicks');
@@ -318,6 +320,18 @@ export default function Dashboard() {
       .then((r) => r.json())
       .then((j) => { if (!cancelled) setSeoTools(j); })
       .catch((e) => { if (!cancelled) setSeoTools({ error: e.message }); });
+    return () => { cancelled = true; };
+  }, [section, activeTab, rangeKey]);
+
+  useEffect(() => {
+    if (section !== 'resumen') return undefined;
+    let cancelled = false;
+    setTrafficCmp(null);
+    const qs = range ? `&start=${range.start}&end=${range.end}` : '';
+    fetch(`/api/traffic-compare?brand=${activeTab}${qs}`)
+      .then((r) => r.json())
+      .then((j) => { if (!cancelled) setTrafficCmp(j); })
+      .catch((e) => { if (!cancelled) setTrafficCmp({ error: e.message }); });
     return () => { cancelled = true; };
   }, [section, activeTab, rangeKey]);
 
@@ -3108,6 +3122,76 @@ export default function Dashboard() {
               </div>
               <div style={{ marginTop: '16px' }}>{actionBox(3, 'Redes sociales', a3)}</div>
             </div>
+      {!trafficCmp ? <div style={{ ...styles.card, textAlign: 'center', padding: '30px', color: '#555', marginTop: '20px' }}>Cargando la comparación de tráfico…</div>
+        : trafficCmp.error ? <div style={{ ...styles.card, color: '#b71c1c', marginTop: '20px' }}>No se pudo cargar la comparación de tráfico: {trafficCmp.error}</div>
+        : (
+          <div>
+            {(() => {
+              const cp = trafficCmp;
+              const metricKey = trafficMetric === 'views' ? 'Views' : 'Sessions';
+              const [pc, pm, py] = cp.periods;
+              const val = (pd) => (trafficMetric === 'views' ? pd.views : pd.sessions);
+              const COL = { cur: T.accent, prevMonth: '#1f6fb2', prevYear: '#6b6b6b' };
+              const MES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+              const dayLabel = (start, i) => { const d = new Date(Date.parse(start) + i * 86400000); return `${d.getUTCDate()} ${MES[d.getUTCMonth()]} ${d.getUTCFullYear()}`; };
+              const pts = cp.points.map((pt, i) => ({ ...pt, label: dayLabel(pc.start, i).slice(0, -5), curDate: dayLabel(pc.start, i), prevMonthDate: dayLabel(pm.start, i), prevYearDate: dayLabel(py.start, i) }));
+              const showDots = pts.length <= 31;
+              const Tip = ({ active, payload }) => {
+                if (!active || !payload || !payload.length) return null;
+                const row = payload[0].payload;
+                const items = [['cur', 'Periodo actual'], ['prevMonth', 'Mes anterior'], ['prevYear', 'Año anterior']];
+                return (
+                  <div style={{ background: '#fff', border: '1px solid #ddd', borderRadius: '6px', padding: '10px 12px', fontSize: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.12)' }}>
+                    <div style={{ fontWeight: 800, marginBottom: '6px' }}>Día {row.day} del periodo</div>
+                    {items.map(([kk, nm]) => (kk === 'prevYear' && !py.hasData ? null : (
+                      <div key={kk} style={{ display: 'flex', gap: '8px', alignItems: 'baseline', marginTop: '3px' }}>
+                        <span style={{ width: '10px', height: '10px', background: COL[kk], display: 'inline-block', borderRadius: '2px' }} />
+                        <span style={{ color: '#666' }}>{nm} ({row[`${kk}Date`]})</span>
+                        <strong style={{ marginLeft: 'auto' }}>{row[`${kk}${metricKey}`] === null ? dash : row[`${kk}${metricKey}`].toLocaleString('es-CO')}</strong>
+                      </div>
+                    )))}
+                  </div>
+                );
+              };
+              return (
+                <div style={{ ...styles.card, marginTop: '20px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '10px', alignItems: 'center' }}>
+                    <div style={styles.cardTitle}>Tráfico total por día: periodo actual vs mismo periodo anterior vs mismo periodo del año anterior</div>
+                    <select value={trafficMetric} onChange={(e) => setTrafficMetric(e.target.value)} style={{ padding: '7px', borderRadius: '4px', border: '1px solid #ccc', fontSize: '12px' }}>
+                      <option value="sessions">Sesiones</option>
+                      <option value="views">Vistas</option>
+                    </select>
+                  </div>
+                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '12px', margin: '14px 0' }}>
+                    {[[pc, 'cur', 'Periodo actual', 'línea gruesa con puntos'], [pm, 'prevMonth', 'Mismo periodo anterior', 'línea azul'], [py, 'prevYear', 'Mismo rango, año anterior', 'línea gris punteada']].map(([pd, kk, title, hint]) => (
+                      <div key={kk} style={{ borderLeft: `5px solid ${COL[kk]}`, paddingLeft: '10px' }}>
+                        <div style={{ fontSize: '11px', color: '#666', textTransform: 'uppercase' }}>{title} <span style={{ textTransform: 'none', color: '#999' }}>({hint})</span></div>
+                        <div style={{ fontSize: '12px', color: '#555' }}>{pd.label}</div>
+                        <div style={{ fontSize: '22px', fontWeight: 800 }}>{pd.hasData ? nf(val(pd)) : 'sin datos'}</div>
+                        {kk !== 'cur' && pd.hasData && val(pd) > 0 && renderChange(val(pc) / val(pd) - 1)}
+                      </div>
+                    ))}
+                  </div>
+                  <div style={{ width: '100%', height: 360 }}>
+                    <ResponsiveContainer>
+                      <LineChart data={pts} margin={{ top: 10, right: 16, left: 0, bottom: 6 }}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="#e5e5e5" />
+                        <XAxis dataKey="label" tick={{ fontSize: 11 }} minTickGap={18} />
+                        <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => v.toLocaleString('es-CO')} width={56} />
+                        <Tooltip content={<Tip />} />
+                        <Legend verticalAlign="top" height={30} />
+                        {py.hasData && <Line type="monotone" dataKey={`prevYear${metricKey}`} name="Año anterior" stroke={COL.prevYear} strokeWidth={2.5} strokeDasharray="6 4" dot={false} connectNulls />}
+                        <Line type="monotone" dataKey={`prevMonth${metricKey}`} name="Mes anterior" stroke={COL.prevMonth} strokeWidth={2.5} dot={false} connectNulls />
+                        <Line type="monotone" dataKey={`cur${metricKey}`} name="Periodo actual" stroke={COL.cur} strokeWidth={4} dot={showDots ? { r: 3.5, fill: COL.cur } : false} activeDot={{ r: 6 }} connectNulls />
+                      </LineChart>
+                    </ResponsiveContainer>
+                  </div>
+                  <div style={styles.cardSubtext}>Todos los canales de GA4 (orgánico, directo, pauta, email y redes), alineado por día del periodo. El eje inferior muestra las fechas del periodo actual; al pasar el cursor ves la fecha de cada línea. {py.hasData ? '' : 'GA4 no tiene datos del año anterior para esta propiedad. '}Desde el 8 de octubre de 2026 las vistas están infladas por eventos page_view duplicados: para comparar contra periodos anteriores usa Sesiones.</div>
+                </div>
+              );
+            })()}
+          </div>
+        )}
           </div>
         );
       })()}
