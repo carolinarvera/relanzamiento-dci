@@ -977,8 +977,8 @@ export default function Dashboard() {
         {current.ga4?.dailyViews?.length > 0 && (
           <div style={{ marginTop: '40px' }}>
             <div style={{ ...styles.card, padding: '28px', borderTop: `4px solid ${T.accent}`, boxShadow: '0 4px 14px rgba(0,0,0,0.12)' }}>
-              <div style={{ ...styles.cardTitle, fontSize: '18px', color: '#222' }}>Visitas diarias: agosto y septiembre</div>
-              <div style={{ fontSize: '12px', color: '#888', marginTop: '4px' }}>Se destacan los {aboveAvg.length} días por encima de {Math.round(dailyThreshold).toLocaleString('es-CO')} vistas/día (promedio + 15%)</div>
+              <div style={{ ...styles.cardTitle, fontSize: '18px', color: '#222' }}>Visitas diarias: {insightsLabel}</div>
+              <div style={{ fontSize: '12px', color: '#888', marginTop: '4px' }}>Se destacan los {aboveAvg.length} días por encima de {Math.round(dailyThreshold).toLocaleString('es-CO')} vistas/día (promedio + 15%).{current.ga4.viewsCorrected ? ' Desde el 8 de octubre las vistas son estimadas (sin el page_view duplicado).' : ''}</div>
               <div style={{ width: '100%', height: 460, marginTop: '16px' }}>
                   <ResponsiveContainer>
                     <AreaChart data={current.ga4.dailyViews} margin={{ top: 30, right: 20, left: 0, bottom: 0 }}>
@@ -987,7 +987,13 @@ export default function Dashboard() {
                       <YAxis tick={{ fontSize: 12 }} />
                       <Tooltip formatter={(value) => value.toLocaleString('es-CO')} />
                       <Area type="monotone" dataKey="value" name="Vistas" stroke={T.accent} strokeDasharray="2 3" strokeWidth={3} fill={T.accent} fillOpacity={0.12} />
-                      <ReferenceLine x="1 sep" stroke="#0000cc" strokeWidth={2} />
+                      {current.ga4.dailyViews.filter((d, i) => i > 0 && d.date.slice(6) === '01').map((d) => (
+                        <ReferenceLine key={`m${d.date}`} x={d.label} stroke="#0000cc" strokeWidth={2} />
+                      ))}
+                      {current.ga4.viewsCorrected && current.ga4.dailyViews.some((d, i) => i > 0 && d.date === current.ga4.viewsCorrected.from.replace(/-/g, '')) && (
+                        <ReferenceLine x={current.ga4.dailyViews.find((d) => d.date === current.ga4.viewsCorrected.from.replace(/-/g, '')).label} stroke="#f9a825" strokeDasharray="4 3" strokeWidth={2}
+                          label={{ value: 'Vistas estimadas desde aquí', position: 'insideTopLeft', fontSize: 11, fill: '#b26a00' }} />
+                      )}
                       <ReferenceLine y={dailyThreshold} stroke="#888" strokeDasharray="6 4"
                         label={{ value: `Umbral ${Math.round(dailyThreshold).toLocaleString('es-CO')}`, position: 'insideBottomRight', fontSize: 12, fill: '#666' }} />
                       {aboveAvg.map((d) => (
