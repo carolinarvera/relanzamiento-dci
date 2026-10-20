@@ -561,6 +561,10 @@ export default function Dashboard() {
     return <div style={styles.change(diff >= 0)}>{diff >= 0 ? '\u2191' : '\u2193'} {Math.abs(diff).toFixed(2)} pp vs periodo anterior</div>;
   };
 
+  const fmtHms = (sec) => {
+    const t = Math.round(sec || 0);
+    return `${Math.floor(t / 3600)}:${String(Math.floor((t % 3600) / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`;
+  };
   const fmtMin = (sec) => {
     const t = Math.round(sec || 0);
     return `${Math.floor(t / 60)}:${String(t % 60).padStart(2, '0')} min`;
@@ -1032,7 +1036,7 @@ export default function Dashboard() {
                               <div style={{ fontSize: '13px', fontWeight: 700, color: T.text, overflowWrap: 'anywhere' }}>{pg.path}</div>
                               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '6px', alignItems: 'center' }}>
                                 <span style={{ background: T.accent, color: '#fff', fontWeight: 700, fontSize: '11px', padding: '2px 8px', borderRadius: '10px' }}>{nf(pg.views)} vistas</span>
-                                <span style={{ background: '#222', color: '#fff', fontSize: '11px', padding: '2px 8px', borderRadius: '10px' }}>{fmtMin(pg.readSec)} lectura</span>
+                                <span style={{ background: '#222', color: '#fff', fontSize: '11px', padding: '2px 8px', borderRadius: '10px' }}>{fmtHms(pg.readSec)} lectura</span>
                                 {pg.channels.filter((c) => c.name !== 'Referido').slice(0, 1).map((c) => {
                                   const col = CHANNEL_COLORS[c.name] || CHANNEL_COLORS.default;
                                   return <span key={c.name} style={{ background: col.bg, color: col.fg, fontWeight: 600, fontSize: '11px', padding: '2px 8px', borderRadius: '10px' }}>{c.name} {(c.share * 100).toFixed(0)}%</span>;
@@ -1176,7 +1180,7 @@ export default function Dashboard() {
                                   <td key="m" style={td}>
                                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', alignItems: 'center' }}>
                                       <span style={{ background: T.accent, color: '#fff', fontWeight: 700, fontSize: '11px', padding: '2px 8px', borderRadius: '10px' }}>{nf(pg.views)} vistas</span>
-                                      <span style={{ background: '#222', color: '#fff', fontSize: '11px', padding: '2px 8px', borderRadius: '10px' }}>{fmtMin(pg.readSec)} lectura</span>
+                                      <span style={{ background: '#222', color: '#fff', fontSize: '11px', padding: '2px 8px', borderRadius: '10px' }}>{fmtHms(pg.readSec)} lectura</span>
                                       {ch && <span style={{ background: col.bg, color: col.fg, fontWeight: 600, fontSize: '11px', padding: '2px 8px', borderRadius: '10px' }}>{ch.name} {(ch.share * 100).toFixed(0)}%</span>}
                                     </div>
                                   </td>,
