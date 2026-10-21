@@ -6,6 +6,7 @@ export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
 const DUP_FROM = '2026-10-08'; // desde esta fecha GA4 duplica page_view
+const DUP_TO = '2026-10-20'; // el 21 de octubre se ajustó la etiqueta
 const DUP_BASE = { start: '2026-09-08', end: '2026-10-07' };
 const PROPS = { axxis: 'GA4_AXXIS_ID', diners: 'GA4_DINERS_ID' };
 const CACHE = new Map();
@@ -73,7 +74,7 @@ export async function GET(request) {
         const ch = r.dimensionValues[1].value;
         const vi = Number(r.metricValues[0].value);
         const se = Number(r.metricValues[1].value);
-        const dup = `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6)}` >= DUP_FROM;
+        const dup = `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6)}` >= DUP_FROM && `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6)}` <= DUP_TO;
         const est = dup ? se * (ratio[ch] || avgRatio) : vi;
         const x = byDate[d] || { views: 0, sessions: 0, viewsEst: 0 };
         x.views += vi; x.sessions += se; x.viewsEst += est;
@@ -84,7 +85,7 @@ export async function GET(request) {
     }));
 
     const data = {
-      brand, dupFrom: DUP_FROM,
+      brand, dupFrom: DUP_FROM, dupTo: DUP_TO,
       periods: compared.map((c) => {
         const vals = Object.values(c.byDate);
         return { key: c.key, label: c.label, start: c.start, end: c.end, views: vals.reduce((a, v) => a + v.views, 0), viewsEst: vals.reduce((a, v) => a + v.viewsEst, 0), sessions: vals.reduce((a, v) => a + v.sessions, 0), hasData: vals.length > 0 };

@@ -3,6 +3,7 @@ import axios from 'axios';
 // Desde esta fecha GA4 repite el evento page_view (4 a 8 veces). Las vistas se estiman con las
 // páginas por sesión que tenía cada canal antes del problema; sesiones, usuarios y canales no cambian.
 export const DUP_FROM = '2026-10-08';
+export const DUP_TO = '2026-10-20'; // el 21 de octubre se ajustó la etiqueta: desde ese día las vistas son reales
 const DUP_BASE = { start: '2026-09-08', end: '2026-10-07' };
 const TTL = 20 * 60 * 1000;
 const CACHE = new Map();
@@ -27,7 +28,7 @@ export async function getDupFactors(token, propertyId, range) {
   const from = [range.start, range.prevStart].sort()[0];
   const to = [lastEnd, range.prevEnd].sort().reverse()[0];
   const f = { day: {}, month: {}, cur: 1, prev: 1, active: false };
-  if (to < DUP_FROM) { CACHE.set(key, { at: Date.now(), f }); return f; }
+  if (to < DUP_FROM || from > DUP_TO) { CACHE.set(key, { at: Date.now(), f }); return f; }
 
   const base = await run(token, propertyId, { dateRanges: [{ startDate: DUP_BASE.start, endDate: DUP_BASE.end }], dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'sessions' }, { name: 'screenPageViews' }], limit: 50 });
   const ratio = {};
@@ -44,7 +45,7 @@ export async function getDupFactors(token, propertyId, range) {
     const vi = Number(r.metricValues[0].value);
     const se = Number(r.metricValues[1].value);
     const dash = `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6)}`;
-    const est = dash >= DUP_FROM ? se * (ratio[ch] || avg) : vi;
+    const est = dash >= DUP_FROM && dash <= DUP_TO ? se * (ratio[ch] || avg) : vi;
     const x = byDay[d] || { v: 0, e: 0 };
     x.v += vi; x.e += est;
     byDay[d] = x;
@@ -100,6 +101,6 @@ export function applyDupFix(data, f) {
     });
   };
   walk(data, null);
-  data.viewsCorrected = { from: DUP_FROM, factor: Math.round(f.cur * 1000) / 1000 };
+  data.viewsCorrected = { from: DUP_FROM, to: DUP_TO, factor: Math.round(f.cur * 1000) / 1000 };
   return data;
 }
