@@ -183,7 +183,7 @@ function paragraphOptions(excerpt, paras, title, keywords) {
 // Mejores prácticas de asunto: entre 30 y 50 caracteres, nunca más de 60; gancho al inicio; dato concreto; sin tono promocional
 function subjectChecks(text) {
   const t = String(text || '');
-  const first30 = t.slice(0, 30);
+  const first30 = t.slice(0, 55);
   const promo = /(gratis|oferta|descuento|promoci[oó]n|urgente|última oportunidad|no se pierda|compre|!{1,})/i.test(t);
   const caps = /\b[A-ZÁÉÍÓÚÑ]{5,}\b/.test(t) && !/\b(AXXIS|DINERS|ARTBO)\b/.test(t.replace(/[^\p{L}\s]/gu, ''));
   const concrete = (s) => /\d|[¿?]/.test(s) || /[A-ZÁÉÍÓÚÑ][a-záéíóúñ]{3,}/.test(s.slice(1)) || PLACES.test(plain(s));
@@ -377,6 +377,31 @@ export async function GET(request) {
         keywords: ex.keywords, teaser: ex.teaser, teaserChars: ex.teaser.length, paragraph: emailCopy[copyKey(x.c.url)]?.paragraph || ex.paragraph, paragraphChars: (emailCopy[copyKey(x.c.url)]?.paragraph || ex.paragraph).length, paragraphAuto: ex.paragraph, paragraphAlt: ex.paragraphAlt, paragraphAltChars: (ex.paragraphAlt || '').length, paragraphChecks: ex.paragraphChecks, blockTitle: ex.blockTitle, blockTitleChars: ex.blockTitle.length, photoText: ex.text, photoTextChars: ex.text.length, button: CTA[x.th] || 'Leer la nota',
       };
     });
+    // Reenvío: notas de más de 60 días que hoy siguen leyéndose mucho y cuyo tema abre bien según los envíos anteriores
+    let resend = [];
+    try {
+      const old = await runReport(token, prop, { dateRanges: [{ startDate: iso(new Date(now - 30 * DAY)), endDate: iso(new Date(now - DAY)) }], dimensions: [{ name: 'pagePath' }], metrics: [{ name: 'screenPageViews' }, { name: 'userEngagementDuration' }, { name: 'activeUsers' }], orderBys: [{ metric: { metricName: 'screenPageViews' }, desc: true }], limit: 400 });
+      const recentLinks = new Set(wp.map((a) => pathKey(a.link)));
+      const pool = old.map((r) => ({ path: r.dimensionValues[0].value, views: Number(r.metricValues[0].value), eng: Number(r.metricValues[1].value), users: Number(r.metricValues[2].value) }))
+        .filter((x) => /^\/[^/]+\/[^/]+\/?$/.test(x.path) && !/^\/(tag|author|page|category|busqueda|search)/i.test(x.path) && x.views >= 60 && !recentLinks.has(pathKey(`${site}${x.path}`)))
+        .slice(0, 55);
+      const BRAND_T = /presenta (su|sus)\b|nueva (l[ií]nea|colecci[oó]n)|lanza\b|nuevas posibilidades/i;
+      const q = pool.slice(); const found = [];
+      await Promise.all(Array.from({ length: 6 }, async () => { while (q.length) { const x = q.shift(); const post = await axios.get(`${site}/wp-json/wp/v2/posts`, { params: { slug: x.path.split('/').filter(Boolean).pop(), _fields: 'id,link,title,date,excerpt' }, timeout: 15000 }).then((r) => r.data?.[0]).catch(() => null); if (post) found.push({ x, post }); } }));
+      const allSubjects = emails.map((e) => words(e.subject || e.name));
+      const cand2 = found.map(({ x, post }) => {
+        const title = decode(post.title?.rendered); const ageDays = (now - Date.parse(post.date)) / DAY; const th = themeOf(title);
+        return { id: post.id, title, url: post.link, published: post.date, excerpt: post.excerpt?.rendered || '', ageDays, views: x.views, engSec: x.users ? x.eng / x.users : 0, th, lift: themeLift(th) };
+      }).filter((c) => c.ageDays > 60 && c.engSec >= 30 && !BRAND_T.test(c.title) && !allSubjects.some((sw) => { const tw2 = words(c.title); let n = 0; tw2.forEach((w) => { if (sw.has(w)) n += 1; }); return n >= 2 && n / Math.max(tw2.size, 1) >= 0.4; }));
+      const v2 = cand2.map((c) => c.views), e2 = cand2.map((c) => c.engSec);
+      const top3 = cand2.map((c) => ({ c, score: (0.6 * pctRank(v2, c.views) + 0.4 * pctRank(e2, c.engSec)) * c.lift })).sort((a, b) => b.score - a.score).slice(0, 3);
+      const ex3 = await Promise.all(top3.map((x) => enrich({ id: x.c.id, title: x.c.title, excerpt: x.c.excerpt, siteOrigin: site }, x.c.th)));
+      resend = top3.map((x, i) => ({
+        title: x.c.title, url: x.c.url, published: x.c.published, daysOld: Math.round(x.c.ageDays), views30: x.c.views, engSec: Math.round(x.c.engSec), theme: x.c.th, themeLift: Math.round(x.c.lift * 100) / 100,
+        why: [`${Math.round(x.c.ageDays)} días de publicada y ${Math.round(x.c.views).toLocaleString('es-CO')} vistas en los últimos 30 días`, x.c.engSec ? `${Math.round(x.c.engSec)} segundos de lectura por usuario` : null, x.c.lift > 1.05 ? `el tema (${x.c.th}) abre y hace clic ${Math.round((x.c.lift - 1) * 100)}% por encima del promedio de tus envíos` : x.c.lift < 0.95 ? `el tema rinde por debajo del promedio de tus envíos` : 'el tema rinde en el promedio de tus envíos'].filter(Boolean),
+        paragraph: emailCopy[copyKey(x.c.url)]?.paragraph || ex3[i].paragraph, paragraphChars: (emailCopy[copyKey(x.c.url)]?.paragraph || ex3[i].paragraph).length,
+      }));
+    } catch (e) { resend = []; }
     // Mejor horario de envío según clic sobre entregados
     const slots = {};
     emails.forEach((e) => { const d = new Date(Date.parse(e.sentAt) - 5 * 3600000); const k = `${['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'][d.getUTCDay()]} ${String(d.getUTCHours()).padStart(2, '0')}:00`; (slots[k] = slots[k] || []).push(e); });
@@ -425,7 +450,7 @@ export async function GET(request) {
     const finalPreview = finalPreviews[0];
     const featureLifts = Object.fromEntries(Object.entries(FL).map(([k, v]) => [k, { lift: v.lift, n: v.n }]));
     const data = {
-      brand, fetchedAt: new Date().toISOString(), picks, bestSlot, email: { subjects: finalSubjects, preview: finalPreview, previews: finalPreviews, subjectSource, recommended: storedMatch ? stored.recommended : 0, writtenAt: storedMatch ? stored.writtenAt : null, featureLifts, labels, lead: L1, bestSubjects, avgOpen: allOpen, intro, introChars: intro.length },
+      brand, fetchedAt: new Date().toISOString(), picks, resend, bestSlot, email: { subjects: finalSubjects, preview: finalPreview, previews: finalPreviews, subjectSource, recommended: storedMatch ? stored.recommended : 0, writtenAt: storedMatch ? stored.writtenAt : null, featureLifts, labels, lead: L1, bestSubjects, avgOpen: allOpen, intro, introChars: intro.length },
       basis: { articles: wp.length, withTraffic: cands.length, excludedAlreadySent: cands.length - fresh.length, trainingEmails: emails.length, avgClick: allClick, avgOpen: allOpen },
     };
     if (picks.length) CACHE.set(brand, { at: Date.now(), data });

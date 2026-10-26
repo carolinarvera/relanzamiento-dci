@@ -1,0 +1,88 @@
+{
+ "fetchedAt": "2026-10-15",
+ "source": "Semrush, base Colombia",
+ "axxis": [
+  {
+   "query": "bd bacatá",
+   "volume": 5400,
+   "kd": 20,
+   "competitor": "ArchDaily, posición 2",
+   "title": "BD Bacatá: historia y arquitectura del rascacielos",
+   "meta": "BD Bacatá: la historia, la arquitectura y los datos clave del rascacielos de Bogotá, contados en Revista AXXIS."
+  },
+  {
+   "query": "torres de bombona",
+   "volume": 14800,
+   "kd": 34,
+   "competitor": "ArchDaily, posición 19",
+   "title": "Torres de Bombona: historia, autor y por qué conocerlas",
+   "meta": "Torres de Bombona: quién las diseñó, cómo se construyeron y por qué siguen siendo una referencia. Lea más en Revista AXXIS."
+  },
+  {
+   "query": "casa al revés",
+   "volume": 12100,
+   "kd": 31,
+   "competitor": "ArchDaily, posición 15",
+   "title": "Casa al revés: qué es y cómo se construyó",
+   "meta": "Casa al revés: qué es, quién la diseñó y cómo se construyó. Fotos, planos y datos del proyecto en Revista AXXIS."
+  },
+  {
+   "query": "cocinas modernas",
+   "volume": 12100,
+   "kd": 27,
+   "competitor": null,
+   "title": "Cocinas modernas: 10 ideas de diseñadores colombianos",
+   "meta": "Cocinas modernas: 10 proyectos de diseñadores colombianos con materiales, distribución y ejemplos. Revista AXXIS."
+  },
+  {
+   "query": "decoración de navidad",
+   "volume": 2400,
+   "kd": 28,
+   "competitor": null,
+   "title": "Decoración de Navidad: 10 ideas de diseñadores colombianos",
+   "meta": "Decoración de Navidad: 10 ideas de diseñadores colombianos para la mesa, la sala y el árbol. Revista AXXIS."
+  }
+ ],
+ "diners": [
+  {
+   "query": "backrooms película",
+   "volume": 18100,
+   "kd": 52,
+   "competitor": null,
+   "title": "Backrooms: reparto, trama y dónde verla",
+   "meta": "Backrooms, la película: reparto, trama, tráiler y dónde verla en Colombia. Todo en Revista Diners."
+  },
+  {
+   "query": "brunch bogotá",
+   "volume": 5400,
+   "kd": 21,
+   "competitor": null,
+   "title": "Brunch en Bogotá: 10 lugares y qué pedir",
+   "meta": "Brunch en Bogotá: 10 lugares con nombre propio, qué pedir y cuánto cuesta aproximadamente. Revista Diners."
+  },
+  {
+   "query": "restaurantes en valledupar",
+   "volume": 5400,
+   "kd": 32,
+   "competitor": null,
+   "title": "Restaurantes en Valledupar: 10 lugares y qué pedir",
+   "meta": "Restaurantes en Valledupar: 10 lugares con platos típicos, qué pedir y cómo llegar. Revista Diners."
+  },
+  {
+   "query": "restaurantes zona t",
+   "volume": 4400,
+   "kd": 31,
+   "competitor": null,
+   "title": "Restaurantes en la Zona T: 10 lugares y qué pedir",
+   "meta": "Restaurantes en la Zona T de Bogotá: 10 lugares con nombre propio, qué pedir y para qué plan. Revista Diners."
+  },
+  {
+   "query": "barrio la castellana",
+   "volume": 1900,
+   "kd": 22,
+   "competitor": null,
+   "title": "Barrio La Castellana: historia y dónde comer",
+   "meta": "Barrio La Castellana: su historia, cómo es hoy y dónde comer. Una guía de Revista Diners."
+  }
+ ]
+}

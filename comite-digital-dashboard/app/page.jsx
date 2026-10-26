@@ -136,7 +136,7 @@ const SECTIONS = [
   { key: 'resumen', label: 'Resumen', apis: ['ga4', 'meta', 'pauta', 'seo', 'emails'] },
   { key: 'web', label: 'Web', apis: ['ga4', 'gsc'] },
   { key: 'seo', label: 'SEO', apis: ['seo', 'ga4', 'meta', 'emailtraffic', 'dailytrends'] },
-  { key: 'redes', label: 'Redes sociales', apis: ['meta'] },
+  { key: 'redes', label: 'Redes sociales', apis: ['meta', 'ga4'] },
   { key: 'pauta', label: 'Pauta', apis: ['pauta'] },
   { key: 'emails', label: 'Emails', apis: ['emails', 'emailtraffic'] },
 ];
@@ -599,7 +599,7 @@ export default function Dashboard() {
   const dailyAvg = dailyList.length ? dailyList.reduce((a, d) => a + d.value, 0) / dailyList.length : 0;
   const dailyThreshold = activeTab === 'axxis' ? 4500 : dailyAvg * 1.15;
   const aboveAvg = dailyList.filter((d) => d.value > dailyThreshold);
-  const rangeLabel = (section === 'seo' && data.seo?.range?.label) || data.ga4?.range?.label || data.gsc?.range?.label || data.seo?.range?.label || data.meta?.range?.label || data.pauta?.range?.label || '';
+  const rangeLabel = (section === 'seo' && data.seo?.range?.label) || (section === 'redes' && data.meta?.range?.label) || data.ga4?.range?.label || data.gsc?.range?.label || data.seo?.range?.label || data.meta?.range?.label || data.pauta?.range?.label || '';
   const insightsLabel = data.ga4?.range?.label || rangeLabel;
 
   // Piezas de la pestaña SEO (solo se usan allí)
@@ -2554,6 +2554,7 @@ export default function Dashboard() {
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Seguidores</div>
                 <div style={styles.cardValue}>{nf(fb.followers)}</div>
+                <div style={styles.cardSubtext}>total actual (Meta no da el histórico)</div>
                 <div style={{ marginTop: '16px' }}>
                   {kpis.map(([label, value, change]) => (
                     <div key={label} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', padding: '10px 0', borderBottom: '1px solid #eee' }}>
@@ -2672,6 +2673,11 @@ export default function Dashboard() {
                 <div style={styles.cardValue}>{nf(d?.followers)}</div>
                 <div style={styles.cardSubtext}>total actual</div>
               </div>
+              {d?.period?.coverage?.capped && (
+                <div style={{ ...styles.card, borderLeft: '5px solid #f9a825', gridColumn: '1 / -1', fontSize: '13px', color: '#444' }}>
+                  <strong>Instagram solo entrega 30 días.</strong> Meta limita alcance, seguidores nuevos e interacciones a una ventana de 30 días. Estas cifras cubren del {d.period.coverage.start} al {d.period.coverage.end}, no todo el periodo elegido ({rangeLabel}). Las publicaciones destacadas sí cubren todo el periodo.
+                </div>
+              )}
               <div style={styles.card}>
                 <div style={styles.cardTitle}>Aporte de IG al tráfico</div>
                 <div style={styles.cardValue}>{current.ga4?.social ? `${(current.ga4.social.instagram.share * 100).toFixed(2)}%` : '\u2014'}</div>

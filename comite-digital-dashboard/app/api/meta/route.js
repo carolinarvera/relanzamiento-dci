@@ -191,7 +191,8 @@ async function igPeriod(igId, token, r, which) {
   const v = {};
   (core.data.data || []).forEach((m) => { v[m.name] = m.total_value?.value || 0; });
   const newFollowers = fol?.data?.data?.[0]?.total_value?.breakdowns?.[0]?.results?.find((x) => x.dimension_values[0] === 'FOLLOWER')?.value ?? null;
-  return { reach: v.reach || 0, interactions: v.total_interactions || 0, newFollowers };
+  const from = new Date(since * 1000).toISOString().slice(0, 10);
+  return { reach: v.reach || 0, interactions: v.total_interactions || 0, newFollowers, from, to: end, capped: since > day(start) };
 }
 
 async function igDetail(igId, token, errors, label, range) {
@@ -225,6 +226,7 @@ async function igDetail(igId, token, errors, label, range) {
         reach: curP.reach, reachChange: prevP?.reach ? curP.reach / prevP.reach - 1 : null,
         newFollowers: curP.newFollowers, newFollowersChange: prevP?.newFollowers ? curP.newFollowers / prevP.newFollowers - 1 : null,
         engagementRate: curP.reach ? curP.interactions / curP.reach : 0,
+        coverage: { start: curP.from, end: curP.to, capped: curP.capped },
         prevEngagementRate: prevP?.reach ? prevP.interactions / prevP.reach : null,
       },
       ageGender: Object.values(byAge).sort((x, y) => x.age.localeCompare(y.age, 'es', { numeric: true })),

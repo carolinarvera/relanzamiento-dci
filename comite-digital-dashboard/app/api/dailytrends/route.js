@@ -24,7 +24,8 @@ const CATS = [
   { key: 'arquitectura', label: 'Arquitectura', brands: ['axxis'], q: 'arquitectura OR construcción OR vivienda OR urbanismo', re: /arquitect|construccion|vivienda|inmobiliari|urbanismo|paisajismo|edificio|obra civil/ },
   { key: 'diseno', label: 'Diseño', brands: ['axxis'], q: 'diseño OR interiorismo OR mobiliario OR diseño industrial', re: /diseno|interiorismo|mobiliario|disenador|\bdesign\b/ },
   { key: 'decoracion', label: 'Decoración', brands: ['axxis'], q: 'decoración OR decoración del hogar OR muebles OR tendencias hogar', re: /decoracion|hogar|muebles|amoblar|remodelacion/ },
-  { key: 'especiales', label: 'Coyuntura y especiales (sismos)', brands: ['axxis', 'diners'], q: 'sismo OR terremoto OR temblor Colombia', re: /sismo|terremoto|temblor|epicentro|damnificad|emergencia|acopio/ },
+  { key: 'especiales', label: 'Coyuntura del sector: ferias, eventos y datos de vivienda', brands: ['axxis'], q: 'Minvivienda OR "Ministerio de Vivienda" OR Camacol', qs: ['"subsidio de vivienda" OR "Mi Casa Ya" OR "ventas de vivienda" OR "licencias de construcción"', 'Expoconstrucción OR "Casa FOA" OR "Salón del Inmueble" OR "Bienal de Arquitectura" OR "feria de vivienda"'], ok: /vivienda|construcci|arquitect|feria|bienal|salon|camacol|inmobiliari|urban|diseno|decoracion|obra/, re: /minvivienda|ministerio de vivienda|camacol|subsidio de vivienda|mi casa ya|expoconstruccion|bienal|casa foa|salon del mueble|salon del inmueble|feria de vivienda|feria de arquitectura|licencias de construccion|ventas de vivienda|vivienda nueva/ },
+  { key: 'especiales', label: 'Coyuntura: festivales, ferias y eventos', brands: ['diners'], q: '"Hay Festival" OR "Festival Gastronómico" OR "Bogotá Wine" OR "Congreso Gastronómico"', qs: ['"Feria del Libro" OR "Estéreo Picnic" OR "Festival de Cine" OR "Premios Macondo"', '"Bogotá Fashion Week" OR Colombiamoda OR BogotáEats OR "Festival de Jazz" Colombia'], ok: /festival|feria|premio|gastronom|cine|libro|moda|jazz|concierto|vino|chef|restaurante|bogotaeats|colombia|bogota|medellin/, re: /hay festival|estereo picnic|feria del libro|fashion week|colombiamoda|festival gastronomico|bogota wine|festival de cine|premios macondo|festival de jazz/ },
   { key: 'cultura', label: 'Cultura, cine, series y música', brands: ['diners'], q: 'cine OR series OR música OR exposición OR libros', re: /cine|pelicula|serie |series|musica|concierto|festival|artista|cantante|album|libro|exposicion|teatro|podcast|netflix|estreno|gira|actor|actriz|cultura/ },
   { key: 'gastro', label: 'Gastronomía', brands: ['diners'], q: 'restaurantes OR gastronomía OR chef OR cocina colombiana', re: /restaurante|gastronom|chef|cocina|comida|receta|vino|cocteler|cafe |brunch|lechona|50 best/ },
   { key: 'viajes', label: 'Viajes y turismo', brands: ['diners'], q: 'viajes OR turismo OR destinos OR hoteles', re: /viaje|turismo|destino|hotel|playa|aerolinea|vuelos|resort|escapada|vacaciones|aeropuerto/ },
@@ -50,9 +51,8 @@ function categorize(t, brand) {
 }
 
 async function fetchNews(cat, win) {
-  const url = `https://news.google.com/rss/search?q=${encodeURIComponent(`${cat.q} when:${win}`)}&hl=es-419&gl=CO&ceid=CO:es-419`;
-  const r = await axios.get(url, { headers: UA, timeout: 15000, responseType: 'text' });
-  const items = [...String(r.data).matchAll(/<item>(.*?)<\/item>/gs)].map((m) => m[1]);
+  const texts = await Promise.all([cat.q, ...(cat.qs || [])].map((q) => axios.get(`https://news.google.com/rss/search?q=${encodeURIComponent(`${q} when:${win}`)}&hl=es-419&gl=CO&ceid=CO:es-419`, { headers: UA, timeout: 15000, responseType: 'text' }).then((r) => String(r.data)).catch(() => '')));
+  const items = texts.flatMap((t) => [...t.matchAll(/<item>(.*?)<\/item>/gs)].map((m) => m[1]));
   const list = items.map((it) => {
     const full = tag(it, 'title');
     const source = tag(it, 'source');
@@ -65,7 +65,9 @@ async function fetchNews(cat, win) {
     .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
   const seen = new Set();
   const uniq = fresh.filter((x) => { const k = plain(x.title).slice(0, 60); if (seen.has(k)) return false; seen.add(k); return true; });
-  return { key: cat.key, label: cat.label, total: uniq.length, items: uniq.slice(0, 5) };
+  const NOISE = /resultados|sorteo|loter|chance|astro sol|baloto|\bica\b|per[uú]\b|m[eé]xico|yucat|temoz|busan|madrid|espa[nñ]a|argentina|chile\b|ecuador|paraguay|\bS\//i;
+  const clean = uniq.filter((x) => !NOISE.test(x.title) && (!cat.ok || cat.ok.test(plain(x.title))));
+  return { key: cat.key, label: cat.label, total: clean.length, items: clean.slice(0, 5) };
 }
 
 export async function GET(request) {
@@ -76,7 +78,7 @@ export async function GET(request) {
     const brands = {};
     ['axxis', 'diners'].forEach((brand) => {
       const matched = trends.map((t) => ({ ...t, category: categorize(t, brand) })).filter((t) => t.category).map((t) => ({ ...t, category: { key: t.category.key, label: t.category.label } }));
-      brands[brand] = { filteredOut: trends.length - matched.length, trends: matched, news: news.filter((c) => CATS.find((x) => x.key === c.key).brands.includes(brand)) };
+      brands[brand] = { filteredOut: trends.length - matched.length, trends: matched, news: news.filter((c) => CATS.find((x) => x.label === c.label).brands.includes(brand)) };
     });
     const value = { fetchedAt: new Date().toISOString(), window: win, totalTrends: trends.length, brands };
     cache[win] = { at: Date.now(), value };
