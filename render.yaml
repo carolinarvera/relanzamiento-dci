@@ -1,0 +1,39 @@
+services:
+  - type: web
+    name: comite-digital-dashboard
+    runtime: node
+    plan: free
+    region: oregon
+    rootDir: comite-digital-dashboard
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/ga4?start=2026-10-01&end=2026-10-02
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: GA4_AXXIS_ID
+        sync: false
+      - key: GA4_DINERS_ID
+        sync: false
+      - key: GA4_OAUTH_CLIENT_ID
+        sync: false
+      - key: GA4_OAUTH_CLIENT_SECRET
+        sync: false
+      - key: GA4_OAUTH_REFRESH_TOKEN
+        sync: false
+      - key: GSC_AXXIS_URL
+        sync: false
+      - key: GSC_DINERS_URL
+        sync: false
+      - key: HUBSPOT_TOKEN
+        sync: false
+      - key: META_ACCESS_TOKEN
+        sync: false
+      - key: META_AXXIS_PAGE_ID
+        sync: false
+      - key: META_DINERS_PAGE_ID
+        sync: false
+      - key: META_AXXIS_FB_PAGE_ID
+        sync: false
+      - key: META_DINERS_FB_PAGE_ID
+        sync: false
