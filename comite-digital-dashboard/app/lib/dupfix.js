@@ -2,9 +2,9 @@ import axios from 'axios';
 
 // Desde esta fecha GA4 repite el evento page_view (4 a 8 veces). Las vistas se estiman con las
 // páginas por sesión que tenía cada canal antes del problema; sesiones, usuarios y canales no cambian.
-export const DUP_FROM = '2026-10-08';
+export const DUP_FROM = '2026-09-22'; // el page_view empezó a repetirse el 22 de septiembre (de 1,3 a 3 páginas por sesión) y se disparó el 8 de octubre
 export const DUP_TO = '2026-10-20'; // el 21 de octubre se ajustó la etiqueta: desde ese día las vistas son reales
-const DUP_BASE = { start: '2026-09-08', end: '2026-10-07' };
+const DUP_BASE = { start: '2026-09-01', end: '2026-09-21' }; // semanas limpias: 1,2 a 1,4 páginas por sesión
 const TTL = 20 * 60 * 1000;
 const CACHE = new Map();
 const iso = (d) => d.toISOString().slice(0, 10);
@@ -100,7 +100,15 @@ export function applyDupFix(data, f) {
       } else walk(v, c);
     });
   };
+  // los meses con días estimados se marcan con asterisco en el gráfico mensual (se lee el factor antes de corregir)
+  const flagged = new Set((data.monthlyHistory || []).filter((m) => {
+    const [mes, y] = String(m.month).split(' ');
+    const mi = MESES.indexOf(mes);
+    const fm = mi >= 0 ? f.month[`${y}${String(mi + 1).padStart(2, '0')}`] : 1;
+    return fm !== undefined && fm !== 1;
+  }).map((m) => m.month));
   walk(data, null);
+  (data.monthlyHistory || []).forEach((m) => { if (flagged.has(m.month)) { m.estimated = true; m.month = `${m.month}*`; } });
   data.viewsCorrected = { from: DUP_FROM, to: DUP_TO, factor: Math.round(f.cur * 1000) / 1000 };
   return data;
 }

@@ -5,9 +5,9 @@ import { getAccessToken } from '../../lib/seoaudit';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
-const DUP_FROM = '2026-10-08'; // desde esta fecha GA4 duplica page_view
+const DUP_FROM = '2026-09-22'; // desde esta fecha GA4 duplica page_view
 const DUP_TO = '2026-10-20'; // el 21 de octubre se ajustó la etiqueta
-const DUP_BASE = { start: '2026-09-08', end: '2026-10-07' };
+const DUP_BASE = { start: '2026-09-01', end: '2026-09-21' };
 const PROPS = { axxis: 'GA4_AXXIS_ID', diners: 'GA4_DINERS_ID' };
 const CACHE = new Map();
 const TTL = 20 * 60 * 1000;

@@ -728,7 +728,7 @@ export default function Dashboard() {
         <h2 style={styles.sectionTitle}>Informe Web</h2>
         {current.ga4?.viewsCorrected && (
           <div style={{ ...styles.card, borderLeft: '5px solid #f9a825', marginBottom: '14px', fontSize: '13px', color: '#444' }}>
-            <strong>Vistas estimadas.</strong> Del 8 al 20 de octubre de 2026 GA4 repitió el evento page_view y las vistas llegaron multiplicadas por 4 a 8. El 21 de octubre se ajustó la etiqueta: desde ese día las vistas son reales. En esta pestaña las vistas del 8 al 20 de octubre (totales, por día, hora, sección, nota y canal) son una estimación: sesiones de cada canal por las páginas por sesión que tenía antes del 8 de octubre. Con el periodo elegido las vistas reportadas se reducen a {Math.round(current.ga4.viewsCorrected.factor * 100)}%. Sesiones y usuarios no cambian. Rebote, engagement y páginas por sesión de esos días siguen distorsionados y no se corrigen.
+            <strong>Vistas estimadas.</strong> Del 22 de septiembre al 20 de octubre de 2026 GA4 repitió el evento page_view: las páginas por sesión pasaron de 1,3 a 3 el 22 de septiembre y a 7-20 desde el 8 de octubre. El 21 de octubre se ajustó la etiqueta: desde ese día las vistas son reales. En esta pestaña las vistas del 22 de septiembre al 20 de octubre (totales, por día, hora, sección, nota y canal) son una estimación: sesiones de cada canal por las páginas por sesión que tenía del 1 al 21 de septiembre. Con el periodo elegido las vistas reportadas se reducen a {Math.round(current.ga4.viewsCorrected.factor * 100)}%. Sesiones y usuarios no cambian. Rebote, engagement y páginas por sesión de esos días siguen distorsionados y no se corrigen.
           </div>
         )}
         <div style={styles.grid}>
@@ -781,7 +781,7 @@ export default function Dashboard() {
                 </BarChart>
               </ResponsiveContainer>
             </div>
-            <div style={styles.cardSubtext}>El último mes ({current.ga4.monthlyHistory[current.ga4.monthlyHistory.length - 1]?.month}) se destaca en color más oscuro</div>
+            <div style={styles.cardSubtext}>El último mes ({current.ga4.monthlyHistory[current.ga4.monthlyHistory.length - 1]?.month}) se destaca en color más oscuro{current.ga4.monthlyHistory.some((m) => m.estimated) ? '. * Mes con vistas estimadas: del 22 de septiembre al 20 de octubre GA4 repitió el page_view, así que esas vistas se reemplazan por una estimación (sesiones por las páginas por sesión normales de cada canal). Las sesiones y los usuarios son reales.' : ''}</div>
           </div>
         )}
 
@@ -982,7 +982,7 @@ export default function Dashboard() {
           <div style={{ marginTop: '40px' }}>
             <div style={{ ...styles.card, padding: '28px', borderTop: `4px solid ${T.accent}`, boxShadow: '0 4px 14px rgba(0,0,0,0.12)' }}>
               <div style={{ ...styles.cardTitle, fontSize: '18px', color: '#222' }}>Visitas diarias: {insightsLabel}</div>
-              <div style={{ fontSize: '12px', color: '#888', marginTop: '4px' }}>Se destacan los {aboveAvg.length} días por encima de {Math.round(dailyThreshold).toLocaleString('es-CO')} vistas/día ({activeTab === 'axxis' ? 'umbral fijo' : 'promedio + 15%'}).{current.ga4.viewsCorrected ? ' Del 8 al 20 de octubre las vistas son estimadas (sin el page_view duplicado); desde el 21 son reales.' : ''}</div>
+              <div style={{ fontSize: '12px', color: '#888', marginTop: '4px' }}>Se destacan los {aboveAvg.length} días por encima de {Math.round(dailyThreshold).toLocaleString('es-CO')} vistas/día ({activeTab === 'axxis' ? 'umbral fijo' : 'promedio + 15%'}).{current.ga4.viewsCorrected ? ' Del 22 de sep al 20 de oct las vistas son estimadas (sin el page_view duplicado); desde el 21 de oct son reales.' : ''}</div>
               <div style={{ width: '100%', height: 460, marginTop: '16px' }}>
                   <ResponsiveContainer>
                     <AreaChart data={current.ga4.dailyViews} margin={{ top: 30, right: 20, left: 0, bottom: 0 }}>
@@ -1732,7 +1732,7 @@ export default function Dashboard() {
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
-                  <div style={styles.cardSubtext}>Canal Organic Search de GA4, alineado por día del periodo. El eje inferior muestra las fechas del periodo actual; al pasar el cursor ves la fecha de cada línea. {py.hasData ? '' : 'GA4 no tiene datos del año anterior para esta propiedad. '}Del 8 al 20 de octubre de 2026 las vistas están infladas por eventos page_view duplicados (se ajustó el 21 de octubre): para comparar esos días usa Sesiones.</div>
+                  <div style={styles.cardSubtext}>Canal Organic Search de GA4, alineado por día del periodo. El eje inferior muestra las fechas del periodo actual; al pasar el cursor ves la fecha de cada línea. {py.hasData ? '' : 'GA4 no tiene datos del año anterior para esta propiedad. '}Del 22 de septiembre al 20 de octubre de 2026 las vistas están infladas por eventos page_view duplicados (se ajustó el 21 de octubre): para comparar esos días usa Sesiones.</div>
                 </div>
               );
             })()}
@@ -2178,7 +2178,7 @@ export default function Dashboard() {
                 {O && prevLine('Periodo anterior', fmtDur(O.avgDurationPrev))}
               </div>
             </div>
-            <div style={styles.cardSubtext}>Vistas, sesiones, rebote y lectura son de GA4 (canal Organic Search). Del 8 al 20 de octubre de 2026 las vistas y el rebote están distorsionados por eventos page_view duplicados (se ajustó el 21 de octubre); para esos días usa sesiones y clics.</div>
+            <div style={styles.cardSubtext}>Vistas, sesiones, rebote y lectura son de GA4 (canal Organic Search). Del 22 de septiembre al 20 de octubre de 2026 las vistas y el rebote están distorsionados por eventos page_view duplicados (se ajustó el 21 de octubre); para esos días usa sesiones y clics.</div>
           </div>
         );
       })()}
@@ -3223,7 +3223,7 @@ export default function Dashboard() {
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
-                  <div style={styles.cardSubtext}>Todos los canales de GA4 (orgánico, directo, pauta, email y redes), alineado por día del periodo. El eje inferior muestra las fechas del periodo actual; al pasar el cursor ves la fecha de cada línea. {py.hasData ? '' : 'GA4 no tiene datos del año anterior para esta propiedad. '}Del 8 al 20 de octubre de 2026 GA4 reportó las vistas multiplicadas por 4 a 8 por eventos page_view repetidos; el 21 de octubre se ajustó la etiqueta y desde entonces son reales. Las vistas estimadas del 8 al 20 son sesiones de cada canal por las páginas por sesión que tenía ese canal del 8 de septiembre al 7 de octubre; antes del 8 y desde el 21 de octubre son las reales.</div>
+                  <div style={styles.cardSubtext}>Todos los canales de GA4 (orgánico, directo, pauta, email y redes), alineado por día del periodo. El eje inferior muestra las fechas del periodo actual; al pasar el cursor ves la fecha de cada línea. {py.hasData ? '' : 'GA4 no tiene datos del año anterior para esta propiedad. '}Del 22 de septiembre al 20 de octubre de 2026 GA4 reportó las vistas multiplicadas por 2 a 15 por eventos page_view repetidos; el 21 de octubre se ajustó la etiqueta y desde entonces son reales. Las vistas estimadas del 22 de septiembre al 20 de octubre son sesiones de cada canal por las páginas por sesión que tenía ese canal del 1 al 21 de septiembre; antes del 22 de septiembre y desde el 21 de octubre son las reales.</div>
                 </div>
               );
             })()}
