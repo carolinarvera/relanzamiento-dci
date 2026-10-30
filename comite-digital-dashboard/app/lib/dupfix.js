@@ -30,7 +30,13 @@ export async function getDupFactors(token, propertyId, range) {
   const f = { day: {}, month: {}, cur: 1, prev: 1, active: false };
   if (to < DUP_FROM || from > DUP_TO) { CACHE.set(key, { at: Date.now(), f }); return f; }
 
-  const base = await run(token, propertyId, { dateRanges: [{ startDate: DUP_BASE.start, endDate: DUP_BASE.end }], dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'sessions' }, { name: 'screenPageViews' }], limit: 50 });
+  // Referencia: páginas por sesión de cada canal desde que se ajustó la etiqueta (21 oct en adelante), para que la estimación
+  // empalme con las vistas reales. Si aún hay menos de 3 días, se usan las semanas limpias de septiembre.
+  const dayAfter = iso(new Date(Date.parse(DUP_TO) + 86400000));
+  const yesterday = iso(new Date(Date.now() - 86400000));
+  const loadBase = (a, b) => run(token, propertyId, { dateRanges: [{ startDate: a, endDate: b }], dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'sessions' }, { name: 'screenPageViews' }], limit: 50 });
+  const enoughDays = (Date.parse(yesterday) - Date.parse(dayAfter)) / 86400000 >= 2;
+  const base = enoughDays ? await loadBase(dayAfter, yesterday) : await loadBase(DUP_BASE.start, DUP_BASE.end);
   const ratio = {};
   let bs = 0; let bv = 0;
   base.forEach((r) => { const se = Number(r.metricValues[0].value); const vi = Number(r.metricValues[1].value); ratio[r.dimensionValues[0].value] = se ? vi / se : 0; bs += se; bv += vi; });

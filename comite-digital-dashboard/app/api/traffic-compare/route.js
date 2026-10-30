@@ -60,7 +60,11 @@ export async function GET(request) {
     ).catch(() => ({ data: {} }))).data.rows || [];
 
     // Páginas por sesión de cada canal ANTES del page_view duplicado (8 sep a 7 oct 2026), para estimar vistas reales
-    const baseRows = await post({ dateRanges: [{ startDate: DUP_BASE.start, endDate: DUP_BASE.end }], dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'sessions' }, { name: 'screenPageViews' }], limit: 50 });
+    const dayAfter = iso(new Date(Date.parse(DUP_TO) + 86400000));
+    const yesterday = iso(new Date(Date.now() - 86400000));
+    const enoughDays = (Date.parse(yesterday) - Date.parse(dayAfter)) / 86400000 >= 2;
+    const win = enoughDays ? { start: dayAfter, end: yesterday } : DUP_BASE;
+    const baseRows = await post({ dateRanges: [{ startDate: win.start, endDate: win.end }], dimensions: [{ name: 'sessionDefaultChannelGroup' }], metrics: [{ name: 'sessions' }, { name: 'screenPageViews' }], limit: 50 });
     const ratio = {};
     let bs = 0; let bv = 0;
     baseRows.forEach((r) => { const se = Number(r.metricValues[0].value); const vi = Number(r.metricValues[1].value); ratio[r.dimensionValues[0].value] = se ? vi / se : 0; bs += se; bv += vi; });

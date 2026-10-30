@@ -728,7 +728,7 @@ export default function Dashboard() {
         <h2 style={styles.sectionTitle}>Informe Web</h2>
         {current.ga4?.viewsCorrected && (
           <div style={{ ...styles.card, borderLeft: '5px solid #f9a825', marginBottom: '14px', fontSize: '13px', color: '#444' }}>
-            <strong>Vistas estimadas.</strong> Del 22 de septiembre al 20 de octubre de 2026 GA4 repitió el evento page_view: las páginas por sesión pasaron de 1,3 a 3 el 22 de septiembre y a 7-20 desde el 8 de octubre. El 21 de octubre se ajustó la etiqueta: desde ese día las vistas son reales. En esta pestaña las vistas del 22 de septiembre al 20 de octubre (totales, por día, hora, sección, nota y canal) son una estimación: sesiones de cada canal por las páginas por sesión que tenía del 1 al 21 de septiembre. Con el periodo elegido las vistas reportadas se reducen a {Math.round(current.ga4.viewsCorrected.factor * 100)}%. Sesiones y usuarios no cambian. Rebote, engagement y páginas por sesión de esos días siguen distorsionados y no se corrigen.
+            <strong>Vistas estimadas.</strong> Del 22 de septiembre al 20 de octubre de 2026 GA4 repitió el evento page_view: las páginas por sesión pasaron de 1,3 a 3 el 22 de septiembre y a 7-20 desde el 8 de octubre. El 21 de octubre se ajustó la etiqueta: desde ese día las vistas son reales. En esta pestaña las vistas del 22 de septiembre al 20 de octubre (totales, por día, hora, sección, nota y canal) son una estimación: sesiones de cada canal por las páginas por sesión que tiene desde el 21 de octubre, cuando se ajustó la etiqueta. Con el periodo elegido las vistas reportadas se reducen a {Math.round(current.ga4.viewsCorrected.factor * 100)}%. Sesiones y usuarios no cambian. Rebote, engagement y páginas por sesión de esos días siguen distorsionados y no se corrigen.
           </div>
         )}
         <div style={styles.grid}>
@@ -781,7 +781,7 @@ export default function Dashboard() {
                 </BarChart>
               </ResponsiveContainer>
             </div>
-            <div style={styles.cardSubtext}>El último mes ({current.ga4.monthlyHistory[current.ga4.monthlyHistory.length - 1]?.month}) se destaca en color más oscuro{current.ga4.monthlyHistory.some((m) => m.estimated) ? '. * Mes con vistas estimadas: del 22 de septiembre al 20 de octubre GA4 repitió el page_view, así que esas vistas se reemplazan por una estimación (sesiones por las páginas por sesión normales de cada canal). Las sesiones y los usuarios son reales.' : ''}</div>
+            <div style={styles.cardSubtext}>El último mes ({current.ga4.monthlyHistory[current.ga4.monthlyHistory.length - 1]?.month}) se destaca en color más oscuro{current.ga4.monthlyHistory.some((m) => m.estimated) ? '. * Mes con vistas estimadas: del 22 de septiembre al 20 de octubre GA4 repitió el page_view, así que esas vistas se reemplazan por una estimación (sesiones por las páginas por sesión de cada canal desde el 21 de octubre). Las sesiones y los usuarios son reales.' : ''}</div>
           </div>
         )}
 
@@ -3223,7 +3223,7 @@ export default function Dashboard() {
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
-                  <div style={styles.cardSubtext}>Todos los canales de GA4 (orgánico, directo, pauta, email y redes), alineado por día del periodo. El eje inferior muestra las fechas del periodo actual; al pasar el cursor ves la fecha de cada línea. {py.hasData ? '' : 'GA4 no tiene datos del año anterior para esta propiedad. '}Del 22 de septiembre al 20 de octubre de 2026 GA4 reportó las vistas multiplicadas por 2 a 15 por eventos page_view repetidos; el 21 de octubre se ajustó la etiqueta y desde entonces son reales. Las vistas estimadas del 22 de septiembre al 20 de octubre son sesiones de cada canal por las páginas por sesión que tenía ese canal del 1 al 21 de septiembre; antes del 22 de septiembre y desde el 21 de octubre son las reales.</div>
+                  <div style={styles.cardSubtext}>Todos los canales de GA4 (orgánico, directo, pauta, email y redes), alineado por día del periodo. El eje inferior muestra las fechas del periodo actual; al pasar el cursor ves la fecha de cada línea. {py.hasData ? '' : 'GA4 no tiene datos del año anterior para esta propiedad. '}Del 22 de septiembre al 20 de octubre de 2026 GA4 reportó las vistas multiplicadas por 2 a 15 por eventos page_view repetidos; el 21 de octubre se ajustó la etiqueta y desde entonces son reales. Las vistas estimadas del 22 de septiembre al 20 de octubre son sesiones de cada canal por las páginas por sesión que tiene ese canal desde el 21 de octubre; antes del 22 de septiembre y desde el 21 de octubre son las reales.</div>
                 </div>
               );
             })()}
