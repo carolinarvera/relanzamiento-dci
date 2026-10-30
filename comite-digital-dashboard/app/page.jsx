@@ -982,7 +982,7 @@ export default function Dashboard() {
           <div style={{ marginTop: '40px' }}>
             <div style={{ ...styles.card, padding: '28px', borderTop: `4px solid ${T.accent}`, boxShadow: '0 4px 14px rgba(0,0,0,0.12)' }}>
               <div style={{ ...styles.cardTitle, fontSize: '18px', color: '#222' }}>Visitas diarias: {insightsLabel}</div>
-              <div style={{ fontSize: '12px', color: '#888', marginTop: '4px' }}>Se destacan los {aboveAvg.length} días por encima de {Math.round(dailyThreshold).toLocaleString('es-CO')} vistas/día ({activeTab === 'axxis' ? 'umbral fijo' : 'promedio + 15%'}).{current.ga4.viewsCorrected ? ' Del 8 al 20 de octubre las vistas son estimadas (sin el page_view duplicado).' : ''}</div>
+              <div style={{ fontSize: '12px', color: '#888', marginTop: '4px' }}>Se destacan los {aboveAvg.length} días por encima de {Math.round(dailyThreshold).toLocaleString('es-CO')} vistas/día ({activeTab === 'axxis' ? 'umbral fijo' : 'promedio + 15%'}).{current.ga4.viewsCorrected ? ' Del 8 al 20 de octubre las vistas son estimadas (sin el page_view duplicado); desde el 21 son reales.' : ''}</div>
               <div style={{ width: '100%', height: 460, marginTop: '16px' }}>
                   <ResponsiveContainer>
                     <AreaChart data={current.ga4.dailyViews} margin={{ top: 30, right: 20, left: 0, bottom: 0 }}>
@@ -998,6 +998,11 @@ export default function Dashboard() {
                         <ReferenceLine x={current.ga4.dailyViews.find((d) => d.date === current.ga4.viewsCorrected.from.replace(/-/g, '')).label} stroke="#f9a825" strokeDasharray="4 3" strokeWidth={2}
                           label={{ value: 'Vistas estimadas desde aquí', position: 'insideTopLeft', fontSize: 11, fill: '#b26a00' }} />
                       )}
+                      {current.ga4.viewsCorrected && current.ga4.viewsCorrected.to && (() => {
+                        const nextDay = new Date(Date.parse(current.ga4.viewsCorrected.to) + 86400000).toISOString().slice(0, 10).replace(/-/g, '');
+                        const pt = current.ga4.dailyViews.find((d) => d.date === nextDay);
+                        return pt ? <ReferenceLine x={pt.label} stroke="#2e7d32" strokeDasharray="4 3" strokeWidth={2} label={{ value: 'Vistas reales desde aquí', position: 'insideTopRight', fontSize: 11, fill: '#2e7d32' }} /> : null;
+                      })()}
                       <ReferenceLine y={dailyThreshold} stroke="#888" strokeDasharray="6 4"
                         label={{ value: `Umbral ${Math.round(dailyThreshold).toLocaleString('es-CO')}`, position: 'insideBottomRight', fontSize: 12, fill: '#666' }} />
                       {aboveAvg.map((d) => (
@@ -3201,6 +3206,16 @@ export default function Dashboard() {
                         <XAxis dataKey="label" tick={{ fontSize: 11 }} minTickGap={18} />
                         <YAxis tick={{ fontSize: 11 }} tickFormatter={(v) => v.toLocaleString('es-CO')} width={56} />
                         <Tooltip content={<Tip />} />
+                        {trafficMetric === 'viewsEst' && trafficCmp.dupFrom && (() => {
+                          const mk = (iso) => pts.find((q) => q.curDate && q.curDate === (() => { const d = new Date(`${iso}T00:00:00Z`); return `${d.getUTCDate()} ${MES[d.getUTCMonth()]} ${d.getUTCFullYear()}`; })());
+                          const a = mk(trafficCmp.dupFrom);
+                          const nextIso = new Date(Date.parse(trafficCmp.dupTo) + 86400000).toISOString().slice(0, 10);
+                          const b = mk(nextIso);
+                          return (<>
+                            {a && <ReferenceLine x={a.label} stroke="#f9a825" strokeDasharray="4 3" strokeWidth={2} label={{ value: 'Estimadas desde aquí', position: 'insideTopLeft', fontSize: 11, fill: '#b26a00' }} />}
+                            {b && <ReferenceLine x={b.label} stroke="#2e7d32" strokeDasharray="4 3" strokeWidth={2} label={{ value: 'Reales desde aquí', position: 'insideTopRight', fontSize: 11, fill: '#2e7d32' }} />}
+                          </>);
+                        })()}
                         <Legend verticalAlign="top" height={30} />
                         {py.hasData && <Line type="monotone" dataKey={`prevYear${metricKey}`} name="Año anterior" stroke={COL.prevYear} strokeWidth={2.5} strokeDasharray="6 4" dot={false} connectNulls />}
                         <Line type="monotone" dataKey={`prevMonth${metricKey}`} name="Mes anterior" stroke={COL.prevMonth} strokeWidth={2.5} dot={false} connectNulls />
